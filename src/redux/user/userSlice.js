@@ -16,7 +16,6 @@ export const loginUser = createAsyncThunk(
     async (loginData, {rejectWithValue}) => {
         try {
             const resp = await axiosApi.post('/accounts/login/', loginData)
-            await setTimeout(() => {}, 2000)
             return resp.data
         } catch (e) {
             let error = e?.response?.data
