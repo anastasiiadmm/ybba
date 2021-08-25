@@ -19,10 +19,11 @@ export const loginUser = createAsyncThunk(
             await setTimeout(() => {}, 2000)
             return resp.data
         } catch (e) {
+            let error = e?.response?.data
             if (!e.response) {
-                throw e
+                error = {detail: 'На сервере что-то пошло не так'}
             }
-            return rejectWithValue(e.response.data)
+            return rejectWithValue(error)
         }
     }
 )
