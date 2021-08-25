@@ -1,0 +1,7 @@
+.socialMediaLink {
+    transition: all .1s;
+}
+
+.socialMediaLink:hover {
+    transform: scale(1.1);
+}
