@@ -28,9 +28,6 @@ const authActions = [String(loginUser.fulfilled), String(logoutUser.fulfilled), 
 export const localStorageMiddleware = store => next => action => {
     let result = next(action);
 
-    console.log(action)
-    console.log()
-
     if (authActions.includes(action.type)) {
         saveToLocalStorage({
             user: store.getState().user
