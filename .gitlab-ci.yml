@@ -54,4 +54,4 @@ deploy-development:
   script:
     - ssh -T $DEV_DEPLOY_USER@$DEV_DEPLOY_SERVER "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
     - ssh -T $DEV_DEPLOY_USER@$DEV_DEPLOY_SERVER "docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
-    - ssh -T $DEV_DEPLOY_USER@$DEV_DEPLOY_SERVER "docker kill ybba-frontend && docker run -d --network ybba-backend_default --name ybba-frontend -p 3000:80 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+    - ssh -T $DEV_DEPLOY_USER@$DEV_DEPLOY_SERVER "docker run -d --network ybba-backend_default --name ybba-frontend -p 3000:80 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
