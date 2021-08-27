@@ -1,0 +1,57 @@
+services:
+  - docker:dind
+
+variables:
+  API_URL: "http://ybba-backend:8000"
+
+stages:
+  - test
+  - build
+  - deploy-development
+
+#tests:
+#  image: docker:git
+#  stage: test
+#  environment:
+#    name: testing
+#  script:
+#    -
+#    -
+#  after_script:
+#    -
+
+build-development:
+  image: docker:git
+  stage: build
+  only:
+    refs:
+      - development
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - cd $CI_PROJECT_DIR
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --cache-from $CI_REGISTRY_IMAGE:latest -f dockerfiles/app/Dockerfile --build-arg API_URL=$API_URL .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+
+
+deploy-development:
+  image: docker:git
+  stage: deploy-development
+  only:
+    refs:
+      - development
+  environment:
+    name: development
+    url: https://dev.yba.ltestl.com/
+  before_script:
+    - apk update
+    - apk add -qq
+    - 'which ssh-agent || ( apk add -qq openssh-client )'
+    - eval $(ssh-agent -s)
+    - echo "$DEV_SSH_PRIVATE_KEY" | ssh-add -
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ssh -T $DEV_DEPLOY_USER@$DEV_DEPLOY_SERVER "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
+    - ssh -T $DEV_DEPLOY_USER@$DEV_DEPLOY_SERVER "docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+    - ssh -T $DEV_DEPLOY_USER@$DEV_DEPLOY_SERVER "docker kill ybba-frontend && docker run -d --network ybba-backend_default --name ybba-frontend -p 3000:80 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
