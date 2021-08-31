@@ -1,5 +1,7 @@
 import React from 'react';
-import SocialMedialLink from "./SocialMedialLink/SocialMedialLink";
+
+import SocialMedialLink from './SocialMedialLink/SocialMedialLink';
+
 
 const SocialMediaBlock = () => {
 
@@ -13,7 +15,7 @@ const SocialMediaBlock = () => {
     ]
 
     return (
-        <div className="form__socials">
+        <div className='form__socials'>
             {socialMediaLinks.map((socialMedia, index) => (
                 <SocialMedialLink
                     specialClass={socialMedia}

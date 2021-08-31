@@ -1,5 +1,6 @@
 import {loginUser, logoutUser} from "../user/userSlice.js";
 
+
 export const localStorageKeyName = 'Ybba-state'
 
 export const loadFromLocalStorage = () => {

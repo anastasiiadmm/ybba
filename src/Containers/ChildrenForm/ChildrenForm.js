@@ -1,9 +1,12 @@
-import PropTypes from "prop-types";
 import React, {useState} from 'react';
-import Calendar from "../../Components/Calendar/Calendar.js";
-import FormField from "../../Components/FormField/FormField.js";
-import Modal from "../../Components/Modal/Modal.js";
-import config from "../../config.js";
+
+import PropTypes from 'prop-types';
+
+import Calendar from '../../Components/Calendar/Calendar.js';
+import FormField from '../../Components/FormField/FormField.js';
+import Modal from '../../Components/Modal/Modal.js';
+import config from '../../config.js';
+
 
 const ChildrenForm = (props) => {
 
@@ -41,8 +44,8 @@ const ChildrenForm = (props) => {
                 value={childrenData.date_of_birth}
             />
         </Modal>
-        <h4 className="form__title">Основная информация ребенка</h4>
-        <div className="form__row">
+        <h4 className='form__title'>Основная информация ребенка</h4>
+        <div className='form__row'>
             <FormField
                 label='Имя'
                 type='text'
@@ -57,7 +60,7 @@ const ChildrenForm = (props) => {
                 value={childrenData.first_name}
             />
         </div>
-        <div className="form__row">
+        <div className='form__row'>
             <FormField
                 label='Фамилия'
                 type='text'
@@ -72,7 +75,7 @@ const ChildrenForm = (props) => {
                 value={childrenData.last_name}
             />
         </div>
-        <div className="form__row">
+        <div className='form__row'>
             <FormField
                 label='Дата рождения'
                 type='datepicker'

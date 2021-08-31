@@ -1,6 +1,9 @@
-import PropTypes from "prop-types";
 import React from 'react';
+
+import PropTypes from 'prop-types';
+
 import './blockItem.css'
+
 
 const BlockItem = props => {
 

@@ -1,6 +1,9 @@
-import PropTypes from "prop-types";
 import React from 'react';
+
+import PropTypes from "prop-types";
+
 import './socialMedialLink.css'
+
 
 const SocialMedialLink = ({onClick, specialClass}) => {
 

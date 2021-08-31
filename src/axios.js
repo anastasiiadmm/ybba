@@ -1,8 +1,8 @@
 import config from "./config";
 import {store} from "./index.js";
 
-const axios = require("axios");
 
+const axios = require("axios");
 
 const axiosApi = axios.create({
     baseURL: config.apiUrl + '/api/v1/'

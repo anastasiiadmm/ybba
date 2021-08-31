@@ -1,7 +1,11 @@
-import PropTypes from "prop-types";
 import React from 'react';
-import './formField.css'
+
+import PropTypes from 'prop-types';
+
 import datepickerIcon from '../../assets/img/datepicker.svg'
+
+import './formField.css'
+
 
 const FormField = props => {
     const {
@@ -11,15 +15,15 @@ const FormField = props => {
 
     const toolTip = <>
         {(tooltipTitle || tooltipText) && <>
-            <div className="form__inp-info form__inp-info_left">
-                {tooltipTitle && <b className="form__info-title">{tooltipTitle}</b>}
+            <div className='form__inp-info form__inp-info_left'>
+                {tooltipTitle && <b className='form__info-title'>{tooltipTitle}</b>}
                 {tooltipText && tooltipText}
             </div>
         </>}
     </>
 
     let field = <>
-        <label className="form__label">
+        <label className='form__label'>
             {label}
             <input
                 type={type}
@@ -33,14 +37,14 @@ const FormField = props => {
                 maxLength={maxLength}
                 readOnly={readOnly}
             />
-            {helpText && <div className="form__passw-info">{helpText}</div>}
+            {helpText && <div className='form__passw-info'>{helpText}</div>}
             {toolTip}
         </label>
     </>
 
     if (type === 'datepicker') {
         field = <>
-            <label className="form__label">
+            <label className='form__label'>
                 {label}
                 <div className={`${className} datepickerBlock`}>
                     <input
@@ -63,13 +67,13 @@ const FormField = props => {
                         >
                             <img
                                 src={datepickerIcon}
-                                alt="datepicker"
+                                alt='datepicker'
                                 className='datepickerIcon'
                             />
                         </button>
                     </div>
                 </div>
-                {helpText && <div className="form__passw-info">{helpText}</div>}
+                {helpText && <div className='form__passw-info'>{helpText}</div>}
                 {toolTip}
             </label>
         </>

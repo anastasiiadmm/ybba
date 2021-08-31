@@ -1,8 +1,11 @@
 import React, {useEffect} from 'react';
-import {Spinner} from "react-bootstrap";
-import {useDispatch, useSelector} from "react-redux";
-import {useHistory} from "react-router";
-import {logoutUser, userSelector} from "../../redux/user/userSlice.js";
+
+import {useDispatch, useSelector} from 'react-redux';
+import {useHistory} from 'react-router';
+
+import Button from '../../Components/Button/Button.js';
+import {logoutUser, userSelector} from '../../redux/user/userSlice.js';
+
 
 const Logout = () => {
 
@@ -20,13 +23,17 @@ const Logout = () => {
         if (!user || !tokens) {
             history.push('/login/')
         }
+        // eslint-disable-next-line
     }, [user, tokens])
 
     return (
-        <>
-            {!loading && <button className='btn' onClick={logout}>Logout</button>}
-            {loading && <Spinner animation="border" variant="primary"/>}
-        </>
+        <Button
+            className='main-nav__enter border-0 bg-transparent'
+            onClick={logout}
+            loading={loading}
+        >
+            Выход
+        </Button>
     );
 }
 

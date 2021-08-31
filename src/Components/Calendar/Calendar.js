@@ -1,11 +1,15 @@
-import moment from "moment";
-import PropTypes from "prop-types";
 import React, {useEffect, useState} from 'react';
-import DateBlock from "./blocks/DateBlock/DateBlock.js";
-import MonthBlock from "./blocks/MonthBlock/MonthBlock.js";
-import YearBlock from "./blocks/YearBlock/YearBlock.js";
+
+import moment from 'moment';
+import PropTypes from 'prop-types';
+
+import DateBlock from './blocks/DateBlock/DateBlock.js';
+import MonthBlock from './blocks/MonthBlock/MonthBlock.js';
+import YearBlock from './blocks/YearBlock/YearBlock.js';
+import DateData from './DateData/DateData.js';
+
 import './calendar.css'
-import DateData from "./DateData/DateData.js";
+
 
 const Calendar = (props) => {
 
@@ -72,6 +76,7 @@ const Calendar = (props) => {
             setDateData(newDateData)
         }
         onChange(data)
+        // eslint-disable-next-line
     }, [])
 
     const stageComponents = {
@@ -93,7 +98,7 @@ const Calendar = (props) => {
     const currentStageComponent = stageComponents[currentStage]
 
     return (
-        <div className="calendarBlock">
+        <div className='calendarBlock'>
             <div className='dateBlock'>
                 <DateData
                     stages={stages}
