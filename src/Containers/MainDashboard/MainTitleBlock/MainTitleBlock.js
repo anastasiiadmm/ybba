@@ -12,10 +12,9 @@ const MainTitleBlock = () => {
 
     useEffect(() => {
         setNowDate(getNowDate())
-        const interval = setInterval(() => {
+        setInterval(() => {
             setNowDate(getNowDate())
         }, 1000)
-        // return clearInterval(interval)
     }, [])
 
     return (
