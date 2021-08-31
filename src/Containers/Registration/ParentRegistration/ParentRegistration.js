@@ -1,10 +1,13 @@
-import PropTypes from "prop-types";
 import React from 'react';
+
+import PropTypes from "prop-types";
 import {useHistory} from "react-router";
+
 import FormField from "../../../Components/FormField/FormField.js";
 import SocialMediaBlock from "../../../Components/SocialMediaBlock/SocialMediaBlock.js";
 import config from "../../../config.js";
 import RegistrationBaseBlock from "../RegistrationBaseBlock/RegistrationBaseBlock.js";
+
 
 const ParentRegistration = (props) => {
 

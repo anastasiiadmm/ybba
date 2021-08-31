@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {useSelector} from "react-redux";
+
 import Container from "../../Components/Container/Container.js";
 import SideBar from "../../Components/SideBar/SideBar.js";
 import {userSelector} from "../../redux/user/userSlice.js";
@@ -9,6 +11,7 @@ import LessonsInBiba from "./LessonsInBiba/LessonsInBida.js";
 import MainTitleBlock from "./MainTitleBlock/MainTitleBlock.js";
 import NextLessons from "./NextLessons/NextLessons.js";
 import Timetable from "./Timetable/Timetable.js";
+
 
 const MainDashboard = () => {
 

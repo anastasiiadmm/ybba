@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Timetable = () => {
     return (
         <div className="info-item info-item_md">

@@ -1,7 +1,11 @@
-import PropTypes from "prop-types";
 import React from 'react';
-import './formField.css'
+
+import PropTypes from "prop-types";
+
 import datepickerIcon from '../../assets/img/datepicker.svg'
+
+import './formField.css'
+
 
 const FormField = props => {
     const {

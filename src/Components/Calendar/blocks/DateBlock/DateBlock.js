@@ -1,9 +1,13 @@
-import PropTypes from "prop-types";
 import React from 'react';
+
+import PropTypes from "prop-types";
+
 import {addClasses} from "../../../../utils/addClasses/addClasses.js";
 import {getDaysArray} from "../../calendarUtils.js";
-import './dateBlock.css'
 import BlockItem from "../BlockItem/BlockItem.js";
+
+import './dateBlock.css'
+
 
 const DateBlock = (props) => {
 

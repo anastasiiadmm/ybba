@@ -1,5 +1,7 @@
 import React from 'react';
+
 import SocialMedialLink from "./SocialMedialLink/SocialMedialLink";
+
 
 const SocialMediaBlock = () => {
 

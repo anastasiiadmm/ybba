@@ -1,7 +1,9 @@
-import PropTypes from "prop-types";
 import React, {useContext, useEffect} from 'react';
+
+import PropTypes from "prop-types";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router";
+
 import Button from "../../../Components/Button/Button.js";
 import Icon from "../../../Components/Icon/Icon.js";
 import config from "../../../config.js";
@@ -9,6 +11,7 @@ import {RegistrationContext} from "../../../context/RegistrationContext/Registra
 import {createChild, createUser, loginUser, userSelector} from "../../../redux/user/userSlice.js";
 import ChildrenForm from "../../ChildrenForm/ChildrenForm.js";
 import RegistrationBaseBlock from "../RegistrationBaseBlock/RegistrationBaseBlock.js";
+
 
 const ChildRegistration = (props) => {
 
