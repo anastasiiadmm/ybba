@@ -6,20 +6,17 @@ WORKDIR /app
 COPY package.json .
 
 RUN yarn install --production
-RUN yarn global add serve
 
 COPY . .
 
 RUN yarn build
 
-CMD ["serve", "build", "-l", "tcp://0.0.0.0:3000"]
+FROM nginx:1.21.1-alpine as production
 
-#FROM nginx:1.21.1-alpine as production
-#
-#COPY --from=builder /app/build /usr/share/nginx/html
-#
-#COPY dockerfiles/nginx/nginx.conf /etc/nginx/nginx.conf
-#
-#EXPOSE 80
-#
-#CMD ["nginx", "-g", "daemon off;"]
+COPY --from=builder /app/build /usr/share/nginx/html
+
+COPY dockerfiles/nginx/nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
