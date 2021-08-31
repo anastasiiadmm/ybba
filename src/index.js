@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
 import {BrowserRouter} from "react-router-dom";
 import App from './App';
+import './assets/fonts/icomoon/icomoon.css'
+import './assets/vendor/slimselect/slimselect.min.css'
 import './index.css';
-import {store} from './redux/store'
+import configureStore from './redux/store.js'
 import reportWebVitals from './reportWebVitals';
+
+export const store = configureStore()
 
 ReactDOM.render(
     <React.StrictMode>

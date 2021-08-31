@@ -1,0 +1,25 @@
+.monthBlock {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.monthItem {
+    padding: 10px 0 10px 0;
+    margin: 0;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    border-radius: 6px;
+}
+
+.monthItem:hover {
+    background: #00CAD7;
+    color: #fff;
+}
+
+.monthItemActive {
+    background: #00CAD7;
+    color: #fff;
+}
