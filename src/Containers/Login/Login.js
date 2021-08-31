@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {Spinner} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router";
 import {NavLink} from "react-router-dom";
+import Button from "../../Components/Button/Button.js";
 import FormField from "../../Components/FormField/FormField";
 import SocialMediaBlock from "../../Components/SocialMediaBlock/SocialMediaBlock";
 import {clearUserState, loginUser, userSelector} from "../../redux/user/userSlice";
@@ -75,14 +75,14 @@ const Login = () => {
                         </div>
                         {errors && <p className="form__error-text">{errors}</p>}
                         <div className="form__row form__row_pd">
-                            {!loading && <button
+                            <Button
                                 type="submit"
                                 className="btn"
                                 disabled={(!loginData.email || !loginData.password)}
+                                loading={loading}
                             >
                                 Войти
-                            </button>}
-                            {loading && <Spinner animation="border" variant="primary"/>}
+                            </Button>
                         </div>
                         <p className="form__link-wrap">
                             Забыли пароль?{' '}
@@ -90,7 +90,7 @@ const Login = () => {
                         </p>
                         <p className="form__link-wrap">
                             Нет аккаунта?{' '}
-                            <NavLink className="form__link" to='/registration/'>Зарегистрироваться</NavLink>
+                            <NavLink className="form__link" to='/registration/1/'>Зарегистрироваться</NavLink>
                         </p>
                     </form>
                 </div>
