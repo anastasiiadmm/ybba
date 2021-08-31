@@ -1,8 +1,8 @@
 import React from 'react';
 
-import PropTypes from "prop-types";
-import {Spinner} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
+import {Spinner} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 
 const Button = (props) => {
@@ -29,7 +29,7 @@ const Button = (props) => {
     return (
         <>
             {to ? components.link : components.button}
-            {loading && <Spinner animation="border" variant="primary"/>}
+            {loading && <Spinner animation='border' variant='primary'/>}
         </>
     );
 }

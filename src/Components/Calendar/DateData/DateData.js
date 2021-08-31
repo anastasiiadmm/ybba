@@ -1,8 +1,8 @@
 import React from 'react';
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import {addClasses} from "../../../utils/addClasses/addClasses.js";
+import {addClasses} from '../../../utils/addClasses/addClasses.js';
 
 
 const DateData = (props) => {

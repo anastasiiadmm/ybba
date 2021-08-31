@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 
-import {useDispatch, useSelector} from "react-redux";
-import {useHistory} from "react-router";
+import {useDispatch, useSelector} from 'react-redux';
+import {useHistory} from 'react-router';
 
-import Button from "../../Components/Button/Button.js";
-import {logoutUser, userSelector} from "../../redux/user/userSlice.js";
+import Button from '../../Components/Button/Button.js';
+import {logoutUser, userSelector} from '../../redux/user/userSlice.js';
 
 
 const Logout = () => {
@@ -23,6 +23,7 @@ const Logout = () => {
         if (!user || !tokens) {
             history.push('/login/')
         }
+        // eslint-disable-next-line
     }, [user, tokens])
 
     return (

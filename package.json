@@ -31,7 +31,11 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "quotes": [1, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+      "jsx-quotes": [1, "prefer-single"]
+    }
   },
   "browserslist": {
     "production": [
