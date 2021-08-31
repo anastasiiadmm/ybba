@@ -23,13 +23,13 @@ const SideBar = () => {
                     <SideBarLink to='/profile/' classes='main-nav__link_lk'>
                         Личный кабинет
                     </SideBarLink>
-                    <SideBarLink to='/profile/' classes='main-nav__link_profile'>
+                    <SideBarLink to='/child-profile/' classes='main-nav__link_profile'>
                         Профиль ребёнка
                     </SideBarLink>
                     <SideBarLink to='/payments/' classes='main-nav__link_payment'>
                         Управление платежами
                     </SideBarLink>
-                    <SideBarLink to='/payments/' classes='main-nav__link_setting'>
+                    <SideBarLink to='/settings/' classes='main-nav__link_setting'>
                         Настройки
                     </SideBarLink>
                     <SideBarLink to='/video-test/' classes='main-nav__link_test'>
