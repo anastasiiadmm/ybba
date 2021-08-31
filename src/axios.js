@@ -1,8 +1,8 @@
-import config from "./config";
-import {store} from "./index.js";
+import config from './config';
+import {store} from './index.js';
 
 
-const axios = require("axios");
+const axios = require('axios');
 
 const axiosApi = axios.create({
     baseURL: config.apiUrl + '/api/v1/'
@@ -14,7 +14,7 @@ axiosApi.interceptors.request.use(async config => {
     if (key) {
         config.headers = {
             ...config.headers,
-            "Authorization": `Bearer ${key}`,
+            'Authorization': `Bearer ${key}`,
         }
     }
     return config

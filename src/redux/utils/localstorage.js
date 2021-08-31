@@ -1,4 +1,4 @@
-import {loginUser, logoutUser} from "../user/userSlice.js";
+import {loginUser, logoutUser} from '../user/userSlice.js';
 
 
 export const localStorageKeyName = 'Ybba-state'
@@ -20,7 +20,7 @@ export const saveToLocalStorage = state => {
         const serializedState = JSON.stringify(state);
         localStorage.setItem(localStorageKeyName, serializedState);
     } catch (e) {
-        console.log("Could not save state");
+        console.log('Could not save state');
     }
 };
 

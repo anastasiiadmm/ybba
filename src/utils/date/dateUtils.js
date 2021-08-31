@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from 'moment';
 import 'moment/locale/ru.js'
 
 export const transformDateFormat = (date, from, to) => {
@@ -8,16 +8,16 @@ export const transformDateFormat = (date, from, to) => {
 export const getTimesDay = () => {
     const hour = moment().hour()
     if (hour >= 6 && hour < 12) {
-        return "утро";
+        return 'утро';
     } else if (hour >= 12 && hour < 16) {
-        return "день";
+        return 'день';
     } else if (hour >= 16 && hour <= 22) {
-        return "вечер";
+        return 'вечер';
     } else {
-        return "ночь";
+        return 'ночь';
     }
 }
 
 export const getNowDate = () => {
-    return moment().format("LLL")
+    return moment().format('LLL')
 }

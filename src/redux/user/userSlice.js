@@ -1,8 +1,8 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-import axiosApi from "../../axios";
-import {defaultError} from "../../config.js";
-import {transformDateFormat} from "../../utils/date/dateUtils.js";
+import axiosApi from '../../axios';
+import {defaultError} from '../../config.js';
+import {transformDateFormat} from '../../utils/date/dateUtils.js';
 
 
 const nameSpace = 'user'
@@ -36,7 +36,7 @@ export const createChild = createAsyncThunk(
     async (childData, {rejectWithValue}) => {
         try {
             const data = childData
-            data.date_of_birth = transformDateFormat(data.date_of_birth, "DD.MM.YYYY", "YYYY-MM-DD")
+            data.date_of_birth = transformDateFormat(data.date_of_birth, 'DD.MM.YYYY', 'YYYY-MM-DD')
             const resp = await axiosApi.post('/accounts/children/', childData)
             return resp.data
         } catch (e) {
