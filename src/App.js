@@ -1,7 +1,7 @@
 import {Route, Switch} from "react-router-dom";
 import './App.css';
 import Login from "./Containers/Login/Login";
-import Logout from "./Containers/Logout/Logout.js";
+import MainDashboard from "./Containers/MainDashboard/MainDashboard.js";
 import Registration from "./Containers/Registration/Registration.js";
 import PrivateRoute from "./HOC/PrivatRoute/PrivatRoute.js";
 
@@ -10,7 +10,7 @@ const App = () => {
         <div>
 
             <Switch>
-                <PrivateRoute path='/' component={Logout} exact/>
+                <PrivateRoute path='/' component={MainDashboard} exact/>
                 <Route path='/login/' component={Login}/>
                 <Route path='/registration/:stage/' component={Registration}/>
             </Switch>
