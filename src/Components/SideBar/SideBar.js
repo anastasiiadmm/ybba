@@ -1,21 +1,21 @@
 import React from 'react';
 
-import Logout from "../../Containers/Logout/Logout.js";
-import Logo from "../Logo/Logo.js";
-import SideBarLink from "./SideBarLink/SideBarLink.js";
+import Logout from '../../Containers/Logout/Logout.js';
+import Logo from '../Logo/Logo.js';
+import SideBarLink from './SideBarLink/SideBarLink.js';
 
 
 const SideBar = () => {
     return (
-        <div className="sidebar h-100">
-            <header className="header">
+        <div className='sidebar h-100'>
+            <header className='header'>
                 <Logo/>
-                <button className="header__notice" data-modal="notifications">
+                <button className='header__notice' data-modal='notifications'>
                     <span>2</span>
                 </button>
             </header>
-            <nav className="main-nav">
-                <ul className="main-nav__list">
+            <nav className='main-nav'>
+                <ul className='main-nav__list'>
                     <SideBarLink to='/' classes='main-nav__link_home'>
                         Главная
                     </SideBarLink>

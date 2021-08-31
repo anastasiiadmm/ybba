@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 
-import {useHistory} from "react-router";
+import {useHistory} from 'react-router';
 
-import Container from "../../Components/Container/Container.js";
-import config from "../../config.js";
-import {RegistrationContext} from "../../context/RegistrationContext/RegistrationContext.js";
-import {isLogin} from "../../utils/user.js";
-import ChildRegistration from "./ChildRegistration/ChildRegistration.js";
-import ParentRegistration from "./ParentRegistration/ParentRegistration.js";
+import Container from '../../Components/Container/Container.js';
+import config from '../../config.js';
+import {RegistrationContext} from '../../context/RegistrationContext/RegistrationContext.js';
+import {isLogin} from '../../utils/user.js';
+import ChildRegistration from './ChildRegistration/ChildRegistration.js';
+import ParentRegistration from './ParentRegistration/ParentRegistration.js';
 
 const Registration = props => {
     const parentDataFromLocalStorage = JSON.parse(localStorage.getItem(config.registrationParentLocalStorageName))
@@ -51,6 +51,7 @@ const Registration = props => {
         if (isLogin()) {
             history.push('/')
         }
+        // eslint-disable-next-line
     }, [])
 
     const registrationComponent = registrationStages[stage]

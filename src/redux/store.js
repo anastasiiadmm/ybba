@@ -1,6 +1,6 @@
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
 
-import {loadFromLocalStorage, localStorageMiddleware} from "./utils/localstorage.js";
+import {loadFromLocalStorage, localStorageMiddleware} from './utils/localstorage.js';
 import userReducer from './user/userSlice'
 
 

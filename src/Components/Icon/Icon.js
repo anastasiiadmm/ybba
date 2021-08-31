@@ -1,6 +1,6 @@
 import React from 'react';
 
-import IcoMoon from "react-icomoon";
+import IcoMoon from 'react-icomoon';
 import iconSet from '../../assets/vendor/icomoon/fonts/selection.json'
 
 
