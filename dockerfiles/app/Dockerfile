@@ -12,7 +12,7 @@ COPY . .
 
 RUN yarn build
 
-CMD ["server", "build", "-l", "3000"]
+CMD ["serve", "build", "-l", "3000"]
 #
 #FROM nginx:1.21.1-alpine as production
 #
