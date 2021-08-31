@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('./assets/fonts/icomoon/fonts/icomoon.eot');
+    src: url('./assets/fonts/icomoon/fonts/icomoon.eot?lkqd5y#iefix') format('embedded-opentype'),
+    url('./assets/fonts/icomoon/fonts/icomoon.ttf?lkqd5y') format('truetype'),
+    url('./assets/fonts/icomoon/fonts/icomoon.woff?lkqd5y') format('woff'),
+    url('./assets/fonts/icomoon/fonts/icomoon.svg?lkqd5y#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }

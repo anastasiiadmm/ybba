@@ -4,10 +4,14 @@ import userReducer from './user/userSlice'
 
 const middlewares = [localStorageMiddleware]
 
-export const store = configureStore({
-    reducer: {
-        user: userReducer,
-    },
-    preloadedState: loadFromLocalStorage(),
-    middleware: [...getDefaultMiddleware(), ...middlewares]
-})
+const configureStoreCreator = () => {
+    return configureStore({
+        reducer: {
+            user: userReducer,
+        },
+        preloadedState: loadFromLocalStorage(),
+        middleware: [...getDefaultMiddleware(), ...middlewares]
+    })
+}
+
+export default configureStoreCreator

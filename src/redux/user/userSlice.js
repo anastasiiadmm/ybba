@@ -1,5 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axiosApi from "../../axios";
+import {defaultError} from "../../config.js";
+import {transformDateFormat} from "../../utils/date/dateUtils.js";
 
 const nameSpace = 'user'
 
@@ -11,6 +13,40 @@ const INITIAL_STATE = {
     errors: null
 }
 
+export const createUser = createAsyncThunk(
+    `${nameSpace}/createUser`,
+    async (userData, {rejectWithValue}) => {
+        try {
+            const resp = await axiosApi.post('/accounts/registration/', userData)
+            return resp.data
+        } catch (e) {
+            let error = e?.response?.data
+            if (!e.response) {
+                error = defaultError
+            }
+            return rejectWithValue(error)
+        }
+    }
+)
+
+export const createChild = createAsyncThunk(
+    `${nameSpace}/createChild`,
+    async (childData, {rejectWithValue}) => {
+        try {
+            const data = childData
+            data.date_of_birth = transformDateFormat(data.date_of_birth, "DD.MM.YYYY", "YYYY-MM-DD")
+            const resp = await axiosApi.post('/accounts/children/', childData)
+            return resp.data
+        } catch (e) {
+            let error = e?.response?.data
+            if (!e.response) {
+                error = defaultError
+            }
+            return rejectWithValue(error)
+        }
+    }
+)
+
 export const loginUser = createAsyncThunk(
     `${nameSpace}/loginUser`,
     async (loginData, {rejectWithValue}) => {
@@ -20,7 +56,7 @@ export const loginUser = createAsyncThunk(
         } catch (e) {
             let error = e?.response?.data
             if (!e.response) {
-                error = {detail: 'На сервере что-то пошло не так'}
+                error = defaultError
             }
             return rejectWithValue(error)
         }
@@ -67,7 +103,22 @@ const userSlice = createSlice({
             state.errors = null
         },
         [logoutUser.fulfilled]: () => INITIAL_STATE,
-        [logoutUser.rejected]: () => INITIAL_STATE
+        [logoutUser.rejected]: () => INITIAL_STATE,
+
+        [createUser.pending]: state => {
+            state.loading = true
+            state.errors = null
+        },
+        [createUser.fulfilled]: state => {
+            state.loading = false
+            state.success = true
+            state.errors = null
+        },
+        [createUser.rejected]: (state, {payload}) => {
+            state.loading = false
+            state.success = false
+            state.errors = payload?.detail
+        },
     }
 })
 
