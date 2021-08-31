@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const LessonsInBiba = (props) => {
     return (
         <div className="content__col content__col_w50">

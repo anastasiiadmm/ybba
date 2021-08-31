@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const ChildActivity = () => {
     return (
         <div className="info-item info-item_high">
