@@ -12,8 +12,8 @@ COPY . .
 
 RUN yarn build
 
-CMD ["serve", "build", "-l", "3000"]
-#
+CMD ["serve", "build", "-l", "tcp://0.0.0.0:3000"]
+
 #FROM nginx:1.21.1-alpine as production
 #
 #COPY --from=builder /app/build /usr/share/nginx/html
