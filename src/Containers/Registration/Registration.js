@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useHistory} from "react-router";
 import config from "../../config.js";
 import {RegistrationContext} from "../../context/RegistrationContext/RegistrationContext.js";
+import {isLogin} from "../../utils/user.js";
 import ChildRegistration from "./ChildRegistration/ChildRegistration.js";
 import ParentRegistration from "./ParentRegistration/ParentRegistration.js";
 
@@ -25,6 +27,8 @@ const Registration = props => {
 
     const {stage} = props.match.params
 
+    const history = useHistory()
+
     const [parentRegistrationData, setParentRegistrationData] = useState(parentRegistrationDataInit)
     const [childrenData, setChildrenData] = useState(childrenDataInit)
 
@@ -39,6 +43,12 @@ const Registration = props => {
             setChildrenData={setChildrenData}
         />
     }
+
+    useEffect(() => {
+        if (isLogin()) {
+            history.push('/')
+        }
+    }, [])
 
     const registrationComponent = registrationStages[stage]
 
