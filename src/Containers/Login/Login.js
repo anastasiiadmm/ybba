@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router";
 import {NavLink} from "react-router-dom";
 import Button from "../../Components/Button/Button.js";
+import Container from "../../Components/Container/Container.js";
 import FormField from "../../Components/FormField/FormField";
 import SocialMediaBlock from "../../Components/SocialMediaBlock/SocialMediaBlock";
 import {clearUserState, loginUser, userSelector} from "../../redux/user/userSlice";
@@ -41,7 +42,7 @@ const Login = () => {
     }, [user, success])
 
     return (
-        <div className="all-page" style={{height: '100vh'}}>
+        <Container>
             <div className="form__wrap">
                 <div className="form form_narrow">
                     <form onSubmit={submitChangeHandler}>
@@ -95,7 +96,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-        </div>
+        </Container>
     );
 }
 

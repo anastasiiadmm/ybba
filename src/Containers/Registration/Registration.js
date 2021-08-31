@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useHistory} from "react-router";
+import Container from "../../Components/Container/Container.js";
 import config from "../../config.js";
 import {RegistrationContext} from "../../context/RegistrationContext/RegistrationContext.js";
 import {isLogin} from "../../utils/user.js";
@@ -59,9 +60,9 @@ const Registration = props => {
 
     return (
         <RegistrationContext.Provider value={contextData}>
-            <div style={{height: '100vh'}}>
+            <Container>
                 {registrationComponent}
-            </div>
+            </Container>
         </RegistrationContext.Provider>
     );
 }

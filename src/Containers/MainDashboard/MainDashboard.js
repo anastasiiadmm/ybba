@@ -1,8 +1,8 @@
 import React from 'react';
 import {useSelector} from "react-redux";
+import Container from "../../Components/Container/Container.js";
 import SideBar from "../../Components/SideBar/SideBar.js";
 import {userSelector} from "../../redux/user/userSlice.js";
-import {getNowDate, getTimesDay} from "../../utils/date/dateUtils.js";
 import Balance from "./Balance/Balance.js";
 import ChildActivity from "./ChildActivity/ChildActivity.js";
 import LessonsInBiba from "./LessonsInBiba/LessonsInBida.js";
@@ -10,12 +10,12 @@ import MainTitleBlock from "./MainTitleBlock/MainTitleBlock.js";
 import NextLessons from "./NextLessons/NextLessons.js";
 import Timetable from "./Timetable/Timetable.js";
 
-const MainDashboard = (props) => {
+const MainDashboard = () => {
 
     const {user} = useSelector(userSelector)
 
     return (
-        <div className="all-page" style={{height: '100vh'}}>
+        <Container>
             <SideBar/>
             {user && (
                 <main className="main">
@@ -41,7 +41,7 @@ const MainDashboard = (props) => {
                     </div>
                 </main>
             )}
-        </div>
+        </Container>
     );
 }
 
