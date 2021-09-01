@@ -30,7 +30,7 @@ build-development:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - cd $CI_PROJECT_DIR
   script:
-    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --cache-from $CI_REGISTRY_IMAGE:latest -f dockerfiles/app/Dockerfile --build-arg API_URL=$API_URL .
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --cache-from $CI_REGISTRY_IMAGE:latest -f dockerfiles/app/Dockerfile --build-arg REACT_APP_API_URL=$API_URL .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
 
 

@@ -12,7 +12,7 @@ RUN yarn build
 
 FROM nginx:1.21.1-alpine as production
 
-ARG API_URL=${API_URL}
+ARG REACT_APP_API_URL=${REACT_APP_API_URL}
 
 COPY --from=builder /app/build /usr/share/nginx/html
 
