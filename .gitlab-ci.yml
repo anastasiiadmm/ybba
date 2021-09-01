@@ -2,7 +2,7 @@ services:
   - docker:dind
 
 variables:
-  API_URL: "http://ybba-backend:8000"
+  API_URL: "https://dev.yba.ltestl.com/api/v1/"
 
 stages:
   - test
