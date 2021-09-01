@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import {Provider} from 'react-redux'
+
 import {BrowserRouter} from 'react-router-dom';
+import configureStore from './redux/store.js'
+import reportWebVitals from './reportWebVitals';
 import App from './App';
+import {initSentry} from './sentry/sentry';
+
 import './assets/fonts/icomoon/icomoon.css'
 import './assets/vendor/slimselect/slimselect.min.css'
 import './index.css';
-import configureStore from './redux/store.js'
-import reportWebVitals from './reportWebVitals';
 
+
+initSentry()
 export const store = configureStore()
 
 ReactDOM.render(
