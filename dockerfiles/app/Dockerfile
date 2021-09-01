@@ -1,5 +1,4 @@
 FROM node:16-alpine3.11 AS builder
-ARG API_URL=${API_URL}
 
 WORKDIR /app
 
@@ -12,6 +11,8 @@ COPY . .
 RUN yarn build
 
 FROM nginx:1.21.1-alpine as production
+
+ARG API_URL=${API_URL}
 
 COPY --from=builder /app/build /usr/share/nginx/html
 
