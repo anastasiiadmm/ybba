@@ -7,6 +7,7 @@ import FormField from '../../../Components/FormField/FormField.js';
 import SocialMediaBlock from '../../../Components/SocialMediaBlock/SocialMediaBlock.js';
 import config from '../../../config.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
+import {allRussianWardsAndHyphen} from '../../../regex/patterns/html';
 
 
 const ParentRegistration = (props) => {
@@ -55,7 +56,7 @@ const ParentRegistration = (props) => {
                     name='first_name'
                     required
                     maxLength='50'
-                    pattern='^[а-яА-Я\s-]+$'
+                    pattern={allRussianWardsAndHyphen}
                     tooltipTitle='Имя'
                     value={registrationData.first_name}
                     tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
@@ -70,7 +71,7 @@ const ParentRegistration = (props) => {
                     name='last_name'
                     required
                     maxLength='50'
-                    pattern='^[а-яА-Я\s-]+$'
+                    pattern={allRussianWardsAndHyphen}
                     tooltipTitle='Фамилия'
                     value={registrationData.last_name}
                     tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
