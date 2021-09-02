@@ -6,6 +6,7 @@ import Calendar from '../../Components/Calendar/Calendar.js';
 import FormField from '../../Components/FormField/FormField.js';
 import Modal from '../../Components/Modal/Modal.js';
 import config from '../../config.js';
+import {allRussianWardsAndHyphen} from '../../regex/patterns/html';
 
 
 const ChildrenForm = (props) => {
@@ -51,7 +52,7 @@ const ChildrenForm = (props) => {
                 type='text'
                 name='first_name'
                 className='form__field'
-                pattern='^[а-яА-Я\s-]+$'
+                pattern={allRussianWardsAndHyphen}
                 required
                 maxLength='50'
                 tooltipTitle='Имя'
@@ -66,7 +67,7 @@ const ChildrenForm = (props) => {
                 type='text'
                 className='form__field'
                 name='last_name'
-                pattern='^[а-яА-Я\s-]+$'
+                pattern={allRussianWardsAndHyphen}
                 required
                 maxLength='50'
                 tooltipTitle='Фамилия'
