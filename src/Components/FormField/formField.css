@@ -1,3 +1,11 @@
+
+.fieldErrorText {
+    font-size: 12px;
+    line-height: 1.2;
+    color: #F35454;
+    white-space: nowrap;
+}
+
 .datepickerBlock {
     display: flex;
     padding: 0 !important;
