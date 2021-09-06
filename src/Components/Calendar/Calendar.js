@@ -52,7 +52,6 @@ const Calendar = (props) => {
         onChange(formatDateFormat(newData))
     }
     const setMonth = month => {
-        console.log(month)
         const monthDaysCount = new Date(parseInt(dateData.year), month+1, 0).getDate()
         const newData = {...dateData, month: formatMonth(month)}
         if (newData.date > monthDaysCount) {
