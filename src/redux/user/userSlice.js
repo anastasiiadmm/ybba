@@ -12,7 +12,7 @@ const INITIAL_STATE = {
     tokens: null,
     loading: false,
     success: false,
-    errors: null
+    commonError: null
 }
 
 export const createUser = createAsyncThunk(
@@ -72,6 +72,32 @@ export const logoutUser = createAsyncThunk(
     }
 )
 
+export const resetUserPasswordSendEmail = createAsyncThunk(
+    `${nameSpace}/resetUserPasswordSendEmail`,
+    async (data, {rejectWithValue}) => {
+        try {
+            await axiosApi.post('/password_reset/', data)
+        } catch (e) {
+            return rejectWithValue(defaultError)
+        }
+    }
+)
+
+export const resetUserPassword = createAsyncThunk(
+    `${nameSpace}/resetUserPassword`,
+    async (data, {rejectWithValue}) => {
+        try {
+            await axiosApi.post(`/password_reset/confirm/`, data)
+        } catch (e) {
+            let error = e?.response?.data
+            if (!e.response) {
+                error = defaultError
+            }
+            return rejectWithValue(error)
+        }
+    }
+)
+
 const userSlice = createSlice({
     name: nameSpace,
     initialState: INITIAL_STATE,
@@ -79,6 +105,7 @@ const userSlice = createSlice({
         clearUserState: state => {
             state.loading = false
             state.success = false
+            state.commonError = null
             state.errors = null
         }
     },
@@ -86,6 +113,7 @@ const userSlice = createSlice({
         [loginUser.pending]: state => {
             state.loading = true
             state.errors = null
+            state.commonError = null
         },
         [loginUser.fulfilled]: (state, {payload}) => {
             state.user = payload.user
@@ -93,16 +121,18 @@ const userSlice = createSlice({
             state.loading = false
             state.success = true
             state.errors = null
+            state.commonError = null
         },
         [loginUser.rejected]: (state, {payload}) => {
             state.loading = false
             state.success = false
-            state.errors = payload?.detail
+            state.commonError = payload?.detail
         },
 
         [logoutUser.pending]: state => {
             state.loading = true
             state.errors = null
+            state.commonError = null
         },
         [logoutUser.fulfilled]: () => INITIAL_STATE,
         [logoutUser.rejected]: () => INITIAL_STATE,
@@ -119,8 +149,34 @@ const userSlice = createSlice({
         [createUser.rejected]: (state, {payload}) => {
             state.loading = false
             state.success = false
-            state.errors = payload?.detail
+            state.commonError = payload?.detail
         },
+
+        [resetUserPasswordSendEmail.pending]: state => {
+            state.loading = true
+        },
+        [resetUserPasswordSendEmail.fulfilled]: state => {
+            state.loading = false
+            state.success = true
+        },
+        [resetUserPasswordSendEmail.rejected]: (state, {payload}) => {
+            state.loading = false
+            state.success = false
+            state.commonError = payload?.detail
+        },
+
+        [resetUserPassword.pending]: state => {
+            state.loading = true
+        },
+        [resetUserPassword.fulfilled]: state => {
+            state.loading = false
+            state.success = true
+        },
+        [resetUserPassword.rejected]: (state, {payload}) => {
+            state.errors = payload
+            state.loading = false
+            state.success = false
+        }
     }
 })
 
