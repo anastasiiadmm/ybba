@@ -19,7 +19,7 @@ const Login = () => {
 
     const [loginData, setLoginData] = useState(loginDataInit)
 
-    const {loading, errors, user, success} = useSelector(userSelector)
+    const {loading, commonError, user, success} = useSelector(userSelector)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -60,7 +60,7 @@ const Login = () => {
                             <FormField
                                 label='Email'
                                 type='email'
-                                className={`form__field ${errors && 'error'}`}
+                                className={`form__field ${commonError && 'error'}`}
                                 required
                                 pattern='^(.+)@(.+)\.(.+)$'
                                 name='email'
@@ -72,14 +72,14 @@ const Login = () => {
                             <FormField
                                 label='Пароль'
                                 type='password'
-                                className={`form__field passw-first ${errors && 'error'}`}
+                                className={`form__field passw-first ${commonError && 'error'}`}
                                 required
                                 name='password'
                                 onChange={inputChangeHandler}
                                 value={loginData.password}
                             />
                         </div>
-                        {errors && <p className='form__error-text'>{errors}</p>}
+                        {commonError && <p className='form__error-text'>{commonError}</p>}
                         <div className='form__row form__row_pd'>
                             <Button
                                 type='submit'

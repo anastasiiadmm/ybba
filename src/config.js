@@ -18,6 +18,6 @@ const config = {
     registrationChildLocalStorageName: 'childRegistration'
 };
 
-export const defaultError = {default: 'На сервере что-то пошло не так'}
+export const defaultError = {detail: 'На сервере что-то пошло не так'}
 
 export default config;

@@ -1,8 +1,8 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import datepickerIcon from '../../assets/img/datepicker.svg'
+import {validationMessagesMapping} from '../../mappings/validationErrors';
 
 import './formField.css'
 
@@ -10,7 +10,7 @@ import './formField.css'
 const FormField = props => {
     const {
         type, onChange, className, name, required, label, value, pattern, id, maxLength, tooltipTitle, tooltipText,
-        helpText, onClick, readOnly
+        helpText, onClick, readOnly, errors
     } = props
 
     const toolTip = <>
@@ -21,6 +21,13 @@ const FormField = props => {
             </div>
         </>}
     </>
+
+    let fieldErrors = null
+
+    if (errors && typeof errors === 'object' && name in errors) {
+        fieldErrors = errors[name]
+        console.log(errors)
+    }
 
     let field = <>
         <label className='form__label'>
@@ -37,6 +44,13 @@ const FormField = props => {
                 maxLength={maxLength}
                 readOnly={readOnly}
             />
+            {fieldErrors && fieldErrors.map(error => {
+                return (
+                    <div className='fieldErrorText'>
+                        {validationMessagesMapping[error]}
+                    </div>
+                )
+            })}
             {helpText && <div className='form__passw-info'>{helpText}</div>}
             {toolTip}
         </label>
@@ -98,6 +112,7 @@ FormField.propTypes = {
     helpText: PropTypes.string,
     onClick: PropTypes.func,
     readOnly: PropTypes.bool,
+    errors: PropTypes.any
 }
 
 export default React.memo(FormField);
