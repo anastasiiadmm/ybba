@@ -7,6 +7,7 @@ import Registration from './Containers/Registration/Registration.js';
 import PrivateRoute from './HOC/PrivatRoute/PrivatRoute.js';
 import PasswordRecovery from './Containers/PasswordRecovery/PasswordRecovery';
 import SetNewPassword from './Containers/SetNewPassword/SetNewPassword';
+import Lesson from './Containers/Lesson/Lesson';
 
 import './App.css';
 
@@ -17,6 +18,7 @@ const App = () => {
 
             <Switch>
                 <PrivateRoute path='/' component={MainDashboard} exact/>
+                <PrivateRoute path='/lesson/:lessonId' component={Lesson} />
                 <Route path='/login/' component={Login}/>
                 <Route path='/registration/:stage/' component={Registration}/>
                 <Route path='/reset-password/' component={PasswordRecovery} exact />
