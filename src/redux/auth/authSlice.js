@@ -82,19 +82,6 @@ export const getCurrentUserData = createAsyncThunk(
     }
 )
 
-export const refreshToken = createAsyncThunk(
-    `${nameSpace}/refreshToken`,
-    async (data, {rejectWithValue, getState}) => {
-        try {
-            const tokens = getState().auth.tokens
-            const res = await axiosApi.post('/accounts/refresh/', {refresh: tokens.refresh})
-            return res.data
-        } catch (e) {
-            return rejectWithValue(e)
-        }
-    }
-)
-
 const authSlice = createSlice({
     name: nameSpace,
     initialState: INITIAL_STATE,
@@ -104,6 +91,9 @@ const authSlice = createSlice({
             state.success = false
             state.commonError = null
             state.errors = null
+        },
+        refreshAccessToken: (state, {payload}) => {
+            state.tokens = {...state.tokens, ...payload}
         }
     },
     extraReducers: {
@@ -169,16 +159,11 @@ const authSlice = createSlice({
             state.errors = null
             state.loading = false
         },
-
-        [refreshToken.fulfilled]: (state, {payload}) => {
-            state.tokens = payload
-        },
-        [refreshToken.rejected]: () => INITIAL_STATE
     }
 })
 
 
-export const {clearAuthState} = authSlice.actions
+export const {clearAuthState, refreshAccessToken} = authSlice.actions
 export const authSelector = state => state.auth
 export default authSlice.reducer
 
