@@ -8,7 +8,7 @@ import Button from '../../Components/Button/Button.js';
 import Container from '../../Components/Container/Container.js';
 import FormField from '../../Components/FormField/FormField';
 import SocialMediaBlock from '../../Components/SocialMediaBlock/SocialMediaBlock';
-import {clearUserState, loginUser, userSelector} from '../../redux/user/userSlice';
+import {loginUser, authSelector, clearAuthState} from '../../redux/auth/authSlice';
 
 
 const Login = () => {
@@ -19,7 +19,7 @@ const Login = () => {
 
     const [loginData, setLoginData] = useState(loginDataInit)
 
-    const {loading, commonError, user, success} = useSelector(userSelector)
+    const {loading, commonError, user, success} = useSelector(authSelector)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -37,7 +37,7 @@ const Login = () => {
 
     useEffect(() => {
         pushToMainPage()
-        dispatch(clearUserState())
+        dispatch(clearAuthState())
         // eslint-disable-next-line
     }, [])
 
