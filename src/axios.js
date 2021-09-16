@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import config, {unauthorized401} from './config';
 import {store} from './index.js';
-import {refreshToken} from './redux/auth/authSlice';
+import {refreshAccessToken, logoutUser} from './redux/auth/authSlice';
 
 
 const axiosApi = axios.create({
@@ -26,16 +26,25 @@ axiosApi.interceptors.response.use(async config => {
     const originalRequest = error.config;
 
     const statusCode = error?.response?.status
-    const user = store.getState().auth.user
+    const {user, tokens} = store.getState().auth
 
     if (user && (!statusCode || statusCode === unauthorized401)) {
         originalRequest._retry = true
-        await store.dispatch(refreshToken())
+        const resp = await axiosApi.post('/accounts/refresh/', {refresh: tokens.refresh})
 
-        const newAccessToken = store.getState().auth.tokens.access
-        axiosApi.defaults.headers['Authorization'] = `Bearer ${newAccessToken()}`
+        if (resp.status === 200) {
+            const newTokens = resp.data
+            console.log(resp.data)
+            axiosApi.defaults.headers['Authorization'] = `Bearer ${newTokens.access}`
 
-        return axiosApi(originalRequest)
+            store.dispatch(refreshAccessToken(newTokens))
+
+            console.log(originalRequest)
+
+            return axiosApi(originalRequest)
+        }
+
+        store.dispatch(logoutUser())
     }
 
     return Promise.reject(error)
