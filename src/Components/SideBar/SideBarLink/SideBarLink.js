@@ -14,7 +14,13 @@ const SideBarLink = (props) => {
     const history = useHistory()
     const {pathname} = history.location
 
-    const isActive = pathname === to
+    let isActive =  pathname.includes(to)
+    if (to === '/' && pathname !== '/') {
+        isActive = false
+    }
+    if (to === '/' && pathname === '/') {
+        isActive = true
+    }
 
     return (
         <li className='main-nav__item'>
