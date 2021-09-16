@@ -18,6 +18,8 @@ const config = {
     registrationChildLocalStorageName: 'childRegistration'
 };
 
+export const unauthorized401 = 401
+
 export const defaultError = {detail: 'На сервере что-то пошло не так'}
 
 export default config;
