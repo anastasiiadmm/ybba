@@ -1,31 +1,23 @@
-import React, {useEffect, useState} from 'react';
-
-import {useSelector} from 'react-redux';
-
-import {userSelector} from '../../../redux/user/userSlice.js';
-import {getNowDate, getTimesDay} from '../../../utils/date/dateUtils.js';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 
-const MainTitleBlock = () => {
+const MainTitleBlock = (props) => {
 
-    const [nowDate, setNowDate] = useState()
-    const {user} = useSelector(userSelector)
-
-    const partOfDay = getTimesDay()
-
-    useEffect(() => {
-        setNowDate(getNowDate())
-        setInterval(() => {
-            setNowDate(getNowDate())
-        }, 1000)
-    }, [])
+    const {leftTitle, middleTitle, rightTitle} = props
 
     return (
         <div className='main__title-block'>
-            <h1 className='main__title'>{user.profile.first_name} {user.profile.last_name}, <span className='times-day'>{partOfDay}</span></h1>
-            <div className='main__date'>{nowDate}</div>
+            <h1 className='main__title'>{leftTitle}{middleTitle && <>, <span className='times-day'>{middleTitle}</span></>}</h1>
+            <div className='main__date'>{rightTitle}</div>
         </div>
     );
+}
+
+MainTitleBlock.propTypes = {
+    leftTitle: PropTypes.string,
+    middleTitle: PropTypes.string,
+    rightTitle: PropTypes.string
 }
 
 export default MainTitleBlock;
