@@ -8,6 +8,9 @@ import reportWebVitals from './reportWebVitals';
 import {initSentry} from './sentry/sentry';
 import App from './App';
 
+import './assets/vendor/flatpickr/flatpickr'
+import './assets/vendor/flatpickr/ru'
+import './assets/vendor/flatpickr/flatpickr.min.css'
 import './assets/fonts/icomoon/icomoon.css'
 import './assets/vendor/slimselect/slimselect.min.css'
 import './index.css';
