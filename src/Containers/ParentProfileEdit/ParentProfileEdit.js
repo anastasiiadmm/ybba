@@ -8,7 +8,7 @@ import ParentProfileForm from '../ParentProfileForm/ParentProfileForm';
 import {updateUserData, userSelector, clearUserState} from '../../redux/user/userSlice';
 import Button from '../../Components/Button/Button';
 import {useHistory} from 'react-router';
-import {authSelector, getCurrentUserData, refreshToken} from '../../redux/auth/authSlice';
+import {authSelector, getCurrentUserData} from '../../redux/auth/authSlice';
 
 
 const ParentProfileEdit = () => {
@@ -66,14 +66,6 @@ const ParentProfileEdit = () => {
                                     formData={formData}
                                     setFormData={setFormData}
                                 />
-
-                                <Button onClick={() => {
-                                    dispatch(refreshToken())
-                                }}
-                                        type='button'
-                                >
-                                    Refresh token test
-                                </Button>
 
                             </div>
                             <div className='content__bottom'>
