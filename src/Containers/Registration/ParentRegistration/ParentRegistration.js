@@ -8,11 +8,15 @@ import SocialMediaBlock from '../../../Components/SocialMediaBlock/SocialMediaBl
 import config from '../../../config.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
 import {allRussianWardsAndHyphen} from '../../../regex/patterns/html';
+import {useSelector} from 'react-redux';
+import {userSelector} from '../../../redux/user/userSlice';
 
 
 const ParentRegistration = (props) => {
 
     const {registrationData, setRegistrationData, currentStage} = props
+
+    const {errors} = useSelector(userSelector)
 
     const history = useHistory()
 
@@ -61,6 +65,7 @@ const ParentRegistration = (props) => {
                     value={registrationData.first_name}
                     tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
                     onChange={inputChangeHandler}
+                    errors={errors}
                 />
             </div>
             <div className='form__row'>
@@ -76,6 +81,7 @@ const ParentRegistration = (props) => {
                     value={registrationData.last_name}
                     tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
                     onChange={inputChangeHandler}
+                    errors={errors}
                 />
             </div>
             <div className='form__row'>
@@ -91,6 +97,7 @@ const ParentRegistration = (props) => {
                     value={registrationData.email}
                     tooltipText='Должен содержать символ @).'
                     onChange={inputChangeHandler}
+                    errors={errors}
                 />
             </div>
             <div className='form__row'>
@@ -107,6 +114,7 @@ const ParentRegistration = (props) => {
                     value={registrationData.password}
                     helpText='Пароль должен содержать не менее 5 символов'
                     onChange={inputChangeHandler}
+                    errors={errors}
                 />
             </div>
             <div className='form__row'>
@@ -121,6 +129,7 @@ const ParentRegistration = (props) => {
                     value={registrationData.password_repeat}
                     helpText='Пароли должны совпадать'
                     onChange={inputChangeHandler}
+                    errors={errors}
                 />
             </div>
             <div className='form__row form__row_pd'>
