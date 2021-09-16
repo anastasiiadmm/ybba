@@ -8,9 +8,10 @@ import Button from '../../../Components/Button/Button.js';
 import Icon from '../../../Components/Icon/Icon.js';
 import config from '../../../config.js';
 import {RegistrationContext} from '../../../context/RegistrationContext/RegistrationContext.js';
-import {createChild, createUser, loginUser, userSelector} from '../../../redux/user/userSlice.js';
+import {createUser, userSelector, clearUserState} from '../../../redux/user/userSlice.js';
 import ChildrenForm from '../../ChildrenForm/ChildrenForm.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
+import {createChild} from '../../../redux/child/childSlice';
 
 
 const ChildRegistration = (props) => {
@@ -22,7 +23,7 @@ const ChildRegistration = (props) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const {children: childrenData, parent: parentData} = useContext(RegistrationContext)
-    const {user, loading} = useSelector(userSelector)
+    const {user, loading, errors, success} = useSelector(userSelector)
 
     const handleBack = () => {
         const previousStage = currentStage - 1
@@ -37,19 +38,28 @@ const ChildRegistration = (props) => {
     )
     const onSubmit = async e => {
         e.preventDefault()
-        localStorage.removeItem(config.registrationChildLocalStorageName)
-        localStorage.removeItem(config.registrationParentLocalStorageName)
         await dispatch(createUser(parentData))
-        await dispatch(loginUser(parentData))
     }
 
     useEffect(() => {
         if (user) {
             dispatch(createChild(childrenData))
+        }
+        if (errors) {
+            history.push(`/registration/${currentStage - 1}/`)
+        }
+        if (user && success) {
+            localStorage.removeItem(config.registrationChildLocalStorageName)
+            localStorage.removeItem(config.registrationParentLocalStorageName)
             history.push('/')
         }
         // eslint-disable-next-line
-    }, [user])
+    }, [user, errors, success])
+
+    useEffect(() => {
+        dispatch(clearUserState())
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <RegistrationBaseBlock
