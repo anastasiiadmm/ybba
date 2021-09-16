@@ -7,6 +7,9 @@ import Registration from './Containers/Registration/Registration.js';
 import PrivateRoute from './HOC/PrivatRoute/PrivatRoute.js';
 import PasswordRecovery from './Containers/PasswordRecovery/PasswordRecovery';
 import SetNewPassword from './Containers/SetNewPassword/SetNewPassword';
+import ParentProfile from './Containers/ParentProfile/ParentProfile';
+import ParentProfileEdit from './Containers/ParentProfileEdit/ParentProfileEdit';
+
 
 import './App.css';
 
@@ -16,6 +19,8 @@ const App = () => {
         <div>
 
             <Switch>
+                <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
+                <PrivateRoute path='/profile/' component={ParentProfile} exact/>
                 <PrivateRoute path='/' component={MainDashboard} exact/>
                 <Route path='/login/' component={Login}/>
                 <Route path='/registration/:stage/' component={Registration}/>
