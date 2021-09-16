@@ -31,64 +31,30 @@ export const createUser = createAsyncThunk(
     }
 )
 
-export const createChild = createAsyncThunk(
-    `${nameSpace}/createChild`,
-    async (childData, {rejectWithValue}) => {
+export const editUserEmail = createAsyncThunk(
+    `${nameSpace}/editUserEmail`,
+    async (email, {getState, rejectWithValue}) => {
         try {
-            const data = childData
-            data.date_of_birth = transformDateFormat(data.date_of_birth, 'DD.MM.YYYY', 'YYYY-MM-DD')
-            const resp = await axiosApi.post('/accounts/children/', childData)
+            const user = getState().auth.user
+            const resp = await axiosApi.put(`/accounts/${user.id}/email/update/`, email)
             return resp.data
         } catch (e) {
-            let error = e?.response?.data
-            if (!e.response) {
-                error = defaultError
-            }
-            return rejectWithValue(error)
+            return rejectWithValue(e)
         }
     }
 )
 
-export const loginUser = createAsyncThunk(
-    `${nameSpace}/loginUser`,
-    async (loginData, {rejectWithValue}) => {
-        try {
-            const resp = await axiosApi.post('/accounts/login/', loginData)
-            return resp.data
-        } catch (e) {
-            let error = e?.response?.data
-            if (!e.response) {
-                error = defaultError
-            }
-            return rejectWithValue(error)
-        }
-    }
-)
-
-export const logoutUser = createAsyncThunk(
-    `${nameSpace}/logoutUser`,
-    async (data) => {
-        await axiosApi.post('/accounts/logout/', data)
-    }
-)
-
-export const resetUserPasswordSendEmail = createAsyncThunk(
-    `${nameSpace}/resetUserPasswordSendEmail`,
+export const updateUserData = createAsyncThunk(
+    `${nameSpace}/updateUserData`,
     async (data, {rejectWithValue}) => {
         try {
-            await axiosApi.post('/password_reset/', data)
+            const userData = {...data.data}
+            if (userData?.profile) {
+                userData.profile.date_of_birth = transformDateFormat(userData.profile.date_of_birth, 'DD/MM/YYYY', 'YYYY-MM-DD')
+            }
+            await axiosApi.put(`/accounts/${data.userId}/update/`, userData)
         } catch (e) {
-            return rejectWithValue(defaultError)
-        }
-    }
-)
-
-export const resetUserPassword = createAsyncThunk(
-    `${nameSpace}/resetUserPassword`,
-    async (data, {rejectWithValue}) => {
-        try {
-            await axiosApi.post(`/password_reset/confirm/`, data)
-        } catch (e) {
+            console.log(e)
             let error = e?.response?.data
             if (!e.response) {
                 error = defaultError
@@ -97,6 +63,19 @@ export const resetUserPassword = createAsyncThunk(
         }
     }
 )
+
+export const updateUserPassword = createAsyncThunk(
+    `${nameSpace}/updateUserPassword`,
+    async (data, {rejectWithValue}) => {
+        try {
+            const res = axiosApi.put(`/accounts/${data.userId}/update/`, data.data)
+            return res.data
+        } catch (e) {
+            return rejectWithValue(e)
+        }
+    }
+)
+
 
 const userSlice = createSlice({
     name: nameSpace,
@@ -110,36 +89,11 @@ const userSlice = createSlice({
         }
     },
     extraReducers: {
-        [loginUser.pending]: state => {
-            state.loading = true
-            state.errors = null
-            state.commonError = null
-        },
-        [loginUser.fulfilled]: (state, {payload}) => {
-            state.user = payload.user
-            state.tokens = payload.tokens
-            state.loading = false
-            state.success = true
-            state.errors = null
-            state.commonError = null
-        },
-        [loginUser.rejected]: (state, {payload}) => {
-            state.loading = false
-            state.success = false
-            state.commonError = payload?.detail
-        },
-
-        [logoutUser.pending]: state => {
-            state.loading = true
-            state.errors = null
-            state.commonError = null
-        },
-        [logoutUser.fulfilled]: () => INITIAL_STATE,
-        [logoutUser.rejected]: () => INITIAL_STATE,
 
         [createUser.pending]: state => {
             state.loading = true
             state.errors = null
+            state.success = false
         },
         [createUser.fulfilled]: state => {
             state.loading = false
@@ -150,33 +104,20 @@ const userSlice = createSlice({
             state.loading = false
             state.success = false
             state.commonError = payload?.detail
-        },
-
-        [resetUserPasswordSendEmail.pending]: state => {
-            state.loading = true
-        },
-        [resetUserPasswordSendEmail.fulfilled]: state => {
-            state.loading = false
-            state.success = true
-        },
-        [resetUserPasswordSendEmail.rejected]: (state, {payload}) => {
-            state.loading = false
-            state.success = false
-            state.commonError = payload?.detail
-        },
-
-        [resetUserPassword.pending]: state => {
-            state.loading = true
-        },
-        [resetUserPassword.fulfilled]: state => {
-            state.loading = false
-            state.success = true
-        },
-        [resetUserPassword.rejected]: (state, {payload}) => {
             state.errors = payload
-            state.loading = false
+        },
+
+        [updateUserData.pending]: state => {
             state.success = false
-        }
+            state.success = false
+        },
+        [updateUserData.fulfilled]: state => {
+            state.success = true
+        },
+        [updateUserData.rejected]: (state, {payload}) => {
+            state.errors = payload
+            state.success = false
+        },
     }
 })
 
