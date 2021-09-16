@@ -2,7 +2,6 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
 import axiosApi from '../../axios';
 import {defaultError} from '../../config.js';
-import {transformDateFormat} from '../../utils/date/dateUtils.js';
 
 
 const nameSpace = 'user'
@@ -48,11 +47,7 @@ export const updateUserData = createAsyncThunk(
     `${nameSpace}/updateUserData`,
     async (data, {rejectWithValue}) => {
         try {
-            const userData = {...data.data}
-            if (userData?.profile) {
-                userData.profile.date_of_birth = transformDateFormat(userData.profile.date_of_birth, 'DD/MM/YYYY', 'YYYY-MM-DD')
-            }
-            await axiosApi.put(`/accounts/${data.userId}/update/`, userData)
+            await axiosApi.put(`/accounts/${data.userId}/update/`, data.data)
         } catch (e) {
             console.log(e)
             let error = e?.response?.data
