@@ -4,8 +4,8 @@ import Container from '../../Components/Container/Container';
 import FormField from '../../Components/FormField/FormField';
 import Button from '../../Components/Button/Button';
 import {useDispatch, useSelector} from 'react-redux';
-import {resetUserPassword, userSelector} from '../../redux/user/userSlice';
 import {useHistory} from 'react-router';
+import {resetUserPassword, authSelector} from '../../redux/auth/authSlice';
 
 
 const SetNewPassword = props => {
@@ -16,7 +16,7 @@ const SetNewPassword = props => {
     }
 
     const [data, setData] = useState(initialState)
-    const {loading, success, errors, commonError} = useSelector(userSelector)
+    const {loading, success, errors, commonError} = useSelector(authSelector)
     const dispatch = useDispatch()
     const history = useHistory()
 
