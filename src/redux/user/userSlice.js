@@ -47,7 +47,11 @@ export const updateUserData = createAsyncThunk(
     `${nameSpace}/updateUserData`,
     async (data, {rejectWithValue}) => {
         try {
-            await axiosApi.put(`/accounts/${data.userId}/update/`, data.data)
+            const userData = {...data.data}
+            if (userData.profile) {
+                userData.profile.phone_number = `+${userData.profile.phone_number}`
+            }
+            await axiosApi.put(`/accounts/${data.userId}/update/`, userData)
         } catch (e) {
             console.log(e)
             let error = e?.response?.data
