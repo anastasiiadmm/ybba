@@ -1,4 +1,4 @@
-import {loginUser, logoutUser} from '../user/userSlice.js';
+import {loginUser, logoutUser} from '../auth/authSlice';
 
 
 export const localStorageKeyName = 'Ybba-state'
@@ -31,7 +31,7 @@ export const localStorageMiddleware = store => next => action => {
 
     if (authActions.includes(action.type)) {
         saveToLocalStorage({
-            user: store.getState().user
+            auth: store.getState().auth
         });
     }
     return result;

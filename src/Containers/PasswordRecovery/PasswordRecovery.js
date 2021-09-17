@@ -6,7 +6,7 @@ import Container from '../../Components/Container/Container';
 import Button from '../../Components/Button/Button';
 import {emailPattern} from '../../regex/patterns/html';
 import FormField from '../../Components/FormField/FormField';
-import {userSelector, clearUserState, resetUserPasswordSendEmail} from '../../redux/user/userSlice';
+import {authSelector, resetUserPasswordSendEmail, clearAuthState} from '../../redux/auth/authSlice';
 
 
 const PasswordRecovery = () => {
@@ -16,7 +16,7 @@ const PasswordRecovery = () => {
     }
 
     const [data, setData] = useState(initialState)
-    const {loading, success, commonError} = useSelector(userSelector)
+    const {loading, success, commonError, errors} = useSelector(authSelector)
 
     const dispatch = useDispatch()
 
@@ -28,7 +28,7 @@ const PasswordRecovery = () => {
     }
 
     useEffect(() => {
-        dispatch(clearUserState())
+        dispatch(clearAuthState())
         // eslint-disable-next-line
     }, [])
 
@@ -54,6 +54,7 @@ const PasswordRecovery = () => {
                                 name='email'
                                 pattern={emailPattern}
                                 onChange={inputChangeHandler}
+                                errors={errors}
                             />
                         </div>
                         {commonError && <p className='form__error-text'>{commonError}</p>}
@@ -69,7 +70,7 @@ const PasswordRecovery = () => {
                         </div>
                         <p className='form__link-wrap'>
                             <Button to='/login/' className='form__link'>
-                                Я вспомнил пароль
+                                Вернуться на страницу авторизации
                             </Button>
                         </p>
                     </form>

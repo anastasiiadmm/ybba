@@ -1,8 +1,11 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
-import datepickerIcon from '../../assets/img/datepicker.svg'
 import {validationMessagesMapping} from '../../mappings/validationErrors';
+
+import PhoneInput from 'react-phone-input-2';
+import ReactInputDateMask from 'react-input-date-mask';
 
 import './formField.css'
 
@@ -10,7 +13,7 @@ import './formField.css'
 const FormField = props => {
     const {
         type, onChange, className, name, required, label, value, pattern, id, maxLength, tooltipTitle, tooltipText,
-        helpText, onClick, readOnly, errors
+        helpText, readOnly, errors, disabled, mask, showMaskOnFocus, showMaskOnHover
     } = props
 
     const toolTip = <>
@@ -43,6 +46,7 @@ const FormField = props => {
                 id={id}
                 maxLength={maxLength}
                 readOnly={readOnly}
+                disabled={disabled}
             />
             {fieldErrors && fieldErrors.map(error => {
                 return (
@@ -60,36 +64,37 @@ const FormField = props => {
         field = <>
             <label className='form__label'>
                 {label}
-                <div className={`${className} datepickerBlock`}>
-                    <input
-                        type={type}
-                        required={required}
-                        className='datepicker'
-                        name={name}
-                        onChange={onChange}
-                        value={value}
-                        pattern={pattern}
-                        id={id}
-                        maxLength={maxLength}
-                        readOnly={readOnly}
-                    />
-                    <div>
-                        <button
-                            className='datepickerButton'
-                            type='button'
-                            onClick={onClick}
-                        >
-                            <img
-                                src={datepickerIcon}
-                                alt='datepicker'
-                                className='datepickerIcon'
-                            />
-                        </button>
-                    </div>
-                </div>
+                <ReactInputDateMask
+                    mask={mask}
+                    showMaskOnFocus={showMaskOnFocus}
+                    showMaskOnHover={showMaskOnHover}
+                    onChange={onChange}
+                    type={type}
+                    required={required}
+                    className={className}
+                    name={name}
+                    value={value}
+                    pattern={pattern}
+                    id={id}
+                    maxLength={maxLength}
+                    readOnly={readOnly}
+                    disabled={disabled}
+                />
                 {helpText && <div className='form__passw-info'>{helpText}</div>}
                 {toolTip}
             </label>
+        </>
+    }
+
+    if (type === 'phone') {
+        field = <>
+            <PhoneInput
+                inputClass={className}
+                country={'ru'}
+                value={value}
+                onChange={onChange}
+                specialLabel={label}
+            />
         </>
     }
 
@@ -112,7 +117,11 @@ FormField.propTypes = {
     helpText: PropTypes.string,
     onClick: PropTypes.func,
     readOnly: PropTypes.bool,
-    errors: PropTypes.any
+    errors: PropTypes.any,
+    disabled: PropTypes.bool,
+    mask: PropTypes.string,
+    showMaskOnFocus: PropTypes.bool,
+    showMaskOnHover: PropTypes.bool
 }
 
 export default React.memo(FormField);
