@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 
 import FormField from '../../Components/FormField/FormField';
 import Button from '../../Components/Button/Button';
-import {editUserEmail, updateUserPassword} from '../../redux/user/userSlice';
+import {editUserEmail, updateUserPassword, userSelector} from '../../redux/user/userSlice';
 import {getCurrentUserData, authSelector} from '../../redux/auth/authSlice';
 
 
@@ -16,15 +16,16 @@ const ParentProfileForm = (props) => {
     const initialPasswordData = {'password': '', 'passwordRepeat': ''}
 
     const {user} = useSelector(authSelector)
+    const {isPasswordUpdated, errors} = useSelector(userSelector)
 
     const [emailChanging, setEmailChanging] = useState(false)
     const [passwordChanging, setPasswordChanging] = useState(false)
     const [passwordData, setPasswordData] = useState(initialPasswordData)
 
+    const dispatch = useDispatch()
+
     const isPasswordsEquals = (passwordData.password === passwordData.passwordRepeat) &&
         (passwordData.password && passwordData.passwordRepeat)
-
-    const dispatch = useDispatch()
 
     const inputChangeHandler = e => {
         const newData = {...formData, profile: {...formData.profile, [e.target.name]: e.target.value}}
@@ -52,16 +53,19 @@ const ParentProfileForm = (props) => {
         setPasswordData({...passwordData, [e.target.name]: e.target.value})
     }
 
-    const editEmail = () => {
-        dispatch(editUserEmail(formData))
+    const editEmail = async () => {
+        await dispatch(editUserEmail(formData))
         setEmailChanging(false)
-        dispatch(getCurrentUserData())
+        await dispatch(getCurrentUserData())
     }
-    const editPassword = () => {
+    const editPassword = async () => {
         const submitData = {data: {password: passwordData.password}, userId: user.id}
-        dispatch(updateUserPassword(submitData))
-        setPasswordChanging(false)
+        await dispatch(updateUserPassword(submitData))
     }
+
+    useEffect(() => {
+        setPasswordChanging(false)
+    }, [isPasswordUpdated])
 
     return (
         <>
@@ -74,6 +78,7 @@ const ParentProfileForm = (props) => {
                         value={formData.profile.first_name}
                         name='first_name'
                         onChange={inputChangeHandler}
+                        errors={errors}
                     />
                 </div>
                 <div className='form__col2'>
@@ -84,6 +89,7 @@ const ParentProfileForm = (props) => {
                         value={formData.profile.last_name}
                         name='last_name'
                         onChange={inputChangeHandler}
+                        errors={errors}
                     />
                 </div>
             </div>
@@ -99,6 +105,7 @@ const ParentProfileForm = (props) => {
                         value={formData.profile.date_of_birth}
                         name='date_of_birth'
                         onChange={birthDateHandler}
+                        errors={errors}
                     />
                 </div>
                 <div className='form__col2'>
@@ -108,6 +115,7 @@ const ParentProfileForm = (props) => {
                         className='form__field'
                         value={formData.profile.phone_number}
                         onChange={phoneInputChangeHandler}
+                        errors={errors}
                     />
                 </div>
             </div>
@@ -131,6 +139,7 @@ const ParentProfileForm = (props) => {
                             value={formData.email}
                             onChange={emailChangeHandler}
                             pattern='^(.+)@(.+)\.(.+)$'
+                            errors={errors}
                         />
                         <div>
                             <Button
@@ -171,6 +180,7 @@ const ParentProfileForm = (props) => {
                                         value={passwordData.password}
                                         onChange={passwordInputChangeHandler}
                                         name='password'
+                                        errors={errors}
                                     />
                                 </div>
                             </div>
