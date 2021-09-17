@@ -1,50 +1,37 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
-import {userSelector} from '../../redux/user/userSlice';
+
+import Jitsi from '../Jitsi/Jitsi';
+import {authSelector} from '../../redux/auth/authSlice';
+import {jitsiTools} from '../../constants';
+
 
 const WebCam = (props) => {
 
     const {meetingId, onClick} = props
 
-    const {user} = useSelector(userSelector)
+    const {user} = useSelector(authSelector)
 
-    const [api, setApi] = useState(null)
-
-    const startMeet = () => {
-        const options = {
-            roomName: meetingId,
-            width: '100%',
-            height: 500,
-            configOverwrite: {prejoinPageEnabled: false},
-            interfaceConfigOverwrite: {
-                TOOLBAR_BUTTONS: ['microphone'],
-                SHOW_WATERMARK_FOR_GUESTS: false
-            },
-            parentNode: document.querySelector('#jitsi-iframe'),
-            userInfo: {
-                displayName: user.email
-            }
-        }
-        const apiObj = new window.JitsiMeetExternalAPI('meet.jit.si', options);
-        setApi(apiObj)
-
+    const userInfo = {
+        displayName: user.email
     }
 
-
-    useEffect(() => {
-        if (window.JitsiMeetExternalAPI && meetingId) {
-            startMeet()
-        } else {
-            alert('JitsiMeetExternalAPI not loaded');
-        }
-        // eslint-disable-next-line
-    }, [])
+    const tools = [
+        jitsiTools.mic
+    ]
 
     return (
         <div className='game__person game__person_child' onClick={onClick}>
             <div className='game__person-in'>
-                <div id='jitsi-iframe'/>
+                <Jitsi
+                    meetingId={meetingId}
+                    userInfo={userInfo}
+                    width='100%'
+                    height={500}
+                    toolbarItems={tools}
+                />
                 <button className='game__person-btn btn-zoom' type='button'/>
             </div>
         </div>
