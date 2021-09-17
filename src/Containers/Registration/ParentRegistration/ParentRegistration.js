@@ -9,14 +9,14 @@ import config from '../../../config.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
 import {allRussianWardsAndHyphen} from '../../../regex/patterns/html';
 import {useSelector} from 'react-redux';
-import {userSelector} from '../../../redux/user/userSlice';
+import {authSelector} from '../../../redux/auth/authSlice';
 
 
 const ParentRegistration = (props) => {
 
     const {registrationData, setRegistrationData, currentStage} = props
 
-    const {errors} = useSelector(userSelector)
+    const {errors} = useSelector(authSelector)
 
     const history = useHistory()
 
