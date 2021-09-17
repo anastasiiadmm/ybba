@@ -1,0 +1,15 @@
+.mainLessonWindow {
+    flex-wrap: nowrap!important;
+}
+
+.lessonSidebar {
+    transition: all .3s;
+}
+
+.wideSidebar {
+    width: 40%!important;
+}
+
+.gameMainShort {
+    width: 60%!important;
+}
