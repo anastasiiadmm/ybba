@@ -34,9 +34,9 @@ const SideBar = () => {
                     {/*<SideBarLink to='/settings/' classes='main-nav__link_setting'>*/}
                     {/*    Настройки*/}
                     {/*</SideBarLink>*/}
-                    {/*<SideBarLink to='/video-test/' classes='main-nav__link_test'>*/}
-                    {/*    Тест видеосвязи*/}
-                    {/*</SideBarLink>*/}
+                    <SideBarLink to='/video-test/' classes='main-nav__link_test'>
+                        Тест видеосвязи
+                    </SideBarLink>
                 </ul>
                 <Logout/>
             </nav>
