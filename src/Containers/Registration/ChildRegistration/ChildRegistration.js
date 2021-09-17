@@ -8,10 +8,11 @@ import Button from '../../../Components/Button/Button.js';
 import Icon from '../../../Components/Icon/Icon.js';
 import config from '../../../config.js';
 import {RegistrationContext} from '../../../context/RegistrationContext/RegistrationContext.js';
-import {createUser, userSelector, clearUserState} from '../../../redux/user/userSlice.js';
+import {clearUserState} from '../../../redux/user/userSlice.js';
 import ChildrenForm from '../../ChildrenForm/ChildrenForm.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
 import {createChild} from '../../../redux/child/childSlice';
+import {createUser, authSelector} from '../../../redux/auth/authSlice';
 
 
 const ChildRegistration = (props) => {
@@ -23,7 +24,7 @@ const ChildRegistration = (props) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const {children: childrenData, parent: parentData} = useContext(RegistrationContext)
-    const {user, loading, errors, success} = useSelector(userSelector)
+    const {user, loading, errors, success} = useSelector(authSelector)
 
     const handleBack = () => {
         const previousStage = currentStage - 1
