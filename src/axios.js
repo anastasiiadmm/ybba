@@ -28,7 +28,7 @@ axiosApi.interceptors.response.use(async config => {
     const statusCode = error?.response?.status
     const {user, tokens} = store.getState().auth
 
-    if (user && (!statusCode || statusCode === unauthorized401)) {
+    if (user && (statusCode === unauthorized401)) {
         originalRequest._retry = true
         const resp = await axiosApi.post('/accounts/refresh/', {refresh: tokens.refresh})
 
