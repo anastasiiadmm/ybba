@@ -4,12 +4,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router';
 
 import Button from '../../Components/Button/Button.js';
-import {logoutUser, userSelector} from '../../redux/user/userSlice.js';
+import {logoutUser, authSelector} from '../../redux/auth/authSlice';
 
 
 const Logout = () => {
 
-    const {user, tokens, loading} = useSelector(userSelector)
+    const {user, tokens, loading} = useSelector(authSelector)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -28,6 +28,7 @@ const Logout = () => {
 
     return (
         <Button
+            type='button'
             className='main-nav__enter border-0 bg-transparent'
             onClick={logout}
             loading={loading}

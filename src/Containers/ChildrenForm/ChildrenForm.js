@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import Calendar from '../../Components/Calendar/Calendar.js';
 import FormField from '../../Components/FormField/FormField.js';
-import Modal from '../../Components/Modal/Modal.js';
 import config from '../../config.js';
 import {allRussianWardsAndHyphen} from '../../regex/patterns/html';
 
@@ -14,8 +12,6 @@ const ChildrenForm = (props) => {
     const {
         childrenData, setChildrenData
     } = props
-
-    const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
 
     const setToLocalStorage = (data) => {
         localStorage.setItem(config.registrationChildLocalStorageName, JSON.stringify(data))
@@ -30,21 +26,8 @@ const ChildrenForm = (props) => {
         setChildrenData(newChildrenData)
         setToLocalStorage(newChildrenData)
     }
-    const toggleModal = () => {
-        setIsDatePickerOpen(!isDatePickerOpen)
-    }
 
     return <>
-        <Modal
-            isOpen={isDatePickerOpen}
-            toggle={toggleModal}
-            width={30}
-        >
-            <Calendar
-                onChange={ageChangeHandler}
-                value={childrenData.date_of_birth}
-            />
-        </Modal>
         <h4 className='form__title'>Основная информация ребенка</h4>
         <div className='form__row'>
             <FormField
@@ -84,8 +67,7 @@ const ChildrenForm = (props) => {
                 name='date_of_birth'
                 required
                 value={childrenData.date_of_birth}
-                onClick={toggleModal}
-                readOnly
+                onChange={ageChangeHandler}
             />
         </div>
         {/*<div className="form__row">*/}
