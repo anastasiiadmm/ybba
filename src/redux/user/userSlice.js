@@ -11,24 +11,9 @@ const INITIAL_STATE = {
     tokens: null,
     loading: false,
     success: false,
-    commonError: null
+    commonError: null,
+    isPasswordUpdated: false
 }
-
-export const createUser = createAsyncThunk(
-    `${nameSpace}/createUser`,
-    async (userData, {rejectWithValue}) => {
-        try {
-            const resp = await axiosApi.post('/accounts/registration/', userData)
-            return resp.data
-        } catch (e) {
-            let error = e?.response?.data
-            if (!e.response) {
-                error = defaultError
-            }
-            return rejectWithValue(error)
-        }
-    }
-)
 
 export const editUserEmail = createAsyncThunk(
     `${nameSpace}/editUserEmail`,
@@ -67,10 +52,14 @@ export const updateUserPassword = createAsyncThunk(
     `${nameSpace}/updateUserPassword`,
     async (data, {rejectWithValue}) => {
         try {
-            const res = axiosApi.put(`/accounts/${data.userId}/update/`, data.data)
+            const res = await axiosApi.put(`/accounts/${data.userId}/update/`, data.data)
             return res.data
         } catch (e) {
-            return rejectWithValue(e)
+            let error = e?.response?.data
+            if (!e.response) {
+                error = defaultError
+            }
+            return rejectWithValue(error)
         }
     }
 )
@@ -85,26 +74,10 @@ const userSlice = createSlice({
             state.success = false
             state.commonError = null
             state.errors = null
+            state.isPasswordUpdated = false
         }
     },
     extraReducers: {
-
-        [createUser.pending]: state => {
-            state.loading = true
-            state.errors = null
-            state.success = false
-        },
-        [createUser.fulfilled]: state => {
-            state.loading = false
-            state.success = true
-            state.errors = null
-        },
-        [createUser.rejected]: (state, {payload}) => {
-            state.loading = false
-            state.success = false
-            state.commonError = payload?.detail
-            state.errors = payload
-        },
 
         [updateUserData.pending]: state => {
             state.success = false
@@ -117,6 +90,16 @@ const userSlice = createSlice({
             state.errors = payload
             state.success = false
         },
+
+        [updateUserPassword.fulfilled]: state => {
+            state.success = true
+            state.isPasswordUpdated = true
+        },
+        [updateUserPassword.rejected]: (state, {payload}) => {
+            state.errors = payload
+            state.success = false
+            state.isPasswordUpdated = false
+        }
     }
 })
 
