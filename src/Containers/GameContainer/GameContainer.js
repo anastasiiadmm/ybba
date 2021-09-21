@@ -1,9 +1,6 @@
-import React, {useState, useEffect} from 'react';
-
-import {useSelector} from 'react-redux';
-
-import {lessonSelector} from '../../redux/lesson/lessonSlice';
+import React, {useState, useEffect, useContext} from 'react';
 import Unity, {UnityContext} from 'react-unity-webgl';
+import {GameContext} from '../../context/GameContext/GameContext';
 import {
     GAME_FILE_TYPE_LOADER,
     GAME_FILE_TYPE_DATA,
@@ -16,22 +13,23 @@ import './gameContainer.css'
 
 const GameContainer = () => {
 
+    const {activeGame} = useContext(GameContext)
+
     const [unityContext, setUnityContext] = useState(null)
-    const {activeGame} = useSelector(lessonSelector)
 
-
-    const getUrlToFile = fileType => {
-        const gameLoaderFile = activeGame.files.find(file => file.file_type === fileType)
-        return gameLoaderFile.path
+    const getFileUrl = fileName => {
+        return activeGame[fileName].replace('localhost', '172.29.77.31')
     }
-    const setNewUnityContext = () => {
+
+    const setNewUnityContext = async () => {
+        await setUnityContext(null)
         const newContext = new UnityContext({
-            loaderUrl: getUrlToFile(GAME_FILE_TYPE_LOADER),
-            dataUrl: getUrlToFile(GAME_FILE_TYPE_DATA),
-            frameworkUrl: getUrlToFile(GAME_FILE_TYPE_FRAMEWORK),
-            codeUrl: getUrlToFile(GAME_FILE_TYPE_WASM)
+            loaderUrl: getFileUrl(GAME_FILE_TYPE_LOADER),
+            dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
+            frameworkUrl: getFileUrl(GAME_FILE_TYPE_FRAMEWORK),
+            codeUrl: getFileUrl(GAME_FILE_TYPE_WASM)
         })
-        setUnityContext(newContext)
+        await setUnityContext(newContext)
     }
 
     useEffect(() => {
@@ -44,7 +42,6 @@ const GameContainer = () => {
     if (!unityContext) {
         return <div className='gameContainerLoaderWrapper gameContainer'>
             <div className='gameContainerLoaderBlock'>
-                <div className='gameContainerLoader'><span style={{width: '50%'}}/></div>
                 <p className='game__loader-text'>Настраиваем игру</p>
             </div>
         </div>

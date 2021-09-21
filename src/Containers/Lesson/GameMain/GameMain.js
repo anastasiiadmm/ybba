@@ -11,7 +11,7 @@ const GameMain = () => {
     return (
         <>
             <div className='game__block'>
-                <div className='game__work-space'>
+                <div className='game__work-space gameWrapper'>
                     <GameContainer/>
                 </div>
             </div>

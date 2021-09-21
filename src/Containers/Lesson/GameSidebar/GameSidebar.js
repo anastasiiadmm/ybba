@@ -4,11 +4,26 @@ import PropTypes from 'prop-types';
 
 import WebCam from '../../../Components/WebCam/WebCam';
 import Button from '../../../Components/Button/Button';
+import {addClasses} from '../../../utils/addClasses/addClasses';
+
+import './gameSidebar.css';
 
 
 const GameSidebar = (props) => {
 
-    const {webcamOnClick} = props
+    const {
+        lesson, webcamOnClick, gameOnClick, onFinishLesson
+    } = props
+
+    const games = lesson?.games
+    const activeGame = lesson?.active_game_id
+
+    const gameClickHandler = game => {
+        gameOnClick(game)
+    }
+    const finishLessonClickHandler = () => {
+        onFinishLesson()
+    }
 
     return (
         <>
@@ -26,14 +41,24 @@ const GameSidebar = (props) => {
                 </div>
                 <div className='game__progress-time'>18:00</div>
             </div>
-            <div className='game__info'>
+            <div className='game__info d-flex flex-column'>
                 <h5 className='game__info-title'>Название занятия</h5>
                 <ol className='game__lesson-list'>
-                    <li className='game__lesson-item'>Биба #3</li>
-                    <li className='game__lesson-item'>Мультфильм #1</li>
-                    <li className='game__lesson-item'>Мультфильм #2</li>
+                    {games && games.map(game => {
+                        return <li
+                            className={addClasses('game__lesson-item gameListItem', {
+                                'activeGame': game.id === activeGame
+                            })}
+                            onClick={() => gameClickHandler(game)}
+                        >
+                            {game.display_name}
+                        </li>
+                    })}
                 </ol>
-                <div className='game__info-bottom'>
+                <div
+                    className='game__info-bottom mt-auto'
+                    onClick={finishLessonClickHandler}
+                >
                     <button className='btn-complete' type='button'>Завершить занятие</button>
                 </div>
             </div>
@@ -43,6 +68,9 @@ const GameSidebar = (props) => {
 
 GameSidebar.propTypes = {
     webcamOnClick: PropTypes.func,
+    lesson: PropTypes.object.isRequired,
+    gameOnClick: PropTypes.func,
+    onFinishLesson: PropTypes.func
 }
 
 export default GameSidebar;
