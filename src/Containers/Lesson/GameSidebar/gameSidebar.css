@@ -1,0 +1,7 @@
+.gameListItem {
+    cursor: pointer;
+}
+
+.activeGame {
+    color: #6a7989;
+}
