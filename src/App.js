@@ -10,6 +10,7 @@ import SetNewPassword from './Containers/SetNewPassword/SetNewPassword';
 import Lesson from './Containers/Lesson/Lesson';
 import ParentProfile from './Containers/ParentProfile/ParentProfile';
 import ParentProfileEdit from './Containers/ParentProfileEdit/ParentProfileEdit';
+import DevicesTestPage from './Containers/DevicesTestPage/DevicesTestPage';
 
 import './App.css';
 
@@ -23,6 +24,7 @@ const App = () => {
                 <PrivateRoute path='/profile/' component={ParentProfile} exact/>
                 <PrivateRoute path='/' component={MainDashboard} exact/>
                 <PrivateRoute path='/lesson/:lessonId' component={Lesson} />
+                <PrivateRoute path='/video-test/' component={DevicesTestPage} />
                 <Route path='/login/' component={Login}/>
                 <Route path='/registration/:stage/' component={Registration}/>
                 <Route path='/reset-password/' component={PasswordRecovery} exact />

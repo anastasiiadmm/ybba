@@ -7,3 +7,8 @@ export const LESSON_STATUS_NEW = 'new'
 export const LESSON_STATUS_PENDING = 'pending'
 export const LESSON_STATUS_ON = 'process'
 export const LESSON_STATUS_FINISHED = 'finished'
+
+export const jitsiTools = {
+    mic: 'microphone',
+    camera: 'camera'
+}
