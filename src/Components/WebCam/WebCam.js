@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react';
+
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
-import {userSelector} from '../../redux/user/userSlice';
+
+import {authSelector} from '../../redux/auth/authSlice';
+
 
 const WebCam = (props) => {
 
     const {meetingId, onClick} = props
 
-    const {user} = useSelector(userSelector)
+    const {user} = useSelector(authSelector)
 
     const [api, setApi] = useState(null)
 
