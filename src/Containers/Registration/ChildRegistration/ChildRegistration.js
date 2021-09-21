@@ -49,10 +49,10 @@ const ChildRegistration = (props) => {
         if (errors) {
             history.push(`/registration/${currentStage - 1}/`)
         }
-        if (user && success) {
+        if (success) {
             localStorage.removeItem(config.registrationChildLocalStorageName)
             localStorage.removeItem(config.registrationParentLocalStorageName)
-            history.push('/')
+            history.push('/login/')
         }
         // eslint-disable-next-line
     }, [user, errors, success])
