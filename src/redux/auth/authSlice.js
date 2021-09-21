@@ -175,9 +175,7 @@ const authSlice = createSlice({
             state.errors = null
             state.success = false
         },
-        [createUser.fulfilled]: (state, {payload}) => {
-            state.user = payload.user
-            console.log(payload)
+        [createUser.fulfilled]: (state) => {
             state.loading = false
             state.success = true
             state.errors = null
