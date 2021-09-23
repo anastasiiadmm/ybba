@@ -12,3 +12,26 @@ export const jitsiTools = {
     mic: 'microphone',
     camera: 'camera'
 }
+
+export const MUTE_AUDIO = 'AudioMute';
+export const PAUSE_GAME = 'PauseEnable';
+export const RESTART_GAME = 'Restart';
+export  const NEXT_ACTION = 'NextAction';
+export const PREV_ACTION = 'PrevAction';
+export const NEXT_GAME = 'NextGame';
+export const PREV_GAME = 'PrevGame';
+
+export const gameActions = {
+    MUTE_AUDIO: MUTE_AUDIO,
+    PAUSE_GAME: PAUSE_GAME,
+    RESTART_GAME: RESTART_GAME,
+    NEXT_ACTION: NEXT_ACTION,
+    PREV_ACTION: PREV_ACTION,
+    NEXT_GAME: NEXT_GAME,
+    PREV_GAME: PREV_GAME,
+}
+
+export const userRoles = {
+    therapist: 'therapist',
+    parent: 'parent'
+}
