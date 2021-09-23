@@ -33,7 +33,7 @@ export const updateUserData = createAsyncThunk(
     async (data, {rejectWithValue}) => {
         try {
             const userData = {...data.data}
-            if (userData.profile) {
+            if (userData.profile && userData.profile.phone_number && !userData.profile.phone_number.includes('+')) {
                 userData.profile.phone_number = `+${userData.profile.phone_number}`
             }
             await axiosApi.put(`/accounts/${data.userId}/update/`, userData)
@@ -81,14 +81,16 @@ const userSlice = createSlice({
 
         [updateUserData.pending]: state => {
             state.success = false
-            state.success = false
+            state.loading = true
         },
         [updateUserData.fulfilled]: state => {
             state.success = true
+            state.loading = false
         },
         [updateUserData.rejected]: (state, {payload}) => {
             state.errors = payload
             state.success = false
+            state.loading = false
         },
 
         [updateUserPassword.fulfilled]: state => {
