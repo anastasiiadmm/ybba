@@ -1,11 +1,11 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-
-import {validationMessagesMapping} from '../../mappings/validationErrors';
-
 import PhoneInput from 'react-phone-input-2';
 import ReactInputDateMask from 'react-input-date-mask';
+
+import {validationMessagesMapping} from '../../mappings/validationErrors';
+import {addClasses} from '../../utils/addClasses/addClasses';
 
 import './formField.css'
 
@@ -26,17 +26,28 @@ const FormField = props => {
     </>
 
     let fieldErrors = null
-
     if (errors && typeof errors === 'object' && name in errors) {
         fieldErrors = errors[name]
     }
+
+    const Errors = <>
+        {fieldErrors && fieldErrors.map(error => {
+            return (
+                <div className='fieldErrorText'>
+                    {validationMessagesMapping[error]}
+                </div>
+            )
+        })}
+    </>
 
     let field = <>
         <label className='form__label'>
             {label}
             <input
                 type={type}
-                className={className}
+                className={addClasses(className, {
+                    'error': fieldErrors?.length
+                })}
                 required={required}
                 name={name}
                 onChange={onChange}
@@ -47,13 +58,7 @@ const FormField = props => {
                 readOnly={readOnly}
                 disabled={disabled}
             />
-            {fieldErrors && fieldErrors.map(error => {
-                return (
-                    <div className='fieldErrorText'>
-                        {validationMessagesMapping[error]}
-                    </div>
-                )
-            })}
+            {Errors}
             {helpText && <div className='form__passw-info'>{helpText}</div>}
             {toolTip}
         </label>
@@ -70,7 +75,9 @@ const FormField = props => {
                     onChange={onChange}
                     type={type}
                     required={required}
-                    className={className}
+                    className={addClasses(className, {
+                        'error': fieldErrors?.length
+                    })}
                     name={name}
                     value={value}
                     pattern={pattern}
@@ -79,6 +86,7 @@ const FormField = props => {
                     readOnly={readOnly}
                     disabled={disabled}
                 />
+                {Errors}
                 {helpText && <div className='form__passw-info'>{helpText}</div>}
                 {toolTip}
             </label>
@@ -94,6 +102,7 @@ const FormField = props => {
                 onChange={onChange}
                 specialLabel={label}
             />
+            {Errors}
         </>
     }
 
