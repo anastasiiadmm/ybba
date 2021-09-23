@@ -1,8 +1,8 @@
 import axios from 'axios';
 
+import {refreshAccessToken, logoutUser} from './redux/auth/authSlice';
 import config, {unauthorized401} from './config';
 import {store} from './index.js';
-import {refreshAccessToken, logoutUser} from './redux/auth/authSlice';
 
 
 const axiosApi = axios.create({
@@ -38,8 +38,6 @@ axiosApi.interceptors.response.use(async config => {
             axiosApi.defaults.headers['Authorization'] = `Bearer ${newTokens.access}`
 
             store.dispatch(refreshAccessToken(newTokens))
-
-            console.log(originalRequest)
 
             return axiosApi(originalRequest)
         }
