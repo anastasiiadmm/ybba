@@ -34,6 +34,13 @@ const ParentProfileEdit = () => {
     const onSubmit = e => {
         e.preventDefault()
         const submitData = {data: formData, userId: user.id}
+        const userProfile = submitData.data.profile
+        if (!userProfile.phone_number) {
+            delete submitData.data.profile.phone_number
+        }
+        if (!userProfile.date_of_birth) {
+            delete submitData.data.profile.date_of_birth
+        }
         dispatch(updateUserData(submitData))
     }
 
@@ -70,7 +77,7 @@ const ParentProfileEdit = () => {
                             </div>
                             <div className='content__bottom'>
                                 <Button to='/profile/' className='btn btn_light'>Отмена</Button>
-                                <Button type='submit' className='btn'>Сохранить</Button>
+                                <Button type='submit' className='btn' loading={loading}>Сохранить</Button>
                             </div>
                         </form>
                     </div>
