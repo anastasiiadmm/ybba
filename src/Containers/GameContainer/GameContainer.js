@@ -1,6 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react';
+
 import Unity, {UnityContext} from 'react-unity-webgl';
+
 import {GameContext} from '../../context/GameContext/GameContext';
+import {LessonContext} from '../../context/LessonContext/LessonContext';
 import {
     GAME_FILE_TYPE_LOADER,
     GAME_FILE_TYPE_DATA,
@@ -14,6 +17,7 @@ import './gameContainer.css'
 const GameContainer = () => {
 
     const {activeGame} = useContext(GameContext)
+    const {gameAction, triggerGameAction} = useContext(LessonContext)
 
     const [unityContext, setUnityContext] = useState(null)
 
@@ -38,6 +42,14 @@ const GameContainer = () => {
         }
         // eslint-disable-next-line
     }, [activeGame])
+
+    useEffect(() => {
+        if (gameAction) {
+            unityContext.send('WebData', gameAction)
+        }
+        triggerGameAction('')
+        // eslint-disable-next-line
+    }, [gameAction])
 
     if (!unityContext) {
         return <div className='gameContainerLoaderWrapper gameContainer'>
