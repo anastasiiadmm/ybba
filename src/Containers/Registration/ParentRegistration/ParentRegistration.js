@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router';
 
 import FormField from '../../../Components/FormField/FormField.js';
@@ -8,8 +9,7 @@ import SocialMediaBlock from '../../../Components/SocialMediaBlock/SocialMediaBl
 import config from '../../../config.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
 import {allRussianWardsAndHyphen} from '../../../regex/patterns/html';
-import {useSelector} from 'react-redux';
-import {authSelector} from '../../../redux/auth/authSlice';
+import {authSelector, clearAuthState} from '../../../redux/auth/authSlice';
 
 
 const ParentRegistration = (props) => {
@@ -17,6 +17,7 @@ const ParentRegistration = (props) => {
     const {registrationData, setRegistrationData, currentStage} = props
 
     const {errors} = useSelector(authSelector)
+    const dispatch = useDispatch()
 
     const history = useHistory()
 
@@ -37,9 +38,10 @@ const ParentRegistration = (props) => {
         setRegistrationData(newRegistrationData)
         setToLocalStorage(newRegistrationData)
     }
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
         const nextStage = currentStage + 1
+        await dispatch(clearAuthState())
         history.push(`/registration/${nextStage}/`)
     }
 

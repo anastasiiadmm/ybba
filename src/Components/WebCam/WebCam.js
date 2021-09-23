@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
 
-import Jitsi from '../Jitsi/Jitsi';
 import {authSelector} from '../../redux/auth/authSlice';
+import Jitsi from '../Jitsi/Jitsi';
 import {jitsiTools} from '../../constants';
 
 

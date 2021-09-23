@@ -32,13 +32,6 @@ export const loginUser = createAsyncThunk(
     }
 )
 
-export const logoutUser = createAsyncThunk(
-    `${nameSpace}/logoutUser`,
-    async (data) => {
-        await axiosApi.post('/accounts/logout/', data)
-    }
-)
-
 export const resetUserPasswordSendEmail = createAsyncThunk(
     `${nameSpace}/resetUserPasswordSendEmail`,
     async (data, {rejectWithValue}) => {
@@ -108,6 +101,7 @@ const authSlice = createSlice({
             state.commonError = null
             state.errors = null
         },
+        logoutUser: () => INITIAL_STATE,
         refreshAccessToken: (state, {payload}) => {
             state.tokens = {...state.tokens, ...payload}
         }
@@ -131,15 +125,6 @@ const authSlice = createSlice({
             state.success = false
             state.commonError = payload?.detail
         },
-
-        [logoutUser.pending]: state => {
-            state.loading = true
-            state.errors = null
-            state.success = false
-            state.commonError = null
-        },
-        [logoutUser.fulfilled]: () => INITIAL_STATE,
-        [logoutUser.rejected]: () => INITIAL_STATE,
 
         [resetUserPasswordSendEmail.pending]: state => {
             state.loading = true
@@ -175,9 +160,7 @@ const authSlice = createSlice({
             state.errors = null
             state.success = false
         },
-        [createUser.fulfilled]: (state, {payload}) => {
-            state.user = payload.user
-            console.log(payload)
+        [createUser.fulfilled]: (state) => {
             state.loading = false
             state.success = true
             state.errors = null
@@ -198,7 +181,7 @@ const authSlice = createSlice({
 })
 
 
-export const {clearAuthState, refreshAccessToken} = authSlice.actions
+export const {clearAuthState, refreshAccessToken, logoutUser} = authSlice.actions
 export const authSelector = state => state.auth
 export default authSlice.reducer
 

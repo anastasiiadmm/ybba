@@ -29,7 +29,6 @@ const FormField = props => {
 
     if (errors && typeof errors === 'object' && name in errors) {
         fieldErrors = errors[name]
-        console.log(errors)
     }
 
     let field = <>

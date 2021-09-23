@@ -8,11 +8,10 @@ import Button from '../../../Components/Button/Button.js';
 import Icon from '../../../Components/Icon/Icon.js';
 import config from '../../../config.js';
 import {RegistrationContext} from '../../../context/RegistrationContext/RegistrationContext.js';
-import {clearUserState} from '../../../redux/user/userSlice.js';
 import ChildrenForm from '../../ChildrenForm/ChildrenForm.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
 import {createChild} from '../../../redux/child/childSlice';
-import {createUser, authSelector} from '../../../redux/auth/authSlice';
+import {createUser, authSelector, clearAuthState} from '../../../redux/auth/authSlice';
 
 
 const ChildRegistration = (props) => {
@@ -42,6 +41,12 @@ const ChildRegistration = (props) => {
         await dispatch(createUser(parentData))
     }
 
+
+    useEffect(() => {
+        dispatch(clearAuthState())
+        // eslint-disable-next-line
+    }, [])
+
     useEffect(() => {
         if (user) {
             dispatch(createChild(childrenData))
@@ -49,18 +54,13 @@ const ChildRegistration = (props) => {
         if (errors) {
             history.push(`/registration/${currentStage - 1}/`)
         }
-        if (user && success) {
+        if (success) {
             localStorage.removeItem(config.registrationChildLocalStorageName)
             localStorage.removeItem(config.registrationParentLocalStorageName)
-            history.push('/')
+            history.push('/login/')
         }
         // eslint-disable-next-line
     }, [user, errors, success])
-
-    useEffect(() => {
-        dispatch(clearUserState())
-        // eslint-disable-next-line
-    }, [])
 
     return (
         <RegistrationBaseBlock

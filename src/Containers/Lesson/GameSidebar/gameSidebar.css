@@ -1,0 +1,19 @@
+.gameListItem {
+    cursor: pointer;
+}
+
+.activeGame {
+    color: #6a7989;
+}
+
+.gameActionButton {
+    transition: transform .01s;
+}
+
+.gameActionButton:active {
+    transform: scale(.9);
+}
+
+.finishLessonArea {
+    cursor: pointer;
+}
