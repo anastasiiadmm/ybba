@@ -20,7 +20,6 @@ const DevicesTestPage = () => {
     const randomMeetingId = uuidv4()
 
     useEffect(() => {
-        console.log(jitsiWrapper.current.offsetHeight)
         if (jitsiWrapper.current) {
             setJitsiWindowHeight(jitsiWrapper.current.offsetHeight)
         }
