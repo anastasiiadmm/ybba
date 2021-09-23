@@ -9,7 +9,8 @@ const nameSpace = 'lesson'
 const INITIAL_STATE = {
     activeGame: null,
     lesson: null,
-    error: null
+    error: null,
+    lessonFinished: false
 }
 
 const lessonSlice = createSlice({
@@ -31,6 +32,7 @@ const lessonSlice = createSlice({
         [CHANGE_LESSON_STATUS]: (state, {payload}) => {
             if (payload.status === LESSON_STATUS_FINISHED) {
                 state.lesson = null
+                state.lessonFinished = true
             }
         }
     },
