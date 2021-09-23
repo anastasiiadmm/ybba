@@ -11,9 +11,11 @@ import {authSelector} from '../../redux/auth/authSlice';
 import {getLesson, changeActiveGame, changeLessonStatus} from '../../redux/lesson/actions';
 import {lessonSelector} from '../../redux/lesson/lessonSlice';
 import {LESSON_STATUS_FINISHED} from '../../constants';
+import {GameContext} from '../../context/GameContext/GameContext';
+import {LessonContext} from '../../context/LessonContext/LessonContext';
+import {ReduxWebSocket} from '../../utils/MyWebSocket/MyWebSocket';
 
 import './lesson.css'
-import {GameContext} from '../../context/GameContext/GameContext';
 
 
 const Lesson = (props) => {
@@ -24,26 +26,28 @@ const Lesson = (props) => {
     const history = useHistory()
 
     const {tokens} = useSelector(authSelector)
-    const {lesson} = useSelector(lessonSelector)
+    const {lesson, lessonFinished} = useSelector(lessonSelector)
 
     const {lessonId} = props.match.params
 
     const [sideBarIsWide, setSideBarIsWide] = useState(false)
     const [activeGame, setActiveGame] = useState(null)
+    const [gameAction, triggerGameAction] = useState('')
 
-    const gameContext = {activeGame}
+    const gameContext = {activeGame, gameAction, triggerGameAction}
+    const lessonContext = {gameAction, triggerGameAction}
 
     const setWindowSizes = () => setSideBarIsWide(!sideBarIsWide)
-    const onChangeActiveGame = game => sendWsAction(changeActiveGame({lesson_id: lesson.id, game_id: game.id}))
-    const sendWsAction = action => {
-        if ((ws.current.readyState === WebSocket.OPEN)) {
-            ws.current.send(JSON.stringify(action))
+    const onChangeActiveGame = game => {
+        if (game.id !== activeGame) {
+            ws.current.sendWsAction(
+                changeActiveGame({lesson_id: lesson.id, game_id: game.id})
+            )
         }
     }
-    const onLessonFinish = () => {
-        sendWsAction(changeLessonStatus({status: LESSON_STATUS_FINISHED, lesson_id: lessonId}))
-        history.push('/')
-    }
+    const onLessonFinish = () => ws.current.sendWsAction(
+        changeLessonStatus({status: LESSON_STATUS_FINISHED, lesson_id: lessonId})
+    )
 
     useEffect(() => {
         if (lesson) {
@@ -53,12 +57,20 @@ const Lesson = (props) => {
     }, [lesson])
 
     useEffect(() => {
-        ws.current = new WebSocket(`ws://172.29.77.31:3000/ws?token=${tokens.access}`);
+        if (lessonFinished) {
+            history.push('/')
+        }
+    }, [lessonFinished, history])
+
+    useEffect(() => {
+        ws.current = new ReduxWebSocket(`ws://172.29.77.31:3000/ws?token=${tokens.access}`);
         ws.current.onopen = () => {
-            console.log(123423143214231)
-            sendWsAction(getLesson({lesson_id: lessonId}))
+            ws.current.sendWsAction(
+                getLesson({lesson_id: lessonId})
+            )
         };
         ws.current.onclose = () => console.log('ws closed');
+
         ws.current.onmessage = msg => {
             const action = JSON.parse(msg.data)
             if (action?.type) {
@@ -74,29 +86,31 @@ const Lesson = (props) => {
 
     return (
         <Container>
-            <div className='game mainLessonWindow'>
-                <main
-                    className={addClasses('game__main mainGame', {
-                        'gameMainShort': sideBarIsWide
-                    })}
-                >
-                    <GameContext.Provider value={gameContext}>
-                        <GameMain activeGame={activeGame} />
-                    </GameContext.Provider>
-                </main>
-                <div
-                    className={addClasses('game__sidebar lessonSidebar', {
-                        'wideSidebar': sideBarIsWide
-                    })}
-                >
-                    <GameSidebar
-                        webcamOnClick={setWindowSizes}
-                        lesson={lesson}
-                        gameOnClick={onChangeActiveGame}
-                        onFinishLesson={onLessonFinish}
-                    />
+            <LessonContext.Provider value={lessonContext}>
+                <div className='game mainLessonWindow'>
+                    <main
+                        className={addClasses('game__main mainGame', {
+                            'gameMainShort': sideBarIsWide
+                        })}
+                    >
+                        <GameContext.Provider value={gameContext}>
+                            <GameMain activeGame={activeGame}/>
+                        </GameContext.Provider>
+                    </main>
+                    <div
+                        className={addClasses('game__sidebar lessonSidebar', {
+                            'wideSidebar': sideBarIsWide
+                        })}
+                    >
+                        <GameSidebar
+                            webcamOnClick={setWindowSizes}
+                            lesson={lesson}
+                            gameOnClick={onChangeActiveGame}
+                            onFinishLesson={onLessonFinish}
+                        />
+                    </div>
                 </div>
-            </div>
+            </LessonContext.Provider>
         </Container>
     );
 }
