@@ -15,8 +15,7 @@ const Logout = () => {
     const history = useHistory()
 
     const logout = () => {
-        const data = {refresh: tokens.refresh}
-        dispatch(logoutUser(data))
+        dispatch(logoutUser())
     }
 
     useEffect(() => {
