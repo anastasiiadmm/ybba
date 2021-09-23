@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
 
 import {authSelector} from '../../redux/auth/authSlice';
-
-
 import Jitsi from '../Jitsi/Jitsi';
 import {jitsiTools} from '../../constants';
 
