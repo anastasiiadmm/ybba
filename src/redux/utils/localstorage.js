@@ -24,7 +24,7 @@ export const saveToLocalStorage = state => {
     }
 };
 
-const authActions = [String(loginUser.fulfilled), String(logoutUser.fulfilled), String(logoutUser.rejected)]
+const authActions = [String(loginUser.fulfilled), String(logoutUser)]
 
 export const localStorageMiddleware = store => next => action => {
     let result = next(action);
