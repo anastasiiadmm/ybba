@@ -32,7 +32,8 @@ const ParentProfileForm = (props) => {
         setFormData(newData)
     }
     const birthDateHandler = data => {
-        const newData = {...formData, profile: {...formData.profile, date_of_birth: data}}
+        const validDate = data === 'dd/mm/yyyy' ? '' : data
+        const newData = {...formData, profile: {...formData.profile, date_of_birth: validDate}}
         setFormData(newData)
     }
     const phoneInputChangeHandler = number => {
@@ -78,7 +79,7 @@ const ParentProfileForm = (props) => {
                         value={formData.profile.first_name}
                         name='first_name'
                         onChange={inputChangeHandler}
-                        errors={errors}
+                        errors={errors?.profile}
                     />
                 </div>
                 <div className='form__col2'>
@@ -89,7 +90,7 @@ const ParentProfileForm = (props) => {
                         value={formData.profile.last_name}
                         name='last_name'
                         onChange={inputChangeHandler}
-                        errors={errors}
+                        errors={errors?.profile}
                     />
                 </div>
             </div>
@@ -105,7 +106,7 @@ const ParentProfileForm = (props) => {
                         value={formData.profile.date_of_birth}
                         name='date_of_birth'
                         onChange={birthDateHandler}
-                        errors={errors}
+                        errors={errors?.profile}
                     />
                 </div>
                 <div className='form__col2'>
@@ -115,7 +116,7 @@ const ParentProfileForm = (props) => {
                         className='form__field'
                         value={formData.profile.phone_number}
                         onChange={phoneInputChangeHandler}
-                        errors={errors}
+                        errors={errors?.profile}
                     />
                 </div>
             </div>
