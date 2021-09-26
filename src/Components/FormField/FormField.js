@@ -2,7 +2,9 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import PhoneInput from 'react-phone-input-2';
+import Select from 'react-select';
 import ReactInputDateMask from 'react-input-date-mask';
+import Flatpickr from 'react-flatpickr';
 
 import {validationMessagesMapping} from '../../mappings/validationErrors';
 import {addClasses} from '../../utils/addClasses/addClasses';
@@ -13,7 +15,7 @@ import './formField.css'
 const FormField = props => {
     const {
         type, onChange, className, name, required, label, value, pattern, id, maxLength, tooltipTitle, tooltipText,
-        helpText, readOnly, errors, disabled, mask, showMaskOnFocus, showMaskOnHover
+        helpText, readOnly, errors, disabled, mask, showMaskOnFocus, showMaskOnHover, options, configs
     } = props
 
     const toolTip = <>
@@ -106,6 +108,57 @@ const FormField = props => {
         </>
     }
 
+    if (type === 'select') {
+        field = <>
+            <label>
+                {label}
+                <Select
+                    options={options}
+                    className={className}
+                    onChange={onChange}
+                />
+            </label>
+        </>
+    }
+
+    if (type === 'flatpickr') {
+        field = <>
+            <Flatpickr
+                data-enable-time
+                value={value}
+                onChange={onChange}
+                options={configs}
+                render={({defaultValue, value, ...props}, ref) => {
+                    return <>
+                        <label className='form__label'>
+                            {label}
+                            <input
+                                {...props}
+                                ref={ref}
+                                type={type}
+                                className={addClasses(className, {
+                                    'error': fieldErrors?.length
+                                })}
+                                required={required}
+                                name={name}
+                                onChange={onChange}
+                                value={value}
+                                pattern={pattern}
+                                id={id}
+                                maxLength={maxLength}
+                                readOnly={readOnly}
+                                disabled={disabled}
+                            />
+                            {Errors}
+                            {helpText && <div className='form__passw-info'>{helpText}</div>}
+                            {toolTip}
+                        </label>
+                    </>
+                }}
+            />
+        </>
+    }
+
     return field;
 }
 
@@ -129,7 +182,12 @@ FormField.propTypes = {
     disabled: PropTypes.bool,
     mask: PropTypes.string,
     showMaskOnFocus: PropTypes.bool,
-    showMaskOnHover: PropTypes.bool
+    showMaskOnHover: PropTypes.bool,
+    options: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.string
+    })),
+    configs: PropTypes.any
 }
 
 export default React.memo(FormField);
