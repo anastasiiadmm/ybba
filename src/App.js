@@ -11,6 +11,8 @@ import Lesson from './Containers/Lesson/Lesson';
 import ParentProfile from './Containers/ParentProfile/ParentProfile';
 import ParentProfileEdit from './Containers/ParentProfileEdit/ParentProfileEdit';
 import DevicesTestPage from './Containers/DevicesTestPage/DevicesTestPage';
+import Lessons from './Containers/Lessons/Lessons';
+import ParentTimeSlots from './Containers/ParentTimeSlots/ParentTimeSlots';
 
 import './App.css';
 
@@ -20,6 +22,8 @@ const App = () => {
         <div>
 
             <Switch>
+                <PrivateRoute path='/lessons/timeSlots/' exact component={ParentTimeSlots} />
+                <PrivateRoute path='/lessons/' component={Lessons} exact />
                 <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
                 <PrivateRoute path='/profile/' component={ParentProfile} exact/>
                 <PrivateRoute path='/' component={MainDashboard} exact/>
