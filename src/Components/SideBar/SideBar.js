@@ -19,9 +19,9 @@ const SideBar = () => {
                     <SideBarLink to='/' classes='main-nav__link_home'>
                         Главная
                     </SideBarLink>
-                    {/*<SideBarLink to='/home-work/' classes='main-nav__link_hw'>*/}
-                    {/*    Домашнее задание*/}
-                    {/*</SideBarLink>*/}
+                    <SideBarLink to='/lessons/' classes='main-nav__link main-nav__link_classes'>
+                        Занятия
+                    </SideBarLink>
                     <SideBarLink to='/profile/' classes='main-nav__link_lk'>
                         Личный кабинет
                     </SideBarLink>
