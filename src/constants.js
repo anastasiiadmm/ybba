@@ -35,3 +35,15 @@ export const userRoles = {
     therapist: 'therapist',
     parent: 'parent'
 }
+
+export const lessonStatuses = {
+    new: 'new',
+    pending: 'pending',
+    process: 'process',
+    finished: 'finished'
+}
+
+export const lessonTypes = {
+    usual: 'usual',
+    diagnostic: 'diagnostic'
+}
