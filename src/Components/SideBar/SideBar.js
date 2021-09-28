@@ -7,7 +7,7 @@ import SideBarLink from './SideBarLink/SideBarLink.js';
 
 const SideBar = () => {
     return (
-        <div className='sidebar h-100'>
+        <div className='sidebar h-100 position-fixed'>
             <header className='header'>
                 <Logo/>
                 <button className='header__notice' data-modal='notifications'>

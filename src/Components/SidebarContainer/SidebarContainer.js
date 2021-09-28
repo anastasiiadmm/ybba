@@ -11,6 +11,7 @@ const SidebarContainer = (props) => {
     return (
         <Container>
             <SideBar/>
+            <div className='sidebar'/>
             <main className='main'>
                 {children}
             </main>
