@@ -47,3 +47,6 @@ export const lessonTypes = {
     usual: 'usual',
     diagnostic: 'diagnostic'
 }
+
+export const namesOfDaysOfWeek = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресение']
+export const namesOfDaysOfWeekShort = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
