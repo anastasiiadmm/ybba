@@ -1,6 +1,9 @@
 import moment from 'moment';
 import 'moment/locale/ru.js'
 
+import config from '../../config';
+
+
 export const transformDateFormat = (date, from, to) => {
     return moment(date, from).format(to);
 }
@@ -20,4 +23,12 @@ export const getTimesDay = () => {
 
 export const getNowDate = () => {
     return moment().format('LLL')
+}
+
+export const strDateToMoment = date => {
+    return moment(date, config.dateFormat)
+}
+
+export const strTimeToMoment = date => {
+    return moment(date, config.timeFormat)
 }

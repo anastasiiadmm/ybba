@@ -14,7 +14,6 @@ const Timer = (props) => {
 
     const [lessonLeft, setLessonLeft] = useState(new Date() - from)
     const timerFinished = (new Date() - from) >= (to - from)
-    console.log(timerFinished)
 
     useEffect(() => {
         const interval = setInterval(() => {

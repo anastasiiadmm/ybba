@@ -34,7 +34,6 @@ axiosApi.interceptors.response.use(async config => {
 
         if (resp.status === 200) {
             const newTokens = resp.data
-            console.log(resp.data)
             axiosApi.defaults.headers['Authorization'] = `Bearer ${newTokens.access}`
 
             store.dispatch(refreshAccessToken(newTokens))
