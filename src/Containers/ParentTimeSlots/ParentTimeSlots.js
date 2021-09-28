@@ -44,6 +44,10 @@ const ParentTimeSlots = () => {
         } else {
             if (selectedTimeSlots.length < MAX_SELECTED_TIME_SLOTS) {
                 setSelectedTimeSlots([...selectedTimeSlots, id])
+            } else {
+                const timeSlots = [...selectedTimeSlots]
+                timeSlots.shift()
+                setSelectedTimeSlots([...timeSlots, id])
             }
         }
     }
@@ -85,7 +89,6 @@ const ParentTimeSlots = () => {
                 const timeSlotArray = newTimeSlotItems[timeSlotDayDate]
                 timeSlotArray.push(timeSlot)
                 newTimeSlotItems[timeSlotDayDate] = timeSlotArray.sort((a, b) => {
-                    console.log()
                     return new Date(moment(a.start_time, 'H:m:s')) - new Date(moment(b.start_time, 'H:m:s'))
                 })
             } else {
