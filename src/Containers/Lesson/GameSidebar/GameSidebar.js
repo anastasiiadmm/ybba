@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext} from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -9,6 +9,7 @@ import {LessonContext} from '../../../context/LessonContext/LessonContext';
 import {gameActions, userRoles} from '../../../constants';
 import {checkUserRole} from '../../../utils/user';
 import Timer from '../../../Components/Timer/Timer';
+import {strTimeToMoment} from '../../../utils/date/dateUtils';
 
 import './gameSidebar.css';
 
@@ -22,7 +23,6 @@ const GameSidebar = (props) => {
     const games = lesson?.games
     const activeGame = lesson?.active_game_id
 
-    const [timerData, setTimerData] = useState(null)
     const {triggerGameAction} = useContext(LessonContext)
 
     const gameClickHandler = game => {
@@ -38,29 +38,6 @@ const GameSidebar = (props) => {
     const triggerGameRestart = () => triggerGameAction(gameActions.RESTART_GAME)
     const triggerNextAction = () => triggerGameAction(gameActions.NEXT_ACTION)
 
-
-    useEffect(() => {
-        const now = new Date()
-        setTimerData({
-            from: new Date(
-                now.getFullYear(),
-                now.getMonth(),
-                now.getDate(),
-                1,
-                30,
-                0
-            ),
-            to: new Date(
-                now.getFullYear(),
-                now.getMonth(),
-                now.getDate(),
-                23,
-                10,
-                0
-            )
-        })
-    }, [])
-
     return (
         <>
             {lesson?.id && <WebCam meetingId={lesson.id} onClick={webcamOnClick}/>}
@@ -73,10 +50,10 @@ const GameSidebar = (props) => {
                     <Button className='btn-control btn-control_forward gameActionButton' onClick={triggerNextAction} />
                 </div>
             )}
-            {timerData && (
+            {lesson && (
                 <Timer
-                    from={timerData.from}
-                    to={timerData.to}
+                    from={strTimeToMoment(lesson.time_slot.start_time)}
+                    to={strTimeToMoment(lesson.time_slot.end_time)}
                 />
             )}
             {checkUserRole(userRoles.therapist) && (
@@ -112,7 +89,12 @@ const GameSidebar = (props) => {
 
 GameSidebar.propTypes = {
     webcamOnClick: PropTypes.func,
-    lesson: PropTypes.object.isRequired,
+    lesson: PropTypes.shape({
+        active_game_id: PropTypes.string,
+        games: PropTypes.arrayOf(PropTypes.shape({
+            display_name: PropTypes.string
+        }))
+    }).isRequired,
     gameOnClick: PropTypes.func,
     onFinishLesson: PropTypes.func
 }
