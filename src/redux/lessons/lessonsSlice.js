@@ -60,7 +60,10 @@ const lessonsSlice = createSlice({
         setSelectedChild: (state, {payload}) => {
             state.selectedChild = payload
         },
-        clearLessons: () => INITIAL_STATE
+        clearLessons: () => INITIAL_STATE,
+        clearChildren: state => {
+            state.children = null
+        }
     },
     extraReducers: {
         [getChildren.pending]: state => {
@@ -101,6 +104,6 @@ const lessonsSlice = createSlice({
     }
 })
 
-export const {setSelectedChild, clearLessons} = lessonsSlice.actions
+export const {setSelectedChild, clearLessons, clearChildren} = lessonsSlice.actions
 export const lessonsSelector = state => state.lessons
 export default lessonsSlice.reducer
