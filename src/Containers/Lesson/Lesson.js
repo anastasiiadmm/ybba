@@ -68,17 +68,26 @@ const Lesson = (props) => {
                 dispatch(action)
             }
         };
+
+        ws.current.onerror = () => {
+            ws.current.close()
+        }
     }, [dispatch, lessonId, tokens.access])
 
     useEffect(() => {
         if (status === DISCONNECT) {
+            if (ws.current) {
+                ws.current.close()
+            }
             dispatch(refreshToken())
         }
-    }, [dispatch, status])
+        // eslint-disable-next-line
+    }, [status])
 
     useEffect(() => {
         connectToWs()
-    }, [connectToWs, tokens])
+        // eslint-disable-next-line
+    }, [tokens])
 
     useEffect(() => {
         if (lesson) {
