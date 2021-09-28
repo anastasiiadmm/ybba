@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router';
@@ -7,13 +7,16 @@ import Container from '../../Components/Container/Container';
 import GameMain from './GameMain/GameMain';
 import GameSidebar from './GameSidebar/GameSidebar';
 import {addClasses} from '../../utils/addClasses/addClasses';
-import {authSelector} from '../../redux/auth/authSlice';
+import {authSelector, refreshToken} from '../../redux/auth/authSlice';
 import {getLesson, changeActiveGame, changeLessonStatus} from '../../redux/lesson/actions';
 import {lessonSelector} from '../../redux/lesson/lessonSlice';
 import {LESSON_STATUS_FINISHED} from '../../constants';
 import {GameContext} from '../../context/GameContext/GameContext';
 import {LessonContext} from '../../context/LessonContext/LessonContext';
 import {ReduxWebSocket} from '../../utils/MyWebSocket/MyWebSocket';
+import config from '../../config';
+import {webSocketSelector, clearWebSocket} from '../../redux/webSocker/webSockerSlice';
+import {DISCONNECT} from '../../redux/actionTypes';
 
 import './lesson.css'
 
@@ -27,6 +30,7 @@ const Lesson = (props) => {
 
     const {tokens} = useSelector(authSelector)
     const {lesson, lessonFinished} = useSelector(lessonSelector)
+    const {status} = useSelector(webSocketSelector)
 
     const {lessonId} = props.match.params
 
@@ -49,6 +53,33 @@ const Lesson = (props) => {
         changeLessonStatus({status: LESSON_STATUS_FINISHED, lesson_id: lessonId})
     )
 
+    const connectToWs = useCallback(() => {
+        ws.current = new ReduxWebSocket(`${config.wsUrl}?token=${tokens.access}`);
+        ws.current.onopen = () => {
+            ws.current.sendWsAction(
+                getLesson({lesson_id: lessonId})
+            )
+        };
+        ws.current.onclose = () => console.log('ws closed');
+
+        ws.current.onmessage = msg => {
+            const action = JSON.parse(msg.data)
+            if (action?.type) {
+                dispatch(action)
+            }
+        };
+    }, [dispatch, lessonId, tokens.access])
+
+    useEffect(() => {
+        if (status === DISCONNECT) {
+            dispatch(refreshToken())
+        }
+    }, [dispatch, status])
+
+    useEffect(() => {
+        connectToWs()
+    }, [connectToWs, tokens])
+
     useEffect(() => {
         if (lesson) {
             const active = lesson.games.find(game => game.id === lesson.active_game_id)
@@ -63,23 +94,11 @@ const Lesson = (props) => {
     }, [lessonFinished, history])
 
     useEffect(() => {
-        ws.current = new ReduxWebSocket(`ws://172.29.77.31:3000/ws?token=${tokens.access}`);
-        ws.current.onopen = () => {
-            ws.current.sendWsAction(
-                getLesson({lesson_id: lessonId})
-            )
-        };
-        ws.current.onclose = () => console.log('ws closed');
-
-        ws.current.onmessage = msg => {
-            const action = JSON.parse(msg.data)
-            if (action?.type) {
-                dispatch(action)
-            }
-        };
-
+        dispatch(clearWebSocket())
         return () => {
-            ws.current.close();
+            if (ws.current) {
+                ws.current.close();
+            }
         };
         // eslint-disable-next-line
     }, []);
