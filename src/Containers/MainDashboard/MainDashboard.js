@@ -50,7 +50,8 @@ const MainDashboard = () => {
         setInterval(() => {
             setNowDate(getNowDate())
         }, 1000)
-    }, [dispatch, user])
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <SidebarContainer>
