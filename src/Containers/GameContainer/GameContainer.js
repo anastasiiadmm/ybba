@@ -22,7 +22,7 @@ const GameContainer = () => {
     const [unityContext, setUnityContext] = useState(null)
 
     const getFileUrl = fileName => {
-        return activeGame[fileName].replace('localhost', '172.29.77.31')
+        return activeGame[fileName]
     }
 
     const setNewUnityContext = async () => {
