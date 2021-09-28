@@ -6,7 +6,7 @@ import {Spinner} from 'react-bootstrap';
 import SidebarContainer from '../../Components/SidebarContainer/SidebarContainer';
 import MainTitleBlock from '../MainDashboard/MainTitleBlock/MainTitleBlock';
 import FormField from '../../Components/FormField/FormField';
-import {getChildren, lessonsSelector, setSelectedChild, clearLessons} from '../../redux/lessons/lessonsSlice';
+import {getChildren, lessonsSelector, setSelectedChild, clearChildren} from '../../redux/lessons/lessonsSlice';
 import LessonDashboardComponent from '../../Components/LessonDashboardComponent/LessonDashboardComponent';
 import {authSelector} from '../../redux/auth/authSlice';
 
@@ -19,7 +19,6 @@ const Lessons = () => {
     const [childrenOptions, setChildrenOptions] = useState(null)
 
     const onSelectChange = ({value: childId}) => {
-        const children = user.profile.children
         const selectedChild = children.find(child => child.id === childId)
         dispatch(setSelectedChild(selectedChild))
     }
@@ -36,11 +35,11 @@ const Lessons = () => {
     }, [children])
 
     useEffect(() => {
-        dispatch(clearLessons())
+        dispatch(clearChildren())
         dispatch(getChildren(user.id))
 
         return () => {
-            dispatch(clearLessons())
+            dispatch(clearChildren())
         }
         // eslint-disable-next-line
     }, [])
@@ -78,7 +77,7 @@ const Lessons = () => {
                                     )}
                                 </div>
 
-                                {selectedChild && (
+                                {selectedChild?.allow_create_lesson && (
                                     <div className='classes__items w-100'>
                                         <LessonDashboardComponent
                                             title='Диагностическоe занятие#1'
