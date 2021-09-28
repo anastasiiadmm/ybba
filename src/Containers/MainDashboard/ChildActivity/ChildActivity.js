@@ -33,7 +33,7 @@ const ChildActivity = () => {
 
     useEffect(() => {
         setLessons()
-    }, [lessons, setLessons])
+    }, [lessons])
 
     return (
         <div className='info-item info-item_high'>
