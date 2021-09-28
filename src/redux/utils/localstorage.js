@@ -1,4 +1,4 @@
-import {loginUser, logoutUser} from '../auth/authSlice';
+import {loginUser, logoutUser, refreshToken} from '../auth/authSlice';
 
 
 export const localStorageKeyName = 'Ybba-state'
@@ -24,7 +24,7 @@ export const saveToLocalStorage = state => {
     }
 };
 
-const authActions = [String(loginUser.fulfilled), String(logoutUser)]
+const authActions = [String(loginUser.fulfilled), String(logoutUser), String(refreshToken.fulfilled)]
 
 export const localStorageMiddleware = store => next => action => {
     let result = next(action);
