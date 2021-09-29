@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import {addClasses} from '../../utils/addClasses/addClasses';
 
+import './timeSlot.css';
+
 
 const TimeSlot = (props) => {
 
@@ -20,7 +22,7 @@ const TimeSlot = (props) => {
         <Button
             type='button'
             onClick={timeSlotOnClick}
-            class={addClasses('', {
+            className={addClasses('timeSlot', {
                 'active': isActive
             })}
         >

@@ -12,9 +12,11 @@ import {getTimeSlots, lessonsSelector, createLessons, clearLessons} from '../../
 import TimeSlot from '../../Components/TimeSlot/TimeSlot';
 import FormField from '../../Components/FormField/FormField';
 import Modal from '../../Components/Modal/Modal';
+import {strDateToMoment, getCurrentDate} from '../../utils/date/dateUtils';
+import {shortNamesOfMonths, namesOfDaysOfWeekShort} from '../../constants';
+import {addClasses} from '../../utils/addClasses/addClasses';
 
 import './parentTimeSlots.css'
-
 
 const MAX_SELECTED_TIME_SLOTS = 1
 const DAYS_RANGE = 5
@@ -190,20 +192,34 @@ const ParentTimeSlots = () => {
                                         </Spinner>
                                     )}
                                     <div className='timeslot__items'>
-                                        {timeSlotItems && Object.keys(timeSlotItems).reverse().map(timeSlotItem => {
+                                        {timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {
+                                            return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()
+                                        }).map(timeSlotItem => {
+                                            const date = strDateToMoment(timeSlotItem)
+                                            const month = shortNamesOfMonths[date.month()]
+                                            const dayOfWeek = namesOfDaysOfWeekShort[date.day()]
                                             return (
                                                 <div className='timeslot__item'>
-                                                    <div className='timeslot__day'>
-                                                        {timeSlotItem}
+                                                    <div className={addClasses('timeslot__day', {
+                                                        'current': getCurrentDate().isSame(date)
+                                                    })}>
+                                                        {month} {date.date()},
+                                                        <br/>
+                                                        {dayOfWeek}
                                                     </div>
                                                 </div>
                                             )
                                         })}
                                     </div>
                                     <div className='timeslot__items timeSlotsBlock'>
-                                        {timeSlotItems && Object.keys(timeSlotItems).reverse().map(timeSlotItem => {
+                                        {timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {
+                                            return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()
+                                        }).map(timeSlotItem => {
                                             return (
                                                 <div className='timeslot__item'>
+                                                    <div>
+                                                        {/*<div className='timeslot__times timeslot__times_morn'>Утро</div>*/}
+                                                    </div>
                                                     {timeSlotItems[timeSlotItem].map(timeSlot => {
                                                         return (
                                                             <TimeSlot
@@ -222,7 +238,6 @@ const ParentTimeSlots = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/*<div className='timeslot__times timeslot__times_morn'>Утро</div>*/}
                             {/*<div className='timeslot__times timeslot__times_day'>День</div>*/}
                             {/*<div className='timeslot__times timeslot__times_evn'>Вечер</div>*/}
 
