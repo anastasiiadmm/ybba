@@ -192,7 +192,9 @@ const ParentTimeSlots = () => {
                                         </Spinner>
                                     )}
                                     <div className='timeslot__items'>
-                                        {timeSlotItems && Object.keys(timeSlotItems).map(timeSlotItem => {
+                                        {timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {
+                                            return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()
+                                        }).map(timeSlotItem => {
                                             const date = strDateToMoment(timeSlotItem)
                                             const month = shortNamesOfMonths[date.month()]
                                             const dayOfWeek = namesOfDaysOfWeekShort[date.day()]
@@ -210,7 +212,9 @@ const ParentTimeSlots = () => {
                                         })}
                                     </div>
                                     <div className='timeslot__items timeSlotsBlock'>
-                                        {timeSlotItems && Object.keys(timeSlotItems).map(timeSlotItem => {
+                                        {timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {
+                                            return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()
+                                        }).map(timeSlotItem => {
                                             return (
                                                 <div className='timeslot__item'>
                                                     <div>
