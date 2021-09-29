@@ -35,7 +35,11 @@ export const createChild = createAsyncThunk(
 const childSlice = createSlice({
     name: nameSpace,
     initialState: INITIAL_STATE,
-    reducers: {},
+    reducers: {
+        clearChildState: state => {
+            state.success = false
+        }
+    },
     extraReducers: {
         [createChild.pending]: state => {
           state.success = false
@@ -49,5 +53,6 @@ const childSlice = createSlice({
     }
 })
 
+export const {clearChildState} = childSlice.actions
 export const childSelector = state => state.child
 export default childSlice.reducer
