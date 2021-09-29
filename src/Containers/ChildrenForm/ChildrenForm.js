@@ -21,8 +21,9 @@ const ChildrenForm = (props) => {
         setChildrenData(newChildrenData)
         setToLocalStorage(newChildrenData)
     }
-    const ageChangeHandler = date => {
-        const newChildrenData = {...childrenData, date_of_birth: date}
+    const ageChangeHandler = data => {
+        const validDate = data === 'dd/mm/yyyy' ? '' : data
+        const newChildrenData = {...childrenData, date_of_birth: validDate}
         setChildrenData(newChildrenData)
         setToLocalStorage(newChildrenData)
     }
@@ -61,10 +62,13 @@ const ChildrenForm = (props) => {
         </div>
         <div className='form__row'>
             <FormField
+                showMaskOnHover={true}
+                showMaskOnFocus={true}
                 label='Дата рождения'
                 type='datepicker'
                 className='form__field'
                 name='date_of_birth'
+                mask='dd/mm/yyyy'
                 required
                 value={childrenData.date_of_birth}
                 onChange={ageChangeHandler}

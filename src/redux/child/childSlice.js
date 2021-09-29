@@ -1,5 +1,4 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {transformDateFormat} from '../../utils/date/dateUtils';
 import axiosApi from '../../axios';
 import {defaultError} from '../../config';
 
@@ -16,16 +15,18 @@ export const createChild = createAsyncThunk(
     `${nameSpace}/createChild`,
     async (childData, {rejectWithValue}) => {
         try {
-            const data = childData
-            data.date_of_birth = transformDateFormat(data.date_of_birth, 'DD/MM/YYYY', 'YYYY-MM-DD')
-            const resp = await axiosApi.post('/accounts/children/', childData)
+            const data = childData.childrenData
+            const resp = await axiosApi.post('/accounts/children/', data, {
+                headers: {
+                    'Authorization': `Bearer ${childData.tokens.access}`,
+                }
+            })
             return resp.data
         } catch (e) {
             let error = e?.response?.data
             if (!e.response) {
                 error = defaultError
             }
-            console.log(e)
             return rejectWithValue(error)
         }
     }
@@ -35,7 +36,17 @@ const childSlice = createSlice({
     name: nameSpace,
     initialState: INITIAL_STATE,
     reducers: {},
-    extraReducers: {}
+    extraReducers: {
+        [createChild.pending]: state => {
+          state.success = false
+        },
+        [createChild.fulfilled]: state => {
+            state.success = true
+        },
+        [createChild.rejected]: state => {
+            state.success = false
+        }
+    }
 })
 
 export const childSelector = state => state.child

@@ -64,6 +64,22 @@ export const updateUserPassword = createAsyncThunk(
     }
 )
 
+export const createUser = createAsyncThunk(
+    `${nameSpace}/createUser`,
+    async (userData, {rejectWithValue}) => {
+        try {
+            const resp = await axiosApi.post('/accounts/registration/', userData)
+            return resp.data
+        } catch (e) {
+            let error = e?.response?.data
+            if (!e.response) {
+                error = defaultError
+            }
+            return rejectWithValue(error)
+        }
+    }
+)
+
 
 const userSlice = createSlice({
     name: nameSpace,
@@ -101,7 +117,28 @@ const userSlice = createSlice({
             state.errors = payload
             state.success = false
             state.isPasswordUpdated = false
-        }
+        },
+
+        [createUser.pending]: state => {
+            state.user = null
+            state.tokens = null
+            state.loading = true
+            state.errors = null
+            state.success = false
+        },
+        [createUser.fulfilled]: (state, {payload}) => {
+            state.user = payload.user
+            state.tokens = payload.tokens
+            state.loading = false
+            state.success = true
+            state.errors = null
+        },
+        [createUser.rejected]: (state, {payload}) => {
+            state.loading = false
+            state.success = false
+            state.commonError = payload?.detail
+            state.errors = payload
+        },
     }
 })
 
