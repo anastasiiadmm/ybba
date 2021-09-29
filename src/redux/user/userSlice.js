@@ -93,7 +93,6 @@ const userSlice = createSlice({
             state.isPasswordUpdated = false
         },
         clearUserFromUserState: state => {
-            console.log(112341234123142314321432)
             state.user = null
         }
     },

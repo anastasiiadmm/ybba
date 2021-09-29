@@ -54,6 +54,7 @@ const Lesson = (props) => {
     )
 
     const connectToWs = useCallback(() => {
+        console.log(tokens.access)
         ws.current = new ReduxWebSocket(`${config.wsUrl}?token=${tokens.access}`);
         ws.current.onopen = () => {
             ws.current.sendWsAction(
@@ -87,7 +88,7 @@ const Lesson = (props) => {
     useEffect(() => {
         connectToWs()
         // eslint-disable-next-line
-    }, [tokens])
+    }, [tokens.access])
 
     useEffect(() => {
         if (lesson) {

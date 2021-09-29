@@ -79,7 +79,8 @@ export const refreshToken = createAsyncThunk(
     `${nameSpace}/refreshToken`,
     async (data = null, {getState}) => {
         const {tokens} = getState().auth
-        const resp = await axiosApi.post('/accounts/refresh/', {refresh: tokens.refresh})
+        const asd = {refresh: tokens.refresh}
+        const resp = await axiosApi.post('/accounts/refresh/', asd)
         return resp.data
     }
 )
@@ -155,7 +156,7 @@ const authSlice = createSlice({
         },
 
         [refreshToken.fulfilled]: (state, {payload}) => {
-            state.tokens = payload
+            state.tokens = {...state.tokens, ...payload}
         }
     }
 })
