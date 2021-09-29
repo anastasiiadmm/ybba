@@ -32,3 +32,7 @@ export const strDateToMoment = date => {
 export const strTimeToMoment = date => {
     return moment(date, config.timeFormat)
 }
+
+export const getCurrentDate = () => {
+    return moment(moment().format(config.dateFormat), config.dateFormat)
+}
