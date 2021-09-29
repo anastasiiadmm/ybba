@@ -10,8 +10,9 @@ import config from '../../../config.js';
 import {RegistrationContext} from '../../../context/RegistrationContext/RegistrationContext.js';
 import ChildrenForm from '../../ChildrenForm/ChildrenForm.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
-import {createChild} from '../../../redux/child/childSlice';
-import {createUser, authSelector, clearAuthState} from '../../../redux/auth/authSlice';
+import {createChild, childSelector} from '../../../redux/child/childSlice';
+import {authSelector, clearAuthState} from '../../../redux/auth/authSlice';
+import {createUser, userSelector} from '../../../redux/user/userSlice';
 
 
 const ChildRegistration = (props) => {
@@ -23,7 +24,9 @@ const ChildRegistration = (props) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const {children: childrenData, parent: parentData} = useContext(RegistrationContext)
-    const {user, loading, errors, success} = useSelector(authSelector)
+    const {user, tokens} = useSelector(userSelector)
+    const {loading, errors} = useSelector(authSelector)
+    const {success} = useSelector(childSelector)
 
     const handleBack = () => {
         const previousStage = currentStage - 1
@@ -49,7 +52,8 @@ const ChildRegistration = (props) => {
 
     useEffect(() => {
         if (user) {
-            dispatch(createChild(childrenData))
+            const data = {childrenData, tokens}
+            dispatch(createChild(data))
         }
         if (errors) {
             history.push(`/registration/${currentStage - 1}/`)
