@@ -51,6 +51,14 @@ const GameContainer = () => {
         // eslint-disable-next-line
     }, [gameAction])
 
+    if (!activeGame) {
+        return <div className='gameContainerLoaderWrapper gameContainer'>
+            <div className='gameContainerLoaderBlock'>
+                <p className='game__loader-text'>Нет игр для урока</p>
+            </div>
+        </div>
+    }
+
     if (!unityContext) {
         return <div className='gameContainerLoaderWrapper gameContainer'>
             <div className='gameContainerLoaderBlock'>
