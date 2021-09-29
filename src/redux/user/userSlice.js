@@ -91,6 +91,10 @@ const userSlice = createSlice({
             state.commonError = null
             state.errors = null
             state.isPasswordUpdated = false
+        },
+        clearUserFromUserState: state => {
+            console.log(112341234123142314321432)
+            state.user = null
         }
     },
     extraReducers: {
@@ -142,6 +146,6 @@ const userSlice = createSlice({
     }
 })
 
-export const {clearUserState} = userSlice.actions
+export const {clearUserState, clearUserFromUserState} = userSlice.actions
 export const userSelector = state => state.user
 export default userSlice.reducer

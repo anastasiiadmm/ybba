@@ -9,6 +9,7 @@ import Container from '../../Components/Container/Container.js';
 import FormField from '../../Components/FormField/FormField';
 import SocialMediaBlock from '../../Components/SocialMediaBlock/SocialMediaBlock';
 import {loginUser, authSelector, clearAuthState} from '../../redux/auth/authSlice';
+import {clearUserFromUserState, clearUserState} from '../../redux/user/userSlice';
 
 
 const Login = () => {
@@ -37,7 +38,8 @@ const Login = () => {
 
     useEffect(() => {
         pushToMainPage()
-        dispatch(clearAuthState())
+        dispatch(clearUserState())
+        dispatch(clearUserFromUserState())
         // eslint-disable-next-line
     }, [])
 

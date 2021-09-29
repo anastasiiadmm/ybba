@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import PropTypes from 'prop-types';
 import {useSelector, useDispatch} from 'react-redux';
@@ -9,14 +9,16 @@ import SocialMediaBlock from '../../../Components/SocialMediaBlock/SocialMediaBl
 import config from '../../../config.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
 import {allRussianWardsAndHyphen} from '../../../regex/patterns/html';
-import {authSelector, clearAuthState} from '../../../redux/auth/authSlice';
+import {clearAuthState} from '../../../redux/auth/authSlice';
+import {clearChildState} from '../../../redux/child/childSlice';
+import {userSelector, clearUserState} from '../../../redux/user/userSlice';
 
 
 const ParentRegistration = (props) => {
 
     const {registrationData, setRegistrationData, currentStage} = props
 
-    const {errors} = useSelector(authSelector)
+    const {errors} = useSelector(userSelector)
     const dispatch = useDispatch()
 
     const history = useHistory()
@@ -41,9 +43,13 @@ const ParentRegistration = (props) => {
     const onSubmit = async e => {
         e.preventDefault()
         const nextStage = currentStage + 1
-        await dispatch(clearAuthState())
+        await dispatch(clearUserState())
         history.push(`/registration/${nextStage}/`)
     }
+
+    useEffect(() => {
+        dispatch(clearChildState())
+    }, [])
 
     return (
         <RegistrationBaseBlock
