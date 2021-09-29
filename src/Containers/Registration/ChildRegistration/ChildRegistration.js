@@ -24,9 +24,8 @@ const ChildRegistration = (props) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const {children: childrenData, parent: parentData} = useContext(RegistrationContext)
-    const {user, tokens} = useSelector(userSelector)
-    const {loading, errors} = useSelector(authSelector)
-    const {success} = useSelector(childSelector)
+    const {user, tokens, errors} = useSelector(userSelector)
+    const {success, loading} = useSelector(childSelector)
 
     const handleBack = () => {
         const previousStage = currentStage - 1
