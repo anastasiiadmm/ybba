@@ -8,13 +8,19 @@ import {
     GAME_FILE_TYPE_LOADER,
     GAME_FILE_TYPE_DATA,
     GAME_FILE_TYPE_FRAMEWORK,
-    GAME_FILE_TYPE_WASM
+    GAME_FILE_TYPE_WASM, userRoles
 } from '../../constants';
 
 import './gameContainer.css'
+import {checkUserRole} from '../../utils/user';
+import PropTypes from 'prop-types';
 
 
-const GameContainer = () => {
+const GameContainer = (props) => {
+
+    const {
+        gameSessionId
+    } = props
 
     const {activeGame} = useContext(GameContext)
     const {gameAction, triggerGameAction} = useContext(LessonContext)
@@ -51,6 +57,26 @@ const GameContainer = () => {
         // eslint-disable-next-line
     }, [gameAction])
 
+    useEffect(() => {
+        let json = {}
+        if (checkUserRole(userRoles.therapist)) {
+            json = {IsServer: true, Id: gameSessionId, FreeGame: false}
+        }
+        if (checkUserRole(userRoles.parent)) {
+            json = {IsServer: false, Id: gameSessionId, FreeGame: false}
+        }
+        if (unityContext) {
+            let tryCount = 0
+            const interval = setInterval(() => {
+                tryCount += 1
+                unityContext.send('WebData', JSON.stringify(json))
+                if (tryCount >= 60) {
+                    clearInterval(interval)
+                }
+            }, 100)
+        }
+    }, [unityContext])
+
     if (!activeGame) {
         return <div className='gameContainerLoaderWrapper gameContainer'>
             <div className='gameContainerLoaderBlock'>
@@ -73,6 +99,10 @@ const GameContainer = () => {
             className='game__screen'
         />
     );
+}
+
+GameContainer.propTypes = {
+    gameSessionId: PropTypes.string.isRequired
 }
 
 export default GameContainer;

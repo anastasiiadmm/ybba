@@ -12,9 +12,11 @@ const GameMain = () => {
 
     return (
         <>
-            <div className='game__block'>
+            <div className='game__block p-0'>
                 <div className='game__work-space gameWrapper'>
-                    <GameContainer/>
+                    <GameContainer
+                        gameSessionId={'2'}
+                    />
                 </div>
             </div>
             {checkUserRole(userRoles.therapist) && (
