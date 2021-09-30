@@ -81,6 +81,7 @@ const Lesson = (props) => {
                 ws.current.close()
             }
             dispatch(refreshToken())
+            dispatch(clearWebSocket())
         }
         // eslint-disable-next-line
     }, [status])
