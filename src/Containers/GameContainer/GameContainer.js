@@ -59,6 +59,7 @@ const GameContainer = (props) => {
 
     useEffect(() => {
         let json = {}
+        let interval
         if (checkUserRole(userRoles.therapist)) {
             json = {IsServer: true, Id: gameSessionId, FreeGame: false}
         }
@@ -67,13 +68,17 @@ const GameContainer = (props) => {
         }
         if (unityContext) {
             let tryCount = 0
-            const interval = setInterval(() => {
+            interval = setInterval(() => {
                 tryCount += 1
-                unityContext.send('WebData', JSON.stringify(json))
-                if (tryCount >= 60) {
+                unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
+                if (tryCount >= 100) {
                     clearInterval(interval)
                 }
             }, 100)
+        }
+
+        return () => {
+            clearInterval(interval)
         }
     }, [unityContext])
 
