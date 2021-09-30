@@ -1,4 +1,5 @@
 .mainGame {
+    width: 65% !important;
     transition: all .3s;
 }
 
