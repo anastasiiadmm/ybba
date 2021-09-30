@@ -9,16 +9,30 @@ import './modal.css'
 
 const Modal = (props) => {
 
-    const {children, toggle, isOpen, width} = props
+    const {
+        children, toggle, isOpen, width, onClose
+    } = props
+
+    const closeModal = () => {
+        onClose()
+        toggle()
+    }
 
     return (
-        <BackDrop isOpen={isOpen} toggle={toggle}>
+        <BackDrop isOpen={isOpen} toggle={closeModal}>
             <div
                 className='modalBody'
                 style={{width: `${width}%`}}
                 onClick={e => e.stopPropagation()}
             >
-                {children}
+                <button
+                    type='button'
+                    className='modal__close modalClose'
+                    onClick={closeModal}
+                />
+                <div className='message'>
+                    {children}
+                </div>
             </div>
         </BackDrop>
     );
@@ -27,7 +41,8 @@ const Modal = (props) => {
 Modal.propTypes = {
     toggle: PropTypes.func,
     isOpen: PropTypes.bool,
-    width: PropTypes.number
+    width: PropTypes.number,
+    onClose: PropTypes.func
 }
 
 export default Modal;

@@ -1,13 +1,11 @@
 import React from 'react';
 
 import Container from '../Container/Container.js';
-import SideBar from '../SideBar/SideBar.js';
 
 
 const Page404 = () => {
     return (
         <Container>
-            <SideBar/>
             <div
                 className='text-center m-auto'
                 style={{transform: 'scale(2)'}}

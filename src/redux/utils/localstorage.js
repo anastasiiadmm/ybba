@@ -1,4 +1,4 @@
-import {loginUser, logoutUser} from '../user/userSlice.js';
+import {loginUser, logoutUser, refreshToken} from '../auth/authSlice';
 
 
 export const localStorageKeyName = 'Ybba-state'
@@ -24,14 +24,14 @@ export const saveToLocalStorage = state => {
     }
 };
 
-const authActions = [String(loginUser.fulfilled), String(logoutUser.fulfilled), String(logoutUser.rejected)]
+const authActions = [String(loginUser.fulfilled), String(logoutUser), String(refreshToken.fulfilled)]
 
 export const localStorageMiddleware = store => next => action => {
     let result = next(action);
 
     if (authActions.includes(action.type)) {
         saveToLocalStorage({
-            user: store.getState().user
+            auth: store.getState().auth
         });
     }
     return result;

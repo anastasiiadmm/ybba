@@ -1,17 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import PropTypes from 'prop-types';
+import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router';
 
 import FormField from '../../../Components/FormField/FormField.js';
 import SocialMediaBlock from '../../../Components/SocialMediaBlock/SocialMediaBlock.js';
 import config from '../../../config.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
+import {allRussianWardsAndHyphen} from '../../../regex/patterns/html';
+import {clearAuthState} from '../../../redux/auth/authSlice';
+import {clearChildState} from '../../../redux/child/childSlice';
+import {userSelector, clearUserState} from '../../../redux/user/userSlice';
 
 
 const ParentRegistration = (props) => {
 
     const {registrationData, setRegistrationData, currentStage} = props
+
+    const {errors} = useSelector(userSelector)
+    const dispatch = useDispatch()
 
     const history = useHistory()
 
@@ -32,11 +40,16 @@ const ParentRegistration = (props) => {
         setRegistrationData(newRegistrationData)
         setToLocalStorage(newRegistrationData)
     }
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault()
         const nextStage = currentStage + 1
+        await dispatch(clearUserState())
         history.push(`/registration/${nextStage}/`)
     }
+
+    useEffect(() => {
+        dispatch(clearChildState())
+    }, [])
 
     return (
         <RegistrationBaseBlock
@@ -55,11 +68,12 @@ const ParentRegistration = (props) => {
                     name='first_name'
                     required
                     maxLength='50'
-                    pattern='^[а-яА-Я\s-]+$'
+                    pattern={allRussianWardsAndHyphen}
                     tooltipTitle='Имя'
                     value={registrationData.first_name}
                     tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
                     onChange={inputChangeHandler}
+                    errors={errors}
                 />
             </div>
             <div className='form__row'>
@@ -70,11 +84,12 @@ const ParentRegistration = (props) => {
                     name='last_name'
                     required
                     maxLength='50'
-                    pattern='^[а-яА-Я\s-]+$'
+                    pattern={allRussianWardsAndHyphen}
                     tooltipTitle='Фамилия'
                     value={registrationData.last_name}
                     tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
                     onChange={inputChangeHandler}
+                    errors={errors}
                 />
             </div>
             <div className='form__row'>
@@ -90,6 +105,7 @@ const ParentRegistration = (props) => {
                     value={registrationData.email}
                     tooltipText='Должен содержать символ @).'
                     onChange={inputChangeHandler}
+                    errors={errors}
                 />
             </div>
             <div className='form__row'>
@@ -106,6 +122,7 @@ const ParentRegistration = (props) => {
                     value={registrationData.password}
                     helpText='Пароль должен содержать не менее 5 символов'
                     onChange={inputChangeHandler}
+                    errors={errors}
                 />
             </div>
             <div className='form__row'>
@@ -120,6 +137,7 @@ const ParentRegistration = (props) => {
                     value={registrationData.password_repeat}
                     helpText='Пароли должны совпадать'
                     onChange={inputChangeHandler}
+                    errors={errors}
                 />
             </div>
             <div className='form__row form__row_pd'>

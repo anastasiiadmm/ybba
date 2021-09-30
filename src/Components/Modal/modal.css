@@ -1,4 +1,14 @@
 .modalBody {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
     margin: 80px auto;
     z-index: 9999999 !important;
+}
+
+.modalClose {
+    position: static !important;
+    margin: 0 0 0 auto;
 }

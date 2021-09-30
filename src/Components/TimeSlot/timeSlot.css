@@ -1,0 +1,8 @@
+.timeSlot {
+    cursor: pointer;
+    transition: all .1s;
+}
+
+.timeSlot:hover {
+    transform: scale(1.1);
+}
