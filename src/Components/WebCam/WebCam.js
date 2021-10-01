@@ -22,6 +22,10 @@ const WebCam = (props) => {
         jitsiTools.mic
     ]
 
+    console.log('=========================')
+    console.log(window.innerHeight)
+    console.log('=========================')
+
     return (
         <div className='game__person game__person_child' onClick={onClick}>
             <div className='game__person-in'>
@@ -29,7 +33,7 @@ const WebCam = (props) => {
                     meetingId={meetingId}
                     userInfo={userInfo}
                     width='100%'
-                    height={500}
+                    height={window.innerHeight / 2.2}
                     toolbarItems={tools}
                 />
                 <button className='game__person-btn btn-zoom' type='button'/>

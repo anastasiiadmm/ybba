@@ -80,6 +80,7 @@ const GameContainer = (props) => {
         return () => {
             clearInterval(interval)
         }
+        // eslint-disable-next-line
     }, [unityContext])
 
     if (!activeGame) {
@@ -101,7 +102,7 @@ const GameContainer = (props) => {
     return (
         <Unity
             unityContext={unityContext}
-            className='game__screen'
+            className='game__screen w-100'
         />
     );
 }
