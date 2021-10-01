@@ -25,9 +25,9 @@ const SideBar = () => {
                     <SideBarLink to='/profile/' classes='main-nav__link_lk'>
                         Личный кабинет
                     </SideBarLink>
-                    {/*<SideBarLink to='/child-profile/' classes='main-nav__link_profile'>*/}
-                    {/*    Профиль ребёнка*/}
-                    {/*</SideBarLink>*/}
+                    <SideBarLink to='/child-profile/' classes='main-nav__link_profile'>
+                        Профиль ребёнка
+                    </SideBarLink>
                     {/*<SideBarLink to='/payments/' classes='main-nav__link_payment'>*/}
                     {/*    Управление платежами*/}
                     {/*</SideBarLink>*/}
