@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
@@ -10,7 +10,10 @@ import {jitsiTools} from '../../constants';
 
 const WebCam = (props) => {
 
+    const widthDivRef = useRef()
+
     const {meetingId, onClick} = props
+    const [windowHeight, setWindowHeight] = useState(null)
 
     const {user} = useSelector(authSelector)
 
@@ -22,20 +25,33 @@ const WebCam = (props) => {
         jitsiTools.mic
     ]
 
-    console.log('=========================')
-    console.log(window.innerHeight)
-    console.log('=========================')
+    useEffect(() => {
+        if (widthDivRef.current) {
+            setWindowHeight(widthDivRef.current.offsetWidth)
+
+            widthDivRef.current.addEventListener('resize', () => {
+                console.log(1234)
+                setWindowHeight(widthDivRef.current.offsetWidth)
+            })
+        }
+    }, [widthDivRef])
 
     return (
         <div className='game__person game__person_child' onClick={onClick}>
-            <div className='game__person-in'>
-                <Jitsi
-                    meetingId={meetingId}
-                    userInfo={userInfo}
-                    width='100%'
-                    height={window.innerHeight / 2.2}
-                    toolbarItems={tools}
+            <div className='game__person-in' style={{height: windowHeight}}>
+                <div
+                    className='w-100'
+                    ref={widthDivRef}
                 />
+                {windowHeight && (
+                    <Jitsi
+                        meetingId={meetingId}
+                        userInfo={userInfo}
+                        width='100%'
+                        height='100%'
+                        toolbarItems={tools}
+                    />
+                )}
                 <button className='game__person-btn btn-zoom' type='button'/>
             </div>
         </div>
