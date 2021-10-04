@@ -66,6 +66,20 @@ const FormField = props => {
         </label>
     </>
 
+    if (type === 'checkbox') {
+        field = <>
+            <input
+                id={id}
+                className='check'
+                type='checkbox'
+                onChange={onChange}
+            />
+            <label htmlFor={id}>
+                {label}
+            </label>
+        </>
+    }
+
     if (type === 'datepicker') {
         field = <>
             <label className='form__label'>
