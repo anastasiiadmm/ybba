@@ -124,7 +124,7 @@ const Lesson = (props) => {
                         })}
                     >
                         <GameContext.Provider value={gameContext}>
-                            <GameMain activeGame={activeGame}/>
+                            <GameMain activeGame={activeGame} gameSessionId={lessonId}/>
                         </GameContext.Provider>
                     </main>
                     <div
