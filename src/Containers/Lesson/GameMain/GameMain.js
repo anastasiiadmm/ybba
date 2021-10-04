@@ -1,21 +1,27 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import GameContainer from '../../GameContainer/GameContainer';
 import Button from '../../../Components/Button/Button';
 import {checkUserRole} from '../../../utils/user';
-import {userRoles} from '../../../constants';
 
+import {userRoles} from '../../../constants';
 import './gameMain.css'
 
 
-const GameMain = () => {
+const GameMain = (props) => {
+
+    const {
+        gameSessionId
+    } = props
 
     return (
         <>
             <div className='game__block p-0'>
                 <div className='game__work-space gameWrapper'>
                     <GameContainer
-                        gameSessionId={'2'}
+                        gameSessionId={gameSessionId}
                     />
                 </div>
             </div>
@@ -36,6 +42,10 @@ const GameMain = () => {
             )}
         </>
     );
+}
+
+GameMain.propTypes = {
+    gameSessionId: PropTypes.string.isRequired
 }
 
 export default GameMain;
