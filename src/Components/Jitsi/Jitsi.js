@@ -35,7 +35,13 @@ const Jitsi = (props) => {
         // eslint-disable-next-line
     }, [])
 
-    return <div id='jitsi-iframe'/>
+    return <div
+        id='jitsi-iframe'
+        style={{
+            width,
+            height
+        }}
+    />
 }
 
 Jitsi.propTypes = {
