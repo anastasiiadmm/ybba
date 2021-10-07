@@ -98,19 +98,6 @@ const Payment = () => {
                                     className="btn payment-card__btn ruble"
                                     type="button"
                                     disabled={!selectedChild.is_diagnostic_lesson_completed}
-                                    onClick={async () => {
-                                        await sendTestRequest({
-                                            userId: user.id,
-                                            email: user.email,
-                                            signature: generateHash({
-                                                userId: user.id,
-                                                sum: '1500'
-                                            }),
-                                            incSum: '1500',
-                                            outSum: '1500',
-                                            fee: '150'
-                                        })
-                                    }}
                                 >
                                     Оплатить 1500
                                 </button>
