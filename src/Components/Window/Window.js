@@ -25,6 +25,7 @@ const Window = (props) => {
                 'width=1000,height=1000,left=0,top=0'
             );
             const styles = document.getElementsByTagName('style')
+            console.log('Styles', styles)
             for (let i = 0; i < styles.length; i++) {
                 const styleCopy = styles[i].cloneNode(true)
                 newWindow.current.document.head.appendChild(styleCopy)
