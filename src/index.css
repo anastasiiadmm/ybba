@@ -1696,7 +1696,7 @@ a.disabled {
 }
 
 .tab span {
-    color: #A3B3CC;
+    color: #000000;
     display: inline-block;
     height: 100%;
     padding-bottom: 12px;
@@ -2564,6 +2564,7 @@ form .cabinet {
 
 .class__title {
     font-size: 18px;
+    font-weight: bold;
     margin: 0 0 8px;
     white-space: nowrap;
     overflow: hidden;
@@ -2974,6 +2975,7 @@ form .cabinet {
 .payment-card__title {
     font-size: 18px;
     margin: 0 0 8px;
+    font-weight: bold;
 }
 
 .payment-card__title_flex {
@@ -3015,6 +3017,10 @@ form .cabinet {
 .payments__col .available {
     padding-bottom: 12px;
     white-space: nowrap;
+}
+
+.payment__info {
+    width: 100%;
 }
 
 .payments__select {

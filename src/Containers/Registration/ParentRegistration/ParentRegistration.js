@@ -55,7 +55,7 @@ const ParentRegistration = (props) => {
         <RegistrationBaseBlock
             onSubmit={onSubmit}
         >
-            <h4 className='form__title'>Зарегистрируйтесь</h4>
+            <h4 className='form__title'><b>Зарегистрируйтесь</b></h4>
             <div className='form__row'>
                 <p className='form__text'>Через соцсеть</p>
                 <SocialMediaBlock/>

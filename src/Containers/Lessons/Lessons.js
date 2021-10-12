@@ -54,16 +54,15 @@ const Lessons = () => {
                     <div className='classes'>
 
                         <div className='classes__title-block'>
-                            <h3 className='classes__title'>Доступные занятия</h3>
+                            <h3 className='classes__title'><b>Доступные занятия</b></h3>
                         </div>
 
                         <div className='classes__content'>
                             <div className='classes__row'>
                                 <div className='classes__col'>
-
+                                    <label className='form__label'>Ребёнок</label>
                                     {childrenOptions && (
                                         <FormField
-                                            label='Ребёнок'
                                             className='classes__select select'
                                             type='select'
                                             options={childrenOptions}
