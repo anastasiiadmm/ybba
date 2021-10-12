@@ -57,14 +57,10 @@ const ParentRegistration = (props) => {
         >
             <h4 className='form__title'><b>Зарегистрируйтесь</b></h4>
             <div className='form__row'>
-                <p className='form__text'>Через соцсеть</p>
-                <SocialMediaBlock/>
-            </div>
-            <div className='form__row'>
+                <label className='form__label'>Имя</label>
                 <FormField
                     type='text'
                     className='form__field'
-                    label='Имя'
                     name='first_name'
                     required
                     maxLength='50'
@@ -77,10 +73,10 @@ const ParentRegistration = (props) => {
                 />
             </div>
             <div className='form__row'>
+                <label className='form__label'>Фамилия</label>
                 <FormField
                     type='text'
                     className='form__field'
-                    label='Фамилия'
                     name='last_name'
                     required
                     maxLength='50'
@@ -93,10 +89,10 @@ const ParentRegistration = (props) => {
                 />
             </div>
             <div className='form__row'>
+                <label className='form__label'>Email</label>
                 <FormField
                     type='email'
                     className='form__field'
-                    label='Email'
                     name='email'
                     required
                     maxLength='320'
@@ -109,10 +105,10 @@ const ParentRegistration = (props) => {
                 />
             </div>
             <div className='form__row'>
+                <label className='form__label'>Пароль</label>
                 <FormField
                     type='password'
                     className='form__field passw-first'
-                    label='Пароль'
                     name='password'
                     required
                     maxLength='320'
@@ -126,10 +122,10 @@ const ParentRegistration = (props) => {
                 />
             </div>
             <div className='form__row'>
+                <label className='form__label'>Повтор пароля</label>
                 <FormField
                     type='password'
                     className='form__field passw-repeat'
-                    label='Повтор пароля'
                     name='password_repeat'
                     required
                     maxLength='320'
