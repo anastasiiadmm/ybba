@@ -28,7 +28,6 @@ const App = () => {
         <div>
 
             <Switch>
-                <PrivateRoute path='/speech-card/' component={SpeechCardTest} />
                 <PrivateRoute path='/lessons/timeSlots/' exact component={ParentTimeSlots} />
                 <PrivateRoute path='/lessons/' component={Lessons} exact />
                 <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />

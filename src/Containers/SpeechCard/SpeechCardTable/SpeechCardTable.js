@@ -9,7 +9,7 @@ const SpeechCardTable = (props) => {
         onChange, tableData, initData
     } = props
 
-    const initialData = Object.keys(initData).length ? initData : {
+    const initialData = {
         in_isolation: {},
         in_words: {},
         in_spontaneous_speech: {}
@@ -24,7 +24,12 @@ const SpeechCardTable = (props) => {
     }
 
     useEffect(() => {
-        console.log(initData)
+        if (initData) {
+            setData(initData)
+        }
+    }, [initData])
+
+    useEffect(() => {
         if (!Object.keys(initData).length) {
             let newData = {...initialData}
             Object.keys(initialData).forEach(rowName => {
@@ -49,11 +54,11 @@ const SpeechCardTable = (props) => {
                     )
                 })}
             </tr>
-            {Object.keys(initialData).map((rowName, index) => {
+            {Object.keys(data).map((rowName, index) => {
                 return (
                     <tr>
                         <td>{index + 1}</td>
-                        {Object.keys(tableData).map(columnItem => {
+                        {Object.keys(data[rowName]).map(columnItem => {
                             return (
                                 <td>
                                     <FormField
