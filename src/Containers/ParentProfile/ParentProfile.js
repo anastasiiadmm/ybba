@@ -31,7 +31,7 @@ const ParentProfile = () => {
                         <div className='cabinet'>
 
                             <div className='cabinet__content'>
-                                <h4 className='cabinet__title'>Основная информация</h4>
+                                <h4 className='cabinet__title'><b>Основная информация</b></h4>
                             </div>
 
                             <ParentProfileData user={user}/>
