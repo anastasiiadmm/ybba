@@ -5,34 +5,41 @@ import PropTypes from 'prop-types';
 import BackDrop from '../BackDrop/BackDrop.js';
 
 import './modal.css'
+import {addClasses} from '../../utils/addClasses/addClasses';
+import Button from '../Button/Button';
 
 
 const Modal = (props) => {
 
     const {
-        children, toggle, isOpen, width, onClose
+        children, toggle, isOpen, width, onClose, className
     } = props
 
     const closeModal = () => {
-        onClose()
+        if (onClose) {
+            onClose()
+        }
         toggle()
     }
 
     return (
         <BackDrop isOpen={isOpen} toggle={closeModal}>
             <div
-                className='modalBody'
-                style={{width: `${width}%`}}
+                className={addClasses('modal d-block top-0 h-75 mt-5', {
+                    [className || '']: true
+                })}
+                // style={{width: `${width}%`}}
+                style={{maxWidth: '738px', top: '72px'}}
                 onClick={e => e.stopPropagation()}
             >
-                <button
-                    type='button'
-                    className='modal__close modalClose'
-                    onClick={closeModal}
-                />
-                <div className='message'>
+                <div className="modal__body">
                     {children}
                 </div>
+                <Button
+                    type="button"
+                    className="modal__close"
+                    onClick={closeModal}
+                />
             </div>
         </BackDrop>
     );
@@ -42,7 +49,8 @@ Modal.propTypes = {
     toggle: PropTypes.func,
     isOpen: PropTypes.bool,
     width: PropTypes.number,
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    className: PropTypes.string
 }
 
 export default Modal;
