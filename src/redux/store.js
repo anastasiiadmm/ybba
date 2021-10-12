@@ -8,6 +8,7 @@ import childReducer from './child/childSlice'
 import lessonsReducer from './lessons/lessonsSlice'
 import bashBoard from './dashBoard/dashBoardSlice'
 import webSocket from './webSocker/webSockerSlice'
+import surveys from './surveys/surveysSlice'
 
 
 const middlewares = [localStorageMiddleware]
@@ -21,7 +22,8 @@ const configureStoreCreator = () => {
             child: childReducer,
             lessons: lessonsReducer,
             dashBoard: bashBoard,
-            webSocket: webSocket
+            webSocket: webSocket,
+            surveys: surveys
         },
         preloadedState: loadFromLocalStorage(),
         middleware: [...getDefaultMiddleware(), ...middlewares]

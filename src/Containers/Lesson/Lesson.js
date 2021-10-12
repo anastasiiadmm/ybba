@@ -19,6 +19,8 @@ import {webSocketSelector, clearWebSocket} from '../../redux/webSocker/webSocker
 import {DISCONNECT} from '../../redux/actionTypes';
 
 import './lesson.css'
+import Window from '../../Components/Window/Window';
+import SpeechCard from '../SpeechCard/SpeechCard';
 
 
 const Lesson = (props) => {
@@ -37,6 +39,7 @@ const Lesson = (props) => {
     const [sideBarIsWide, setSideBarIsWide] = useState(false)
     const [activeGame, setActiveGame] = useState(null)
     const [gameAction, triggerGameAction] = useState('')
+    const [windowData, setWindowData] = useState()
 
     const gameContext = {activeGame, gameAction, triggerGameAction}
     const lessonContext = {gameAction, triggerGameAction}
@@ -52,6 +55,16 @@ const Lesson = (props) => {
     const onLessonFinish = () => ws.current.sendWsAction(
         changeLessonStatus({status: LESSON_STATUS_FINISHED, lesson_id: lessonId})
     )
+    const openSpeechCard = () => {
+        const speechCard = <SpeechCard
+            child={lesson.student}
+            uniqueSpeechCardId={lesson.id}
+        />
+        setWindowData(speechCard)
+    }
+    const onCloseSpeechCard = () => {
+        setWindowData(null)
+    }
 
     const connectToWs = useCallback(() => {
         console.log(tokens.access)
@@ -116,6 +129,13 @@ const Lesson = (props) => {
 
     return (
         <Container>
+            {lesson && windowData && (
+                <Window
+                    handleClose={onCloseSpeechCard}
+                >
+                    {windowData}
+                </Window>
+            )}
             <LessonContext.Provider value={lessonContext}>
                 <div className='game mainLessonWindow'>
                     <main
@@ -124,7 +144,11 @@ const Lesson = (props) => {
                         })}
                     >
                         <GameContext.Provider value={gameContext}>
-                            <GameMain activeGame={activeGame} gameSessionId={lessonId}/>
+                            <GameMain
+                                activeGame={activeGame}
+                                gameSessionId={lessonId}
+                                speechCardOnClick={openSpeechCard}
+                            />
                         </GameContext.Provider>
                     </main>
                     <div

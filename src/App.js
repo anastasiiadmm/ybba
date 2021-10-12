@@ -1,4 +1,5 @@
 import {Route, Switch} from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 import Page404 from './Components/Page404/Page404.js';
 import Login from './Containers/Login/Login';
@@ -15,13 +16,19 @@ import Lessons from './Containers/Lessons/Lessons';
 import ParentTimeSlots from './Containers/ParentTimeSlots/ParentTimeSlots';
 
 import './App.css';
+import SpeechCard from './Containers/SpeechCard/SpeechCard';
+import SpeechCardTest from './Containers/SpeechCard/SpeechCardTest';
+
+import styles from './index.css'
 
 
 const App = () => {
+
     return (
         <div>
 
             <Switch>
+                <PrivateRoute path='/speech-card/' component={SpeechCardTest} />
                 <PrivateRoute path='/lessons/timeSlots/' exact component={ParentTimeSlots} />
                 <PrivateRoute path='/lessons/' component={Lessons} exact />
                 <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />

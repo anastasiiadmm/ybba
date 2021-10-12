@@ -30,7 +30,6 @@ const WebCam = (props) => {
             setWindowHeight(widthDivRef.current.offsetWidth)
 
             widthDivRef.current.addEventListener('resize', () => {
-                console.log(1234)
                 setWindowHeight(widthDivRef.current.offsetWidth)
             })
         }
