@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import GameContainer from '../../GameContainer/GameContainer';
 import Button from '../../../Components/Button/Button';
 import {checkUserRole} from '../../../utils/user';
-
 import {userRoles} from '../../../constants';
+import {addClasses} from '../../../utils/addClasses/addClasses';
+
 import './gameMain.css'
 
 
@@ -18,8 +19,12 @@ const GameMain = (props) => {
 
     return (
         <>
-            <div className='game__block p-0'>
-                <div className='game__work-space gameWrapper'>
+            <div className={addClasses('game__block p-0', {
+                'h-100': checkUserRole(userRoles.parent)
+            })}>
+                <div className={addClasses('game__work-space gameWrapper', {
+                    'h-100': checkUserRole(userRoles.parent)
+                })}>
                     <GameContainer
                         gameSessionId={gameSessionId}
                     />

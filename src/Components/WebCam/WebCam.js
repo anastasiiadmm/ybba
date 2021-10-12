@@ -5,7 +5,8 @@ import {useSelector} from 'react-redux';
 
 import {authSelector} from '../../redux/auth/authSlice';
 import Jitsi from '../Jitsi/Jitsi';
-import {jitsiTools} from '../../constants';
+import {jitsiTools, userRoles} from '../../constants';
+import {checkUserRole} from '../../utils/user';
 
 
 const WebCam = (props) => {
@@ -27,11 +28,13 @@ const WebCam = (props) => {
 
     useEffect(() => {
         if (widthDivRef.current) {
-            setWindowHeight(widthDivRef.current.offsetWidth)
-
-            widthDivRef.current.addEventListener('resize', () => {
-                setWindowHeight(widthDivRef.current.offsetWidth)
-            })
+            const width = widthDivRef.current.offsetWidth
+            const widthPercent = width / 100
+            const height = checkUserRole(userRoles.therapist) ?
+                width - widthPercent * 30 :
+                width
+            console.log(width, height)
+            setWindowHeight(height)
         }
     }, [widthDivRef])
 

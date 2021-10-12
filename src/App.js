@@ -13,6 +13,7 @@ import ParentProfileEdit from './Containers/ParentProfileEdit/ParentProfileEdit'
 import DevicesTestPage from './Containers/DevicesTestPage/DevicesTestPage';
 import Lessons from './Containers/Lessons/Lessons';
 import ParentTimeSlots from './Containers/ParentTimeSlots/ParentTimeSlots';
+import Payments from './Containers/Payments/Payments';
 
 import './App.css';
 
@@ -23,6 +24,7 @@ const App = () => {
         <div>
 
             <Switch>
+                <PrivateRoute path='/payments/' component={Payments} />
                 <PrivateRoute path='/lessons/timeSlots/' exact component={ParentTimeSlots} />
                 <PrivateRoute path='/lessons/' component={Lessons} exact />
                 <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
