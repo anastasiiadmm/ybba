@@ -96,3 +96,8 @@ export const phoneticTableTwoMapping = {
     e: 'э',
     i: 'и',
 }
+
+export const envs = {
+    local: 'local',
+    development: 'development'
+}
