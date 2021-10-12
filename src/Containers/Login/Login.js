@@ -7,8 +7,7 @@ import {NavLink} from 'react-router-dom';
 import Button from '../../Components/Button/Button.js';
 import Container from '../../Components/Container/Container.js';
 import FormField from '../../Components/FormField/FormField';
-import SocialMediaBlock from '../../Components/SocialMediaBlock/SocialMediaBlock';
-import {loginUser, authSelector, clearAuthState} from '../../redux/auth/authSlice';
+import {loginUser, authSelector} from '../../redux/auth/authSlice';
 import {clearUserFromUserState, clearUserState} from '../../redux/user/userSlice';
 
 
@@ -54,10 +53,7 @@ const Login = () => {
                 <div className='form form_narrow'>
                     <form onSubmit={submitChangeHandler}>
                         <h4 className='form__title'>Войти</h4>
-                        <div className='form__row'>
-                            <p className='form__text'>Через соцсеть</p>
-                            <SocialMediaBlock/>
-                        </div>
+
                         <div className='form__row'>
                             <FormField
                                 label='Email'
