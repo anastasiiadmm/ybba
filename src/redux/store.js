@@ -8,6 +8,7 @@ import childReducer from './child/childSlice'
 import lessonsReducer from './lessons/lessonsSlice'
 import bashBoard from './dashBoard/dashBoardSlice'
 import webSocket from './webSocker/webSockerSlice'
+import surveys from './surveys/surveysSlice'
 import payments from './payments/paymentsSlice'
 
 
@@ -23,6 +24,7 @@ const configureStoreCreator = () => {
             lessons: lessonsReducer,
             dashBoard: bashBoard,
             webSocket: webSocket,
+            surveys: surveys,
             payments: payments
         },
         preloadedState: loadFromLocalStorage(),

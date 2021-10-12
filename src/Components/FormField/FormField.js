@@ -159,6 +159,47 @@ const FormField = props => {
         </>
     }
 
+    if (type === 'checkbox') {
+        field = <>
+            <input
+                className='check'
+                id={id}
+                type={type}
+                checked={!!value}
+                onChange={onChange}
+            />
+            <label
+                htmlFor={id}
+            >
+                {label}
+            </label>
+        </>
+    }
+
+    if (type === 'textarea') {
+        field = <>
+            <label className='form__label'>
+                {label}
+                <textarea
+                    className={addClasses(className, {
+                        'error': fieldErrors?.length
+                    })}
+                    required={required}
+                    name={name}
+                    onChange={onChange}
+                    value={value}
+                    id={id}
+                    maxLength={maxLength}
+                    readOnly={readOnly}
+                    disabled={disabled}
+                />
+                {Errors}
+                {helpText && <div className='form__passw-info'>{helpText}</div>}
+                {toolTip}
+            </label>
+        </>
+    }
+
     return field;
 }
 

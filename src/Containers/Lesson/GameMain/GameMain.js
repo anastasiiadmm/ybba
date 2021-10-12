@@ -14,7 +14,7 @@ import './gameMain.css'
 const GameMain = (props) => {
 
     const {
-        gameSessionId
+        gameSessionId, speechCardOnClick
     } = props
 
     return (
@@ -34,8 +34,17 @@ const GameMain = (props) => {
                 <div className='notes game__notes'>
                     <div className='notes__top'>
                         <span className='notes__title'>Заметки</span>
-                        <Button className='notes__link border-0 bg-transparent'>Протокол обследования</Button>
-                        <Button className='notes__link border-0 bg-transparent'>Речевая карта</Button>
+                        <Button
+                            className='notes__link border-0 bg-transparent'
+                        >
+                            Протокол обследования
+                        </Button>
+                        <Button
+                            className='notes__link border-0 bg-transparent'
+                            onClick={speechCardOnClick}
+                        >
+                            Речевая карта
+                        </Button>
                     </div>
                     <div className='notes__field'>
                         <form action='#'>
@@ -50,7 +59,8 @@ const GameMain = (props) => {
 }
 
 GameMain.propTypes = {
-    gameSessionId: PropTypes.string.isRequired
+    gameSessionId: PropTypes.string.isRequired,
+    speechCardOnClick: PropTypes.func
 }
 
 export default GameMain;
