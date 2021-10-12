@@ -89,28 +89,6 @@ const Lesson = (props) => {
         setWindowData(null)
     }
 
-    const connectToWs = useCallback(() => {
-        console.log(tokens.access)
-        ws.current = new ReduxWebSocket(`${config.wsUrl}?token=${tokens.access}`);
-        ws.current.onopen = () => {
-            ws.current.sendWsAction(
-                getLesson({lesson_id: lessonId})
-            )
-        };
-        ws.current.onclose = () => console.log('ws closed');
-
-        ws.current.onmessage = msg => {
-            const action = JSON.parse(msg.data)
-            if (action?.type) {
-                dispatch(action)
-            }
-        };
-
-        ws.current.onerror = () => {
-            ws.current.close()
-        }
-    }, [dispatch, lessonId, tokens.access])
-
     useEffect(() => {
         if (status === DISCONNECT) {
             refreshAccessToken()
