@@ -67,19 +67,17 @@ const GameContainer = (props) => {
             json = {IsServer: false, Id: gameSessionId, FreeGame: false}
         }
         if (unityContext) {
-            let tryCount = 0
-            interval = setInterval(() => {
-                tryCount += 1
-                unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
-                if (tryCount >= 100) {
-                    clearInterval(interval)
-                }
-            }, 100)
+            unityContext.on('ReadJavaData', async () => {
+                await setTimeout(() => {
+                    unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
+                }, 1000)
+            })
         }
 
         return () => {
             clearInterval(interval)
         }
+        // eslint-disable-next-line
     }, [unityContext])
 
     if (!activeGame) {
@@ -101,7 +99,7 @@ const GameContainer = (props) => {
     return (
         <Unity
             unityContext={unityContext}
-            className='game__screen'
+            className='game__screen w-100'
         />
     );
 }

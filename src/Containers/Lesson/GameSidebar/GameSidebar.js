@@ -52,8 +52,8 @@ const GameSidebar = (props) => {
             )}
             {lesson && (
                 <Timer
-                    from={strTimeToMoment(lesson.time_slot.start_time)}
-                    to={strTimeToMoment(lesson.time_slot.end_time)}
+                    from={strTimeToMoment(lesson?.time_slot?.start_time)}
+                    to={strTimeToMoment(lesson?.time_slot?.end_time)}
                 />
             )}
             {checkUserRole(userRoles.therapist) && (

@@ -45,7 +45,6 @@ export const createLessons = createAsyncThunk(
     async (data, {rejectWithValue}) => {
         try {
             const resp = await axiosApi.post('/lessons/', data)
-            console.log(resp.data)
             return resp.data
         } catch (e) {
             return rejectWithValue(e)

@@ -45,7 +45,6 @@ const ChildRegistration = (props) => {
 
 
     useEffect(() => {
-        console.log(user, success)
         dispatch(clearChildState())
         // eslint-disable-next-line
     }, [])

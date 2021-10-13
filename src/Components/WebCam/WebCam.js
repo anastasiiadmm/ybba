@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 
 import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
 
 import {authSelector} from '../../redux/auth/authSlice';
 import Jitsi from '../Jitsi/Jitsi';
-import {jitsiTools} from '../../constants';
+import {jitsiTools, userRoles} from '../../constants';
+import {checkUserRole} from '../../utils/user';
 
 
 const WebCam = (props) => {
 
+    const widthDivRef = useRef()
+
     const {meetingId, onClick} = props
+    const [windowHeight, setWindowHeight] = useState(null)
 
     const {user} = useSelector(authSelector)
 
@@ -22,16 +26,34 @@ const WebCam = (props) => {
         jitsiTools.mic
     ]
 
+    useEffect(() => {
+        if (widthDivRef.current) {
+            const width = widthDivRef.current.offsetWidth
+            const widthPercent = width / 100
+            const height = checkUserRole(userRoles.therapist) ?
+                width - widthPercent * 30 :
+                width
+            console.log(width, height)
+            setWindowHeight(height)
+        }
+    }, [widthDivRef])
+
     return (
         <div className='game__person game__person_child' onClick={onClick}>
-            <div className='game__person-in'>
-                <Jitsi
-                    meetingId={meetingId}
-                    userInfo={userInfo}
-                    width='100%'
-                    height={500}
-                    toolbarItems={tools}
+            <div className='game__person-in' style={{height: windowHeight}}>
+                <div
+                    className='w-100'
+                    ref={widthDivRef}
                 />
+                {windowHeight && (
+                    <Jitsi
+                        meetingId={meetingId}
+                        userInfo={userInfo}
+                        width='100%'
+                        height='100%'
+                        toolbarItems={tools}
+                    />
+                )}
                 <button className='game__person-btn btn-zoom' type='button'/>
             </div>
         </div>
