@@ -15,7 +15,7 @@ import './formField.css'
 const FormField = props => {
     const {
         type, onChange, className, name, required, label, value, pattern, id, maxLength, tooltipTitle, tooltipText,
-        helpText, readOnly, errors, disabled, mask, showMaskOnFocus, showMaskOnHover, options, configs
+        helpText, readOnly, errors, disabled, mask, showMaskOnFocus, showMaskOnHover, options, configs, checked
     } = props
 
     const toolTip = <>
@@ -65,6 +65,39 @@ const FormField = props => {
             {toolTip}
         </label>
     </>
+
+    if (type === 'checkbox') {
+        field = <>
+            <input
+                id={id}
+                className='check'
+                type='checkbox'
+                onChange={onChange}
+                checked={!!value}
+                name={name}
+            />
+            <label htmlFor={id}>
+                {label}
+            </label>
+        </>
+    }
+
+    if (type === 'radio') {
+        field = <>
+            <input
+                className='radio'
+                id={id}
+                type={type}
+                name={name}
+                value={value}
+                onChange={onChange}
+                checked={checked}
+            />
+            <label htmlFor={id}>
+                {label}
+            </label>
+        </>
+    }
 
     if (type === 'datepicker') {
         field = <>
@@ -116,6 +149,7 @@ const FormField = props => {
                     options={options}
                     className={className}
                     onChange={onChange}
+                    defaultInputValue={value}
                 />
             </label>
         </>
@@ -204,7 +238,15 @@ const FormField = props => {
 }
 
 FormField.propTypes = {
-    type: PropTypes.string.isRequired,
+    type: PropTypes.oneOf([
+        'checkbox',
+        'radio',
+        'datepicker',
+        'phone',
+        'select',
+        'flatpickr',
+        'textarea'
+    ]).isRequired,
     onChange: PropTypes.func,
     className: PropTypes.string,
     name: PropTypes.string,
@@ -228,7 +270,8 @@ FormField.propTypes = {
         value: PropTypes.string,
         label: PropTypes.string
     })),
-    configs: PropTypes.any
+    configs: PropTypes.any,
+    checked: PropTypes.bool,
 }
 
 export default React.memo(FormField);

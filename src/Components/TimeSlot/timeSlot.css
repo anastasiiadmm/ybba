@@ -6,3 +6,8 @@
 .timeSlot:hover {
     transform: scale(1.1);
 }
+
+.timeSlotDisabled {
+    background: rgba(0, 0, 0, .2) !important;
+    pointer-events: none;
+}

@@ -556,6 +556,82 @@ a.disabled {
     left: 0;
 }
 
+.fSelect {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+
+.fSelect__input {
+    padding: 14px 12px;
+    border: 1px solid #A3B3CC;
+    border-radius: 12px;
+    width: 100%;
+    background-image: url(./assets/img/arrow-down.svg);
+    background-position: calc(100% - 20px) 50%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.fSelect__input.isFocus {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-image: url(./assets/img/arrow-up.svg);
+    background-color: #fff;
+}
+
+.fSelect__dropdown {
+    display: none;
+    position: absolute;
+    top: 49px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #A3B3CC;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    padding-bottom: 12px;
+    z-index: 1000;
+}
+
+.fSelect__dropdown.open {
+    display: block;
+}
+
+.fSelect__option {
+    cursor: pointer;
+    min-height: 52px;
+    padding: 14px 10px 0 17px;
+}
+
+.fSelect__option:hover {
+    background: #F3F8FF;
+}
+
+.fSelect__option.selected {
+    background: #F3F8FF;
+}
+
+.option-add {
+    padding: 10px 0 14px;
+}
+
+.option-add label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #A3B3CC;
+}
+
+.option-add .field {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.option-add .btn {
+    margin-right: 36px;
+}
+
 .check {
     display: none;
 }
@@ -626,6 +702,7 @@ a.disabled {
     border: 1px solid #A3B3CC;
     border-radius: 12px;
     width: 100%;
+    background: transparent;
 }
 
 .field {
@@ -863,6 +940,12 @@ a.disabled {
 .form__select.w-fix-sm {
     width: auto;
     min-width: 120px;
+    padding-top: 0;
+}
+
+.form__select.w-fix-big {
+    width: auto;
+    min-width: 358px;
     padding-top: 0;
 }
 
@@ -1148,6 +1231,95 @@ a.disabled {
     }
 }
 
+.modal__body .form {
+    padding: 33px 33px 9px;
+    background: transparent;
+    margin: 0 -10px 0 0;
+}
+
+.form__title-spec {
+    font-size: 18px;
+    margin: 0 0 18px;
+}
+
+.form__body-spec {
+    display: flex;
+    padding-bottom: 6px;
+}
+
+.form__main-spec {
+    width: 67%;
+    padding-right: 38px;
+}
+
+.form__add-spec {
+    width: 33%;
+}
+
+.form__row-spec {
+    padding-bottom: 18px;
+}
+
+.form__row-spec .form__select {
+    padding-bottom: 0;
+}
+
+.form__row-spec .form__field::-webkit-input-placeholder {
+    color: #A3B3CC;
+}
+
+.form__row-spec .form__field:-moz-placeholder {
+    color: #A3B3CC;
+}
+
+.form__row-spec .form__field::-moz-placeholder {
+    color: #A3B3CC;
+}
+
+.form__row-spec .form__field:-ms-input-placeholder {
+    color: #A3B3CC;
+}
+
+.form__row-spec .fSelect {
+    max-width: 534px;
+}
+
+.form__row-spec.dflex {
+    margin-right: -18px;
+    margin-left: -18px;
+    flex-wrap: wrap;
+}
+
+.form__row-spec .form__col {
+    width: 100%;
+    max-width: 394px;
+}
+
+@media screen and (min-width: 1200px) {
+    .form__row-spec .form__col {
+        width: 50%;
+    }
+}
+
+.form__row-spec .form__area {
+    min-height: 150px;
+    line-height: 1.5;
+}
+
+@media screen and (min-width: 1024px) {
+    .form__list-result li:last-child {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .form__list-result .field {
+        flex-grow: 1;
+        margin-top: -12px;
+    }
+}
+
 .flatpickr-calendar.open {
     margin-top: 10px;
 }
@@ -1160,6 +1332,11 @@ a.disabled {
     border-radius: 12px;
     border-color: #A3B3CC;
     padding: 24px 12px;
+    background: transparent;
+}
+
+.ss-main .ss-single-selected.ss-open-below {
+    background: #fff;
 }
 
 .ss-main .ss-single-selected .placeholder, .ss-main .ss-single-selected .placeholder * {
@@ -1477,6 +1654,17 @@ a.disabled {
     background: #00CAD7 url(./assets/img/ic-i.svg) 50% no-repeat;
 }
 
+.notice__icon_warning {
+    background: #FF0000 url(./assets/img/ic-attantion2.svg) 50% no-repeat;
+}
+
+.notice_warning {
+    font-size: 18px;
+    padding-left: 69px;
+    margin-bottom: 15px;
+    padding-bottom: 0;
+}
+
 .notice__title {
     font-size: 1em;
     margin: 0 0 1px;
@@ -1619,15 +1807,16 @@ a.disabled {
     position: relative;
     padding-left: 29px;
     margin-bottom: 13px;
-    display: inline-block;
+    display: inline-flex;
+    background: transparent;
+    border: none;
+    align-items: center;
 }
 
 .child__link::before {
     font-family: 'icomoon' !important;
     line-height: 1;
-    position: absolute;
-    top: 3px;
-    left: 0;
+    margin-right: 10px;
 }
 
 .child__link_card::before {
@@ -1646,7 +1835,7 @@ a.disabled {
     font-size: 20px;
 }
 
-.child__link.not-active {
+.child__link[disabled] {
     color: #A3B3CC;
 }
 
@@ -1740,6 +1929,7 @@ a.disabled {
 .profile-child__link.active {
     color: #00CAD7;
     border-color: #00CAD7;
+    border-width: 2px;
 }
 
 .profile-child__link.active::before {
@@ -1809,6 +1999,55 @@ a.disabled {
 
 form .profile-child {
     min-height: calc(100% - 80px);
+}
+
+.profile-card {
+    padding: 33px 33px 9px;
+}
+
+.profile-card__title {
+    font-size: 18px;
+    margin: 0 0 36px;
+}
+
+.profile-card__item {
+    padding-bottom: 6px;
+}
+
+.profile-card__item p {
+    margin: 0 0 18px;
+}
+
+.profile-card__item span {
+    display: block;
+    color: #A3B3CC;
+    margin-bottom: 8px;
+}
+
+.profile-card__item-title {
+    font-weight: 700;
+    margin: 0 0 18px;
+}
+
+.profile-card__main-options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-card__main-options dl {
+    margin: 0;
+    padding: 0 0 18px;
+    width: 33.3333%;
+}
+
+.profile-card__main-options dt {
+    display: block;
+    margin-bottom: 8px;
+    color: #A3B3CC;
+}
+
+.profile-card__main-options dd {
+    margin: 0;
 }
 
 .notifications {
@@ -1915,6 +2154,7 @@ form .profile-child {
     padding: 15px 18px 5px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     margin-bottom: 36px;
 }
 
@@ -3342,7 +3582,7 @@ form .cabinet {
 }
 
 .modal {
-    width: 96%;
+    width: 95%;
     border-radius: 12px;
     padding: 19px;
     position: absolute;
@@ -3418,6 +3658,13 @@ form .cabinet {
     font-family: 'icomoon' !important;
     line-height: 1;
     color: #00CAD7;
+}
+
+.modal__gray-bg {
+    border-radius: 12px;
+    margin: -19px;
+    padding: 19px;
+    background: #FAFAFA;
 }
 
 @-webkit-keyframes showModal {
