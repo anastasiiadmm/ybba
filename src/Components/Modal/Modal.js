@@ -29,10 +29,13 @@ const Modal = (props) => {
                     [className || '']: true
                 })}
                 // style={{width: `${width}%`}}
-                style={{maxWidth: '738px', top: '72px'}}
+                style={{maxWidth: `${width}%`, top: '72px'}}
                 onClick={e => e.stopPropagation()}
             >
-                <div className="modal__body">
+                <div
+                    className="modal__body"
+                    style={{height: '100%'}}
+                >
                     {children}
                 </div>
                 <Button

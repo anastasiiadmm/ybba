@@ -149,6 +149,7 @@ const FormField = props => {
                     options={options}
                     className={className}
                     onChange={onChange}
+                    defaultInputValue={value}
                 />
             </label>
         </>
@@ -243,7 +244,8 @@ FormField.propTypes = {
         'datepicker',
         'phone',
         'select',
-        'flatpickr'
+        'flatpickr',
+        'textarea'
     ]).isRequired,
     onChange: PropTypes.func,
     className: PropTypes.string,

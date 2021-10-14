@@ -11,7 +11,7 @@ import './timeSlot.css';
 const TimeSlot = (props) => {
 
     const {
-        children, onClick, isActive, timeSlot
+        children, onClick, isActive, timeSlot, allowsToChoice
     } = props
 
     const timeSlotOnClick = () => {
@@ -23,7 +23,8 @@ const TimeSlot = (props) => {
             type='button'
             onClick={timeSlotOnClick}
             className={addClasses('timeSlot', {
-                'active': isActive
+                'active': isActive,
+                'timeSlotDisabled': !allowsToChoice
             })}
         >
             {children}
@@ -34,7 +35,8 @@ const TimeSlot = (props) => {
 TimeSlot.propTypes = {
     onClick: PropTypes.func,
     isActive: PropTypes.bool,
-    timeSlot: PropTypes.object
+    timeSlot: PropTypes.object,
+    allowsToChoice: PropTypes.bool
 }
 
 export default TimeSlot;

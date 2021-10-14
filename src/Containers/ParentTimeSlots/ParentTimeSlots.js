@@ -37,6 +37,8 @@ const ParentTimeSlots = () => {
 
     const {timeSlots, selectedChild, lessonCreated, loading} = useSelector(lessonsSelector)
 
+    console.log(selectedChild)
+
     const timeSlotOnClick = ({id}) => {
         const index = selectedTimeSlots.indexOf(id)
         if (index !== -1) {
@@ -226,6 +228,7 @@ const ParentTimeSlots = () => {
                                                                 timeSlot={timeSlot}
                                                                 onClick={timeSlotOnClick}
                                                                 isActive={selectedTimeSlots.indexOf(timeSlot.id) > -1}
+                                                                allowsToChoice={timeSlot.teachers.length}
                                                             >
                                                                 {moment(timeSlot.start_time, 'H:m:s').format('H:mm')} -
                                                                 {moment(timeSlot.end_time, 'H:m:s').format('H:mm')}

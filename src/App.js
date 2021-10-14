@@ -28,7 +28,7 @@ const App = () => {
             <Switch>
                 <PrivateRoute path='/payments/' component={Payments} />
                 <PrivateRoute path='/child-profile/' component={ChildProfiles} exact />
-                <PrivateRoute path='/child-profile/:stage/' component={ChildProfile} exact />
+                <PrivateRoute path='/child-profile/:childId/:stage/' component={ChildProfile} exact />
                 <PrivateRoute path='/lessons/timeSlots/' exact component={ParentTimeSlots} />
                 <PrivateRoute path='/lessons/' component={Lessons} exact />
                 <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
