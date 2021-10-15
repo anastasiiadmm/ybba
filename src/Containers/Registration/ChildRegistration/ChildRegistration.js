@@ -10,19 +10,21 @@ import config from '../../../config.js';
 import {RegistrationContext} from '../../../context/RegistrationContext/RegistrationContext.js';
 import ChildrenForm from '../../ChildrenForm/ChildrenForm.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
-import {createChild, childSelector, clearChildState} from '../../../redux/child/childSlice';
+import {createChild, childSelector, clearChildState, getCountriesList} from '../../../redux/child/childSlice';
 import {createUser, userSelector} from '../../../redux/user/userSlice';
 
 
 const ChildRegistration = (props) => {
 
     const {
-        setChildrenData, currentStage
+        setChildrenData, currentStage, setCity, setCountry
     } = props
 
     const history = useHistory()
     const dispatch = useDispatch()
+
     const {children: childrenData, parent: parentData} = useContext(RegistrationContext)
+
     const {user, tokens, errors} = useSelector(userSelector)
     const {success, loading} = useSelector(childSelector)
     const [policy, setPolicy] = useState(false)
@@ -39,8 +41,8 @@ const ChildRegistration = (props) => {
         childrenData.first_name &&
         childrenData.last_name &&
         childrenData.date_of_birth &&
-        policy
-        // childrenData.country &&
+        policy &&
+        childrenData.country
         // childrenData.city
     )
     const onSubmit = async e => {
@@ -90,6 +92,8 @@ const ChildRegistration = (props) => {
             <ChildrenForm
                 childrenData={childrenData}
                 setChildrenData={setChildrenData}
+                setCity={setCity}
+                setCountry={setCountry}
             />
             <div className="form__row form__row_pd">
                 <Button
@@ -107,7 +111,9 @@ const ChildRegistration = (props) => {
 
 ChildRegistration.propTypes = {
     setChildrenData: PropTypes.func,
-    currentStage: PropTypes.number
+    currentStage: PropTypes.number,
+    setCity: PropTypes.func,
+    setCountry: PropTypes.func
 }
 
 export default ChildRegistration;

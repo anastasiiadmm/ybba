@@ -21,6 +21,13 @@ const ChildProfileStageOne = (props) => {
 
     const {child, updateChildSuccess} = useSelector(childSelector)
 
+    const setCity = data => {
+        setChildrenData({...childrenData, city: data.value})
+    }
+    const setCountry = data => {
+        setChildrenData({...childrenData, country: data.value})
+    }
+
     const updateUser = async e => {
         e.preventDefault()
 
@@ -65,6 +72,8 @@ const ChildProfileStageOne = (props) => {
                                 <ChildrenForm
                                     childrenData={childrenData}
                                     setChildrenData={setChildrenData}
+                                    setCountry={setCountry}
+                                    setCity={setCity}
                                 />
                             )}
                         </div>

@@ -8,6 +8,8 @@ const nameSpace = 'child'
 const INITIAL_STATE = {
     errors: null,
     createChildErrors: null,
+    getCountriesListErrors: null,
+    getCitiesListErrors: null,
 
 
     commonError: null,
@@ -15,9 +17,13 @@ const INITIAL_STATE = {
     updateChildSuccess: false,
     updateChildAdditionalInfoSuccess: false,
     addSpecialistsForChildSuccess: false,
+    getCountriesListSuccess: false,
+    getCitiesListSuccess: false,
 
     specialists: null,
-    child: null
+    child: null,
+    countries: null,
+    cities: null
 }
 
 export const getChild = createAsyncThunk(
@@ -126,6 +132,30 @@ export const updateChildSpecialist = createAsyncThunk(
     }
 )
 
+export const getCountriesList = createAsyncThunk(
+    `${nameSpace}/getCountriesList`,
+    async (_, {rejectWithValue}) => {
+        try {
+            const resp = await axiosApi.get('/countries/')
+            return resp.data
+        } catch (e) {
+            return rejectWithValue(e?.response?.data)
+        }
+    }
+)
+
+export const getCitiesList = createAsyncThunk(
+    `${nameSpace}/getCitiesList`,
+    async (countryId, {rejectWithValue}) => {
+        try {
+            const resp = await axiosApi.get(`/countries/${countryId}/cities/`)
+            return resp.data
+        } catch (e) {
+            return rejectWithValue(e?.response?.data)
+        }
+    }
+)
+
 const childSlice = createSlice({
     name: nameSpace,
     initialState: INITIAL_STATE,
@@ -211,6 +241,33 @@ const childSlice = createSlice({
         },
         [addSpecialistsForChild.rejected]: state => {
             state.addSpecialistsForChildSuccess = false
+        },
+
+        [getCountriesList.pending]: state => {
+            state.getCountriesListSuccess = false
+            state.getCountriesListErrors = null
+        },
+        [getCountriesList.fulfilled]: (state, {payload}) => {
+            state.getCountriesListSuccess = true
+            state.countries = payload
+        },
+        [getCountriesList.rejected]: (state, {payload}) => {
+            state.getCountriesListSuccess = false
+            state.getCountriesListErrors = payload
+        },
+
+        [getCitiesList.pending]: state => {
+            state.getCitiesListErrors = null
+            state.getCitiesListSuccess = false
+        },
+        [getCitiesList.fulfilled]: (state, {payload}) => {
+            state.getCitiesListErrors = false
+            state.getCitiesListSuccess = true
+            state.cities = payload
+        },
+        [getCitiesList.rejected]: (state, {payload}) => {
+            state.getCitiesListErrors = payload
+            state.getCitiesListSuccess = false
         }
     }
 })
