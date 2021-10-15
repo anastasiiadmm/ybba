@@ -15,6 +15,7 @@ import {authSelector} from '../../redux/auth/authSlice';
 import UpcomingLessonBlock from './UpcomingLessonBlock/UpcomingLessonBlock';
 import {getLessons, dashBoardSelector} from '../../redux/dashBoard/dashBoardSlice';
 import {lessonStatuses} from '../../constants';
+import Calendar from './Calendar/Calendar';
 
 
 const MainDashboard = () => {
@@ -78,14 +79,10 @@ const MainDashboard = () => {
                             <div className='content__row'>
                                 <div className='content__col content__col_w60'>
                                     <NextLessons/>
-                                    <Timetable/>
                                 </div>
                                 <div className='content__col content__col_w40'>
-                                    <ChildActivity/>
-                                    <div className='content__row'>
-                                        <LessonsInBiba/>
-                                        <Balance/>
-                                    </div>
+                                    <Balance/>
+                                    <Calendar/>
                                 </div>
                             </div>
                         </div>
