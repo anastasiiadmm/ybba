@@ -203,6 +203,9 @@ const ParentProfileForm = (props) => {
                                 </div>
                             </div>
                         </div>
+                        {passwordData.passwordRepeat && passwordData.password && !isPasswordsEquals && (
+                            <p className="form__error-text">Пароли не совпадают</p>
+                        )}
                         <div>
                             {isPasswordsEquals && <button
                                 type='button'
