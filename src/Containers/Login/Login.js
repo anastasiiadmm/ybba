@@ -53,7 +53,7 @@ const Login = () => {
             <div className='form__wrap'>
                 <div className='form form_narrow'>
                     <form onSubmit={submitChangeHandler}>
-                        <h4 className='form__title'>Войти</h4>
+                        <h4 className='form__title'><b>Войти</b></h4>
                         {/*<div className='form__row'>*/}
                         {/*    <p className='form__text'>Через соцсеть</p>*/}
                         {/*    <SocialMediaBlock/>*/}
