@@ -33,7 +33,6 @@ const WebCam = (props) => {
             const height = checkUserRole(userRoles.therapist) ?
                 width - widthPercent * 30 :
                 width
-            console.log(width, height)
             setWindowHeight(height)
         }
     }, [widthDivRef])
