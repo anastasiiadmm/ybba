@@ -1,17 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap');
-
-@font-face {
-    font-family: 'icomoon';
-    src: url('./assets/fonts/icomoon/fonts/icomoon.eot?itn2ph');
-    src: url('./assets/fonts/icomoon/fonts/icomoon.eot?itn2ph#iefix') format('embedded-opentype'),
-    url('./assets/fonts/icomoon/fonts/icomoon.ttf?itn2ph') format('truetype'),
-    url('./assets/fonts/icomoon/fonts/icomoon.woff?itn2ph') format('woff'),
-    url('./assets/fonts/icomoon/fonts/icomoon.svg?itn2ph#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-}
+@import url('./common.css');
 
 *, *::before, *::after {
     box-sizing: border-box;
