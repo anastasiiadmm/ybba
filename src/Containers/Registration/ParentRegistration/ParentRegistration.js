@@ -5,11 +5,9 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router';
 
 import FormField from '../../../Components/FormField/FormField.js';
-import SocialMediaBlock from '../../../Components/SocialMediaBlock/SocialMediaBlock.js';
 import config from '../../../config.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
 import {allRussianWardsAndHyphen} from '../../../regex/patterns/html';
-import {clearAuthState} from '../../../redux/auth/authSlice';
 import {clearChildState} from '../../../redux/child/childSlice';
 import {userSelector, clearUserState} from '../../../redux/user/userSlice';
 
@@ -55,10 +53,10 @@ const ParentRegistration = (props) => {
         <RegistrationBaseBlock
             onSubmit={onSubmit}
         >
-            <h4 className='form__title'><b>Зарегистрируйтесь</b></h4>
+            <h4 className='form__title'>Зарегистрируйтесь</h4>
             <div className='form__row'>
-                <label className='form__label'>Имя</label>
                 <FormField
+                    label='Имя'
                     type='text'
                     className='form__field'
                     name='first_name'
@@ -73,8 +71,8 @@ const ParentRegistration = (props) => {
                 />
             </div>
             <div className='form__row'>
-                <label className='form__label'>Фамилия</label>
                 <FormField
+                    label='Фамилия'
                     type='text'
                     className='form__field'
                     name='last_name'
@@ -89,8 +87,8 @@ const ParentRegistration = (props) => {
                 />
             </div>
             <div className='form__row'>
-                <label className='form__label'>Email</label>
                 <FormField
+                    label='Email'
                     type='email'
                     className='form__field'
                     name='email'
@@ -105,8 +103,8 @@ const ParentRegistration = (props) => {
                 />
             </div>
             <div className='form__row'>
-                <label className='form__label'>Пароль</label>
                 <FormField
+                    label='Пароль'
                     type='password'
                     className='form__field passw-first'
                     name='password'
@@ -122,8 +120,8 @@ const ParentRegistration = (props) => {
                 />
             </div>
             <div className='form__row'>
-                <label className='form__label'>Повтор пароля</label>
                 <FormField
+                    label='Повтор пароля'
                     type='password'
                     className='form__field passw-repeat'
                     name='password_repeat'
