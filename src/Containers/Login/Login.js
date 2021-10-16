@@ -52,11 +52,11 @@ const Login = () => {
             <div className='form__wrap'>
                 <div className='form form_narrow'>
                     <form onSubmit={submitChangeHandler}>
-                        <h4 className='form__title'><b>Войти</b></h4>
+                        <h4 className='form__title'>Войти</h4>
 
                         <div className='form__row'>
-                            <label className='form__label'>Email</label>
                             <FormField
+                                label='Email'
                                 type='email'
                                 className={`form__field ${commonError && 'error'}`}
                                 required
@@ -67,8 +67,8 @@ const Login = () => {
                             />
                         </div>
                         <div className='form__row'>
-                            <label className='form__label'>Пароль</label>
                             <FormField
+                                label='Пароль'
                                 type='password'
                                 className={`form__field passw-first ${commonError && 'error'}`}
                                 required

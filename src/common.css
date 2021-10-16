@@ -12,3 +12,11 @@
     font-style: normal;
     font-display: block;
 }
+
+.form__title {
+    font-weight: bold;
+}
+
+.form__label {
+    line-height: 3.1;
+}
