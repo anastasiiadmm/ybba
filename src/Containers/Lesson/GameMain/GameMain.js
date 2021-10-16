@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -16,6 +16,21 @@ const GameMain = (props) => {
     const {
         gameSessionId, speechCardOnClick
     } = props
+
+    const [notes, setNotes] = useState('')
+
+    const lsKey = `${gameSessionId}-notes`
+
+    const notesChangeHandler = e => {
+        setNotes(e.target.value)
+        localStorage.setItem(lsKey, e.target.value)
+    }
+
+    useEffect(() => {
+        setNotes(
+            localStorage.getItem(lsKey)
+        )
+    }, [])
 
     return (
         <>
@@ -48,8 +63,11 @@ const GameMain = (props) => {
                     </div>
                     <div className='notes__field'>
                         <form action='#'>
-                            <textarea className='notes__area'/>
-                            <Button className='notes__btn' type='submit'/>
+                            <textarea
+                                className='notes__area'
+                                onChange={notesChangeHandler}
+                                value={notes}
+                            />
                         </form>
                     </div>
                 </div>

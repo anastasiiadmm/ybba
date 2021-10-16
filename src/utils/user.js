@@ -7,5 +7,5 @@ export const isLogin = () => {
 
 export const checkUserRole = role => {
     const user = store.getState().auth.user
-    return user.role === role
+    return user?.role === role
 }

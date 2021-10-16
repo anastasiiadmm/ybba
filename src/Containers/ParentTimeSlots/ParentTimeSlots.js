@@ -148,11 +148,10 @@ const ParentTimeSlots = () => {
             </Modal>
 
             <MainTitleBlock
-                leftTitle='Занятия'
+                leftTitle='Выберите временной слот'
             />
             <div className='classes'>
                 <div className='classes__content'>
-                    <h6>Выбор временной ячейки для урока ребёнка</h6>
                     <div className='timeslot' id='timeSlot'>
                         <div className='timeslot__body position-static'>
                             <div className='d-flex justify-content-around flex-wrap'>

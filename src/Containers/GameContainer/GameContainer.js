@@ -103,10 +103,11 @@ const GameContainer = (props) => {
     }
 
     return (
-        <Unity
-            unityContext={unityContext}
-            className='game__screen w-100'
-        />
+        <div></div>
+        // <Unity
+        //     unityContext={unityContext}
+        //     className='game__screen w-100'
+        // />
     );
 }
 
