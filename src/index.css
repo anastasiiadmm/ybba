@@ -416,7 +416,6 @@ a.disabled {
 
 .btn-out {
     color: #00CAD7;
-    margin-right: 28px;
 }
 
 .btn-cancel {
@@ -450,20 +449,6 @@ a.disabled {
 
 .btn-eye__wrap {
     position: relative;
-}
-
-.btn-eye__wrap:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 20px;
-    margin: auto 0;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    background: no-repeat url("assets/img/eye.svg");
-    background-size: contain;
 }
 
 .btn-add {
@@ -2502,7 +2487,6 @@ ol.game__lesson-list {
     margin: 0 0 14px;
     padding: 0;
     color: #A3B3CC;
-    font-weight: 300;
 }
 
 .cabinet__info dd {

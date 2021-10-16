@@ -24,3 +24,29 @@
 .classes__title {
     font-weight: bold;
 }
+
+.cabinet__title {
+    font-weight: bold;
+}
+
+.btn-out {
+    margin-right: 28px;
+}
+
+.btn-eye__wrap:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 20px;
+    margin: auto 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: no-repeat url("assets/img/eye.svg");
+    background-size: contain;
+}
+
+.cabinet__info dt {
+    font-weight: 300;
+}
