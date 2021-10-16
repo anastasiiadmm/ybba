@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import PropTypes from 'prop-types';
 import {useSelector, useDispatch} from 'react-redux';
@@ -23,6 +23,12 @@ const ParentRegistration = (props) => {
 
     const history = useHistory()
 
+    const [policy, setPolicy] = useState(false)
+
+    const policyChangeHandler = e => {
+        setPolicy(e.target.checked)
+    }
+
     const isRegistrationDataValid = () => (
         registrationData.first_name &&
         registrationData.last_name &&
@@ -30,7 +36,8 @@ const ParentRegistration = (props) => {
         registrationData.password &&
         registrationData.password_repeat && (
             registrationData.password_repeat === registrationData.password
-        )
+        ) &&
+        policy
     )
     const setToLocalStorage = (registrationData) => {
         localStorage.setItem(config.registrationParentLocalStorageName, JSON.stringify(registrationData))
@@ -54,96 +61,98 @@ const ParentRegistration = (props) => {
     return (
         <RegistrationBaseBlock
             onSubmit={onSubmit}
+            policy={policy}
+            policyChangeHandler={policyChangeHandler}
         >
-            <h4 className='form__title'>Зарегистрируйтесь</h4>
-            <div className='form__row'>
-                <p className='form__text'>Через соцсеть</p>
-                <SocialMediaBlock/>
-            </div>
-            <div className='form__row'>
+            <h4 className="form__title">Зарегистрируйтесь</h4>
+            {/*<div className="form__row">*/}
+            {/*    <p className="form__text">Через соцсеть</p>*/}
+            {/*    <SocialMediaBlock/>*/}
+            {/*</div>*/}
+            <div className="form__row">
                 <FormField
-                    type='text'
-                    className='form__field'
-                    label='Имя'
-                    name='first_name'
+                    type="text"
+                    className="form__field"
+                    label="Имя"
+                    name="first_name"
                     required
-                    maxLength='50'
+                    maxLength="50"
                     pattern={allRussianWardsAndHyphen}
-                    tooltipTitle='Имя'
+                    tooltipTitle="Имя"
                     value={registrationData.first_name}
-                    tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
+                    tooltipText="Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”)."
                     onChange={inputChangeHandler}
                     errors={errors}
                 />
             </div>
-            <div className='form__row'>
+            <div className="form__row">
                 <FormField
-                    type='text'
-                    className='form__field'
-                    label='Фамилия'
-                    name='last_name'
+                    type="text"
+                    className="form__field"
+                    label="Фамилия"
+                    name="last_name"
                     required
-                    maxLength='50'
+                    maxLength="50"
                     pattern={allRussianWardsAndHyphen}
-                    tooltipTitle='Фамилия'
+                    tooltipTitle="Фамилия"
                     value={registrationData.last_name}
-                    tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
+                    tooltipText="Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”)."
                     onChange={inputChangeHandler}
                     errors={errors}
                 />
             </div>
-            <div className='form__row'>
+            <div className="form__row">
                 <FormField
-                    type='email'
-                    className='form__field'
-                    label='Email'
-                    name='email'
+                    type="email"
+                    className="form__field"
+                    label="Email"
+                    name="email"
                     required
-                    maxLength='320'
-                    pattern='^(.+)@(.+)\.(.+)$'
-                    tooltipTitle='Email'
+                    maxLength="320"
+                    pattern="^(.+)@(.+)\.(.+)$"
+                    tooltipTitle="Email"
                     value={registrationData.email}
-                    tooltipText='Должен содержать символ @).'
+                    tooltipText="Должен содержать символ @)."
                     onChange={inputChangeHandler}
                     errors={errors}
                 />
             </div>
-            <div className='form__row'>
+            <div className="form__row">
                 <FormField
-                    type='password'
-                    className='form__field passw-first'
-                    label='Пароль'
-                    name='password'
+                    type="password"
+                    className="form__field passw-first"
+                    label="Пароль"
+                    name="password"
                     required
-                    maxLength='320'
-                    patten='^[A-Za-z\d@$!%*#?&]{5,}$'
-                    tooltipTitle='Пароль'
-                    tooltipText='В поле пароля можно вводить латиницу, цифры и символы.'
+                    maxLength="320"
+                    patten="^[A-Za-z\d@$!%*#?&]{5,}$"
+                    tooltipTitle="Пароль"
+                    tooltipText="В поле пароля можно вводить латиницу, цифры и символы."
                     value={registrationData.password}
-                    helpText='Пароль должен содержать не менее 5 символов'
+                    helpText="Пароль должен содержать не менее 5 символов"
                     onChange={inputChangeHandler}
                     errors={errors}
                 />
             </div>
-            <div className='form__row'>
+            <div className="form__row">
                 <FormField
-                    type='password'
-                    className='form__field passw-repeat'
-                    label='Повтор пароля'
-                    name='password_repeat'
+                    type="password"
+                    className="form__field passw-repeat"
+                    label="Повтор пароля"
+                    name="password_repeat"
                     required
-                    maxLength='320'
-                    patten='^[A-Za-z\d@$!%*#?&]{5,}$'
+                    maxLength="320"
+                    patten="^[A-Za-z\d@$!%*#?&]{5,}$"
                     value={registrationData.password_repeat}
-                    helpText='Пароли должны совпадать'
+                    helpText="Пароли должны совпадать"
                     onChange={inputChangeHandler}
                     errors={errors}
                 />
             </div>
-            <div className='form__row form__row_pd'>
+            <div className="form__row form__row_pd">
                 <button
-                    type='submit'
-                    className='btn'
+                    type="submit"
+                    className="btn"
                     disabled={!isRegistrationDataValid()}
                 >
                     Зарегистрироваться

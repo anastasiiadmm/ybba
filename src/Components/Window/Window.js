@@ -18,7 +18,6 @@ const Window = (props) => {
     const importStylesFor = {
         [envs.local]: () => {
             const styles = document.getElementsByTagName('style')
-            console.log('Styles', styles)
 
             for (let i = 0; i < styles.length; i++) {
                 const styleCopy = styles[i].cloneNode(true)

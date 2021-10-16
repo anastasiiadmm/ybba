@@ -57,9 +57,9 @@ const GameSidebar = (props) => {
                 />
             )}
             {checkUserRole(userRoles.therapist) && (
-                <div className='game__info d-flex flex-column h-100'>
+                <div className='game__info d-flex flex-column gameListContainer'>
                     <h5 className='game__info-title'>Список игр:</h5>
-                    <ol className='game__lesson-list'>
+                    <ol className='game__lesson-list gameList'>
                         {games && games.map(game => {
                             return <li
                                 className={addClasses('game__lesson-item gameListItem', {

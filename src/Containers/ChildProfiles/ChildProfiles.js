@@ -36,8 +36,7 @@ const ChildProfiles = () => {
     useEffect(() => {
         if (children) {
             for (let i = 0; i < children.length; i++) {
-                console.log(children[i])
-                if (!children[i].additional_information.about_us || !children[i].additional_information.about_us_text) {
+                if (!children[i].additional_information.about_us) {
                     setChildWithoutAdditionalData(children[i])
                     break
                 }

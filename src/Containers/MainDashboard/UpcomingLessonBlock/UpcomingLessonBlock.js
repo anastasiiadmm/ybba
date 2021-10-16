@@ -57,7 +57,9 @@ const UpcomingLessonBlock = (props) => {
             {text && (
                 <div className='info-item info-item_row'>
                     <div className='lesson lesson_near'>
-                        <h5 className='lesson__title'>Диагностическоe занятие</h5>
+                        <h5 className='lesson__title'>
+                            <b>Диагностическоe занятие</b>
+                        </h5>
                         <p className='lesson__info'>{text}</p>
                         <span className='lesson__icon lesson__icon_orange'/>
                     </div>

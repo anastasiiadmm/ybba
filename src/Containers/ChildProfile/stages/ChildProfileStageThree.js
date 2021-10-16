@@ -84,7 +84,6 @@ const ChildProfileStageTwo = () => {
         await setChildSpecialists(oldChildSpecialists)
     }
     const workWithSpecialist = async () => {
-        console.log(activeSpecialist?.id)
         if (activeSpecialist?.id) {
             await dispatch(updateChildSpecialist({
                 specialistId: activeSpecialist.id,

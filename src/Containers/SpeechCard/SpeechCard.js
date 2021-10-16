@@ -120,7 +120,6 @@ const SpeechCard = (props) => {
     }
 
     useEffect(() => {
-        console.log('dsa')
         setListOfFields([
             generateTextFieldObject(
                 'general_ideas_of_child_about_world_around_him',

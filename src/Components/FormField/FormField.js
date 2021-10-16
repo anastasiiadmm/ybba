@@ -143,13 +143,15 @@ const FormField = props => {
 
     if (type === 'select') {
         field = <>
-            <label>
+            <label className='w-100'>
                 {label}
                 <Select
                     options={options}
                     className={className}
                     onChange={onChange}
-                    defaultInputValue={value}
+                    value={
+                        options.filter(option => option.value === value)
+                    }
                 />
             </label>
         </>
