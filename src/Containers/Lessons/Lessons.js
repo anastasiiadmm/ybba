@@ -60,6 +60,7 @@ const Lessons = () => {
                         <div className='classes__content'>
                             <div className='classes__row'>
                                 <div className='classes__col'>
+                                    {console.log(selectedChild)}
 
                                     {childrenOptions && (
                                         <FormField
@@ -68,6 +69,7 @@ const Lessons = () => {
                                             type='select'
                                             options={childrenOptions}
                                             onChange={onSelectChange}
+                                            value={selectedChild?.id}
                                         />
                                     )}
                                     {loading && (
