@@ -48,6 +48,7 @@ const Payment = () => {
                             label="Покупка занятий для:"
                             options={options}
                             onChange={selectChangeHandler}
+                            value={selectedChild?.id}
                         />
                     )}
                 </div>
