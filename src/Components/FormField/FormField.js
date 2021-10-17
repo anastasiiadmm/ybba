@@ -15,7 +15,7 @@ import './formField.css'
 const FormField = props => {
     const {
         type, onChange, className, name, required, label, value, pattern, id, maxLength, tooltipTitle, tooltipText,
-        helpText, readOnly, errors, disabled, mask, showMaskOnFocus, showMaskOnHover, options, configs
+        helpText, readOnly, errors, disabled, mask, showMaskOnFocus, showMaskOnHover, options, configs, checked
     } = props
 
     const toolTip = <>
@@ -66,6 +66,39 @@ const FormField = props => {
         </label>
     </>
 
+    if (type === 'checkbox') {
+        field = <>
+            <input
+                id={id}
+                className='check'
+                type='checkbox'
+                onChange={onChange}
+                checked={!!value}
+                name={name}
+            />
+            <label htmlFor={id}>
+                {label}
+            </label>
+        </>
+    }
+
+    if (type === 'radio') {
+        field = <>
+            <input
+                className='radio'
+                id={id}
+                type={type}
+                name={name}
+                value={value}
+                onChange={onChange}
+                checked={checked}
+            />
+            <label htmlFor={id}>
+                {label}
+            </label>
+        </>
+    }
+
     if (type === 'datepicker') {
         field = <>
             <label className='form__label'>
@@ -109,13 +142,17 @@ const FormField = props => {
     }
 
     if (type === 'select') {
+        console.log(value)
         field = <>
-            <label>
+            <label className='w-100'>
                 {label}
                 <Select
                     options={options}
                     className={className}
                     onChange={onChange}
+                    value={
+                        options.filter(option => option.value === value)
+                    }
                 />
             </label>
         </>
@@ -159,11 +196,60 @@ const FormField = props => {
         </>
     }
 
+    if (type === 'checkbox') {
+        field = <>
+            <input
+                className='check'
+                id={id}
+                type={type}
+                checked={!!value}
+                onChange={onChange}
+            />
+            <label
+                htmlFor={id}
+            >
+                {label}
+            </label>
+        </>
+    }
+
+    if (type === 'textarea') {
+        field = <>
+            <label className='form__label'>
+                {label}
+                <textarea
+                    className={addClasses(className, {
+                        'error': fieldErrors?.length
+                    })}
+                    required={required}
+                    name={name}
+                    onChange={onChange}
+                    value={value}
+                    id={id}
+                    maxLength={maxLength}
+                    readOnly={readOnly}
+                    disabled={disabled}
+                />
+                {Errors}
+                {helpText && <div className='form__passw-info'>{helpText}</div>}
+                {toolTip}
+            </label>
+        </>
+    }
+
     return field;
 }
 
 FormField.propTypes = {
-    type: PropTypes.string.isRequired,
+    type: PropTypes.oneOf([
+        'checkbox',
+        'radio',
+        'datepicker',
+        'phone',
+        'select',
+        'flatpickr',
+        'textarea'
+    ]).isRequired,
     onChange: PropTypes.func,
     className: PropTypes.string,
     name: PropTypes.string,
@@ -187,7 +273,8 @@ FormField.propTypes = {
         value: PropTypes.string,
         label: PropTypes.string
     })),
-    configs: PropTypes.any
+    configs: PropTypes.any,
+    checked: PropTypes.bool,
 }
 
 export default React.memo(FormField);

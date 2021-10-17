@@ -16,7 +16,7 @@ const ParentProfileForm = (props) => {
     const initialPasswordData = {'password': '', 'passwordRepeat': ''}
 
     const {user} = useSelector(authSelector)
-    const {isPasswordUpdated, errors} = useSelector(userSelector)
+    const {isPasswordUpdated, errors, editEmailErrors, editUserEmailSuccess} = useSelector(userSelector)
 
     const [emailChanging, setEmailChanging] = useState(false)
     const [passwordChanging, setPasswordChanging] = useState(false)
@@ -56,8 +56,6 @@ const ParentProfileForm = (props) => {
 
     const editEmail = async () => {
         await dispatch(editUserEmail(formData))
-        setEmailChanging(false)
-        await dispatch(getCurrentUserData())
     }
     const editPassword = async () => {
         const submitData = {data: {password: passwordData.password}, userId: user.id}
@@ -67,6 +65,13 @@ const ParentProfileForm = (props) => {
     useEffect(() => {
         setPasswordChanging(false)
     }, [isPasswordUpdated])
+
+    useEffect(() => {
+        if (editUserEmailSuccess) {
+            setEmailChanging(false)
+            dispatch(getCurrentUserData())
+        }
+    }, [editUserEmailSuccess])
 
     return (
         <>
@@ -139,8 +144,8 @@ const ParentProfileForm = (props) => {
                             className='form__field form__field_wfix-big'
                             value={formData.email}
                             onChange={emailChangeHandler}
-                            pattern='^(.+)@(.+)\.(.+)$'
-                            errors={errors}
+                            errors={editEmailErrors}
+                            name='email'
                         />
                         <div>
                             <Button
@@ -198,6 +203,9 @@ const ParentProfileForm = (props) => {
                                 </div>
                             </div>
                         </div>
+                        {passwordData.passwordRepeat && passwordData.password && !isPasswordsEquals && (
+                            <p className="form__error-text">Пароли не совпадают</p>
+                        )}
                         <div>
                             {isPasswordsEquals && <button
                                 type='button'

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
+import FormField from '../../../Components/FormField/FormField';
 
 
 const RegistrationBaseBlock = props => {
 
-    const {children, onSubmit} = props
+    const {children, onSubmit, policy, policyChangeHandler} = props
 
     return (
         <div className='all-page'>
@@ -19,6 +20,12 @@ const RegistrationBaseBlock = props => {
                             <NavLink className='form__link' to='/login/'>Войти</NavLink>
                         </p>
                         <p className='form__agreement'>
+                            <FormField
+                                type='checkbox'
+                                id='policy-checkbox'
+                                onChange={policyChangeHandler}
+                                value={policy}
+                            />
                             Регистрируясь в сервисе, принимаю условия <NavLink to='#'>соглашения</NavLink>{' '}
                             и <NavLink to='/policy'>политики конфидециальности</NavLink>
                         </p>
@@ -30,7 +37,9 @@ const RegistrationBaseBlock = props => {
 }
 
 RegistrationBaseBlock.propTypes = {
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    policy: PropTypes.bool,
+    policyChangeHandler: PropTypes.func
 }
 
 export default RegistrationBaseBlock;

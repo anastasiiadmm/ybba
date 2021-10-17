@@ -85,6 +85,12 @@ const Lessons = () => {
                                         />
                                     </div>
                                 )}
+                                {selectedChild && !selectedChild?.allow_create_lesson && (
+                                    <h3>Вы не можете добавить больше 2-х деагностических занятий</h3>
+                                )}
+                                {selectedChild && selectedChild?.is_diagnostic_lesson_completed && (
+                                    <h3>Диагностические занятия завершены</h3>
+                                )}
                             </div>
                         </div>
 

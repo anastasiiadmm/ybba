@@ -59,6 +59,7 @@ const GameContainer = (props) => {
 
     useEffect(() => {
         let json = {}
+        let interval
         if (checkUserRole(userRoles.therapist)) {
             json = {IsServer: true, Id: gameSessionId, FreeGame: false}
         }
@@ -66,15 +67,23 @@ const GameContainer = (props) => {
             json = {IsServer: false, Id: gameSessionId, FreeGame: false}
         }
         if (unityContext) {
-            let tryCount = 0
-            const interval = setInterval(() => {
-                tryCount += 1
-                unityContext.send('WebData', JSON.stringify(json))
-                if (tryCount >= 60) {
-                    clearInterval(interval)
-                }
-            }, 100)
+            unityContext.on('ReadJavaData', async () => {
+                unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
+            })
+            // let counter = 0
+            // const interval = setInterval(() => {
+            //     counter += 1
+            //     if (counter >= 10) {
+            //         clearInterval(interval)
+            //     }
+            //     unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
+            // }, 1000)
         }
+
+        return () => {
+            clearInterval(interval)
+        }
+        // eslint-disable-next-line
     }, [unityContext])
 
     if (!activeGame) {
@@ -94,10 +103,11 @@ const GameContainer = (props) => {
     }
 
     return (
-        <Unity
-            unityContext={unityContext}
-            className='game__screen'
-        />
+        <div></div>
+        // <Unity
+        //     unityContext={unityContext}
+        //     className='game__screen w-100'
+        // />
     );
 }
 

@@ -1,15 +1,18 @@
 .mainLessonWindow {
+    padding-right: 0 !important;
+    padding-left: 0 !important ;
     flex-wrap: nowrap!important;
 }
 
 .lessonSidebar {
+    /*width:  calc(100% / 12 * 4) !important;*/
     transition: all .3s;
 }
 
 .wideSidebar {
-    width: 40%!important;
+    width: 35%!important;
 }
 
 .gameMainShort {
-    width: 60%!important;
+    width: 65%!important;
 }

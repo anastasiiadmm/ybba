@@ -10,8 +10,13 @@ const INITIAL_STATE = {
     user: null,
     tokens: null,
     loading: false,
+
+    editUserEmailSuccess: false,
     success: false,
+
     commonError: null,
+    editEmailErrors: null,
+
     isPasswordUpdated: false
 }
 
@@ -23,7 +28,7 @@ export const editUserEmail = createAsyncThunk(
             const resp = await axiosApi.put(`/accounts/${user.id}/email/update/`, email)
             return resp.data
         } catch (e) {
-            return rejectWithValue(e)
+            return rejectWithValue(e.response.data)
         }
     }
 )
@@ -142,6 +147,19 @@ const userSlice = createSlice({
             state.commonError = payload?.detail
             state.errors = payload
         },
+
+        [editUserEmail.pending]: state => {
+            state.editEmailErrors = null
+            state.editUserEmailSuccess = false
+        },
+        [editUserEmail.fulfilled]: state => {
+            state.editEmailErrors = null
+            state.editUserEmailSuccess = true
+        },
+        [editUserEmail.rejected]: (state, {payload}) => {
+            state.editEmailErrors = payload
+            state.editUserEmailSuccess = false
+        }
     }
 })
 
