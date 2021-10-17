@@ -49,7 +49,15 @@ const ChildProfileStageTwo = () => {
 
     const selectChangeHandler = ({value, label}) => {
         const newChildSpecialists = [...childSpecialists]
-        newChildSpecialists.at(indexOfActiveSpecialist).specialist = value
+        console.log(newChildSpecialists)
+        if (indexOfActiveSpecialist >= 0) {
+            newChildSpecialists[indexOfActiveSpecialist] = {
+                ...newChildSpecialists[indexOfActiveSpecialist],
+                specialist: value
+            }
+        } else {
+            newChildSpecialists.at(indexOfActiveSpecialist).specialist = value
+        }
         setChildSpecialists(newChildSpecialists)
     }
     const inputChangeHandler = e => {
@@ -136,9 +144,7 @@ const ChildProfileStageTwo = () => {
 
     useEffect(() => {
         if (child && specialists) {
-            setChildSpecialists(child.specialists.map(item => {
-                return {...item, specialist: specialists.specialist[item.specialist]}
-            }))
+            setChildSpecialists([...child.specialists])
             if (child.specialists.length) {
                 setIsParentHaveTherapist(true)
             }
@@ -301,7 +307,10 @@ const ChildProfileStageTwo = () => {
                                         return (
                                             <div className='profile-child__spec-item'>
                                                 <span
-                                                    className='profile-child__spec-title'>{childSpecialist.specialist}</span>
+                                                    className='profile-child__spec-title'
+                                                >
+                                                    {specialists.specialist[childSpecialist.specialist]}
+                                                </span>
                                                 <button
                                                     type='button'
                                                     className='btn-out'
