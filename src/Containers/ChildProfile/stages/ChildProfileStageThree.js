@@ -67,8 +67,16 @@ const ChildProfileStageTwo = () => {
     }
     const reasonChangeHandler = reason => {
         const newChildSpecialists = [...childSpecialists]
-        newChildSpecialists.at(indexOfActiveSpecialist).reason_change_specialist = reason
-        newChildSpecialists.at(indexOfActiveSpecialist).reason_change_specialist_text = ''
+        if (indexOfActiveSpecialist >= 0) {
+            newChildSpecialists[indexOfActiveSpecialist] = {
+                ...newChildSpecialists[indexOfActiveSpecialist],
+                reason_change_specialist: reason,
+                reason_change_specialist_text: ''
+            }
+        } else {
+            newChildSpecialists.at(indexOfActiveSpecialist).reason_change_specialist = reason
+            newChildSpecialists.at(indexOfActiveSpecialist).reason_change_specialist_text = ''
+        }
         setChildSpecialists(newChildSpecialists)
     }
 
@@ -87,20 +95,26 @@ const ChildProfileStageTwo = () => {
         setIndexOfActiveSpecialist(index)
     }
     const onTherapistModalClose = async () => {
-        const oldChildSpecialists = [...childSpecialists]
-        oldChildSpecialists.pop()
-        await setChildSpecialists(oldChildSpecialists)
+        if (!activeSpecialist?.id) {
+            const oldChildSpecialists = [...childSpecialists]
+            oldChildSpecialists.pop()
+            await setChildSpecialists(oldChildSpecialists)
+        }
     }
     const workWithSpecialist = async () => {
+        const specialist = {...activeSpecialist}
+        if (specialist.reason_change_specialist !== 'other') {
+            delete specialist.reason_change_specialist_text
+        }
         if (activeSpecialist?.id) {
             await dispatch(updateChildSpecialist({
                 specialistId: activeSpecialist.id,
-                specialist: activeSpecialist
+                specialist: specialist
             }))
         } else {
             await dispatch(addSpecialistsForChild({
                 childId: childId,
-                specialists: activeSpecialist
+                specialists: specialist
             }))
         }
         await dispatch(getChild(childId))
