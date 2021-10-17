@@ -98,9 +98,13 @@ const ChildProfileStageTwo = () => {
                 specialist: activeSpecialist
             }))
         } else {
+            const specialist = {...activeSpecialist}
+            if (specialist.reason_change_specialist !== 'other') {
+                delete specialist.reason_change_specialist_text
+            }
             await dispatch(addSpecialistsForChild({
                 childId: childId,
-                specialists: activeSpecialist
+                specialists: specialist
             }))
         }
         await dispatch(getChild(childId))
