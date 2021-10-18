@@ -42,6 +42,16 @@ const GameContainer = (props) => {
         await setUnityContext(newContext)
     }
 
+    const sendJsonToGame = (jsonData) => {
+        unityContext.send('WebData', 'ReadWebData', JSON.stringify(jsonData))
+    }
+
+    const sendJsonToGameWithTimeout = jsonData => {
+        setTimeout(() => {
+            sendJsonToGame(jsonData)
+        }, 1000)
+    }
+
     useEffect(() => {
         if (activeGame) {
             setNewUnityContext()
@@ -67,17 +77,10 @@ const GameContainer = (props) => {
             json = {IsServer: false, Id: gameSessionId, FreeGame: false}
         }
         if (unityContext) {
+            // Controlling of sending JSON data to game
             unityContext.on('ReadJavaData', async () => {
-                unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
+                sendJsonToGameWithTimeout(json)
             })
-            // let counter = 0
-            // const interval = setInterval(() => {
-            //     counter += 1
-            //     if (counter >= 10) {
-            //         clearInterval(interval)
-            //     }
-            //     unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
-            // }, 1000)
         }
 
         return () => {
@@ -103,11 +106,10 @@ const GameContainer = (props) => {
     }
 
     return (
-        <div></div>
-        // <Unity
-        //     unityContext={unityContext}
-        //     className='game__screen w-100'
-        // />
+        <Unity
+            unityContext={unityContext}
+            className='game__screen w-100'
+        />
     );
 }
 
