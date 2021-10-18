@@ -17,3 +17,85 @@
 .finishLessonArea {
     cursor: pointer;
 }
+
+.action-btn-control {
+    width: 70px;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    background: #FF6B00;;
+    border: none;
+    padding: 0;
+    position: relative;
+    border-radius: 40px;
+    font-size: 12px;
+}
+
+.action-btn-control:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    margin: auto 0;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    background: no-repeat url("../../../assets/img/arrow-left.png");
+    background-size: contain;
+}
+
+.action-btn-control:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    margin: auto 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: no-repeat url("../../../assets/img/circle-dots.png");
+    background-size: contain;
+}
+
+.send-btn-control {
+    width: 70px;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    background: #FF6B00;;
+    border: none;
+    padding: 0;
+    position: relative;
+    border-radius: 40px;
+    font-size: 12px;
+}
+
+.send-btn-control:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    margin: auto 0;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    background: no-repeat url("../../../assets/img/arrow-right.png");
+    background-size: contain;
+}
+
+.send-btn-control:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    margin: auto 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: no-repeat url("../../../assets/img/circle-dots.png");
+    background-size: contain;
+}

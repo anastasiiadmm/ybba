@@ -498,33 +498,6 @@ a.disabled {
     background: url(./assets/img/pdf.svg) 0 0 no-repeat;
 }
 
-.action-btn-control {
-    width: 70px;
-    height: 36px;
-    line-height: 36px;
-    color: #fff;
-    background: #FF6B00;;
-    border: none;
-    padding: 0;
-    position: relative;
-    border-radius: 40px;
-    font-size: 12px;
-}
-
-.action-btn-control:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 10px;
-    margin: auto 0;
-    width: 23px;
-    height: 23px;
-    cursor: pointer;
-    background: no-repeat url("assets/img/arrow-left.png");
-    background-size: contain;
-}
-
 .btn-control {
     width: 36px;
     height: 36px;
