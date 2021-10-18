@@ -43,7 +43,7 @@ const GameSidebar = (props) => {
             {lesson?.id && <WebCam meetingId={lesson.id} onClick={webcamOnClick}/>}
             {checkUserRole(userRoles.therapist) && (
                 <div className='game__controls'>
-                    <Button className='action-btn-control' onClick={triggerNextAction}/>
+                    <Button className='action-btn-control' onClick={triggerPrevAction}/>
                     <Button className='send-btn-control' onClick={triggerNextAction}/>
                     <Button className='btn-control btn-control_back gameActionButton' onClick={triggerPrevAction} />
                     <Button className='btn-control btn-control_play gameActionButton' onClick={triggerStartGame} />
