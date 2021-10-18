@@ -70,14 +70,14 @@ const GameContainer = (props) => {
             unityContext.on('ReadJavaData', async () => {
                 unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
             })
-            // let counter = 0
-            // const interval = setInterval(() => {
-            //     counter += 1
-            //     if (counter >= 10) {
-            //         clearInterval(interval)
-            //     }
-            //     unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
-            // }, 1000)
+            let counter = 0
+            const interval = setInterval(() => {
+                counter += 1
+                if (counter >= 10) {
+                    clearInterval(interval)
+                }
+                unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
+            }, 1000)
         }
 
         return () => {
