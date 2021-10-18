@@ -49,7 +49,15 @@ const ChildProfileStageTwo = () => {
 
     const selectChangeHandler = ({value, label}) => {
         const newChildSpecialists = [...childSpecialists]
-        newChildSpecialists.at(indexOfActiveSpecialist).specialist = value
+        console.log(newChildSpecialists)
+        if (indexOfActiveSpecialist >= 0) {
+            newChildSpecialists[indexOfActiveSpecialist] = {
+                ...newChildSpecialists[indexOfActiveSpecialist],
+                specialist: value
+            }
+        } else {
+            newChildSpecialists.at(indexOfActiveSpecialist).specialist = value
+        }
         setChildSpecialists(newChildSpecialists)
     }
     const inputChangeHandler = e => {
@@ -59,8 +67,16 @@ const ChildProfileStageTwo = () => {
     }
     const reasonChangeHandler = reason => {
         const newChildSpecialists = [...childSpecialists]
-        newChildSpecialists.at(indexOfActiveSpecialist).reason_change_specialist = reason
-        newChildSpecialists.at(indexOfActiveSpecialist).reason_change_specialist_text = ''
+        if (indexOfActiveSpecialist >= 0) {
+            newChildSpecialists[indexOfActiveSpecialist] = {
+                ...newChildSpecialists[indexOfActiveSpecialist],
+                reason_change_specialist: reason,
+                reason_change_specialist_text: ''
+            }
+        } else {
+            newChildSpecialists.at(indexOfActiveSpecialist).reason_change_specialist = reason
+            newChildSpecialists.at(indexOfActiveSpecialist).reason_change_specialist_text = ''
+        }
         setChildSpecialists(newChildSpecialists)
     }
 
@@ -79,20 +95,26 @@ const ChildProfileStageTwo = () => {
         setIndexOfActiveSpecialist(index)
     }
     const onTherapistModalClose = async () => {
-        const oldChildSpecialists = [...childSpecialists]
-        oldChildSpecialists.pop()
-        await setChildSpecialists(oldChildSpecialists)
+        if (!activeSpecialist?.id) {
+            const oldChildSpecialists = [...childSpecialists]
+            oldChildSpecialists.pop()
+            await setChildSpecialists(oldChildSpecialists)
+        }
     }
     const workWithSpecialist = async () => {
+        const specialist = {...activeSpecialist}
+        if (specialist.reason_change_specialist !== 'other') {
+            delete specialist.reason_change_specialist_text
+        }
         if (activeSpecialist?.id) {
             await dispatch(updateChildSpecialist({
                 specialistId: activeSpecialist.id,
-                specialist: activeSpecialist
+                specialist: specialist
             }))
         } else {
             await dispatch(addSpecialistsForChild({
                 childId: childId,
-                specialists: activeSpecialist
+                specialists: specialist
             }))
         }
         await dispatch(getChild(childId))
@@ -136,9 +158,7 @@ const ChildProfileStageTwo = () => {
 
     useEffect(() => {
         if (child && specialists) {
-            setChildSpecialists(child.specialists.map(item => {
-                return {...item, specialist: specialists.specialist[item.specialist]}
-            }))
+            setChildSpecialists([...child.specialists])
             if (child.specialists.length) {
                 setIsParentHaveTherapist(true)
             }
@@ -301,7 +321,10 @@ const ChildProfileStageTwo = () => {
                                         return (
                                             <div className='profile-child__spec-item'>
                                                 <span
-                                                    className='profile-child__spec-title'>{childSpecialist.specialist}</span>
+                                                    className='profile-child__spec-title'
+                                                >
+                                                    {specialists.specialist[childSpecialist.specialist]}
+                                                </span>
                                                 <button
                                                     type='button'
                                                     className='btn-out'

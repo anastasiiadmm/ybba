@@ -142,6 +142,7 @@ const FormField = props => {
     }
 
     if (type === 'select') {
+        console.log(value)
         field = <>
             <label className='w-100'>
                 {label}

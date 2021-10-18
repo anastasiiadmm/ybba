@@ -60,6 +60,7 @@ const Lessons = () => {
                         <div className='classes__content'>
                             <div className='classes__row'>
                                 <div className='classes__col'>
+                                    {console.log(selectedChild)}
 
                                     {childrenOptions && (
                                         <FormField
@@ -68,6 +69,7 @@ const Lessons = () => {
                                             type='select'
                                             options={childrenOptions}
                                             onChange={onSelectChange}
+                                            value={selectedChild?.id}
                                         />
                                     )}
                                     {loading && (
@@ -85,10 +87,10 @@ const Lessons = () => {
                                         />
                                     </div>
                                 )}
-                                {!selectedChild?.allow_create_lesson && (
-                                    <h3>Вы не можете добавить больше 2-х деагностических занятий</h3>
+                                {selectedChild && !selectedChild?.allow_create_lesson && (
+                                    <h3>Вы не можете добавить больше 2-х диагностических занятий</h3>
                                 )}
-                                {selectedChild?.is_diagnostic_lesson_completed && (
+                                {selectedChild && selectedChild?.is_diagnostic_lesson_completed && (
                                     <h3>Диагностические занятия завершены</h3>
                                 )}
                             </div>
