@@ -34,28 +34,14 @@
 .action-btn-control:before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 30px;
     bottom: 0;
-    right: 10px;
+    right: 0px;
     margin: auto 0;
-    width: 26px;
-    height: 26px;
+    width: 65px;
+    height: 65px;
     cursor: pointer;
-    background: no-repeat url("../../../assets/img/arrow-left.png");
-    background-size: contain;
-}
-
-.action-btn-control:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 10px;
-    margin: auto 0;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    background: no-repeat url("../../../assets/img/circle-dots.png");
+    background: no-repeat url("../../../assets/img/action-left.png");
     background-size: contain;
 }
 
@@ -75,27 +61,13 @@
 .send-btn-control:before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 30px;
     bottom: 0;
-    left: 10px;
+    left: 0;
     margin: auto 0;
-    width: 26px;
-    height: 26px;
+    width: 65px;
+    height: 65px;
     cursor: pointer;
-    background: no-repeat url("../../../assets/img/arrow-right.png");
-    background-size: contain;
-}
-
-.send-btn-control:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 10px;
-    margin: auto 0;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    background: no-repeat url("../../../assets/img/circle-dots.png");
+    background: no-repeat url("../../../assets/img/action-right.png");
     background-size: contain;
 }
