@@ -511,14 +511,6 @@ a.disabled {
     font-size: 12px;
 }
 
-.icon-attention:before {
-    content: "\e91d";
-}
-
-.icon-ic-arrow-right:before {
-    content: "\e901";
-}
-
 .btn-control::before {
     font-family: 'icomoon' !important;
 }
