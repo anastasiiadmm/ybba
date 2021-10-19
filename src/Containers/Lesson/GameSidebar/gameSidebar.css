@@ -71,3 +71,57 @@
     background: no-repeat url("../../../assets/img/action-right.png");
     background-size: contain;
 }
+
+.btn-control_mute {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    background: #00CAD7;
+    border: none;
+    padding: 0;
+    position: relative;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.btn-control_mute::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2px;
+    margin: auto 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: no-repeat url("../../../assets/img/mute-icon.png");
+    background-size: contain;
+}
+
+.btn-control_unmute {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    background: #ff6b00;
+    border: none;
+    padding: 0;
+    position: relative;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.btn-control_unmute::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 2px;
+    margin: auto 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: no-repeat url("../../../assets/img/unmute_icon.png");
+    background-size: contain;
+}

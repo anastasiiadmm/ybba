@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -20,6 +20,11 @@ const GameSidebar = (props) => {
         lesson, webcamOnClick, gameOnClick, onFinishLesson
     } = props
 
+    const [state, setState] = useState({
+        playing: false,
+        mute: false
+    })
+
     const games = lesson?.games
     const activeGame = lesson?.active_game_id
 
@@ -37,19 +42,45 @@ const GameSidebar = (props) => {
     const triggerPauseGame = () => triggerGameAction(gameActions.PAUSE_GAME)
     const triggerGameRestart = () => triggerGameAction(gameActions.RESTART_GAME)
     const triggerNextAction = () => triggerGameAction(gameActions.NEXT_ACTION)
+    const triggerMuteAction = () => triggerGameAction('')
+    const triggerUnMuteAction = () => triggerGameAction(gameActions.MUTE_AUDIO)
+
+    const handlePlayerClick = () => {
+        setState(prevState => ({
+            ...prevState,
+            playing: !state.playing
+        }))
+        if (state.playing) {
+            triggerPauseGame()
+        } else {
+            triggerStartGame()
+        }
+    }
+
+    const handleMuteClick = () => {
+        setState(prevState => ({
+            ...prevState,
+            mute: !state.mute
+        }))
+        if (state.playing) {
+            triggerMuteAction()
+        } else {
+            triggerUnMuteAction()
+        }
+    }
 
     return (
         <>
             {lesson?.id && <WebCam meetingId={lesson.id} onClick={webcamOnClick}/>}
             {checkUserRole(userRoles.therapist) && (
                 <div className='game__controls'>
-                    <Button className='action-btn-control' onClick={triggerPrevAction}/>
-                    <Button className='send-btn-control' onClick={triggerNextAction}/>
+                    <Button className='action-btn-control gameActionButton' onClick={triggerPrevAction}/>
+                    <Button className='send-btn-control gameActionButton' onClick={triggerNextAction}/>
                     <Button className='btn-control btn-control_back gameActionButton' onClick={triggerPrevAction} />
-                    <Button className='btn-control btn-control_play gameActionButton' onClick={triggerStartGame} />
-                    <Button className='btn-control btn-control_pause gameActionButton' onClick={triggerPauseGame} />
+                    <Button className={`btn-control ${state.playing ? "btn-control_pause" : "btn-control_play"} gameActionButton`} onClick={handlePlayerClick} />
                     <Button className='btn-control btn-control_restart gameActionButton' onClick={triggerGameRestart} />
                     <Button className='btn-control btn-control_forward gameActionButton' onClick={triggerNextAction} />
+                    <Button className={`${state.mute ? "btn-control_mute btn-control_unmute" : "btn-control_mute"} gameActionButton`} onClick={handleMuteClick} />
                 </div>
             )}
             {lesson && (
