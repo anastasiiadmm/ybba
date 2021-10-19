@@ -63,9 +63,9 @@ const GameSidebar = (props) => {
             mute: !state.mute
         }))
         if (state.playing) {
-            triggerMuteAction()
+            triggerMuteAction() // fixed
         } else {
-            triggerUnMuteAction()
+            triggerUnMuteAction() // fixed
         }
     }
 
