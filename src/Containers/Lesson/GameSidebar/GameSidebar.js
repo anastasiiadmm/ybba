@@ -51,9 +51,9 @@ const GameSidebar = (props) => {
             playing: !state.playing
         }))
         if (state.playing) {
-            triggerPauseGame()
-        } else {
             triggerStartGame()
+        } else {
+            triggerPauseGame()
         }
     }
 
@@ -63,9 +63,9 @@ const GameSidebar = (props) => {
             mute: !state.mute
         }))
         if (state.playing) {
-            triggerMuteAction() // fixed
+            triggerMuteAction()
         } else {
-            triggerUnMuteAction() // fixed
+            triggerUnMuteAction()
         }
     }
 
