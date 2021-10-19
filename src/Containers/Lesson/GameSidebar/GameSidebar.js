@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -20,6 +20,14 @@ const GameSidebar = (props) => {
         lesson, webcamOnClick, gameOnClick, onFinishLesson
     } = props
 
+    const [state, setState] = useState({
+        playing: false
+    })
+
+    const [isMute, setIsMute] = useState({
+        mute: false
+    })
+
     const games = lesson?.games
     const activeGame = lesson?.active_game_id
 
@@ -38,18 +46,45 @@ const GameSidebar = (props) => {
     const triggerGameRestart = () => triggerGameAction(gameActions.RESTART_GAME)
     const triggerNextAction = () => triggerGameAction(gameActions.NEXT_ACTION)
 
+    const handlePlayerClick = () => {
+        if (!state.playing) {
+            setState({playing: true})
+            triggerStartGame()
+        } else {
+            setState({playing: false})
+            triggerPauseGame()
+        }
+    }
+
+    const handleMuteClick = () => {
+        if (!isMute.mute) {
+            setIsMute({mute: true})
+        } else {
+            setIsMute({mute: false})
+        }
+    }
+
     return (
         <>
             {lesson?.id && <WebCam meetingId={lesson.id} onClick={webcamOnClick}/>}
             {checkUserRole(userRoles.therapist) && (
                 <div className='game__controls'>
-                    <Button className='action-btn-control' onClick={triggerPrevAction}/>
-                    <Button className='send-btn-control' onClick={triggerNextAction}/>
+                    <Button className='action-btn-control gameActionButton' onClick={triggerPrevAction}/>
+                    <Button className='send-btn-control gameActionButton' onClick={triggerNextAction}/>
                     <Button className='btn-control btn-control_back gameActionButton' onClick={triggerPrevAction} />
-                    <Button className='btn-control btn-control_play gameActionButton' onClick={triggerStartGame} />
-                    <Button className='btn-control btn-control_pause gameActionButton' onClick={triggerPauseGame} />
+                    {state.playing ? (
+                        <Button className='btn-control btn-control_pause gameActionButton' onClick={handlePlayerClick} />
+                    ) : (
+                        <Button className='btn-control btn-control_play gameActionButton' onClick={handlePlayerClick} />
+                    )}
                     <Button className='btn-control btn-control_restart gameActionButton' onClick={triggerGameRestart} />
                     <Button className='btn-control btn-control_forward gameActionButton' onClick={triggerNextAction} />
+
+                    {isMute.mute ? (
+                        <Button className='btn-control_unmute gameActionButton' onClick={handleMuteClick} />
+                    ) : (
+                        <Button className='btn-control_mute gameActionButton' onClick={handleMuteClick} />
+                    )}
                 </div>
             )}
             {lesson && (
