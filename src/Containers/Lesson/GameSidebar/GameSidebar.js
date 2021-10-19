@@ -45,6 +45,8 @@ const GameSidebar = (props) => {
     const triggerPauseGame = () => triggerGameAction(gameActions.PAUSE_GAME)
     const triggerGameRestart = () => triggerGameAction(gameActions.RESTART_GAME)
     const triggerNextAction = () => triggerGameAction(gameActions.NEXT_ACTION)
+    const triggerMuteAction = () => triggerGameAction(gameActions.MUTE_AUDIO)
+    const triggerUnMuteAction = () => triggerGameAction('')
 
     const handlePlayerClick = () => {
         if (!state.playing) {
@@ -59,8 +61,10 @@ const GameSidebar = (props) => {
     const handleMuteClick = () => {
         if (!isMute.mute) {
             setIsMute({mute: true})
+            triggerMuteAction()
         } else {
             setIsMute({mute: false})
+            triggerUnMuteAction()
         }
     }
 
@@ -79,7 +83,6 @@ const GameSidebar = (props) => {
                     )}
                     <Button className='btn-control btn-control_restart gameActionButton' onClick={triggerGameRestart} />
                     <Button className='btn-control btn-control_forward gameActionButton' onClick={triggerNextAction} />
-
                     {isMute.mute ? (
                         <Button className='btn-control_unmute gameActionButton' onClick={handleMuteClick} />
                     ) : (
