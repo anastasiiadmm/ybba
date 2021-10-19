@@ -51,9 +51,9 @@ const GameSidebar = (props) => {
             playing: !state.playing
         }))
         if (state.playing) {
-            triggerPauseGame()
-        } else {
             triggerStartGame()
+        } else {
+            triggerPauseGame()
         }
     }
 
