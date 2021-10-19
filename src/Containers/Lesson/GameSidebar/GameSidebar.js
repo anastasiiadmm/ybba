@@ -46,7 +46,10 @@ const GameSidebar = (props) => {
     const triggerUnMuteAction = () => triggerGameAction(gameActions.MUTE_AUDIO)
 
     const handlePlayerClick = () => {
-        setState({playing: !state.playing})
+        setState(prevState => ({
+            ...prevState,
+            playing: !state.playing
+        }))
         if (state.playing) {
             triggerPauseGame()
         } else {
@@ -55,7 +58,10 @@ const GameSidebar = (props) => {
     }
 
     const handleMuteClick = () => {
-        setState({mute: !state.mute})
+        setState(prevState => ({
+            ...prevState,
+            mute: !state.mute
+        }))
         if (state.playing) {
             triggerMuteAction()
         } else {
