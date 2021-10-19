@@ -21,10 +21,7 @@ const GameSidebar = (props) => {
     } = props
 
     const [state, setState] = useState({
-        playing: false
-    })
-
-    const [isMute, setIsMute] = useState({
+        playing: false,
         mute: false
     })
 
@@ -41,29 +38,27 @@ const GameSidebar = (props) => {
     }
 
     const triggerPrevAction = () => triggerGameAction(gameActions.PREV_ACTION)
-    const triggerStartGame = () => triggerGameAction(gameActions.PAUSE_GAME)
+    const triggerStartGame = () => triggerGameAction('')
     const triggerPauseGame = () => triggerGameAction(gameActions.PAUSE_GAME)
     const triggerGameRestart = () => triggerGameAction(gameActions.RESTART_GAME)
     const triggerNextAction = () => triggerGameAction(gameActions.NEXT_ACTION)
-    const triggerMuteAction = () => triggerGameAction(gameActions.MUTE_AUDIO)
+    const triggerMuteAction = () => triggerGameAction('')
     const triggerUnMuteAction = () => triggerGameAction(gameActions.MUTE_AUDIO)
 
     const handlePlayerClick = () => {
-        if (!state.playing) {
-            setState({playing: true})
-            triggerStartGame()
-        } else {
-            setState({playing: false})
+        setState({playing: !state.playing})
+        if (state.playing) {
             triggerPauseGame()
+        } else {
+            triggerStartGame()
         }
     }
 
     const handleMuteClick = () => {
-        if (!isMute.mute) {
-            setIsMute({mute: true})
+        setState({mute: !state.mute})
+        if (state.playing) {
             triggerMuteAction()
         } else {
-            setIsMute({mute: false})
             triggerUnMuteAction()
         }
     }
@@ -76,18 +71,10 @@ const GameSidebar = (props) => {
                     <Button className='action-btn-control gameActionButton' onClick={triggerPrevAction}/>
                     <Button className='send-btn-control gameActionButton' onClick={triggerNextAction}/>
                     <Button className='btn-control btn-control_back gameActionButton' onClick={triggerPrevAction} />
-                    {state.playing ? (
-                        <Button className='btn-control btn-control_pause gameActionButton' onClick={handlePlayerClick} />
-                    ) : (
-                        <Button className='btn-control btn-control_play gameActionButton' onClick={handlePlayerClick} />
-                    )}
+                    <Button className={`btn-control ${state.playing ? "btn-control_pause" : "btn-control_play"} gameActionButton`} onClick={handlePlayerClick} />
                     <Button className='btn-control btn-control_restart gameActionButton' onClick={triggerGameRestart} />
                     <Button className='btn-control btn-control_forward gameActionButton' onClick={triggerNextAction} />
-                    {isMute.mute ? (
-                        <Button className='btn-control_unmute gameActionButton' onClick={handleMuteClick} />
-                    ) : (
-                        <Button className='btn-control_mute gameActionButton' onClick={handleMuteClick} />
-                    )}
+                    <Button className={`${state.mute ? "btn-control_mute btn-control_unmute" : "btn-control_mute"} gameActionButton`} onClick={handleMuteClick} />
                 </div>
             )}
             {lesson && (

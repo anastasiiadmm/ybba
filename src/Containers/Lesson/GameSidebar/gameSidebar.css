@@ -85,7 +85,7 @@
     font-size: 12px;
 }
 
-.btn-control_mute:before {
+.btn-control_mute::before {
     content: '';
     position: absolute;
     top: 0;
@@ -112,7 +112,7 @@
     font-size: 12px;
 }
 
-.btn-control_unmute:before {
+.btn-control_unmute::before {
     content: '';
     position: absolute;
     top: 0;
