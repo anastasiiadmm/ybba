@@ -45,8 +45,8 @@ const GameSidebar = (props) => {
     const triggerPauseGame = () => triggerGameAction(gameActions.PAUSE_GAME)
     const triggerGameRestart = () => triggerGameAction(gameActions.RESTART_GAME)
     const triggerNextAction = () => triggerGameAction(gameActions.NEXT_ACTION)
-    const triggerMuteAction = () => triggerGameAction(gameActions.MUTE_AUDIO)
-    const triggerUnMuteAction = () => triggerGameAction('')
+    const triggerMuteAction = () => triggerGameAction('')
+    const triggerUnMuteAction = () => triggerGameAction(gameActions.MUTE_AUDIO)
 
     const handlePlayerClick = () => {
         if (!state.playing) {
