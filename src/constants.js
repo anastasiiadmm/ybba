@@ -51,4 +51,58 @@ export const lessonTypes = {
 export const namesOfDaysOfWeek = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресение']
 export const namesOfDaysOfWeekShort = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
 
-export const shortNamesOfMonths = ['Янв', 'Февр', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Дек']
+export const shortNamesOfMonths = ['Янв', 'Февр', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Ноябрь', 'Дек']
+export const namesOfMonths = [
+    'Январь', 'Февраль', 'Март', 'Апрель',
+    'Май', 'Июнь', 'Июль', 'Август',
+    'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+]
+
+export const phoneticTableOneMapping = {
+    s: 'с',
+    s_soft: 'c\'',
+    z: 'з',
+    z_soft: 'з\'',
+    ts: 'ц',
+    sh: 'ш',
+    zh: 'ж',
+    ch: 'ч',
+    shch: 'щ',
+    l: 'л',
+    l_soft: 'л\'',
+    r: 'р',
+    r_soft: 'p\'',
+    n: 'н',
+    n_soft: 'н\'',
+    m: 'м',
+    m_soft: 'м\'',
+    j: 'й'
+}
+
+export const phoneticTableTwoMapping = {
+    t: 'т',
+    t_soft: 'т\'',
+    d: 'д',
+    d_soft: 'д\'',
+    k: 'к',
+    k_soft: 'к\'',
+    g: 'г',
+    g_soft: 'г\'',
+    kh: 'х',
+    kh_soft: 'х\'',
+    v: 'в',
+    v_soft: 'в\'',
+    f: 'ф',
+    f_soft: 'ф\'',
+    a: 'а',
+    o: 'о',
+    u: 'у',
+    y: 'ы',
+    e: 'э',
+    i: 'и',
+}
+
+export const envs = {
+    local: 'local',
+    development: 'development'
+}

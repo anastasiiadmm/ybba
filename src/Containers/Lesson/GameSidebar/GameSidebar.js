@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -20,6 +20,14 @@ const GameSidebar = (props) => {
         lesson, webcamOnClick, gameOnClick, onFinishLesson
     } = props
 
+    const [state, setState] = useState({
+        playing: false
+    })
+
+    const [isMute, setIsMute] = useState({
+        mute: false
+    })
+
     const games = lesson?.games
     const activeGame = lesson?.active_game_id
 
@@ -33,33 +41,57 @@ const GameSidebar = (props) => {
     }
 
     const triggerPrevAction = () => triggerGameAction(gameActions.PREV_ACTION)
-    const triggerStartGame = () => triggerGameAction('')
+    const triggerStartGame = () => triggerGameAction(gameActions.PAUSE_GAME)
     const triggerPauseGame = () => triggerGameAction(gameActions.PAUSE_GAME)
     const triggerGameRestart = () => triggerGameAction(gameActions.RESTART_GAME)
     const triggerNextAction = () => triggerGameAction(gameActions.NEXT_ACTION)
+    const triggerMuteAction = () => triggerGameAction(gameActions.MUTE_AUDIO)
+    const triggerUnMuteAction = () => triggerGameAction(gameActions.MUTE_AUDIO)
+
+    const handlePlayerClick = () => {
+        if (!state.playing) {
+            setState({playing: true})
+            triggerStartGame()
+        } else {
+            setState({playing: false})
+            triggerPauseGame()
+        }
+    }
+
+    const handleMuteClick = () => {
+        if (!isMute.mute) {
+            setIsMute({mute: true})
+            triggerMuteAction()
+        } else {
+            setIsMute({mute: false})
+            triggerUnMuteAction()
+        }
+    }
 
     return (
         <>
             {lesson?.id && <WebCam meetingId={lesson.id} onClick={webcamOnClick}/>}
             {checkUserRole(userRoles.therapist) && (
                 <div className='game__controls'>
+                    <Button className='action-btn-control gameActionButton' onClick={triggerPrevAction}/>
+                    <Button className='send-btn-control gameActionButton' onClick={triggerNextAction}/>
                     <Button className='btn-control btn-control_back gameActionButton' onClick={triggerPrevAction} />
-                    <Button className='btn-control btn-control_play gameActionButton' onClick={triggerStartGame} />
-                    <Button className='btn-control btn-control_pause gameActionButton' onClick={triggerPauseGame} />
+                    <Button className={`btn-control ${state.playing ? "btn-control_pause" : "btn-control_play"} gameActionButton`} onClick={handlePlayerClick} />
                     <Button className='btn-control btn-control_restart gameActionButton' onClick={triggerGameRestart} />
                     <Button className='btn-control btn-control_forward gameActionButton' onClick={triggerNextAction} />
+                    <Button className={`${isMute.mute ? "btn-control_mute btn-control_unmute" : "btn-control_mute"} gameActionButton`} onClick={handleMuteClick} />
                 </div>
             )}
             {lesson && (
                 <Timer
-                    from={strTimeToMoment(lesson.time_slot.start_time)}
-                    to={strTimeToMoment(lesson.time_slot.end_time)}
+                    from={strTimeToMoment(lesson?.time_slot?.start_time)}
+                    to={strTimeToMoment(lesson?.time_slot?.end_time)}
                 />
             )}
             {checkUserRole(userRoles.therapist) && (
-                <div className='game__info d-flex flex-column h-100'>
+                <div className='game__info d-flex flex-column gameListContainer'>
                     <h5 className='game__info-title'>Список игр:</h5>
-                    <ol className='game__lesson-list'>
+                    <ol className='game__lesson-list gameList'>
                         {games && games.map(game => {
                             return <li
                                 className={addClasses('game__lesson-item gameListItem', {
@@ -96,7 +128,8 @@ GameSidebar.propTypes = {
         }))
     }).isRequired,
     gameOnClick: PropTypes.func,
-    onFinishLesson: PropTypes.func
+    onFinishLesson: PropTypes.func,
+    sendJsonToGame: PropTypes.func
 }
 
 export default GameSidebar;

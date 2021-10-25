@@ -42,6 +42,16 @@ const GameContainer = (props) => {
         await setUnityContext(newContext)
     }
 
+    const sendJsonToGame = (jsonData) => {
+        unityContext.send('WebData', 'ReadWebData', JSON.stringify(jsonData))
+    }
+
+    const sendJsonToGameWithTimeout = jsonData => {
+        setTimeout(() => {
+            sendJsonToGame(jsonData)
+        }, 1000)
+    }
+
     useEffect(() => {
         if (activeGame) {
             setNewUnityContext()
@@ -67,10 +77,9 @@ const GameContainer = (props) => {
             json = {IsServer: false, Id: gameSessionId, FreeGame: false}
         }
         if (unityContext) {
+            // Controlling of sending JSON data to game
             unityContext.on('ReadJavaData', async () => {
-                await setTimeout(() => {
-                    unityContext.send('WebData', 'ReadWebData', JSON.stringify(json))
-                }, 1000)
+                sendJsonToGameWithTimeout(json)
             })
         }
 
