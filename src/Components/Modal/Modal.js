@@ -1,12 +1,11 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import BackDrop from '../BackDrop/BackDrop.js';
+import Button from 'Components/Button/Button.js';
+import {addClasses} from 'utils/addClasses/addClasses.js';
 
-import './modal.css'
-import {addClasses} from '../../utils/addClasses/addClasses';
-import Button from '../Button/Button';
+import 'Components/Modal/modal.css';
 
 
 const Modal = (props) => {

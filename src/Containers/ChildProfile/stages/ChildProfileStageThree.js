@@ -1,20 +1,21 @@
 import React, {useState, useEffect, useContext} from 'react';
 
-import FormField from '../../../Components/FormField/FormField';
-import Modal from '../../../Components/Modal/Modal';
-import Button from '../../../Components/Button/Button';
+import {useHistory} from 'react-router';
+import {useDispatch, useSelector} from 'react-redux';
+
+import FormField from 'Components/FormField/FormField';
+import Modal from 'Components/Modal/Modal';
+import Button from 'Components/Button/Button';
 import {
     getSpecialists,
     childSelector,
     clearChildState,
     getChild,
     addSpecialistsForChild, deleteChildSpecialist, updateChildSpecialist
-} from '../../../redux/child/childSlice';
-import {useDispatch, useSelector} from 'react-redux';
-import {ChildProfileContext} from '../../../context/ChildProfileContext/ChildProfileContext';
-import StagesLinks from '../StagesLinks/StagesLinks';
-import Actions from '../Actions/Actions';
-import {useHistory} from 'react-router';
+} from 'redux/child/childSlice.js';
+import {ChildProfileContext} from 'context/ChildProfileContext/ChildProfileContext.js';
+import StagesLinks from 'Containers/ChildProfile/StagesLinks/StagesLinks';
+import Actions from 'Containers/ChildProfile/Actions/Actions';
 
 
 const ChildProfileStageTwo = () => {

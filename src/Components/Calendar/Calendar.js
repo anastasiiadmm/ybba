@@ -3,10 +3,10 @@ import React, {useEffect, useState} from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 
-import DateBlock from './blocks/DateBlock/DateBlock.js';
-import MonthBlock from './blocks/MonthBlock/MonthBlock.js';
-import YearBlock from './blocks/YearBlock/YearBlock.js';
-import DateData from './DateData/DateData.js';
+import DateBlock from 'Components/Calendar/blocks/DateBlock/DateBlock.js';
+import MonthBlock from 'Components/Calendar/blocks/MonthBlock/MonthBlock.js';
+import YearBlock from 'Components/Calendar/blocks/YearBlock/YearBlock.js';
+import DateData from 'Components/Calendar/DateData/DateData.js';
 
 import './calendar.css'
 

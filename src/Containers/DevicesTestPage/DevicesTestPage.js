@@ -2,9 +2,9 @@ import React, {useRef, useEffect, useState} from 'react';
 
 import {v4 as uuidv4} from 'uuid'
 
-import SidebarContainer from '../../Components/SidebarContainer/SidebarContainer';
-import Jitsi from '../../Components/Jitsi/Jitsi';
-import {jitsiTools} from '../../constants';
+import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
+import Jitsi from 'Components/Jitsi/Jitsi';
+import {jitsiTools} from 'constants.js';
 
 
 const DevicesTestPage = () => {

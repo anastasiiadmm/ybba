@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react';
 
 import PropTypes from 'prop-types';
 
-import GameContainer from '../../GameContainer/GameContainer';
-import Button from '../../../Components/Button/Button';
-import {checkUserRole} from '../../../utils/user';
-import {userRoles} from '../../../constants';
-import {addClasses} from '../../../utils/addClasses/addClasses';
+import GameContainer from 'Containers/GameContainer/GameContainer';
+import Button from 'Components/Button/Button';
+import {checkUserRole} from 'utils/user.js';
+import {userRoles} from 'constants.js';
+import {addClasses} from 'utils/addClasses/addClasses.js';
 
-import './gameMain.css'
+import 'Containers/Lesson/GameMain/gameMain.css'
 
 
 const GameMain = (props) => {

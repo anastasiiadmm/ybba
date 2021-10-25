@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react';
 
 import {useSelector, useDispatch} from 'react-redux';
-
-import MainTitleBlock from '../MainDashboard/MainTitleBlock/MainTitleBlock';
-import SidebarContainer from '../../Components/SidebarContainer/SidebarContainer';
-import ParentProfileForm from '../ParentProfileForm/ParentProfileForm';
-import {updateUserData, userSelector, clearUserState} from '../../redux/user/userSlice';
-import Button from '../../Components/Button/Button';
-import {useHistory} from 'react-router';
-import {authSelector, getCurrentUserData} from '../../redux/auth/authSlice';
 import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router';
+
+import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
+import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
+import ParentProfileForm from 'Containers/ParentProfileForm/ParentProfileForm';
+import {updateUserData, userSelector, clearUserState} from 'redux/user/userSlice.js';
+import Button from 'Components/Button/Button';
+import {authSelector, getCurrentUserData} from 'redux/auth/authSlice.js';
 
 
 const ParentProfileEdit = () => {

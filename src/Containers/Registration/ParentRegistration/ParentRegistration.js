@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router';
 
-import FormField from '../../../Components/FormField/FormField.js';
-import SocialMediaBlock from '../../../Components/SocialMediaBlock/SocialMediaBlock.js';
-import config from '../../../config.js';
+import FormField from 'Components/FormField/FormField.js';
+import config from 'config.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
-import {allRussianWardsAndHyphen} from '../../../regex/patterns/html';
-import {clearAuthState} from '../../../redux/auth/authSlice';
-import {clearChildState} from '../../../redux/child/childSlice';
-import {userSelector, clearUserState} from '../../../redux/user/userSlice';
+import {allRussianWardsAndHyphen} from 'regex/patterns/html.js';
+import {clearChildState} from 'redux/child/childSlice.js';
+import {userSelector, clearUserState} from 'redux/user/userSlice.js';
 
 
 const ParentRegistration = (props) => {

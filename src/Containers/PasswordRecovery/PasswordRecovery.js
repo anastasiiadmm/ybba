@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
-
-import Container from '../../Components/Container/Container';
-import Button from '../../Components/Button/Button';
-import {emailPattern} from '../../regex/patterns/html';
-import FormField from '../../Components/FormField/FormField';
-import {authSelector, resetUserPasswordSendEmail, clearAuthState} from '../../redux/auth/authSlice';
 import {Link} from 'react-router-dom';
+
+import Container from 'Components/Container/Container';
+import Button from 'Components/Button/Button';
+import {emailPattern} from 'regex/patterns/html.js';
+import FormField from 'Components/FormField/FormField';
+import {authSelector, resetUserPasswordSendEmail, clearAuthState} from 'redux/auth/authSlice.js';
 
 
 const PasswordRecovery = () => {

@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
-import {Link} from 'react-router-dom';
-import {addClasses} from '../../../utils/addClasses/addClasses';
-import {ChildProfileContext} from '../../../context/ChildProfileContext/ChildProfileContext';
 
-const StagesLinks = (props) => {
+import {ChildProfileContext} from 'context/ChildProfileContext/ChildProfileContext.js';
+import {addClasses} from 'utils/addClasses/addClasses.js';
+
+
+const StagesLinks = () => {
 
     const {
-        stage,
-        childId,
+        stage
     } = useContext(ChildProfileContext);
 
     const stagesLinks = [

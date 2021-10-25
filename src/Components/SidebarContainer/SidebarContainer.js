@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Container from '../Container/Container';
-import SideBar from '../SideBar/SideBar';
+import Container from 'Components/Container/Container';
+import SideBar from 'Components/SideBar/SideBar';
 
 
 const SidebarContainer = (props) => {

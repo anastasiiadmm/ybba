@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 
 import {useSelector} from 'react-redux';
-import {dashBoardSelector} from '../../../redux/dashBoard/dashBoardSlice';
 import {Spinner} from 'react-bootstrap';
-import LessonItem from './LessonItem/LessonItem';
-import {lessonStatuses} from '../../../constants';
 import {Link} from 'react-router-dom';
+
+import {dashBoardSelector} from 'redux/dashBoard/dashBoardSlice.js';
+import LessonItem from 'Containers/MainDashboard/NextLessons/LessonItem/LessonItem';
+import {lessonStatuses} from 'constants.js';
 
 
 const NextLessons = () => {

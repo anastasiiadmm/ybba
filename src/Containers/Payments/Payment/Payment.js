@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
-
-import FormField from '../../../Components/FormField/FormField';
-import {getChildren, paymentsSelector} from '../../../redux/payments/paymentsSlice';
-import {authSelector} from '../../../redux/auth/authSlice';
-import {addClasses} from '../../../utils/addClasses/addClasses';
-import {setSelectedChild} from '../../../redux/lessons/lessonsSlice';
 import {Link} from 'react-router-dom';
+
+import FormField from 'Components/FormField/FormField';
+import {getChildren, paymentsSelector} from 'redux/payments/paymentsSlice.js';
+import {authSelector} from 'redux/auth/authSlice.js';
+import {addClasses} from 'utils/addClasses/addClasses.js';
+import {setSelectedChild} from 'redux/lessons/lessonsSlice.js';
 
 
 const Payment = () => {

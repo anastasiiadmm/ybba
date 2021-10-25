@@ -1,8 +1,11 @@
 import React from 'react';
-import Button from '../../../Components/Button/Button';
-import {addClasses} from '../../../utils/addClasses/addClasses';
-import PropTypes from 'prop-types';
+
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import Button from 'Components/Button/Button';
+import {addClasses} from 'utils/addClasses/addClasses.js';
+
 
 const Actions = (props) => {
 

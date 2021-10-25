@@ -3,12 +3,12 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Spinner} from 'react-bootstrap';
 
-import SidebarContainer from '../../Components/SidebarContainer/SidebarContainer';
-import MainTitleBlock from '../MainDashboard/MainTitleBlock/MainTitleBlock';
-import FormField from '../../Components/FormField/FormField';
-import {getChildren, lessonsSelector, setSelectedChild, clearChildren} from '../../redux/lessons/lessonsSlice';
-import LessonDashboardComponent from '../../Components/LessonDashboardComponent/LessonDashboardComponent';
-import {authSelector} from '../../redux/auth/authSlice';
+import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
+import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
+import FormField from 'Components/FormField/FormField';
+import {getChildren, lessonsSelector, setSelectedChild, clearChildren} from 'redux/lessons/lessonsSlice.js';
+import LessonDashboardComponent from 'Components/LessonDashboardComponent/LessonDashboardComponent';
+import {authSelector} from 'redux/auth/authSlice.js';
 
 
 const Lessons = () => {

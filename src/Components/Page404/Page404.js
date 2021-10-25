@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Container from '../Container/Container.js';
+import Container from 'Components/Container/Container.js';
 
 
 const Page404 = () => {

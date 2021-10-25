@@ -3,10 +3,10 @@ import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 
-import FormField from '../../Components/FormField/FormField';
-import Button from '../../Components/Button/Button';
-import {editUserEmail, updateUserPassword, userSelector} from '../../redux/user/userSlice';
-import {getCurrentUserData, authSelector} from '../../redux/auth/authSlice';
+import FormField from 'Components/FormField/FormField';
+import Button from 'Components/Button/Button';
+import {editUserEmail, updateUserPassword, userSelector} from 'redux/user/userSlice.js';
+import {getCurrentUserData, authSelector} from 'redux/auth/authSlice.js';
 
 
 const ParentProfileForm = (props) => {

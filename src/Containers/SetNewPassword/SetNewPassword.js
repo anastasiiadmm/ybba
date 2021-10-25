@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-
-import Container from '../../Components/Container/Container';
-import FormField from '../../Components/FormField/FormField';
-import Button from '../../Components/Button/Button';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router';
-import {resetUserPassword, authSelector} from '../../redux/auth/authSlice';
+
+import Container from 'Components/Container/Container';
+import FormField from 'Components/FormField/FormField';
+import Button from 'Components/Button/Button';
+import {resetUserPassword, authSelector} from 'redux/auth/authSlice.js';
 
 
 const SetNewPassword = props => {

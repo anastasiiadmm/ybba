@@ -3,25 +3,26 @@ import React, {useState, useEffect, useCallback} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router';
 
-import Container from '../../Components/Container/Container';
-import GameMain from './GameMain/GameMain';
-import GameSidebar from './GameSidebar/GameSidebar';
-import {addClasses} from '../../utils/addClasses/addClasses';
-import {authSelector, refreshToken} from '../../redux/auth/authSlice';
-import {getLesson, changeActiveGame, changeLessonStatus} from '../../redux/lesson/actions';
-import {lessonSelector} from '../../redux/lesson/lessonSlice';
-import {LESSON_STATUS_FINISHED, userRoles} from '../../constants';
-import {GameContext} from '../../context/GameContext/GameContext';
-import {LessonContext} from '../../context/LessonContext/LessonContext';
-import {ReduxWebSocket} from '../../utils/MyWebSocket/MyWebSocket';
-import config from '../../config';
-import {webSocketSelector, clearWebSocket} from '../../redux/webSocker/webSockerSlice';
-import {DISCONNECT} from '../../redux/actionTypes';
-import {checkUserRole} from '../../utils/user';
+import Container from 'Components/Container/Container';
+import GameMain from 'Containers/Lesson/GameMain/GameMain';
+import GameSidebar from 'Containers/Lesson/GameSidebar/GameSidebar';
+import {addClasses} from 'utils/addClasses/addClasses.js';
+import {authSelector, refreshToken} from 'redux/auth/authSlice.js';
+import {getLesson, changeActiveGame, changeLessonStatus} from 'redux/lesson/actions.js';
+import {lessonSelector} from 'redux/lesson/lessonSlice.js';
+import {LESSON_STATUS_FINISHED, userRoles} from 'constants.js';
+import {GameContext} from 'context/GameContext/GameContext.js';
+import {LessonContext} from 'context/LessonContext/LessonContext.js';
+import {ReduxWebSocket} from 'utils/MyWebSocket/MyWebSocket.js';
+import config from 'config';
+import {webSocketSelector, clearWebSocket} from 'redux/webSocker/webSockerSlice.js';
+import {DISCONNECT} from 'redux/actionTypes.js';
+import {checkUserRole} from 'utils/user.js';
 
-import './lesson.css'
-import Window from '../../Components/Window/Window';
-import SpeechCard from '../SpeechCard/SpeechCard';
+import Window from 'Components/Window/Window';
+import SpeechCard from 'Containers/SpeechCard/SpeechCard';
+
+import 'Containers/Lesson/lesson.css'
 
 
 const Lesson = (props) => {
