@@ -20,6 +20,8 @@ import {DISCONNECT} from '../../redux/actionTypes';
 import {checkUserRole} from '../../utils/user';
 
 import './lesson.css'
+import Window from '../../Components/Window/Window';
+import SpeechCard from '../SpeechCard/SpeechCard';
 
 
 const Lesson = (props) => {
@@ -38,6 +40,7 @@ const Lesson = (props) => {
     const [gameAction, triggerGameAction] = useState('')
     const [lastSentData, setLastSentData] = useState(null)
     const [ws, setWs] = useState(null)
+    const [windowData, setWindowData] = useState()
 
     const gameContext = {activeGame, gameAction, triggerGameAction}
     const lessonContext = {gameAction, triggerGameAction}
@@ -74,6 +77,16 @@ const Lesson = (props) => {
         ws.close()
         await dispatch(refreshToken())
         dispatch(clearWebSocket())
+    }
+    const openSpeechCard = () => {
+        const speechCard = <SpeechCard
+            child={lesson.student}
+            uniqueSpeechCardId={lesson.id}
+        />
+        setWindowData(speechCard)
+    }
+    const onCloseSpeechCard = () => {
+        setWindowData(null)
     }
 
     useEffect(() => {
@@ -145,6 +158,13 @@ const Lesson = (props) => {
 
     return (
         <Container>
+            {lesson && windowData && (
+                <Window
+                    handleClose={onCloseSpeechCard}
+                >
+                    {windowData}
+                </Window>
+            )}
             <LessonContext.Provider value={lessonContext}>
                 <div className='game mainLessonWindow'>
                     <main
@@ -153,7 +173,11 @@ const Lesson = (props) => {
                         })}
                     >
                         <GameContext.Provider value={gameContext}>
-                            <GameMain activeGame={activeGame} gameSessionId={lessonId}/>
+                            <GameMain
+                                activeGame={activeGame}
+                                gameSessionId={lessonId}
+                                speechCardOnClick={openSpeechCard}
+                            />
                         </GameContext.Provider>
                     </main>
                     <div

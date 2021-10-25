@@ -23,7 +23,9 @@ const NextLessons = () => {
 
     return (
         <div className='info-item info-item_high'>
-            <h5 className='info-item__title'>Следующие занятия</h5>
+            <h5 className='info-item__title'>
+                <b>Следующие занятия</b>
+            </h5>
             {newLessons && newLessons.map(lesson => {
                 return (
                     <LessonItem

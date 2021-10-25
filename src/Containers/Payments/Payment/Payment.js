@@ -25,7 +25,6 @@ const Payment = () => {
         const child = children?.find(child => child.id === value)
         setChild(child)
         dispatch(setSelectedChild(child))
-        console.log(child)
     }
 
     useEffect(() => {
@@ -50,6 +49,7 @@ const Payment = () => {
                             label="Покупка занятий для:"
                             options={options}
                             onChange={selectChangeHandler}
+                            value={selectedChild?.id}
                         />
                     )}
                 </div>

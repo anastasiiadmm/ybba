@@ -37,6 +37,8 @@ const ParentTimeSlots = () => {
 
     const {timeSlots, selectedChild, lessonCreated, loading} = useSelector(lessonsSelector)
 
+    console.log(selectedChild)
+
     const timeSlotOnClick = ({id}) => {
         const index = selectedTimeSlots.indexOf(id)
         if (index !== -1) {
@@ -146,11 +148,10 @@ const ParentTimeSlots = () => {
             </Modal>
 
             <MainTitleBlock
-                leftTitle='Занятия'
+                leftTitle='Выберите временной слот'
             />
             <div className='classes'>
                 <div className='classes__content'>
-                    <h6>Выбор временной ячейки для урока ребёнка</h6>
                     <div className='timeslot' id='timeSlot'>
                         <div className='timeslot__body position-static'>
                             <div className='d-flex justify-content-around flex-wrap'>
@@ -226,6 +227,7 @@ const ParentTimeSlots = () => {
                                                                 timeSlot={timeSlot}
                                                                 onClick={timeSlotOnClick}
                                                                 isActive={selectedTimeSlots.indexOf(timeSlot.id) > -1}
+                                                                allowsToChoice={timeSlot.teachers.length}
                                                             >
                                                                 {moment(timeSlot.start_time, 'H:m:s').format('H:mm')} -
                                                                 {moment(timeSlot.end_time, 'H:m:s').format('H:mm')}

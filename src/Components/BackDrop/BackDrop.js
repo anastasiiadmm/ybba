@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './backdrop.css'
+import {addClasses} from '../../utils/addClasses/addClasses';
 
 
 const BackDrop = (props) => {
@@ -11,7 +12,9 @@ const BackDrop = (props) => {
 
     return <React.Fragment>
         {isOpen && <div
-            className='backdrop'
+            className={addClasses('modal__overlay', {
+                open: isOpen
+            })}
             onClick={toggle}
         >
             {children}

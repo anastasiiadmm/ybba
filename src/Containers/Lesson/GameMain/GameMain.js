@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -14,8 +14,23 @@ import './gameMain.css'
 const GameMain = (props) => {
 
     const {
-        gameSessionId
+        gameSessionId, speechCardOnClick
     } = props
+
+    const [notes, setNotes] = useState('')
+
+    const lsKey = `${gameSessionId}-notes`
+
+    const notesChangeHandler = e => {
+        setNotes(e.target.value)
+        localStorage.setItem(lsKey, e.target.value)
+    }
+
+    useEffect(() => {
+        setNotes(
+            localStorage.getItem(lsKey)
+        )
+    }, [])
 
     return (
         <>
@@ -34,13 +49,25 @@ const GameMain = (props) => {
                 <div className='notes game__notes'>
                     <div className='notes__top'>
                         <span className='notes__title'>Заметки</span>
-                        <Button className='notes__link border-0 bg-transparent'>Протокол обследования</Button>
-                        <Button className='notes__link border-0 bg-transparent'>Речевая карта</Button>
+                        <Button
+                            className='notes__link border-0 bg-transparent'
+                        >
+                            Протокол обследования
+                        </Button>
+                        <Button
+                            className='notes__link border-0 bg-transparent'
+                            onClick={speechCardOnClick}
+                        >
+                            Речевая карта
+                        </Button>
                     </div>
                     <div className='notes__field'>
                         <form action='#'>
-                            <textarea className='notes__area'/>
-                            <Button className='notes__btn' type='submit'/>
+                            <textarea
+                                className='notes__area'
+                                onChange={notesChangeHandler}
+                                value={notes}
+                            />
                         </form>
                     </div>
                 </div>
@@ -50,7 +77,8 @@ const GameMain = (props) => {
 }
 
 GameMain.propTypes = {
-    gameSessionId: PropTypes.string.isRequired
+    gameSessionId: PropTypes.string.isRequired,
+    speechCardOnClick: PropTypes.func
 }
 
 export default GameMain;

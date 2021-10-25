@@ -44,3 +44,11 @@
     background: #00CAD7;
     transition: width .5s;
 }
+
+.gameList {
+    overflow: scroll;
+}
+
+.gameListContainer {
+    height: 20vh !important;
+}

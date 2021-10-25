@@ -67,6 +67,7 @@ const Lessons = () => {
                                             type='select'
                                             options={childrenOptions}
                                             onChange={onSelectChange}
+                                            value={selectedChild?.id}
                                         />
                                     )}
                                     {loading && (
@@ -83,6 +84,12 @@ const Lessons = () => {
                                             description='Позволит нам лучше узнать вашего ребенка и разработать план занятий.'
                                         />
                                     </div>
+                                )}
+                                {selectedChild && !selectedChild?.allow_create_lesson && (
+                                    <h3>Вы не можете добавить больше 2-х диагностических занятий</h3>
+                                )}
+                                {selectedChild && selectedChild?.is_diagnostic_lesson_completed && (
+                                    <h3>Диагностические занятия завершены</h3>
                                 )}
                             </div>
                         </div>

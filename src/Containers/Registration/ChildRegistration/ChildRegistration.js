@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
@@ -10,22 +10,28 @@ import config from '../../../config.js';
 import {RegistrationContext} from '../../../context/RegistrationContext/RegistrationContext.js';
 import ChildrenForm from '../../ChildrenForm/ChildrenForm.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
-import {createChild, childSelector, clearChildState} from '../../../redux/child/childSlice';
-import {clearAuthState} from '../../../redux/auth/authSlice';
+import {createChild, childSelector, clearChildState, getCountriesList} from '../../../redux/child/childSlice';
 import {createUser, userSelector} from '../../../redux/user/userSlice';
 
 
 const ChildRegistration = (props) => {
 
     const {
-        setChildrenData, currentStage
+        setChildrenData, currentStage, setCity, setCountry
     } = props
 
     const history = useHistory()
     const dispatch = useDispatch()
+
     const {children: childrenData, parent: parentData} = useContext(RegistrationContext)
+
     const {user, tokens, errors} = useSelector(userSelector)
     const {success, loading} = useSelector(childSelector)
+    const [policy, setPolicy] = useState(false)
+
+    const policyChangeHandler = e => {
+        setPolicy(e.target.checked)
+    }
 
     const handleBack = () => {
         const previousStage = currentStage - 1
@@ -34,8 +40,9 @@ const ChildRegistration = (props) => {
     const isRegistrationDataValid = () => (
         childrenData.first_name &&
         childrenData.last_name &&
-        childrenData.date_of_birth
-        // childrenData.country &&
+        childrenData.date_of_birth &&
+        policy &&
+        childrenData.country
         // childrenData.city
     )
     const onSubmit = async e => {
@@ -45,7 +52,6 @@ const ChildRegistration = (props) => {
 
 
     useEffect(() => {
-        console.log(user, success)
         dispatch(clearChildState())
         // eslint-disable-next-line
     }, [])
@@ -72,23 +78,27 @@ const ChildRegistration = (props) => {
     return (
         <RegistrationBaseBlock
             onSubmit={onSubmit}
+            policy={policy}
+            policyChangeHandler={policyChangeHandler}
         >
             <button
-                type='button'
-                className='form__back border-0 bg-transparent'
+                type="button"
+                className="form__back border-0 bg-transparent"
                 onClick={handleBack}
             >
-                <Icon icon='backward1'/>
+                <Icon icon="backward1"/>
                 Назад
             </button>
             <ChildrenForm
                 childrenData={childrenData}
                 setChildrenData={setChildrenData}
+                setCity={setCity}
+                setCountry={setCountry}
             />
-            <div className='form__row form__row_pd'>
+            <div className="form__row form__row_pd">
                 <Button
-                    type='submit'
-                    className='btn'
+                    type="submit"
+                    className="btn"
                     disabled={!isRegistrationDataValid()}
                     loading={loading}
                 >
@@ -101,7 +111,9 @@ const ChildRegistration = (props) => {
 
 ChildRegistration.propTypes = {
     setChildrenData: PropTypes.func,
-    currentStage: PropTypes.number
+    currentStage: PropTypes.number,
+    setCity: PropTypes.func,
+    setCountry: PropTypes.func
 }
 
 export default ChildRegistration;
