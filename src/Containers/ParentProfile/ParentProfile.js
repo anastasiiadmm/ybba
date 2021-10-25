@@ -5,9 +5,9 @@ import {useSelector, useDispatch} from 'react-redux';
 import SidebarContainer from '../../Components/SidebarContainer/SidebarContainer';
 import MainTitleBlock from '../MainDashboard/MainTitleBlock/MainTitleBlock';
 import ParentProfileData from '../ParentProfileData/ParentProfileData';
-import Button from '../../Components/Button/Button';
 import {authSelector} from '../../redux/auth/authSlice';
 import {clearUserState} from '../../redux/user/userSlice';
+import {Link} from 'react-router-dom';
 
 
 const ParentProfile = () => {
@@ -38,7 +38,12 @@ const ParentProfile = () => {
 
                         </div>
                         <div className='content__bottom'>
-                            <Button className='btn' to='/profile/edit/'>Редактировать</Button>
+                            <Link
+                                className='btn'
+                                to='/profile/edit/'
+                            >
+                                Редактировать
+                            </Link>
                         </div>
                     </div>
                 </div>

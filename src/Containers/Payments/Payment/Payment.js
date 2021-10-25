@@ -6,9 +6,8 @@ import FormField from '../../../Components/FormField/FormField';
 import {getChildren, paymentsSelector} from '../../../redux/payments/paymentsSlice';
 import {authSelector} from '../../../redux/auth/authSlice';
 import {addClasses} from '../../../utils/addClasses/addClasses';
-import Button from '../../../Components/Button/Button';
 import {setSelectedChild} from '../../../redux/lessons/lessonsSlice';
-import {sendTestRequest, generateHash} from '../../../utils/robokassa/robokassa';
+import {Link} from 'react-router-dom';
 
 
 const Payment = () => {
@@ -36,16 +35,17 @@ const Payment = () => {
 
     useEffect(() => {
         dispatch(getChildren(user.id))
+        // eslint-disable-next-line
     }, [])
 
     return (
-        <div className="payments__tab-content" id="payment">
-            <div className="payments__row">
-                <div className="payments__col">
+        <div className='payments__tab-content' id='payment'>
+            <div className='payments__row'>
+                <div className='payments__col'>
                     {options && (
                         <FormField
-                            type="select"
-                            label="Покупка занятий для:"
+                            type='select'
+                            label='Покупка занятий для:'
                             options={options}
                             onChange={selectChangeHandler}
                             value={selectedChild?.id}
@@ -53,76 +53,76 @@ const Payment = () => {
                     )}
                 </div>
                 {selectedChild && (
-                    <div className="payments__col al-self-end">
-                        <div className="available">Доступно занятий: 1</div>
+                    <div className='payments__col al-self-end'>
+                        <div className='available'>Доступно занятий: 1</div>
                     </div>
                 )}
             </div>
             {selectedChild && (
-                <div className="payments__cards">
+                <div className='payments__cards'>
                     {!selectedChild.is_diagnostic_lesson_completed && (
-                        <p className="payments__cards-info">
+                        <p className='payments__cards-info'>
                             Для того чтобы покупать занятия, необходимо пройти диагностическое занятие
                         </p>
                     )}
-                    <div className="payments__cards-row">
+                    <div className='payments__cards-row'>
                         {selectedChild.allow_create_lesson && (
-                            <div className="payments__cards-col">
-                                <div className="payment-card">
-                                    <div className="payment-card__view payment-card__view_violet"></div>
-                                    <h3 className="payment-card__title">Диагностическое занятие</h3>
-                                    <p className="payment-card__descr">Позволит нам лучше узнать вашего
+                            <div className='payments__cards-col'>
+                                <div className='payment-card'>
+                                    <div className='payment-card__view payment-card__view_violet'/>
+                                    <h3 className='payment-card__title'>Диагностическое занятие</h3>
+                                    <p className='payment-card__descr'>Позволит нам лучше узнать вашего
                                         ребенка и разработать план занятий для вашего ребенка. </p>
-                                    <Button
-                                        className="btn payment-card__btn"
-                                        type="button"
-                                        to="/lessons/timeSlots/"
+                                    <Link
+                                        className='btn payment-card__btn'
+                                        type='button'
+                                        to='/lessons/timeSlots/'
                                     >
                                         Записаться
-                                    </Button>
+                                    </Link>
                                 </div>
                             </div>
                         )}
-                        <div className="payments__cards-col">
+                        <div className='payments__cards-col'>
                             <div
                                 className={addClasses('payment-card', {
                                     'not-active': !selectedChild.is_diagnostic_lesson_completed
                                 })}
                             >
-                                <div className="payment-card__view payment-card__view_gold"></div>
-                                <h3 className="payment-card__title">Купить: 1 занятие</h3>
-                                <p className="payment-card__descr">И нет сомнений, что
+                                <div className='payment-card__view payment-card__view_gold'/>
+                                <h3 className='payment-card__title'>Купить: 1 занятие</h3>
+                                <p className='payment-card__descr'>И нет сомнений, что
                                     непосредственные участники технического прогресса объединены в
                                     целые кластеры.</p>
                                 <button
-                                    className="btn payment-card__btn ruble"
-                                    type="button"
+                                    className='btn payment-card__btn ruble'
+                                    type='button'
                                     disabled={!selectedChild.is_diagnostic_lesson_completed}
                                 >
                                     Оплатить 1500
                                 </button>
                             </div>
                         </div>
-                        <div className="payments__cards-col">
+                        <div className='payments__cards-col'>
                             <div
                                 className={addClasses('payment-card', {
                                     'not-active': !selectedChild.is_diagnostic_lesson_completed
                                 })}
                             >
-                                <div className="payment-card__view payment-card__view_blue"></div>
-                                <h3 className="payment-card__title payment-card__title_flex">Купить:
-                                    <span className="plus-minus">
-															<button className="btn-minus"></button>
-															<input type="text" value="3"/>
-															<button className="btn-plus"></button>
+                                <div className='payment-card__view payment-card__view_blue'/>
+                                <h3 className='payment-card__title payment-card__title_flex'>Купить:
+                                    <span className='plus-minus'>
+															<button className='btn-minus'/>
+															<input type='text' value='3'/>
+															<button className='btn-plus'/>
 														</span>
                                 </h3>
-                                <p className="payment-card__descr">И нет сомнений, что
+                                <p className='payment-card__descr'>И нет сомнений, что
                                     непосредственные участники технического прогресса объединены в
                                     целые кластеры.</p>
                                 <button
-                                    className="btn payment-card__btn ruble"
-                                    type="button"
+                                    className='btn payment-card__btn ruble'
+                                    type='button'
                                     disabled={!selectedChild.is_diagnostic_lesson_completed}
                                 >
                                     Оплатить 1500

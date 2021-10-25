@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 import PropTypes from 'prop-types';
 import moment from 'moment';
-
-import Button from '../../../Components/Button/Button';
+import {Link} from 'react-router-dom';
 
 
 const UpcomingLessonBlock = (props) => {
@@ -23,7 +22,6 @@ const UpcomingLessonBlock = (props) => {
     const end_time = moment(timeSlot.end_time, 'H:mm')
 
     const [lessonPassed, setLessonPassed] = useState(now - start_time)
-    const [lessonStartsIn, setLessonStartsIn] = useState(start_time - now)
     const [lessonFinishedIn, setLessonFinishedIn] = useState(now - end_time)
     const [text, setText] = useState(null)
 
@@ -35,7 +33,6 @@ const UpcomingLessonBlock = (props) => {
             const newLessonFinishedIn = now - end_time
 
             setLessonPassed(newLessonPassed)
-            setLessonStartsIn(newLessonStartsIn)
             setLessonFinishedIn(newLessonFinishedIn)
 
             let newText = `Занятие начнется через ${humanize(newLessonStartsIn)}`
@@ -64,12 +61,12 @@ const UpcomingLessonBlock = (props) => {
                         <span className='lesson__icon lesson__icon_orange'/>
                     </div>
                     {lessonPassed > 0 && lessonFinishedIn < 0 && (
-                        <Button
+                        <Link
                             className='btn info-item__btn'
                             to={`/lesson/${lesson.id}/`}
                         >
                             Открыть занятие
-                        </Button>
+                        </Link>
                     )}
                 </div>
             )}

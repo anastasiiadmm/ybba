@@ -7,6 +7,7 @@ import Button from '../../Components/Button/Button';
 import {emailPattern} from '../../regex/patterns/html';
 import FormField from '../../Components/FormField/FormField';
 import {authSelector, resetUserPasswordSendEmail, clearAuthState} from '../../redux/auth/authSlice';
+import {Link} from 'react-router-dom';
 
 
 const PasswordRecovery = () => {
@@ -69,9 +70,12 @@ const PasswordRecovery = () => {
                             </Button>
                         </div>
                         <p className='form__link-wrap'>
-                            <Button to='/login/' className='form__link'>
+                            <Link
+                                to='/login/'
+                                className='form__link'
+                            >
                                 Вернуться на страницу авторизации
-                            </Button>
+                            </Link>
                         </p>
                     </form>
                 </div>}

@@ -1,8 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-
-import Button from '../../../Components/Button/Button';
+import {Link} from 'react-router-dom';
 
 
 const ChildProfileNotification = (props) => {
@@ -18,12 +17,12 @@ const ChildProfileNotification = (props) => {
                 <p className='notice__info'>Пожалуйста заполните профиль ребенка</p>
                 <span className='notice__icon notice__icon_warning'/>
             </div>
-            <Button
+            <Link
                 className='btn info-item__btn'
                 to={`/child-profile/${child.id}/1/`}
             >
                 Редактировать профиль
-            </Button>
+            </Link>
         </div>
     );
 }

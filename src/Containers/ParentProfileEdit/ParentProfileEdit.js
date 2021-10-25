@@ -9,6 +9,7 @@ import {updateUserData, userSelector, clearUserState} from '../../redux/user/use
 import Button from '../../Components/Button/Button';
 import {useHistory} from 'react-router';
 import {authSelector, getCurrentUserData} from '../../redux/auth/authSlice';
+import {Link} from 'react-router-dom';
 
 
 const ParentProfileEdit = () => {
@@ -76,7 +77,12 @@ const ParentProfileEdit = () => {
 
                             </div>
                             <div className='content__bottom'>
-                                <Button to='/profile/' className='btn btn_light'>Отмена</Button>
+                                <Link
+                                    to='/profile/'
+                                    className='btn btn_light'
+                                >
+                                    Отмена
+                                </Link>
                                 <Button type='submit' className='btn' loading={loading}>Сохранить</Button>
                             </div>
                         </form>

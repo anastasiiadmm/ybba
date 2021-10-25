@@ -1,8 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Button from '../../../Components/Button/Button';
 import {addClasses} from '../../../utils/addClasses/addClasses';
-import {ChildProfileContext} from '../../../context/ChildProfileContext/ChildProfileContext';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 const Actions = (props) => {
 
@@ -12,12 +12,12 @@ const Actions = (props) => {
 
     return (
         <div className='content__bottom'>
-            <Button
+            <Link
                 className='btn btn_light'
                 to='/child-profile/'
             >
                 Отмена
-            </Button>
+            </Link>
             <Button
                 className={addClasses('btn', {
                     'disabled': !isNextButtonActive

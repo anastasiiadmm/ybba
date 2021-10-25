@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../../Components/Button/Button';
+import {Link} from 'react-router-dom';
 
 const ChildProfileCard = (props) => {
 
@@ -28,12 +29,12 @@ const ChildProfileCard = (props) => {
                     </Button>
                 </div>
                 <div className='child__link-item'>
-                    <Button
+                    <Link
                         className='child__link child__link_edit'
                         to={`/child-profile/${child.id}/1/`}
                     >
                         Редактировать профиль
-                    </Button>
+                    </Link>
                 </div>
                 {/*<div className='child__link-item'>*/}
                 {/*    <button type='button' className='child__link child__link_card'>Речевая*/}
