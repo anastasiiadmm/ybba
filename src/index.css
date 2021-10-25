@@ -1,5 +1,3 @@
-@import url('./common.css');
-
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -1668,7 +1666,6 @@ a.disabled {
 }
 
 .tab span {
-    color: #000000;
     display: inline-block;
     height: 100%;
     padding-bottom: 12px;
@@ -2535,7 +2532,6 @@ form .cabinet {
 
 .class__title {
     font-size: 18px;
-    font-weight: bold;
     margin: 0 0 8px;
     white-space: nowrap;
     overflow: hidden;
@@ -2944,8 +2940,6 @@ form .cabinet {
 }
 
 .payment-card__title {
-    font-size: 18px;
-    margin: 0 0 8px;
     font-weight: bold;
 }
 
@@ -2990,10 +2984,6 @@ form .cabinet {
     white-space: nowrap;
 }
 
-.payment__info {
-    width: 100%;
-}
-
 .payments__select {
     min-width: 296px;
 }
@@ -3003,6 +2993,7 @@ form .cabinet {
     font-weight: 700;
     margin: 0 0 15px;
 }
+
 
 .payments__cards-row {
     display: flex;
