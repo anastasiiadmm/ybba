@@ -50,3 +50,19 @@
 .cabinet__info dt {
     font-weight: 300;
 }
+
+.tab span {
+    color: #000000;
+}
+
+/*.class__title {*/
+/*    font-weight: bold;*/
+/*}*/
+
+.payment-card__title {
+    font-weight: bold;
+}
+
+.payment__info {
+    width: 100%;
+}
