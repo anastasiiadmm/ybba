@@ -3,10 +3,10 @@ import React, {useState, useEffect, useCallback} from 'react';
 import moment from 'moment';
 import {useSelector} from 'react-redux';
 
-import {dashBoardSelector} from '../../../redux/dashBoard/dashBoardSlice';
-import config from '../../../config';
-import {addClasses} from '../../../utils/addClasses/addClasses';
-import {namesOfDaysOfWeekShort} from '../../../constants';
+import {dashBoardSelector} from 'redux/dashBoard/dashBoardSlice.js';
+import config from 'config';
+import {addClasses} from 'utils/addClasses/addClasses.js';
+import {namesOfDaysOfWeekShort} from 'constants.js';
 
 
 const Timetable = () => {

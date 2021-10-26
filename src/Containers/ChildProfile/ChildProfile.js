@@ -1,13 +1,12 @@
-import React, {useEffect} from 'react';
-import SidebarContainer from '../../Components/SidebarContainer/SidebarContainer';
-import {ChildProfileContext} from '../../context/ChildProfileContext/ChildProfileContext';
-import ChildProfileStageThree from './stages/ChildProfileStageThree';
-import ChildProfileStageTwo from './stages/ChildProfileStageTwo';
-import ChildProfileStageOne from './stages/ChildProfileStageOne';
-import ChildProfileStageFour from './stages/ChildProfileStageFour';
-import {getChildren} from '../../redux/lessons/lessonsSlice';
-import {useDispatch, useSelector} from 'react-redux';
-import {lessonSelector} from '../../redux/lesson/lessonSlice';
+import React from 'react';
+
+import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
+import {ChildProfileContext} from 'context/ChildProfileContext/ChildProfileContext.js';
+import ChildProfileStageFour from 'Containers/ChildProfile/stages/ChildProfileStageFour';
+import ChildProfileStageOne from 'Containers/ChildProfile/stages/ChildProfileStageOne';
+import ChildProfileStageThree from 'Containers/ChildProfile/stages/ChildProfileStageThree';
+import ChildProfileStageTwo from 'Containers/ChildProfile/stages/ChildProfileStageTwo';
+
 
 const ChildProfile = (props) => {
 

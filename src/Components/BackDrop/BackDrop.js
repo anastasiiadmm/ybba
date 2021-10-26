@@ -1,9 +1,8 @@
-import React from 'react';
-
 import PropTypes from 'prop-types';
+import React from 'react';
+import {addClasses} from 'utils/addClasses/addClasses.js';
 
 import './backdrop.css'
-import {addClasses} from '../../utils/addClasses/addClasses';
 
 
 const BackDrop = (props) => {

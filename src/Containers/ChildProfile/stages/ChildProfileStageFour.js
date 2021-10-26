@@ -1,13 +1,16 @@
 import React, {useState, useEffect, useContext} from 'react';
-import StagesLinks from '../StagesLinks/StagesLinks';
-import Actions from '../Actions/Actions';
-import FormField from '../../../Components/FormField/FormField';
-import {useDispatch, useSelector} from 'react-redux';
-import {updateChildAdditionalInfo, getChild, childSelector, clearChildState} from '../../../redux/child/childSlice';
-import {ChildProfileContext} from '../../../context/ChildProfileContext/ChildProfileContext';
-import {useHistory} from 'react-router';
 
-const ChildProfileStageFour = (props) => {
+import {useHistory} from 'react-router';
+import {useDispatch, useSelector} from 'react-redux';
+
+import StagesLinks from 'Containers/ChildProfile/StagesLinks/StagesLinks';
+import Actions from 'Containers/ChildProfile/Actions/Actions';
+import FormField from 'Components/FormField/FormField';
+import {updateChildAdditionalInfo, getChild, childSelector, clearChildState} from 'redux/child/childSlice.js';
+import {ChildProfileContext} from 'context/ChildProfileContext/ChildProfileContext.js';
+
+
+const ChildProfileStageFour = () => {
 
     const {
         childId

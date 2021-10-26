@@ -3,18 +3,19 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import FormRow from '../../Components/FormRow/FormRow';
-import FormField from '../../Components/FormField/FormField';
-import SpeechCardTable from './SpeechCardTable/SpeechCardTable';
-import {phoneticTableOneMapping, phoneticTableTwoMapping} from '../../constants';
-import {getSpeechCard, createSpeechCard, surveysSelector, updateSpeechCard} from '../../redux/surveys/surveysSlice';
-import Button from '../../Components/Button/Button';
-import Container from '../../Components/Container/Container';
+import FormRow from 'Components/FormRow/FormRow';
+import FormField from 'Components/FormField/FormField';
+import SpeechCardTable from 'Containers/SpeechCard/SpeechCardTable/SpeechCardTable';
+import {phoneticTableOneMapping, phoneticTableTwoMapping} from 'constants.js';
+import {getSpeechCard, createSpeechCard, surveysSelector, updateSpeechCard} from 'redux/surveys/surveysSlice.js';
+import Button from 'Components/Button/Button';
+import Container from 'Components/Container/Container';
+
 
 const SpeechCard = (props) => {
 
     const {
-        child, parent, uniqueSpeechCardId
+        child
     } = props
 
     const initialCardData = {

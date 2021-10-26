@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 
 import PropTypes from 'prop-types';
+import {useSelector, useDispatch} from 'react-redux';
 
 import FormField from '../../Components/FormField/FormField.js';
-import config from '../../config.js';
-import {allRussianWardsAndHyphen} from '../../regex/patterns/html';
+import {allRussianWardsAndHyphen} from 'regex/patterns/html.js';
 import FormRow from '../../Components/FormRow/FormRow';
-import {useSelector, useDispatch} from 'react-redux';
-import {childSelector, getCountriesList, getCitiesList} from '../../redux/child/childSlice';
+import {childSelector, getCountriesList, getCitiesList} from 'redux/child/childSlice.js';
+import config from 'config.js';
 
 
 const ChildrenForm = (props) => {

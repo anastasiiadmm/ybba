@@ -6,17 +6,17 @@ import {Link} from 'react-router-dom';
 import {Spinner} from 'react-bootstrap';
 import moment from 'moment';
 
-import SidebarContainer from '../../Components/SidebarContainer/SidebarContainer';
-import MainTitleBlock from '../MainDashboard/MainTitleBlock/MainTitleBlock';
-import {getTimeSlots, lessonsSelector, createLessons, clearLessons} from '../../redux/lessons/lessonsSlice';
-import TimeSlot from '../../Components/TimeSlot/TimeSlot';
-import FormField from '../../Components/FormField/FormField';
-import Modal from '../../Components/Modal/Modal';
-import {strDateToMoment, getCurrentDate} from '../../utils/date/dateUtils';
-import {shortNamesOfMonths, namesOfDaysOfWeekShort} from '../../constants';
-import {addClasses} from '../../utils/addClasses/addClasses';
+import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
+import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
+import {getTimeSlots, lessonsSelector, createLessons, clearLessons} from 'redux/lessons/lessonsSlice.js';
+import TimeSlot from 'Components/TimeSlot/TimeSlot';
+import FormField from 'Components/FormField/FormField';
+import Modal from 'Components/Modal/Modal';
+import {strDateToMoment, getCurrentDate} from 'utils/date/dateUtils.js';
+import {shortNamesOfMonths, namesOfDaysOfWeekShort} from 'constants.js';
+import {addClasses} from 'utils/addClasses/addClasses.js';
 
-import './parentTimeSlots.css'
+import 'Containers/ParentTimeSlots/parentTimeSlots.css'
 
 const MAX_SELECTED_TIME_SLOTS = 1
 const DAYS_RANGE = 5

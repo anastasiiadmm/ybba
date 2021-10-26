@@ -1,10 +1,11 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+
 import {useHistory} from 'react-router';
 import {Link} from 'react-router-dom';
 
-import {addClasses} from '../../../utils/addClasses/addClasses.js';
+import {addClasses} from 'utils/addClasses/addClasses.js';
 
 
 const SideBarLink = (props) => {

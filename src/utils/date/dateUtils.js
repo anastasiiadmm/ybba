@@ -3,11 +3,10 @@ import 'moment/locale/ru.js'
 
 import config from '../../config';
 
-
-export const transformDateFormat = (date, from, to) => {
-    return moment(date, from).format(to);
-}
-
+/**
+ * Function to get human readable format of current time of day
+ * @returns {string} current time of day ('утро', 'день', 'вечер', 'ночь')
+ */
 export const getTimesDay = () => {
     const hour = moment().hour()
     if (hour >= 6 && hour < 12) {
@@ -21,18 +20,36 @@ export const getTimesDay = () => {
     }
 }
 
+/**
+ * Returns current date
+ * @returns {string} Current date in format 'LLL'
+ */
 export const getNowDate = () => {
     return moment().format('LLL')
 }
 
+/**
+ * Converts string date to moment date object
+ * @param {string} date String date to convert
+ * @returns {moment.Moment} Moment date object
+ */
 export const strDateToMoment = date => {
     return moment(date, config.dateFormat)
 }
 
-export const strTimeToMoment = date => {
-    return moment(date, config.timeFormat)
+/**
+ * Converts string time to moment date object
+ * @param {string} time Time to convert to moment time object
+ * @returns {moment.Moment} Moment time object
+ */
+export const strTimeToMoment = time => {
+    return moment(time, config.timeFormat)
 }
 
+/**
+ * Returns current date in moment
+ * @returns {moment.Moment}
+ */
 export const getCurrentDate = () => {
     return moment(moment().format(config.dateFormat), config.dateFormat)
 }

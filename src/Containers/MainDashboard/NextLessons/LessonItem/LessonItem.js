@@ -1,8 +1,9 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
-import {strDateToMoment, strTimeToMoment} from '../../../../utils/date/dateUtils';
-import {namesOfDaysOfWeek} from '../../../../constants';
+import {strDateToMoment, strTimeToMoment} from 'utils/date/dateUtils.js';
+import {namesOfDaysOfWeek} from 'constants.js';
 
 
 const LessonItem = (props) => {

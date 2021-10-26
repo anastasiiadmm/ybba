@@ -2,10 +2,10 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import Button from '../Button/Button';
-import {addClasses} from '../../utils/addClasses/addClasses';
+import Button from 'Components/Button/Button';
+import {addClasses} from 'utils/addClasses/addClasses.js';
 
-import './timeSlot.css';
+import 'Components/TimeSlot/timeSlot.css';
 
 
 const TimeSlot = (props) => {

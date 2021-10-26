@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../../../Components/Button/Button.js';
+import {Link} from 'react-router-dom';
 
 
 const Balance = () => {
@@ -11,9 +11,12 @@ const Balance = () => {
                     <b>Баланс</b>
                 </h5>
                 <p className='info-item__text ruble'>0</p>
-                <Button className='info-item__link' to='/add-balance/'>
+                <Link
+                    className='info-item__link'
+                    to='/add-balance/'
+                >
                     Пополнить
-                </Button>
+                </Link>
             </div>
         </div>
     );

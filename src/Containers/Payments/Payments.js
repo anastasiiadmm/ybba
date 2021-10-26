@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
-import SidebarContainer from '../../Components/SidebarContainer/SidebarContainer';
-import Payment from './Payment/Payment';
-import Button from '../../Components/Button/Button';
-import {addClasses} from '../../utils/addClasses/addClasses';
-import Balance from './Balance/Balance';
+import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
+import Payment from 'Containers/Payments/Payment/Payment';
+import Button from 'Components/Button/Button';
+import {addClasses} from 'utils/addClasses/addClasses.js';
+import Balance from 'Containers/Payments/Balance/Balance';
 
 
 const Payments = () => {

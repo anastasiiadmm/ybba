@@ -3,8 +3,8 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router';
 
-import Button from '../../Components/Button/Button.js';
-import {logoutUser, authSelector} from '../../redux/auth/authSlice';
+import Button from 'Components/Button/Button.js';
+import {logoutUser, authSelector} from 'redux/auth/authSlice.js';
 
 
 const Logout = () => {

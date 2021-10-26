@@ -1,9 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {createPortal} from 'react-dom';
-import PropTypes from 'prop-types';
-import {envs} from '../../constants';
-import config from '../../config';
+import {useEffect, useRef, useState} from 'react';
 
+import PropTypes from 'prop-types';
+
+import config from 'config';
+import {envs} from 'constants.js';
+import {createPortal} from 'react-dom';
 
 
 const Window = (props) => {

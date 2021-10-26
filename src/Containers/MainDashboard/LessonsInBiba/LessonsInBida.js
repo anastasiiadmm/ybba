@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
+
 import {useSelector} from 'react-redux';
 
-import {dashBoardSelector} from '../../../redux/dashBoard/dashBoardSlice';
-import {lessonStatuses} from '../../../constants';
+import {dashBoardSelector} from 'redux/dashBoard/dashBoardSlice.js';
+import {lessonStatuses} from 'constants.js';
 
 
 const LessonsInBiba = () => {

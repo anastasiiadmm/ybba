@@ -1,10 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {addClasses} from '../../../utils/addClasses/addClasses.js';
-import {getSpecialists, childSelector} from '../../../redux/child/childSlice';
-import {useDispatch, useSelector} from 'react-redux';
+import {addClasses} from 'utils/addClasses/addClasses.js';
 
 
 const DateData = (props) => {

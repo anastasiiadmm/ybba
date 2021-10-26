@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Logout from '../../Containers/Logout/Logout.js';
-import Logo from '../Logo/Logo.js';
-import SideBarLink from './SideBarLink/SideBarLink.js';
-import {checkUserRole} from '../../utils/user';
-import {userRoles} from '../../constants';
+import {userRoles} from 'constants.js';
+import Logout from 'Containers/Logout/Logout.js';
+import {checkUserRole} from 'utils/user.js';
+import Logo from 'Components/Logo/Logo.js';
+import SideBarLink from 'Components/SideBar/SideBarLink/SideBarLink.js';
 
 
 const SideBar = () => {
