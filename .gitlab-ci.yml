@@ -87,8 +87,6 @@ build-staging:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - cd $CI_PROJECT_DIR
     - apk update
-    - apk add git
-    - git checkout origin/main
   script:
     - >
       docker build
@@ -135,8 +133,6 @@ build-production:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - cd $CI_PROJECT_DIR
     - apk update
-    - apk add git
-    - git checkout origin/main
   script:
     - >
       docker build
