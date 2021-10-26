@@ -10,6 +10,7 @@ variables:
   PRODUCTION_WS_URL: "wss://diagnostika.pro/ws"
 
 stages:
+  - test
   - build-development
   - deploy-development
   - build-staging
@@ -18,11 +19,23 @@ stages:
   - deploy-production
 
 
+tests:
+  image: docker/compose:latest
+  stage: test
+  environment:
+    name: testing
+  only:
+    - merge_requests
+  script:
+    - echo "We need tests!!!"
+
+
 build-development:
   image: docker:git
   stage: build-development
   only:
-    - merge_request
+    refs:
+      - development
   before_script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - cd $CI_PROJECT_DIR
