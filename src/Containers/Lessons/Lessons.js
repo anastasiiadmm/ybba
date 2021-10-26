@@ -60,12 +60,10 @@ const Lessons = () => {
                         <div className='classes__content'>
                             <div className='classes__row'>
                                 <div className='classes__col'>
-                                    {console.log(selectedChild)}
-
                                     {childrenOptions && (
                                         <FormField
-                                            label='Ребёнок'
                                             className='classes__select select'
+                                            label='Ребёнок'
                                             type='select'
                                             options={childrenOptions}
                                             onChange={onSelectChange}

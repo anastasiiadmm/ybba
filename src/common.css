@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap');
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('./assets/fonts/icomoon/fonts/icomoon.eot?itn2ph');
+    src: url('./assets/fonts/icomoon/fonts/icomoon.eot?itn2ph#iefix') format('embedded-opentype'),
+    url('./assets/fonts/icomoon/fonts/icomoon.ttf?itn2ph') format('truetype'),
+    url('./assets/fonts/icomoon/fonts/icomoon.woff?itn2ph') format('woff'),
+    url('./assets/fonts/icomoon/fonts/icomoon.svg?itn2ph#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+h5, h4, h3 {
+    font-weight: bold;
+}
+
+.form__label {
+    line-height: 3.1;
+}
+
+.btn-out {
+    margin-right: 28px;
+}
+
+.btn-eye__wrap:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 20px;
+    margin: auto 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: no-repeat url("assets/img/eye.svg");
+    background-size: contain;
+}
+
+.cabinet__info dt {
+    font-weight: 300;
+}
+
+.tab span {
+    color: #000000;
+}
+
+.payment__info {
+    width: 100%;
+}
