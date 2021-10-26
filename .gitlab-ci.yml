@@ -22,8 +22,7 @@ build-development:
   image: docker:git
   stage: build-development
   only:
-    refs:
-      - development
+    - merge_request
   before_script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     - cd $CI_PROJECT_DIR
