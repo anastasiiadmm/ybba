@@ -2050,6 +2050,7 @@ a.disabled {
 }
 
 .tab span {
+    color: #A3B3CC;
     display: inline-block;
     height: 100%;
     padding-bottom: 12px;
@@ -3372,6 +3373,11 @@ form .cabinet {
 
 .payment-card__view_blue {
     background: #4988FC;
+}
+
+.payment-card__title {
+    font-size: 18px;
+    margin: 0 0 8px;
 }
 
 .payment-card__title_flex {
