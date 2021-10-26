@@ -62,17 +62,13 @@ const ParentRegistration = (props) => {
             policy={policy}
             policyChangeHandler={policyChangeHandler}
         >
-            <h4 className="form__title">Зарегистрируйтесь</h4>
-            {/*<div className="form__row">*/}
-            {/*    <p className="form__text">Через соцсеть</p>*/}
-            {/*    <SocialMediaBlock/>*/}
-            {/*</div>*/}
-            <div className="form__row">
+            <h4 className='form__title'>Зарегистрируйтесь</h4>
+            <div className='form__row'>
                 <FormField
-                    type="text"
-                    className="form__field"
-                    label="Имя"
-                    name="first_name"
+                    label='Имя'
+                    type='text'
+                    className='form__field'
+                    name='first_name'
                     required
                     maxLength="50"
                     pattern={allRussianWardsAndHyphen}
@@ -85,10 +81,10 @@ const ParentRegistration = (props) => {
             </div>
             <div className="form__row">
                 <FormField
-                    type="text"
-                    className="form__field"
-                    label="Фамилия"
-                    name="last_name"
+                    label='Фамилия'
+                    type='text'
+                    className='form__field'
+                    name='last_name'
                     required
                     maxLength="50"
                     pattern={allRussianWardsAndHyphen}
@@ -101,10 +97,10 @@ const ParentRegistration = (props) => {
             </div>
             <div className="form__row">
                 <FormField
-                    type="email"
-                    className="form__field"
-                    label="Email"
-                    name="email"
+                    label='Email'
+                    type='email'
+                    className='form__field'
+                    name='email'
                     required
                     maxLength="320"
                     pattern="^(.+)@(.+)\.(.+)$"
@@ -117,10 +113,10 @@ const ParentRegistration = (props) => {
             </div>
             <div className="form__row">
                 <FormField
-                    type="password"
-                    className="form__field passw-first"
-                    label="Пароль"
-                    name="password"
+                    label='Пароль'
+                    type='password'
+                    className='form__field passw-first'
+                    name='password'
                     required
                     maxLength="320"
                     patten="^[A-Za-z\d@$!%*#?&]{5,}$"
@@ -134,10 +130,10 @@ const ParentRegistration = (props) => {
             </div>
             <div className="form__row">
                 <FormField
-                    type="password"
-                    className="form__field passw-repeat"
-                    label="Повтор пароля"
-                    name="password_repeat"
+                    label='Повтор пароля'
+                    type='password'
+                    className='form__field passw-repeat'
+                    name='password_repeat'
                     required
                     maxLength="320"
                     patten="^[A-Za-z\d@$!%*#?&]{5,}$"

@@ -14,7 +14,7 @@ import './assets/vendor/flatpickr/flatpickr.min.css'
 import './assets/fonts/icomoon/icomoon.css'
 import './assets/vendor/slimselect/slimselect.min.css'
 import './index.css';
-
+import './common.css';
 
 initSentry()
 export const store = configureStore()

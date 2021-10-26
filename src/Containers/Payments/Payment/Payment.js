@@ -45,6 +45,7 @@ const Payment = () => {
                     {options && (
                         <FormField
                             type='select'
+                            className='classes__select select'
                             label='Покупка занятий для:'
                             options={options}
                             onChange={selectChangeHandler}
