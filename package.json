@@ -50,6 +50,10 @@
       "jsx-quotes": [
         1,
         "prefer-single"
+      ],
+      "object-curly-spacing": [
+        1,
+        "always"
       ]
     }
   },
