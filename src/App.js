@@ -18,6 +18,7 @@ import ChildProfile from './Containers/ChildProfile/ChildProfile';
 
 import './App.css';
 import ChildProfiles from './Containers/ChildProfiles/ChildProfiles';
+import ParentTimeTableSchedule from "./Containers/ParentTimeTableSchedule/ParentTimeTableSchedule";
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
                 <PrivateRoute path='/child-profile/' component={ChildProfiles} exact />
                 <PrivateRoute path='/child-profile/:childId/:stage/' component={ChildProfile} exact />
                 <PrivateRoute path='/lessons/timeSlots/' exact component={ParentTimeSlots} />
+                <PrivateRoute path='/timetable-schedule/' component={ParentTimeTableSchedule} />
                 <PrivateRoute path='/lessons/' component={Lessons} exact />
                 <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
                 <PrivateRoute path='/profile/' component={ParentProfile} exact/>
