@@ -3374,10 +3374,6 @@ form .cabinet {
     background: #4988FC;
 }
 
-.payment-card__title {
-    font-weight: bold;
-}
-
 .payment-card__title_flex {
     display: flex;
     align-items: center;
