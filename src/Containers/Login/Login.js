@@ -1,15 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {useHistory} from 'react-router';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-bootstrap';
+import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 
-import Button from '../../Components/Button/Button.js';
-import Container from '../../Components/Container/Container.js';
-import FormField from '../../Components/FormField/FormField';
-import SocialMediaBlock from '../../Components/SocialMediaBlock/SocialMediaBlock';
-import {loginUser, authSelector, clearAuthState} from '../../redux/auth/authSlice';
-import {clearUserFromUserState, clearUserState} from '../../redux/user/userSlice';
+import Button from 'Components/Button/Button';
+import Container from 'Components/Container/Container.js';
+import FormField from 'Components/FormField/FormField.js';
+import { loginUser, authSelector } from 'redux/auth/authSlice.js';
+import { clearUserState, clearUserFromUserState } from 'redux/user/userSlice.js';
 
 
 const Login = () => {
@@ -20,12 +19,12 @@ const Login = () => {
 
     const [loginData, setLoginData] = useState(loginDataInit)
 
-    const {loading, commonError, user, success} = useSelector(authSelector)
+    const { loading, commonError, user, success } = useSelector(authSelector)
 
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const inputChangeHandler = e => setLoginData({...loginData, [e.target.name]: e.target.value})
+    const inputChangeHandler = e => setLoginData({ ...loginData, [e.target.name]: e.target.value })
     const submitChangeHandler = e => {
         e.preventDefault()
         dispatch(loginUser(loginData))
