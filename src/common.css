@@ -13,20 +13,12 @@
     font-display: block;
 }
 
-.form__title {
+h5, h4, h3 {
     font-weight: bold;
 }
 
 .form__label {
     line-height: 3.1;
-}
-
-.classes__title {
-    font-weight: bold;
-}
-
-.cabinet__title {
-    font-weight: bold;
 }
 
 .btn-out {
@@ -53,14 +45,6 @@
 
 .tab span {
     color: #000000;
-}
-
-/*.class__title {*/
-/*    font-weight: bold;*/
-/*}*/
-
-.payment-card__title {
-    font-weight: bold;
 }
 
 .payment__info {

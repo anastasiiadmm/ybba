@@ -15,6 +15,7 @@ import './assets/fonts/icomoon/icomoon.css'
 import './assets/vendor/slimselect/slimselect.min.css'
 import './index.css';
 import './common.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 initSentry()
