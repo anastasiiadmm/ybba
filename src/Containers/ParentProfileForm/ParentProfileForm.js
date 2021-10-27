@@ -21,6 +21,12 @@ const ParentProfileForm = (props) => {
     const [emailChanging, setEmailChanging] = useState(false)
     const [passwordChanging, setPasswordChanging] = useState(false)
     const [passwordData, setPasswordData] = useState(initialPasswordData)
+    const [isPass, setIsPass] = useState({
+        type: 'password'
+    })
+    const [isPassRepeat, setIsPassRepeat] = useState({
+        type: 'password'
+    })
 
     const dispatch = useDispatch()
 
@@ -60,6 +66,18 @@ const ParentProfileForm = (props) => {
     const editPassword = async () => {
         const submitData = {data: {password: passwordData.password}, userId: user.id}
         await dispatch(updateUserPassword(submitData))
+    }
+
+    const showTogglePasswordHandler = (name) => {
+        if (name === 'isPass') {
+            setIsPass(({type}) => ({
+                type: type === 'password' ? 'text' : 'password'
+            }))
+        } else {
+            setIsPassRepeat(({type}) => ({
+                type: type === 'password' ? 'text' : 'password'
+            }))
+        }
     }
 
     useEffect(() => {
@@ -114,7 +132,7 @@ const ParentProfileForm = (props) => {
                         errors={errors?.profile}
                     />
                 </div>
-                <div className='form__col2'>
+                <div className='form__col2 form__label'>
                     <FormField
                         label='Мобильный телефон'
                         type='phone'
@@ -179,9 +197,9 @@ const ParentProfileForm = (props) => {
                         <div className='dflex'>
                             <div className='form__hidden-col'>
                                 <label htmlFor='passw' className='form__label'>Введите пароль</label>
-                                <div className='btn-eye__wrap'>
+                                <div className='btn-eye__wrap' onClick={() => showTogglePasswordHandler('isPass')}>
                                     <FormField
-                                        type='password'
+                                        type={isPass.type}
                                         className='form__field form__field_wfix-passw'
                                         value={passwordData.password}
                                         onChange={passwordInputChangeHandler}
@@ -192,9 +210,9 @@ const ParentProfileForm = (props) => {
                             </div>
                             <div className='form__hidden-col'>
                                 <label htmlFor='passw2' className='form__label'>Повторите пароль</label>
-                                <div className='btn-eye__wrap'>
+                                <div className='btn-eye__wrap' onClick={() => showTogglePasswordHandler('isPassRepeat')}>
                                     <FormField
-                                        type='password'
+                                        type={isPassRepeat.type}
                                         className='form__field form__field_wfix-passw'
                                         value={passwordData.passwordRepeat}
                                         onChange={passwordInputChangeHandler}
