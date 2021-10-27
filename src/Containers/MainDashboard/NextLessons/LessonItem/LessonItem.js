@@ -9,7 +9,7 @@ import { namesOfDaysOfWeek } from 'constants.js';
 const LessonItem = (props) => {
 
     const {
-        lesson
+        lesson, description
     } = props
 
     const time_slot = lesson?.time_slot
@@ -19,7 +19,7 @@ const LessonItem = (props) => {
 
     return (
         <div className='lesson'>
-            <h5 className='lesson__title'>Диагностическоe занятие</h5>
+            <h5 className='lesson__title'>{description}</h5>
             <p className='lesson__info'>{dayOfWeek} {day.date()}-го в {start_time}.</p>
             <span className='lesson__icon lesson__icon_violet'/>
         </div>
@@ -35,7 +35,8 @@ LessonItem.propTypes = {
                 date: PropTypes.string
             })
         })
-    }).isRequired
+    }).isRequired,
+    description: PropTypes.string
 }
 
 export default LessonItem;

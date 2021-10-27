@@ -6,8 +6,8 @@ import ReactInputDateMask from 'react-input-date-mask';
 import PhoneInput from 'react-phone-input-2';
 import Select from 'react-select';
 
-import {validationMessagesMapping} from 'mappings/validationErrors.js';
-import {addClasses} from 'utils/addClasses/addClasses.js';
+import { validationMessagesMapping } from 'mappings/validationErrors.js';
+import { addClasses } from 'utils/addClasses/addClasses.js';
 
 import 'Components/FormField/formField.css'
 
@@ -142,7 +142,6 @@ const FormField = props => {
     }
 
     if (type === 'select') {
-        console.log(value)
         field = <>
             <label className='w-100'>
                 {label}
@@ -165,7 +164,7 @@ const FormField = props => {
                 value={value}
                 onChange={onChange}
                 options={configs}
-                render={({defaultValue, value, ...props}, ref) => {
+                render={({ defaultValue, value, ...props }, ref) => {
                     return <>
                         <label className='form__label'>
                             {label}

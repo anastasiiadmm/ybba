@@ -35,7 +35,7 @@ const MainDashboard = () => {
                 const lessonDayDate = strDateToMoment(lesson.time_slot.day.date)
                 return (
                     lesson?.time_slot && lessonDayDate - now < 0 &&
-                    lesson.status === lessonStatuses.pending && lessonDayDate.isSame(getNowDate())
+                    lesson.status === lessonStatuses.pending && lessonDayDate.isSame(moment().startOf('day'))
                 );
             })
             setClosesLesson(lesson[0])

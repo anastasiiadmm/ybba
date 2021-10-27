@@ -2,13 +2,13 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const LessonDashboardComponent = (props) => {
 
     const {
-        title, description
+        title, description, lessonId
     } = props
 
     return (
@@ -20,7 +20,7 @@ const LessonDashboardComponent = (props) => {
             <div className='class__activity'>
                 <Link
                     className='btn btn_outline'
-                    to='/lessons/timeSlots/'
+                    to={`/lessons/${lessonId}/timeSlots/`}
                 >
                     Записаться
                 </Link>
@@ -33,6 +33,7 @@ const LessonDashboardComponent = (props) => {
 LessonDashboardComponent.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
+    lessonId: PropTypes.string.isRequired
 }
 
 export default LessonDashboardComponent;

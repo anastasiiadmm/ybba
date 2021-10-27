@@ -3,11 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import { dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
 import LessonItem from 'Containers/MainDashboard/NextLessons/LessonItem/LessonItem';
 import { lessonStatuses } from 'constants.js';
-import { strDateToMoment, getNowDate } from 'utils/date/dateUtils.js';
+import { strDateToMoment } from 'utils/date/dateUtils.js';
+import { lessonTypesMapping } from 'mappings/lessons.js';
 
 
 const NextLessons = () => {
@@ -20,7 +22,7 @@ const NextLessons = () => {
         if (lessons) {
             setNextLessons(lessons.filter(lesson => {
                 const lessonDayDate = strDateToMoment(lesson.time_slot.day.date)
-                return lesson.status === lessonStatuses.pending && lessonDayDate.isSameOrAfter(getNowDate())
+                return lesson.status === lessonStatuses.pending && lessonDayDate.isSameOrAfter(moment().startOf('day'))
             }))
         }
     }, [lessons])
@@ -31,9 +33,11 @@ const NextLessons = () => {
                 <b>Следующие занятия</b>
             </h5>
             {nextLessons && nextLessons.map(lesson => {
+                const lessonDescription = `${lessonTypesMapping[lesson.lesson_type]} занятие`
                 return (
                     <LessonItem
                         lesson={lesson}
+                        description={lessonDescription}
                     />
                 )
             })}
@@ -42,7 +46,7 @@ const NextLessons = () => {
                     <span className='visually-hidden'>Loading...</span>
                 </Spinner>
             )}
-            {(lessons && !nextLessons.length && !loading) && (
+            {(lessons && !nextLessons?.length && !loading) && (
                 <>
                     <p className='info-item__text'>В ближайшем времени занятий нет.</p>
                     <Link
