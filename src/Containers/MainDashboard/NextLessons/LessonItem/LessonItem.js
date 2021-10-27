@@ -2,8 +2,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {strDateToMoment, strTimeToMoment} from 'utils/date/dateUtils.js';
-import {namesOfDaysOfWeek} from 'constants.js';
+import { strDateToMoment, strTimeToMoment } from 'utils/date/dateUtils.js';
+import { namesOfDaysOfWeek } from 'constants.js';
 
 
 const LessonItem = (props) => {
@@ -12,9 +12,9 @@ const LessonItem = (props) => {
         lesson
     } = props
 
-    const time_slot = lesson.time_slot
-    const start_time = strTimeToMoment(time_slot.start_time).format('H:mm')
-    const day = strDateToMoment(time_slot.day.date)
+    const time_slot = lesson?.time_slot
+    const start_time = strTimeToMoment(time_slot?.start_time).format('H:mm')
+    const day = strDateToMoment(time_slot?.day?.date)
     const dayOfWeek = namesOfDaysOfWeek[day.day() - 1]
 
     return (

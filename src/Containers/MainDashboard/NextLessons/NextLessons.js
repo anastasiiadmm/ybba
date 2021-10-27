@@ -1,23 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-import {useSelector} from 'react-redux';
-import {Spinner} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-import {dashBoardSelector} from 'redux/dashBoard/dashBoardSlice.js';
+import { dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
 import LessonItem from 'Containers/MainDashboard/NextLessons/LessonItem/LessonItem';
-import {lessonStatuses} from 'constants.js';
+import { lessonStatuses } from 'constants.js';
+import { strDateToMoment, getNowDate } from 'utils/date/dateUtils.js';
 
 
 const NextLessons = () => {
 
-    const {lessons, loading} = useSelector(dashBoardSelector)
+    const { lessons, loading } = useSelector(dashBoardSelector)
 
-    const [newLessons, setNewLessons] = useState(null)
+    const [nextLessons, setNextLessons] = useState(null)
 
     useEffect(() => {
         if (lessons) {
-            setNewLessons(lessons.filter(lesson => lesson.status === lessonStatuses.new))
+            setNextLessons(lessons.filter(lesson => {
+                const lessonDayDate = strDateToMoment(lesson.time_slot.day.date)
+                return lesson.status === lessonStatuses.pending && lessonDayDate.isSameOrAfter(getNowDate())
+            }))
         }
     }, [lessons])
 
@@ -26,7 +30,7 @@ const NextLessons = () => {
             <h5 className='info-item__title'>
                 <b>Следующие занятия</b>
             </h5>
-            {newLessons && newLessons.map(lesson => {
+            {nextLessons && nextLessons.map(lesson => {
                 return (
                     <LessonItem
                         lesson={lesson}
@@ -38,7 +42,7 @@ const NextLessons = () => {
                     <span className='visually-hidden'>Loading...</span>
                 </Spinner>
             )}
-            {(lessons && !lessons.length && !loading) && (
+            {(lessons && !nextLessons.length && !loading) && (
                 <>
                     <p className='info-item__text'>В ближайшем времени занятий нет.</p>
                     <Link
