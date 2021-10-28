@@ -1,9 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 
-import {addClasses} from 'utils/addClasses/addClasses.js';
+import { addClasses } from 'utils/addClasses/addClasses.js';
+import { checkUserRole } from 'utils/user.js';
+import { userRoles } from 'constants.js';
 
 
 const Timer = (props) => {
@@ -15,12 +18,15 @@ const Timer = (props) => {
     const [lessonLeft, setLessonLeft] = useState(new Date() - from)
     const timerFinished = (new Date() - from) >= (to - from)
 
+    const history = useHistory()
+
     useEffect(() => {
         const interval = setInterval(() => {
             if (timerFinished) {
                 clearInterval(interval)
                 return
             }
+
             setLessonLeft(() => new Date() - from)
         }, 1000)
 
@@ -28,6 +34,14 @@ const Timer = (props) => {
             clearInterval(interval)
         }
     }, [from, timerFinished])
+
+    useEffect(() => {
+        const minutesToLessonEnd = moment.duration((to - from) - lessonLeft, 'millisecond').asMinutes()
+        if (minutesToLessonEnd <= 40 && checkUserRole(userRoles.parent)) {
+            history.push('/')
+        }
+        // eslint-disable-next-line
+    }, [lessonLeft])
 
     return (
         <div className='game__progress'>
