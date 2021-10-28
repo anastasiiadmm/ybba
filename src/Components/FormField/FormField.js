@@ -147,11 +147,12 @@ const FormField = props => {
             <label className='w-100'>
                 {label}
                 <Select
+                    type={type}
                     options={options}
                     className={className}
                     onChange={onChange}
                     value={
-                        options.filter(option => option.value === value)
+                        options?.filter(option => option.value === value)
                     }
                 />
             </label>

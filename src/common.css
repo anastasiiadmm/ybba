@@ -66,3 +66,11 @@
 .payment__info {
     width: 100%;
 }
+
+.country_field {
+    width: 150% !important;
+}
+
+.form__input {
+    padding-right: 100px;
+}

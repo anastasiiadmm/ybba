@@ -16,8 +16,10 @@ const ParentProfileData = (props) => {
                         <dd>{user?.profile?.first_name || 'Имя не указано'}</dd>
                         <dt>Дата рождения</dt>
                         <dd>{user?.profile?.date_of_birth || 'Дата рождения не указана'}</dd>
-                        {/*<dt>Регион проживания</dt>*/}
-                        {/*<dd>Foo</dd>*/}
+                        <dt>Страна проживания</dt>
+                        <dd>{user?.profile?.country || 'Страна проживания не указана'}</dd>
+                        <dt>Город проживания</dt>
+                        <dd>{user?.profile?.country ? user?.profile?.city : 'Город проживания не указан'}</dd>
                         <dt>Email</dt>
                         <dd>{user.email}</dd>
                     </dl>

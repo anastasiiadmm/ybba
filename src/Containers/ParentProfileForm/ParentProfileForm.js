@@ -7,19 +7,23 @@ import FormField from '../../Components/FormField/FormField';
 import Button from '../../Components/Button/Button';
 import {editUserEmail, updateUserPassword, userSelector} from '../../redux/user/userSlice';
 import {getCurrentUserData, authSelector} from '../../redux/auth/authSlice';
+import {childSelector, getCitiesList, getCountriesList} from "../../redux/child/childSlice";
 
 
 const ParentProfileForm = (props) => {
 
-    const {formData, setFormData} = props
+    const {formData, setFormData, setCountry, setCity} = props
 
     const initialPasswordData = {'password': '', 'passwordRepeat': ''}
 
+    const {cities, countries} = useSelector(childSelector)
     const {user} = useSelector(authSelector)
     const {isPasswordUpdated, errors, editEmailErrors, editUserEmailSuccess} = useSelector(userSelector)
 
     const [emailChanging, setEmailChanging] = useState(false)
     const [passwordChanging, setPasswordChanging] = useState(false)
+    const [countriesOptions, setCountriesOptions] = useState([])
+    const [citiesOptions, setCitiesOptions] = useState([])
     const [passwordData, setPasswordData] = useState(initialPasswordData)
     const [isPass, setIsPass] = useState({
         type: 'password'
@@ -91,6 +95,32 @@ const ParentProfileForm = (props) => {
         }
     }, [editUserEmailSuccess])
 
+    useEffect(() => {
+        if (countries) {
+            setCountriesOptions(countries?.map(country => {
+                return {value: country.id, label: country.name}
+            }))
+        }
+    }, [countries])
+
+    useEffect(() => {
+        if (cities) {
+            setCitiesOptions(cities?.map(city => {
+                return {value: city.id, label: city.name}
+            }))
+        }
+    }, [cities])
+
+    useEffect(() => {
+        dispatch(getCountriesList())
+    }, [])
+
+    useEffect(() => {
+        if (formData.profile?.country) {
+            dispatch(getCitiesList(formData.profile?.country))
+        }
+    }, [formData.profile.country])
+
     return (
         <>
             <div className='form__row form__row_flex'>
@@ -143,6 +173,35 @@ const ParentProfileForm = (props) => {
                     />
                 </div>
             </div>
+            {countriesOptions && citiesOptions && (
+                <div className="form__row form__row_flex">
+                    <div className='form__col2 form__label form__input'>
+                        <FormField
+                            label="Страна проживания"
+                            type="select"
+                            className="country_field"
+                            name="country"
+                            options={countriesOptions}
+                            onChange={setCountry}
+                            value={formData.profile.country}
+                        />
+                    </div>
+                    {countriesOptions.find(option => option.value === formData.profile.country)?.label === 'Россия' && (
+                        <div className='form__col2 form__label'>
+                            <FormField
+                                label="Город проживания"
+                                type="select"
+                                className="country_field"
+                                name="country"
+                                options={citiesOptions}
+                                onChange={setCity}
+                                value={formData.profile.city}
+                            />
+                        </div>
+                    )}
+                </div>
+            )}
+
             <div className='form__row form__row_flex'>
                 <div className='form__col2 is-hidden'>
                     <label htmlFor='email' className='form__label'>Email</label>
