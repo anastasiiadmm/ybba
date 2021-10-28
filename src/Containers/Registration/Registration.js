@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react';
 
 import {useHistory} from 'react-router';
-
-import Container from '../../Components/Container/Container.js';
-import config from '../../config.js';
-import {RegistrationContext} from '../../context/RegistrationContext/RegistrationContext.js';
-import {isLogin} from '../../utils/user.js';
-import ChildRegistration from './ChildRegistration/ChildRegistration.js';
-import ParentRegistration from './ParentRegistration/ParentRegistration.js';
-import {getCitiesList} from '../../redux/child/childSlice';
 import {useDispatch} from 'react-redux';
+
+import Container from 'Components/Container/Container.js';
+import config from 'config.js';
+import {RegistrationContext} from 'context/RegistrationContext/RegistrationContext.js';
+import {isLogin} from 'utils/user.js';
+import ChildRegistration from 'Containers/Registration/ChildRegistration/ChildRegistration.js';
+import ParentRegistration from 'Containers/Registration/ParentRegistration/ParentRegistration.js';
+
 
 const Registration = props => {
     const parentDataFromLocalStorage = JSON.parse(localStorage.getItem(config.registrationParentLocalStorageName))

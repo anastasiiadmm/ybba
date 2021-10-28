@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
-import {namesOfDaysOfWeekShort, shortNamesOfMonths, namesOfMonths, namesOfDaysOfWeek} from '../../../constants';
 import moment from 'moment';
-import {generateDateRange} from './utils';
+
+import {namesOfDaysOfWeekShort, namesOfMonths, namesOfDaysOfWeek} from '../../../constants';
+import {generateDateRange} from '../../MainDashboard/Calendar/utils';
 import {addClasses} from '../../../utils/addClasses/addClasses';
 import {useSelector} from 'react-redux';
 import {dashBoardSelector} from '../../../redux/dashBoard/dashBoardSlice';
 import {strDateToMoment} from '../../../utils/date/dateUtils';
 
-const Calendar = (props) => {
+
+const Calendar = () => {
 
     const [currentDate, setCurrentDate] = useState(moment())
     const [dates, setDates] = useState(null)

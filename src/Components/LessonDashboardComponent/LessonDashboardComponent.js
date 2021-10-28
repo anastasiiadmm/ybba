@@ -1,6 +1,9 @@
 import React from 'react';
+
 import PropTypes from 'prop-types';
-import Button from '../Button/Button';
+
+import {Link} from 'react-router-dom';
+
 
 const LessonDashboardComponent = (props) => {
 
@@ -15,12 +18,12 @@ const LessonDashboardComponent = (props) => {
                 <p className='class__info'>{description}</p>
             )}
             <div className='class__activity'>
-                <Button
+                <Link
                     className='btn btn_outline'
                     to='/lessons/timeSlots/'
                 >
                     Записаться
-                </Button>
+                </Link>
             </div>
             <span className='class__icon class__icon_violet'/>
         </div>

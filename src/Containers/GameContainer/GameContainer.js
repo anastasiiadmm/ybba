@@ -1,19 +1,20 @@
 import React, {useState, useEffect, useContext} from 'react';
 
+import PropTypes from 'prop-types';
 import Unity, {UnityContext} from 'react-unity-webgl';
 
-import {GameContext} from '../../context/GameContext/GameContext';
-import {LessonContext} from '../../context/LessonContext/LessonContext';
+import {GameContext} from 'context/GameContext/GameContext.js';
+import {LessonContext} from 'context/LessonContext/LessonContext.js';
+
 import {
     GAME_FILE_TYPE_LOADER,
     GAME_FILE_TYPE_DATA,
     GAME_FILE_TYPE_FRAMEWORK,
     GAME_FILE_TYPE_WASM, userRoles
-} from '../../constants';
+} from 'constants.js';
+import {checkUserRole} from 'utils/user.js';
 
-import './gameContainer.css'
-import {checkUserRole} from '../../utils/user';
-import PropTypes from 'prop-types';
+import 'Containers/GameContainer/gameContainer.css'
 
 
 const GameContainer = (props) => {

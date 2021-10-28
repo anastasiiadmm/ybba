@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import FormField from '../../../Components/FormField/FormField';
+
+import FormField from 'Components/FormField/FormField';
+
 import PropTypes from 'prop-types';
 
 

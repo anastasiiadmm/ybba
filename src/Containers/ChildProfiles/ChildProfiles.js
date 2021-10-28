@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import SidebarContainer from '../../Components/SidebarContainer/SidebarContainer';
-import MainTitleBlock from '../MainDashboard/MainTitleBlock/MainTitleBlock';
-import Content from '../../Components/Content/Content';
-import ChildProfileCard from './ChildProfileCard/ChildProfileCard';
+
 import {useSelector, useDispatch} from 'react-redux';
-import {authSelector} from '../../redux/auth/authSlice';
-import ChildProfileNotification from './ChildProfileNotification/ChildProfileNotification';
-import Modal from '../../Components/Modal/Modal';
-import {getChildren, lessonsSelector} from '../../redux/lessons/lessonsSlice';
-import ChildData from './ChildData/ChildData';
+
+import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
+import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
+import Content from 'Components/Content/Content';
+import ChildProfileCard from 'Containers/ChildProfiles/ChildProfileCard/ChildProfileCard';
+import {authSelector} from 'redux/auth/authSlice.js';
+import ChildProfileNotification from 'Containers/ChildProfiles/ChildProfileNotification/ChildProfileNotification';
+import Modal from 'Components/Modal/Modal';
+import {getChildren, lessonsSelector} from 'redux/lessons/lessonsSlice.js';
+import ChildData from 'Containers/ChildProfiles/ChildData/ChildData';
+
 
 const ChildProfiles = () => {
 

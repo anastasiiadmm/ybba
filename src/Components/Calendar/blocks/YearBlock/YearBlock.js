@@ -2,11 +2,11 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {addClasses} from '../../../../utils/addClasses/addClasses.js';
-import {getYearsArray} from '../../calendarUtils.js';
-import BlockItem from '../BlockItem/BlockItem.js';
+import {addClasses} from 'utils/addClasses/addClasses.js';
+import {getYearsArray} from 'Components/Calendar/calendarUtils.js';
+import BlockItem from 'Components/Calendar/blocks/BlockItem/BlockItem.js';
 
-import './yearBlock.css'
+import 'Components/Calendar/blocks/YearBlock/yearBlock.css'
 
 
 const YearBlock = (props) => {

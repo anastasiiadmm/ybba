@@ -1,15 +1,15 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import Flatpickr from 'react-flatpickr';
+import ReactInputDateMask from 'react-input-date-mask';
 import PhoneInput from 'react-phone-input-2';
 import Select from 'react-select';
-import ReactInputDateMask from 'react-input-date-mask';
-import Flatpickr from 'react-flatpickr';
 
-import {validationMessagesMapping} from '../../mappings/validationErrors';
-import {addClasses} from '../../utils/addClasses/addClasses';
+import {validationMessagesMapping} from 'mappings/validationErrors.js';
+import {addClasses} from 'utils/addClasses/addClasses.js';
 
-import './formField.css'
+import 'Components/FormField/formField.css'
 
 
 const FormField = props => {

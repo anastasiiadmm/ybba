@@ -3,20 +3,17 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import moment from 'moment';
 
-import Balance from './Balance/Balance.js';
-import ChildActivity from './ChildActivity/ChildActivity.js';
-import LessonsInBiba from './LessonsInBiba/LessonsInBida.js';
-import MainTitleBlock from './MainTitleBlock/MainTitleBlock.js';
-import NextLessons from './NextLessons/NextLessons.js';
-import Timetable from './Timetable/Timetable.js';
-import SidebarContainer from '../../Components/SidebarContainer/SidebarContainer';
-import {getTimesDay, getNowDate, strDateToMoment} from '../../utils/date/dateUtils';
-import {authSelector} from '../../redux/auth/authSlice';
-import UpcomingLessonBlock from './UpcomingLessonBlock/UpcomingLessonBlock';
-import {getLessons, dashBoardSelector} from '../../redux/dashBoard/dashBoardSlice';
-import {lessonStatuses, userRoles} from '../../constants';
-import Calendar from './Calendar/Calendar';
-import {checkUserRole} from '../../utils/user';
+import Balance from 'Containers/MainDashboard/Balance/Balance.js';
+import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock.js';
+import NextLessons from 'Containers/MainDashboard/NextLessons/NextLessons.js';
+import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
+import {getTimesDay, getNowDate, strDateToMoment} from 'utils/date/dateUtils.js';
+import {authSelector} from 'redux/auth/authSlice.js';
+import UpcomingLessonBlock from 'Containers/MainDashboard/UpcomingLessonBlock/UpcomingLessonBlock';
+import {getLessons, dashBoardSelector} from 'redux/dashBoard/dashBoardSlice.js';
+import {lessonStatuses, userRoles} from 'constants.js';
+import Calendar from 'Containers/MainDashboard/Calendar/Calendar';
+import {checkUserRole} from 'utils/user.js';
 
 
 const MainDashboard = () => {

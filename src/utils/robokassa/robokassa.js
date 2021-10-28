@@ -1,8 +1,8 @@
 import {sha256} from 'js-sha256';
-import axios from 'axios';
 
 import config from '../../config';
 import {toQueryParams} from '../url/toQueryParams';
+import axiosApi from '../../axios';
 
 
 export const generateHash = ({userId, sum}) => {
@@ -25,5 +25,5 @@ export const sendTestRequest = async ({userId, email, signature, incSum, outSum,
         'OutSum': outSum,
         'Fee': fee
     })
-    await axios.get('http://172.29.77.24:8000/api/v1/payments/result/' + query)
+    await axiosApi.get('http://172.29.77.24:8000/api/v1/payments/result/' + query)
 }

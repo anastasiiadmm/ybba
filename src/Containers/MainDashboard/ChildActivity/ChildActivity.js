@@ -3,9 +3,9 @@ import React, {useState, useEffect, useCallback} from 'react';
 import moment from 'moment';
 import {useSelector} from 'react-redux';
 
-import {dashBoardSelector} from '../../../redux/dashBoard/dashBoardSlice';
-import {strDateToMoment} from '../../../utils/date/dateUtils';
-import {lessonStatuses} from '../../../constants';
+import {dashBoardSelector} from 'redux/dashBoard/dashBoardSlice.js';
+import {strDateToMoment} from 'utils/date/dateUtils.js';
+import {lessonStatuses} from 'constants.js';
 
 
 const ChildActivity = () => {

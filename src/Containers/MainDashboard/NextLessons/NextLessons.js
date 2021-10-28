@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 
 import {useSelector} from 'react-redux';
-
-import Button from '../../../Components/Button/Button.js';
-import {dashBoardSelector} from '../../../redux/dashBoard/dashBoardSlice';
 import {Spinner} from 'react-bootstrap';
-import LessonItem from './LessonItem/LessonItem';
-import {lessonStatuses} from '../../../constants';
+import {Link} from 'react-router-dom';
+
+import {dashBoardSelector} from 'redux/dashBoard/dashBoardSlice.js';
+import LessonItem from 'Containers/MainDashboard/NextLessons/LessonItem/LessonItem';
+import {lessonStatuses} from 'constants.js';
 
 
 const NextLessons = () => {
@@ -41,7 +41,12 @@ const NextLessons = () => {
             {(lessons && !lessons.length && !loading) && (
                 <>
                     <p className='info-item__text'>В ближайшем времени занятий нет.</p>
-                    <Button className='btn info-item__btn' to='/by-lesson/'>Купить занятие</Button>
+                    <Link
+                        className='btn info-item__btn'
+                        to='/by-lesson/'
+                    >
+                        Купить занятие
+                    </Link>
                 </>
             )}
         </div>

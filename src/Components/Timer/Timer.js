@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
-import PropTypes from 'prop-types';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
-import {addClasses} from '../../utils/addClasses/addClasses';
+import {addClasses} from 'utils/addClasses/addClasses.js';
 
 
 const Timer = (props) => {

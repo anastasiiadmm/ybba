@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router';
 
-import Button from '../../../Components/Button/Button.js';
-import Icon from '../../../Components/Icon/Icon.js';
-import config from '../../../config.js';
-import {RegistrationContext} from '../../../context/RegistrationContext/RegistrationContext.js';
-import ChildrenForm from '../../ChildrenForm/ChildrenForm.js';
+import Button from 'Components/Button/Button.js';
+import Icon from 'Components/Icon/Icon.js';
+import config from 'config.js';
+import {RegistrationContext} from 'context/RegistrationContext/RegistrationContext.js';
+import ChildrenForm from 'Containers/ChildrenForm/ChildrenForm.js';
 import RegistrationBaseBlock from '../RegistrationBaseBlock/RegistrationBaseBlock.js';
-import {createChild, childSelector, clearChildState, getCountriesList} from '../../../redux/child/childSlice';
-import {createUser, userSelector} from '../../../redux/user/userSlice';
+import {createChild, childSelector, clearChildState} from 'redux/child/childSlice.js';
+import {createUser, userSelector} from 'redux/user/userSlice.js';
 
 
 const ChildRegistration = (props) => {

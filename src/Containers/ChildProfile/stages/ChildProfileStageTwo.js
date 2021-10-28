@@ -1,24 +1,16 @@
 import React, {useContext, useState, useEffect} from 'react';
 
-import FormField from '../../../Components/FormField/FormField';
-import {ChildProfileContext} from '../../../context/ChildProfileContext/ChildProfileContext';
-import StagesLinks from '../StagesLinks/StagesLinks';
-import Actions from '../Actions/Actions';
 import {useDispatch, useSelector} from 'react-redux';
-import {getChild, childSelector, clearChildState, updateChildAdditionalInfo} from '../../../redux/child/childSlice';
 import {useHistory} from 'react-router';
+
+import FormField from 'Components/FormField/FormField';
+import {ChildProfileContext} from 'context/ChildProfileContext/ChildProfileContext.js';
+import StagesLinks from 'Containers/ChildProfile/StagesLinks/StagesLinks';
+import Actions from 'Containers/ChildProfile/Actions/Actions';
+import {getChild, childSelector, clearChildState, updateChildAdditionalInfo} from 'redux/child/childSlice.js';
 
 
 const ChildProfileStageTwo = () => {
-
-    // childAdditionalData. ||
-    // childAdditionalData. ||
-    // childAdditionalData. ||
-    // childAdditionalData. ||
-    // childAdditionalData. ||
-    // childAdditionalData. ||
-    // childAdditionalData. ||
-    // childAdditionalData. ||
 
     const fields = [
         'id',

@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import './blockItem.css'
+import 'Components/Calendar/blocks/BlockItem/blockItem.css'
 
 
 const BlockItem = props => {

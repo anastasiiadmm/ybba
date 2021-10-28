@@ -2,16 +2,16 @@ import React, {useContext, useState} from 'react';
 
 import PropTypes from 'prop-types';
 
-import WebCam from '../../../Components/WebCam/WebCam';
-import Button from '../../../Components/Button/Button';
-import {addClasses} from '../../../utils/addClasses/addClasses';
-import {LessonContext} from '../../../context/LessonContext/LessonContext';
-import {gameActions, userRoles} from '../../../constants';
-import {checkUserRole} from '../../../utils/user';
-import Timer from '../../../Components/Timer/Timer';
-import {strTimeToMoment} from '../../../utils/date/dateUtils';
+import WebCam from 'Components/WebCam/WebCam';
+import Button from 'Components/Button/Button';
+import {addClasses} from 'utils/addClasses/addClasses.js';
+import {LessonContext} from 'context/LessonContext/LessonContext.js';
+import {gameActions, userRoles} from 'constants.js';
+import {checkUserRole} from 'utils/user.js';
+import Timer from 'Components/Timer/Timer';
+import {strTimeToMoment} from 'utils/date/dateUtils.js';
 
-import './gameSidebar.css';
+import 'Containers/Lesson/GameSidebar/gameSidebar.css';
 
 
 const GameSidebar = (props) => {

@@ -2,10 +2,10 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import {addClasses} from '../../../../utils/addClasses/addClasses.js';
-import BlockItem from '../BlockItem/BlockItem.js';
+import {addClasses} from 'utils/addClasses/addClasses.js';
+import BlockItem from 'Components/Calendar/blocks/BlockItem/BlockItem.js';
 
-import './monthBlock.css'
+import 'Components/Calendar/blocks/MonthBlock/monthBlock.css'
 
 
 const MonthBlock = (props) => {

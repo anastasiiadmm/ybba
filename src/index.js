@@ -16,7 +16,6 @@ import './assets/vendor/slimselect/slimselect.min.css'
 import './index.css';
 import './common.css';
 
-
 initSentry()
 export const store = configureStore()
 

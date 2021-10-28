@@ -3,7 +3,6 @@
 .idea
 yarn.lock
 .env
-jsconfig.json
 
 # dependencies
 /node_modules
