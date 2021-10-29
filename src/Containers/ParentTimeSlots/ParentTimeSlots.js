@@ -32,12 +32,26 @@ const ParentTimeSlots = () => {
     const [selectedTimeSlots, setSelectedTimeSlots] = useState([])
     const [dateFrom, setDateFrom] = useState(new Date(now.setDate(now.getDate())))
     const [dateTo, setDateTo] = useState(new Date(new Date().setDate(now.getDate() + DAYS_RANGE)))
-    const [timeSlotItems, setTimeSlotItems] = useState({})
+    // const [timeSlotItems, setTimeSlotItems] = useState({})
     const [lessonCreatedModalIsOpen, setLessonCreatedModalIsOpen] = useState(false)
 
     const {timeSlots, selectedChild, lessonCreated, loading} = useSelector(lessonsSelector)
 
-    console.log(selectedChild)
+    const timeSlotsSchedule = timeSlots?.reduce((timeSlots, timeslot) => {
+        const date = timeslot.day.date;
+        if (!timeSlots[date]) {
+            timeSlots[date] = [];
+        }
+        timeSlots[date].push(timeslot);
+        return timeSlots;
+    }, {});
+
+    const timeSlotsArray = timeSlotsSchedule && Object.keys(timeSlotsSchedule).reverse().map((date) => {
+        return {
+            date,
+            timeSlot: timeSlotsSchedule[date]
+        }
+    })
 
     const timeSlotOnClick = ({id}) => {
         const index = selectedTimeSlots.indexOf(id)
@@ -62,18 +76,27 @@ const ParentTimeSlots = () => {
             childId: childId
         }
     }
-    const dateFromChangeHandler = date => {
-        setDateFrom(date[0])
-        dispatch(getTimeSlots(
-            getGetTimesSlotsData(date[0], dateTo, selectedChild.id)
-        ))
+    // const dateFromChangeHandler = date => {
+    //     setDateFrom(date[0])
+    //     dispatch(getTimeSlots(
+    //         getGetTimesSlotsData(date[0], dateTo, selectedChild.id)
+    //     ))
+    // }
+    // const dateToChangeHandler = date => {
+    //     setDateTo(date[0])
+    //     dispatch(getTimeSlots(
+    //         getGetTimesSlotsData(dateFrom, date[0], selectedChild.id)
+    //     ))
+    // }
+
+    const toNextWeek = () => {
+
     }
-    const dateToChangeHandler = date => {
-        setDateTo(date[0])
-        dispatch(getTimeSlots(
-            getGetTimesSlotsData(dateFrom, date[0], selectedChild.id)
-        ))
+
+    const toPrevWeek = () => {
+
     }
+
     const modalToggle = () => {
         setLessonCreatedModalIsOpen(!lessonCreatedModalIsOpen)
     }
@@ -82,26 +105,26 @@ const ParentTimeSlots = () => {
         dispatch(clearLessons())
     }
 
-    const getNewTimeSlotsItems = useCallback(() => {
-        if (!timeSlots) {
-            return {}
-        }
-        const newTimeSlotItems = {}
-        timeSlots.forEach(timeSlot => {
-            const timeSlotDayDate = timeSlot.day.date
-            if (timeSlotDayDate in newTimeSlotItems) {
-                const timeSlotArray = newTimeSlotItems[timeSlotDayDate]
-                timeSlotArray.push(timeSlot)
-                newTimeSlotItems[timeSlotDayDate] = timeSlotArray.sort((a, b) => {
-                    return new Date(moment(a.start_time, 'H:m:s')) - new Date(moment(b.start_time, 'H:m:s'))
-                })
-            } else {
-                newTimeSlotItems[timeSlotDayDate] = [timeSlot]
-            }
-        })
-
-        return newTimeSlotItems
-    }, [timeSlots])
+    // const getNewTimeSlotsItems = useCallback(() => {
+    //     if (!timeSlots) {
+    //         return {}
+    //     }
+    //     const newTimeSlotItems = {}
+    //     timeSlots.forEach(timeSlot => {
+    //         const timeSlotDayDate = timeSlot.day.date
+    //         if (timeSlotDayDate in newTimeSlotItems) {
+    //             const timeSlotArray = newTimeSlotItems[timeSlotDayDate]
+    //             timeSlotArray.push(timeSlot)
+    //             newTimeSlotItems[timeSlotDayDate] = timeSlotArray.sort((a, b) => {
+    //                 return new Date(moment(a.start_time, 'H:m:s')) - new Date(moment(b.start_time, 'H:m:s'))
+    //             })
+    //         } else {
+    //             newTimeSlotItems[timeSlotDayDate] = [timeSlot]
+    //         }
+    //     })
+    //
+    //     return newTimeSlotItems
+    // }, [timeSlots])
 
     const onCreateLessons = () => {
         const data = {time_slots_ids: selectedTimeSlots, student_id: selectedChild.id}
@@ -115,10 +138,9 @@ const ParentTimeSlots = () => {
         // eslint-disable-next-line
     }, [lessonCreated])
 
-    useEffect(() => {
-        const newTimeSlotItems = getNewTimeSlotsItems()
-        setTimeSlotItems(newTimeSlotItems)
-    }, [getNewTimeSlotsItems, timeSlots])
+    // useEffect(() => {
+    //     setTimeSlotItems(scheduleArray)
+    // }, [scheduleArray])
 
     useEffect(() => {
         if (!selectedChild) {
@@ -150,113 +172,162 @@ const ParentTimeSlots = () => {
             <MainTitleBlock
                 leftTitle='Выберите временной слот'
             />
-            <div className='classes'>
-                <div className='classes__content'>
-                    <div className='timeslot' id='timeSlot'>
-                        <div className='timeslot__body position-static'>
-                            <div className='d-flex justify-content-around flex-wrap'>
-                                <FormField
-                                    label='От'
-                                    type='flatpickr'
-                                    configs={{
-                                        dateFormat: 'd/m/Y',
-                                        enableTime: false,
-                                        minDate: now
-                                    }}
-                                    onChange={dateFromChangeHandler}
-                                    className='form__field'
-                                    value={dateFrom}
-                                />
-                                <FormField
-                                    label='До'
-                                    type='flatpickr'
-                                    configs={{
-                                        dateFormat: 'd/m/Y',
-                                        enableTime: false,
-                                        minDate: dateFrom,
-                                        maxDate: new Date().setDate(dateFrom.getDate() + 5)
-                                    }}
-                                    onChange={dateToChangeHandler}
-                                    className='form__field'
-                                    value={dateTo}
-                                />
-                            </div>
+            <div className="content">
+                <div className="content__inner">
+                    <div className='classes'>
+                        <div className='classes__content'>
+                            <div className='timeslot' id='timeSlot'>
+                                <div className='timeslot__body'>
+                                    {/*<div className='d-flex justify-content-around flex-wrap'>*/}
+                                    {/*    <FormField*/}
+                                    {/*        label='От'*/}
+                                    {/*        type='flatpickr'*/}
+                                    {/*        configs={{*/}
+                                    {/*            dateFormat: 'd/m/Y',*/}
+                                    {/*            enableTime: false,*/}
+                                    {/*            minDate: now*/}
+                                    {/*        }}*/}
+                                    {/*        onChange={dateFromChangeHandler}*/}
+                                    {/*        className='form__field'*/}
+                                    {/*        value={dateFrom}*/}
+                                    {/*    />*/}
+                                    {/*    <FormField*/}
+                                    {/*        label='До'*/}
+                                    {/*        type='flatpickr'*/}
+                                    {/*        configs={{*/}
+                                    {/*            dateFormat: 'd/m/Y',*/}
+                                    {/*            enableTime: false,*/}
+                                    {/*            minDate: dateFrom,*/}
+                                    {/*            maxDate: new Date().setDate(dateFrom.getDate() + 5)*/}
+                                    {/*        }}*/}
+                                    {/*        onChange={dateToChangeHandler}*/}
+                                    {/*        className='form__field'*/}
+                                    {/*        value={dateTo}*/}
+                                    {/*    />*/}
+                                    {/*</div>*/}
 
-                            <div className='timeslot__main-wrap'>
-                                <div className='timeslot__main'>
-                                    {(!loading && (timeSlots && !timeSlots.length)) && (
-                                        <h6>Нет свободных логопедов на выделенный период</h6>
-                                    )}
-                                    {loading && (
-                                        <Spinner animation='border' role='status'>
-                                            <span className='visually-hidden'>Loading...</span>
-                                        </Spinner>
-                                    )}
-                                    <div className='timeslot__items'>
-                                        {timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {
-                                            return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()
-                                        }).map(timeSlotItem => {
-                                            const date = strDateToMoment(timeSlotItem)
-                                            const month = shortNamesOfMonths[date.month()]
-                                            const dayOfWeek = namesOfDaysOfWeekShort[date.day()]
-                                            return (
-                                                <div className='timeslot__item'>
-                                                    <div className={addClasses('timeslot__day', {
-                                                        'current': getCurrentDate().isSame(date)
-                                                    })}>
-                                                        {month} {date.date()},
-                                                        <br/>
-                                                        {dayOfWeek}
-                                                    </div>
-                                                </div>
-                                            )
-                                        })}
+                                    <button type="button" id="timeSlotPrev" className="timeslot__prev"
+                                            onClick={toPrevWeek}/>
+                                    <button type="button" id="timeSlotNext" className="timeslot__next"
+                                            onClick={toNextWeek}/>
+                                    <div className='timeslot__main-wrap'>
+                                        <div className='timeslot__main'>
+                                            {(!loading && (timeSlots && !timeSlots.length)) && (
+                                                <h6>Нет свободных логопедов на выделенный период</h6>
+                                            )}
+                                            {loading && (
+                                                <Spinner animation='border' role='status'>
+                                                    <span className='visually-hidden'>Loading...</span>
+                                                </Spinner>
+                                            )}
+                                            <div className='timeslot__items'>
+                                                {/*{timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {*/}
+                                                {/*    return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()*/}
+                                                {/*}).map(timeSlotItem => {*/}
+                                                {/*    const date = strDateToMoment(timeSlotItem)*/}
+                                                {/*    const month = shortNamesOfMonths[date.month()]*/}
+                                                {/*    const dayOfWeek = namesOfDaysOfWeekShort[date.day()]*/}
+                                                {/*    return (*/}
+                                                {/*        <div className='timeslot__item'>*/}
+                                                {/*            <div className={addClasses('timeslot__day', {*/}
+                                                {/*                'current': getCurrentDate().isSame(date)*/}
+                                                {/*            })}>*/}
+                                                {/*                {month} {date.date()},*/}
+                                                {/*                <br/>*/}
+                                                {/*                {dayOfWeek}*/}
+                                                {/*            </div>*/}
+                                                {/*        </div>*/}
+                                                {/*    )*/}
+                                                {/*})}*/}
+                                                {timeSlotsArray && timeSlotsArray.map(timeSlotItem => {
+                                                    const date = strDateToMoment(timeSlotItem.date)
+                                                    const month = moment(date).format('MMM')
+                                                    const dayOfWeek = moment(date).format('ddd')
+
+                                                    return (
+                                                        <div className='timeslot__item'>
+                                                            <div className={addClasses('timeslot__day', {
+                                                                'current': getCurrentDate().isSame(date)
+                                                            })}>
+                                                                {month} {date.date()},
+                                                                <br/>
+                                                                {dayOfWeek}
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                            <div className='timeslot__items timeSlotsBlock'>
+                                                {/*{timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {*/}
+                                                {/*    return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()*/}
+                                                {/*}).map(timeSlotItem => {*/}
+                                                {/*    return (*/}
+                                                {/*        <div className='timeslot__item'>*/}
+                                                {/*            /!*<div>*!/*/}
+                                                {/*            /!*    <div*!/*/}
+                                                {/*            /!*        className='timeslot__times timeslot__times_morn'>Утро*!/*/}
+                                                {/*            /!*    </div>*!/*/}
+                                                {/*            /!*</div>*!/*/}
+                                                {/*            {timeSlotItems[timeSlotItem].map(timeSlot => {*/}
+                                                {/*                return (*/}
+                                                {/*                    <TimeSlot*/}
+                                                {/*                        timeSlot={timeSlot}*/}
+                                                {/*                        onClick={timeSlotOnClick}*/}
+                                                {/*                        isActive={selectedTimeSlots.indexOf(timeSlot.id) > - 1}*/}
+                                                {/*                        allowsToChoice={timeSlot.teachers.length}*/}
+                                                {/*                    >*/}
+                                                {/*                        {moment(timeSlot.start_time, 'H:m:s').format('H:mm')}*/}
+                                                {/*                        /!*{moment(timeSlot.end_time, 'H:m:s').format('H:mm')}*!/*/}
+                                                {/*                    </TimeSlot>*/}
+                                                {/*                )*/}
+                                                {/*            })}*/}
+                                                {/*        </div>*/}
+                                                {/*    )*/}
+                                                {/*})}*/}
+                                                {timeSlotsArray && timeSlotsArray.map(timeSlotItem => {
+                                                    return (
+                                                        <div className='timeslot__item'>
+                                                            {timeSlotItem.timeSlot.sort((a, b) => {
+                                                                return a.start_time.localeCompare(b.start_time)
+                                                            }).map(timeSlot => {
+                                                                return (
+                                                                    <TimeSlot
+                                                                        timeSlot={timeSlot}
+                                                                        onClick={timeSlotOnClick}
+                                                                        isActive={selectedTimeSlots.indexOf(timeSlot.id) > -1}
+                                                                        allowsToChoice={timeSlot.teachers.length}
+                                                                    >
+                                                                        {moment(timeSlot.start_time, 'H:m:s').format('H:mm')}
+                                                                        {/*{moment(timeSlot.timeSlot.end_time, 'H:m:s').format('H:mm')}*/}
+                                                                    </TimeSlot>
+                                                                )
+                                                            })}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className='timeslot__items timeSlotsBlock'>
-                                        {timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {
-                                            return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()
-                                        }).map(timeSlotItem => {
-                                            return (
-                                                <div className='timeslot__item'>
-                                                    <div>
-                                                        {/*<div className='timeslot__times timeslot__times_morn'>Утро</div>*/}
-                                                    </div>
-                                                    {timeSlotItems[timeSlotItem].map(timeSlot => {
-                                                        return (
-                                                            <TimeSlot
-                                                                timeSlot={timeSlot}
-                                                                onClick={timeSlotOnClick}
-                                                                isActive={selectedTimeSlots.indexOf(timeSlot.id) > -1}
-                                                                allowsToChoice={timeSlot.teachers.length}
-                                                            >
-                                                                {moment(timeSlot.start_time, 'H:m:s').format('H:mm')} -
-                                                                {moment(timeSlot.end_time, 'H:m:s').format('H:mm')}
-                                                            </TimeSlot>
-                                                        )
-                                                    })}
-                                                </div>
-                                            )
-                                        })}
-                                    </div>
+                                    <div className="timeslot__times timeslot__times_morn">Утро</div>
+                                    <div className="timeslot__times timeslot__times_day">День</div>
+                                    <div className="timeslot__times timeslot__times_evn">Вечер</div>
+                                    <div className="timeslot__times timeslot__times_night">Ночь</div>
+
+                                </div>
+
+                                <div className='timeslot__col'>
+                                    <p>Диагностическое занятие длится 45-55 минут без перерыва</p>
+                                    <button
+                                        className='btn-sm'
+                                        type='button'
+                                        disabled={!selectedTimeSlots.length}
+                                        onClick={onCreateLessons}
+                                    >
+                                        Добавить
+                                    </button>
                                 </div>
                             </div>
-                            {/*<div className='timeslot__times timeslot__times_day'>День</div>*/}
-                            {/*<div className='timeslot__times timeslot__times_evn'>Вечер</div>*/}
-
                         </div>
-
-                        <div className='timeslot__col'>
-                            <p>Диагностическое занятие длится 45-55 минут без перерыва</p>
-                            <button
-                                className='btn-sm'
-                                type='button'
-                                disabled={!selectedTimeSlots.length}
-                                onClick={onCreateLessons}
-                            >
-                                Добавить
-                            </button>
-                        </div>
-
                     </div>
                 </div>
             </div>
