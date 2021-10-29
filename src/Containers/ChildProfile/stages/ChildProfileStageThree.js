@@ -1,7 +1,7 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
-import {useHistory} from 'react-router';
-import {useDispatch, useSelector} from 'react-redux';
+import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 
 import FormField from 'Components/FormField/FormField';
 import Modal from 'Components/Modal/Modal';
@@ -11,9 +11,11 @@ import {
     childSelector,
     clearChildState,
     getChild,
-    addSpecialistsForChild, deleteChildSpecialist, updateChildSpecialist
+    addSpecialistsForChild,
+    deleteChildSpecialist,
+    updateChildSpecialist
 } from 'redux/child/childSlice.js';
-import {ChildProfileContext} from 'context/ChildProfileContext/ChildProfileContext.js';
+import { ChildProfileContext } from 'context/ChildProfileContext/ChildProfileContext.js';
 import StagesLinks from 'Containers/ChildProfile/StagesLinks/StagesLinks';
 import Actions from 'Containers/ChildProfile/Actions/Actions';
 
@@ -41,16 +43,15 @@ const ChildProfileStageTwo = () => {
     const [specialistsOptions, setSpecialistsOptions] = useState(null);
     const [indexOfActiveSpecialist, setIndexOfActiveSpecialist] = useState(null);
 
-    const {specialists, child, addSpecialistsForChildSuccess} = useSelector(childSelector)
+    const { specialists, child } = useSelector(childSelector)
 
     const dispatch = useDispatch()
     const history = useHistory()
 
     const activeSpecialist = childSpecialists.at(indexOfActiveSpecialist)
 
-    const selectChangeHandler = ({value, label}) => {
+    const selectChangeHandler = ({ value }) => {
         const newChildSpecialists = [...childSpecialists]
-        console.log(newChildSpecialists)
         if (indexOfActiveSpecialist >= 0) {
             newChildSpecialists[indexOfActiveSpecialist] = {
                 ...newChildSpecialists[indexOfActiveSpecialist],
@@ -103,7 +104,7 @@ const ChildProfileStageTwo = () => {
         }
     }
     const workWithSpecialist = async () => {
-        const specialist = {...activeSpecialist}
+        const specialist = { ...activeSpecialist }
         if (specialist.reason_change_specialist !== 'other') {
             delete specialist.reason_change_specialist_text
         }
@@ -122,11 +123,11 @@ const ChildProfileStageTwo = () => {
         await setIsAddTherapistModalOpen(false)
     }
     const deleteSpecialist = async id => {
-        await dispatch(deleteChildSpecialist({specialistId: id}))
+        await dispatch(deleteChildSpecialist({ specialistId: id }))
         await dispatch(getChild(childId))
     }
 
-    const addSpecialists = async e => {
+    const addSpecialists = async () => {
         history.push(`/child-profile/${childId}/${parseInt(stage) + 1}`)
     }
 
@@ -147,12 +148,13 @@ const ChildProfileStageTwo = () => {
 
     useEffect(() => {
         dispatch(clearChildState())
+        // eslint-disable-next-line
     }, [isAddTherapistModalOpen])
 
     useEffect(() => {
         if (specialists) {
             setSpecialistsOptions(Object.keys(specialists.specialist).map(specialist => {
-                return {value: specialist, label: specialists.specialist[specialist]}
+                return { value: specialist, label: specialists.specialist[specialist] }
             }))
         }
     }, [specialists])
@@ -164,12 +166,14 @@ const ChildProfileStageTwo = () => {
                 setIsParentHaveTherapist(true)
             }
         }
+        // eslint-disable-next-line
     }, [child])
 
     useEffect(() => {
         dispatch(clearChildState())
         dispatch(getSpecialists())
         dispatch(getChild(childId))
+        // eslint-disable-next-line
     }, [])
 
     return (
@@ -181,8 +185,8 @@ const ChildProfileStageTwo = () => {
                 width={90}
             >
                 {activeSpecialist && specialists && (
-                    <div className='modal__gray-bg' style={{height: 'calc(100% + 38px)'}}>
-                        <div className='form  scroll-block' style={{height: '100%ur'}}>
+                    <div className='modal__gray-bg' style={{ height: 'calc(100% + 38px)' }}>
+                        <div className='form  scroll-block' style={{ height: '100%ur' }}>
                             <form action='#'>
                                 <h5 className='form__title-spec'>Добавить специалиста</h5>
                                 <div className='form__body-spec'>
