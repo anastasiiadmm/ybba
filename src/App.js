@@ -17,7 +17,9 @@ import Payments from 'Containers/Payments/Payments';
 import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
 
-import 'App.css';
+import './App.css';
+import LessonPage from 'Containers/LessonPage/LessonPage.js';
+import WebSocket from 'Containers/WebSocket/WebSocket.js';
 
 
 const App = () => {
@@ -32,7 +34,7 @@ const App = () => {
             <PrivateRoute path='/profile/edit/' component={ParentProfileEdit}/>
             <PrivateRoute path='/profile/' component={ParentProfile} exact/>
             <PrivateRoute path='/' component={MainDashboard} exact/>
-            <PrivateRoute path='/lesson/:lessonId' component={Lesson}/>
+            <PrivateRoute path='/lessons/:lessonId' component={Lesson}/>
             <PrivateRoute path='/video-test/' component={DevicesTestPage}/>
             <Route path='/login/' component={Login}/>
             <Route path='/registration/:stage/' component={Registration}/>
