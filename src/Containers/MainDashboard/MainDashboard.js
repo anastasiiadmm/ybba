@@ -10,7 +10,7 @@ import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import { getTimesDay, getNowDate, strDateToMoment } from 'utils/date/dateUtils.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import UpcomingLessonBlock from 'Containers/MainDashboard/UpcomingLessonBlock/UpcomingLessonBlock';
-import { getLessons, dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
+import {getLessons, dashBoardSelector, getTeacherLesson} from 'redux/dashBoard/dashBoardSlice.js';
 import { lessonStatuses, userRoles } from 'constants.js';
 import Calendar from 'Containers/MainDashboard/Calendar/Calendar';
 import { checkUserRole } from 'utils/user.js';
@@ -19,7 +19,7 @@ import { checkUserRole } from 'utils/user.js';
 const MainDashboard = () => {
 
     const { user } = useSelector(authSelector)
-    const { lessons } = useSelector(dashBoardSelector)
+    const { lessons, lesson } = useSelector(dashBoardSelector)
 
     const [nowDate, setNowDate] = useState()
     const [closesLesson, setClosesLesson] = useState(null)
@@ -41,6 +41,10 @@ const MainDashboard = () => {
             setClosesLesson(lesson[0])
         }
     }, [lessons])
+
+    useEffect(() => {
+        dispatch(getTeacherLesson())
+    }, [])
 
     useEffect(() => {
         const data = {
@@ -73,6 +77,7 @@ const MainDashboard = () => {
                                     {closesLesson && (
                                         <UpcomingLessonBlock
                                             lesson={closesLesson}
+                                            teacherLesson={lesson}
                                         />
                                     )}
                                 </div>

@@ -9,7 +9,12 @@ const nameSpace = 'dashBoard'
 const INITIAl_STATE = {
     errors: null,
     loading: false,
-    lessons: null
+    lessons: null,
+
+    lesson: null,
+    getLessonLoading: false,
+    getLessonErrors: null,
+
 }
 
 export const getLessons = createAsyncThunk(
@@ -21,6 +26,18 @@ export const getLessons = createAsyncThunk(
                 query = toQueryParams(data.query)
             }
             const resp = await axiosApi.get(`/accounts/${data.userId}/lessons/${query}`)
+            return resp.data
+        } catch (e) {
+            return rejectWithValue(e)
+        }
+    }
+)
+
+export const getTeacherLesson = createAsyncThunk(
+    `${nameSpace}/getTeacherLessons`,
+    async ({rejectWithValue}) => {
+        try {
+            const resp = await axiosApi.get('/lessons/teacher-closest-lesson/')
             return resp.data
         } catch (e) {
             return rejectWithValue(e)
@@ -47,6 +64,18 @@ const dashBoardSlice = createSlice({
         [getLessons.rejected]: (state, {payload}) => {
             state.errors = payload
             state.loading = true
+        },
+
+        [getTeacherLesson.pending]: state => {
+            state.getLessonLoading = true
+        },
+        [getTeacherLesson.fulfilled]: (state, { payload }) => {
+            state.lesson = payload
+            state.getLessonLoading = false
+        },
+        [getTeacherLesson.rejected]: (state, { payload }) => {
+            state.getLessonLoading = false
+            state.getLessonErrors = payload
         }
     }
 })

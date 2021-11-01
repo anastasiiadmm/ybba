@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 const UpcomingLessonBlock = (props) => {
 
     const {
-        lesson
+        lesson,
+        teacherLesson
     } = props
 
     const humanize = timestamp => {
@@ -17,7 +18,15 @@ const UpcomingLessonBlock = (props) => {
 
     const now = moment()
 
-    const timeSlot = lesson.time_slot
+    let timeSlot;
+
+    if (lesson) {
+        timeSlot = lesson.time_slot
+    } else if (teacherLesson) {
+        timeSlot = teacherLesson.time_slot
+    }
+
+    // const timeSlot = lesson.time_slot
     const start_time = moment(timeSlot.start_time, 'H:mm')
     const end_time = moment(timeSlot.end_time, 'H:mm')
 
@@ -61,12 +70,21 @@ const UpcomingLessonBlock = (props) => {
                         <span className='lesson__icon lesson__icon_orange'/>
                     </div>
                     {lessonPassed > 0 && lessonFinishedIn < 0 && (
-                        <Link
-                            className='btn info-item__btn'
-                            to={`/lessons/${lesson.id}/`}
-                        >
-                            Открыть занятие
-                        </Link>
+                        lesson ? (
+                            <Link
+                                className='btn info-item__btn'
+                                to={`/lessons/${lesson.id}/`}
+                            >
+                                Открыть занятие
+                            </Link>
+                        ) : (
+                            <Link
+                                className='btn info-item__btn'
+                                to={`/lessons/${teacherLesson.id}/`}
+                            >
+                                Открыть занятие
+                            </Link>
+                        )
                     )}
                 </div>
             )}
