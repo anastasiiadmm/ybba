@@ -10,7 +10,6 @@ import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
 import {getTimeSlots, lessonsSelector, createLessons, clearLessons} from 'redux/lessons/lessonsSlice.js';
 import TimeSlot from 'Components/TimeSlot/TimeSlot';
-import FormField from 'Components/FormField/FormField';
 import Modal from 'Components/Modal/Modal';
 import {strDateToMoment, getCurrentDate} from 'utils/date/dateUtils.js';
 import {shortNamesOfMonths, namesOfDaysOfWeekShort} from 'constants.js';
@@ -210,16 +209,16 @@ const ParentTimeSlots = () => {
                                             onClick={toPrevWeek}/>
                                     <button type="button" id="timeSlotNext" className="timeslot__next"
                                             onClick={toNextWeek}/>
+                                    {(!loading && (timeSlots && !timeSlots.length)) && (
+                                        <h6>Нет свободных логопедов на выделенный период</h6>
+                                    )}
+                                    {loading && (
+                                        <Spinner animation='border' role='status'>
+                                            <span className='visually-hidden'>Loading...</span>
+                                        </Spinner>
+                                    )}
                                     <div className='timeslot__main-wrap'>
                                         <div className='timeslot__main'>
-                                            {(!loading && (timeSlots && !timeSlots.length)) && (
-                                                <h6>Нет свободных логопедов на выделенный период</h6>
-                                            )}
-                                            {loading && (
-                                                <Spinner animation='border' role='status'>
-                                                    <span className='visually-hidden'>Loading...</span>
-                                                </Spinner>
-                                            )}
                                             <div className='timeslot__items'>
                                                 {/*{timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {*/}
                                                 {/*    return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()*/}

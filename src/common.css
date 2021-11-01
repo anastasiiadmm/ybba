@@ -88,3 +88,7 @@ h5, h4, h3 {
     background: no-repeat url("assets/img/timeslot_night.jpeg");
     background-size: contain;
 }
+
+.timeslot__body {
+    text-align: center;
+}
