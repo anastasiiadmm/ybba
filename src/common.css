@@ -92,3 +92,8 @@ h5, h4, h3 {
 .timeslot__body {
     text-align: center;
 }
+
+.form__link-wrap {
+    display: flex;
+    align-items: center;
+}
