@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const UpcomingLessonBlock = (props) => {
@@ -63,7 +63,7 @@ const UpcomingLessonBlock = (props) => {
                     {lessonPassed > 0 && lessonFinishedIn < 0 && (
                         <Link
                             className='btn info-item__btn'
-                            to={`/lesson/${lesson.id}/`}
+                            to={`/lessons/${lesson.id}/`}
                         >
                             Открыть занятие
                         </Link>

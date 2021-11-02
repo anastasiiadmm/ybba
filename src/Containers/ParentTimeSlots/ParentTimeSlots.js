@@ -1,19 +1,20 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {useHistory} from 'react-router';
-import {Link} from 'react-router-dom';
-import {Spinner} from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 import moment from 'moment';
 
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
-import {getTimeSlots, lessonsSelector, createLessons, clearLessons} from 'redux/lessons/lessonsSlice.js';
+import { getTimeSlots, lessonsSelector, createLessons, clearLessons } from 'redux/lessons/lessonsSlice.js';
 import TimeSlot from 'Components/TimeSlot/TimeSlot';
+import FormField from 'Components/FormField/FormField';
 import Modal from 'Components/Modal/Modal';
-import {strDateToMoment, getCurrentDate} from 'utils/date/dateUtils.js';
-import {shortNamesOfMonths, namesOfDaysOfWeekShort} from 'constants.js';
-import {addClasses} from 'utils/addClasses/addClasses.js';
+import { strDateToMoment, getCurrentDate } from 'utils/date/dateUtils.js';
+import { shortNamesOfMonths, namesOfDaysOfWeekShort } from 'constants.js';
+import { addClasses } from 'utils/addClasses/addClasses.js';
 
 import 'Containers/ParentTimeSlots/parentTimeSlots.css'
 
@@ -21,9 +22,10 @@ const MAX_SELECTED_TIME_SLOTS = 1
 const DAYS_RANGE = 5
 
 
-const ParentTimeSlots = () => {
+const ParentTimeSlots = props => {
 
     const now = new Date()
+    const { lessonId } = props.match.params
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -34,7 +36,7 @@ const ParentTimeSlots = () => {
     // const [timeSlotItems, setTimeSlotItems] = useState({})
     const [lessonCreatedModalIsOpen, setLessonCreatedModalIsOpen] = useState(false)
 
-    const {timeSlots, selectedChild, lessonCreated, loading} = useSelector(lessonsSelector)
+    const { timeSlots, selectedChild, lessonCreated, loading } = useSelector(lessonsSelector)
 
     const timeSlotsSchedule = timeSlots?.reduce((timeSlots, timeslot) => {
         const date = timeslot.day.date;
@@ -52,7 +54,7 @@ const ParentTimeSlots = () => {
         }
     })
 
-    const timeSlotOnClick = ({id}) => {
+    const timeSlotOnClick = ({ id }) => {
         const index = selectedTimeSlots.indexOf(id)
         if (index !== -1) {
             const array = [...selectedTimeSlots]
@@ -95,7 +97,6 @@ const ParentTimeSlots = () => {
     const toPrevWeek = () => {
 
     }
-
     const modalToggle = () => {
         setLessonCreatedModalIsOpen(!lessonCreatedModalIsOpen)
     }

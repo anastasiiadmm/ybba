@@ -49,8 +49,7 @@ export const lessonTypes = {
 }
 
 export const namesOfDaysOfWeek = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресение']
-export const namesOfDaysOfWeekShort = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
-export const namesOfDaysOfWorkWeekShort = ['Пон', 'Вт', 'Ср', 'Чт', 'Пт']
+export const namesOfDaysOfWeekShort = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
 
 export const shortNamesOfMonths = ['Янв', 'Февр', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Ноябрь', 'Дек']
 export const namesOfMonths = [

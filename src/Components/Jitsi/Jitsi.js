@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 
 const Jitsi = (props) => {
 
-    const {meetingId, userInfo, toolbarItems, width, height} = props
+    const { meetingId, userInfo, toolbarItems, width, height, className } = props
 
     const [api, setApi] = useState(null)
 
@@ -13,13 +13,13 @@ const Jitsi = (props) => {
             roomName: meetingId,
             width: width,
             height: height,
-            configOverwrite: {prejoinPageEnabled: false},
+            configOverwrite: { prejoinPageEnabled: false },
             interfaceConfigOverwrite: {
                 TOOLBAR_BUTTONS: toolbarItems,
                 SHOW_WATERMARK_FOR_GUESTS: false
             },
             parentNode: document.querySelector('#jitsi-iframe'),
-            userInfo: {...userInfo}
+            userInfo: { ...userInfo }
         }
         const apiObj = new window.JitsiMeetExternalAPI('meet.jit.si', options);
         setApi(apiObj)
@@ -40,6 +40,7 @@ const Jitsi = (props) => {
             width,
             height
         }}
+        className={className}
     />
 }
 
@@ -54,7 +55,8 @@ Jitsi.propTypes = {
         PropTypes.number,
         PropTypes.string
     ]),
-    toolbarItems: PropTypes.arrayOf(PropTypes.string)
+    toolbarItems: PropTypes.arrayOf(PropTypes.string),
+    className: PropTypes.string
 }
 
-export default Jitsi;
+export default React.memo(Jitsi);

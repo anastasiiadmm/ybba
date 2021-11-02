@@ -1,7 +1,7 @@
 import moment from 'moment';
 import 'moment/locale/ru.js'
 
-import config from '../../config';
+import config from 'config';
 
 /**
  * Function to get human readable format of current time of day
@@ -52,4 +52,12 @@ export const strTimeToMoment = time => {
  */
 export const getCurrentDate = () => {
     return moment(moment().format(config.dateFormat), config.dateFormat)
+}
+
+/**
+ * Returns current time in "moment" format
+ * @returns {moment.Moment}
+ */
+export const getCurrentTime = () => {
+    return strTimeToMoment(moment().format(config.timeFormat))
 }

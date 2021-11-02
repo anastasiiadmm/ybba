@@ -1,13 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from "react-router-dom";
-import moment from 'moment';
+import React, { useState, useEffect } from 'react';
 
-import {namesOfDaysOfWeekShort, namesOfMonths, namesOfDaysOfWeek} from '../../../constants';
-import {generateDateRange} from '../../MainDashboard/Calendar/utils';
-import {addClasses} from '../../../utils/addClasses/addClasses';
-import {useSelector} from 'react-redux';
-import {dashBoardSelector} from '../../../redux/dashBoard/dashBoardSlice';
-import {strDateToMoment} from '../../../utils/date/dateUtils';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { namesOfDaysOfWeekShort, namesOfMonths, namesOfDaysOfWeek } from 'constants.js';
+import { generateDateRange } from 'Containers/MainDashboard/Calendar/utils';
+import { addClasses } from 'utils/addClasses/addClasses.js';
+import { dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
+import { strDateToMoment } from 'utils/date/dateUtils.js';
 
 
 const Calendar = () => {
@@ -17,7 +18,7 @@ const Calendar = () => {
     const [activeDate, setActiveDate] = useState(moment())
     const [lessonsForDate, setLessonsForDate] = useState([])
 
-    const {lessons} = useSelector(dashBoardSelector)
+    const { lessons } = useSelector(dashBoardSelector)
 
     const toNextMonth = () => {
         setCurrentDate(
@@ -37,7 +38,7 @@ const Calendar = () => {
 
     const getLessonsForDate = date => {
         return lessons?.filter(lesson => {
-            return strDateToMoment(lesson.time_slot.day.date)
+            return lesson?.time_slot && strDateToMoment(lesson.time_slot.day.date)
                 .isSame(date, 'date')
         })
     }
@@ -61,6 +62,7 @@ const Calendar = () => {
                 getLessonsForDate(activeDate)
             )
         }
+        // eslint-disable-next-line
     }, [activeDate])
 
     useEffect(() => {
@@ -69,28 +71,29 @@ const Calendar = () => {
                 getLessonsForDate(activeDate)
             )
         }
+        // eslint-disable-next-line
     }, [lessons])
 
 
     return (
-        <div className="info-item">
+        <div className='info-item'>
             {lessons && (
-                <div className="calendar-box">
-                    <div className="calendar-box__datepick">
-                        <div className="datepick">
-                            <div className="datepick__head">
+                <div className='calendar-box'>
+                    <div className='calendar-box__datepick'>
+                        <div className='datepick'>
+                            <div className='datepick__head'>
                                 <button
-                                    type="button"
-                                    className="datepick__btn-prev"
+                                    type='button'
+                                    className='datepick__btn-prev'
                                     onClick={toPrevMonth}
                                 />
-                                <div className="datepick__month">
+                                <div className='datepick__month'>
                                     {namesOfMonths[currentDate.month()]}{' '}
                                     {currentDate.year()}
                                 </div>
                                 <button
-                                    type="button"
-                                    className="datepick__btn-next"
+                                    type='button'
+                                    className='datepick__btn-next'
                                     onClick={toNextMonth}
                                 />
                             </div>
