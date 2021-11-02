@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {authSelector} from "../../redux/auth/authSlice";
 import Button from "../../Components/Button/Button";
 import {generateDateRange} from "../MainDashboard/Calendar/utils";
+import {getTimeSlotSchedule, timeSlotsScheduleSelector} from "../../redux/lessons/lessonsSlice";
 
 const ParentTimeTableSchedule = () => {
     const dispatch = useDispatch()
@@ -16,6 +17,9 @@ const ParentTimeTableSchedule = () => {
     const {user} = useSelector(authSelector)
 
     const {lessons} = useSelector(dashBoardSelector)
+
+    const { timeSlotsScheduleState } = useSelector(timeSlotsScheduleSelector)
+    console.log(timeSlotsScheduleState)
 
     const [nowDate, setNowDate] = useState()
     const [currentDate, setCurrentDate] = useState(moment())
@@ -37,6 +41,10 @@ const ParentTimeTableSchedule = () => {
         }, 1000)
         // eslint-disable-next-line
     }, [])
+
+    useEffect(() => {
+        dispatch(getTimeSlotSchedule(user.id))
+    })
 
     const dateOnClick = date => {
         if (date.isSame(currentDate, 'month')) {

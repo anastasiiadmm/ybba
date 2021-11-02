@@ -12,7 +12,11 @@ const INITIAL_STATE = {
     timeSlots: null,
     errors: null,
     selectedChild: null,
-    lessonCreated: false
+    lessonCreated: false,
+
+    timeSlotsSchedule: null,
+    timeSlotsScheduleLoading: false,
+    timeSlotsScheduleErrors: null
 }
 
 export const getChildren = createAsyncThunk(
@@ -46,6 +50,18 @@ export const createLessons = createAsyncThunk(
         try {
             const resp = await axiosApi.post('/lessons/', data)
             return resp.data
+        } catch (e) {
+            return rejectWithValue(e)
+        }
+    }
+)
+
+export const getTimeSlotSchedule = createAsyncThunk(
+    `${nameSpace}/getTimeSlotsSchedule`,
+    async (parentId, {rejectWithValue}) => {
+        try {
+            const res = await axiosApi.get(`${parentId}/time-slots/`)
+            return res.data
         } catch (e) {
             return rejectWithValue(e)
         }
@@ -99,10 +115,23 @@ const lessonsSlice = createSlice({
         [createLessons.rejected]: (state, {payload}) => {
             state.loading = false
             state.errors = payload
+        },
+
+        [getTimeSlotSchedule.pending]: state => {
+            state.timeSlotsScheduleLoading = true
+        },
+        [getTimeSlotSchedule.fulfilled]: (state, {payload}) => {
+            state.timeSlotsScheduleLoading = false
+            state.timeSlotsSchedule = payload
+        },
+        [getTimeSlotSchedule.rejected]: (state, {payload}) => {
+            state.timeSlotsScheduleLoading = false
+            state.timeSlotsScheduleErrors = payload
         }
     }
 })
 
 export const {setSelectedChild, clearLessons, clearChildren} = lessonsSlice.actions
 export const lessonsSelector = state => state.lessons
+export const timeSlotsScheduleSelector = state => state.timeSlotsSchedule
 export default lessonsSlice.reducer
