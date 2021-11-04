@@ -1,7 +1,7 @@
 variables:
   DEPLOY_USER: "infrastructure"
-  DEV_API_URL: "https://dev.yba.ltestl.com/api/v1"
-  DEV_WS_URL: "wss://dev.yba.ltestl.com/ws"
+  DEVEVELOPMENT_API_URL: "https://dev.yba.ltestl.com/api/v1"
+  DEVEVELOPMENT_WS_URL: "wss://dev.yba.ltestl.com/ws"
   STAGING_API_URL: "https://staging.yba.ltestl.com/api/v1"
   STAGING_WS_URL: "wss://staging.yba.ltestl.com/ws"
   PRODUCTION_API_URL: "https://diagnostika.pro/api/v1"
@@ -110,7 +110,7 @@ deploy-production:
     url: https://diagnostika.pro/
   variables:
     SSH_PRIVATE_KEY: $PRODUCTION_SSH_PRIVATE_KEY
-    DEPLOY_SERVER: 138.68.73.157
+    DEPLOY_SERVER: 207.154.202.69
   before_script:
     - *add-ssh-private-key
   script:
