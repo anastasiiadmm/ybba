@@ -10,6 +10,7 @@ import SetNewPassword from 'Containers/SetNewPassword/SetNewPassword';
 import Lesson from 'Containers/Lesson/Lesson';
 import ParentProfile from 'Containers/ParentProfile/ParentProfile';
 import ParentProfileEdit from 'Containers/ParentProfileEdit/ParentProfileEdit';
+import ParentTimeTableSchedule from "./Containers/ParentTimeTableSchedule/ParentTimeTableSchedule";
 import DevicesTestPage from 'Containers/DevicesTestPage/DevicesTestPage';
 import Lessons from 'Containers/Lessons/Lessons';
 import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
@@ -20,7 +21,6 @@ import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
 import './App.css';
 import LessonPage from 'Containers/LessonPage/LessonPage.js';
 import WebSocket from 'Containers/WebSocket/WebSocket.js';
-
 
 const App = () => {
 

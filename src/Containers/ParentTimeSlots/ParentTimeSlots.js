@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -10,10 +10,8 @@ import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
 import { getTimeSlots, lessonsSelector, createLessons, clearLessons } from 'redux/lessons/lessonsSlice.js';
 import TimeSlot from 'Components/TimeSlot/TimeSlot';
-import FormField from 'Components/FormField/FormField';
 import Modal from 'Components/Modal/Modal';
 import { strDateToMoment, getCurrentDate } from 'utils/date/dateUtils.js';
-import { shortNamesOfMonths, namesOfDaysOfWeekShort } from 'constants.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 
 import 'Containers/ParentTimeSlots/parentTimeSlots.css'
@@ -105,29 +103,8 @@ const ParentTimeSlots = props => {
         dispatch(clearLessons())
     }
 
-    // const getNewTimeSlotsItems = useCallback(() => {
-    //     if (!timeSlots) {
-    //         return {}
-    //     }
-    //     const newTimeSlotItems = {}
-    //     timeSlots.forEach(timeSlot => {
-    //         const timeSlotDayDate = timeSlot.day.date
-    //         if (timeSlotDayDate in newTimeSlotItems) {
-    //             const timeSlotArray = newTimeSlotItems[timeSlotDayDate]
-    //             timeSlotArray.push(timeSlot)
-    //             newTimeSlotItems[timeSlotDayDate] = timeSlotArray.sort((a, b) => {
-    //                 return new Date(moment(a.start_time, 'H:m:s')) - new Date(moment(b.start_time, 'H:m:s'))
-    //             })
-    //         } else {
-    //             newTimeSlotItems[timeSlotDayDate] = [timeSlot]
-    //         }
-    //     })
-    //
-    //     return newTimeSlotItems
-    // }, [timeSlots])
-
     const onCreateLessons = () => {
-        const data = {time_slots_ids: selectedTimeSlots, student_id: selectedChild.id}
+        const data = { time_slots_ids: selectedTimeSlots, student_id: selectedChild.id, lesson_id: lessonId }
         dispatch(createLessons(data))
     }
 
@@ -137,10 +114,6 @@ const ParentTimeSlots = props => {
         }
         // eslint-disable-next-line
     }, [lessonCreated])
-
-    // useEffect(() => {
-    //     setTimeSlotItems(scheduleArray)
-    // }, [scheduleArray])
 
     useEffect(() => {
         if (!selectedChild) {
@@ -221,24 +194,6 @@ const ParentTimeSlots = props => {
                                     <div className='timeslot__main-wrap'>
                                         <div className='timeslot__main'>
                                             <div className='timeslot__items'>
-                                                {/*{timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {*/}
-                                                {/*    return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()*/}
-                                                {/*}).map(timeSlotItem => {*/}
-                                                {/*    const date = strDateToMoment(timeSlotItem)*/}
-                                                {/*    const month = shortNamesOfMonths[date.month()]*/}
-                                                {/*    const dayOfWeek = namesOfDaysOfWeekShort[date.day()]*/}
-                                                {/*    return (*/}
-                                                {/*        <div className='timeslot__item'>*/}
-                                                {/*            <div className={addClasses('timeslot__day', {*/}
-                                                {/*                'current': getCurrentDate().isSame(date)*/}
-                                                {/*            })}>*/}
-                                                {/*                {month} {date.date()},*/}
-                                                {/*                <br/>*/}
-                                                {/*                {dayOfWeek}*/}
-                                                {/*            </div>*/}
-                                                {/*        </div>*/}
-                                                {/*    )*/}
-                                                {/*})}*/}
                                                 {timeSlotsArray && timeSlotsArray.map(timeSlotItem => {
                                                     const date = strDateToMoment(timeSlotItem.date)
                                                     const month = moment(date).format('MMM')
@@ -258,32 +213,6 @@ const ParentTimeSlots = props => {
                                                 })}
                                             </div>
                                             <div className='timeslot__items timeSlotsBlock'>
-                                                {/*{timeSlotItems && Object.keys(timeSlotItems).sort((a, b) => {*/}
-                                                {/*    return strDateToMoment(a).valueOf() - strDateToMoment(b).valueOf()*/}
-                                                {/*}).map(timeSlotItem => {*/}
-                                                {/*    return (*/}
-                                                {/*        <div className='timeslot__item'>*/}
-                                                {/*            /!*<div>*!/*/}
-                                                {/*            /!*    <div*!/*/}
-                                                {/*            /!*        className='timeslot__times timeslot__times_morn'>Утро*!/*/}
-                                                {/*            /!*    </div>*!/*/}
-                                                {/*            /!*</div>*!/*/}
-                                                {/*            {timeSlotItems[timeSlotItem].map(timeSlot => {*/}
-                                                {/*                return (*/}
-                                                {/*                    <TimeSlot*/}
-                                                {/*                        timeSlot={timeSlot}*/}
-                                                {/*                        onClick={timeSlotOnClick}*/}
-                                                {/*                        isActive={selectedTimeSlots.indexOf(timeSlot.id) > - 1}*/}
-                                                {/*                        allowsToChoice={timeSlot.teachers.length}*/}
-                                                {/*                    >*/}
-                                                {/*                        {moment(timeSlot.start_time, 'H:m:s').format('H:mm')}*/}
-                                                {/*                        /!*{moment(timeSlot.end_time, 'H:m:s').format('H:mm')}*!/*/}
-                                                {/*                    </TimeSlot>*/}
-                                                {/*                )*/}
-                                                {/*            })}*/}
-                                                {/*        </div>*/}
-                                                {/*    )*/}
-                                                {/*})}*/}
                                                 {timeSlotsArray && timeSlotsArray.map(timeSlotItem => {
                                                     return (
                                                         <div className='timeslot__item'>

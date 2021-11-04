@@ -4,12 +4,15 @@ import moment from "moment";
 import SidebarContainer from "../../Components/SidebarContainer/SidebarContainer";
 import MainTitleBlock from "../MainDashboard/MainTitleBlock/MainTitleBlock";
 import {dashBoardSelector, getLessons} from "../../redux/dashBoard/dashBoardSlice";
-import {getNowDate, strDateToMoment} from "../../utils/date/dateUtils";
+import {getNowDate, strDateToMoment, strTimeToMoment} from "../../utils/date/dateUtils";
 import {useDispatch, useSelector} from "react-redux";
 import {authSelector} from "../../redux/auth/authSlice";
 import Button from "../../Components/Button/Button";
 import {generateDateRange} from "../MainDashboard/Calendar/utils";
-import {getTimeSlotSchedule, timeSlotsScheduleSelector} from "../../redux/lessons/lessonsSlice";
+import {getTimeSlotSchedule, lessonsSelector} from "../../redux/lessons/lessonsSlice";
+import {addClasses} from "../../utils/addClasses/addClasses";
+import {namesOfDaysOfWeekShort} from "../../constants";
+import {lessonTypesAbbrMapping, lessonTypesMapping} from "../../mappings/lessons";
 
 const ParentTimeTableSchedule = () => {
     const dispatch = useDispatch()
@@ -18,18 +21,21 @@ const ParentTimeTableSchedule = () => {
 
     const {lessons} = useSelector(dashBoardSelector)
 
-    const { timeSlotsScheduleState } = useSelector(timeSlotsScheduleSelector)
-    console.log(timeSlotsScheduleState)
+    const {timeSlotsSchedule} = useSelector(lessonsSelector)
 
     const [nowDate, setNowDate] = useState()
     const [currentDate, setCurrentDate] = useState(moment())
     const [dates, setDates] = useState(null)
     const [activeDate, setActiveDate] = useState(moment())
+    const [timeSlots, setTimeSlots] = useState(null)
+    const [datesSlots, setDatesSlots] = useState(null)
 
     const startOfWeek = currentDate.clone().startOf('week')
     const endOfWeek = currentDate.clone().endOf('week')
     const startOfCalendar = startOfWeek.clone().subtract(startOfWeek.day() - 1, 'days')
     const endOfCalendar = endOfWeek.clone().subtract(2 - endOfWeek.day(), 'days')
+    const fromFormatDate = startOfCalendar.format("DD/MM/YYYY")
+    const toFormatDate = endOfCalendar.format("DD/MM/YYYY")
 
     useEffect(() => {
         const data = {userId: user.id}
@@ -43,14 +49,41 @@ const ParentTimeTableSchedule = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(getTimeSlotSchedule(user.id))
-    })
+        const data = {userId: user.id, fromFormatDate, toFormatDate}
+        dispatch(getTimeSlotSchedule(data))
+    }, [])
 
     const dateOnClick = date => {
         if (date.isSame(currentDate, 'month')) {
             setActiveDate(date)
         }
     }
+
+    useEffect(() => {
+        const reducesTimeSlots = timeSlotsSchedule?.reduce((timeSlots, timeslot) => {
+            const time = timeslot.start_time;
+            if (!timeSlots[time]) {
+                timeSlots[time] = [];
+            }
+            timeSlots[time].push(timeslot);
+            return timeSlots;
+        }, {});
+        setTimeSlots(reducesTimeSlots)
+
+    }, [timeSlotsSchedule])
+
+    useEffect(() => {
+        const reducesDatesSlots = timeSlotsSchedule?.reduce((timeSlots, timeslot) => {
+            const date = timeslot.day.date;
+            if (!timeSlots[date]) {
+                timeSlots[date] = [];
+            }
+            timeSlots[date].push(timeslot);
+            return timeSlots;
+        }, {});
+        setDatesSlots(reducesDatesSlots)
+
+    }, [timeSlotsSchedule])
 
     useEffect(() => {
         if (currentDate) {
@@ -88,7 +121,7 @@ const ParentTimeTableSchedule = () => {
                 <div className="content__inner">
                     <div className="calendar-big content__body">
                         <div className="calendar-big__top">
-                            <Button to='/' className="calendar-big__close" />
+                            <Button to='/' className="calendar-big__close"/>
                             <div className="calendar-big__label">Период</div>
                             <input className="calendar-big__field field" type="text"
                                    value={`${startOfCalendar.format("DD MMM")} - ${endOfCalendar.format("DD MMM")}`}
@@ -105,32 +138,62 @@ const ParentTimeTableSchedule = () => {
                         </div>
                         <div className="calendar-big__body">
                             <div className="calendar-big__row">
-                                <div className="calendar-big__time" />
-                                {dates && dates.map((date, idx) => {
+                                <div className="calendar-big__time"/>
+                                {datesSlots && Object.keys(datesSlots).sort((a, b) => {
+                                    return strDateToMoment(a) - strDateToMoment(b)
+                                }).map(day => {
+                                    const momentDate = strDateToMoment(day)
                                     return (
-                                        <div className="calendar-big__col" key={idx}>
-                                            {date.format('DD, ddd')}
+                                        <div className='calendar-big__col'>
+                                            {momentDate.date()}{' '}
+                                            {namesOfDaysOfWeekShort[momentDate.day()]}
                                         </div>
                                     )
                                 })}
                             </div>
                             <div className="calendar-big__wrap scroll-block">
-                                <div className="calendar-big__row">
-                                    <div className="calendar-big__time">07:00</div>
-                                    <div className="calendar-big__col" />
-                                    <div className="calendar-big__col isLesson">
-                                        <span className="isLesson__icon violet">Дг</span>
-                                        <p className="isLesson__title">Диагностическое занятие</p>
-                                        <span className="isLesson__time">07:00</span>
-                                    </div>
-                                    <div className="calendar-big__col" />
-                                    <div className="calendar-big__col" />
-                                    <div className="calendar-big__col isLesson">
-                                        <span className="isLesson__icon pink">Дг</span>
-                                        <p className="isLesson__title">Диагностическое занятие</p>
-                                        <span className="isLesson__time">07:00</span>
-                                    </div>
-                                </div>
+                                {timeSlots && Object.entries(timeSlots).sort((a, b) => {
+                                    return strTimeToMoment(a) - strTimeToMoment(b)
+                                }).map(([time, timeSlotsArray]) => {
+                                    return (
+                                        <div className='calendar-big__row'>
+                                            <div className="calendar-big__time">
+                                                {moment(time, 'H:m:s').format('H:mm')}
+                                            </div>
+                                            {timeSlotsArray.map(timeSlot => {
+                                                const lessons = timeSlot.lessons
+                                                // const lessonDescription = `${lessonTypesMapping[lesson.lesson_type]} занятие`
+                                                return (
+                                                    <>
+                                                        <div className={addClasses('calendar-big__col', {
+                                                            'isLesson': lessons.length,
+                                                        })}>
+                                                            {!!lessons.length && (
+                                                                <>
+                                                                    {lessons.map(lesson => {
+                                                                        return (
+                                                                            <>
+                                                                                <span className="isLesson__icon violet">
+                                                                                    {`${lessonTypesAbbrMapping[lesson.lesson_type]}`}
+                                                                                </span>
+                                                                                <p className="isLesson__title" key={lesson.id}>
+                                                                                    {`${lessonTypesMapping[lesson.lesson_type]} занятие`}
+                                                                                </p>
+                                                                            </>
+                                                                        )
+                                                                    })}
+                                                                    <span className="isLesson__time">
+                                                                {moment(timeSlot.start_time, 'H:m:s').format('H:mm')}
+                                                            </span>
+                                                                </>
+                                                            )}
+                                                        </div>
+                                                    </>
+                                                )
+                                            })}
+                                        </div>
+                                    )
+                                })}
                             </div>
                         </div>
                     </div>

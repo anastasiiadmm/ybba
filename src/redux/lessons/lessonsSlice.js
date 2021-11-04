@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import axiosApi from 'axios';
+import axiosApi from 'axios.js';
 import { toQueryParams } from 'utils/url/toQueryParams.js';
 
 
@@ -17,7 +17,7 @@ const INITIAL_STATE = {
     getLessonsLoading: false,
 
     errors: null,
-    getLessonsErrors: null
+    getLessonsErrors: null,
 
     timeSlotsSchedule: null,
     timeSlotsScheduleLoading: false,
@@ -76,10 +76,10 @@ export const getLessons = createAsyncThunk(
 
 export const getTimeSlotSchedule = createAsyncThunk(
     `${nameSpace}/getTimeSlotsSchedule`,
-    async (parentId, {rejectWithValue}) => {
+    async (data, {rejectWithValue}) => {
         try {
-            const res = await axiosApi.get(`${parentId}/time-slots/`)
-            return res.data
+            const resp = await axiosApi.get(`/accounts/${data.userId}/time-slots/?day_after=${data.fromFormatDate}&day_before=${data.toFormatDate}`)
+            return resp.data
         } catch (e) {
             return rejectWithValue(e)
         }
@@ -153,11 +153,11 @@ const lessonsSlice = createSlice({
         [getTimeSlotSchedule.pending]: state => {
             state.timeSlotsScheduleLoading = true
         },
-        [getTimeSlotSchedule.fulfilled]: (state, {payload}) => {
+        [getTimeSlotSchedule.fulfilled]: (state, { payload }) => {
             state.timeSlotsScheduleLoading = false
             state.timeSlotsSchedule = payload
         },
-        [getTimeSlotSchedule.rejected]: (state, {payload}) => {
+        [getTimeSlotSchedule.rejected]: (state, { payload }) => {
             state.timeSlotsScheduleLoading = false
             state.timeSlotsScheduleErrors = payload
         }
@@ -166,5 +166,4 @@ const lessonsSlice = createSlice({
 
 export const { setSelectedChild, clearLessons, clearLessonsData } = lessonsSlice.actions
 export const lessonsSelector = state => state.lessons
-export const timeSlotsScheduleSelector = state => state.timeSlotsSchedule
 export default lessonsSlice.reducer
