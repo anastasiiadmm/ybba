@@ -35,7 +35,7 @@ export const getLessons = createAsyncThunk(
 
 export const getTeacherLesson = createAsyncThunk(
     `${nameSpace}/getTeacherLesson`,
-    async ({rejectWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
             const resp = await axiosApi.get('/lessons/teacher-closest-lesson/')
             return resp.data
