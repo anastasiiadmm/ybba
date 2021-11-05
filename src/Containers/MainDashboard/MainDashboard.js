@@ -40,6 +40,9 @@ const MainDashboard = () => {
             })
             setClosesLesson(lesson[0])
         }
+        if (lesson) {
+            setClosesLesson(lesson)
+        }
     }, [lessons])
 
     useEffect(() => {
@@ -77,7 +80,6 @@ const MainDashboard = () => {
                                     {closesLesson && (
                                         <UpcomingLessonBlock
                                             lesson={closesLesson}
-                                            teacherLesson={lesson}
                                         />
                                     )}
                                 </div>
