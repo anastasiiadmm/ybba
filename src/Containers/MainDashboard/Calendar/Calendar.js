@@ -4,11 +4,12 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { namesOfDaysOfWeekShort, namesOfMonths, namesOfDaysOfWeek } from 'constants.js';
+import { namesOfDaysOfWeekShort, namesOfMonths} from 'constants.js';
 import { generateDateRange } from 'Containers/MainDashboard/Calendar/utils';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import { dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
 import { strDateToMoment } from 'utils/date/dateUtils.js';
+import {lessonTypesMapping} from "../../../mappings/lessons";
 
 
 const Calendar = () => {
@@ -131,15 +132,18 @@ const Calendar = () => {
                     {lessons && lessonsForDate?.map((lesson, idx) => {
                         const time_slot = lesson.time_slot
                         const date = strDateToMoment(time_slot.day.date)
-                        const start_time = time_slot.start_time
+                        const start_time = moment(time_slot.start_time, 'H:m:s').format('H:mm')
                         return (
                             <div className="calendar-box__info" key={idx}>
                                 <div className="calendar-box__date">
-                                    <b>{namesOfMonths[date.month()]} {date.date()},</b>
-                                    <span>{namesOfDaysOfWeek[date.day() - 1]}</span></div>
+                                    <b>{namesOfMonths[date.month()]} {date.date()}, </b>
+                                    <span>{namesOfDaysOfWeekShort[date.day() - 1]}</span></div>
                                 <div className="calendar-box__lesson">
                                     <div className="calendar-box__lesson-time">{start_time}</div>
                                     <div className="calendar-box__lesson-info violet">
+                                        <h5 className="calendar-box__lesson-title">
+                                            {lessonTypesMapping[lesson.lesson_type]} занятие
+                                        </h5>
                                         <span className="calendar-box__lesson-duration">45 минут</span>
                                         <Link className='info-item__link' to='/timetable-schedule'>Подробнее</Link>
                                     </div>

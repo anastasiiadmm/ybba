@@ -13,6 +13,8 @@ import {getTimeSlotSchedule, lessonsSelector} from "../../redux/lessons/lessonsS
 import {addClasses} from "../../utils/addClasses/addClasses";
 import {namesOfDaysOfWeekShort} from "../../constants";
 import {lessonTypesAbbrMapping, lessonTypesMapping} from "../../mappings/lessons";
+import FormField from "../../Components/FormField/FormField";
+import {Russian} from "../../assets/vendor/flatpickr/ru";
 
 const ParentTimeTableSchedule = () => {
     const dispatch = useDispatch()
@@ -111,6 +113,19 @@ const ParentTimeTableSchedule = () => {
         })
     }
 
+    // const dateFromChangeHandler = date => {
+    //     setDateFrom(date[0])
+    //     dispatch(getTimeSlots(
+    //         getGetTimesSlotsData(date[0], dateTo, selectedChild.id)
+    //     ))
+    // }
+    // const dateToChangeHandler = date => {
+    //     setDateTo(date[0])
+    //     dispatch(getTimeSlots(
+    //         getGetTimesSlotsData(dateFrom, date[0], selectedChild.id)
+    //     ))
+    // }
+
     return (
         <SidebarContainer>
             <MainTitleBlock
@@ -123,8 +138,18 @@ const ParentTimeTableSchedule = () => {
                         <div className="calendar-big__top">
                             <Button to='/' className="calendar-big__close"/>
                             <div className="calendar-big__label">Период</div>
-                            <input className="calendar-big__field field" type="text"
+                            <FormField className="calendar-big__field field"
                                    value={`${startOfCalendar.format("DD MMM")} - ${endOfCalendar.format("DD MMM")}`}
+                                // onChange={}
+                                   type='flatpickr'
+                                   configs={{
+                                       ...Russian,
+                                       firstDayOfWeek: 2,
+                                       dateFormat: 'd M',
+                                       enableTime: false,
+                                       minDate: currentDate
+                                   }}
+
                             />
                         </div>
                         <div className="calendar-big__btns">
@@ -150,6 +175,33 @@ const ParentTimeTableSchedule = () => {
                                         </div>
                                     )
                                 })}
+                                <div className='d-flex justify-content-around flex-wrap'>
+                                    {/*<FormField*/}
+                                    {/*    label='От'*/}
+                                    {/*    type='flatpickr'*/}
+                                    {/*    configs={{*/}
+                                    {/*        dateFormat: 'd/m/Y',*/}
+                                    {/*        enableTime: false,*/}
+                                    {/*        minDate: currentDate*/}
+                                    {/*    }}*/}
+                                    {/*    // onChange={dateFromChangeHandler}*/}
+                                    {/*    className='form__field'*/}
+                                    {/*    // value={dateFrom}*/}
+                                    {/*/>*/}
+                                    {/*<FormField*/}
+                                    {/*    label='До'*/}
+                                    {/*    type='flatpickr'*/}
+                                    {/*    configs={{*/}
+                                    {/*        dateFormat: 'd/m/Y',*/}
+                                    {/*        enableTime: false,*/}
+                                    {/*        // minDate: dateFrom,*/}
+                                    {/*        // maxDate: new Date().setDate(dateFrom.getDate() + 5)*/}
+                                    {/*    }}*/}
+                                    {/*    // onChange={dateToChangeHandler}*/}
+                                    {/*    className='form__field'*/}
+                                    {/*    // value={dateTo}*/}
+                                    {/*/>*/}
+                                </div>
                             </div>
                             <div className="calendar-big__wrap scroll-block">
                                 {timeSlots && Object.entries(timeSlots).sort((a, b) => {
@@ -162,7 +214,6 @@ const ParentTimeTableSchedule = () => {
                                             </div>
                                             {timeSlotsArray.map(timeSlot => {
                                                 const lessons = timeSlot.lessons
-                                                // const lessonDescription = `${lessonTypesMapping[lesson.lesson_type]} занятие`
                                                 return (
                                                     <>
                                                         <div className={addClasses('calendar-big__col', {
@@ -176,7 +227,8 @@ const ParentTimeTableSchedule = () => {
                                                                                 <span className="isLesson__icon violet">
                                                                                     {`${lessonTypesAbbrMapping[lesson.lesson_type]}`}
                                                                                 </span>
-                                                                                <p className="isLesson__title" key={lesson.id}>
+                                                                                <p className="isLesson__title"
+                                                                                   key={lesson.id}>
                                                                                     {`${lessonTypesMapping[lesson.lesson_type]} занятие`}
                                                                                 </p>
                                                                             </>
