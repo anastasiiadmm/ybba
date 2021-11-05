@@ -40,21 +40,25 @@ const MainDashboard = () => {
             })
             setClosesLesson(lesson[0])
         }
-        if (lesson) {
-            setClosesLesson(lesson)
-        }
     }, [lessons])
 
     useEffect(() => {
-        dispatch(getTeacherLesson())
-    }, [])
+        if (lesson) {
+            setClosesLesson(lesson)
+        }
+    }, [lesson])
 
     useEffect(() => {
         const data = {
             userId: user.id,
             query: { status: lessonStatuses.pending }
         }
-        dispatch(getLessons(data))
+
+        if (checkUserRole(userRoles.parent)) {
+            dispatch(getLessons(data))
+        } else if (checkUserRole(userRoles.therapist)) {
+            dispatch(getTeacherLesson())
+        }
 
         setNowDate(getNowDate())
         setInterval(() => {
