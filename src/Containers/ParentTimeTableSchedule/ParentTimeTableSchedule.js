@@ -11,7 +11,7 @@ import Button from "../../Components/Button/Button";
 import {generateDateRange} from "../MainDashboard/Calendar/utils";
 import {getTimeSlotSchedule, lessonsSelector} from "../../redux/lessons/lessonsSlice";
 import {addClasses} from "../../utils/addClasses/addClasses";
-import {namesOfDaysOfWeekShort} from "../../constants";
+import {namesOfDaysOfWeekShort, namesOfMonths} from "../../constants";
 import {lessonTypesAbbrMapping, lessonTypesMapping} from "../../mappings/lessons";
 import FormField from "../../Components/FormField/FormField";
 import {Russian} from "../../assets/vendor/flatpickr/ru";
@@ -139,17 +139,24 @@ const ParentTimeTableSchedule = () => {
                             <Button to='/' className="calendar-big__close"/>
                             <div className="calendar-big__label">Период</div>
                             <FormField className="calendar-big__field field"
-                                   value={`${startOfCalendar.format("DD MMM")} - ${endOfCalendar.format("DD MMM")}`}
-                                // onChange={}
-                                   type='flatpickr'
-                                   configs={{
+                               value={`${startOfCalendar.format("d MMM")} - ${endOfCalendar.format("d MMM")}`}
+                               onChange={(str) => console.info(str)}
+                               type='flatpickr'
+                               data-enable-time
+                               configs={{
+                                   mode: "range",
+                                   locale: {
                                        ...Russian,
-                                       firstDayOfWeek: 2,
-                                       dateFormat: 'd M',
-                                       enableTime: false,
-                                       minDate: currentDate
-                                   }}
-
+                                       months: {
+                                           ...Russian.months,
+                                           longhand: namesOfMonths
+                                       }
+                                   },
+                                   firstDayOfWeek: 2,
+                                   dateFormat: 'd M',
+                                   enableTime: false,
+                                   minDate: startOfCalendar.format("d MMM"),
+                               }}
                             />
                         </div>
                         <div className="calendar-big__btns">
