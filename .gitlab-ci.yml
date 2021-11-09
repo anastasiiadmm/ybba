@@ -65,7 +65,7 @@ build&push_dev:
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    *front_build_script
+    *build-and-push
 
 build&push_staging:
   image: docker:stable
@@ -81,7 +81,7 @@ build&push_staging:
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    *front_build_script
+    *build-and-push
 
 build&push_prod:
   image: docker:stable
@@ -97,7 +97,7 @@ build&push_prod:
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    *front_build_script
+    *build-and-push
 
 deploy-development:
   image: docker:git
