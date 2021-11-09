@@ -1,25 +1,47 @@
+variables:
+  DEPLOY_USER: "infrastructure"
+
+.add-ssh-private-key-script: &add-ssh-private-key
+  - apk update
+  - apk add -qq
+  - 'which ssh-agent || ( apk add -qq openssh-client )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | ssh-add -
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  - ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
+
+.deploy-script: &deploy
+  - ssh -T $DEPLOY_USER@$DEPLOY_SERVER "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+  - ssh -T $DEPLOY_USER@$DEPLOY_SERVER "docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+  - ssh -T $DEPLOY_USER@$DEPLOY_SERVER "docker rm -f ybba-frontend && docker run -d --name ybba-frontend -p 3000:80 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+
+.build-and-push-script: &build-and-push
+  - >
+    docker build
+    -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    --cache-from $CI_REGISTRY_IMAGE:latest
+    -f dockerfiles/app/Dockerfile
+    --build-arg REACT_APP_SENTRY_DSN=$REACT_APP_SENTRY_DSN
+    --build-arg REACT_APP_ENVIRONMENT=$REACT_APP_ENVIRONMENT
+    --build-arg REACT_APP_ROBOKASSA_MERCHANT_LOGIN=$REACT_APP_ROBOKASSA_MERCHANT_LOGIN
+    --build-arg REACT_APP_ROBOKASSA_PASSWORD=$REACT_APP_ROBOKASSA_PASSWORD
+    .
+  - >
+    docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+
 services:
   - docker:dind
 
-variables:
-  DEV_API_URL: "https://dev.yba.ltestl.com/api/v1"
-  DEV_WS_URL: "wss://dev.yba.ltestl.com/ws"
-  STAGING_API_URL: "https://staging.yba.ltestl.com/api/v1"
-  STAGING_WS_URL: "wss://staging.yba.ltestl.com/ws"
-  PRODUCTION_API_URL: "https://diagnostika.pro/api/v1"
-  PRODUCTION_WS_URL: "wss://diagnostika.pro/ws"
-
 stages:
   - test
-  - build-development
+  - build
   - deploy-development
-  - build-staging
   - deploy-staging
-  - build-production
   - deploy-production
 
 
-tests:
+test:
   image: docker/compose:latest
   stage: test
   environment:
@@ -29,80 +51,70 @@ tests:
   script:
     - echo "We need tests!!!"
 
-
-build-development:
-  image: docker:git
-  stage: build-development
+build&push_dev:
+  image: docker:stable
+  stage: build
   only:
     refs:
       - development
+  variables:
+    REACT_APP_SENTRY_DSN: $REACT_APP_SENTRY_DSN
+    REACT_APP_ENVIRONMENT: development
+    REACT_APP_ROBOKASSA_MERCHANT_LOGIN: $ROBOKASSA_MERCHANT_LOGIN
+    REACT_APP_ROBOKASSA_PASSWORD: $ROBOKASSA_PASSWORD
   before_script:
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - cd $CI_PROJECT_DIR
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
   script:
-    - >
-      docker build
-      -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-      --cache-from $CI_REGISTRY_IMAGE:latest
-      -f dockerfiles/app/Dockerfile
-      --build-arg REACT_APP_API_URL=$DEV_API_URL
-      --build-arg REACT_APP_SENTRY_DSN=$REACT_APP_SENTRY_DSN
-      --build-arg REACT_APP_ENVIRONMENT=development
-      --build-arg REACT_APP_WS_URL=$DEV_WS_URL
-      --build-arg REACT_APP_ROBOKASSA_MERCHANT_LOGIN=$ROBOKASSA_MERCHANT_LOGIN
-      --build-arg REACT_APP_ROBOKASSA_PASSWORD=$ROBOKASSA_PASSWORD
-      .
-    - >
-      docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    *build-and-push
 
+build&push_staging:
+  image: docker:stable
+  stage: build
+  only:
+    refs:
+      - main
+  variables:
+    REACT_APP_SENTRY_DSN: $REACT_APP_SENTRY_DSN
+    REACT_APP_ENVIRONMENT: development
+    REACT_APP_ROBOKASSA_MERCHANT_LOGIN: $ROBOKASSA_MERCHANT_LOGIN
+    REACT_APP_ROBOKASSA_PASSWORD: $ROBOKASSA_PASSWORD
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    *build-and-push
+
+build&push_prod:
+  image: docker:stable
+  stage: build
+  only:
+    refs:
+      - main
+  variables:
+    REACT_APP_SENTRY_DSN: $REACT_APP_SENTRY_DSN
+    REACT_APP_ENVIRONMENT: development
+    REACT_APP_ROBOKASSA_MERCHANT_LOGIN: $ROBOKASSA_MERCHANT_LOGIN
+    REACT_APP_ROBOKASSA_PASSWORD: $ROBOKASSA_PASSWORD
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    *build-and-push
 
 deploy-development:
   image: docker:git
   stage: deploy-development
-  only:
-    refs:
-      - development
   environment:
     name: development
     url: https://dev.yba.ltestl.com/
+  only:
+    refs:
+      - development
+  variables:
+    SSH_PRIVATE_KEY: $DEVELOPMENT_SSH_PRIVATE_KEY
+    DEPLOY_SERVER: 139.59.152.145
   before_script:
-    - apk update
-    - apk add -qq
-    - 'which ssh-agent || ( apk add -qq openssh-client )'
-    - eval $(ssh-agent -s)
-    - echo "$DEV_SSH_PRIVATE_KEY" | ssh-add -
-    - mkdir -p ~/.ssh
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - *add-ssh-private-key
   script:
-    - ssh -T $DEV_DEPLOY_USER@$DEV_DEPLOY_SERVER "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
-    - ssh -T $DEV_DEPLOY_USER@$DEV_DEPLOY_SERVER "docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
-    - ssh -T $DEV_DEPLOY_USER@$DEV_DEPLOY_SERVER "docker rm -f ybba-frontend && docker run -d --network ybba-backend_default --name ybba-frontend -p 3000:80 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
-
-
-build-staging:
-  image: docker:git
-  stage: build-staging
-  when: manual
-  before_script:
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - cd $CI_PROJECT_DIR
-    - apk update
-  script:
-    - >
-      docker build
-      -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-      --cache-from $CI_REGISTRY_IMAGE:latest
-      -f dockerfiles/app/Dockerfile
-      --build-arg REACT_APP_API_URL=$STAGING_API_URL
-      --build-arg REACT_APP_SENTRY_DSN=$REACT_APP_SENTRY_DSN
-      --build-arg REACT_APP_ENVIRONMENT=staging
-      --build-arg REACT_APP_WS_URL=$STAGING_WS_URL
-      --build-arg REACT_APP_ROBOKASSA_MERCHANT_LOGIN=$ROBOKASSA_MERCHANT_LOGIN
-      --build-arg REACT_APP_ROBOKASSA_PASSWORD=$ROBOKASSA_PASSWORD
-      .
-    - >
-      docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-
+    - *deploy
 
 deploy-staging:
   image: docker:git
@@ -111,44 +123,13 @@ deploy-staging:
   environment:
     name: staging
     url: https://staging.yba.ltestl.com/
+  variables:
+    SSH_PRIVATE_KEY: $STAGING_SSH_PRIVATE_KEY
+    DEPLOY_SERVER: 104.248.254.28
   before_script:
-    - apk update
-    - apk add -qq
-    - 'which ssh-agent || ( apk add -qq openssh-client )'
-    - eval $(ssh-agent -s)
-    - echo "$STAGING_SSH_PRIVATE_KEY" | ssh-add -
-    - mkdir -p ~/.ssh
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - *add-ssh-private-key
   script:
-    - ssh -T $STAGING_DEPLOY_USER@$STAGING_DEPLOY_SERVER "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
-    - ssh -T $STAGING_DEPLOY_USER@$STAGING_DEPLOY_SERVER "docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
-    - ssh -T $STAGING_DEPLOY_USER@$STAGING_DEPLOY_SERVER "docker rm -f ybba-frontend && docker run -d --network ybba-backend_default --name ybba-frontend -p 3000:80 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
-
-
-build-production:
-  image: docker:git
-  stage: build-production
-  when: manual
-  before_script:
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - cd $CI_PROJECT_DIR
-    - apk update
-  script:
-    - >
-      docker build
-      -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-      --cache-from $CI_REGISTRY_IMAGE:latest
-      -f dockerfiles/app/Dockerfile
-      --build-arg REACT_APP_API_URL=$STAGING_API_URL
-      --build-arg REACT_APP_SENTRY_DSN=$REACT_APP_SENTRY_DSN
-      --build-arg REACT_APP_ENVIRONMENT=production
-      --build-arg REACT_APP_WS_URL=$STAGING_WS_URL
-      --build-arg REACT_APP_ROBOKASSA_MERCHANT_LOGIN=$ROBOKASSA_MERCHANT_LOGIN
-      --build-arg REACT_APP_ROBOKASSA_PASSWORD=$ROBOKASSA_PASSWORD
-      .
-    - >
-      docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-
+    - *deploy
 
 deploy-production:
   image: docker:git
@@ -157,15 +138,10 @@ deploy-production:
   environment:
     name: production
     url: https://diagnostika.pro/
+  variables:
+    SSH_PRIVATE_KEY: $PRODUCTION_SSH_PRIVATE_KEY
+    DEPLOY_SERVER: 207.154.202.69
   before_script:
-    - apk update
-    - apk add -qq
-    - 'which ssh-agent || ( apk add -qq openssh-client )'
-    - eval $(ssh-agent -s)
-    - echo "$PRODUCTION_SSH_PRIVATE_KEY" | ssh-add -
-    - mkdir -p ~/.ssh
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - *add-ssh-private-key
   script:
-    - ssh -T $PRODUCTION_DEPLOY_USER@$PRODUCTION_DEPLOY_SERVER "docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY"
-    - ssh -T $PRODUCTION_DEPLOY_USER@$PRODUCTION_DEPLOY_SERVER "docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
-    - ssh -T $PRODUCTION_DEPLOY_USER@$PRODUCTION_DEPLOY_SERVER "docker rm -f ybba-frontend && docker run -d --network ybba-backend_default --name ybba-frontend -p 3000:80 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+    - *deploy
