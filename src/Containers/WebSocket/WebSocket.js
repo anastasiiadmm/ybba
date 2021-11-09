@@ -28,6 +28,7 @@ function WebSocket(props) {
         }
         const newWsConnection = new ReduxWebSocket(`${config.wsUrl}?token=${tokens.access}`);
         setWs(newWsConnection)
+        // eslint-disable-next-line
     }, [tokens.access])
 
     const sendWsAction = (action, setLastSent = true) => {
@@ -47,7 +48,6 @@ function WebSocket(props) {
     }
 
     useEffect(() => {
-        console.log('Status', status)
         if (status === DISCONNECT) {
             refreshAccessToken()
         }
@@ -86,10 +86,12 @@ function WebSocket(props) {
                 ws.close()
             }
         }
+        // eslint-disable-next-line
     }, [ws])
 
     useEffect(() => {
         connectToWs()
+        // eslint-disable-next-line
     }, [tokens.access])
 
     useEffect(() => {
