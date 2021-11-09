@@ -1,33 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
+
 import PropTypes from 'prop-types';
+
+import { JitsiContext } from 'context/JitsiContext/JitsiContext.js';
 
 
 const Jitsi = (props) => {
 
     const { meetingId, userInfo, toolbarItems, width, height, className } = props
 
-    const [api, setApi] = useState(null)
-
-    const startMeet = () => {
-        const options = {
-            roomName: meetingId,
-            width: width,
-            height: height,
-            configOverwrite: { prejoinPageEnabled: false },
-            interfaceConfigOverwrite: {
-                TOOLBAR_BUTTONS: toolbarItems,
-                SHOW_WATERMARK_FOR_GUESTS: false
-            },
-            parentNode: document.querySelector('#jitsi-iframe'),
-            userInfo: { ...userInfo }
-        }
-        const apiObj = new window.JitsiMeetExternalAPI('meet.jit.si', options);
-        setApi(apiObj)
-    }
+    const { startMeet } = useContext(JitsiContext)
 
     useEffect(() => {
         if (window.JitsiMeetExternalAPI && meetingId) {
-            startMeet()
+            startMeet({
+                meetingId,
+                width,
+                height,
+                toolbarItems,
+                userInfo
+            })
         } else {
             alert('JitsiMeetExternalAPI not loaded');
         }
