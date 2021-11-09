@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import axiosApi from 'axios.js';
+
 import { toQueryParams } from 'utils/url/toQueryParams.js';
 
 const nameSpace = 'lessons';

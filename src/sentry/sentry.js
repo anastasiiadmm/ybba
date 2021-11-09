@@ -1,7 +1,7 @@
-import {Integrations} from '@sentry/tracing';
+import { Integrations } from '@sentry/tracing';
 import * as Sentry from '@sentry/react';
 
-import config from '../config';
+import config from 'config';
 
 
 export const initSentry = () => {
