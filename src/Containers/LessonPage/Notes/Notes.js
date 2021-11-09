@@ -12,13 +12,13 @@ const Notes = (props) => {
     const localStorageKey = `${lessonId}-notes`
 
     const notesChangeHandler = e => {
-        console.log(1342234241234241243)
         setNotes(e.target.value)
         localStorage.setItem(localStorageKey, e.target.value)
     }
 
     useEffect(() => {
         setNotes(localStorage.getItem(localStorageKey))
+        // eslint-disable-next-line
     }, [])
 
     return (
