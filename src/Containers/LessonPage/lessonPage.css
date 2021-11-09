@@ -8,9 +8,112 @@
     transform: scale(1.1);
 }
 
-.zoomBtn {
+.therapistGameMain {
+    height: 61.5vh !important;
+}
+
+.parentGameMain {
+    height: 90.2vh !important;
+}
+
+.check-game-button_active {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    outline: none;
+    border: black solid;
+    border-width: 2px 0 2px 2px;
+    background: #fff;
+}
+
+.check-game-button__active::after {
+    content: '';
     position: absolute;
-    z-index: 99999999999 !important;
-    top: 10px;
-    left: 10px;
+    top: 0;
+    bottom: 0;
+    right: 6px;
+    margin: auto 0;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    background: no-repeat url("../../assets/img/black-check-button.png");
+    background-size: contain;
+}
+
+.check-game-button_inactive {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    outline: none;
+    border: white solid;
+    border-width: 2px 0 2px 2px;
+    background: #000;
+}
+
+.check-game-button__inactive::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 6px;
+    margin: auto 0;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    background: no-repeat url("../../assets/img/white-check-button.png");
+    background-size: contain;
+}
+
+.play-game-button_active {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    outline: none;
+    border: black solid;
+    border-width: 2px 2px 2px 0;
+    background: #fff;
+}
+.play-game-button__active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 6px;
+    margin: auto 0;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    background: no-repeat url("../../assets/img/black-play-button.png");
+    background-size: contain;
+}
+
+.play-game-button_inactive {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    outline: none;
+    border: white solid;
+    border-width: 2px 2px 2px 0;
+    background: #000;
+}
+.play-game-button__inactive::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 6px;
+    margin: auto 0;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+    background: no-repeat url("../../assets/img/white-play-button.png");
+    background-size: contain;
 }
