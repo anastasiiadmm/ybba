@@ -104,5 +104,28 @@ export const phoneticTableTwoMapping = {
 
 export const envs = {
     local: 'local',
-    development: 'development'
+    development: 'development',
+    staging: 'staging',
+    production: 'production'
+}
+
+export const domains = {
+    [envs.local]: 'localhost',
+    [envs.development]: 'dev.yba.ltestl.com',
+    [envs.staging]: 'staging.yba.ltestl.com',
+    [envs.production]: 'diagnostika.pro'
+}
+
+export const apiUrls = {
+    [envs.local]: `http://${domains[envs.local]}:8000/api/v1/`,
+    [envs.development]: `https://${envs.development}/api/v1`,
+    [envs.staging]: `https://${envs.staging}/api/v1`,
+    [envs.production]: `https://${envs.production}/api/v1`
+}
+
+export const wsUrls = {
+    [envs.local]: 'ws://172.17.0.1:8080/ws',
+    [envs.development]: `ws://${envs.development}:8080/ws`,
+    [envs.staging]: `ws://${envs.staging}:8080/ws`,
+    [envs.production]: `ws://${envs.production}:8080/ws`
 }
