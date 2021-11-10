@@ -125,7 +125,7 @@ export const apiUrls = {
 
 export const wsUrls = {
     [envs.local]: 'ws://172.17.0.1:8080/ws',
-    [envs.development]: `wss://${domains[envs.development]}:8080/ws`,
-    [envs.staging]: `wss://${domains[envs.staging]}:8080/ws`,
-    [envs.production]: `wss://${domains[envs.production]}:8080/ws`
+    [envs.development]: `wss://${domains[envs.development]}/ws`,
+    [envs.staging]: `wss://${domains[envs.staging]}/ws`,
+    [envs.production]: `wss://${domains[envs.production]}/ws`
 }

@@ -38,7 +38,6 @@ const Webcam = (props) => {
             setWebcamInZoom(!isParentWebcamIncreased)
         } else if (checkUserRole(userRoles.therapist)) {
             setWebcamInZoom(!isWebcamInZoom)
-            setWebcamInZoom(!isParentWebcamIncreased)
         }
     }
 
@@ -53,6 +52,7 @@ const Webcam = (props) => {
         if (api) {
             setMuted()
         }
+        // eslint-disable-next-line
     }, [api])
 
     useEffect(() => {
