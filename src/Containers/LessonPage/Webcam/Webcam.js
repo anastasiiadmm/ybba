@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 
 import { useSelector } from 'react-redux';
 
@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { checkUserRole } from 'utils/user.js';
 import { lessonSelector } from 'redux/lesson/lessonSlice.js';
 import { JitsiContext } from 'context/JitsiContext/JitsiContext.js';
+import { authSelector } from 'redux/auth/authSlice.js';
 import soundOn from 'assets/img/soundOn.png'
 import soundOff from 'assets/img/soundOff.png'
 
@@ -22,42 +23,53 @@ const Webcam = (props) => {
     } = props
 
     const { isParentWebcamIncreased } = useSelector(lessonSelector)
+    const { user } = useSelector(authSelector)
     const { api } = useContext(JitsiContext)
 
     const [isWebcamInZoom, setWebcamInZoom] = useState(false)
     const [isMuted, setIsMuted] = useState(false)
 
-    const setMuted = async () => {
+    const setMuted = useCallback(async () => {
         const muted = await api.isAudioMuted()
-        setIsMuted(muted)
-    }
+        await setIsMuted(muted)
+    }, [api])
 
-    const webcamZoomToggle = () => {
-        if (checkUserRole(userRoles.parent)) {
-            switchChildWebcamSize(!isParentWebcamIncreased)
-            setWebcamInZoom(!isParentWebcamIncreased)
-        } else if (checkUserRole(userRoles.therapist)) {
-            setWebcamInZoom(!isWebcamInZoom)
-        }
-    }
-
-    const toggleMute = () => {
+    const toggleMute = useCallback(async () => {
         if (api) {
             api.executeCommand('toggleAudio')
-            setMuted(!isMuted)
+            await setMuted(!isMuted)
         }
+    }, [api, isMuted, setMuted])
+
+    const toggleChildWebcamSize = async () => await switchChildWebcamSize(!isParentWebcamIncreased)
+    const toggleTherapistWebcamSize = async () => await setWebcamInZoom(!isWebcamInZoom)
+
+    const webcamZoomToggle = async () => {
+        const toggles = {
+            [userRoles.parent]: toggleChildWebcamSize,
+            [userRoles.therapist]: toggleTherapistWebcamSize
+        }
+        toggles[user.role]()
     }
+
+    const isTherapistWebcamInZoom = () => isWebcamInZoom
+    const isParentWebcamInZoom = () => isParentWebcamIncreased
+
+    const isUserWebcamInZoom = () => {
+        const usersChecks = {
+            [userRoles.parent]: isParentWebcamInZoom,
+            [userRoles.therapist]: isTherapistWebcamInZoom
+        }
+
+        return usersChecks[user?.role]()
+    }
+
 
     useEffect(() => {
         if (api) {
             setMuted()
         }
-        // eslint-disable-next-line
-    }, [api])
-
-    useEffect(() => {
-
-    }, [isMuted])
+    }, [api, setMuted])
 
     return (
         <div
@@ -77,7 +89,7 @@ const Webcam = (props) => {
                     type='button'
                     onClick={webcamZoomToggle}
                 >
-                    {isWebcamInZoom ? '-' : '+'}
+                    {isUserWebcamInZoom() ? '-' : '+'}
                 </button>
                 <button
                     className='gamef__person-btn soundBtn d-flex align-items-center justify-content-center'
@@ -89,7 +101,6 @@ const Webcam = (props) => {
                 <Jitsi
                     meetingId={meetingId}
                     height={195}
-                    className=''
                 />
                 {checkUserRole(userRoles.parent) && (
                     <div className='bg-dark dragBlock'>
