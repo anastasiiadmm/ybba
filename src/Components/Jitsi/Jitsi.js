@@ -18,13 +18,13 @@ const Jitsi = (props) => {
                 width,
                 height,
                 toolbarItems,
-                userInfo
+                userInfo,
+                jitsiBlockSelector: '#jitsi-iframe'
             })
         } else {
             alert('JitsiMeetExternalAPI not loaded');
         }
-        // eslint-disable-next-line
-    }, [])
+    }, [height, meetingId, startMeet, toolbarItems, userInfo, width])
 
     return <div
         id='jitsi-iframe'

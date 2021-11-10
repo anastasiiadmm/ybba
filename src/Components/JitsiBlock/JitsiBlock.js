@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { JitsiContext } from 'context/JitsiContext/JitsiContext.js';
 
@@ -11,7 +11,7 @@ const JitsiBlock = (props) => {
 
     const [api, setApi] = useState(null)
 
-    const startMeet = ({ meetingId, width, height, toolbarItems, userInfo }) => {
+    const startMeet = useCallback(({ meetingId, width, height, toolbarItems, userInfo, jitsiBlockSelector }) => {
         const options = {
             roomName: meetingId,
             width: width,
@@ -21,12 +21,12 @@ const JitsiBlock = (props) => {
                 TOOLBAR_BUTTONS: toolbarItems || [],
                 SHOW_WATERMARK_FOR_GUESTS: false
             },
-            parentNode: document.querySelector('#jitsi-iframe'),
+            parentNode: document.querySelector(jitsiBlockSelector),
             userInfo: { ...userInfo }
         }
         const apiObj = new window.JitsiMeetExternalAPI('meet.jit.si', options);
         setApi(apiObj)
-    }
+    }, [])
 
     const context = {
         startMeet,
