@@ -8,13 +8,13 @@ import {getNowDate, strDateToMoment, strTimeToMoment} from "../../utils/date/dat
 import {useDispatch, useSelector} from "react-redux";
 import {authSelector} from "../../redux/auth/authSlice";
 import Button from "../../Components/Button/Button";
-import {generateDateRange} from "../MainDashboard/Calendar/utils";
 import {getTimeSlotSchedule, lessonsSelector} from "../../redux/lessons/lessonsSlice";
 import {addClasses} from "../../utils/addClasses/addClasses";
 import {namesOfDaysOfWeekShort, namesOfMonths} from "../../constants";
 import {lessonTypesAbbrMapping, lessonTypesMapping} from "../../mappings/lessons";
 import FormField from "../../Components/FormField/FormField";
 import {Russian} from "../../assets/vendor/flatpickr/ru";
+import {Spinner} from "react-bootstrap";
 
 const ParentTimeTableSchedule = () => {
     const dispatch = useDispatch()
@@ -23,21 +23,16 @@ const ParentTimeTableSchedule = () => {
 
     const {lessons} = useSelector(dashBoardSelector)
 
-    const {timeSlotsSchedule} = useSelector(lessonsSelector)
+    const {timeSlotsSchedule, timeSlotsScheduleLoading} = useSelector(lessonsSelector)
 
     const [nowDate, setNowDate] = useState()
-    const [currentDate, setCurrentDate] = useState(moment())
     const [dates, setDates] = useState(null)
-    const [activeDate, setActiveDate] = useState(moment())
+    const currentDate = moment()
     const [timeSlots, setTimeSlots] = useState(null)
-    const [datesSlots, setDatesSlots] = useState(null)
-
     const startOfWeek = currentDate.clone().startOf('week')
     const endOfWeek = currentDate.clone().endOf('week')
-    const startOfCalendar = startOfWeek.clone().subtract(startOfWeek.day() - 1, 'days')
-    const endOfCalendar = endOfWeek.clone().subtract(2 - endOfWeek.day(), 'days')
-    const fromFormatDate = startOfCalendar.format("DD/MM/YYYY")
-    const toFormatDate = endOfCalendar.format("DD/MM/YYYY")
+    const [startOfCalendar, setStartOfCalendar] = useState(startOfWeek.clone().subtract(startOfWeek.day() - 1, 'days'))
+    const [endOfCalendar, setEndOfCalendar] = useState(endOfWeek.clone().subtract(2 - endOfWeek.day(), 'days'))
 
     useEffect(() => {
         const data = {userId: user.id}
@@ -51,80 +46,59 @@ const ParentTimeTableSchedule = () => {
     }, [])
 
     useEffect(() => {
-        const data = {userId: user.id, fromFormatDate, toFormatDate}
-        dispatch(getTimeSlotSchedule(data))
-    }, [])
-
-    const dateOnClick = date => {
-        if (date.isSame(currentDate, 'month')) {
-            setActiveDate(date)
-        }
-    }
+        dispatch(getTimeSlotSchedule({
+            userId: user.id,
+            from: moment(startOfCalendar).format("DD/MM/YYYY"),
+            to: moment(endOfCalendar).format("DD/MM/YYYY")
+        }))
+    }, [endOfCalendar])
 
     useEffect(() => {
-        const reducesTimeSlots = timeSlotsSchedule?.reduce((timeSlots, timeslot) => {
-            const time = timeslot.start_time;
-            if (!timeSlots[time]) {
-                timeSlots[time] = [];
+        if (timeSlotsSchedule) {
+            const copyTimeSlotSchedule = [...timeSlotsSchedule];
+
+            const reducesTimeSlots = copyTimeSlotSchedule?.sort((a, b) => {
+                return strDateToMoment(a.day.date) - strDateToMoment(b.day.date)
+            }).reduce((timeSlots, timeslot) => {
+                const time = timeslot.start_time;
+                if (!timeSlots[time]) {
+                    timeSlots[time] = [];
+                }
+                timeSlots[time].push(timeslot);
+                return timeSlots;
+            }, {});
+
+            setTimeSlots(reducesTimeSlots)
+
+            if (Object.keys(reducesTimeSlots).length) {
+                setDates(reducesTimeSlots[Object.keys(reducesTimeSlots)[0]].map(timeSlot => {
+                    return timeSlot.day.date
+                }))
             }
-            timeSlots[time].push(timeslot);
-            return timeSlots;
-        }, {});
-        setTimeSlots(reducesTimeSlots)
+        }
 
     }, [timeSlotsSchedule])
 
-    useEffect(() => {
-        const reducesDatesSlots = timeSlotsSchedule?.reduce((timeSlots, timeslot) => {
-            const date = timeslot.day.date;
-            if (!timeSlots[date]) {
-                timeSlots[date] = [];
-            }
-            timeSlots[date].push(timeslot);
-            return timeSlots;
-        }, {});
-        setDatesSlots(reducesDatesSlots)
-
-    }, [timeSlotsSchedule])
-
-    useEffect(() => {
-        if (currentDate) {
-            setDates(
-                generateDateRange(startOfCalendar.clone(), endOfCalendar.clone())
-            )
-        }
-    }, [currentDate])
-
-    const toNextWeek = () => {
-        setCurrentDate(
-            currentDate.clone().add(1, 'week')
-        )
+    const toNextWeek = async () => {
+        await setStartOfCalendar(startOfCalendar.clone().add(1, 'day'))
+        await setEndOfCalendar(endOfCalendar.clone().add(1, 'day'))
     }
-    const toPrevWeek = () => {
-        setCurrentDate(
-            currentDate.clone().subtract(1, 'week')
-        )
+    const toPrevWeek = async () => {
+        await setStartOfCalendar(startOfCalendar.clone().subtract(1, 'day'))
+        await setEndOfCalendar(endOfCalendar.clone().subtract(1, 'day'))
     }
 
-    const getLessonsForDate = date => {
-        return lessons?.filter(lesson => {
-            return strDateToMoment(lesson.time_slot.day.date)
-                .isSame(date, 'date')
-        })
-    }
-
-    // const dateFromChangeHandler = date => {
-    //     setDateFrom(date[0])
-    //     dispatch(getTimeSlots(
-    //         getGetTimesSlotsData(date[0], dateTo, selectedChild.id)
-    //     ))
+    // const getLessonsForDate = date => {
+    //     return lessons?.filter(lesson => {
+    //         return strDateToMoment(lesson.time_slot.day.date)
+    //             .isSame(date, 'date')
+    //     })
     // }
-    // const dateToChangeHandler = date => {
-    //     setDateTo(date[0])
-    //     dispatch(getTimeSlots(
-    //         getGetTimesSlotsData(dateFrom, date[0], selectedChild.id)
-    //     ))
-    // }
+
+    const datesChangeHandler = date => {
+        setStartOfCalendar(moment(date[0]).toDate())
+        setEndOfCalendar(moment(date[1]).toDate())
+    }
 
     return (
         <SidebarContainer>
@@ -139,10 +113,9 @@ const ParentTimeTableSchedule = () => {
                             <Button to='/' className="calendar-big__close"/>
                             <div className="calendar-big__label">Период</div>
                             <FormField className="calendar-big__field field"
-                               value={`${startOfCalendar.format("d MMM")} - ${endOfCalendar.format("d MMM")}`}
-                               onChange={(str) => console.info(str)}
+                               value={[moment(startOfCalendar).toDate(), moment(endOfCalendar).toDate()]}
+                               onChange={datesChangeHandler}
                                type='flatpickr'
-                               data-enable-time
                                configs={{
                                    mode: "range",
                                    locale: {
@@ -155,7 +128,8 @@ const ParentTimeTableSchedule = () => {
                                    firstDayOfWeek: 2,
                                    dateFormat: 'd M',
                                    enableTime: false,
-                                   minDate: startOfCalendar.format("d MMM"),
+                                   minDate: moment(startOfCalendar).toDate(),
+                                   maxDate: moment(startOfCalendar, "DD-MM-YYYY").add(4, 'day').toDate()
                                }}
                             />
                         </div>
@@ -168,12 +142,17 @@ const ParentTimeTableSchedule = () => {
                                     onClick={toNextWeek}
                             />
                         </div>
+                        {timeSlotsScheduleLoading && (
+                            <div className="spinner-center">
+                                <Spinner animation='border' role='status'>
+                                    <span className='visually-hidden'>Loading...</span>
+                                </Spinner>
+                            </div>
+                        )}
                         <div className="calendar-big__body">
                             <div className="calendar-big__row">
                                 <div className="calendar-big__time"/>
-                                {datesSlots && Object.keys(datesSlots).sort((a, b) => {
-                                    return strDateToMoment(a) - strDateToMoment(b)
-                                }).map(day => {
+                                {dates && dates.map(day => {
                                     const momentDate = strDateToMoment(day)
                                     return (
                                         <div className='calendar-big__col'>
@@ -182,33 +161,6 @@ const ParentTimeTableSchedule = () => {
                                         </div>
                                     )
                                 })}
-                                <div className='d-flex justify-content-around flex-wrap'>
-                                    {/*<FormField*/}
-                                    {/*    label='От'*/}
-                                    {/*    type='flatpickr'*/}
-                                    {/*    configs={{*/}
-                                    {/*        dateFormat: 'd/m/Y',*/}
-                                    {/*        enableTime: false,*/}
-                                    {/*        minDate: currentDate*/}
-                                    {/*    }}*/}
-                                    {/*    // onChange={dateFromChangeHandler}*/}
-                                    {/*    className='form__field'*/}
-                                    {/*    // value={dateFrom}*/}
-                                    {/*/>*/}
-                                    {/*<FormField*/}
-                                    {/*    label='До'*/}
-                                    {/*    type='flatpickr'*/}
-                                    {/*    configs={{*/}
-                                    {/*        dateFormat: 'd/m/Y',*/}
-                                    {/*        enableTime: false,*/}
-                                    {/*        // minDate: dateFrom,*/}
-                                    {/*        // maxDate: new Date().setDate(dateFrom.getDate() + 5)*/}
-                                    {/*    }}*/}
-                                    {/*    // onChange={dateToChangeHandler}*/}
-                                    {/*    className='form__field'*/}
-                                    {/*    // value={dateTo}*/}
-                                    {/*/>*/}
-                                </div>
                             </div>
                             <div className="calendar-big__wrap scroll-block">
                                 {timeSlots && Object.entries(timeSlots).sort((a, b) => {

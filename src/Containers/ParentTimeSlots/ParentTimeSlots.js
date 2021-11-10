@@ -24,7 +24,6 @@ import 'Containers/ParentTimeSlots/parentTimeSlots.css'
 const MAX_SELECTED_TIME_SLOTS = 1
 const DAYS_RANGE = 5
 
-
 const ParentTimeSlots = props => {
     const { lessonId } = props.match.params
 
@@ -39,9 +38,7 @@ const ParentTimeSlots = props => {
     const startOfWeek = currentDate.clone().startOf('week')
     const endOfWeek = currentDate.clone().endOf('week')
     const [dateFrom, setDateFrom] = useState(startOfWeek.clone().subtract(startOfWeek.day() - 1, 'days'))
-    console.log('dateFrom', dateFrom)
     const [dateTo, setDateTo] = useState(endOfWeek.clone().subtract(2 - endOfWeek.day(), 'days'))
-    console.log('dateTo', dateTo)
 
     const [lessonCreatedModalIsOpen, setLessonCreatedModalIsOpen] = useState(false)
 

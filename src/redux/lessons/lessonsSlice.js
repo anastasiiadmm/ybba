@@ -78,7 +78,7 @@ export const getTimeSlotSchedule = createAsyncThunk(
     `${nameSpace}/getTimeSlotsSchedule`,
     async (data, {rejectWithValue}) => {
         try {
-            const resp = await axiosApi.get(`/accounts/${data.userId}/time-slots/?day_after=${data.fromFormatDate}&day_before=${data.toFormatDate}`)
+            const resp = await axiosApi.get(`/accounts/${data.userId}/time-slots/?day_after=${data.from}&day_before=${data.to}`)
             return resp.data
         } catch (e) {
             return rejectWithValue(e)
