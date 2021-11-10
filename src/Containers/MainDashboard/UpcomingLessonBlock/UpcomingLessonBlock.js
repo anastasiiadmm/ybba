@@ -61,12 +61,14 @@ const UpcomingLessonBlock = (props) => {
                         <span className='lesson__icon lesson__icon_orange'/>
                     </div>
                     {lessonPassed > 0 && lessonFinishedIn < 0 && (
-                        <Link
-                            className='btn info-item__btn'
-                            to={`/lessons/${lesson.id}/`}
-                        >
-                            Открыть занятие
-                        </Link>
+                        lesson && (
+                            <Link
+                                className='btn info-item__btn'
+                                to={`/lessons/${lesson.id}/`}
+                            >
+                                Открыть занятие
+                            </Link>
+                        )
                     )}
                 </div>
             )}

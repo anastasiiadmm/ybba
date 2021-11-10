@@ -1,10 +1,11 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
-import {v4 as uuidv4} from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import Jitsi from 'Components/Jitsi/Jitsi';
-import {jitsiTools} from 'constants.js';
+import { jitsiTools } from 'constants.js';
+import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
 
 
 const DevicesTestPage = () => {
@@ -29,12 +30,14 @@ const DevicesTestPage = () => {
         <SidebarContainer>
             <div className='main__inner' ref={jitsiWrapper}>
                 {jitsiWindowHeight && (
-                    <Jitsi
-                        meetingId={randomMeetingId}
-                        height={jitsiWindowHeight}
-                        width='100%'
-                        toolbarItems={tools}
-                    />
+                    <JitsiBlock>
+                        <Jitsi
+                            meetingId={randomMeetingId}
+                            height={jitsiWindowHeight}
+                            width='100%'
+                            toolbarItems={tools}
+                        />
+                    </JitsiBlock>
                 )}
             </div>
         </SidebarContainer>

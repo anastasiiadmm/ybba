@@ -1,6 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { GET_LESSON, GET_LESSON_ERROR, CHANGE_ACTIVE_GAME, CHANGE_LESSON_STATUS } from 'redux/actionTypes';
+import {
+    GET_LESSON,
+    GET_LESSON_ERROR,
+    CHANGE_ACTIVE_GAME,
+    CHANGE_LESSON_STATUS,
+    RESIZE_CHILD_WEBCAM
+} from 'redux/actionTypes';
 import { LESSON_STATUS_FINISHED } from 'constants.js';
 
 
@@ -10,7 +16,8 @@ const INITIAL_STATE = {
     activeGame: null,
     lesson: null,
     error: null,
-    lessonFinished: false
+    lessonFinished: false,
+    isParentWebcamIncreased: false,
 }
 
 const lessonSlice = createSlice({
@@ -36,6 +43,9 @@ const lessonSlice = createSlice({
                 state.lesson = null
                 state.lessonFinished = true
             }
+        },
+        [RESIZE_CHILD_WEBCAM]: (state, { payload }) => {
+            state.isParentWebcamIncreased = payload
         }
     },
 })

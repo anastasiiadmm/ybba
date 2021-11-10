@@ -19,8 +19,6 @@ import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
 
 import './App.css';
-import LessonPage from 'Containers/LessonPage/LessonPage.js';
-import WebSocket from 'Containers/WebSocket/WebSocket.js';
 
 const App = () => {
 
