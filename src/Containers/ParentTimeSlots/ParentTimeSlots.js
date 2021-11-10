@@ -8,7 +8,12 @@ import moment from 'moment';
 
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
-import { getTimeSlots, lessonsSelector, createLessons, clearLessons } from 'redux/lessons/lessonsSlice.js';
+import {
+    getTimeSlots,
+    lessonsSelector,
+    createLessons,
+    clearLessons,
+} from 'redux/lessons/lessonsSlice.js';
 import TimeSlot from 'Components/TimeSlot/TimeSlot';
 import Modal from 'Components/Modal/Modal';
 import { strDateToMoment, getCurrentDate } from 'utils/date/dateUtils.js';
@@ -21,17 +26,23 @@ const DAYS_RANGE = 5
 
 
 const ParentTimeSlots = props => {
-
-    const now = new Date()
     const { lessonId } = props.match.params
 
     const dispatch = useDispatch()
     const history = useHistory()
 
     const [selectedTimeSlots, setSelectedTimeSlots] = useState([])
-    const [dateFrom, setDateFrom] = useState(new Date(now.setDate(now.getDate())))
-    const [dateTo, setDateTo] = useState(new Date(new Date().setDate(now.getDate() + DAYS_RANGE)))
-    // const [timeSlotItems, setTimeSlotItems] = useState({})
+    // const [dateFrom, setDateFrom] = useState(new Date(now.setDate(now.getDate())))
+    // const [dateTo, dateTo] = useState(new Date(new Date().setDate(now.getDate() + DAYS_RANGE)))
+
+    const currentDate = moment()
+    const startOfWeek = currentDate.clone().startOf('week')
+    const endOfWeek = currentDate.clone().endOf('week')
+    const [dateFrom, setDateFrom] = useState(startOfWeek.clone().subtract(startOfWeek.day() - 1, 'days'))
+    console.log('dateFrom', dateFrom)
+    const [dateTo, setDateTo] = useState(endOfWeek.clone().subtract(2 - endOfWeek.day(), 'days'))
+    console.log('dateTo', dateTo)
+
     const [lessonCreatedModalIsOpen, setLessonCreatedModalIsOpen] = useState(false)
 
     const { timeSlots, selectedChild, lessonCreated, loading } = useSelector(lessonsSelector)
@@ -45,7 +56,7 @@ const ParentTimeSlots = props => {
         return timeSlots;
     }, {});
 
-    const timeSlotsArray = timeSlotsSchedule && Object.keys(timeSlotsSchedule).reverse().map((date) => {
+    const timeSlotsArray = timeSlotsSchedule && Object.keys(timeSlotsSchedule).map((date) => {
         return {
             date,
             timeSlot: timeSlotsSchedule[date]
@@ -68,13 +79,7 @@ const ParentTimeSlots = props => {
             }
         }
     }
-    const getGetTimesSlotsData = (from, to, childId) => {
-        return {
-            from: moment(from).format('DD/MM/YYYY'),
-            to: moment(to).format('DD/MM/YYYY'),
-            childId: childId
-        }
-    }
+
     // const dateFromChangeHandler = date => {
     //     setDateFrom(date[0])
     //     dispatch(getTimeSlots(
@@ -88,13 +93,16 @@ const ParentTimeSlots = props => {
     //     ))
     // }
 
-    const toNextWeek = () => {
-
+    const toNextWeek = async () => {
+        await setDateFrom(dateFrom.clone().add(1, 'day'))
+        await setDateTo(dateTo.clone().add(1, 'day'))
     }
 
-    const toPrevWeek = () => {
-
+    const toPrevWeek = async () => {
+        await setDateFrom(dateFrom.clone().subtract(1, 'day'))
+        await setDateTo(dateTo.clone().subtract(1, 'day'))
     }
+
     const modalToggle = () => {
         setLessonCreatedModalIsOpen(!lessonCreatedModalIsOpen)
     }
@@ -120,15 +128,17 @@ const ParentTimeSlots = props => {
             return history.push('/lessons/')
         }
 
-        dispatch(getTimeSlots(
-            getGetTimesSlotsData(dateFrom, dateTo, selectedChild.id)
-        ))
+        dispatch(getTimeSlots({
+            from: moment(dateFrom).format("DD/MM/YYYY"),
+            to: moment(dateTo).format("DD/MM/YYYY"),
+            childId: selectedChild.id
+        }))
 
         return () => {
             dispatch(clearLessons())
         }
         // eslint-disable-next-line
-    }, [])
+    }, [dateTo])
 
     return (
         <SidebarContainer>
@@ -194,7 +204,9 @@ const ParentTimeSlots = props => {
                                     <div className='timeslot__main-wrap'>
                                         <div className='timeslot__main'>
                                             <div className='timeslot__items'>
-                                                {timeSlotsArray && timeSlotsArray.map(timeSlotItem => {
+                                                {timeSlotsArray && timeSlotsArray.sort((a, b) => {
+                                                    return strDateToMoment(a.date) - strDateToMoment(b.date)
+                                                }).map(timeSlotItem => {
                                                     const date = strDateToMoment(timeSlotItem.date)
                                                     const month = moment(date).format('MMM')
                                                     const dayOfWeek = moment(date).format('ddd')
