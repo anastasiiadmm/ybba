@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -65,11 +65,11 @@ const LessonPage = (props) => {
         return () => triggerGameAction(gameAction)
     }
 
-    const getFileUrl = fileName => {
+    const getFileUrl = useCallback(fileName => {
         return activeGame[fileName]
-    }
+    }, [activeGame])
 
-    const setUnity = async () => {
+    const setUnity = useCallback(async () => {
         if (activeGame) {
             await setUnityContext(null)
             const context = new UnityContext({
@@ -80,17 +80,17 @@ const LessonPage = (props) => {
             })
             await setUnityContext(context)
         }
-    }
+    }, [activeGame, getFileUrl])
 
-    const sendJsonToGame = (jsonData) => {
+    const sendJsonToGame = useCallback(jsonData => {
         unityContext.send('WebData', 'ReadWebData', JSON.stringify(jsonData))
-    }
+    }, [unityContext])
 
-    const sendJsonToGameWithTimeout = jsonData => {
+    const sendJsonToGameWithTimeout = useCallback(jsonData => {
         setTimeout(() => {
             sendJsonToGame(jsonData)
         }, 1000)
-    }
+    }, [sendJsonToGame])
 
     const switchChildWebcamSize = (value) => {
         sendWsAction(resizeChildWebcam({
@@ -116,13 +116,11 @@ const LessonPage = (props) => {
 
     useEffect(() => {
         dispatch(clearLessonState())
-        // eslint-disable-next-line
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         setUnity()
-        // eslint-disable-next-line
-    }, [activeGame])
+    }, [activeGame, setUnity])
 
     useEffect(() => {
         if (lesson) {
@@ -158,8 +156,7 @@ const LessonPage = (props) => {
                 })
             }
         }
-        // eslint-disable-next-line
-    }, [unityContext])
+    }, [lessonId, sendJsonToGameWithTimeout, unityContext])
 
     return (
         <div className='gamef position-relative'>
