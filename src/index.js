@@ -15,17 +15,20 @@ import 'assets/fonts/icomoon/icomoon.css'
 import 'assets/vendor/slimselect/slimselect.min.css'
 import 'index.css';
 import 'common.css';
+import FirebaseBlock from 'Containers/FirebaseBlock/FirebaseBlock.js';
 
 initSentry()
 export const store = configureStore()
 
 ReactDOM.render(
     <React.StrictMode>
-        <Provider store={store}>
-            <BrowserRouter>
-                <App/>
-            </BrowserRouter>
-        </Provider>
+        <FirebaseBlock>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <App/>
+                </BrowserRouter>
+            </Provider>
+        </FirebaseBlock>
     </React.StrictMode>,
     document.getElementById('root')
 );
