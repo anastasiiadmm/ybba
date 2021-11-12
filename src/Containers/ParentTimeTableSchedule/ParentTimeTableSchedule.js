@@ -169,13 +169,19 @@ const ParentTimeTableSchedule = () => {
                             />
                         </div>
                         <div className='calendar-big__btns'>
-                            <button type='button' className='calendar-big__prev'
-                                    onClick={toPrevDay}
-                            />
+                            <button
+                                type='button' className='border-0 bg-transparent'
+                                onClick={toPrevDay}
+                            >
+                                <span className='calendar-big__prev'/>
+                            </button>
 
-                            <button type='button' className='calendar-big__next'
-                                    onClick={toNextDay}
-                            />
+                            <button
+                                type='button' className='border-0 bg-transparent'
+                                onClick={toNextDay}
+                            >
+                                <span className='calendar-big__next'/>
+                            </button>
                         </div>
                         {timeSlotsScheduleLoading && (
                             <div className='spinner-center'>
