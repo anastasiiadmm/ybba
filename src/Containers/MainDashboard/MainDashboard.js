@@ -10,7 +10,7 @@ import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import { getTimesDay, getNowDate, strDateToMoment } from 'utils/date/dateUtils.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import UpcomingLessonBlock from 'Containers/MainDashboard/UpcomingLessonBlock/UpcomingLessonBlock';
-import { getLessons, dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
+import {getLessons, dashBoardSelector, getTeacherLesson} from 'redux/dashBoard/dashBoardSlice.js';
 import { lessonStatuses, userRoles } from 'constants.js';
 import Calendar from 'Containers/MainDashboard/Calendar/Calendar';
 import { checkUserRole } from 'utils/user.js';
@@ -19,7 +19,7 @@ import { checkUserRole } from 'utils/user.js';
 const MainDashboard = () => {
 
     const { user } = useSelector(authSelector)
-    const { lessons } = useSelector(dashBoardSelector)
+    const { lessons, lesson } = useSelector(dashBoardSelector)
 
     const [nowDate, setNowDate] = useState()
     const [closesLesson, setClosesLesson] = useState(null)
@@ -43,11 +43,22 @@ const MainDashboard = () => {
     }, [lessons])
 
     useEffect(() => {
+        if (lesson) {
+            setClosesLesson(lesson)
+        }
+    }, [lesson])
+
+    useEffect(() => {
         const data = {
             userId: user.id,
             query: { status: lessonStatuses.pending }
         }
-        dispatch(getLessons(data))
+
+        if (checkUserRole(userRoles.parent)) {
+            dispatch(getLessons(data))
+        } else if (checkUserRole(userRoles.therapist)) {
+            dispatch(getTeacherLesson())
+        }
 
         setNowDate(getNowDate())
         setInterval(() => {

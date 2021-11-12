@@ -1,0 +1,42 @@
+.webcam {
+    transition: all .2s;
+}
+
+.dragBlock {
+    cursor: row-resize;
+}
+
+.zoomBtn {
+    position: absolute;
+    z-index: 99999999999 !important;
+    top: 10px;
+    left: 10px;
+}
+
+.soundBtn {
+    position: absolute;
+    z-index: 99999999999 !important;
+    top: 10px;
+    left: 40px;
+}
+
+.soundBtn img {
+    transform: scale(.7);
+}
+
+.btnInZoom {
+    transform: scale(2.7);
+    transform-origin: top right;
+    border-radius: 5px;
+}
+
+.gamef__person-btn {
+    transform: scale(1) translate(0, 0) !important;
+    transform-origin: unset !important;
+}
+
+.webcamZoom {
+    transform: scale(1.8);
+    transform-origin: top center;
+    border-radius: 8px;
+}

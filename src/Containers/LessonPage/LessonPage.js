@@ -1,29 +1,31 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import Unity, { UnityContext } from 'react-unity-webgl';
+import { ProgressBar } from 'react-bootstrap';
 
 import { lessonSelector, clearLessonState } from 'redux/lesson/lessonSlice.js';
-import { changeActiveGame, changeLessonStatus } from 'redux/lesson/actions.js';
+import { changeActiveGame, changeLessonStatus, resizeChildWebcam } from 'redux/lesson/actions.js';
 import {
     LESSON_STATUS_FINISHED,
     GAME_FILE_TYPE_LOADER,
     GAME_FILE_TYPE_DATA,
     GAME_FILE_TYPE_FRAMEWORK,
     GAME_FILE_TYPE_WASM,
-    gameActions, jitsiTools, userRoles
+    gameActions,
+    userRoles
 } from 'constants.js';
 import { WsContext } from 'context/WsContext/WsContext.js';
-import Jitsi from 'Components/Jitsi/Jitsi.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
-
-import 'Containers/LessonPage/lessonPage.css'
-import { ProgressBar } from 'react-bootstrap';
 import Webcam from 'Containers/LessonPage/Webcam/Webcam.js';
 import Timer from 'Containers/LessonPage/Timer/Timer.js';
 import Notes from 'Containers/LessonPage/Notes/Notes.js';
 import { checkUserRole } from 'utils/user.js';
+import Drag from 'Components/Drag/Drag.js';
+import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
+
+import 'Containers/LessonPage/lessonPage.css'
 
 
 const LessonPage = (props) => {
@@ -33,15 +35,13 @@ const LessonPage = (props) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const { lesson, lessonFinished } = useSelector(lessonSelector)
+    const { lesson, lessonFinished, isParentWebcamIncreased } = useSelector(lessonSelector)
 
     const { lessonId } = props.match.params
 
     const [activeGame, setActiveGame] = useState(null)
     const [unityContext, setUnityContext] = useState(null)
     const [unityLoadProgress, setUnityLoadProgress] = useState(0)
-
-    const localStorageKey = `${lessonId}_notes`
 
     const onChangeActiveGame = game => {
         if (game.id !== activeGame.id) {
@@ -65,11 +65,11 @@ const LessonPage = (props) => {
         return () => triggerGameAction(gameAction)
     }
 
-    const getFileUrl = fileName => {
+    const getFileUrl = useCallback(fileName => {
         return activeGame[fileName]
-    }
+    }, [activeGame])
 
-    const setUnity = async () => {
+    const setUnity = useCallback(async () => {
         if (activeGame) {
             await setUnityContext(null)
             const context = new UnityContext({
@@ -80,25 +80,47 @@ const LessonPage = (props) => {
             })
             await setUnityContext(context)
         }
-    }
+    }, [activeGame, getFileUrl])
 
-    const sendJsonToGame = (jsonData) => {
+    const sendJsonToGame = useCallback(jsonData => {
         unityContext.send('WebData', 'ReadWebData', JSON.stringify(jsonData))
-    }
+    }, [unityContext])
 
-    const sendJsonToGameWithTimeout = jsonData => {
+    const sendJsonToGameWithTimeout = useCallback(jsonData => {
         setTimeout(() => {
             sendJsonToGame(jsonData)
         }, 1000)
+    }, [sendJsonToGame])
+
+    const switchChildWebcamSize = (value) => {
+        sendWsAction(resizeChildWebcam({
+            lesson_id: lessonId,
+            is_parent_webcam_increased: value
+        }))
     }
+
+    const webcamComponentProps = {
+        meetingId: lessonId,
+        lessonId: lessonId,
+        switchChildWebcamSize
+    }
+    const webcamComponent = checkUserRole(userRoles.parent)
+        ? <Drag>
+            <Webcam
+                {...webcamComponentProps}
+            />
+        </Drag>
+        : <Webcam
+            {...webcamComponentProps}
+        />
 
     useEffect(() => {
         dispatch(clearLessonState())
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         setUnity()
-    }, [activeGame])
+    }, [activeGame, setUnity])
 
     useEffect(() => {
         if (lesson) {
@@ -134,12 +156,12 @@ const LessonPage = (props) => {
                 })
             }
         }
-    }, [unityContext])
+    }, [lessonId, sendJsonToGameWithTimeout, unityContext])
 
     return (
-        <div className='gamef'>
+        <div className='gamef position-relative'>
             <header
-                className={addClasses('gamef__head', {
+                className={addClasses('gamef__head position-relative', {
                     'gamef__head_teacher': checkUserRole(userRoles.therapist),
                     'gamef__head_child': checkUserRole(userRoles.parent)
                 })}
@@ -150,13 +172,15 @@ const LessonPage = (props) => {
                         endTime={lesson.time_slot.end_time}
                     />
                 )}
-                <Webcam
-                    meetingId={lessonId}
-                />
+                <JitsiBlock>
+                    {webcamComponent}
+                </JitsiBlock>
             </header>
             <main
                 className={addClasses('gamef__main', {
-                    'gamef__main_full': checkUserRole(userRoles.parent)
+                    'gamef__main_full': checkUserRole(userRoles.parent),
+                    'parentGameMain': checkUserRole(userRoles.parent),
+                    'therapistGameMain': checkUserRole(userRoles.therapist)
                 })}
             >
                 <div className='gamef__work-space'>
@@ -165,12 +189,14 @@ const LessonPage = (props) => {
                             <Unity
                                 unityContext={unityContext}
                                 className={addClasses('gamef__screen', {
-                                    'd-none': unityLoadProgress < 1
+                                    'd-none': unityLoadProgress < 1,
                                 })}
                             />
                         )}
                         {unityLoadProgress < 1 && (
-                            <ProgressBar now={unityLoadProgress * 100}/>
+                            <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
+                                <ProgressBar now={unityLoadProgress * 100}/>
+                            </div>
                         )}
                     </div>
                 </div>
@@ -216,6 +242,22 @@ const LessonPage = (props) => {
                             className='gamef__microphone'
                             type='button'
                             onClick={GameActionHandler(gameActions.MUTE_AUDIO)}
+                        />
+                        <button
+                            type='button'
+                            className={addClasses('', {
+                                'check-game-button_active check-game-button__active': !isParentWebcamIncreased,
+                                'check-game-button_inactive check-game-button__inactive': isParentWebcamIncreased
+                            })}
+                            onClick={() => switchChildWebcamSize(false)}
+                        />
+                        <button
+                            type='button'
+                            className={addClasses('', {
+                                'play-game-button_active play-game-button__active': isParentWebcamIncreased,
+                                'play-game-button_inactive play-game-button__inactive': !isParentWebcamIncreased
+                            })}
+                            onClick={() => switchChildWebcamSize(true)}
                         />
                         <button
                             className='gamef__next'
