@@ -8,7 +8,7 @@ import { namesOfDaysOfWeekShort, namesOfMonths } from 'constants.js';
 import { generateDateRange } from 'Containers/MainDashboard/Calendar/utils';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import { dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
-import { momentToFormatTime, strDateToMoment, strDateToMomentDate } from 'utils/date/dateUtils.js';
+import { momentTimeToStr, strDateToMoment } from 'utils/date/dateUtils.js';
 import { lessonTypesMapping } from 'mappings/lessons';
 
 
@@ -132,10 +132,10 @@ const Calendar = () => {
                     {lessons && lessonsForDate?.map((lesson, idx) => {
                         const time_slot = lesson.time_slot
                         const date = strDateToMoment(time_slot.day.date)
-                        const start_time = momentToFormatTime(time_slot.start_time)
-                        const end_time = momentToFormatTime(time_slot.end_time)
-                        const duration1 = strDateToMomentDate(start_time)
-                        const duration2 = strDateToMomentDate(end_time)
+                        const start_time = momentTimeToStr(time_slot.start_time)
+                        const end_time = momentTimeToStr(time_slot.end_time)
+                        const duration1 = strDateToMoment(start_time)
+                        const duration2 = strDateToMoment(end_time)
                         const duration = moment.duration(duration2.diff(duration1))
                         return (
                             <div className='calendar-box__info' key={idx}>

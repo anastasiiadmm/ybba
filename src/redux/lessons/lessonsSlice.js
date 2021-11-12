@@ -3,8 +3,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosApi from 'axios.js';
 import { toQueryParams } from 'utils/url/toQueryParams.js';
 
-import { toQueryParams } from 'utils/url/toQueryParams.js';
-
 const nameSpace = 'lessons';
 
 const INITIAL_STATE = {
@@ -83,7 +81,7 @@ export const getLessons = createAsyncThunk(
 
 export const getTimeSlotSchedule = createAsyncThunk(
     `${nameSpace}/getTimeSlotsSchedule`,
-    async (data, { rejectWithValue}) => {
+    async (data, { rejectWithValue }) => {
         try {
             const query = toQueryParams({ day_after: data.from, day_before: data.to })
             const resp = await axiosApi.get(`/accounts/${data.userId}/time-slots/${query}`)
@@ -108,6 +106,9 @@ const lessonsSlice = createSlice({
     clearLessons: (state) => {
       state.lessons = null;
     },
+    clearTimeSlotsSchedule: state => {
+        state.timeSlotsSchedule = null
+    }
   },
   extraReducers: {
     [getChildren.pending]: (state) => {
@@ -172,7 +173,6 @@ const lessonsSlice = createSlice({
     }
 })
 
-export const { setSelectedChild, clearLessons, clearLessonsData } =
-  lessonsSlice.actions;
+export const { setSelectedChild, clearLessons, clearLessonsData, clearTimeSlotsSchedule } = lessonsSlice.actions;
 export const lessonsSelector = (state) => state.lessons;
 export default lessonsSlice.reducer;

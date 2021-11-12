@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { Spinner } from 'react-bootstrap';
 import moment from 'moment';
@@ -8,20 +9,17 @@ import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
 import Button from 'Components/Button/Button';
 import FormField from 'Components/FormField/FormField';
-
-import { getLessons } from 'redux/dashBoard/dashBoardSlice';
-import { getTimeSlotSchedule, lessonsSelector } from 'redux/lessons/lessonsSlice';
+import { getTimeSlotSchedule, lessonsSelector, clearTimeSlotsSchedule } from 'redux/lessons/lessonsSlice';
 import { authSelector } from 'redux/auth/authSlice';
-
 import {
     getNowDate,
-    momentToFormatTime,
-    momentToStringDate,
+    momentTimeToStr,
+    momentDateToStr,
     strDateToMoment,
-    strTimeToMoment
+    strTimeToMoment, getDateRange
 } from 'utils/date/dateUtils';
 import { addClasses } from 'utils/addClasses/addClasses';
-import { namesOfDaysOfWeekShort, namesOfMonths } from '../../constants';
+import { namesOfDaysOfWeekShort, namesOfMonths } from 'constants.js';
 import { lessonTypesAbbrMapping, lessonTypesMapping } from 'mappings/lessons';
 
 import './ParentTimeTableSchedule.css'
@@ -32,68 +30,48 @@ const ParentTimeTableSchedule = () => {
     const dispatch = useDispatch()
 
     const { user } = useSelector(authSelector)
-
     const { timeSlotsSchedule, timeSlotsScheduleLoading } = useSelector(lessonsSelector)
 
     const [nowDate, setNowDate] = useState()
     const [dates, setDates] = useState(null)
-
     const [timeSlots, setTimeSlots] = useState(null)
-    const startOfWeek = moment().startOf('isoWeek')
-    const endOfWeek = moment().endOf('isoWeek')
     const [startOfCalendar, setStartOfCalendar] = useState(null)
     const [endOfCalendar, setEndOfCalendar] = useState(null)
-    const [maxCalendarDate, setMaxCalendarDate] = useState(startOfCalendar.clone().add(DATE_RANGE, 'days').toDate())
+    const [maxCalendarDate, setMaxCalendarDate] = useState(null)
+    const [minCalendarDate, setMinCalendarDate] = useState(null)
 
-    useEffect(() => {
-        setStartOfCalendar(startOfWeek.clone().subtract(startOfWeek.day() - 1, 'days'))
-        setEndOfCalendar(endOfWeek.clone().subtract(2 - endOfWeek.day(), 'days'))
+    const setDefaultDatepickerRange = async () => {
+        await setMaxCalendarDate(null)
+        await setMinCalendarDate(null)
+    }
+
+    const setMaxDatepickerRange = async (start, end) => {
+        console.log('Asd', !!start, !!end)
+        if (!!start && !!end)
+            return await setDefaultDatepickerRange()
+
+        await setMaxCalendarDate(start.clone().add(DATE_RANGE, 'day').toDate())
+        await setMinCalendarDate(start.clone().subtract(DATE_RANGE, 'day').toDate())
+    }
+
+    const setDatePickerData = async (start, end) => {
+        if (start)
+            await setStartOfCalendar(start)
+        if (end)
+            await setEndOfCalendar(end)
+    }
+
+    const setInitialDatepickerData = useCallback(async () => {
+        const startOfWeek = moment().startOf('isoWeek')
+        const endOfWeek = moment().endOf('isoWeek').subtract(2, 'day')
+
+        await setDatePickerData(startOfWeek, endOfWeek)
     }, [])
 
-    useEffect(() => {
-        const data = { userId: user.id }
-        dispatch(getLessons(data))
-
-        setNowDate(getNowDate())
-        setInterval(() => {
-            setNowDate(getNowDate())
-        }, 1000)
-        // eslint-disable-next-line
-    }, [])
-
-    useEffect(() => {
-        dispatch(getTimeSlotSchedule({
-            userId: user.id,
-            from: momentToStringDate(startOfCalendar),
-            to: momentToStringDate(endOfCalendar)
-        }))
-    }, [dispatch, endOfCalendar, startOfCalendar, user.id])
-
-    useEffect(() => {
-        if (timeSlotsSchedule) {
-            const copyTimeSlotSchedule = [...timeSlotsSchedule];
-
-            const reducesTimeSlots = copyTimeSlotSchedule?.sort((a, b) => {
-                return strDateToMoment(a.day.date) - strDateToMoment(b.day.date)
-            }).reduce((timeSlots, timeslot) => {
-                const time = timeslot.start_time;
-                if (!timeSlots[time]) {
-                    timeSlots[time] = [];
-                }
-                timeSlots[time].push(timeslot);
-                return timeSlots;
-            }, {});
-
-            setTimeSlots(reducesTimeSlots)
-
-            if (Object.keys(reducesTimeSlots).length) {
-                setDates(reducesTimeSlots[Object.keys(reducesTimeSlots)[0]].map(timeSlot => {
-                    return timeSlot.day.date
-                }))
-            }
-        }
-
-    }, [timeSlotsSchedule])
+    const clearDatePickerRange = async () => {
+        await setStartOfCalendar(null)
+        await setEndOfCalendar(null)
+    }
 
     const toNextDay = async () => {
         await setStartOfCalendar(startOfCalendar.clone().add(1, 'day'))
@@ -104,11 +82,58 @@ const ParentTimeTableSchedule = () => {
         await setEndOfCalendar(endOfCalendar.clone().subtract(1, 'day'))
     }
 
-    const datesChangeHandler = async date => {
-        await setStartOfCalendar(moment(date[0]))
-        await setEndOfCalendar(moment(date[1]))
-        await setMaxCalendarDate(moment(date[0]).clone().add(DATE_RANGE - 1, 'days').toDate())
+    const datesChangeHandler = async data => {
+        const start = data[0] && moment(data[0])
+        const end = data[1] && moment(data[1])
+
+        await clearDatePickerRange()
+        await setMaxDatepickerRange(start, end)
+        await setDatePickerData(start, end)
     }
+
+    const getTimeSlots = useCallback(async () => {
+        await dispatch(getTimeSlotSchedule({
+            userId: user.id,
+            from: momentDateToStr(startOfCalendar),
+            to: momentDateToStr(endOfCalendar)
+        }))
+    }, [dispatch, endOfCalendar, startOfCalendar, user.id])
+
+    const sortTimeSlots = timeSlots => {
+        return timeSlots
+            .sort((a, b) => strDateToMoment(a.day.date) - strDateToMoment(b.day.date))
+            .reduce((timeSlots, timeslot) => {
+                const time = timeslot.start_time;
+                timeSlots[time] = !timeSlots[time] ? [] : timeSlots[time]
+                timeSlots[time].push(timeslot);
+
+                return timeSlots;
+            }, {});
+    }
+
+    useEffect(() => {
+        setInitialDatepickerData()
+
+        setNowDate(getNowDate())
+        setInterval(() => {
+            setNowDate(getNowDate())
+        }, 1000)
+    }, [setInitialDatepickerData])
+
+    useEffect(() => {
+        if (startOfCalendar && endOfCalendar) {
+            dispatch(clearTimeSlotsSchedule())
+            getTimeSlots()
+            setDates(getDateRange(startOfCalendar, endOfCalendar))
+        }
+    }, [dispatch, endOfCalendar, getTimeSlots, startOfCalendar])
+
+    useEffect(() => {
+        if (timeSlotsSchedule) {
+            const sortedTimeSlots = sortTimeSlots([...timeSlotsSchedule])
+            setTimeSlots(sortedTimeSlots)
+        }
+    }, [endOfCalendar, startOfCalendar, timeSlotsSchedule])
 
     return (
         <SidebarContainer>
@@ -138,7 +163,8 @@ const ParentTimeTableSchedule = () => {
                                            firstDayOfWeek: 2,
                                            dateFormat: 'd M',
                                            enableTime: false,
-                                           maxDate: maxCalendarDate
+                                           maxDate: maxCalendarDate,
+                                           minDate: minCalendarDate
                                        }}
                             />
                         </div>
@@ -158,64 +184,65 @@ const ParentTimeTableSchedule = () => {
                                 </Spinner>
                             </div>
                         )}
-                        <div className='calendar-big__body'>
-                            <div className='calendar-big__row'>
-                                <div className='calendar-big__time'/>
-                                {dates && dates.map(day => {
-                                    const momentDate = strDateToMoment(day)
-                                    return (
-                                        <div className='calendar-big__col'>
-                                            {momentDate.date()}{' '}
-                                            {namesOfDaysOfWeekShort[momentDate.day()]}
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                            <div className='calendar-big__wrap scroll-block'>
-                                {timeSlots && Object.entries(timeSlots).sort((a, b) => {
-                                    return strTimeToMoment(a) - strTimeToMoment(b)
-                                }).map(([time, timeSlotsArray]) => {
-                                    return (
-                                        <div className='calendar-big__row'>
-                                            <div className='calendar-big__time'>
-                                                {momentToFormatTime(time)}
+                        {timeSlotsSchedule && (
+                            <div className='calendar-big__body'>
+                                <div className='calendar-big__row'>
+                                    <div className='calendar-big__time'/>
+                                    {dates && dates.map(day => {
+                                        return (
+                                            <div className='calendar-big__col'>
+                                                {day.date()}{' '}
+                                                {namesOfDaysOfWeekShort[day.day()]}
                                             </div>
-                                            {timeSlotsArray.map(timeSlot => {
-                                                const lessons = timeSlot.lessons
-                                                return (
-                                                    <>
-                                                        <div className={addClasses('calendar-big__col', {
-                                                            'isLesson': lessons.length,
-                                                        })}>
-                                                            {!!lessons.length && (
-                                                                <>
-                                                                    {lessons.map(lesson => {
-                                                                        return (
-                                                                            <>
+                                        )
+                                    })}
+                                </div>
+                                <div className='calendar-big__wrap scroll-block'>
+                                    {timeSlots && Object.entries(timeSlots).sort((a, b) => {
+                                        return strTimeToMoment(a) - strTimeToMoment(b)
+                                    }).map(([time, timeSlotsArray]) => {
+                                        return (
+                                            <div className='calendar-big__row'>
+                                                <div className='calendar-big__time'>
+                                                    {momentTimeToStr(time)}
+                                                </div>
+                                                {timeSlotsArray.map(timeSlot => {
+                                                    const lessons = timeSlot.lessons
+                                                    return (
+                                                        <>
+                                                            <div className={addClasses('calendar-big__col', {
+                                                                'isLesson': lessons.length,
+                                                            })}>
+                                                                {!!lessons.length && (
+                                                                    <>
+                                                                        {lessons.map(lesson => {
+                                                                            return (
+                                                                                <>
                                                                                 <span className='isLesson__icon violet'>
                                                                                     {`${lessonTypesAbbrMapping[lesson.lesson_type]}`}
                                                                                 </span>
-                                                                                <p className='isLesson__title'
-                                                                                   key={lesson.id}>
-                                                                                    {`${lessonTypesMapping[lesson.lesson_type]} занятие`}
-                                                                                </p>
-                                                                            </>
-                                                                        )
-                                                                    })}
-                                                                    <span className='isLesson__time'>
-                                                                {momentToFormatTime(timeSlot.start_time)}
+                                                                                    <p className='isLesson__title'
+                                                                                       key={lesson.id}>
+                                                                                        {`${lessonTypesMapping[lesson.lesson_type]} занятие`}
+                                                                                    </p>
+                                                                                </>
+                                                                            )
+                                                                        })}
+                                                                        <span className='isLesson__time'>
+                                                                {momentTimeToStr(timeSlot.start_time)}
                                                             </span>
-                                                                </>
-                                                            )}
-                                                        </div>
-                                                    </>
-                                                )
-                                            })}
-                                        </div>
-                                    )
-                                })}
+                                                                    </>
+                                                                )}
+                                                            </div>
+                                                        </>
+                                                    )
+                                                })}
+                                            </div>
+                                        )
+                                    })}
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ import {
 } from 'redux/lessons/lessonsSlice.js';
 import TimeSlot from 'Components/TimeSlot/TimeSlot';
 import Modal from 'Components/Modal/Modal';
-import { strDateToMoment, getCurrentDate, momentToStringDate } from 'utils/date/dateUtils.js';
+import { strDateToMoment, getCurrentDate, momentDateToStr } from 'utils/date/dateUtils.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 
 import 'Containers/ParentTimeSlots/parentTimeSlots.css'
@@ -118,8 +118,8 @@ const ParentTimeSlots = props => {
         }
 
         dispatch(getTimeSlots({
-            from: momentToStringDate(dateFrom),
-            to: momentToStringDate(dateTo),
+            from: momentDateToStr(dateFrom),
+            to: momentDateToStr(dateTo),
             childId: selectedChild.id
         }))
 

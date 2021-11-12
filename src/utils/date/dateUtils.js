@@ -4,7 +4,7 @@ import 'moment/locale/ru.js'
 import config from 'config';
 
 /**
- * Function to get human readable format of current time of day
+ * Sync function to get human readable format of current time of day
  * @returns {string} current time of day ('утро', 'день', 'вечер', 'ночь')
  */
 export const getTimesDay = () => {
@@ -21,7 +21,7 @@ export const getTimesDay = () => {
 }
 
 /**
- * Returns current date
+ * Sync function returns current date
  * @returns {string} Current date in format 'LLL'
  */
 export const getNowDate = () => {
@@ -29,7 +29,7 @@ export const getNowDate = () => {
 }
 
 /**
- * Converts string date to moment date object
+ * Sync function converts string date to moment date object
  * @param {string} date String date to convert
  * @returns {moment.Moment} Moment date object
  */
@@ -37,20 +37,26 @@ export const strDateToMoment = date => {
     return moment(date, config.dateFormat)
 }
 
-export const momentToStringDate = date => {
-    return moment(date).format('DD/MM/YYYY')
-}
-
-export const momentToFormatTime = (time) => {
-    return moment(time, 'H:m:s').format('H:mm')
-}
-
-export const strDateToMomentDate = date => {
-    return moment(date, 'HH:mm')
+/**
+ * Sync function converts moment date to string
+ * @param {moment.Moment} date
+ * @returns {string}
+ */
+export const momentDateToStr = date => {
+    return moment(date).format(config.dateFormat)
 }
 
 /**
- * Converts string time to moment date object
+ * Sync function converts moment time to string
+ * @param {moment.Moment} time
+ * @returns {string}
+ */
+export const momentTimeToStr = (time) => {
+    return moment(time, 'H:m:s').format('H:mm')
+}
+
+/**
+ * Sync function converts string time to moment date object
  * @param {string} time Time to convert to moment time object
  * @returns {moment.Moment} Moment time object
  */
@@ -59,7 +65,7 @@ export const strTimeToMoment = time => {
 }
 
 /**
- * Returns current date in moment
+ * Sync function returns current date in moment
  * @returns {moment.Moment}
  */
 export const getCurrentDate = () => {
@@ -67,9 +73,26 @@ export const getCurrentDate = () => {
 }
 
 /**
- * Returns current time in "moment" format
+ * Sync function returns current time in "moment" format
  * @returns {moment.Moment}
  */
 export const getCurrentTime = () => {
     return strTimeToMoment(moment().format(config.timeFormat))
+}
+
+/**
+ * Sync function returns array of moment dates between "start" and "end"
+ * @param {moment.Moment} start Start of range
+ * @param {moment.Moment} end End of range
+ * @returns {moment.Moment[]}
+ */
+export const getDateRange = (start, end) => {
+    let diff = end.diff(start, 'days')
+
+    const dates = []
+    for (let i = 0; i < diff+1; i++) {
+        dates.push(moment(start).add(i, 'day'))
+    }
+
+    return dates
 }
