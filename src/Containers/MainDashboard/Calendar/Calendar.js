@@ -4,11 +4,12 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { namesOfDaysOfWeekShort, namesOfMonths, namesOfDaysOfWeek } from 'constants.js';
+import { namesOfDaysOfWeekShort, namesOfMonths } from 'constants.js';
 import { generateDateRange } from 'Containers/MainDashboard/Calendar/utils';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import { dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
-import { strDateToMoment } from 'utils/date/dateUtils.js';
+import { momentTimeToStr, strDateToMoment } from 'utils/date/dateUtils.js';
+import { lessonTypesMapping } from 'mappings/lessons';
 
 
 const Calendar = () => {
@@ -100,17 +101,18 @@ const Calendar = () => {
                             <div className='datepick__main'>
                                 <div className='datepick__days'>
                                     <div className='datepick__days-week'>
-                                        {namesOfDaysOfWeekShort.map(dayOfWeek => {
-                                            return <span>{dayOfWeek}</span>
+                                        {namesOfDaysOfWeekShort.map((dayOfWeek, idx) => {
+                                            return <span key={idx}>{dayOfWeek}</span>
                                         })}
                                     </div>
                                     <div className='datepick__grid'>
-                                        {dates && dates.map(date => {
+                                        {dates && dates.map((date, idx) => {
 
                                             const lessonsForDay = getLessonsForDate(date)
 
                                             return (
                                                 <span
+                                                    key={idx}
                                                     className={addClasses('datepick__cell', {
                                                         'prev': !date.isSame(currentDate, 'month'),
                                                         'violet selected': activeDate.isSame(date, 'date'),
@@ -127,20 +129,35 @@ const Calendar = () => {
                             </div>
                         </div>
                     </div>
-                    {lessons && lessonsForDate?.map(lesson => {
+                    {lessons && lessonsForDate?.map((lesson, idx) => {
                         const time_slot = lesson.time_slot
                         const date = strDateToMoment(time_slot.day.date)
-                        const start_time = time_slot.start_time
+                        const start_time = momentTimeToStr(time_slot.start_time)
+                        const end_time = momentTimeToStr(time_slot.end_time)
+                        const duration1 = strDateToMoment(start_time)
+                        const duration2 = strDateToMoment(end_time)
+                        const duration = moment.duration(duration2.diff(duration1))
                         return (
-                            <div className='calendar-box__info'>
+                            <div className='calendar-box__info' key={idx}>
                                 <div className='calendar-box__date'>
-                                    <b>{namesOfMonths[date.month()]} {date.date()},</b>
-                                    <span>{namesOfDaysOfWeek[date.day() - 1]}</span></div>
+                                    <b>{namesOfMonths[date.month()]} {date.date()}, </b>
+                                    <span>{namesOfDaysOfWeekShort[date.day() - 1]}</span></div>
                                 <div className='calendar-box__lesson'>
                                     <div className='calendar-box__lesson-time'>{start_time}</div>
                                     <div className='calendar-box__lesson-info violet'>
-                                        <span className='calendar-box__lesson-duration'>45 минут</span>
-                                        <Link className='calendar-box__lesson-detail'>Подробнее</Link>
+                                        <h5 className='calendar-box__lesson-title'>
+                                            {lessonTypesMapping[lesson.lesson_type]} занятие
+                                        </h5>
+                                        {duration._data.hours >= 1 ? (
+                                            <span className='calendar-box__lesson-duration'>
+                                                {duration._data.hours} час {duration._data.minutes} минут
+                                            </span>
+                                        ) : (
+                                            <span className='calendar-box__lesson-duration'>
+                                                {duration._data.minutes} минут
+                                            </span>
+                                        )}
+                                        <Link className='info-item__link' to='/timetable-schedule'>Подробнее</Link>
                                     </div>
                                 </div>
                             </div>
