@@ -76,9 +76,10 @@ export const getLessons = createAsyncThunk(
 
 export const getTimeSlotSchedule = createAsyncThunk(
     `${nameSpace}/getTimeSlotsSchedule`,
-    async (data, {rejectWithValue}) => {
+    async (data, { rejectWithValue}) => {
         try {
-            const resp = await axiosApi.get(`/accounts/${data.userId}/time-slots/?day_after=${data.from}&day_before=${data.to}`)
+            const query = toQueryParams({ day_after: data.from, day_before: data.to })
+            const resp = await axiosApi.get(`/accounts/${data.userId}/time-slots/${query}`)
             return resp.data
         } catch (e) {
             return rejectWithValue(e)

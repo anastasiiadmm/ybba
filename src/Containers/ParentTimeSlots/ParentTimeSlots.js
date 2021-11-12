@@ -16,13 +16,12 @@ import {
 } from 'redux/lessons/lessonsSlice.js';
 import TimeSlot from 'Components/TimeSlot/TimeSlot';
 import Modal from 'Components/Modal/Modal';
-import { strDateToMoment, getCurrentDate } from 'utils/date/dateUtils.js';
+import { strDateToMoment, getCurrentDate, momentToStringDate } from 'utils/date/dateUtils.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 
 import 'Containers/ParentTimeSlots/parentTimeSlots.css'
 
 const MAX_SELECTED_TIME_SLOTS = 1
-const DAYS_RANGE = 5
 
 const ParentTimeSlots = props => {
     const { lessonId } = props.match.params
@@ -30,9 +29,11 @@ const ParentTimeSlots = props => {
     const dispatch = useDispatch()
     const history = useHistory()
 
+    const { timeSlots, selectedChild, lessonCreated, loading } = useSelector(lessonsSelector)
+
+    const [timeSlotsSchedule, setTimeSlotsSchedule] = useState()
     const [selectedTimeSlots, setSelectedTimeSlots] = useState([])
-    // const [dateFrom, setDateFrom] = useState(new Date(now.setDate(now.getDate())))
-    // const [dateTo, dateTo] = useState(new Date(new Date().setDate(now.getDate() + DAYS_RANGE)))
+    const [lessonCreatedModalIsOpen, setLessonCreatedModalIsOpen] = useState(false)
 
     const currentDate = moment()
     const startOfWeek = currentDate.clone().startOf('week')
@@ -40,20 +41,24 @@ const ParentTimeSlots = props => {
     const [dateFrom, setDateFrom] = useState(startOfWeek.clone().subtract(startOfWeek.day() - 1, 'days'))
     const [dateTo, setDateTo] = useState(endOfWeek.clone().subtract(2 - endOfWeek.day(), 'days'))
 
-    const [lessonCreatedModalIsOpen, setLessonCreatedModalIsOpen] = useState(false)
+    useEffect(() => {
+        if (timeSlots) {
+            const timeSlotsObj = timeSlots?.reduce((timeSlots, timeslot) => {
+                const date = timeslot.day.date;
+                if (!timeSlots[date]) {
+                    timeSlots[date] = [];
+                }
+                timeSlots[date].push(timeslot);
+                return timeSlots;
+            }, {});
 
-    const { timeSlots, selectedChild, lessonCreated, loading } = useSelector(lessonsSelector)
-
-    const timeSlotsSchedule = timeSlots?.reduce((timeSlots, timeslot) => {
-        const date = timeslot.day.date;
-        if (!timeSlots[date]) {
-            timeSlots[date] = [];
+            setTimeSlotsSchedule(timeSlotsObj)
         }
-        timeSlots[date].push(timeslot);
-        return timeSlots;
-    }, {});
+    }, [timeSlots])
 
-    const timeSlotsArray = timeSlotsSchedule && Object.keys(timeSlotsSchedule).map((date) => {
+    const timeSlotsArray = timeSlotsSchedule && Object.keys(timeSlotsSchedule).sort((a, b) => {
+        return strDateToMoment(a) - strDateToMoment(b)
+    }).map((date) => {
         return {
             date,
             timeSlot: timeSlotsSchedule[date]
@@ -77,25 +82,12 @@ const ParentTimeSlots = props => {
         }
     }
 
-    // const dateFromChangeHandler = date => {
-    //     setDateFrom(date[0])
-    //     dispatch(getTimeSlots(
-    //         getGetTimesSlotsData(date[0], dateTo, selectedChild.id)
-    //     ))
-    // }
-    // const dateToChangeHandler = date => {
-    //     setDateTo(date[0])
-    //     dispatch(getTimeSlots(
-    //         getGetTimesSlotsData(dateFrom, date[0], selectedChild.id)
-    //     ))
-    // }
-
-    const toNextWeek = async () => {
+    const toNextDay = async () => {
         await setDateFrom(dateFrom.clone().add(1, 'day'))
         await setDateTo(dateTo.clone().add(1, 'day'))
     }
 
-    const toPrevWeek = async () => {
+    const toPrevDay = async () => {
         await setDateFrom(dateFrom.clone().subtract(1, 'day'))
         await setDateTo(dateTo.clone().subtract(1, 'day'))
     }
@@ -126,8 +118,8 @@ const ParentTimeSlots = props => {
         }
 
         dispatch(getTimeSlots({
-            from: moment(dateFrom).format("DD/MM/YYYY"),
-            to: moment(dateTo).format("DD/MM/YYYY"),
+            from: momentToStringDate(dateFrom),
+            to: momentToStringDate(dateTo),
             childId: selectedChild.id
         }))
 
@@ -152,44 +144,16 @@ const ParentTimeSlots = props => {
             <MainTitleBlock
                 leftTitle='Выберите временной слот'
             />
-            <div className="content">
-                <div className="content__inner">
+            <div className='content'>
+                <div className='content__inner'>
                     <div className='classes'>
                         <div className='classes__content'>
                             <div className='timeslot' id='timeSlot'>
                                 <div className='timeslot__body'>
-                                    {/*<div className='d-flex justify-content-around flex-wrap'>*/}
-                                    {/*    <FormField*/}
-                                    {/*        label='От'*/}
-                                    {/*        type='flatpickr'*/}
-                                    {/*        configs={{*/}
-                                    {/*            dateFormat: 'd/m/Y',*/}
-                                    {/*            enableTime: false,*/}
-                                    {/*            minDate: now*/}
-                                    {/*        }}*/}
-                                    {/*        onChange={dateFromChangeHandler}*/}
-                                    {/*        className='form__field'*/}
-                                    {/*        value={dateFrom}*/}
-                                    {/*    />*/}
-                                    {/*    <FormField*/}
-                                    {/*        label='До'*/}
-                                    {/*        type='flatpickr'*/}
-                                    {/*        configs={{*/}
-                                    {/*            dateFormat: 'd/m/Y',*/}
-                                    {/*            enableTime: false,*/}
-                                    {/*            minDate: dateFrom,*/}
-                                    {/*            maxDate: new Date().setDate(dateFrom.getDate() + 5)*/}
-                                    {/*        }}*/}
-                                    {/*        onChange={dateToChangeHandler}*/}
-                                    {/*        className='form__field'*/}
-                                    {/*        value={dateTo}*/}
-                                    {/*    />*/}
-                                    {/*</div>*/}
-
-                                    <button type="button" id="timeSlotPrev" className="timeslot__prev"
-                                            onClick={toPrevWeek}/>
-                                    <button type="button" id="timeSlotNext" className="timeslot__next"
-                                            onClick={toNextWeek}/>
+                                    <button type='button' id='timeSlotPrev' className='timeslot__prev'
+                                            onClick={toPrevDay}/>
+                                    <button type='button' id='timeSlotNext' className='timeslot__next'
+                                            onClick={toNextDay}/>
                                     {(!loading && (timeSlots && !timeSlots.length)) && (
                                         <h6>Нет свободных логопедов на выделенный период</h6>
                                     )}
@@ -201,9 +165,7 @@ const ParentTimeSlots = props => {
                                     <div className='timeslot__main-wrap'>
                                         <div className='timeslot__main'>
                                             <div className='timeslot__items'>
-                                                {timeSlotsArray && timeSlotsArray.sort((a, b) => {
-                                                    return strDateToMoment(a.date) - strDateToMoment(b.date)
-                                                }).map(timeSlotItem => {
+                                                {timeSlotsArray && timeSlotsArray.map(timeSlotItem => {
                                                     const date = strDateToMoment(timeSlotItem.date)
                                                     const month = moment(date).format('MMM')
                                                     const dayOfWeek = moment(date).format('ddd')
@@ -236,7 +198,6 @@ const ParentTimeSlots = props => {
                                                                         allowsToChoice={timeSlot.teachers.length}
                                                                     >
                                                                         {moment(timeSlot.start_time, 'H:m:s').format('H:mm')}
-                                                                        {/*{moment(timeSlot.timeSlot.end_time, 'H:m:s').format('H:mm')}*/}
                                                                     </TimeSlot>
                                                                 )
                                                             })}
@@ -246,10 +207,10 @@ const ParentTimeSlots = props => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="timeslot__times timeslot__times_morn">Утро</div>
-                                    <div className="timeslot__times timeslot__times_day">День</div>
-                                    <div className="timeslot__times timeslot__times_evn">Вечер</div>
-                                    <div className="timeslot__times timeslot__times_night">Ночь</div>
+                                    <div className='timeslot__times timeslot__times_morn'>Утро</div>
+                                    <div className='timeslot__times timeslot__times_day'>День</div>
+                                    <div className='timeslot__times timeslot__times_evn'>Вечер</div>
+                                    <div className='timeslot__times timeslot__times_night'>Ночь</div>
 
                                 </div>
 

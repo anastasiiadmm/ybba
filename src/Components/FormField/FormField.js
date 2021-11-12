@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
 import Flatpickr from 'react-flatpickr';
@@ -17,6 +17,12 @@ const FormField = props => {
         type, onChange, className, name, required, label, value, pattern, id, maxLength, tooltipTitle, tooltipText,
         helpText, readOnly, errors, disabled, mask, showMaskOnFocus, showMaskOnHover, options, configs, checked
     } = props
+
+    const [passwordShown, setPasswordShown] = useState(false);
+
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown)
+    };
 
     const toolTip = <>
         {(tooltipTitle || tooltipText) && <>
@@ -138,6 +144,35 @@ const FormField = props => {
                 specialLabel={label}
             />
             {Errors}
+        </>
+    }
+
+    if (type === 'password') {
+        field = <>
+            <div className='btn-eye__wrap' onClick={togglePassword}>
+                <label className='form__label'>
+                    {label}
+                    <input
+                        type={passwordShown ? 'text' : 'password'}
+                        className={addClasses(className, {
+                            'error': fieldErrors?.length
+                        })}
+                        required={required}
+                        name={name}
+                        onChange={onChange}
+                        value={value}
+                        pattern={pattern}
+                        id={id}
+                        maxLength={maxLength}
+                        readOnly={readOnly}
+                        disabled={disabled}
+                    />
+
+                    {Errors}
+                    {helpText && <div className='form__passw-info'>{helpText}</div>}
+                    {toolTip}
+                </label>
+            </div>
         </>
     }
 

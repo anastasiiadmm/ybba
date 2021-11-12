@@ -37,6 +37,18 @@ export const strDateToMoment = date => {
     return moment(date, config.dateFormat)
 }
 
+export const momentToStringDate = date => {
+    return moment(date).format('DD/MM/YYYY')
+}
+
+export const momentToFormatTime = (time) => {
+    return moment(time, 'H:m:s').format('H:mm')
+}
+
+export const strDateToMomentDate = date => {
+    return moment(date, 'HH:mm')
+}
+
 /**
  * Converts string time to moment date object
  * @param {string} time Time to convert to moment time object

@@ -59,36 +59,6 @@ h5, h4, h3 {
     padding-right: 100px;
 }
 
-.timeslot__times_night {
-    top: 490px;
-}
-
-@media screen and (min-width: 1024px) {
-    .timeslot__times_night {
-        top: 552px;
-    }
-}
-
-@media screen and (min-width: 1400px) {
-    .timeslot__times_night {
-        top: 600px;
-    }
-}
-
-.timeslot__times_night::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 5px;
-    margin: auto 0;
-    width: 35px;
-    height: 35px;
-    color: #00CAD7;
-    background: no-repeat url("assets/img/timeslot_night.png");
-    background-size: contain;
-}
-
 .timeslot__body {
     text-align: center;
 }
@@ -102,8 +72,4 @@ h5, h4, h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.spinner-center {
-    text-align: center;
 }
