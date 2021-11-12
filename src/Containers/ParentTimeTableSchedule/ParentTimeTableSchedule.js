@@ -37,7 +37,7 @@ const ParentTimeTableSchedule = () => {
 
     const [nowDate, setNowDate] = useState()
     const [dates, setDates] = useState(null)
-    const currentDate = moment()
+
     const [timeSlots, setTimeSlots] = useState(null)
     const startOfWeek = moment().startOf('isoWeek')
     const endOfWeek = moment().endOf('isoWeek')
