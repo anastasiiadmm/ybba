@@ -23,7 +23,9 @@ const ParentProfileEdit = () => {
             first_name: user?.profile?.first_name || '',
             last_name: user?.profile?.last_name || '',
             date_of_birth: user?.profile?.date_of_birth || '',
-            phone_number: user?.profile.phone_number || ''
+            phone_number: user?.profile.phone_number || '',
+            country: user?.profile?.country || '',
+            city: user?.profile?.city || ''
         }
     }
 
@@ -31,6 +33,23 @@ const ParentProfileEdit = () => {
 
     const history = useHistory()
     const dispatch = useDispatch()
+
+    const setCountry = async data => {
+        await setFormData({...formData,
+            profile: {
+                ...formData.profile,
+                country: data.value
+            }
+        })
+    }
+
+    const setCity = data => {
+        setFormData({...formData,
+            profile: {
+                ...formData.profile,
+                city: data.value
+            }})
+    }
 
     const onSubmit = e => {
         e.preventDefault()
@@ -73,6 +92,8 @@ const ParentProfileEdit = () => {
                                     user={user}
                                     formData={formData}
                                     setFormData={setFormData}
+                                    setCountry={setCountry}
+                                    setCity={setCity}
                                 />
 
                             </div>
