@@ -95,3 +95,7 @@ h5, h4, h3 {
     display: flex;
     flex-direction: column;
 }
+
+.dates__field {
+    width: 196px;
+}
