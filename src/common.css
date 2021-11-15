@@ -50,3 +50,17 @@ h5, h4, h3 {
 .payment__info {
     width: 100%;
 }
+
+.scrollbar-hidden {
+    overflow-x: scroll;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} 
+
