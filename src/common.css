@@ -28,7 +28,7 @@ h5, h4, h3 {
 .btn-eye__wrap::before {
     content: '';
     position: absolute;
-    top: 48px;
+    top: 47px;
     bottom: 0;
     right: 20px;
     margin: auto 0;
@@ -76,4 +76,9 @@ h5, h4, h3 {
 
 .calendar-big__btns {
     margin: 0;
+}
+
+.form__label {
+    display: flex;
+    flex-direction: column;
 }

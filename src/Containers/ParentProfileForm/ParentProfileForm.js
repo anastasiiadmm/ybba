@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import moment from 'moment';
+
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -162,6 +164,8 @@ const ParentProfileForm = (props) => {
                             label='Страна проживания'
                             type='select'
                             className='country_field'
+                            // readonly={true}
+                            // onFocus={{removeAttribute(readonly)}}
                             name='country'
                             options={countriesOptions}
                             onChange={setCountry}
@@ -239,8 +243,8 @@ const ParentProfileForm = (props) => {
                     {passwordChanging && <div className='form__hidden-in'>
                         <div className='dflex'>
                             <div className='form__hidden-col'>
-                                <label htmlFor='passw' className='form__label'>Введите пароль</label>
                                 <FormField
+                                    label='Введите пароль'
                                     type='password'
                                     className='form__field form__field_wfix-passw'
                                     value={passwordData.password}
@@ -250,8 +254,8 @@ const ParentProfileForm = (props) => {
                                 />
                             </div>
                             <div className='form__hidden-col'>
-                                <label htmlFor='passw2' className='form__label'>Повторите пароль</label>
                                 <FormField
+                                    label='Повторите пароль'
                                     type='password'
                                     className='form__field form__field_wfix-passw'
                                     value={passwordData.passwordRepeat}
