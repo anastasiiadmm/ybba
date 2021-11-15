@@ -1,6 +1,7 @@
 .gameItem {
-    width: 180px;
-    height: 100px;
+    min-width: 180px !important;
+    max-width: 180px !important;
+    height: 100px !important;
     cursor: pointer;
 }
 
@@ -9,7 +10,7 @@
 }
 
 .therapistGameMain {
-    height: 61.5vh !important;
+    height: 61.2vh !important;
 }
 
 .parentGameMain {
@@ -79,6 +80,7 @@
     border-width: 2px 2px 2px 0;
     background: #fff;
 }
+
 .play-game-button__active::before {
     content: '';
     position: absolute;
@@ -104,6 +106,7 @@
     border-width: 2px 2px 2px 0;
     background: #000;
 }
+
 .play-game-button__inactive::before {
     content: '';
     position: absolute;
@@ -116,4 +119,29 @@
     cursor: pointer;
     background: no-repeat url("../../assets/img/white-play-button.png");
     background-size: contain;
+}
+
+.gamesLitsScrollbar {
+    overflow-x: scroll !important;
+}
+
+.gamesLitsScrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 3px;
+}
+
+
+/* Track */
+
+.gamesLitsScrollbar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+.gamesLitsScrollbar::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
 }
