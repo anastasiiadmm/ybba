@@ -90,13 +90,15 @@ const Webcam = (props) => {
                 >
                     {isUserWebcamInZoom() ? '-' : '+'}
                 </button>
-                <button
-                    className='gamef__person-btn soundBtn d-flex align-items-center justify-content-center'
-                    type='button'
-                    onClick={toggleMute}
-                >
-                    <img src={isMuted ? soundOff : soundOn} alt='sound'/>
-                </button>
+                {checkUserRole(userRoles.therapist) && (
+                    <button
+                        className='gamef__person-btn soundBtn d-flex align-items-center justify-content-center'
+                        type='button'
+                        onClick={toggleMute}
+                    >
+                        <img src={isMuted ? soundOff : soundOn} alt='sound'/>
+                    </button>
+                )}
                 <Jitsi
                     meetingId={meetingId}
                     height={195}
