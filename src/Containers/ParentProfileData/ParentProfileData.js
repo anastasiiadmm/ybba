@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const ParentProfileData = (props) => {
 
-    const {user} = props
+    const { user } = props
 
     return (
         <>
@@ -18,8 +18,6 @@ const ParentProfileData = (props) => {
                         <dd>{user?.profile?.date_of_birth || 'Дата рождения не указана'}</dd>
                         <dt>Страна проживания</dt>
                         <dd>{user?.profile?.country || 'Страна проживания не указана'}</dd>
-                        <dt>Город проживания</dt>
-                        <dd>{user?.profile?.country ? user?.profile?.city : 'Город проживания не указан'}</dd>
                         <dt>Email</dt>
                         <dd>{user.email}</dd>
                     </dl>
@@ -31,6 +29,8 @@ const ParentProfileData = (props) => {
                         <dd>{user.profile.last_name || 'Фамилия не указана'}</dd>
                         <dt>Мобильный телефон</dt>
                         <dd>{user.profile.phone_number || 'Номер телефона не указан'}</dd>
+                        <dt>Город проживания</dt>
+                        <dd>{user?.profile?.country ? user?.profile?.city : 'Город проживания не указан'}</dd>
                     </dl>
                 </div>
             </div>
