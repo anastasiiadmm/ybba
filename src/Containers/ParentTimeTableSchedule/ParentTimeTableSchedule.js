@@ -147,7 +147,7 @@ const ParentTimeTableSchedule = () => {
                         <div className='calendar-big__top'>
                             <Button to='/' className='calendar-big__close'/>
                             <div className='calendar-big__label'>Период</div>
-                            <FormField className='calendar-big__field field'
+                            <FormField className='calendar-big__field field dates__field'
                                        value={[moment(startOfCalendar).toDate(), moment(endOfCalendar).toDate()]}
                                        onChange={datesChangeHandler}
                                        type='flatpickr'
