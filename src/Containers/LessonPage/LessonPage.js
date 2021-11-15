@@ -204,8 +204,8 @@ const LessonPage = (props) => {
             {checkUserRole(userRoles.therapist) && (
                 <footer className='gamef__footer'>
                     <div className='gamef__previews-wrap'>
-                        <div className='gamef__previews'>
-                            <div className='gamef__previews-inner'>
+                        <div className='gamef__previews gamesLitsScrollbar'>
+                            <div className='gamef__previews-inner w-100'>
                                 {lesson?.games.length && lesson.games.map((game, index) => {
                                     return (
                                         <div

@@ -51,6 +51,19 @@ h5, h4, h3 {
     width: 100%;
 }
 
+.scrollbar-hidden {
+    overflow-x: scroll;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} 
+
 .country_field {
     width: 150% !important;
 }

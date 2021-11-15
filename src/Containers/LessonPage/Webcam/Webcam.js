@@ -73,17 +73,16 @@ const Webcam = (props) => {
 
     return (
         <div
-            className={addClasses('', {
+            className={addClasses('webcam', {
                 'gamef__person-child': checkUserRole(userRoles.therapist),
-                'gamef__person-teacher': checkUserRole(userRoles.parent)
-            })}
-        >
-            <div className={addClasses('gamef__person-in webcam', {
+                'gamef__person-teacher': checkUserRole(userRoles.parent),
                 'webcamZoom': (
                     (checkUserRole(userRoles.therapist) && isWebcamInZoom) ||
                     (checkUserRole(userRoles.parent) && isParentWebcamIncreased)
                 ),
-            })}>
+            })}
+        >
+            <div className='gamef__person-in'>
                 <button
                     className='gamef__person-btn zoomBtn'
                     type='button'
@@ -104,7 +103,7 @@ const Webcam = (props) => {
                 />
                 {checkUserRole(userRoles.parent) && (
                     <div className='bg-dark dragBlock'>
-                        перетащить
+                        <span className='m-3'>⇄</span>
                     </div>
                 )}
             </div>
