@@ -25,6 +25,7 @@ const JitsiBlock = (props) => {
             userInfo: { ...userInfo }
         }
         const apiObj = new window.JitsiMeetExternalAPI('meet.jit.si', options);
+        apiObj.executeCommand('subject', ' ');
         setApi(apiObj)
     }, [])
 
