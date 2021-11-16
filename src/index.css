@@ -3082,14 +3082,14 @@ ol.game__lesson-list {
 
 .gamef__preview-img {
     display: block;
-    opacity: 34%;
+    opacity: 0.3;
     position: relative;
     z-index: 20;
     border: 4px solid transparent;
 }
 
 .active .gamef__preview-img {
-    opacity: 100%;
+    opacity: 1;
     border-color: #fff;
 }
 
