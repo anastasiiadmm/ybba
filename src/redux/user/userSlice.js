@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import axiosApi from '../../axios';
-import { defaultError } from '../../config.js';
+import axiosApi from 'axios';
+import { defaultError } from 'config.js';
 
 
 const nameSpace = 'user'
