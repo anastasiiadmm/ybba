@@ -3089,7 +3089,7 @@ ol.game__lesson-list {
 }
 
 .active .gamef__preview-img {
-    opacity: 1;
+    opacity: 100%;
     border-color: #fff;
 }
 
