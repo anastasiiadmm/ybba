@@ -62,6 +62,12 @@ const ParentProfileEdit = () => {
         if (!userProfile.date_of_birth) {
             delete submitData.data.profile.date_of_birth
         }
+        if(!userProfile.country) {
+            delete submitData.data.profile.country
+        }
+        if(!userProfile.city) {
+            delete submitData.data.profile.city
+        }
         dispatch(updateUserData(submitData))
     }
 

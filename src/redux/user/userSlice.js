@@ -1,7 +1,7 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import axiosApi from '../../axios';
-import {defaultError} from '../../config.js';
+import { defaultError } from '../../config.js';
 
 
 const nameSpace = 'user'
@@ -22,7 +22,7 @@ const INITIAL_STATE = {
 
 export const editUserEmail = createAsyncThunk(
     `${nameSpace}/editUserEmail`,
-    async (email, {getState, rejectWithValue}) => {
+    async (email, { getState, rejectWithValue }) => {
         try {
             const user = getState().auth.user
             const resp = await axiosApi.put(`/accounts/${user.id}/email/update/`, email)
@@ -35,9 +35,9 @@ export const editUserEmail = createAsyncThunk(
 
 export const updateUserData = createAsyncThunk(
     `${nameSpace}/updateUserData`,
-    async (data, {rejectWithValue}) => {
+    async (data, { rejectWithValue }) => {
         try {
-            const userData = {...data.data}
+            const userData = { ...data.data }
             if (userData.profile && userData.profile.phone_number && !userData.profile.phone_number.includes('+')) {
                 userData.profile.phone_number = `+${userData.profile.phone_number}`
             }
@@ -55,7 +55,7 @@ export const updateUserData = createAsyncThunk(
 
 export const updateUserPassword = createAsyncThunk(
     `${nameSpace}/updateUserPassword`,
-    async (data, {rejectWithValue}) => {
+    async (data, { rejectWithValue }) => {
         try {
             const res = await axiosApi.put(`/accounts/${data.userId}/update/`, data.data)
             return res.data
@@ -71,7 +71,7 @@ export const updateUserPassword = createAsyncThunk(
 
 export const createUser = createAsyncThunk(
     `${nameSpace}/createUser`,
-    async (userData, {rejectWithValue}) => {
+    async (userData, { rejectWithValue }) => {
         try {
             const resp = await axiosApi.post('/accounts/registration/', userData)
             return resp.data
@@ -111,7 +111,7 @@ const userSlice = createSlice({
             state.success = true
             state.loading = false
         },
-        [updateUserData.rejected]: (state, {payload}) => {
+        [updateUserData.rejected]: (state, { payload }) => {
             state.errors = payload
             state.success = false
             state.loading = false
@@ -121,7 +121,7 @@ const userSlice = createSlice({
             state.success = true
             state.isPasswordUpdated = true
         },
-        [updateUserPassword.rejected]: (state, {payload}) => {
+        [updateUserPassword.rejected]: (state, { payload }) => {
             state.errors = payload
             state.success = false
             state.isPasswordUpdated = false
@@ -134,14 +134,14 @@ const userSlice = createSlice({
             state.errors = null
             state.success = false
         },
-        [createUser.fulfilled]: (state, {payload}) => {
+        [createUser.fulfilled]: (state, { payload }) => {
             state.user = payload.user
             state.tokens = payload.tokens
             state.loading = false
             state.success = true
             state.errors = null
         },
-        [createUser.rejected]: (state, {payload}) => {
+        [createUser.rejected]: (state, { payload }) => {
             state.loading = false
             state.success = false
             state.commonError = payload?.detail
@@ -156,13 +156,13 @@ const userSlice = createSlice({
             state.editEmailErrors = null
             state.editUserEmailSuccess = true
         },
-        [editUserEmail.rejected]: (state, {payload}) => {
+        [editUserEmail.rejected]: (state, { payload }) => {
             state.editEmailErrors = payload
             state.editUserEmailSuccess = false
         }
     }
 })
 
-export const {clearUserState, clearUserFromUserState} = userSlice.actions
+export const { clearUserState, clearUserFromUserState } = userSlice.actions
 export const userSelector = state => state.user
 export default userSlice.reducer
