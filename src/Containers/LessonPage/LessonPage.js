@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import Unity, { UnityContext } from 'react-unity-webgl';
 import { ProgressBar } from 'react-bootstrap';
+import ReactJsAlert from 'reactjs-alert';
 
 import { lessonSelector, clearLessonState } from 'redux/lesson/lessonSlice.js';
 import { changeActiveGame, changeLessonStatus, resizeChildWebcam } from 'redux/lesson/actions.js';
@@ -24,11 +25,12 @@ import Notes from 'Containers/LessonPage/Notes/Notes.js';
 import { checkUserRole } from 'utils/user.js';
 import Drag from 'Components/Drag/Drag.js';
 import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
+import { BrowserPermissionsContext } from '../../context/BrowserPermissionsContext/BrowserPermissionsContext';
 
 import 'Containers/LessonPage/lessonPage.css'
 
-
 const LessonPage = (props) => {
+    const { isMicrophoneAllowed, isCameraAllowed } = useContext(BrowserPermissionsContext)
 
     const { sendWsAction } = useContext(WsContext)
 
@@ -42,6 +44,8 @@ const LessonPage = (props) => {
     const [activeGame, setActiveGame] = useState(null)
     const [unityContext, setUnityContext] = useState(null)
     const [unityLoadProgress, setUnityLoadProgress] = useState(0)
+    // eslint-disable-next-line no-unused-vars
+    const [state, setState] = useState({ status: true })
 
     const onChangeActiveGame = game => {
         if (game.id !== activeGame.id) {
@@ -160,6 +164,14 @@ const LessonPage = (props) => {
 
     return (
         <div className='gamef position-relative'>
+            {(!isMicrophoneAllowed || !isCameraAllowed) && (
+                <ReactJsAlert
+                    status='true'
+                    type='warning'
+                    title='Разрешите доступ для камеры и микрофона на вашем браузере'
+                    Close={() => setState({ status: false })}
+                />
+            )}
             <header
                 className={addClasses('gamef__head position-relative', {
                     'gamef__head_teacher': checkUserRole(userRoles.therapist),
