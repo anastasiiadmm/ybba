@@ -13,7 +13,6 @@ import ParentProfileEdit from 'Containers/ParentProfileEdit/ParentProfileEdit';
 import DevicesTestPage from 'Containers/DevicesTestPage/DevicesTestPage';
 import Lessons from 'Containers/Lessons/Lessons';
 import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
-import Payments from 'Containers/Payments/Payments';
 import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
 
@@ -24,7 +23,7 @@ const App = () => {
 
     return (
         <Switch>
-            <PrivateRoute path='/payments/' component={Payments}/>
+            {/*<PrivateRoute path='/payments/' component={Payments}/>*/}
             <PrivateRoute path='/child-profile/' component={ChildProfiles} exact/>
             <PrivateRoute path='/child-profile/:childId/:stage/' component={ChildProfile} exact/>
             <PrivateRoute path='/lessons/:lessonId/timeSlots/' exact component={ParentTimeSlots}/>

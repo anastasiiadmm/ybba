@@ -38,11 +38,11 @@ const SideBar = () => {
                             Профиль ребёнка
                         </SideBarLink>
                     )}
-                    {checkUserRole(userRoles.parent) && (
-                        <SideBarLink to='/payments/' classes='main-nav__link_payment'>
-                            Управление платежами
-                        </SideBarLink>
-                    )}
+                    {/*{checkUserRole(userRoles.parent) && (*/}
+                    {/*    <SideBarLink to='/payments/' classes='main-nav__link_payment'>*/}
+                    {/*        Управление платежами*/}
+                    {/*    </SideBarLink>*/}
+                    {/*)}*/}
                     {/*<SideBarLink to='/settings/' classes='main-nav__link_setting'>*/}
                     {/*    Настройки*/}
                     {/*</SideBarLink>*/}
