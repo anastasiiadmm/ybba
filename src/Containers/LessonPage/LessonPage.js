@@ -99,6 +99,10 @@ const LessonPage = (props) => {
         }))
     }
 
+    const getCanvasWidth = parentHeight => {
+        return (parentHeight / 9) * 16
+    }
+
     const webcamComponentProps = {
         meetingId: lessonId,
         lessonId: lessonId,
@@ -190,7 +194,10 @@ const LessonPage = (props) => {
                         {unityContext && (
                             <Unity
                                 unityContext={unityContext}
-                                style={{ width: '100%', height: `${canvasParent.current.clientHeight}px` }}
+                                style={{
+                                    width: `${getCanvasWidth(canvasParent.current.clientHeight)}px`,
+                                    height: `${canvasParent.current.clientHeight}px`
+                                }}
                                 className={addClasses('', {
                                     'd-none': unityLoadProgress < 1,
                                 })}
