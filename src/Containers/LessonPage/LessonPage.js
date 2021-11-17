@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useEffect, useContext, useCallback, useRef } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -158,6 +158,8 @@ const LessonPage = (props) => {
         }
     }, [lessonId, sendJsonToGameWithTimeout, unityContext])
 
+    const canvasParent = useRef()
+
     return (
         <div className='gamef position-relative'>
             <header
@@ -184,11 +186,12 @@ const LessonPage = (props) => {
                 })}
             >
                 <div className='gamef__work-space'>
-                    <div className='gamef__work-space-in'>
+                    <div className='gamef__work-space-in' ref={canvasParent}>
                         {unityContext && (
                             <Unity
                                 unityContext={unityContext}
-                                className={addClasses('gamef__screen', {
+                                style={{ width: '100%', height: `${canvasParent.current.clientHeight}px` }}
+                                className={addClasses('', {
                                     'd-none': unityLoadProgress < 1,
                                 })}
                             />

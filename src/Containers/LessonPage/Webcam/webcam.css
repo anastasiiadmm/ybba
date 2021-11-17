@@ -1,3 +1,79 @@
+.gamef__person-teacher {
+    width: 300px;
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    box-shadow: 0 4px 34px 0 rgba(0, 0, 0, 0.55);
+    z-index: 900;
+}
+
+.gamef__person-child {
+    width: 346px;
+    margin: 0 auto;
+}
+
+.gamef__person-in {
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 1400px) {
+    .gamef__person-child .gamef__person-in {
+        transform: translateX(-90px);
+    }
+}
+
+.gamef__person-teacher .zoom {
+    transform: scale(2.7);
+    transform-origin: top right;
+    border-radius: 5px;
+}
+
+.gamef__person-child .zoom {
+    transform: scale(2.3);
+    transform-origin: top center;
+    border-radius: 8px;
+}
+
+.gamef__person-teacher .zoom .gamef__person-name {
+    transform: scale(0.37) translate(-14px, 54px);
+    transform-origin: top left;
+}
+
+.gamef__person-child .zoom .gamef__person-name {
+    transform: scale(0.43) translate(-10px, 44px);
+    transform-origin: top left;
+}
+
+.gamef__person-btn {
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 30px;
+    line-height: 22px;
+    color: #fff;
+}
+
+.gamef__person-teacher .zoom .gamef__person-btn {
+    transform: scale(0.37) translate(14px, 54px);
+    transform-origin: top right;
+}
+
+.gamef__person-child .zoom .gamef__person-btn {
+    transform: scale(0.43) translate(10px, 44px);
+    transform-origin: top right;
+}
+
+@media screen and (min-width: 1400px) {
+    .gamef__person-child .zoom {
+        transform: scale(2.3) translateX(-40px);
+    }
+}
+
 .webcam {
     transition: all .2s;
 }
