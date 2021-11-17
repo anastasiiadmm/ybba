@@ -33,8 +33,6 @@
 }
 
 .gamef__work-space-in {
-    display: flex;
-    justify-content: center;
     height: 100%;
     position: relative;
     overflow: hidden;

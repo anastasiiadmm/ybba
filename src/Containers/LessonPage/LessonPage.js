@@ -190,7 +190,12 @@ const LessonPage = (props) => {
                 })}
             >
                 <div className='gamef__work-space'>
-                    <div className='gamef__work-space-in' ref={canvasParent}>
+                    <div
+                        className={addClasses('gamef__work-space-in', {
+                            'd-flex justify-content-center': unityLoadProgress >= 1
+                        })}
+                        ref={canvasParent}
+                    >
                         {unityContext && (
                             <Unity
                                 unityContext={unityContext}
