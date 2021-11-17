@@ -97,21 +97,6 @@ body {
     }
 }
 
-.sidebar {
-    width: 304px;
-    background: #fff;
-    box-shadow: 4px 0px 12px rgba(0, 0, 0, 0.15);
-    padding: 31px 20px 31px 22px;
-    align-self: flex-start;
-}
-
-@media screen and (min-width: 1024px) {
-    .sidebar {
-        width: 354px;
-        padding: 31px 36px 31px 42px;
-    }
-}
-
 .main {
     width: calc(100% - 304px);
     padding: 33px 20px;
