@@ -25,10 +25,10 @@ h5, h4, h3 {
     margin-right: 28px;
 }
 
-.btn-eye__wrap:before {
+.btn-eye__wrap::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 47px;
     bottom: 0;
     right: 20px;
     margin: auto 0;
@@ -64,3 +64,38 @@ h5, h4, h3 {
     scrollbar-width: none;
 } 
 
+.country_field {
+    width: 150% !important;
+}
+
+.form__input {
+    padding-right: 100px;
+}
+
+.timeslot__body {
+    text-align: center;
+}
+
+.form__link-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.calendar-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar-big__btns {
+    margin: 0;
+}
+
+.form__label {
+    display: flex;
+    flex-direction: column;
+}
+
+.dates__field {
+    width: 196px;
+}

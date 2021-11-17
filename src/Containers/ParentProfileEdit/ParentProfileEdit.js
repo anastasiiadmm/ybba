@@ -1,21 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
-import {useSelector, useDispatch} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {useHistory} from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import ParentProfileForm from 'Containers/ParentProfileForm/ParentProfileForm';
-import {updateUserData, userSelector, clearUserState} from 'redux/user/userSlice.js';
+import { updateUserData, userSelector, clearUserState } from 'redux/user/userSlice.js';
 import Button from 'Components/Button/Button';
-import {authSelector, getCurrentUserData} from 'redux/auth/authSlice.js';
+import { authSelector, getCurrentUserData } from 'redux/auth/authSlice.js';
 
 
 const ParentProfileEdit = () => {
 
-    const {loading, success} = useSelector(userSelector)
-    const {user} = useSelector(authSelector)
+    const { loading, success } = useSelector(userSelector)
+    const { user } = useSelector(authSelector)
 
     const initialFormData = {
         email: user?.email,
@@ -23,24 +23,50 @@ const ParentProfileEdit = () => {
             first_name: user?.profile?.first_name || '',
             last_name: user?.profile?.last_name || '',
             date_of_birth: user?.profile?.date_of_birth || '',
-            phone_number: user?.profile.phone_number || ''
+            phone_number: user?.profile.phone_number || '',
+            country: user?.profile?.country || '',
+            city: user?.profile?.city || ''
         }
     }
 
     const [formData, setFormData] = useState(initialFormData)
+    // console.log('formData', formData)
 
     const history = useHistory()
     const dispatch = useDispatch()
 
+    const setCountry = async data => {
+        await setFormData({ ...formData,
+            profile: {
+                ...formData.profile,
+                country: data.value
+            }
+        })
+    }
+
+    const setCity = data => {
+        setFormData({ ...formData,
+            profile: {
+                ...formData.profile,
+                city: data.value
+            } })
+    }
+
     const onSubmit = e => {
         e.preventDefault()
-        const submitData = {data: formData, userId: user.id}
+        const submitData = { data: formData, userId: user.id }
         const userProfile = submitData.data.profile
         if (!userProfile.phone_number) {
             delete submitData.data.profile.phone_number
         }
         if (!userProfile.date_of_birth) {
             delete submitData.data.profile.date_of_birth
+        }
+        if(!userProfile.country) {
+            delete submitData.data.profile.country
+        }
+        if(!userProfile.city) {
+            delete submitData.data.profile.city
         }
         dispatch(updateUserData(submitData))
     }
@@ -73,6 +99,8 @@ const ParentProfileEdit = () => {
                                     user={user}
                                     formData={formData}
                                     setFormData={setFormData}
+                                    setCountry={setCountry}
+                                    setCity={setCity}
                                 />
 
                             </div>

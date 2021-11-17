@@ -1,18 +1,18 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
-import {useSelector, useDispatch} from 'react-redux';
-import {Link} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
 import ParentProfileData from 'Containers/ParentProfileData/ParentProfileData';
-import {authSelector} from 'redux/auth/authSlice.js';
-import {clearUserState} from 'redux/user/userSlice.js';
+import { authSelector } from 'redux/auth/authSlice.js';
+import { clearUserState } from 'redux/user/userSlice.js';
 
 
 const ParentProfile = () => {
 
-    const {user} = useSelector(authSelector)
+    const { user } = useSelector(authSelector)
     const dispatch = useDispatch()
 
     useEffect(() => {
