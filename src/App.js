@@ -14,7 +14,6 @@ import ParentTimeTableSchedule from 'Containers/ParentTimeTableSchedule/ParentTi
 import DevicesTestPage from 'Containers/DevicesTestPage/DevicesTestPage';
 import Lessons from 'Containers/Lessons/Lessons';
 import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
-import Payments from 'Containers/Payments/Payments';
 import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
 
@@ -24,13 +23,12 @@ const App = () => {
 
     return (
         <Switch>
-            <PrivateRoute path='/payments/' component={Payments} />
-            <PrivateRoute path='/child-profile/' component={ChildProfiles} exact />
-            <PrivateRoute path='/child-profile/:childId/:stage/' component={ChildProfile} exact />
-            <PrivateRoute path='/lessons/:lessonId/timeSlots/' exact component={ParentTimeSlots} />
-            <PrivateRoute path='/timetable-schedule/' component={ParentTimeTableSchedule} />
-            <PrivateRoute path='/lessons/' component={Lessons} exact />
-            <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
+            {/*<PrivateRoute path='/payments/' component={Payments}/>*/}
+            <PrivateRoute path='/child-profile/' component={ChildProfiles} exact/>
+            <PrivateRoute path='/child-profile/:childId/:stage/' component={ChildProfile} exact/>
+            <PrivateRoute path='/lessons/:lessonId/timeSlots/' exact component={ParentTimeSlots}/>
+            <PrivateRoute path='/lessons/' component={Lessons} exact/>
+            <PrivateRoute path='/profile/edit/' component={ParentProfileEdit}/>
             <PrivateRoute path='/profile/' component={ParentProfile} exact/>
             <PrivateRoute path='/' component={MainDashboard} exact/>
             <PrivateRoute path='/lessons/:lessonId' component={Lesson} />
