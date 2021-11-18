@@ -5,6 +5,8 @@ import moment from 'moment'
 
 import { strTimeToMoment, getCurrentTime } from 'utils/date/dateUtils.js';
 
+import 'Containers/LessonPage/Timer/timer.css'
+
 const Timer = (props) => {
 
     const {

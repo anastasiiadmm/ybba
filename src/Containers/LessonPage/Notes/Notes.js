@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
 import PropTypes from 'prop-types';
+
+import 'Containers/LessonPage/Notes/notes.css'
+
 
 const Notes = (props) => {
 
