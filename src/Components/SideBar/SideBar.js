@@ -1,50 +1,52 @@
 import React from 'react';
 
-import {userRoles} from 'constants.js';
+import { userRoles } from 'constants.js';
 import Logout from 'Containers/Logout/Logout.js';
-import {checkUserRole} from 'utils/user.js';
+import { checkUserRole } from 'utils/user.js';
 import Logo from 'Components/Logo/Logo.js';
 import SideBarLink from 'Components/SideBar/SideBarLink/SideBarLink.js';
+
+import 'Components/SideBar/sidebar.css'
 
 
 const SideBar = () => {
     return (
-        <div className="sidebar h-100 position-fixed">
-            <header className="header">
+        <div className='sidebar h-100 position-fixed'>
+            <header className='header'>
                 <Logo/>
-                <button className="header__notice" data-modal="notifications">
+                <button className='header__notice' data-modal='notifications'>
                     <span>2</span>
                 </button>
             </header>
-            <nav className="main-nav">
-                <ul className="main-nav__list">
-                    <SideBarLink to="/" classes="main-nav__link_home">
+            <nav className='main-nav'>
+                <ul className='main-nav__list'>
+                    <SideBarLink to='/' classes='main-nav__link_home'>
                         Главная
                     </SideBarLink>
                     {checkUserRole(userRoles.parent) && (
-                        <SideBarLink to="/lessons/" classes="main-nav__link main-nav__link_classes">
+                        <SideBarLink to='/lessons/' classes='main-nav__link main-nav__link_classes'>
                             Занятия
                         </SideBarLink>
                     )}
                     {checkUserRole(userRoles.parent) && (
-                        <SideBarLink to="/profile/" classes="main-nav__link_lk">
+                        <SideBarLink to='/profile/' classes='main-nav__link_lk'>
                             Личный кабинет
                         </SideBarLink>
                     )}
                     {checkUserRole(userRoles.parent) && (
-                        <SideBarLink to="/child-profile/" classes="main-nav__link_profile">
+                        <SideBarLink to='/child-profile/' classes='main-nav__link_profile'>
                             Профиль ребёнка
                         </SideBarLink>
                     )}
-                    {checkUserRole(userRoles.parent) && (
-                        <SideBarLink to="/payments/" classes="main-nav__link_payment">
-                            Управление платежами
-                        </SideBarLink>
-                    )}
+                    {/*{checkUserRole(userRoles.parent) && (*/}
+                    {/*    <SideBarLink to='/payments/' classes='main-nav__link_payment'>*/}
+                    {/*        Управление платежами*/}
+                    {/*    </SideBarLink>*/}
+                    {/*)}*/}
                     {/*<SideBarLink to='/settings/' classes='main-nav__link_setting'>*/}
                     {/*    Настройки*/}
                     {/*</SideBarLink>*/}
-                    <SideBarLink to="/video-test/" classes="main-nav__link_test">
+                    <SideBarLink to='/video-test/' classes='main-nav__link_test'>
                         Тест видеосвязи
                     </SideBarLink>
                 </ul>

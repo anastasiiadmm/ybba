@@ -15,7 +15,6 @@ import ParentTimeTableSchedule from 'Containers/ParentTimeTableSchedule/ParentTi
 import DevicesTestPage from 'Containers/DevicesTestPage/DevicesTestPage';
 import Lessons from 'Containers/Lessons/Lessons';
 import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
-import Payments from 'Containers/Payments/Payments';
 import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
 
