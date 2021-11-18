@@ -44,7 +44,6 @@ const LessonPage = (props) => {
     const [activeGame, setActiveGame] = useState(null)
     const [unityContext, setUnityContext] = useState(null)
     const [unityLoadProgress, setUnityLoadProgress] = useState(0)
-    const [notification, setNotification] = useState(false)
 
     const onChangeActiveGame = game => {
         if (game.id !== activeGame.id) {
@@ -174,13 +173,13 @@ const LessonPage = (props) => {
     }
 
     useEffect( () => {
-        toastInfo()
-        setNotification(true)
-    }, [])
+        if (!isMicrophoneAllowed && !isCameraAllowed) {
+            toastInfo()
+        }
+    }, [isCameraAllowed, isMicrophoneAllowed])
 
     return (
         <div className='gamef position-relative'>
-            {(!isMicrophoneAllowed && !isCameraAllowed) && notification}
             <header
                 className={addClasses('gamef__head position-relative', {
                     'gamef__head_teacher': checkUserRole(userRoles.therapist),

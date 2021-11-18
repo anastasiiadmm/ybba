@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import configureStore from 'redux/store.js'
 import reportWebVitals from 'reportWebVitals';
 import { initSentry } from 'sentry/sentry';
@@ -27,19 +26,7 @@ ReactDOM.render(
         <BrowserPermissionsBlock>
             <Provider store={store}>
                 <BrowserRouter>
-                    <ToastContainer
-                        position='top-right'
-                        autoClose={5000}
-                        hideProgressBar={false}
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-                    >
                         <App/>
-                    </ToastContainer>
                 </BrowserRouter>
             </Provider>
         </BrowserPermissionsBlock>
