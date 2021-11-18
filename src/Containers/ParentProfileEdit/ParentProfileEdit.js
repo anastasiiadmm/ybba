@@ -30,7 +30,6 @@ const ParentProfileEdit = () => {
     }
 
     const [formData, setFormData] = useState(initialFormData)
-    // console.log('formData', formData)
 
     const history = useHistory()
     const dispatch = useDispatch()

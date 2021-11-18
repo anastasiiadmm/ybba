@@ -10,6 +10,9 @@ import Button from 'Components/Button/Button';
 import { editUserEmail, updateUserPassword, userSelector } from 'redux/user/userSlice';
 import { getCurrentUserData, authSelector } from 'redux/auth/authSlice';
 import { childSelector, getCitiesList, getCountriesList } from 'redux/child/childSlice';
+import { Russian } from 'assets/vendor/flatpickr/ru';
+import { namesOfMonths } from 'constants.js';
+import { momentDateToStr } from 'utils/date/dateUtils';
 
 
 const ParentProfileForm = (props) => {
@@ -134,16 +137,30 @@ const ParentProfileForm = (props) => {
             <div className='form__row form__row_flex'>
                 <div className='form__col2'>
                     <FormField
+                        configs={{
+                            locale: {
+                                ...Russian,
+                                months: {
+                                    ...Russian.months,
+                                    longhand: namesOfMonths
+                                }
+                            },
+                            firstDayOfWeek: 2,
+                            dateFormat: 'd/m/Y',
+                            enableTime: false,
+                            maxDate: momentDateToStr(moment())
+                        }}
                         label='Дата'
-                        showMaskOnHover={true}
-                        showMaskOnFocus={true}
-                        mask='dd/mm/yyyy'
+                        // showMaskOnHover={true}
+                        // showMaskOnFocus={true}
                         type='datepicker'
                         className='form__field'
+                        // selected={formData.profile.date_of_birth}
                         value={formData.profile.date_of_birth}
                         name='date_of_birth'
-                        onChange={birthDateHandler}
+                        onChange={(date) => birthDateHandler(date)}
                         errors={errors?.profile}
+                        isClearable
                     />
                 </div>
                 <div className='form__col2 form__label'>

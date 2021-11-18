@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
 import Flatpickr from 'react-flatpickr';
-import ReactInputDateMask from 'react-input-date-mask';
 import PhoneInput from 'react-phone-input-2';
 import Select from 'react-select';
 
@@ -14,8 +13,25 @@ import 'Components/FormField/formField.css'
 
 const FormField = props => {
     const {
-        type, onChange, className, name, required, label, value, pattern, id, maxLength, tooltipTitle, tooltipText,
-        helpText, readOnly, errors, disabled, mask, showMaskOnFocus, showMaskOnHover, options, configs, checked
+        type,
+        onChange,
+        className,
+        name,
+        required,
+        label,
+        value,
+        pattern,
+        id,
+        maxLength,
+        tooltipTitle,
+        tooltipText,
+        helpText,
+        readOnly,
+        errors,
+        disabled,
+        options,
+        configs,
+        checked,
     } = props
 
     const [passwordShown, setPasswordShown] = useState(false);
@@ -107,30 +123,58 @@ const FormField = props => {
 
     if (type === 'datepicker') {
         field = <>
-            <label className='form__label'>
-                {label}
-                <ReactInputDateMask
-                    mask={mask}
-                    showMaskOnFocus={showMaskOnFocus}
-                    showMaskOnHover={showMaskOnHover}
-                    onChange={onChange}
-                    type={type}
-                    required={required}
-                    className={addClasses(className, {
-                        'error': fieldErrors?.length
-                    })}
-                    name={name}
-                    value={value}
-                    pattern={pattern}
-                    id={id}
-                    maxLength={maxLength}
-                    readOnly={readOnly}
-                    disabled={disabled}
-                />
-                {Errors}
-                {helpText && <div className='form__passw-info'>{helpText}</div>}
-                {toolTip}
-            </label>
+
+            {/*<ReactInputDateMask*/}
+            {/*    mask={mask}*/}
+            {/*    showMaskOnFocus={showMaskOnFocus}*/}
+            {/*    showMaskOnHover={showMaskOnHover}*/}
+            {/*    onChange={onChange}*/}
+            {/*    type={type}*/}
+            {/*    required={required}*/}
+            {/*    className={addClasses(className, {*/}
+            {/*        'error': fieldErrors?.length*/}
+            {/*    })}*/}
+            {/*    name={name}*/}
+            {/*    value={value}*/}
+            {/*    pattern={pattern}*/}
+            {/*    id={id}*/}
+            {/*    maxLength={maxLength}*/}
+            {/*    readOnly={readOnly}*/}
+            {/*    disabled={disabled}*/}
+            {/*/>*/}
+            <Flatpickr
+                data-enable-time
+                value={value}
+                onChange={onChange}
+                options={configs}
+                render={({ defaultValue, value, ...props }, ref) => {
+                    return <>
+                        <label className='form__label'>
+                            {label}
+                            <input
+                                {...props}
+                                ref={ref}
+                                type={type}
+                                className={addClasses(className, {
+                                    'error': fieldErrors?.length
+                                })}
+                                required={required}
+                                name={name}
+                                onChange={onChange}
+                                value={value}
+                                pattern={pattern}
+                                id={id}
+                                maxLength={maxLength}
+                                readOnly={readOnly}
+                                disabled={disabled}
+                            />
+                            {Errors}
+                            {helpText && <div className='form__passw-info'>{helpText}</div>}
+                            {toolTip}
+                        </label>
+                    </>
+                }}
+            />
         </>
     }
 
