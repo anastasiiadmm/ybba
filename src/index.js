@@ -37,8 +37,9 @@ ReactDOM.render(
                         pauseOnFocusLoss
                         draggable
                         pauseOnHover
-                    />
-                    <App/>
+                    >
+                        <App/>
+                    </ToastContainer>
                 </BrowserRouter>
             </Provider>
         </BrowserPermissionsBlock>
