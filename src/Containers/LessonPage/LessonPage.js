@@ -14,7 +14,8 @@ import {
     GAME_FILE_TYPE_FRAMEWORK,
     GAME_FILE_TYPE_WASM,
     gameActions,
-    userRoles
+    userRoles,
+    envs
 } from 'constants.js';
 import { WsContext } from 'context/WsContext/WsContext.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
@@ -24,6 +25,9 @@ import Notes from 'Containers/LessonPage/Notes/Notes.js';
 import { checkUserRole } from 'utils/user.js';
 import Drag from 'Components/Drag/Drag.js';
 import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
+import { initSessionStack, defineUser, stopSessionStackRecording } from 'utils/sessionstack/utils.js';
+import { authSelector } from 'redux/auth/authSlice.js';
+import { checkEnv } from 'utils/common/commonUtils.js';
 
 import 'Containers/LessonPage/lessonPage.css'
 
@@ -36,6 +40,7 @@ const LessonPage = (props) => {
     const history = useHistory()
 
     const { lesson, lessonFinished, isParentWebcamIncreased } = useSelector(lessonSelector)
+    const { user } = useSelector(authSelector)
 
     const { lessonId } = props.match.params
 
@@ -103,6 +108,24 @@ const LessonPage = (props) => {
         return (parentHeight / 9) * 16
     }
 
+    const startSTRecording = useCallback(() => {
+        if (!checkEnv(envs.local)) {
+            initSessionStack()
+            defineUser({
+                userId: user.id,
+                email: user.email,
+                role: user.role,
+                displayName: user?.profile ? `${user.profile.first_name} ${user.profile.last_name}` : 'anonymous'
+            })
+        }
+    }, [user])
+
+    const stopSTRecording = () => {
+        if (!checkEnv(envs.local)) {
+            stopSessionStackRecording()
+        }
+    }
+
     const webcamComponentProps = {
         meetingId: lessonId,
         lessonId: lessonId,
@@ -161,6 +184,12 @@ const LessonPage = (props) => {
             }
         }
     }, [lessonId, sendJsonToGameWithTimeout, unityContext])
+
+    useEffect(() => {
+        startSTRecording()
+
+        return () => stopSTRecording()
+    }, [startSTRecording])
 
     const canvasParent = useRef()
 
