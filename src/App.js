@@ -10,7 +10,6 @@ import SetNewPassword from 'Containers/SetNewPassword/SetNewPassword';
 import Lesson from 'Containers/Lesson/Lesson';
 import ParentProfile from 'Containers/ParentProfile/ParentProfile';
 import ParentProfileEdit from 'Containers/ParentProfileEdit/ParentProfileEdit';
-import ParentTimeTableSchedule from 'Containers/ParentTimeTableSchedule/ParentTimeTableSchedule';
 import DevicesTestPage from 'Containers/DevicesTestPage/DevicesTestPage';
 import Lessons from 'Containers/Lessons/Lessons';
 import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
@@ -31,12 +30,12 @@ const App = () => {
             <PrivateRoute path='/profile/edit/' component={ParentProfileEdit}/>
             <PrivateRoute path='/profile/' component={ParentProfile} exact/>
             <PrivateRoute path='/' component={MainDashboard} exact/>
-            <PrivateRoute path='/lessons/:lessonId' component={Lesson} />
-            <PrivateRoute path='/video-test/' component={DevicesTestPage} />
+            <PrivateRoute path='/lessons/:lessonId' component={Lesson}/>
+            <PrivateRoute path='/video-test/' component={DevicesTestPage}/>
             <Route path='/login/' component={Login}/>
             <Route path='/registration/:stage/' component={Registration}/>
-            <Route path='/reset-password/' component={PasswordRecovery} exact />
-            <Route path='/reset-password/:token' component={SetNewPassword} exact />
+            <Route path='/reset-password/' component={PasswordRecovery} exact/>
+            <Route path='/reset-password/:token' component={SetNewPassword} exact/>
             <Route component={Page404}/>
         </Switch>
     );
