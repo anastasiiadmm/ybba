@@ -16,7 +16,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import examProtocolSchema from 'utils/formValidationSchemas/examProtocolSchema';
 
-const ExamProtocol = (props) => {
+import './examinationProtocol.css';
+
+const ExaminationProtocol = (props) => {
   const formMethods = useForm({
     resolver: yupResolver(examProtocolSchema),
     mode: 'onChange',
@@ -28,7 +30,6 @@ const ExamProtocol = (props) => {
 
   const inputChangeHandler = (e) => {
     console.log(getValues());
-    // console.log(e.target.name);
   };
 
   return (
@@ -331,7 +332,7 @@ const ExamProtocol = (props) => {
   );
 };
 
-ExamProtocol.propTypes = {
+ExaminationProtocol.propTypes = {
   child: PropTypes.shape({
     id: PropTypes.number,
     first_name: PropTypes.string,
@@ -345,4 +346,4 @@ ExamProtocol.propTypes = {
   }).isRequired,
 };
 
-export default ExamProtocol;
+export default ExaminationProtocol;
