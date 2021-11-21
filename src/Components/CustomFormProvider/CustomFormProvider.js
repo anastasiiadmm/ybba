@@ -19,6 +19,7 @@ function CustomFormProvider(props) {
 
 CustomFormProvider.propTypes = {
   customMethods: PropTypes.object,
+  children: PropTypes.element,
 };
 
 export default CustomFormProvider;

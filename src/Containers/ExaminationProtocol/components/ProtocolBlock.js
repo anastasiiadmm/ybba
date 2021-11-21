@@ -200,6 +200,8 @@ ProtocolBlock.propTypes = {
   subtitleBlock2: PropTypes.string,
   placeholder: PropTypes.string,
   secondPlaceholder: PropTypes.string,
+  description: PropTypes.string,
+  children: PropTypes.element,
 };
 
 export default ProtocolBlock;

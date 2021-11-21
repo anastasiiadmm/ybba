@@ -58,9 +58,14 @@ function GameSectionBlock({
 
 GameSectionBlock.propTypes = {
   title: PropTypes.string,
+  titleBlock: PropTypes.string,
+  titleBlockSpan: PropTypes.string,
   subtitle: PropTypes.string,
   subtitleBlock: PropTypes.string,
+  subtitleBlock2: PropTypes.string,
   sectionReviewTitle: PropTypes.string,
+  placeholder: PropTypes.string,
+  secondPlaceholder: PropTypes.string,
   gameFields: PropTypes.array,
   gameReviewFields: PropTypes.array,
   sectionReviewFields: PropTypes.array,
