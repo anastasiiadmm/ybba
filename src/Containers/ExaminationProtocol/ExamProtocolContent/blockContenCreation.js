@@ -72,15 +72,3 @@ export class BlockContent {
     };
   };
 }
-
-// export const tableFieldObject = (
-//   name,
-//   label,
-//   onChange,
-//   tableData,
-//   initData
-// ) => {
-//   const baseData = fieldObject(fieldTypes.table, name, label);
-//   const additionalData = { initData, tableData, onChange };
-//   return { ...baseData, ...additionalData };
-// };
