@@ -74,5 +74,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.16.0",
+    "@babel/plugin-transform-react-jsx": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0"
   }
 }
