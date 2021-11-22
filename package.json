@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.6.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.1.1",
+    "@mui/material": "^5.1.1",
+    "@mui/styled-engine-sc": "^5.1.0",
     "@reduxjs/toolkit": "^1.6.1",
     "@sentry/react": "^6.12.0",
     "@sentry/tracing": "^6.12.0",
@@ -23,9 +28,8 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "react-select": "^4.3.1",
-    "react-toastify": "^8.1.0",
     "react-unity-webgl": "^8.4.10",
+    "styled-components": "^5.3.3",
     "uuid": "^8.3.2",
     "web-vitals": "^1.0.1"
   },

@@ -11,14 +11,13 @@ import SetNewPassword from 'Containers/SetNewPassword/SetNewPassword';
 import Lesson from 'Containers/Lesson/Lesson';
 import ParentProfile from 'Containers/ParentProfile/ParentProfile';
 import ParentProfileEdit from 'Containers/ParentProfileEdit/ParentProfileEdit';
-import ParentTimeTableSchedule from 'Containers/ParentTimeTableSchedule/ParentTimeTableSchedule';
 import DevicesTestPage from 'Containers/DevicesTestPage/DevicesTestPage';
 import Lessons from 'Containers/Lessons/Lessons';
 import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
 import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
 
-import './App.css';
+import 'App.css';
 
 const App = () => {
 
