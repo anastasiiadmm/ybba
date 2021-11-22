@@ -3,13 +3,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Flatpickr from 'react-flatpickr';
 import PhoneInput from 'react-phone-input-2';
-import Select from 'react-select';
+import { Autocomplete } from '@mui/material';
 
-import { validationMessagesMapping } from 'mappings/validationErrors.js';
+import { validationMessagesMapping } from 'mappings/validationErrors.js'
 import { addClasses } from 'utils/addClasses/addClasses.js';
 
 import 'Components/FormField/formField.css'
-
 
 const FormField = props => {
     const {
@@ -123,25 +122,6 @@ const FormField = props => {
 
     if (type === 'datepicker') {
         field = <>
-
-            {/*<ReactInputDateMask*/}
-            {/*    mask={mask}*/}
-            {/*    showMaskOnFocus={showMaskOnFocus}*/}
-            {/*    showMaskOnHover={showMaskOnHover}*/}
-            {/*    onChange={onChange}*/}
-            {/*    type={type}*/}
-            {/*    required={required}*/}
-            {/*    className={addClasses(className, {*/}
-            {/*        'error': fieldErrors?.length*/}
-            {/*    })}*/}
-            {/*    name={name}*/}
-            {/*    value={value}*/}
-            {/*    pattern={pattern}*/}
-            {/*    id={id}*/}
-            {/*    maxLength={maxLength}*/}
-            {/*    readOnly={readOnly}*/}
-            {/*    disabled={disabled}*/}
-            {/*/>*/}
             <Flatpickr
                 data-enable-time
                 value={value}
@@ -224,14 +204,29 @@ const FormField = props => {
         field = <>
             <label className='w-100'>
                 {label}
-                <Select
-                    type={type}
-                    options={options}
+                <Autocomplete
                     className={className}
+                    sx={{
+                        '& input': {
+                            padding: '12px',
+                            borderRadius: '10px',
+                            outline: 'none',
+                            border: '1px solid #A3B3CC'
+                        },
+                    }}
+                    name={name}
+                    autoComplete='no'
                     onChange={onChange}
-                    value={
-                        options?.filter(option => option.value === value)
-                    }
+                    options={options}
+                    renderInput={(params) => {
+                        params.inputProps.autoComplete = 'new-password';
+                        return (
+                            <div ref={params.InputProps.ref}>
+                                <input autoComplete='no' value={options?.filter(option => option.value === value)}
+                                       type='text' {...params.inputProps} name={name} />
+                            </div>
+                        )
+                    }}
                 />
             </label>
         </>

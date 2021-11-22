@@ -9,7 +9,7 @@ import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import ParentProfileForm from 'Containers/ParentProfileForm/ParentProfileForm';
 import { updateUserData, userSelector, clearUserState } from 'redux/user/userSlice.js';
 import Button from 'Components/Button/Button';
-import { authSelector, getCurrentUserData } from 'redux/auth/authSlice.js';
+import { authSelector } from 'redux/auth/authSlice.js';
 
 
 const ParentProfileEdit = () => {
@@ -72,7 +72,6 @@ const ParentProfileEdit = () => {
 
     useEffect(() => {
         if (success && !loading) {
-            dispatch(getCurrentUserData())
             history.push('/profile/')
         }
         // eslint-disable-next-line

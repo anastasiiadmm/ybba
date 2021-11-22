@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
-import {ChildProfileContext} from 'context/ChildProfileContext/ChildProfileContext.js';
+import { ChildProfileContext } from 'context/ChildProfileContext/ChildProfileContext.js';
 import ChildProfileStageFour from 'Containers/ChildProfile/stages/ChildProfileStageFour';
 import ChildProfileStageOne from 'Containers/ChildProfile/stages/ChildProfileStageOne';
 import ChildProfileStageThree from 'Containers/ChildProfile/stages/ChildProfileStageThree';
@@ -10,7 +10,7 @@ import ChildProfileStageTwo from 'Containers/ChildProfile/stages/ChildProfileSta
 
 const ChildProfile = (props) => {
 
-    const {stage, childId} = props.match.params
+    const { stage, childId } = props.match.params
 
     const stages = {
         '1': {
@@ -37,12 +37,12 @@ const ChildProfile = (props) => {
     return (
         <SidebarContainer>
             <ChildProfileContext.Provider value={childProfileContextData}>
-                <div className="main__inner">
-                    <div className="main__title-block">
-                        <h1 className="main__title">С чем вам помочь?</h1>
+                <div className='main__inner'>
+                    <div className='main__title-block'>
+                        <h1 className='main__title'>С чем вам помочь?</h1>
                     </div>
-                    <div className="content">
-                        <div className="content__inner">
+                    <div className='content'>
+                        <div className='content__inner'>
                             {currentStage?.component}
                             <div/>
                         </div>
