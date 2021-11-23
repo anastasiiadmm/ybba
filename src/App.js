@@ -10,6 +10,7 @@ import PasswordRecovery from 'Containers/PasswordRecovery/PasswordRecovery';
 import SetNewPassword from 'Containers/SetNewPassword/SetNewPassword';
 import Lesson from 'Containers/Lesson/Lesson';
 import ParentProfile from 'Containers/ParentProfile/ParentProfile';
+import ParentTimeTableSchedule from 'Containers/ParentTimeTableSchedule/ParentTimeTableSchedule';
 import ParentProfileEdit from 'Containers/ParentProfileEdit/ParentProfileEdit';
 import DevicesTestPage from 'Containers/DevicesTestPage/DevicesTestPage';
 import Lessons from 'Containers/Lessons/Lessons';
@@ -39,7 +40,7 @@ const App = () => {
                         <PrivateRoute path='/child-profile/' component={ChildProfiles} exact />
                         <PrivateRoute path='/child-profile/:childId/:stage/' component={ChildProfile} exact />
                         <PrivateRoute path='/lessons/:lessonId/timeSlots/' exact component={ParentTimeSlots} />
-                        {/*<PrivateRoute path='/timetable-schedule/' component={ParentTimeTableSchedule} />*/}
+                        <PrivateRoute path='/timetable-schedule/' component={ParentTimeTableSchedule} />
                         <PrivateRoute path='/lessons/' component={Lessons} exact />
                         <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
                         <PrivateRoute path='/profile/' component={ParentProfile} exact/>
