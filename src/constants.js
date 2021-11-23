@@ -109,6 +109,9 @@ export const envs = {
     production: 'production'
 }
 
+export const apiPath = '/api/v1'
+export const wsPath = '/ws'
+
 export const domains = {
     [envs.local]: 'localhost',
     [envs.development]: 'dev.yba.ltestl.com',
@@ -116,18 +119,25 @@ export const domains = {
     [envs.production]: 'diagnostika.pro'
 }
 
+export const serverUrls = {
+    [envs.local]: `http://${domains[envs.local]}:8000`,
+    [envs.development]: `https://${domains[envs.development]}`,
+    [envs.staging]: `https://${domains[envs.staging]}`,
+    [envs.production]: `https://${domains[envs.production]}`
+}
+
 export const apiUrls = {
-    [envs.local]: `http://${domains[envs.local]}:8000/api/v1/`,
-    [envs.development]: `https://${domains[envs.development]}/api/v1`,
-    [envs.staging]: `https://${domains[envs.staging]}/api/v1`,
-    [envs.production]: `https://${domains[envs.production]}/api/v1`
+    [envs.local]: `${serverUrls[envs.local]}${apiPath}`,
+    [envs.development]: `${serverUrls[envs.development]}${apiPath}`,
+    [envs.staging]: `${serverUrls[envs.staging]}${apiPath}`,
+    [envs.production]: `${serverUrls[envs.production]}${apiPath}`
 }
 
 export const wsUrls = {
-    [envs.local]: 'ws://172.17.0.1:8080/ws',
-    [envs.development]: `wss://${domains[envs.development]}/ws`,
-    [envs.staging]: `wss://${domains[envs.staging]}/ws`,
-    [envs.production]: `wss://${domains[envs.production]}/ws`
+    [envs.local]: `ws://172.17.0.1:8080${wsPath}`,
+    [envs.development]: `wss://${domains[envs.development]}${wsPath}`,
+    [envs.staging]: `wss://${domains[envs.staging]}${wsPath}`,
+    [envs.production]: `wss://${domains[envs.production]}${wsPath}`
 }
 
 export const permissionStates = {

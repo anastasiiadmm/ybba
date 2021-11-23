@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
+
 import { FirebaseContext } from 'context/Firebase/FirebaseContext.js';
-import { getToken } from 'firebase.js';
 import { permissionStates } from 'constants.js';
+import { getToken } from 'utils/firebase/firebaseCloudMessaging/firebaseCloudMessagingUtils.js';
+
 
 const FirebaseBlock = (props) => {
 
