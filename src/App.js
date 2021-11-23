@@ -10,6 +10,7 @@ import PasswordRecovery from 'Containers/PasswordRecovery/PasswordRecovery';
 import SetNewPassword from 'Containers/SetNewPassword/SetNewPassword';
 import Lesson from 'Containers/Lesson/Lesson';
 import ParentProfile from 'Containers/ParentProfile/ParentProfile';
+import ParentTimeTableSchedule from 'Containers/ParentTimeTableSchedule/ParentTimeTableSchedule';
 import ParentProfileEdit from 'Containers/ParentProfileEdit/ParentProfileEdit';
 import DevicesTestPage from 'Containers/DevicesTestPage/DevicesTestPage';
 import Lessons from 'Containers/Lessons/Lessons';
