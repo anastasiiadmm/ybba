@@ -4,13 +4,31 @@ const mainBlock = new BlockContent('fishGame', []);
 const reviewBlock = new BlockContent('fishGame.review', []);
 
 mainBlock.content = [
-  mainBlock.textFieldObject('shop', 'Магазин-Сено-Василек /ЗЬ, СЬ'),
-  mainBlock.textFieldObject('dog', 'Собака-Насос-Замок-Коза /С, З'),
-  mainBlock.textFieldObject('startling', 'Скворец-Цапля-Палец /С – Ц, Ц'),
-  mainBlock.textFieldObject('spy', 'Сыщик-Щипцы-Чеснок /С – Щ, Щ – Ц, Ч - С'),
-  mainBlock.textFieldObject('pike', 'Щука-Вещи-Лещ /Щ'),
-  mainBlock.textFieldObject('bug', 'Жук-Сажа-Ножницы /Ж, С – Ж, Ж - Ц'),
-  mainBlock.textFieldObject('coat', 'Шуба-Кошка-Камыш-Веснушки /Ш, С - Ш'),
+  mainBlock.textFieldObject(
+    'shop_hay_cornflower',
+    'Магазин-Сено-Василек /ЗЬ, СЬ'
+  ),
+  mainBlock.textFieldObject(
+    'dog_pump_lock_goat',
+    'Собака-Насос-Замок-Коза /С, З'
+  ),
+  mainBlock.textFieldObject(
+    'starling_heron_finger',
+    'Скворец-Цапля-Палец /С – Ц, Ц'
+  ),
+  mainBlock.textFieldObject(
+    'detective_tongs_garlic',
+    'Сыщик-Щипцы-Чеснок /С – Щ, Щ – Ц, Ч - С'
+  ),
+  mainBlock.textFieldObject('pike_things_bream', 'Щука-Вещи-Лещ /Щ'),
+  mainBlock.textFieldObject(
+    'beetle_soot_scissors',
+    'Жук-Сажа-Ножницы /Ж, С – Ж, Ж - Ц'
+  ),
+  mainBlock.textFieldObject(
+    'fur_coat_cat_reed_freckles',
+    'Шуба-Кошка-Камыш-Веснушки /Ш, С - Ш'
+  ),
 ];
 
 reviewBlock.content = [

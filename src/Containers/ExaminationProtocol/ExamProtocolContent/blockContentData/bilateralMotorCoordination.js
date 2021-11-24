@@ -9,12 +9,12 @@ mainBlock.content = [
     '— Возьми воображаемый телефон в руку и приложи к ухо',
     [
       {
-        name: 'ear',
+        name: 'leading_ear_phone',
         options: ['Правое', 'Левое'],
         description: 'Ведущее ухо:',
       },
       {
-        name: 'hand',
+        name: 'leading_hand_phone',
         options: ['Правая', 'Левая'],
         description: 'Ведущая рука:',
       },
@@ -26,12 +26,12 @@ mainBlock.content = [
     '— Посмотри в воображаемую подзорную трубу',
     [
       {
-        name: 'hand',
+        name: 'leading_hand_spyglass',
         options: ['Правая', 'Левая'],
         description: 'Ведущая рука:',
       },
       {
-        name: 'eye',
+        name: 'leading_eye_spyglass',
         options: ['Правый', 'Левый'],
         description: 'Ведущая рука:',
       },
@@ -43,7 +43,7 @@ mainBlock.content = [
     '— Ударь ногой по воображаемому мячу',
     [
       {
-        name: 'leg',
+        name: 'leading_leg_ball',
         options: ['Правая', 'Левая'],
         description: 'Ведущая нога:',
       },
@@ -51,7 +51,7 @@ mainBlock.content = [
   ),
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'review',
+    'conclusion_options',
     'Варианты заключения:',
     [
       'Левшество, все 4 показателя совпадают',

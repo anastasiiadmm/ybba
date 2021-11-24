@@ -4,19 +4,19 @@ const mainBlock = new BlockContent('speechLanguageCompetence', []);
 const reviewBlock = new BlockContent('speechLanguageCompetence.review', []);
 
 mainBlock.content = [
-  mainBlock.textFieldObject('whats_your_name', 'Как тебя зовут?'),
+  mainBlock.textFieldObject('what_is_your_name', 'Как тебя зовут?'),
   mainBlock.textFieldObject('how_old_are_you', 'Сколько тебе лет?'),
   mainBlock.textFieldObject(
-    'whats_your_mothers_name',
+    'what_is_your_moms_name_your_daddy',
     'Как зовут твою маму? Твоего папу?'
   ),
   mainBlock.textFieldObject('where_do_you_live', 'Где ты живешь?'),
   mainBlock.textFieldObject(
-    'whats_the_season',
+    'what_time_of_year_is_it',
     'Какое сейчас время года? Время суток?'
   ),
   mainBlock.textFieldObject(
-    'what_did_you_do',
+    'what_did_you_do_yesterday',
     'Что ты делал вчера? Что делал утром? Что ты будешь делать завтра?'
   ),
   mainBlock.textFieldObject(
@@ -24,16 +24,19 @@ mainBlock.content = [
     'Какие у тебя есть игрушки?'
   ),
   mainBlock.textFieldObject(
-    'what_animals_do_you_know',
+    'what_kind_of_animals_do_you_know',
     'Каких животных ты знаешь?'
   ),
-  mainBlock.textAreaFieldObject('specialist_comment', 'Комментарий'),
+  mainBlock.textAreaFieldObject(
+    'general_ideas_about_the_world_around_comment',
+    'Комментарий'
+  ),
 ];
 
 reviewBlock.content = [
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'knowledge-stock',
+    'stock_of_knowledge_about_the_world_around',
     'Сформированность представлений об окружающем мире. Запас знаний:',
     [
       'Запас знаний об окружающем мире крайне низкий',
@@ -44,42 +47,45 @@ reviewBlock.content = [
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'orientation',
+    'in_a_time_space_situation',
     'В пространственно-временной ситуации:',
     ['Ориентируется', 'Не ориентируется']
   ),
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'knowledge-general',
+    'knows_how_old_time_of_year_what_time_of_day_it_is',
     'Знает сколько ему лет, какое сейчас время года, какое сейчас время суток, что он делал вчера, что делал утром, что он будет делать завтра',
     ['Да, знает', 'Нет, не знает']
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'self-image',
+    'image_i',
     'Образ «Я»',
     ['Сформирован', 'Не сформирован']
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'knowledge-names',
+    'knows_his_name_the_name_of_his_parents_where_he_lives',
     'Знает, как его зовут, как зовут его родителей, где он живет',
     ['Да, знает', 'Нет, не знает']
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'somatognosis',
+    'somatognosis_understanding_your_own_body',
     'Соматогнозис: представление о собственном теле',
     ['Сформировано', 'Не сформировано']
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'contact',
+    'contact_with_the_child',
     'Контакт с ребенком:',
     ['Установлен', 'Не установлен']
   ),
-  reviewBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  reviewBlock.textAreaFieldObject(
+    'formation_of_ideas_about_the_world_around_comment',
+    'Комментарий'
+  ),
 ];
 
 export const speechLanguageCompetence = mainBlock.content;

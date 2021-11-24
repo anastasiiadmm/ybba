@@ -5,7 +5,7 @@ const mainBlock = new BlockContent('basisOfSpeechAndMemoryReview', []);
 mainBlock.content = [
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'verbal_memory_capacity.isEnough',
+    'verbal_memory',
     'Объем вербальной памяти:',
     [
       'Достаточный для полнооценной коммуникации ',
@@ -14,14 +14,14 @@ mainBlock.content = [
   ),
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'verbal_memory_capacity.observation',
+    'verbal_memory_part_two',
     '',
     [
       'Наблюдаются незначительные трудности актуализации слов, хранения и воспроизведения вербальной информации',
       'Наблюдаются выраженные трудности актуализации слов, хранения и воспроизведения вербальной информации',
     ]
   ),
-  mainBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  mainBlock.textAreaFieldObject('expert_comment', 'Комментарий'),
 ];
 
 export const basisOfSpeechAndMemoryReview = mainBlock.content;

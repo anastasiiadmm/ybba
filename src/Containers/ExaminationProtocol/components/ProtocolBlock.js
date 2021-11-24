@@ -172,7 +172,9 @@ function ProtocolBlock(props) {
                         />
                       ) : (
                         <ProtocolCheckboxField
-                          name={`${field.name}.${index}`}
+                          name={
+                            option.name ? option.name : `${field.name}.${index}`
+                          }
                           onChange={inputChangeHandler}
                           label={option}
                         />

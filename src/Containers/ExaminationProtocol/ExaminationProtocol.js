@@ -321,10 +321,6 @@ const ExaminationProtocol = (props) => {
               <p className="protocol__info">Родитель: Ирина Климова</p>
               <p className="protocol__info">Родитель: Ирина Климова</p>
             </FormRow>
-
-            <FormRow>
-              <Button className="btn">Save</Button>
-            </FormRow>
           </form>
         </CustomFormProvider>
       </div>

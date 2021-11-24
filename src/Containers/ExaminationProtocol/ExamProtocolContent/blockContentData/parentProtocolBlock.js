@@ -1,6 +1,6 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('parentProtocolBlock', []);
+const mainBlock = new BlockContent('', []);
 
 mainBlock.content = [
   mainBlock.textAreaFieldObject(
@@ -8,7 +8,7 @@ mainBlock.content = [
     'Какие у вас жалобы?'
   ),
   mainBlock.textAreaFieldObject(
-    'why_did_you_come',
+    'for_what_purpose_did_you_turn_to_a_speech_therapist',
     'С какой целью вы обратились к логопеду?'
   ),
 ];

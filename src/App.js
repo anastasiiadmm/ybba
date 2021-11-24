@@ -19,42 +19,54 @@ import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
 
 import './App.css';
+import ExaminationProtocol from 'Containers/ExaminationProtocol/ExaminationProtocol';
 
 const App = () => {
-
-    return (
-        <>
-                <ToastContainer
-                    position='top-right'
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                />
-                <Switch>
-                        {/*<PrivateRoute path='/payments/' component={Payments} />*/}
-                        <PrivateRoute path='/child-profile/' component={ChildProfiles} exact />
-                        <PrivateRoute path='/child-profile/:childId/:stage/' component={ChildProfile} exact />
-                        <PrivateRoute path='/lessons/:lessonId/timeSlots/' exact component={ParentTimeSlots} />
-                        <PrivateRoute path='/timetable-schedule/' component={ParentTimeTableSchedule} />
-                        <PrivateRoute path='/lessons/' component={Lessons} exact />
-                        <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
-                        <PrivateRoute path='/profile/' component={ParentProfile} exact/>
-                        <PrivateRoute path='/' component={MainDashboard} exact/>
-                        <PrivateRoute path='/lessons/:lessonId' component={Lesson} />
-                        <PrivateRoute path='/video-test/' component={DevicesTestPage} />
-                        <Route path='/login/' component={Login}/>
-                        <Route path='/registration/:stage/' component={Registration}/>
-                        <Route path='/reset-password/' component={PasswordRecovery} exact />
-                        <Route path='/reset-password/:token' component={SetNewPassword} exact />
-                        <Route component={Page404}/>
-                </Switch>
-        </>
-    );
-}
+  return (
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <Switch>
+        {/*<PrivateRoute path='/payments/' component={Payments} />*/}
+        <PrivateRoute path="/protocol/" component={ExaminationProtocol} />
+        <PrivateRoute path="/child-profile/" component={ChildProfiles} exact />
+        <PrivateRoute
+          path="/child-profile/:childId/:stage/"
+          component={ChildProfile}
+          exact
+        />
+        <PrivateRoute
+          path="/lessons/:lessonId/timeSlots/"
+          exact
+          component={ParentTimeSlots}
+        />
+        <PrivateRoute
+          path="/timetable-schedule/"
+          component={ParentTimeTableSchedule}
+        />
+        <PrivateRoute path="/lessons/" component={Lessons} exact />
+        <PrivateRoute path="/profile/edit/" component={ParentProfileEdit} />
+        <PrivateRoute path="/profile/" component={ParentProfile} exact />
+        <PrivateRoute path="/" component={MainDashboard} exact />
+        <PrivateRoute path="/lessons/:lessonId" component={Lesson} />
+        <PrivateRoute path="/video-test/" component={DevicesTestPage} />
+        <Route path="/login/" component={Login} />
+        <Route path="/registration/:stage/" component={Registration} />
+        <Route path="/reset-password/" component={PasswordRecovery} exact />
+        <Route path="/reset-password/:token" component={SetNewPassword} exact />
+        <Route component={Page404} />
+      </Switch>
+    </>
+  );
+};
 
 export default App;
