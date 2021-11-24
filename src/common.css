@@ -95,3 +95,7 @@ h5, h4, h3 {
 .dates__field {
     width: 196px;
 }
+
+.notifications__clear {
+    margin-right: 28px;
+}
