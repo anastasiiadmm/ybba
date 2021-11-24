@@ -314,3 +314,13 @@
 .switch2__input:checked + span {
   background-color: #fff;
 }
+
+.switch2 {
+  align-items: end;
+}
+
+.switch2__input + span {
+  height: 33px;
+  width: 47px;
+  margin-bottom: 3px;
+}
