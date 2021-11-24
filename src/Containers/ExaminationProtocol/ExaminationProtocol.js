@@ -34,7 +34,7 @@ const ExaminationProtocol = (props) => {
 
   return (
     <Container>
-      <link rel="stylesheet" href="../../index.css" />
+      {/* <link rel="stylesheet" href="./examinationProtocol.css" /> */}
       <link
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
         rel="stylesheet"

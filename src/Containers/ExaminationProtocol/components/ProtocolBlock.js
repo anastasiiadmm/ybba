@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FormRow from 'Components/FormRow/FormRow';
+import ProtocolRow from './customFields/ProtocolRow';
 import FormField from 'Components/FormField/FormField';
 import ProtocolTextField from './customFields/ProtocolTextField';
 import ProtocolRadioField from './customFields/ProtocolRadioField';
@@ -8,6 +8,7 @@ import ProtocolCheckboxField from './customFields/ProtocolCheckboxField';
 import ProtocolSwitchField from './customFields/ProtocolSwitchField';
 import ProtocolCheckboxWithText from './customFields/ProtocolCheckboxWithText';
 import ProtocolRadioWithText from './customFields/ProtocolRadioWithText';
+import ProtocolTextAreaField from './customFields/ProtocolTextAreaField';
 
 const FormRadioBlock = ({ children, description }) => {
   return (
@@ -57,7 +58,7 @@ function ProtocolBlock(props) {
               <p className="protocol__box-title">{field.text}</p>
             ),
             [fieldTypes.text]: (
-              <FormRow customStyle="protocol__row">
+              <ProtocolRow customStyle="protocol__row">
                 <ProtocolTextField
                   type="text"
                   label={field.label}
@@ -65,11 +66,11 @@ function ProtocolBlock(props) {
                   placeholder={placeholder}
                   onChange={inputChangeHandler}
                 />
-              </FormRow>
+              </ProtocolRow>
             ),
             [fieldTypes.textarea]: (
-              <FormRow customStyle="protocol__row">
-                <ProtocolTextField
+              <ProtocolRow customStyle="protocol__row">
+                <ProtocolTextAreaField
                   type="textarea"
                   label={field.label}
                   name={field.name}
@@ -78,10 +79,10 @@ function ProtocolBlock(props) {
                   }
                   onChange={inputChangeHandler}
                 />
-              </FormRow>
+              </ProtocolRow>
             ),
             [fieldTypes.radio]: (
-              <FormRow customStyle="protocol__row">
+              <ProtocolRow customStyle="protocol__row">
                 <FormRadioBlock description={field.description}>
                   {field.options &&
                     field.options.map((option) => {
@@ -101,10 +102,10 @@ function ProtocolBlock(props) {
                       );
                     })}
                 </FormRadioBlock>
-              </FormRow>
+              </ProtocolRow>
             ),
             [fieldTypes.question]: (
-              <FormRow customStyle="protocol__row">
+              <ProtocolRow customStyle="protocol__row">
                 <p className="protocol__test">{field.question}</p>
                 {field.storyText && (
                   <p className="protocol__text-test">{field.storyText}</p>
@@ -116,7 +117,7 @@ function ProtocolBlock(props) {
                         {radioGroup.options &&
                           radioGroup.options.map((option) => {
                             return (
-                              <FormField
+                              <ProtocolRadioField
                                 type="protocolRadio"
                                 name={radioGroup.name}
                                 onChange={inputChangeHandler}
@@ -128,10 +129,10 @@ function ProtocolBlock(props) {
                       </FormRadioBlock>
                     );
                   })}
-              </FormRow>
+              </ProtocolRow>
             ),
             [fieldTypes.yesNoQuestion]: (
-              <FormRow customStyle="protocol__row protocol__row_flex">
+              <ProtocolRow customStyle="protocol__row protocol__row_flex">
                 <p className="protocol__qu-test">
                   {field.order}) {field.question}
                 </p>
@@ -139,10 +140,10 @@ function ProtocolBlock(props) {
                   name={field.name}
                   onChange={inputChangeHandler}
                 />
-              </FormRow>
+              </ProtocolRow>
             ),
             [fieldTypes.textGroup]: (
-              <FormRow customStyle="protocol__row protocol__row_flex">
+              <ProtocolRow customStyle="protocol__row protocol__row_flex">
                 {field.inputFields &&
                   field.inputFields.map((inputField) => {
                     return (
@@ -157,10 +158,10 @@ function ProtocolBlock(props) {
                       </div>
                     );
                   })}
-              </FormRow>
+              </ProtocolRow>
             ),
             [fieldTypes.checkbox]: (
-              <FormRow customStyle="protocol__row">
+              <ProtocolRow customStyle="protocol__row">
                 <FormRadioBlock description={field.description}>
                   {field.options &&
                     field.options.map((option, index) => {
@@ -181,7 +182,7 @@ function ProtocolBlock(props) {
                       );
                     })}
                 </FormRadioBlock>
-              </FormRow>
+              </ProtocolRow>
             ),
           };
 
