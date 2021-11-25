@@ -194,6 +194,7 @@ const ExaminationProtocol = (props) => {
               gameTitle="Игра “Экзамен по магии”"
               titleBlock="Фонематическое восприятие"
               placeholder="Ответ ребенка"
+              secondPlaceholder="Комментарий специалиста"
               fieldTypes={blockContent.fieldTypes}
               inputChangeHandler={inputChangeHandler}
               gameFields={blockContent.examMagicGame}
