@@ -57,7 +57,7 @@ const Login = () => {
                         <div className='form2__title-block'>
                             <h4 className='form2__title'>Авторизация</h4>
                             <p className='form2__subtitle'>Чтобы зарегистрироваться в системе,
-                                <a href='#' className='form2__link'> оплатите</a> занятие
+                                 <NavLink className='form2__link' to='/reset-password/'>оплатите</NavLink>занятие
                             </p>
                         </div>
                         <div className='form2__row'>
