@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
+import { getCurrentUserData } from 'redux/auth/authSlice';
+import { useDispatch } from 'react-redux';
 
 
 const ParentProfileData = (props) => {
 
     const { user } = props
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getCurrentUserData())
+    }, [dispatch])
 
     return (
         <>

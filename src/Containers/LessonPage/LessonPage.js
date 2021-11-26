@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import Unity, { UnityContext } from 'react-unity-webgl';
 import { ProgressBar } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 import { lessonSelector, clearLessonState } from 'redux/lesson/lessonSlice.js';
 import { changeActiveGame, changeLessonStatus, resizeChildWebcam } from 'redux/lesson/actions.js';
@@ -24,11 +25,12 @@ import Notes from 'Containers/LessonPage/Notes/Notes.js';
 import { checkUserRole } from 'utils/user.js';
 import Drag from 'Components/Drag/Drag.js';
 import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
+import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
 
 import 'Containers/LessonPage/lessonPage.css'
 
-
 const LessonPage = (props) => {
+    const { isMicrophoneAllowed, isCameraAllowed } = useContext(BrowserPermissionsContext)
 
     const { sendWsAction } = useContext(WsContext)
 
@@ -161,6 +163,24 @@ const LessonPage = (props) => {
             }
         }
     }, [lessonId, sendJsonToGameWithTimeout, unityContext])
+    
+    const toastInfo = () => {
+        return toast.info('Разрешите доступ для камеры и микрофона на вашем браузере', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
+    }
+
+    useEffect( () => {
+        if (!isMicrophoneAllowed && !isCameraAllowed) {
+            toastInfo()
+        }
+    }, [isCameraAllowed, isMicrophoneAllowed])
 
     const canvasParent = useRef()
 
