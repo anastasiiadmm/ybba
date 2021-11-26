@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { NavLink } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -53,7 +53,6 @@ const Login = () => {
             <div className='form2'>
                 <form onSubmit={submitChangeHandler}>
                     <div className='form2__inner'>
-                        <button type='button' className='btn-close form2__btn-close' />
                         <div className='form2__title-block'>
                             <h4 className='form2__title'>Авторизация</h4>
                             <p className='form2__subtitle'>Чтобы зарегистрироваться в системе,
@@ -75,7 +74,7 @@ const Login = () => {
                             {commonError && <div className='form2__error'>{commonError}</div>}
                         </div>
                         <div className='form2__row'>
-                            <NavLink className='form2__link form2__link_fpassw' to='/reset-password/'>Не помню пароль</NavLink>
+                            <Link className='form2__link form2__link_fpassw' to='/reset-password/'>Не помню пароль</Link>
                             <FormField
                                 label='Пароль'
                                 type='password'
