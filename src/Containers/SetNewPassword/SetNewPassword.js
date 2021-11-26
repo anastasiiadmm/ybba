@@ -1,11 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useHistory} from 'react-router';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
+import { Button } from '@mui/material';
 import Container from 'Components/Container/Container';
 import FormField from 'Components/FormField/FormField';
-import Button from 'Components/Button/Button';
-import {resetUserPassword, authSelector} from 'redux/auth/authSlice.js';
+import { resetUserPassword, authSelector } from 'redux/auth/authSlice.js';
+import { Link } from 'react-router-dom';
+
+import 'Containers/SetNewPassword/SetNewPassword.css'
 
 
 const SetNewPassword = props => {
@@ -16,16 +19,16 @@ const SetNewPassword = props => {
     }
 
     const [data, setData] = useState(initialState)
-    const {loading, success, errors, commonError} = useSelector(authSelector)
+    const { loading, success, errors, commonError } = useSelector(authSelector)
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const {token} = props.match.params
+    const { token } = props.match.params
 
-    const inputChangeHandler = e => setData({...data, [e.target.name]: e.target.value})
+    const inputChangeHandler = e => setData({ ...data, [e.target.name]: e.target.value })
     const onSubmit = e => {
         e.preventDefault()
-        dispatch(resetUserPassword({password: data.password, token}))
+        dispatch(resetUserPassword({ password: data.password, token }))
     }
 
     const isFormValid = (data.passwordRepeat && data.password) && (data.password === data.passwordRepeat)
@@ -39,45 +42,51 @@ const SetNewPassword = props => {
 
     return (
         <Container>
-            <div className='form__wrap'>
-                <div className='form form_narrow'>
-                    <form onSubmit={onSubmit}>
-                        <h4 className='form__title'>Введите новый пароль</h4>
-                        <div className='form__row'>
+            <div className='form2'>
+                <form onSubmit={onSubmit}>
+                    <div className='form2__inner'>
+                        <Button component={Link} to='/login/' type='button' className='btn-close form2__btn-close' />
+                        <h4 className='form2__title'>Восстановление пароля</h4>
+
+                        <div className='form2__row'>
                             <FormField
                                 type='password'
-                                className='form__field'
+                                className='form2__field'
                                 label='Новый пароль'
                                 required
                                 name='password'
                                 onChange={inputChangeHandler}
                                 errors={errors}
                             />
+                            {commonError && <p className='form2__error'>{commonError}</p>}
                         </div>
-                        <div className='form__row'>
+
+                        <div className='form2__row'>
                             <FormField
                                 type='password'
-                                className='form__field'
-                                label='Повторите пароль'
+                                className='form2__field'
+                                label='Подтвердите пароль'
                                 required
                                 name='passwordRepeat'
                                 onChange={inputChangeHandler}
                                 errors={errors}
                             />
+                            {!isFormValid ? <p className='form2__error'>Пароли не совпадают</p> :
+                                commonError && <p className='form2__error'>{commonError}</p>}
                         </div>
-                        {commonError && <p className='form__error-text'>{commonError}</p>}
-                        <div className='form__row form__row_pd'>
+
+                        <div className='form2__row'>
                             <Button
-                                className='btn'
+                                className='btn2'
                                 type='submit'
                                 disabled={!isFormValid}
                                 loading={loading}
                             >
-                                Сбросить пароль
+                                Сохранить
                             </Button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </Container>
     );
