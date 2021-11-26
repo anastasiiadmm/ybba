@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { NavLink } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,6 +10,7 @@ import FormField from 'Components/FormField/FormField.js';
 import { loginUser, authSelector } from 'redux/auth/authSlice.js';
 import { clearUserState, clearUserFromUserState } from 'redux/user/userSlice.js';
 
+import 'Containers/Login/Login.css'
 
 const Login = () => {
     const loginDataInit = {
@@ -49,55 +50,53 @@ const Login = () => {
 
     return (
         <Container>
-            <div className='form__wrap'>
-                <div className='form form_narrow'>
-                    <form onSubmit={submitChangeHandler}>
-                        <h4 className='form__title'>Войти</h4>
-
-                        <div className='form__row'>
+            <div className='form2'>
+                <form onSubmit={submitChangeHandler}>
+                    <div className='form2__inner'>
+                        <div className='form2__title-block'>
+                            <h4 className='form2__title'>Авторизация</h4>
+                            <p className='form2__subtitle'>Чтобы зарегистрироваться в системе,
+                                <a href='https://diagnostika.pro/' className='form2__link'> оплатите</a> занятие
+                            </p>
+                        </div>
+                        <div className='form2__row'>
                             <FormField
-                                label='Email'
+                                label='Логин'
                                 type='email'
-                                className={`form__field ${commonError && 'error'}`}
+                                placeholder='username@gmail.com'
+                                className={`form2__field passw-first ${commonError && 'error'}`}
                                 required
                                 pattern='^(.+)@(.+)\.(.+)$'
                                 name='email'
                                 onChange={inputChangeHandler}
                                 value={loginData.email}
                             />
+                            {commonError && <div className='form2__error'>{commonError}</div>}
                         </div>
-                        <div className='form__row'>
+                        <div className='form2__row'>
+                            <Link className='form2__link form2__link_fpassw' to='/reset-password/'>Не помню пароль</Link>
                             <FormField
                                 label='Пароль'
                                 type='password'
-                                className={`form__field passw-first ${commonError && 'error'}`}
+                                className={`form2__field passw-first ${commonError && 'error'}`}
                                 required
                                 name='password'
                                 onChange={inputChangeHandler}
                                 value={loginData.password}
                             />
+                            {commonError && <div className='form2__error'>{commonError}</div>}
                         </div>
-                        {commonError && <p className='form__error-text'>{commonError}</p>}
-                        <div className='form__row form__row_pd'>
+                        <div className='form2__row'>
                             <Button
                                 type='submit'
-                                className='btn'
-                                disabled={(!loginData.email || !loginData.password)}
+                                className='btn2'
                                 loading={loading}
                             >
                                 Войти
                             </Button>
                         </div>
-                        <p className='form__link-wrap'>
-                            Забыли пароль?{' '}
-                            <NavLink className='form__link' to='/reset-password/'>Восстановить пароль</NavLink>
-                        </p>
-                        <p className='form__link-wrap'>
-                            Нет аккаунта?{' '}
-                            <NavLink className='form__link' to='/registration/1/'>Зарегистрироваться</NavLink>
-                        </p>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </Container>
     );
