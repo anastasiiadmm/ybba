@@ -15,7 +15,12 @@ function ProtocolCheckboxField(props) {
   return (
     <div className="protocol__lbl-wrap">
       <label className="check2">
-        <input value={label} type="checkbox" name={name} {...onChangeHandler} />
+        <input
+          // value={label}
+          type="checkbox"
+          name={name}
+          {...onChangeHandler}
+        />
         <span>{label}</span>
       </label>
     </div>

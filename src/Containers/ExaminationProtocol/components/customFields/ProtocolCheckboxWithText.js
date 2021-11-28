@@ -15,18 +15,14 @@ function ProtocolCheckboxWithText(props) {
   return (
     <div className="protocol__lbl-wrap">
       <label className="check2">
-        <input
-          value={label}
-          type="checkbox"
-          name={name}
-          {...register(`${name}.main`, { onChange: onChange })}
-        />
+        <input type="checkbox" />
         <span>{label}</span>
       </label>
       <input
         type="text"
+        name={name}
         className="lbl-field"
-        {...register(`${name}.desc`, { onChange: onChange })}
+        {...onChangeHandler}
       ></input>
     </div>
   );
