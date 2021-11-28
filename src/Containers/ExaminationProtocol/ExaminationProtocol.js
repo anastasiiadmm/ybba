@@ -24,12 +24,25 @@ const ExaminationProtocol = (props) => {
     mode: 'onChange',
   });
 
-  const { getValues } = formMethods;
+  const {
+    getValues,
+    formState: { errors },
+  } = formMethods;
 
   const dispatch = useDispatch();
 
+  let timeout = null;
+
+  const inputTimer = (e) => {
+    clearTimeout(timeout);
+
+    timeout = setTimeout(function () {
+      console.log(getValues(e.target.name));
+    }, 1000);
+  };
+
   const inputChangeHandler = (e) => {
-    console.log(getValues());
+    return inputTimer(e);
   };
 
   return (
