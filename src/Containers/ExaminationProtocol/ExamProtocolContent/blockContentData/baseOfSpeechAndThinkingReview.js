@@ -5,28 +5,31 @@ const mainBlock = new BlockContent('baseOfSpeechAndThinkingReview', []);
 mainBlock.content = [
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'thinking.isAgeAppropriate',
+    'thinking',
     'Мышление:',
     ['Cоответствует возрасту', 'Не соответствует возраст']
   ),
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'thinking.isDistorted',
+    'thinking_part_two',
     '',
     ['Нарушено ', 'Не нарушено']
   ),
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.checkbox,
-    'thinking.struggles',
+    'there_are_difficulties_in_protecting_adequate_connections',
     '',
     [
-      'Наблюдаются трудности установления адекватных связей между предметами и явлениями окружающего мира',
+      {
+        label:
+          'Наблюдаются трудности установления адекватных связей между предметами и явлениями окружающего мира',
+      },
     ]
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'thinking.types',
+    'kind_of_thinking',
     'Вид мышления:',
     [
       'Мышление наглядно-действенное. Решение мыслительных задач осуществляется только на уровне практических действий',
@@ -35,7 +38,7 @@ mainBlock.content = [
       'Словесно-логическое, способен давать своим действиям логическое объяснение',
     ]
   ),
-  mainBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  mainBlock.textAreaFieldObject('expert_comment', 'Комментарий'),
 ];
 
 export const baseOfSpeechAndThinkingReview = mainBlock.content;

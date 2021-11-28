@@ -20,27 +20,27 @@ mainBlock.content = [
   ),
 
   mainBlock.yesNoQuestionObject(
-    'mouse_in_the_yard',
+    'mouse_in_the_yard_at_night',
     'Мышонок во дворе ночью',
     1
   ),
   mainBlock.yesNoQuestionObject(
-    'mouse_eats_apple',
+    'mouse_is_eating_an_apple_and_a_berry',
     'Мышонок ест яблоко и ягоду',
     2
   ),
   mainBlock.yesNoQuestionObject(
-    'moon_puddle_reflection',
+    'moon_in_the_reflection_of_the_water_in_a_puddle',
     'Луна в отражении воды в луже',
     3
   ),
   mainBlock.yesNoQuestionObject(
-    'mouse_covers_puddle',
+    'mouse_covers_the_puddle_with_burdock',
     'Мышонок накрывает лужу лопухом',
     4
   ),
   mainBlock.yesNoQuestionObject(
-    'sun_puddle_reflection',
+    'sun_in_water_reflection_in_a_puddle',
     'Солнце в отражении воды в луже',
     5
   ),
@@ -51,27 +51,27 @@ mainBlock.content = [
     []
   ),
   mainBlock.textFieldObject(
-    'what_was_the_white_ball',
+    'what_was_the_white_glowing_circle',
     '1. Чем оказался белый светящийся круг?'
   ),
   mainBlock.textFieldObject(
-    'when_did_the_mouse_go_to_walk',
+    'when_did_the_mouse_go_for_a_walk',
     '2. Когда мышонок пошел гулять?'
   ),
   mainBlock.textFieldObject(
-    'what_did_the_mouse_see',
+    'what_did_the_mouse_see_in_the_forest',
     '3. Что увидел мышонок во дворе?'
   ),
   mainBlock.textFieldObject(
-    'what_was_the_puddle_cover',
+    'what_did_the_mouse_cover_the_moon_with',
     '4. Чем мышонок накрыл луну?'
   ),
   mainBlock.textFieldObject(
-    'what_did_the_mouse_see_in_the_puddle',
+    'what_did_the_mouse_see_in_the_puddle_in_the_morning',
     '5. Что увидел в луже мышонок утром?'
   ),
   mainBlock.textFieldObject(
-    'why_did_the_mouse_see_the_sun',
+    'why_instead_of_the_moon_the_mouse_found_the_sun',
     '6. Почему вместо луны мышонок обнаружил солнышко?'
   ),
 
@@ -81,7 +81,7 @@ mainBlock.content = [
     '— Повтори всю историю, как запомнил:',
     []
   ),
-  mainBlock.textAreaFieldObject('child-story-review', ''),
+  mainBlock.textAreaFieldObject('crepeat_the_whole_story_as_you_remember', ''),
 ];
 
 reviewBlock.content = [
@@ -89,7 +89,7 @@ reviewBlock.content = [
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'statement_building',
+    'constructing_a_statement',
     'Построение высказывания:',
     [
       'Может построить собственное высказывание на основе полученной визуально информации',
@@ -99,7 +99,7 @@ reviewBlock.content = [
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'plot_match',
+    'consistency_with_the_plot',
     'Соответствие сюжету:',
     [
       'Рассказ соответствует предложенному сюжету',
@@ -109,7 +109,7 @@ reviewBlock.content = [
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'theme',
+    'topic',
     'Тема:',
     ['Раскрыта ', 'Раскрыта частично', 'Не раскрыта']
   ),
@@ -122,7 +122,7 @@ reviewBlock.content = [
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'language_tools',
+    'language_means',
     'Языковые средства:',
     [
       'Свободно владеет языковыми средствами и адекватно их использует при построении связного текста',
@@ -131,7 +131,7 @@ reviewBlock.content = [
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'language_tools.phrasal_perseverations',
+    'phrasal_perseverations',
     '',
     ['Фразовые персеверации']
   ),
@@ -140,24 +140,46 @@ reviewBlock.content = [
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'has_no_difficulty_in_story_reproduction',
+    '',
     'Ребенок не испытывает трудностей в репродуцировании текста:',
     [
-      'Пересказ соответствует оригиналу',
-      'Пересказ содержит как основную, так и дополнительную информацию',
-      'При пересказе используется вариативность речи',
+      {
+        name: 'retelling_corresponds_to_original',
+        label: 'Пересказ соответствует оригиналу',
+      },
+      {
+        name: 'retelling_contains_both_basic_and_additional_information',
+        label:
+          'Пересказ содержит как основную, так и дополнительную информацию',
+      },
+      {
+        name: 'retelling_uses_variability_of_speech',
+        label: 'При пересказе используется вариативность речи',
+      },
     ]
   ),
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'has_some_difficulty_in_story_reproduction',
+    '',
     'Наблюдаются некоторые трудности в репродуцировании текста:',
     [
-      'Пересказ частично соответствует оригиналу',
-      'Пересказ содержит только основную информацию',
-      'Сохраняются лексика и синтаксические конструкции оригинала',
-      'Не нарушена связность и логичность изложения ',
+      {
+        name: 'retelling_partially_corresponds_to_original',
+        label: 'Пересказ частично соответствует оригиналу',
+      },
+      {
+        name: 'retelling_contains_only_basic_information',
+        label: 'Пересказ содержит только основную информацию',
+      },
+      {
+        name: 'vocabulary_and_syntactic_constructions_of_original',
+        label: 'Сохраняются лексика и синтаксические конструкции оригинала',
+      },
+      {
+        name: 'coherence_and_consistency_of_presentation_is_not_broken',
+        label: 'Не нарушена связность и логичность изложения ',
+      },
     ]
   ),
 
@@ -166,10 +188,22 @@ reviewBlock.content = [
     'has_notable_difficulty_in_story_reproduction',
     'Наблюдаются значительные трудности в репродуцировании текста: ',
     [
-      'Пересказ не соответствует оригиналу<',
-      'Нарушена смысловая организация текста<',
-      'Нарушена связность и логичность изложения <',
-      'Значительные трудности в языковом оформлении текста',
+      {
+        name: 'retelling_does_not_correspond_to_original',
+        label: 'Пересказ не соответствует оригиналу<',
+      },
+      {
+        name: 'semantic_organization_of_text_is_broken',
+        label: 'Нарушена смысловая организация текста<',
+      },
+      {
+        name: 'coherence_and_consistency_of_presentation_is_broken',
+        label: 'Нарушена связность и логичность изложения <',
+      },
+      {
+        name: 'significant_difficulties_in_language_design_of_text',
+        label: 'Значительные трудности в языковом оформлении текста',
+      },
     ]
   ),
 
@@ -177,13 +211,13 @@ reviewBlock.content = [
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'content_and_semantic_meaning_of_the_text:',
+    'content_semantic_meaning_of_text',
     ' Содержательно-смысловое значение текста:',
     ['Идентифицирует', 'Не идентифицирует ']
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'content_and_semantic_meaning_of_the_text:',
+    'understands_only_basic_information_of_text',
     'Понимание:',
     [
       'понимает только основную информацию текста',
@@ -192,7 +226,7 @@ reviewBlock.content = [
     ]
   ),
 
-  reviewBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  reviewBlock.textAreaFieldObject('expert_comment', 'Комментарий'),
 ];
 
 export const notSleepingMouseGame = mainBlock.content;

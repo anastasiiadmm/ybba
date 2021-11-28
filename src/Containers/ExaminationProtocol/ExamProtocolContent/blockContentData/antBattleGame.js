@@ -20,17 +20,15 @@ reviewBlock.content = [
     'Тонус:',
     ['Cпастичность мышц языка', 'Гипотония мышц языка', 'Дистония мышц языка']
   ),
-  reviewBlock.radioOrCheckFieldObject(
-    reviewBlock.fieldTypes.checkbox,
-    'tone.more',
-    '',
-    [
-      'Девиация языка (отклонения языка в сторону)',
-      'Гиперкинезы языка',
-      'Тремор языка ',
-      'Трудности переключения',
-    ]
-  ),
+  reviewBlock.radioOrCheckFieldObject(reviewBlock.fieldTypes.checkbox, '', '', [
+    {
+      name: 'deviation_of_the_tongue',
+      label: 'Девиация языка (отклонения языка в сторону)',
+    },
+    { name: 'hyperkinesis_of_the_tongue', label: 'Гиперкинезы языка' },
+    { name: 'tremor_of_the_tongue', label: 'Тремор языка ' },
+    { name: 'switching_difficulties', label: 'Трудности переключения' },
+  ]),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
     'pace_of_movement',
@@ -40,7 +38,7 @@ reviewBlock.content = [
       'Ускоренный темп выполнения движений',
     ]
   ),
-  reviewBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  reviewBlock.textAreaFieldObject('expert_comment', 'Комментарий'),
 ];
 
 export const antBattleGame = mainBlock.content;

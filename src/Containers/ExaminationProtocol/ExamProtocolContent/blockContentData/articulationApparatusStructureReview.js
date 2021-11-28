@@ -14,7 +14,7 @@ mainBlock.content = [
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'dental_anomalies.malocclusion_disorders',
+    'malocclusion',
     'Нарушения прикуса:',
     [
       'Прогнатия',
@@ -27,14 +27,14 @@ mainBlock.content = [
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'dental_anomalies.incorrect_teeth_position',
+    'incorrect_position_of_teeth',
     'Неправильное положение зубов:',
     ['Адентия', 'Диастема', 'Сверхкомплектные зубы']
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'dental_anomalies.teeth_position_change',
+    'tooth_reshaping',
     'Изменение формы зубов:',
     ['Макродентия', 'Микродентия']
   ),
@@ -43,25 +43,23 @@ mainBlock.content = [
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'tongue_abnormalities.tongue_size_change',
+    'changing_size_of_tongue',
     'Изменение размера языка:',
     ['Макроглоссия', 'Микроглоссия']
   ),
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'tongue_abnormalities.tongue_deviation',
+    'deviation_of_tongue',
     'Девиация языка:',
     ['Влево', 'Вправо']
   ),
-  mainBlock.radioOrCheckFieldObject(
-    mainBlock.fieldTypes.checkbox,
-    'tongue_abnormalities.tongue_deviation.extra',
-    '',
-    ['Раздвоение языка', 'Укороченная подъязычная складка']
-  ),
+  mainBlock.radioOrCheckFieldObject(mainBlock.fieldTypes.checkbox, '', '', [
+    { name: 'split_tongue', label: 'Раздвоение языка' },
+    { name: 'shortened_hyoid_fold', label: 'Укороченная подъязычная складка' },
+  ]),
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'lip_frenulum_abnormalities',
+    'anomalies_of_frenum_of_upper_lower_lip',
     'Аномалии уздечек верхней/нижней губы:',
     ['Укорочение', 'Увеличение']
   ),
@@ -73,7 +71,7 @@ mainBlock.content = [
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'maxillofacial_region_and_systemic_anomalies_soft_tissues_and_bones.cleft',
+    'cleft',
     'Расщелина:',
     [
       'Губы',
@@ -82,12 +80,10 @@ mainBlock.content = [
       'Скрытая',
     ]
   ),
-  mainBlock.radioOrCheckFieldObject(
-    mainBlock.fieldTypes.checkbox,
-    'maxillofacial_region_and_systemic_anomalies_soft_tissues_and_bones.cleft.extra',
-    '',
-    ['Готическое нёбо', 'Деформации челюсти']
-  ),
+  mainBlock.radioOrCheckFieldObject(mainBlock.fieldTypes.checkbox, '', '', [
+    { name: 'gothic_palate', label: 'Готическое нёбо' },
+    { name: 'jaw_deformities', label: 'Деформации челюсти' },
+  ]),
 ];
 
 export const articulationApparatusStructureReview = mainBlock.content;

@@ -7,15 +7,15 @@ mainBlock.content = [
   mainBlock.textFieldObject('chair', 'Стул'),
   mainBlock.textFieldObject('bow', 'Бантик'),
   mainBlock.textFieldObject('helicopter', 'Вертолет'),
-  mainBlock.textFieldObject('paper_plane', 'Самолетик (бумажный)'),
+  mainBlock.textFieldObject('paper_airplane', 'Самолетик (бумажный)'),
   mainBlock.textFieldObject('excavator', 'Экскаватор'),
-  mainBlock.textFieldObject('photo_camera', 'Фотоаппарат'),
+  mainBlock.textFieldObject('camera', 'Фотоаппарат'),
 ];
 
 reviewBlock.content = [
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'word_syllable_structure',
+    'syllabic_structure_of_a_word',
     '',
     [
       'Слоговая структура слова не нарушена',
@@ -25,31 +25,46 @@ reviewBlock.content = [
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'dyspraxic_disorders',
+    '',
     'Диспраксичные нарушения:',
     [
-      'Пропуски слогов',
-      'Пропуски слогообразующих гласных',
-      'Перестановки звуков и/или слогов',
-      'Вставки гласных в стечение согласных',
-      'Добавление слогов',
+      { name: 'missing_syllables', label: 'Пропуски слогов' },
+      {
+        name: 'missing_syllabic_vowels',
+        label: 'Пропуски слогообразующих гласных',
+      },
+      {
+        name: 'permutations_of_sounds_and_or_syllables',
+        label: 'Перестановки звуков и/или слогов',
+      },
+      {
+        name: 'insertion_of_vowels_into_consonants',
+        label: 'Вставки гласных в стечение согласных',
+      },
+      { name: 'adding_syllables', label: 'Добавление слогов' },
     ]
   ),
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'gnostic_disorders',
+    '',
     'Гностические нарушения:',
     [
-      'Сокращения стечения согласных',
-      'Вставки согласных в слог',
-      'Антиципации',
-      'Уподобление слогов',
-      'Добавление слогов',
+      { name: 'consonant_reduction', label: 'Сокращения стечения согласных' },
+      {
+        name: 'inserting_consonants_into_a_syllable',
+        label: 'Вставки согласных в слог',
+      },
+      { name: 'anticipation', label: 'Антиципации' },
+      { name: 'assimilation_of_syllables', label: 'Уподобление слогов' },
+      {
+        name: 'gnotic_violations_addition_of_syllables',
+        label: 'Добавление слогов',
+      },
     ]
   ),
 
-  reviewBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  reviewBlock.textAreaFieldObject('expert_comment', 'Комментарий'),
 ];
 
 export const сapriciousPrincessGame = mainBlock.content;

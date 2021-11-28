@@ -6,44 +6,44 @@ const reviewBlock = new BlockContent('prosodicSideOfSpeech.review', []);
 mainBlock.content = [
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'voice.aphonia_dysphonia',
+    'voice',
     'Голос',
     ['Афония', 'Дисфония', 'Нормальный']
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'voice.hoarse_voiced',
+    'voice_part_two',
     '',
     ['Хриплый', 'Звонкий']
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'voice.loud_quiet',
+    'voice_part_three',
     '',
     ['Громкий', 'Тихий']
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'voice.squeaky_low',
+    'voice_part_four',
     '',
     ['Писклявый', 'Oчень низкий']
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'voice.unmodulated_weakly_modulated',
+    'voice_part_five',
     '',
     ['Немодулированный', 'Слабо модулированный']
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.checkbox,
-    'voice.extra',
+    'nasalized_voice',
     '',
-    ['Назализованный голос']
+    [{ label: 'Назализованный голос' }]
   ),
 
   mainBlock.radioOrCheckFieldObject(
@@ -55,7 +55,7 @@ mainBlock.content = [
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'tempo',
+    'pace',
     'Темп',
     [
       'Нормальный',
@@ -75,24 +75,24 @@ mainBlock.content = [
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'breath.main',
+    'breath',
     'Дыхание',
     ['Ключичное', 'Грудное', 'Диафрагмальное', 'Смешанное']
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'breath.tempo',
+    'exhalation',
     '',
     ['Выдох укорочен', 'Выдох плавный']
   ),
 
-  mainBlock.radioOrCheckFieldObject(
-    mainBlock.fieldTypes.checkbox,
-    'breath.extra',
-    '',
-    ['Затруднённое', 'Поверхностное', 'Неритмичное', 'Вдох неглубокий']
-  ),
+  mainBlock.radioOrCheckFieldObject(mainBlock.fieldTypes.checkbox, '', '', [
+    { name: 'hindered', label: 'Затруднённое' },
+    { name: 'superficial', label: 'Поверхностное' },
+    { name: '', label: 'Неритмичное' },
+    { name: 'shallow_breath', label: 'Вдох неглубокий' },
+  ]),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
@@ -103,7 +103,7 @@ mainBlock.content = [
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'exhale_strength',
+    'expiratory_force',
     'Сила выдоха',
     ['Слабая', 'Сильная']
   ),
@@ -119,7 +119,7 @@ mainBlock.content = [
 reviewBlock.content = [
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'specific_speech',
+    'prosodic_side_of_speech',
     '',
     [
       'Просодическая организация речи характеризуется неадекватным интонационным оформлением высказывания; речь невнятная, "смазанная", малопонятная для окружающих',
@@ -129,7 +129,7 @@ reviewBlock.content = [
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'tone_speech',
+    'speech_intonationally',
     '',
     [
       'Речь интонационно выразительна ',
@@ -138,7 +138,7 @@ reviewBlock.content = [
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'tempo_rhythmic_speech',
+    'violation_of_tempo_rhythmic_organization_of_speech',
     'Нарушение темпо-ритмической организации речи: ',
     ['Судороги', 'Запинки']
   ),

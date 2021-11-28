@@ -9,9 +9,9 @@ mainBlock.content = [
     'Образование уменьшительно-ласкательных форм существительных '
   ),
 
-  mainBlock.textFieldObject('diminutive_nouns.house', 'Дом – Домик'),
-  mainBlock.textFieldObject('diminutive_nouns.bucket', 'Ведро – Ведерко'),
-  mainBlock.textFieldObject('diminutive_nouns.tree', 'Дерево - Деревце'),
+  mainBlock.textFieldObject('house', 'Дом – Домик'),
+  mainBlock.textFieldObject('bucket', 'Ведро – Ведерко'),
+  mainBlock.textFieldObject('tree', 'Дерево - Деревце'),
 
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Словоизменение'),
 
@@ -23,37 +23,40 @@ mainBlock.content = [
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Предлоги'),
 
   mainBlock.textGroup([
-    mainBlock.textFieldObject('prepositions.near', 'У дома'),
-    mainBlock.textFieldObject('prepositions.behind', 'За деревом'),
+    mainBlock.textFieldObject('at_home', 'У дома'),
+    mainBlock.textFieldObject('behind_a_tree', 'За деревом'),
   ]),
 
   mainBlock.textGroup([
-    mainBlock.textFieldObject('prepositions.on', 'На крыше'),
-    mainBlock.textFieldObject('prepositions.on_the_right', 'Справа от конуры'),
+    mainBlock.textFieldObject('on_the_roof', 'На крыше'),
+    mainBlock.textFieldObject('to_the_right_of_the_kennel', 'Справа от конуры'),
   ]),
 
   mainBlock.textGroup([
-    mainBlock.textFieldObject('prepositions.on_above', 'На ветке над Мишей'),
-    mainBlock.textFieldObject('prepositions.on_the_left', 'Слева от дерева'),
-  ]),
-
-  mainBlock.textGroup([
-    mainBlock.textFieldObject('prepositions.under', 'Под ботинком'),
     mainBlock.textFieldObject(
-      'prepositions.from_behind',
+      'on_the_branch_above_misha',
+      'На ветке над Мишей'
+    ),
+    mainBlock.textFieldObject('to_the_left_of_the_tree', 'Слева от дерева'),
+  ]),
+
+  mainBlock.textGroup([
+    mainBlock.textFieldObject('under_the_boot', 'Под ботинком'),
+    mainBlock.textFieldObject(
+      'peeps_out_from_behind_Misha',
       'Выглядывает из-за Мишы'
     ),
   ]),
   mainBlock.textGroup([
-    mainBlock.textFieldObject('prepositions.in_front', 'Перед корытом'),
-    mainBlock.textFieldObject('prepositions.in', 'У Мишы в капюшоне'),
+    mainBlock.textFieldObject('in_front_of_the_trough', 'Перед корытом'),
+    mainBlock.textFieldObject('misha_has_a_hood', 'У Мишы в капюшоне'),
   ]),
 ];
 
 reviewBlock.content = [
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'grammar_competence_level',
+    'level_of_grammatical_competence_formation',
     'Уровень сформированности грамматической компетенции: ',
     [
       'Соответствует возрастной норме ',
@@ -63,7 +66,7 @@ reviewBlock.content = [
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'word_altering_skills_and_abilities',
+    'inflectional_skills_and_abilities_part_one',
     'Словоизменительные навыки и умения:',
     [
       'На самой начальной стадии формирования; наблюдаются выраженные трудности усвоения словоизменительной системы языка, в речи присутствует большое количество морфемных (формообразовательных) аграмматизмов; усвоены только наиболее продуктивные словоизменительные модели языка',
@@ -87,7 +90,7 @@ reviewBlock.content = [
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'syntactic_skills_and_abilities',
+    'inflectional_skills_and_abilities_part_two',
     'Синтаксические навыки и умения:',
     [
       'Синтаксические навыки сформированы на самом элементарном уровне, в речи присутствуют простые нераспространенные предложения, понимание смысла синтаксических конструкций более сложной структуры затруднено; предикативная часть многих самых элементарных конструкций отсутствует',
@@ -97,7 +100,7 @@ reviewBlock.content = [
     ]
   ),
 
-  reviewBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  reviewBlock.textAreaFieldObject('expert_comment', 'Комментарий'),
 ];
 
 export const farmGameTwo = mainBlock.content;

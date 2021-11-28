@@ -5,21 +5,21 @@ const mainBlock = new BlockContent('psychologicalBasisOfSpeechAttention', []);
 mainBlock.content = [
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'speech_attention',
+    'there_are_difficulties_in_distributing_attention',
     'Речевое внимание:',
     ['Сформировано ', 'Сформировано недостаточно', 'Не сформировано']
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.checkbox,
-    'distribution',
+    'concentration',
     'Распределение:',
-    ['Наблюдаются трудности распределения внимания']
+    [{ label: 'Наблюдаются трудности распределения внимания' }]
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'stability',
+    'sustainability',
     'Устойчивость:',
     [
       'Внимание неустойчивое, поверхностное, ребенок очень быстро истощается',
@@ -30,9 +30,9 @@ mainBlock.content = [
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.checkbox,
-    'depletion',
+    'child_s_attention_is_characterized_by_rapid_exhaustion',
     'Истощаемость:',
-    ['Внимание ребенка характеризуется быстрой истощаемостью']
+    [{ label: 'Внимание ребенка характеризуется быстрой истощаемостью' }]
   ),
 
   mainBlock.fieldObject(mainBlock.fieldTypes.text, 'volume', 'Объем:'),

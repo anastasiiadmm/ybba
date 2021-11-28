@@ -4,9 +4,12 @@ const mainBlock = new BlockContent('antLambadaGame', []);
 const reviewBlock = new BlockContent('antLambadaGame.review', []);
 
 mainBlock.content = [
-  mainBlock.textFieldObject('house', 'Дом-Дятел /Д, Дь'),
-  mainBlock.textFieldObject('slippers', 'Тапки-Платье /Т, Ть'),
-  mainBlock.textFieldObject('kitchen', 'Кухня-Хомяк-Гусь /К – Х, Г'),
+  mainBlock.textFieldObject('woodpecker_house', 'Дом-Дятел /Д, Дь'),
+  mainBlock.textFieldObject('slipper_dress', 'Тапки-Платье /Т, Ть'),
+  mainBlock.textFieldObject(
+    'kitchen_hamster_goose',
+    'Кухня-Хомяк-Гусь /К – Х, Г'
+  ),
 ];
 
 reviewBlock.content = [
@@ -15,12 +18,20 @@ reviewBlock.content = [
     'front_lingual',
     'Переднеязычные:',
     [
-      'Носовой',
-      'Пропуск',
-      { withText: true, checkboxText: 'Замена Д на' },
-      { withText: true, checkboxText: 'Замена Дь на' },
-      { withText: true, checkboxText: 'Замена Т на' },
-      { withText: true, checkboxText: 'Замена Ть на' },
+      { name: 'nasal', label: 'Носовой' },
+      { name: 'skip', label: 'Пропуск' },
+      { name: 'replacing_d_with', withText: true, checkboxText: 'Замена Д на' },
+      {
+        name: 'replacing_d_soft_with',
+        withText: true,
+        checkboxText: 'Замена Дь на',
+      },
+      { name: 'replacing_t_with', withText: true, checkboxText: 'Замена Т на' },
+      {
+        name: 'replacing_t_soft_with',
+        withText: true,
+        checkboxText: 'Замена Ть на',
+      },
     ]
   ),
   reviewBlock.radioOrCheckFieldObject(
@@ -28,15 +39,19 @@ reviewBlock.content = [
     'back_lingual',
     'Заднеязычные:',
     [
-      { withText: true, checkboxText: 'Замена К на' },
-      { withText: true, checkboxText: 'Замена Г на' },
-      { withText: true, checkboxText: 'Замена Х на' },
+      { name: 'replacing_k_with', withText: true, checkboxText: 'Замена К на' },
+      { name: 'replacing_g_with', withText: true, checkboxText: 'Замена Г на' },
+      {
+        name: 'replacing_kh_with',
+        withText: true,
+        checkboxText: 'Замена Х на',
+      },
 
-      'Смешение',
-      'Искажение',
+      { name: 'mixing', label: 'Смешение' },
+      { name: 'distortion', label: 'Искажение' },
     ]
   ),
-  reviewBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  reviewBlock.textAreaFieldObject('expert_comment', 'Комментарий'),
 ];
 
 export const antLambadaGame = mainBlock.content;

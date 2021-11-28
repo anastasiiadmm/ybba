@@ -10,15 +10,18 @@ mainBlock.content = [
     []
   ),
 
-  mainBlock.textFieldObject('sat_age', 'Сел в:'),
-  mainBlock.textFieldObject('crawled_age', 'Пополз на четвереньках в:'),
-  mainBlock.textFieldObject('started_walking__age', 'Пошел в:'),
+  mainBlock.textFieldObject('sat_in', 'Сел в:'),
   mainBlock.textFieldObject(
-    'learned_to_jump__age',
+    'crawled_on_all_fours_into',
+    'Пополз на четвереньках в:'
+  ),
+  mainBlock.textFieldObject('went_to', 'Пошел в:'),
+  mainBlock.textFieldObject(
+    'llearned_to_jump_on_two_legs_in',
     'Научился прыгать на двух ногах в:'
   ),
   mainBlock.textFieldObject(
-    'birth_traumas_infections',
+    'injury_infection_before_during_and_or_after_childbirth',
     'Травмы/инфекции до, во время и/или после родов:'
   ),
 
@@ -34,10 +37,13 @@ mainBlock.content = [
     []
   ),
 
-  mainBlock.textFieldObject('babling_words.babbling_age', 'Лепет в:'),
-  mainBlock.textFieldObject('babling_words.first_words_age', 'Первые слова в:'),
+  mainBlock.textFieldObject('babbling_in.babbling_age', 'Лепет в:'),
   mainBlock.textFieldObject(
-    'babling_words.first_short_phrases_age',
+    'first_words_in.first_words_age',
+    'Первые слова в:'
+  ),
+  mainBlock.textFieldObject(
+    'first_short_phrases_in.first_short_phrases_age',
     'Первые короткие фразы в:'
   ),
 
@@ -64,7 +70,7 @@ mainBlock.content = [
     []
   ),
 
-  mainBlock.textAreaFieldObject('trauma_illness_operation', ''),
+  mainBlock.textAreaFieldObject('present_and_past_diseases', ''),
 
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Медикаментозное лечение'),
 
@@ -74,7 +80,7 @@ mainBlock.content = [
     '— Проходил/проходит ли медикаментозное лечение? Если да, то какое?',
     []
   ),
-  mainBlock.textAreaFieldObject('medical_treatment', ''),
+  mainBlock.textAreaFieldObject('drug_treatment', ''),
 
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Неврологический статус'),
 
@@ -85,6 +91,16 @@ mainBlock.content = [
     []
   ),
   mainBlock.textAreaFieldObject('neurological_status', ''),
+
+  mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Зрение'),
+
+  mainBlock.questionObject(
+    mainBlock.fieldTypes.question,
+    null,
+    '— Какое зрение у ребенка? Что говорит окулист? ',
+    []
+  ),
+  mainBlock.textAreaFieldObject('vision', ''),
 
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Слух'),
 
@@ -104,7 +120,7 @@ mainBlock.content = [
     '— Какой аппетит у ребенка? Он предпочитает твердую или пюреобразную пищу? Имеется ли избирательность в еде?',
     []
   ),
-  mainBlock.textAreaFieldObject('eating_behaviour', ''),
+  mainBlock.textAreaFieldObject('eating_behavior', ''),
 
   mainBlock.boxTitle(
     mainBlock.fieldTypes.par,
@@ -118,21 +134,7 @@ mainBlock.content = [
     []
   ),
 
-  mainBlock.textAreaFieldObject('emotional_psychological_level', ''),
-
-  mainBlock.boxTitle(
-    mainBlock.fieldTypes.par,
-    'Эмоционально-психологический уровень'
-  ),
-
-  mainBlock.questionObject(
-    mainBlock.fieldTypes.question,
-    null,
-    '— Как обычно ведет себя дома в привычной обстановке? Как ведет себя в незнакомой ситуации? Как ведет себя с незнакомыми людьми?',
-    []
-  ),
-
-  mainBlock.textAreaFieldObject('emotional_psychological_level', ''),
+  mainBlock.textAreaFieldObject('emotional_and_psychological_level', ''),
 ];
 
 export const additionalInfo = mainBlock.content;

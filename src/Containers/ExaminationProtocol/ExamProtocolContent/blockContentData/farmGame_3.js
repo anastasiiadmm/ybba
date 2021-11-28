@@ -4,24 +4,15 @@ const mainBlock = new BlockContent('farmGameThree', []);
 const reviewBlock = new BlockContent('farmGameThree.review', []);
 
 mainBlock.content = [
-  mainBlock.textFieldObject(
-    'nouns_with_numbers.one_chicken',
-    'Одна белая курица'
-  ),
-  mainBlock.textFieldObject(
-    'nouns_with_numbers.two_chickens',
-    'Три рыжих курицы'
-  ),
-  mainBlock.textFieldObject(
-    'nouns_with_numbers.five_chickens',
-    'Пять рябых куриц'
-  ),
+  mainBlock.textFieldObject('one_white_chicken', 'Одна белая курица'),
+  mainBlock.textFieldObject('three_ginger_hens', 'Три рыжих курицы'),
+  mainBlock.textFieldObject('five_speckled_hens', 'Пять рябых куриц'),
 ];
 
 reviewBlock.content = [
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'word_ending_mistakes',
+    'options_for_confinement',
     '',
     [
       'Ребенок смешивает парадигмы разных окончаний',
@@ -29,7 +20,7 @@ reviewBlock.content = [
     ]
   ),
 
-  reviewBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  reviewBlock.textAreaFieldObject('expert_comment', 'Комментарий'),
 ];
 
 export const farmGameThree = mainBlock.content;

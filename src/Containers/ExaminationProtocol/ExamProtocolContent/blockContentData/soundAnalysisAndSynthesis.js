@@ -6,26 +6,18 @@ const reviewBlock = new BlockContent('soundAnalysisAndSynthesis.review', []);
 mainBlock.content = [
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Синтез'),
 
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
-    'synthesis.n_o_s',
-    'Н – О – С - нос'
-  ),
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
-    'synthesis.m_a_k',
-    'М - А – К – мак'
-  ),
+  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'nose', 'Н – О – С - нос'),
+  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'poppy', 'М - А – К – мак'),
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'synthesis.m_u_h_a',
+    'fly',
     'М – У – Х – А – муха'
   ),
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'synthesis.k_o_sh_k_i',
+    'cats',
     'К – О – Ш – К – И - кошки'
   ),
 
@@ -33,31 +25,36 @@ mainBlock.content = [
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'analysis.first_sound_m',
+    'what_is_first_sound_in_words_poppy_and_fly',
     'Какой первый звук в словах «мак» и «муха»?'
   ),
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'analysis.first_sound_n',
+    'what_is_first_sound_in_word_nose',
     'Какой первый звук в слове «нос»?'
   ),
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'analysis.last_sound_a',
+    'what_is_last_sound_in_words_cat_and_fly',
     'Какой последний звук в словах «кошка» и «муха»?'
   ),
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'analysis.last_sound_k',
+    'what_is_last_sound_in_word_poppy',
     'Какой последний звук в слове «мак»?'
+  ),
+  mainBlock.fieldObject(
+    mainBlock.fieldTypes.text,
+    'what_is_common_sound_in_words_of_a_cat_and_anose',
+    'Какой общий звук в словах «кошки» и «нос»?'
   ),
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'analysis.no_sound_o',
+    'in_which_of_words_there_is_no_sound_about_nose_of_cat_poppy',
     'В каком из слов нет звука О: нос, кошки, мак?'
   ),
 ];
@@ -72,7 +69,7 @@ reviewBlock.content = [
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'phonological_analysis_and_synthesis_skills',
+    'phonological_sound_analysis_and_synthesis_skills',
     'Навыки фонологического (звукового) анализа и синтеза:',
     [
       'не сформированы',
@@ -89,7 +86,10 @@ reviewBlock.content = [
     ]
   ),
 
-  reviewBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  reviewBlock.textAreaFieldObject(
+    'phonemic_hearing_expert_comment',
+    'Комментарий'
+  ),
 ];
 
 export const soundAnalysisAndSynthesis = mainBlock.content;

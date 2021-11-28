@@ -5,18 +5,18 @@ const mainBlock = new BlockContent('simultaneousVisualPerceptionReview', []);
 mainBlock.content = [
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'perception.isDistorted',
+    'perception',
     'Восприятие:',
     ['Нарушено ', 'Не нарушено']
   ),
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'perception.isAgeAppropriate',
+    'level_of_perception',
     '',
     ['Cоответствует возрасту', 'Не соответствует возраст']
   ),
 
-  mainBlock.textAreaFieldObject('specialist-comment', 'Комментарий'),
+  mainBlock.textAreaFieldObject('expert_comment', 'Комментарий'),
 ];
 
 export const simultaneousVisualPerceptionReview = mainBlock.content;

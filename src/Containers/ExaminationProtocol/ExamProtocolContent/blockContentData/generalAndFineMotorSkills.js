@@ -7,12 +7,12 @@ mainBlock.content = [
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Статический праксис'),
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'stand_on_one_leg',
+    'static_praxis_stand_on_one_leg_over_the_other',
     'Постой на одной ноге, на другой (под счет до 4х)'
   ),
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'stand_on_your_toes',
+    'static_praxis_get_up_on_tiptoe_wait',
     'Поднимись на цыпочки, постой (под счет до 4х)'
   ),
 
@@ -20,7 +20,7 @@ mainBlock.content = [
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'jump_on_one_leg',
+    'dynamic_praxis_jump_on_one_leg_the_other_two',
     'Попрыгай на одной ноге, другой, двух (под счет до 5ти на каждую ногу'
   ),
 
@@ -28,7 +28,7 @@ mainBlock.content = [
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'turn',
+    'spatial_praxis_turn_right_left',
     'Повернись направо, налево'
   ),
 
@@ -38,13 +38,13 @@ mainBlock.content = [
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'show_bunny',
+    'show_v',
     'Покажи «V» («зайку»)'
   ),
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'show_cow',
+    'show_the_cow',
     'Покажи «корову»'
   ),
 
@@ -52,7 +52,7 @@ mainBlock.content = [
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'show_bunny_and_cow',
+    'show_the_bunny_the_cow_is_counted',
     'Покажи «зайку» - «корову» под счет'
   ),
 ];
@@ -60,13 +60,13 @@ mainBlock.content = [
 reviewBlock.content = [
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'basic_motor_skills.main',
+    'basic_motor_skills',
     'Основные двигательные навыки:',
     ['Сформированы', 'Сформированы недостаточно', 'Не сформированы']
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'basic_motor_skills.extra',
+    'basic_motor_skills_part_two',
     '',
     ['Соответствуют возрасту', 'Не соответствуют возрасту']
   ),
@@ -76,37 +76,50 @@ reviewBlock.content = [
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'primary_motor_function_disorders.tone_disorders',
+    'disturbances_in_tone',
     'Нарушения тонуса:',
     ['Cпастичность', 'Гипотония', 'Дистония']
   ),
-  reviewBlock.radioOrCheckFieldObject(
-    reviewBlock.fieldTypes.checkbox,
-    'primary_motor_function_disorders.tone_disorders.extra',
-    '',
-    [
-      'Снижение силы',
-      'Нарушения координации движения (атаксия)',
-      'Крушения согласованности действий рук',
-      'Трудности моторного переключения',
-    ]
-  ),
+  reviewBlock.radioOrCheckFieldObject(reviewBlock.fieldTypes.checkbox, '', '', [
+    { name: 'decrease_in_strength', label: 'Снижение силы' },
+    {
+      name: 'impaired_coordination_of_movement_ataxia',
+      label: 'Нарушения координации движения (атаксия)',
+    },
+    {
+      name: 'hand_coordination_crashes',
+      label: 'Крушения согласованности действий рук',
+    },
+    {
+      name: 'motor_shifting_difficulties',
+      label: 'Трудности моторного переключения',
+    },
+  ]),
 
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'primary_motor_function_disorders.aspects_of_sensorimotor_function_disorders',
+    '',
     'Нарушения отдельных аспектов сенсомоторной функции:',
-    ['Нарушения схемы тела', 'Нарушения зрительно-моторной координации']
+    [
+      { name: 'body_schema_disorders', label: 'Нарушения схемы тела' },
+      {
+        name: 'disorders_of_hand_eye_coordination',
+        label: 'Нарушения зрительно-моторной координации',
+      },
+    ]
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'primary_motor_function_disorders.synkinesis',
+    '',
     'Содружественные движения (синкинезии): ',
-    ['Оролингвальные', 'Оптолингвальные']
+    [
+      { name: 'orolingual', label: 'Оролингвальные' },
+      { name: 'opto_lingual', label: 'Оптолингвальные' },
+    ]
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'primary_motor_function_disorders.hands_and_fingers_motor_functions',
+    'motor_functions_of_hands_and_fingers',
     'Моторные функции кистей и пальцев рук:',
     [
       'Пальцевый праксис сформирован. Воспроизвел пальцевую позу без затруднений',

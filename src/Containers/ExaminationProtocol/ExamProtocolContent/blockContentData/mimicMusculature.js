@@ -9,10 +9,11 @@ mainBlock.content = [
     'raise_eyebrows',
     'Поднять брови'
   ),
+  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'frown', 'Нахмурить брови'),
   mainBlock.fieldObject(mainBlock.fieldTypes.text, 'wink', 'Подмигнуть'),
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'blow_cheeks',
+    'puff_out_cheeks',
     'Надуть щеки'
   ),
 ];
@@ -20,33 +21,31 @@ mainBlock.content = [
 reviewBlock.content = [
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'facial_muscle_tone.type',
+    'facial_muscle_tone',
     'Тонус мышц лица:',
     ['Cпастичность', 'Гипотония', 'Дистония']
   ),
-  reviewBlock.radioOrCheckFieldObject(
-    reviewBlock.fieldTypes.checkbox,
-    'facial_muscle_tone.checkbox',
-    '',
-    [
-      'Гипомимия',
-      'Сглаженность носогубной складки',
-      'Асимметрия лица',
-      'Гиперкинезы лица',
-      'Синкинезии ',
-    ]
-  ),
+  reviewBlock.radioOrCheckFieldObject(reviewBlock.fieldTypes.checkbox, '', '', [
+    { name: 'hypomimia', label: 'Гипомимия' },
+    {
+      name: 'smoothness_of_nasolabial_fold',
+      label: 'Сглаженность носогубной складки',
+    },
+    { name: 'asymmetry_of_face', label: 'Асимметрия лица' },
+    { name: 'facial_hyperkinesis', label: 'Гиперкинезы лица' },
+    { name: 'synkinesis', label: 'Синкинезии ' },
+  ]),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'lip_muscle_tone.type',
+    'lip_muscle_tone',
     'Тонус мышц губ:',
     ['Cпастичность', 'Гипотония', 'Дистония']
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'lip_muscle_tone.checkbox',
+    'restriction_of_lip_mobility',
     '',
-    ['Ограничение подвижности губ']
+    [{ label: 'Ограничение подвижности губ' }]
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,

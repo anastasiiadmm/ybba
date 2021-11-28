@@ -4,13 +4,13 @@ const mainBlock = new BlockContent('speechTherapyConclusion', []);
 
 mainBlock.content = [
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Логопедическое заключение'),
-  mainBlock.textAreaFieldObject('main', ''),
+  mainBlock.textAreaFieldObject('speech_therapy_conclusion', ''),
   mainBlock.textAreaFieldObject(
-    'five_session_dynamic_conclusion',
+    'dynamic_conclusion',
     'Динамическое заключение (5 занятий)'
   ),
   mainBlock.textAreaFieldObject(
-    'ten_session_dynamic_conclusion',
+    'final_conclusion',
     'Динамическое заключение (10 занятий)'
   ),
 ];
