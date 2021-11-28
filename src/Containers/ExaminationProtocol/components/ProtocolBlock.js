@@ -91,6 +91,7 @@ function ProtocolBlock(props) {
                           name={field.name}
                           onChange={inputChangeHandler}
                           label={option.radioText}
+                          value={option.radioText}
                         />
                       ) : (
                         <ProtocolRadioField
@@ -167,17 +168,23 @@ function ProtocolBlock(props) {
                     field.options.map((option, index) => {
                       return option.withText ? (
                         <ProtocolCheckboxWithText
-                          name={`${field.name}.${index}`}
+                          name={
+                            option.name
+                              ? `${field.name}.${option.name}`
+                              : `${field.name}`
+                          }
                           onChange={inputChangeHandler}
                           label={option.checkboxText}
                         />
                       ) : (
                         <ProtocolCheckboxField
                           name={
-                            option.name ? option.name : `${field.name}.${index}`
+                            option.name
+                              ? `${field.name}.${option.name}`
+                              : `${field.name}`
                           }
                           onChange={inputChangeHandler}
-                          label={option}
+                          label={option.label}
                         />
                       );
                     })}
