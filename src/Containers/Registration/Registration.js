@@ -218,22 +218,6 @@ const Registration = () => {
                         )}
                         <div className='form2__row'>
                             <button
-                                type='button'
-                                className='btn2'
-                                onClick={() => {
-                                    setError(
-                                        'parent.first_name',
-                                        {
-                                            type: 'focus',
-                                            message: 'Some triggered message'
-                                        },
-                                        { shouldFocus: true }
-                                    )
-                                }}
-                            >
-                                Trigger error
-                            </button>
-                            <button
                                 type='submit'
                                 className='btn2'
                             >
