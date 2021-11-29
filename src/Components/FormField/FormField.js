@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import PropTypes from 'prop-types';
 import Flatpickr from 'react-flatpickr';
@@ -31,13 +31,8 @@ const FormField = props => {
         options,
         configs,
         checked,
+        placeholder,
     } = props
-
-    const [passwordShown, setPasswordShown] = useState(false);
-
-    const togglePassword = () => {
-        setPasswordShown(!passwordShown)
-    };
 
     const toolTip = <>
         {(tooltipTitle || tooltipText) && <>
@@ -171,32 +166,57 @@ const FormField = props => {
         </>
     }
 
+    if (type === 'email') {
+        field = <>
+            <label className='form2__label'>{label}</label>
+            <input
+                type={type}
+                className={addClasses(className, {
+                    'error': fieldErrors?.length
+                })}
+                placeholder={placeholder}
+                required={required}
+                name={name}
+                onChange={onChange}
+                value={value}
+                pattern={pattern}
+                id={id}
+                maxLength={maxLength}
+                readOnly={readOnly}
+                disabled={disabled}
+            />
+
+            {Errors}
+            {helpText && <div className='form__passw-info'>{helpText}</div>}
+            {toolTip}
+        </>
+    }
+
     if (type === 'password') {
         field = <>
-            <div className='btn-eye__wrap' onClick={togglePassword}>
-                <label className='form__label'>
-                    {label}
-                    <input
-                        type={passwordShown ? 'text' : 'password'}
-                        className={addClasses(className, {
-                            'error': fieldErrors?.length
-                        })}
-                        required={required}
-                        name={name}
-                        onChange={onChange}
-                        value={value}
-                        pattern={pattern}
-                        id={id}
-                        maxLength={maxLength}
-                        readOnly={readOnly}
-                        disabled={disabled}
-                    />
 
-                    {Errors}
-                    {helpText && <div className='form__passw-info'>{helpText}</div>}
-                    {toolTip}
-                </label>
-            </div>
+            <label className='form2__label'>{label}</label>
+
+            <input
+                type={type}
+                className={addClasses(className, {
+                    'error': fieldErrors?.length
+                })}
+                required={required}
+                name={name}
+                onChange={onChange}
+                value={value}
+                pattern={pattern}
+                id={id}
+                maxLength={maxLength}
+                readOnly={readOnly}
+                disabled={disabled}
+            />
+
+            {Errors}
+            {helpText && <div className='form__passw-info'>{helpText}</div>}
+            {toolTip}
+
         </>
     }
 
@@ -223,7 +243,7 @@ const FormField = props => {
                         return (
                             <div ref={params.InputProps.ref}>
                                 <input autoComplete='no' value={options?.filter(option => option.value === value)}
-                                       type='text' {...params.inputProps} name={name} />
+                                       type='text' {...params.inputProps} name={name}/>
                             </div>
                         )
                     }}
@@ -316,6 +336,7 @@ const FormField = props => {
 
 FormField.propTypes = {
     type: PropTypes.oneOf([
+        'email',
         'checkbox',
         'radio',
         'datepicker',
