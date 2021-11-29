@@ -6,16 +6,14 @@ const lastNameValidation = value => /^[а-яА-ЯёЁ.\-_\s]+$/.test(value)
 
 export const registrationSchema = yup.object().shape({
     parent: yup.object().shape({
-        profile: yup.object().shape({
-            first_name: yup.string()
-                .required('Имя родителя опязательно')
-                .max(50, 'Максимум 50 символов')
-                .test('Is first name correct', 'Имя может содержать только кириллицу', firstNameValidation),
-            last_name: yup.string()
-                .required('Фамилия родителя опязательна')
-                .max(50, 'Максимум 50 символов')
-                .test('Is last name correct', 'Вамилия может содержать только кириллицу', lastNameValidation),
-        }),
+        first_name: yup.string()
+            .required('Имя родителя опязательно')
+            .max(50, 'Максимум 50 символов')
+            .test('Is first name correct', 'Имя может содержать только кириллицу', firstNameValidation),
+        last_name: yup.string()
+            .required('Фамилия родителя опязательна')
+            .max(50, 'Максимум 50 символов')
+            .test('Is last name correct', 'Вамилия может содержать только кириллицу', lastNameValidation),
         email: emailSchema,
         password: passwordSchema,
         passwordConfirmation: yup.string()

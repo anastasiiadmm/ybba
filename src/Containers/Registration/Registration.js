@@ -1,46 +1,73 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 import { useForm } from 'react-hook-form';
-import { useLocation } from 'react-router';
+import { useLocation, useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup'
+import moment from 'moment'
 
 import { registrationSchema } from 'Containers/Registration/yupSchema.js';
 import Field from 'Components/Field/Field.js';
-import { getCountriesList, childSelector, getCitiesList } from 'redux/child/childSlice.js';
+import { getCountriesList, childSelector, getCitiesList, createChild } from 'redux/child/childSlice.js';
+import { createUser, userSelector } from 'redux/user/userSlice.js';
+import { momentDateToStr } from 'utils/date/dateUtils.js';
+import { validationMessagesMapping } from 'mappings/validationErrors.js';
 
 const Registration = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        control,
-        watch,
-        setValue
-    } = useForm({
-        resolver: yupResolver(registrationSchema)
+    const queryParams = new URLSearchParams(useLocation().search)
+
+    const { register, handleSubmit, formState: { errors }, setError, control, watch, getValues } = useForm({
+        resolver: yupResolver(registrationSchema),
+        defaultValues: {
+            parent: { email: queryParams.get('email') },
+            child: { date_of_birth: new Date() }
+        }
     })
     const country = watch('country')
     const { countries, cities } = useSelector(childSelector)
-
+    const { user, tokens, errors: userCreateErrors } = useSelector(userSelector)
+    const { success: registrationSuccess } = useSelector(childSelector)
     const [countiesOptions, setCountriesOptions] = useState([])
     const [citiesOptions, setCitiesOptions] = useState([])
-
     const dispatch = useDispatch()
+    const history = useHistory()
 
-    const queryParams = new URLSearchParams(useLocation().search)
-
-    const handleRegistrationFormSubmit = (data) => {
-        console.log(1234, data)
+    const handleRegistrationFormSubmit = async ({ parent }) => {
+        await dispatch(createUser(parent))
     }
-    const setDefaultValues = useCallback(() => {
-        setValue('parent.email', queryParams.get('email'))
-        setValue('child.date_of_birth', new Date())
-    }, [setValue])
+
+    const handleParentCreateErrors = useCallback(errors => {
+        Object.keys(errors).forEach(fieldErrorName => {
+            const error = { type: 'focus', message: validationMessagesMapping[errors[fieldErrorName][0]] }
+            const name = `parent.${fieldErrorName}`
+            const options = { shouldFocus: true }
+
+            setError(name, error, options)
+        })
+    }, [setError])
 
     useEffect(() => {
-        setDefaultValues()
-    }, [setDefaultValues])
+        if (userCreateErrors) {
+            handleParentCreateErrors(userCreateErrors)
+        }
+    }, [handleParentCreateErrors, userCreateErrors])
+
+    useEffect(() => {
+        if (user) {
+            const { child } = getValues()
+            child.date_of_birth = momentDateToStr(moment(child.date_of_birth))
+            console.log(user)
+            child.parent = user.id
+            child.tokens = tokens
+            dispatch(createChild(child))
+        }
+    }, [dispatch, getValues, tokens, user])
+
+    useEffect(() => {
+        if (registrationSuccess) {
+            history.push('/login/')
+        }
+    }, [history, registrationSuccess])
 
     useEffect(() => {
         dispatch(getCountriesList())
@@ -64,8 +91,6 @@ const Registration = () => {
         }
     }, [countiesOptions, country, dispatch])
 
-    console.log(errors)
-
     return (
         <div className='all-page2'>
             <div className='form2'>
@@ -78,7 +103,7 @@ const Registration = () => {
                                 id='first_name'
                                 label='Ваше имя'
                                 register={register}
-                                name='parent.profile.first_name'
+                                name='parent.first_name'
                                 errors={errors}
                                 className='form2__field'
                             />
@@ -88,7 +113,7 @@ const Registration = () => {
                                 id='last_name'
                                 label='Ваша фамилия'
                                 register={register}
-                                name='parent.profile.last_name'
+                                name='parent.last_name'
                                 errors={errors}
                                 className='form2__field'
                             />
@@ -129,7 +154,7 @@ const Registration = () => {
                                 placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                             />
                         </div>
-                    <hr className='form2__line'/>
+                        <hr className='form2__line'/>
                         <h4 className='form2__add-title'>Информация о ребенке</h4>
                         <div className='form2__row'>
                             <Field
@@ -193,6 +218,22 @@ const Registration = () => {
                             </div>
                         )}
                         <div className='form2__row'>
+                            <button
+                                type='button'
+                                className='btn2'
+                                onClick={() => {
+                                    setError(
+                                        'parent.first_name',
+                                        {
+                                            type: 'focus',
+                                            message: 'Some triggered message'
+                                        },
+                                        { shouldFocus: true }
+                                    )
+                                }}
+                            >
+                                Trigger error
+                            </button>
                             <button
                                 type='submit'
                                 className='btn2'
