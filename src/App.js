@@ -16,9 +16,9 @@ import Lessons from 'Containers/Lessons/Lessons';
 import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
 import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
+import Registration from 'Containers/Registration/Registration.js';
 
 import 'App.css';
-import Registration from 'Containers/Registration/Registration.js';
 
 const App = () => {
 
@@ -48,7 +48,7 @@ const App = () => {
                         <PrivateRoute path='/lessons/:lessonId' component={Lesson} />
                         <PrivateRoute path='/video-test/' component={DevicesTestPage} />
                         <Route path='/login/' component={Login}/>
-                        <Route path='/registration/:stage/' component={Registration}/>
+                        <Route path='/registration/' component={Registration}/>
                         <Route path='/reset-password/' component={PasswordRecovery} exact />
                         <Route path='/reset-password/:token' component={SetNewPassword} exact />
                         <Route component={Page404}/>
