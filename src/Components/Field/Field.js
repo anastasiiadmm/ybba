@@ -7,6 +7,8 @@ const Field = (props) => {
 
     const {
         id,
+        onChange,
+        value,
         register,
         className,
         errors,
@@ -32,6 +34,8 @@ const Field = (props) => {
             name='first_name' {...register(name)}
             placeholder={placeholder}
             disabled={disabled}
+            onChange={onChange}
+            value={value}
         />
         <div className='form2__error'> {errors[name]?.message} < /div>
     </>

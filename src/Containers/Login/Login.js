@@ -5,12 +5,13 @@ import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from 'Components/Button/Button';
+import FormField from 'Components/FormField/FormField';
 import Container from 'Components/Container/Container.js';
-import FormField from 'Components/FormField/FormField.js';
 import { loginUser, authSelector } from 'redux/auth/authSlice.js';
 import { clearUserState, clearUserFromUserState } from 'redux/user/userSlice.js';
 
 import 'Containers/Login/Login.css'
+
 
 const Login = () => {
     const loginDataInit = {
@@ -26,7 +27,8 @@ const Login = () => {
     const history = useHistory()
 
     const inputChangeHandler = e => setLoginData({ ...loginData, [e.target.name]: e.target.value })
-    const submitChangeHandler = e => {
+
+    const submitChangeHandler = (e) => {
         e.preventDefault()
         dispatch(loginUser(loginData))
     }
@@ -49,7 +51,7 @@ const Login = () => {
     }, [user, success])
 
     return (
-        <Container>
+        <Container className='auth-page'>
             <div className='form2'>
                 <form onSubmit={submitChangeHandler}>
                     <div className='form2__inner'>
@@ -63,15 +65,13 @@ const Login = () => {
                             <FormField
                                 label='Логин'
                                 type='email'
-                                placeholder='username@gmail.com'
                                 className={`form2__field passw-first ${commonError && 'error'}`}
-                                required
                                 pattern='^(.+)@(.+)\.(.+)$'
                                 name='email'
                                 onChange={inputChangeHandler}
                                 value={loginData.email}
                             />
-                            {commonError && <div className='form2__error'>{commonError}</div>}
+                            {commonError && <p className='form__error-text'>Неверный пароль или email</p>}
                         </div>
                         <div className='form2__row'>
                             <Link className='form2__link form2__link_fpassw' to='/reset-password/'>Не помню пароль</Link>
@@ -79,12 +79,11 @@ const Login = () => {
                                 label='Пароль'
                                 type='password'
                                 className={`form2__field passw-first ${commonError && 'error'}`}
-                                required
                                 name='password'
                                 onChange={inputChangeHandler}
                                 value={loginData.password}
                             />
-                            {commonError && <div className='form2__error'>{commonError}</div>}
+                            {commonError && <p className='form__error-text'>Неверный пароль или email</p>}
                         </div>
                         <div className='form2__row'>
                             <Button

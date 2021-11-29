@@ -1,13 +1,5 @@
 import * as Yup from 'yup';
 
-export const validationLoginPasswordSchema = Yup.object().shape({
-    email: Yup.string()
-        .required('Введите логин'),
-    password: Yup.string()
-        .required('Введите пароль')
-        .oneOf([Yup.ref('password')], 'Пароли не совпадают')
-});
-
 export const validationResetPasswordSchema = Yup.object().shape({
     password: Yup.string()
         .required('Введите пароль')
