@@ -7,5 +7,6 @@ export const validationMessagesMapping = {
     'Ensure this field has at least 8 characters.': 'Это поле должно иметь больше 8 символов',
     'Date has wrong format. Use one of these formats instead: DD/MM/YYYY.': 'Дата имеет неправильный формат',
     'This field may not be blank.': 'Это поле не может быть пустым',
-    'Enter a valid email address.': 'Не верный формат email адреса'
+    'Enter a valid email address.': 'Не верный формат email адреса',
+    'No active account found with the given credentials': 'Неверный пароль или email'
 }

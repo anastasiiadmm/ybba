@@ -47,7 +47,7 @@ const PasswordRecovery = () => {
     )
 
     return (
-        <Container>
+        <Container className='auth-page'>
             <div className='form2'>
                 {success ? successSend :
                     <form onSubmit={onSubmit}>
