@@ -4,7 +4,6 @@ import { ToastContainer } from 'react-toastify';
 import Page404 from 'Components/Page404/Page404.js';
 import Login from 'Containers/Login/Login';
 import MainDashboard from 'Containers/MainDashboard/MainDashboard.js';
-import Registration from 'Containers/Registration/Registration.js';
 import PrivateRoute from 'HOC/PrivatRoute/PrivatRoute.js';
 import PasswordRecovery from 'Containers/PasswordRecovery/PasswordRecovery';
 import SetNewPassword from 'Containers/SetNewPassword/SetNewPassword';
@@ -17,6 +16,7 @@ import Lessons from 'Containers/Lessons/Lessons';
 import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
 import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
+import Registration from 'Containers/Registration/Registration.js';
 
 import 'App.css';
 
@@ -48,7 +48,7 @@ const App = () => {
                         <PrivateRoute path='/lessons/:lessonId' component={Lesson} />
                         <PrivateRoute path='/video-test/' component={DevicesTestPage} />
                         <Route path='/login/' component={Login}/>
-                        <Route path='/registration/:stage/' component={Registration}/>
+                        <Route path='/registration/' component={Registration}/>
                         <Route path='/reset-password/' component={PasswordRecovery} exact />
                         <Route path='/reset-password/:token' component={SetNewPassword} exact />
                         <Route component={Page404}/>

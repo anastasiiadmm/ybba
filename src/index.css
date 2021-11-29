@@ -96,7 +96,7 @@ body {
 .all-page {
     width: 100%;
     min-height: 100%;
-    background: url(../src/assets/img/bg.svg) 100% 100% no-repeat;
+    background: url(assets/img/bg.svg) 100% 100% no-repeat;
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -366,10 +366,10 @@ a.disabled {
     border: none;
 }
 .plus-minus button.btn-minus {
-    background: url(../src/assets/img/circle-minus.svg) 50% no-repeat;
+    background: url(assets/img/circle-minus.svg) 50% no-repeat;
 }
 .plus-minus button.btn-plus {
-    background: url(../src/assets/img/circle-plus.svg) 50% no-repeat;
+    background: url(assets/img/circle-plus.svg) 50% no-repeat;
 }
 .plus-minus input {
     width: 40px;
@@ -492,7 +492,7 @@ a.disabled {
     text-decoration: none;
     font-weight: 700;
     padding-left: 28px;
-    background: url(../src/assets/img/pdf.svg) 0 0 no-repeat;
+    background: url(assets/img/pdf.svg) 0 0 no-repeat;
 }
 
 .btn-control {
@@ -595,7 +595,7 @@ a.disabled {
     border: 1px solid #A3B3CC;
     border-radius: 12px;
     width: 100%;
-    background-image: url(../src/assets/img/arrow-down.svg);
+    background-image: url(assets/img/arrow-down.svg);
     background-position: calc(100% - 20px) 50%;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -604,7 +604,7 @@ a.disabled {
 .fSelect__input.isFocus {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    background-image: url(../src/assets/img/arrow-up.svg);
+    background-image: url(assets/img/arrow-up.svg);
     background-color: #fff;
 }
 
@@ -679,7 +679,7 @@ a.disabled {
 }
 
 .check:checked + label::before {
-    background: #00CAD7 url(../src/assets/img/ic-check.svg) 50% no-repeat;
+    background: #00CAD7 url(assets/img/ic-check.svg) 50% no-repeat;
 }
 
 .radio {
@@ -749,7 +749,7 @@ a.disabled {
 }
 
 .radio2 input[type=radio]:checked + span::before {
-    background: url(../src/assets/img/ic-circle.svg) 50%/12px no-repeat;
+    background: url(assets/img/ic-circle.svg) 50%/12px no-repeat;
 }
 
 .check2 span::before {
@@ -757,7 +757,7 @@ a.disabled {
 }
 
 .check2 input[type=checkbox]:checked + span::before {
-    background: url(../src/assets/img/ic-check2.svg) 50%/12px no-repeat;
+    background: url(assets/img/ic-check2.svg) 50%/12px no-repeat;
 }
 
 .lbl-field {
@@ -897,7 +897,7 @@ a.disabled {
     }
 }
 .form__field_datepicker {
-    background-image: url(../src/assets/img/ic-calendar.svg);
+    background-image: url(assets/img/ic-calendar.svg);
     background-position: calc(100% - 18px) 50%;
     background-repeat: no-repeat;
 }
@@ -1084,27 +1084,27 @@ a.disabled {
     margin: 0 5px 10px;
 }
 .form__social_vk {
-    background-image: url(../src/assets/img/ic-vk.svg);
+    background-image: url(assets/img/ic-vk.svg);
     background-color: #2787F5;
 }
 .form__social_mailru {
-    background-image: url(../src/assets/img/ic-mailru.svg);
+    background-image: url(assets/img/ic-mailru.svg);
     background-color: #005FF9;
 }
 .form__social_fb {
-    background-image: url(../src/assets/img/ic-fb.svg);
+    background-image: url(assets/img/ic-fb.svg);
     background-color: #3B589E;
 }
 .form__social_google {
-    background-image: url(../src/assets/img/ic-google.svg);
+    background-image: url(assets/img/ic-google.svg);
     border: 1px solid #E4E4EB;
 }
 .form__social_ok {
-    background-image: url(../src/assets/img/ic-ok.svg);
+    background-image: url(assets/img/ic-ok.svg);
     background-color: #F7931E;
 }
 .form__social_yandex {
-    background-image: url(../src/assets/img/ic-yandex.svg);
+    background-image: url(assets/img/ic-yandex.svg);
     border: 1px solid #E4E4EB;
 }
 
@@ -1579,10 +1579,10 @@ a.disabled {
     cursor: pointer;
 }
 .datepick__cell.today {
-    background: url(../src/assets/img/circle.svg) 50% no-repeat;
+    background: url(assets/img/circle.svg) 50% no-repeat;
 }
 .datepick__cell.selected {
-    background: url(../src/assets/img/circle.svg) 50% no-repeat;
+    background: url(assets/img/circle.svg) 50% no-repeat;
     color: #fff;
 }
 
@@ -1687,7 +1687,7 @@ a.disabled {
 }
 
 .calendar-big__field {
-    background-image: url(../src/assets/img/ic-calendar-dark.svg);
+    background-image: url(assets/img/ic-calendar-dark.svg);
     background-position: calc(100% - 18px) 50%;
     background-repeat: no-repeat;
 }
@@ -1948,14 +1948,14 @@ a.disabled {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff url(../src/assets/img/calendar-check.svg) 50% no-repeat;
+    background: #fff url(assets/img/calendar-check.svg) 50% no-repeat;
     border-radius: 50%;
 }
 .notice__icon_info {
-    background: #00CAD7 url(../src/assets/img/ic-i.svg) 50% no-repeat;
+    background: #00CAD7 url(assets/img/ic-i.svg) 50% no-repeat;
 }
 .notice__icon_warning {
-    background: #FF0000 url(../src/assets/img/ic-attantion2.svg) 50% no-repeat;
+    background: #FF0000 url(assets/img/ic-attantion2.svg) 50% no-repeat;
 }
 .notice_warning {
     font-size: 18px;
@@ -2205,7 +2205,7 @@ a.disabled {
 }
 .profile-child__link.write-in::before {
     border-color: #29446F;
-    background: #29446F url(../src/assets/img/ic-check.svg) 50% no-repeat;
+    background: #29446F url(assets/img/ic-check.svg) 50% no-repeat;
 }
 .profile-child__descr {
     color: #A3B3CC;
@@ -2845,7 +2845,7 @@ form .profile-child {
     font-size: 24px;
     margin: 0 0 24px;
     padding-top: 86px;
-    background: url(../src/assets/img/ic-attantion.svg) 50% 0 no-repeat;
+    background: url(assets/img/ic-attantion.svg) 50% 0 no-repeat;
 }
 
 .game__notes {
@@ -3373,15 +3373,15 @@ ol.game__lesson-list {
 }
 
 .gamef__pause {
-    background: url(../src/assets/img/ic-pause.svg) 50% no-repeat;
+    background: url(assets/img/ic-pause.svg) 50% no-repeat;
 }
 
 .gamef__restart {
-    background: url(../src/assets/img/ic-restart.svg) 50% no-repeat;
+    background: url(assets/img/ic-restart.svg) 50% no-repeat;
 }
 
 .gamef__microphone {
-    background: url(../src/assets/img/ic-microph.svg) 50% no-repeat;
+    background: url(assets/img/ic-microph.svg) 50% no-repeat;
 }
 
 .gamef__prev {
@@ -4297,7 +4297,7 @@ form .cabinet {
     min-width: 237px;
     padding: 14px 30px 14px 12px;
     color: #A3B3CC;
-    background: url(../src/assets/img/ic-calendar.svg) 95% 50% no-repeat;
+    background: url(assets/img/ic-calendar.svg) 95% 50% no-repeat;
     border: 1px solid #A3B3CC;
     border-radius: 12px;
     text-align: left;

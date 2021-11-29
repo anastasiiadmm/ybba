@@ -1,45 +1,21 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { addClasses } from 'utils/addClasses/addClasses.js';
 
-const Field = (props) => {
+import CommonField from 'Components/Fields/CommonField.js';
+import DateField from 'Components/Fields/DateField.js';
+import SelectField from 'Components/Fields/SelectField.js';
 
-    const {
-        id,
-        onChange,
-        value,
-        register,
-        className,
-        errors,
-        label,
-        placeholder,
-        disabled,
-        type,
-        name,
-    } = props
 
-    let field
+export const Field = (props) => {
 
-    field = < >
-        <label htmlFor={id} className='form2__label'> {label} < /label>
-        <input
-            type={type || 'text'}
-            className={
-                addClasses(className, {
-                    'error': errors[name]
-                })
-            }
-            id={id}
-            name='first_name' {...register(name)}
-            placeholder={placeholder}
-            disabled={disabled}
-            onChange={onChange}
-            value={value}
-        />
-        <div className='form2__error'> {errors[name]?.message} < /div>
-    </>
-    return field
+    const { type } = props
+
+    switch (type) {
+        case 'date': return <DateField {...props} />
+        case 'select': return <SelectField {...props} />
+        default: return <CommonField {...props} />
+    }
 }
 
 Field.propTypes = {
@@ -47,14 +23,18 @@ Field.propTypes = {
     name: PropTypes.string,
     register: PropTypes.func,
     className: PropTypes.string,
-    errors: PropTypes.object,
+    errors: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     disabled: PropTypes.bool,
     value: PropTypes.any,
     type: PropTypes.string,
     control: PropTypes.object,
-    configs: PropTypes.any
+    configs: PropTypes.any,
+    options: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string.isRequired,
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+    }))
 }
 
 export default Field;
