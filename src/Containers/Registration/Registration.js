@@ -23,7 +23,7 @@ const Registration = () => {
             child: { date_of_birth: new Date() }
         }
     })
-    const country = watch('country')
+    const country = watch('child.country')
     const { countries, cities } = useSelector(childSelector)
     const { user, tokens, errors: userCreateErrors } = useSelector(userSelector)
     const { success: registrationSuccess } = useSelector(childSelector)
