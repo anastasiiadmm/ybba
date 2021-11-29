@@ -95,7 +95,6 @@ const Registration = () => {
         <div className='all-page2'>
             <div className='form2'>
                 <div className='form2__inner'>
-                    <button type='button' className='btn-close form2__btn-close'/>
                     <h4 className='form2__title'>Регистрация</h4>
                     <form onSubmit={handleSubmit(handleRegistrationFormSubmit)}>
                         <div className='form2__row'>
