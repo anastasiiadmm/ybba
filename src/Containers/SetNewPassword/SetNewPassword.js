@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Button } from '@mui/material';
 import Container from 'Components/Container/Container';
-import FormField from 'Components/FormField/FormField';
 import { resetUserPassword, authSelector } from 'redux/auth/authSlice.js';
-import { Link } from 'react-router-dom';
+import { validationResetPasswordSchema } from 'utils/checkFormVaid/checkFormValid';
+import Field from 'Components/Field/Field';
 
 import 'Containers/SetNewPassword/SetNewPassword.css'
 
@@ -19,19 +22,22 @@ const SetNewPassword = props => {
     }
 
     const [data, setData] = useState(initialState)
-    const { loading, success, errors, commonError } = useSelector(authSelector)
+    const { loading, success } = useSelector(authSelector)
     const dispatch = useDispatch()
     const history = useHistory()
 
     const { token } = props.match.params
 
     const inputChangeHandler = e => setData({ ...data, [e.target.name]: e.target.value })
-    const onSubmit = e => {
-        e.preventDefault()
+
+    const formOptions = { resolver: yupResolver(validationResetPasswordSchema) }
+
+    const { register: validate, handleSubmit, formState } = useForm(formOptions)
+    const { errors } = formState;
+
+    const onSubmit = () => {
         dispatch(resetUserPassword({ password: data.password, token }))
     }
-
-    const isFormValid = (data.passwordRepeat && data.password) && (data.password === data.passwordRepeat)
 
     useEffect(() => {
         if (success) {
@@ -41,45 +47,43 @@ const SetNewPassword = props => {
     }, [success])
 
     return (
-        <Container>
+        <Container className='auth-page'>
             <div className='form2'>
-                <form onSubmit={onSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='form2__inner'>
                         <Button component={Link} to='/login/' type='button' className='btn-close form2__btn-close' />
                         <h4 className='form2__title'>Восстановление пароля</h4>
 
                         <div className='form2__row'>
-                            <FormField
+                            <Field
                                 type='password'
                                 className='form2__field'
                                 label='Новый пароль'
-                                required
                                 name='password'
                                 onChange={inputChangeHandler}
                                 errors={errors}
+                                id='password'
+                                register={validate}
                             />
-                            {commonError && <p className='form2__error'>{commonError}</p>}
                         </div>
 
                         <div className='form2__row'>
-                            <FormField
+                            <Field
                                 type='password'
                                 className='form2__field'
                                 label='Подтвердите пароль'
-                                required
                                 name='passwordRepeat'
                                 onChange={inputChangeHandler}
                                 errors={errors}
+                                id='passwordRepeat'
+                                register={validate}
                             />
-                            {!isFormValid ? <p className='form2__error'>Пароли не совпадают</p> :
-                                commonError && <p className='form2__error'>{commonError}</p>}
                         </div>
 
                         <div className='form2__row'>
                             <Button
                                 className='btn2'
                                 type='submit'
-                                disabled={!isFormValid}
                                 loading={loading}
                             >
                                 Сохранить
