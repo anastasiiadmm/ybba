@@ -7,17 +7,17 @@ const lastNameValidation = value => /^[а-яА-ЯёЁ.\-_\s]+$/.test(value)
 export const registrationSchema = yup.object().shape({
     parent: yup.object().shape({
         first_name: yup.string()
-            .required('Имя родителя опязательно')
+            .required('Имя родителя обязательно')
             .max(50, 'Максимум 50 символов')
             .test('Is first name correct', 'Имя может содержать только кириллицу', firstNameValidation),
         last_name: yup.string()
-            .required('Фамилия родителя опязательна')
+            .required('Фамилия родителя обязательна')
             .max(50, 'Максимум 50 символов')
             .test('Is last name correct', 'Фамилия может содержать только кириллицу', lastNameValidation),
         email: emailSchema,
         password: passwordSchema,
         passwordConfirmation: yup.string()
-            .oneOf([yup.ref('password'), null], 'Пароли должны савподать')
+            .oneOf([yup.ref('password'), null], 'Пароли должны совпадать')
     }),
     child: yup.object().shape({
         first_name: yup.string()
