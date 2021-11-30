@@ -15,6 +15,8 @@ import { validationMessagesMapping } from 'mappings/validationErrors.js';
 import { getDeviceType } from 'utils/getDeviceType/getDeviceType.js';
 import { deviceTypes } from 'constants.js';
 
+import 'Containers/Registration/Registration.css'
+
 const Registration = () => {
     const queryParams = new URLSearchParams(useLocation().search)
 
