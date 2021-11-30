@@ -10,6 +10,9 @@ import Button from 'Components/Button/Button';
 import { editUserEmail, updateUserPassword, userSelector } from 'redux/user/userSlice';
 import { getCurrentUserData, authSelector } from 'redux/auth/authSlice';
 import { childSelector, getCitiesList, getCountriesList } from 'redux/child/childSlice';
+import { Russian } from 'assets/vendor/flatpickr/ru';
+import { namesOfMonths } from 'constants.js';
+import { momentDateToStr } from 'utils/date/dateUtils';
 
 
 const ParentProfileForm = (props) => {
@@ -38,7 +41,8 @@ const ParentProfileForm = (props) => {
         setFormData(newData)
     }
     const birthDateHandler = data => {
-        const validDate = data === 'dd/mm/yyyy' ? '' : data
+        const newDate = momentDateToStr(data.toString())
+        const validDate = newDate === 'dd/mm/yyyy' ? '' : momentDateToStr(data.toString())
         const newData = { ...formData, profile: { ...formData.profile, date_of_birth: validDate } }
         setFormData(newData)
     }
@@ -134,16 +138,28 @@ const ParentProfileForm = (props) => {
             <div className='form__row form__row_flex'>
                 <div className='form__col2'>
                     <FormField
+                        configs={{
+                            locale: {
+                                ...Russian,
+                                months: {
+                                    ...Russian.months,
+                                    longhand: namesOfMonths
+                                }
+                            },
+                            firstDayOfWeek: 2,
+                            dateFormat: 'd/m/Y',
+                            enableTime: false,
+                            maxDate: momentDateToStr(moment())
+                        }}
                         label='Дата'
-                        showMaskOnHover={true}
-                        showMaskOnFocus={true}
-                        mask='dd/mm/yyyy'
                         type='datepicker'
                         className='form__field'
+                        selected={formData.profile.date_of_birth}
                         value={formData.profile.date_of_birth}
                         name='date_of_birth'
                         onChange={birthDateHandler}
                         errors={errors?.profile}
+                        isClearable
                     />
                 </div>
                 <div className='form__col2 form__label'>
@@ -159,16 +175,15 @@ const ParentProfileForm = (props) => {
             </div>
             {countriesOptions && citiesOptions && (
                 <div className='form__row form__row_flex'>
-                    <div className='form__col2 form__label form__input'>
+                    <div className='form__col2 form__label'>
                         <FormField
                             label='Страна проживания'
                             type='select'
-                            className='country_field'
-                            // readonly={true}
-                            // onFocus={{removeAttribute(readonly)}}
                             name='country'
                             options={countriesOptions}
-                            onChange={setCountry}
+                            onChange={(event, newValue) => {
+                                setCountry(newValue)
+                            }}
                             value={formData.profile.country}
                         />
                     </div>
@@ -177,10 +192,11 @@ const ParentProfileForm = (props) => {
                             <FormField
                                 label='Город проживания'
                                 type='select'
-                                className='country_field'
                                 name='country'
                                 options={citiesOptions}
-                                onChange={setCity}
+                                onChange={(event, newValue) => {
+                                    setCity(newValue)
+                                }}
                                 value={formData.profile.city}
                             />
                         </div>
@@ -283,7 +299,7 @@ const ParentProfileForm = (props) => {
             </div>
         </>
     );
-}
+};
 
 ParentProfileForm.propTypes = {
     formData: PropTypes.object,

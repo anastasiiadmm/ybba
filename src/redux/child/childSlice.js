@@ -1,6 +1,6 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import axiosApi from '../../axios';
-import {defaultError} from '../../config';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axiosApi from 'axios.js';
+import { defaultError } from 'config.js';
 
 
 const nameSpace = 'child'
@@ -28,7 +28,7 @@ const INITIAL_STATE = {
 
 export const getChild = createAsyncThunk(
     `${nameSpace}/getChild`,
-    async (childId, {rejectWithValue}) => {
+    async (childId, { rejectWithValue }) => {
         try {
             const resp = await axiosApi.get(`/accounts/children/${childId}/information/`)
             return resp.data
@@ -40,10 +40,9 @@ export const getChild = createAsyncThunk(
 
 export const createChild = createAsyncThunk(
     `${nameSpace}/createChild`,
-    async (childData, {rejectWithValue}) => {
+    async (childData, { rejectWithValue }) => {
         try {
-            const data = childData.childrenData
-            const resp = await axiosApi.post('/accounts/children/', data, {
+            const resp = await axiosApi.post('/accounts/children/', childData, {
                 headers: {
                     'Authorization': `Bearer ${childData.tokens.access}`,
                 }
@@ -61,7 +60,7 @@ export const createChild = createAsyncThunk(
 
 export const updateChild = createAsyncThunk(
     `${nameSpace}/updateChild`,
-    async ({childId, childData}, {rejectWithValue}) => {
+    async ({ childId, childData }) => {
         try {
             const resp = await axiosApi.put(`/accounts/children/${childId}/`, childData)
             return resp.data
@@ -73,7 +72,7 @@ export const updateChild = createAsyncThunk(
 
 export const updateChildAdditionalInfo = createAsyncThunk(
     `${nameSpace}/updateChildAdditionalInfo`,
-    async ({additionalDataId, additionalInfo}, {rejectWithValue}) => {
+    async ({ additionalDataId, additionalInfo }, { rejectWithValue }) => {
         try {
             const url = `/accounts/child-additional-info/${additionalDataId}/update/`
             const resp = await axiosApi.patch(url, additionalInfo)
@@ -86,7 +85,7 @@ export const updateChildAdditionalInfo = createAsyncThunk(
 
 export const getSpecialists = createAsyncThunk(
     `${nameSpace}/getSpecialists`,
-    async (_, {rejectWithValue}) => {
+    async (_, { rejectWithValue }) => {
         try {
             const resp = await axiosApi.get('/accounts/specialists/')
             return resp.data
@@ -98,7 +97,7 @@ export const getSpecialists = createAsyncThunk(
 
 export const addSpecialistsForChild = createAsyncThunk(
     `${nameSpace}/addSpecialistsForChild`,
-    async ({childId, specialists}, {rejectWithValue}) => {
+    async ({ childId, specialists }, { rejectWithValue }) => {
         try {
             const resp = await axiosApi.post(`/accounts/children/${childId}/specialist/`, specialists)
             return resp.data
@@ -110,7 +109,7 @@ export const addSpecialistsForChild = createAsyncThunk(
 
 export const deleteChildSpecialist = createAsyncThunk(
     `${nameSpace}/deleteChildSpecialist`,
-    async ({specialistId}, {rejectWithValue}) => {
+    async ({ specialistId }, { rejectWithValue }) => {
         try {
             const resp = await axiosApi.delete(`/accounts/specialist/${specialistId}/delete/`)
             return resp.data
@@ -122,7 +121,7 @@ export const deleteChildSpecialist = createAsyncThunk(
 
 export const updateChildSpecialist = createAsyncThunk(
     `${nameSpace}/updateChildSpecialist`,
-    async ({specialistId, specialist}, {rejectWithValue}) => {
+    async ({ specialistId, specialist }, { rejectWithValue }) => {
         try {
             const resp = await axiosApi.put(`/accounts/specialist/${specialistId}/update/`, specialist)
             return resp.data
@@ -134,7 +133,7 @@ export const updateChildSpecialist = createAsyncThunk(
 
 export const getCountriesList = createAsyncThunk(
     `${nameSpace}/getCountriesList`,
-    async (_, {rejectWithValue}) => {
+    async (_, { rejectWithValue }) => {
         try {
             const resp = await axiosApi.get('/countries/')
             return resp.data
@@ -146,7 +145,7 @@ export const getCountriesList = createAsyncThunk(
 
 export const getCitiesList = createAsyncThunk(
     `${nameSpace}/getCitiesList`,
-    async (countryId, {rejectWithValue}) => {
+    async (countryId, { rejectWithValue }) => {
         try {
             const resp = await axiosApi.get(`/countries/${countryId}/cities/`)
             return resp.data
@@ -174,20 +173,21 @@ const childSlice = createSlice({
         [createChild.fulfilled]: state => {
             state.success = true
         },
-        [createChild.rejected]: state => {
+        [createChild.rejected]: (state, { payload }) => {
             state.success = false
+            state.createChildErrors = payload
         },
 
         [getSpecialists.pending]: state => {
             state.loading = true
             state.success = false
         },
-        [getSpecialists.fulfilled]: (state, {payload}) => {
+        [getSpecialists.fulfilled]: (state, { payload }) => {
             state.loading = false
             state.success = true
             state.specialists = payload
         },
-        [getSpecialists.rejected]: (state, {payload}) => {
+        [getSpecialists.rejected]: (state, { payload }) => {
             state.errors = payload
             state.loading = false
             state.success = false
@@ -197,12 +197,12 @@ const childSlice = createSlice({
             state.loading = true
             state.success = false
         },
-        [getChild.fulfilled]: (state, {payload}) => {
+        [getChild.fulfilled]: (state, { payload }) => {
             state.loading = false
             state.success = true
             state.child = payload
         },
-        [getChild.rejected]: (state, {payload}) => {
+        [getChild.rejected]: (state, { payload }) => {
             state.loading = false
             state.success = false
             state.errors = payload
@@ -216,7 +216,7 @@ const childSlice = createSlice({
             state.loading = false
             state.updateChildSuccess = true
         },
-        [updateChild.rejected]: (state, {payload}) => {
+        [updateChild.rejected]: (state, { payload }) => {
             state.loading = false
             state.updateChildSuccess = false
             state.createChildErrors = payload
@@ -228,7 +228,7 @@ const childSlice = createSlice({
         [updateChildAdditionalInfo.fulfilled]: state => {
             state.updateChildAdditionalInfoSuccess = true
         },
-        [updateChildAdditionalInfo.rejected]: (state, {payload}) => {
+        [updateChildAdditionalInfo.rejected]: (state, { payload }) => {
             state.updateChildAdditionalInfoSuccess = false
             state.errors = payload
         },
@@ -247,11 +247,11 @@ const childSlice = createSlice({
             state.getCountriesListSuccess = false
             state.getCountriesListErrors = null
         },
-        [getCountriesList.fulfilled]: (state, {payload}) => {
+        [getCountriesList.fulfilled]: (state, { payload }) => {
             state.getCountriesListSuccess = true
             state.countries = payload
         },
-        [getCountriesList.rejected]: (state, {payload}) => {
+        [getCountriesList.rejected]: (state, { payload }) => {
             state.getCountriesListSuccess = false
             state.getCountriesListErrors = payload
         },
@@ -260,18 +260,18 @@ const childSlice = createSlice({
             state.getCitiesListErrors = null
             state.getCitiesListSuccess = false
         },
-        [getCitiesList.fulfilled]: (state, {payload}) => {
+        [getCitiesList.fulfilled]: (state, { payload }) => {
             state.getCitiesListErrors = false
             state.getCitiesListSuccess = true
             state.cities = payload
         },
-        [getCitiesList.rejected]: (state, {payload}) => {
+        [getCitiesList.rejected]: (state, { payload }) => {
             state.getCitiesListErrors = payload
             state.getCitiesListSuccess = false
         }
     }
 })
 
-export const {clearChildState} = childSlice.actions
+export const { clearChildState } = childSlice.actions
 export const childSelector = state => state.child
 export default childSlice.reducer

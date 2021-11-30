@@ -128,3 +128,15 @@ export const wsUrls = {
     [envs.staging]: `wss://${domains[envs.staging]}/ws`,
     [envs.production]: `wss://${domains[envs.production]}/ws`
 }
+
+export const permissionStates = {
+    granted: 'granted',
+    denied: 'denied',
+    prompt: 'prompt'
+}
+
+export const deviceTypes = {
+    tablet: 'tablet',
+    mobile: 'mobile',
+    desktop: 'desktop'
+}

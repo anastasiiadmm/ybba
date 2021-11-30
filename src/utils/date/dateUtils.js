@@ -96,3 +96,10 @@ export const getDateRange = (start, end) => {
 
     return dates
 }
+
+/**
+ * Sync function return bool value which shows if date is valid
+ * @param d
+ * @returns {boolean}
+ */
+export const isValidDate = (d) => d instanceof Date && !isNaN(d)
