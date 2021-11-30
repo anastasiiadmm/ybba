@@ -6,9 +6,8 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FormField from 'Components/FormField/FormField';
-import Button from 'Components/Button/Button';
-import { editUserEmail, updateUserPassword, userSelector } from 'redux/user/userSlice';
-import { getCurrentUserData, authSelector } from 'redux/auth/authSlice';
+import { updateUserPassword, userSelector } from 'redux/user/userSlice';
+import { authSelector } from 'redux/auth/authSlice';
 import { childSelector, getCitiesList, getCountriesList } from 'redux/child/childSlice';
 import { Russian } from 'assets/vendor/flatpickr/ru';
 import { namesOfMonths } from 'constants.js';
@@ -23,9 +22,8 @@ const ParentProfileForm = (props) => {
 
     const { cities, countries } = useSelector(childSelector)
     const { user } = useSelector(authSelector)
-    const { isPasswordUpdated, errors, editEmailErrors, editUserEmailSuccess } = useSelector(userSelector)
+    const { isPasswordUpdated, errors } = useSelector(userSelector)
 
-    const [emailChanging, setEmailChanging] = useState(false)
     const [passwordChanging, setPasswordChanging] = useState(false)
     const [countriesOptions, setCountriesOptions] = useState([])
     const [citiesOptions, setCitiesOptions] = useState([])
@@ -50,12 +48,7 @@ const ParentProfileForm = (props) => {
         const newData = { ...formData, profile: { ...formData.profile, phone_number: number } }
         setFormData(newData)
     }
-    const emailChangeHandler = e => {
-        setFormData({ ...formData, email: e.target.value })
-    }
-    const editEmailChangeHandler = () => {
-        setEmailChanging(!emailChanging)
-    }
+
     const editPasswordChangeHandler = () => {
         setPasswordData({ ...passwordData, password: '', passwordRepeat: '' })
         setPasswordChanging(!passwordChanging)
@@ -64,9 +57,6 @@ const ParentProfileForm = (props) => {
         setPasswordData({ ...passwordData, [e.target.name]: e.target.value })
     }
 
-    const editEmail = async () => {
-        await dispatch(editUserEmail(formData))
-    }
     const editPassword = async () => {
         const submitData = { data: { password: passwordData.password }, userId: user.id }
         await dispatch(updateUserPassword(submitData))
@@ -75,13 +65,6 @@ const ParentProfileForm = (props) => {
     useEffect(() => {
         setPasswordChanging(false)
     }, [isPasswordUpdated])
-
-    useEffect(() => {
-        if (editUserEmailSuccess) {
-            setEmailChanging(false)
-            dispatch(getCurrentUserData())
-        }
-    }, [dispatch, editUserEmailSuccess])
 
     useEffect(() => {
         if (countries) {
@@ -207,42 +190,11 @@ const ParentProfileForm = (props) => {
             <div className='form__row form__row_flex'>
                 <div className='form__col2 is-hidden'>
                     <label htmlFor='email' className='form__label'>Email</label>
-                    {!emailChanging && <div className='form__visible-block'>
+                    <div className='form__visible-block'>
                         <div className='form__visible-in'>
                             <div className='form__text'>{formData.email}</div>
-                            <Button
-                                type='button'
-                                className='btn-out form__show-field'
-                                onClick={editEmailChangeHandler}
-                            >Сменить email</Button>
                         </div>
-                    </div>}
-                    {emailChanging && <div className='form__hidden-in'>
-                        <FormField
-                            type='email'
-                            className='form__field form__field_wfix-big'
-                            value={formData.email}
-                            onChange={emailChangeHandler}
-                            errors={editEmailErrors}
-                            name='email'
-                        />
-                        <div>
-                            <Button
-                                type='button'
-                                className='btn-out'
-                                onClick={editEmail}
-                            >
-                                Сохранить
-                            </Button>{' '}
-                            <Button
-                                type='button'
-                                className='btn-cancel'
-                                onClick={editEmailChangeHandler}
-                            >
-                                Отмена
-                            </Button>
-                        </div>
-                    </div>}
+                    </div>
                 </div>
             </div>
             <div className='form__row form__row_flex'>
