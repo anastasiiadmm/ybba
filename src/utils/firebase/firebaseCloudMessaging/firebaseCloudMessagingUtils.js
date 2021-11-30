@@ -14,13 +14,11 @@ export const getToken = async (setTokenFound) => {
     try {
         if (config.firebaseVapidKey) {
             const currentToken = await firebaseGetToken(messaging, { vapidKey: config.firebaseVapidKey })
-            console.log('Asd', currentToken)
             if (currentToken) {
-                console.log('Asd', 'current token for client: ', currentToken);
                 await sendTokenToServer(currentToken)
                 setTokenFound(true);
             } else {
-                console.log('Asd', 'No registration token available. Request permission to generate one.');
+                console.log('No registration token available. Request permission to generate one.');
                 setTokenFound(false);
             }
         }
