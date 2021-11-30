@@ -1,15 +1,17 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react';
 
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import Jitsi from 'Components/Jitsi/Jitsi.js';
-import { userRoles } from 'constants.js';
-import PropTypes from 'prop-types';
+import { userRoles, envs } from 'constants.js';
 import { checkUserRole } from 'utils/user.js';
 import { lessonSelector } from 'redux/lesson/lessonSlice.js';
 import { JitsiContext } from 'context/JitsiContext/JitsiContext.js';
 import { authSelector } from 'redux/auth/authSlice.js';
+import { startJitsiRecording, stopJitsiRecording } from 'utils/jitsi/utils.js';
+import { checkEnv } from 'utils/common/commonUtils.js';
 import soundOn from 'assets/img/soundOn.png'
 import soundOff from 'assets/img/soundOff.png'
 
@@ -64,6 +66,24 @@ const Webcam = (props) => {
         return usersChecks[user?.role]()
     }
 
+    const startRecording = useCallback(() => {
+        if (api && !checkEnv(envs.local)) {
+            startJitsiRecording(api)
+        }
+    }, [api])
+
+    const stopRecording = useCallback(() => {
+        if (api && !checkEnv(envs.local)) {
+            stopJitsiRecording(api)
+        }
+    }, [api])
+
+    useEffect(() => {
+        startRecording()
+        return () => {
+            stopRecording()
+        }
+    }, [api, startRecording, stopRecording])
 
     useEffect(() => {
         if (api) {
