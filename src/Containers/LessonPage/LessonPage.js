@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useEffect, useContext, useCallback, useRef } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import Unity, { UnityContext } from 'react-unity-webgl';
 import { ProgressBar } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 import { lessonSelector, clearLessonState } from 'redux/lesson/lessonSlice.js';
 import { changeActiveGame, changeLessonStatus, resizeChildWebcam } from 'redux/lesson/actions.js';
@@ -24,11 +25,12 @@ import Notes from 'Containers/LessonPage/Notes/Notes.js';
 import { checkUserRole } from 'utils/user.js';
 import Drag from 'Components/Drag/Drag.js';
 import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
+import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
 
 import 'Containers/LessonPage/lessonPage.css'
 
-
 const LessonPage = (props) => {
+    const { isMicrophoneAllowed, isCameraAllowed } = useContext(BrowserPermissionsContext)
 
     const { sendWsAction } = useContext(WsContext)
 
@@ -99,6 +101,10 @@ const LessonPage = (props) => {
         }))
     }
 
+    const getCanvasWidth = parentHeight => {
+        return (parentHeight / 9) * 16
+    }
+
     const webcamComponentProps = {
         meetingId: lessonId,
         lessonId: lessonId,
@@ -157,6 +163,26 @@ const LessonPage = (props) => {
             }
         }
     }, [lessonId, sendJsonToGameWithTimeout, unityContext])
+    
+    const toastInfo = () => {
+        return toast.info('Разрешите доступ для камеры и микрофона на вашем браузере', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
+    }
+
+    useEffect( () => {
+        if (!isMicrophoneAllowed && !isCameraAllowed) {
+            toastInfo()
+        }
+    }, [isCameraAllowed, isMicrophoneAllowed])
+
+    const canvasParent = useRef()
 
     return (
         <div className='gamef position-relative'>
@@ -184,11 +210,20 @@ const LessonPage = (props) => {
                 })}
             >
                 <div className='gamef__work-space'>
-                    <div className='gamef__work-space-in'>
+                    <div
+                        className={addClasses('gamef__work-space-in', {
+                            'd-flex justify-content-center': unityLoadProgress >= 1
+                        })}
+                        ref={canvasParent}
+                    >
                         {unityContext && (
                             <Unity
                                 unityContext={unityContext}
-                                className={addClasses('gamef__screen', {
+                                style={{
+                                    width: `${getCanvasWidth(canvasParent.current.clientHeight)}px`,
+                                    height: `${canvasParent.current.clientHeight}px`
+                                }}
+                                className={addClasses('', {
                                     'd-none': unityLoadProgress < 1,
                                 })}
                             />
@@ -204,8 +239,8 @@ const LessonPage = (props) => {
             {checkUserRole(userRoles.therapist) && (
                 <footer className='gamef__footer'>
                     <div className='gamef__previews-wrap'>
-                        <div className='gamef__previews'>
-                            <div className='gamef__previews-inner'>
+                        <div className='gamef__previews gamesLitsScrollbar'>
+                            <div className='gamef__previews-inner w-100'>
                                 {lesson?.games.length && lesson.games.map((game, index) => {
                                     return (
                                         <div

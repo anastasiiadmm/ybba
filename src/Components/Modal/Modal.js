@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import BackDrop from '../BackDrop/BackDrop.js';
+import BackDrop from 'Components/BackDrop/BackDrop.js';
 import Button from 'Components/Button/Button.js';
-import {addClasses} from 'utils/addClasses/addClasses.js';
+import { addClasses } from 'utils/addClasses/addClasses.js';
 
 import 'Components/Modal/modal.css';
 
@@ -28,18 +28,18 @@ const Modal = (props) => {
                     [className || '']: true
                 })}
                 // style={{width: `${width}%`}}
-                style={{maxWidth: `${width}%`, top: '72px'}}
+                style={{ maxWidth: `${width}%`, top: '72px' }}
                 onClick={e => e.stopPropagation()}
             >
                 <div
-                    className="modal__body"
-                    style={{height: '100%'}}
+                    className='modal__body'
+                    style={{ height: '100%' }}
                 >
                     {children}
                 </div>
                 <Button
-                    type="button"
-                    className="modal__close"
+                    type='button'
+                    className='modal__close'
                     onClick={closeModal}
                 />
             </div>

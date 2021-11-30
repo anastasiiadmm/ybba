@@ -73,17 +73,16 @@ const Webcam = (props) => {
 
     return (
         <div
-            className={addClasses('', {
+            className={addClasses('webcam', {
                 'gamef__person-child': checkUserRole(userRoles.therapist),
-                'gamef__person-teacher': checkUserRole(userRoles.parent)
-            })}
-        >
-            <div className={addClasses('gamef__person-in webcam', {
+                'gamef__person-teacher': checkUserRole(userRoles.parent),
                 'webcamZoom': (
                     (checkUserRole(userRoles.therapist) && isWebcamInZoom) ||
                     (checkUserRole(userRoles.parent) && isParentWebcamIncreased)
                 ),
-            })}>
+            })}
+        >
+            <div className='gamef__person-in'>
                 <button
                     className='gamef__person-btn zoomBtn'
                     type='button'
@@ -91,20 +90,22 @@ const Webcam = (props) => {
                 >
                     {isUserWebcamInZoom() ? '-' : '+'}
                 </button>
-                <button
-                    className='gamef__person-btn soundBtn d-flex align-items-center justify-content-center'
-                    type='button'
-                    onClick={toggleMute}
-                >
-                    <img src={isMuted ? soundOff : soundOn} alt='sound'/>
-                </button>
+                {checkUserRole(userRoles.therapist) && (
+                    <button
+                        className='gamef__person-btn soundBtn d-flex align-items-center justify-content-center'
+                        type='button'
+                        onClick={toggleMute}
+                    >
+                        <img src={isMuted ? soundOff : soundOn} alt='sound'/>
+                    </button>
+                )}
                 <Jitsi
                     meetingId={meetingId}
                     height={195}
                 />
                 {checkUserRole(userRoles.parent) && (
                     <div className='bg-dark dragBlock'>
-                        перетащить
+                        <span className='m-3'>⇄</span>
                     </div>
                 )}
             </div>

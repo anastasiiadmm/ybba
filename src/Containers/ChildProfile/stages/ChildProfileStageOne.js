@@ -1,12 +1,12 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
-import {useHistory} from 'react-router';
-import {useDispatch, useSelector} from 'react-redux';
+import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 
-import {ChildProfileContext} from 'context/ChildProfileContext/ChildProfileContext.js';
+import { ChildProfileContext } from 'context/ChildProfileContext/ChildProfileContext.js';
 import ChildrenForm from 'Containers/ChildrenForm/ChildrenForm';
 import StagesLinks from 'Containers/ChildProfile/StagesLinks/StagesLinks';
-import {clearChildState, getChild, childSelector, updateChild} from 'redux/child/childSlice.js';
+import { clearChildState, getChild, childSelector, updateChild } from 'redux/child/childSlice.js';
 import Actions from 'Containers/ChildProfile/Actions/Actions';
 
 
@@ -22,13 +22,13 @@ const ChildProfileStageOne = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const {child, updateChildSuccess} = useSelector(childSelector)
+    const { child, updateChildSuccess } = useSelector(childSelector)
 
     const setCity = data => {
-        setChildrenData({...childrenData, city: data.value})
+        setChildrenData({ ...childrenData, city: data.value })
     }
     const setCountry = data => {
-        setChildrenData({...childrenData, country: data.value})
+        setChildrenData({ ...childrenData, country: data.value })
     }
 
     const updateUser = async e => {
@@ -51,7 +51,7 @@ const ChildProfileStageOne = () => {
         if (updateChildSuccess) {
             history.push(`/child-profile/${childId}/${parseInt(stage) + 1}`)
         }
-    }, [updateChildSuccess])
+    }, [childId, history, stage, updateChildSuccess])
 
     useEffect(() => {
         if (child) {
@@ -62,15 +62,15 @@ const ChildProfileStageOne = () => {
     useEffect(() => {
         dispatch(clearChildState())
         dispatch(getChild(childId))
-    }, [])
+    }, [childId, dispatch])
 
     return (
         <>
             <form onSubmit={updateUser}>
-                <div className="profile-child">
+                <div className='profile-child'>
                     <StagesLinks/>
-                    <div className="profile-child__survey">
-                        <div className="form form_inner">
+                    <div className='profile-child__survey'>
+                        <div className='form form_inner'>
                             {childrenData && (
                                 <ChildrenForm
                                     childrenData={childrenData}
