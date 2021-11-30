@@ -12,6 +12,8 @@ import { getCountriesList, childSelector, getCitiesList, createChild } from 'red
 import { createUser, userSelector } from 'redux/user/userSlice.js';
 import { momentDateToStr } from 'utils/date/dateUtils.js';
 import { validationMessagesMapping } from 'mappings/validationErrors.js';
+import { getDeviceType } from 'utils/getDeviceType/getDeviceType.js';
+import { deviceTypes } from 'constants.js';
 
 const Registration = () => {
     const queryParams = new URLSearchParams(useLocation().search)
@@ -65,7 +67,12 @@ const Registration = () => {
 
     useEffect(() => {
         if (registrationSuccess) {
-            history.push('/login/')
+            const deviceType = getDeviceType()
+            if (deviceType !== deviceTypes.desktop) {
+                history.push('/registration-success/')
+            } else {
+                history.push('/login/')
+            }
         }
     }, [history, registrationSuccess])
 

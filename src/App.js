@@ -19,6 +19,7 @@ import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
 import Registration from 'Containers/Registration/Registration.js';
 
 import 'App.css';
+import RegistrationSuccess from 'Containers/RegistrationSuccess/RegistrationSuccess.js';
 
 const App = () => {
 
@@ -49,6 +50,7 @@ const App = () => {
                         <PrivateRoute path='/video-test/' component={DevicesTestPage} />
                         <Route path='/login/' component={Login}/>
                         <Route path='/registration/' component={Registration}/>
+                        <Route path='/registration-success/' component={RegistrationSuccess} />
                         <Route path='/reset-password/' component={PasswordRecovery} exact />
                         <Route path='/reset-password/:token' component={SetNewPassword} exact />
                         <Route component={Page404}/>

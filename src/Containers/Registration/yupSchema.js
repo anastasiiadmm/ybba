@@ -13,7 +13,7 @@ export const registrationSchema = yup.object().shape({
         last_name: yup.string()
             .required('Фамилия родителя опязательна')
             .max(50, 'Максимум 50 символов')
-            .test('Is last name correct', 'Вамилия может содержать только кириллицу', lastNameValidation),
+            .test('Is last name correct', 'Фамилия может содержать только кириллицу', lastNameValidation),
         email: emailSchema,
         password: passwordSchema,
         passwordConfirmation: yup.string()

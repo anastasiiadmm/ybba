@@ -134,3 +134,9 @@ export const permissionStates = {
     denied: 'denied',
     prompt: 'prompt'
 }
+
+export const deviceTypes = {
+    tablet: 'tablet',
+    mobile: 'mobile',
+    desktop: 'desktop'
+}
