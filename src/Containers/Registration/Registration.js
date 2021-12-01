@@ -15,6 +15,8 @@ import { validationMessagesMapping } from 'mappings/validationErrors.js';
 import { getDeviceType } from 'utils/getDeviceType/getDeviceType.js';
 import { deviceTypes } from 'constants.js';
 
+import 'Containers/Registration/Registration.css'
+
 const Registration = () => {
     const queryParams = new URLSearchParams(useLocation().search)
 
@@ -100,7 +102,7 @@ const Registration = () => {
 
     return (
         <div className='all-page2'>
-            <div className='form2'>
+            <div className='form2 form2__zoom'>
                 <div className='form2__inner'>
                     <h4 className='form2__title'>Регистрация</h4>
                     <form onSubmit={handleSubmit(handleRegistrationFormSubmit)}>
