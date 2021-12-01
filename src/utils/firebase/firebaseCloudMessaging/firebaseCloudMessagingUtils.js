@@ -2,7 +2,7 @@ import { getToken as firebaseGetToken } from 'firebase/messaging';
 import axiosApi from 'axios.js';
 
 import { messaging } from 'firebase.js';
-import { serverUrls, apiUrls } from 'constants.js';
+import { serverUrls } from 'constants.js';
 import config from 'config.js';
 
 /**
@@ -36,7 +36,7 @@ export const sendTokenToServer = async (token) => {
     const resp = await axiosApi.post('/devices/', {
         registration_id: token,
         type: 'web'
-    }, { baseURL: apiUrls[config.appEnvironment] })
+    }, { baseURL: serverUrls[config.appEnvironment] })
 
     return resp.data
 }
