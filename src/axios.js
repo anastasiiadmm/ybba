@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import {refreshAccessToken, logoutUser} from './redux/auth/authSlice';
-import config, {unauthorized401} from './config';
-import {store} from './index.js';
+import { refreshAccessToken, logoutUser } from './redux/auth/authSlice';
+import config, { unauthorized401 } from './config';
+import { store } from './index.js';
 
 
 const axiosApi = axios.create({
@@ -26,11 +26,11 @@ axiosApi.interceptors.response.use(async config => {
     const originalRequest = error.config;
 
     const statusCode = error?.response?.status
-    const {user, tokens} = store.getState().auth
+    const { user, tokens } = store.getState().auth
 
     if (user && (statusCode === unauthorized401)) {
         originalRequest._retry = true
-        const resp = await axiosApi.post('/accounts/refresh/', {refresh: tokens.refresh})
+        const resp = await axiosApi.post('/accounts/refresh/', { refresh: tokens.refresh })
 
         if (resp.status === 200) {
             const newTokens = resp.data
