@@ -28,7 +28,7 @@ const Lessons = () => {
 
     const dispatch = useDispatch()
 
-    const onSelectChange = ({ value: childId }) => {
+    const onSelectChange = (_, { value: childId }) => {
         const selectedChild = children.find(child => child.id === childId)
         dispatch(setSelectedChild(selectedChild))
     }

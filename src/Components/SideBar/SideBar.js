@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { onMessage } from 'firebase/messaging'
 
 import { userRoles } from 'constants.js';
 import Logout from 'Containers/Logout/Logout.js';
@@ -8,10 +10,18 @@ import Logo from 'Components/Logo/Logo.js';
 import SideBarLink from 'Components/SideBar/SideBarLink/SideBarLink.js';
 import Button from 'Components/Button/Button.js';
 import Modal from 'Components/Modal/Modal';
+import { messaging } from 'firebase.js'
 
-import { getNotificationsList, notificationsSelector } from 'redux/notifications/notificationsSlice';
+import moment from 'moment'
+
+import {
+    getNotificationsList,
+    notificationsSelector,
+    deleteNotifications
+} from 'redux/notifications/notificationsSlice';
 
 import 'Components/SideBar/sidebar.css'
+import { toast } from 'react-toastify';
 
 const SideBar = () => {
     
@@ -25,8 +35,20 @@ const SideBar = () => {
         await setModalIsOpen(!modalIsOpen)
     }
 
+    const clearNotifications = async () => {
+        await dispatch(deleteNotifications())
+        await dispatch(getNotificationsList())
+    }
+
     useEffect(() => {
         dispatch(getNotificationsList())
+    }, [dispatch])
+
+    useEffect(() => {
+        onMessage(messaging, ({ notification }) => {
+            dispatch(getNotificationsList())
+            toast.info(notification.title)
+        })
     }, [dispatch])
 
     return (
@@ -35,7 +57,9 @@ const SideBar = () => {
                 <header className='header'>
                     <Logo/>
                     <Button onClick={toggleProfileModal} className='header__notice' data-modal='notifications'>
-                        <span>2</span>
+                        <span>
+                            {notificationsList?.length || '0'}
+                        </span>
                     </Button>
                 </header>
                 <nav className='main-nav'>
@@ -81,29 +105,32 @@ const SideBar = () => {
             >
                 <div className='notifications'>
                     <div className='notifications__add'>
-                        <div className='notifications__sound'>
-                            <label className='switch notifications__switch'>
-                                <input type='checkbox' className='switch__input'/>
-                                <span className='switch__slider' />
-                            </label>
-                            <div className='switch__descr'>Звук</div>
-                        </div>
-                        <a href='#' className='notifications__amount'>Уведомления <span>{notificationsList ? notificationsList.length : '0'}</span></a>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                        <a className='notifications__amount'>
+                            Уведомления <span>{notificationsList?.length || '0'}</span>
+                        </a>
                     </div>
                     <div className='notifications__main'>
                         <div className='notifications__top'>
                             <h5 className='notifications__title'>Уведомления</h5>
-                            <button className='notifications__clear' type='button'>очистить все</button>
+                            <button
+                                className='notifications__clear'
+                                type='button'
+                                onClick={clearNotifications}
+                            >
+                                очистить все
+                            </button>
                         </div>
                         <div className='notifications__body'>
                             {notificationsList && notificationsList.map(notification => {
+                                const notificationDate = moment(notification.sent, 'DD/MM/YYYY H:m:s')
                                return (
                                    <div className='notifications__item notifications__item_viewed'>
                                        <div className='notice'>
                                            <h5 className='notice__title'>{notification.title}</h5>
                                            <p className='notice__info'>{notification.body}</p>
-                                           <span className='notice__icon notice__icon_lesson'>{notification.image}</span>
-                                           <div className='notice__time'>1 мин назад</div>
+                                           <span className='notice__icon notice__icon_lesson'/>
+                                           <div className='notice__time'>{notificationDate.fromNow()}</div>
                                        </div>
                                    </div>
                                )
