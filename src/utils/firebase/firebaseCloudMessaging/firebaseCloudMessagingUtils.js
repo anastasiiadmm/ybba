@@ -12,6 +12,9 @@ import config from 'config.js';
  */
 export const getToken = async (setTokenFound) => {
     try {
+        console.log('==========================')
+        console.log(config.firebaseVapidKey)
+        console.log('==========================')
         if (config.firebaseVapidKey) {
             const currentToken = await firebaseGetToken(messaging, { vapidKey: config.firebaseVapidKey })
             if (currentToken) {
