@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
-
-import Balance from 'Containers/MainDashboard/Balance/Balance.js';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock.js';
 import NextLessons from 'Containers/MainDashboard/NextLessons/NextLessons.js';
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import { getTimesDay, getNowDate, strDateToMoment } from 'utils/date/dateUtils.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import UpcomingLessonBlock from 'Containers/MainDashboard/UpcomingLessonBlock/UpcomingLessonBlock';
-import {getLessons, dashBoardSelector, getTeacherLesson} from 'redux/dashBoard/dashBoardSlice.js';
+import { getLessons, dashBoardSelector, getTeacherLesson } from 'redux/dashBoard/dashBoardSlice.js';
 import { lessonStatuses, userRoles } from 'constants.js';
 import Calendar from 'Containers/MainDashboard/Calendar/Calendar';
 import { checkUserRole } from 'utils/user.js';
@@ -97,7 +95,7 @@ const MainDashboard = () => {
                                 </div>
                                 {checkUserRole(userRoles.parent) && (
                                     <div className='content__col content__col_w40'>
-                                        <Balance/>
+                                        {/*<Balance/>*/}
                                         <Calendar/>
                                     </div>
                                 )}
