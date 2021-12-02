@@ -17,13 +17,27 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import examProtocolSchema from 'utils/formValidationSchemas/examProtocolSchema';
 
 import './examinationProtocol.css';
+import { getProtocol, createProtocol } from 'redux/surveys/protocolSlice';
+import { authSelector } from 'redux/auth/authSlice.js';
+import { getChildren, lessonsSelector } from 'redux/lessons/lessonsSlice.js';
+import { getChild } from 'redux/child/childSlice';
 
 const ExaminationProtocol = (props) => {
+  const dispatch = useDispatch();
+  const { user } = useSelector(authSelector);
+  const { children } = useSelector(lessonsSelector);
+  const { student } = props;
+
+  // useEffect(() => {
+  //   dispatch(getChildren(user.id));
+  //   console.log(children);
+  // }, []);
   const formMethods = useForm({
     resolver: yupResolver(examProtocolSchema),
     mode: 'onChange',
   });
 
+<<<<<<< HEAD
   const {
     getValues,
     formState: { errors },
@@ -41,9 +55,26 @@ const ExaminationProtocol = (props) => {
     }, 1000);
   };
 
+=======
+  // useEffect(() => {
+  //   console.log(dispatch(getProtocol('171d0536-68c8-4344-861f-5ac9a0cf2984')));
+  // }, []);
+  const { getValues } = formMethods;
+
+>>>>>>> bcadab4... API related corrections
   const inputChangeHandler = (e) => {
     return inputTimer(e);
   };
+
+  useEffect(() => {
+    // if (student) {
+    // console.log({ this_is_protocol: student.id });
+    dispatch(createProtocol('171d0536-68c8-4344-861f-5ac9a0cf2984')).then(
+      (data) => console.log(data)
+    );
+    // console.log({ this_is_protocol: dispatch(createProtocol(student.id)) });
+    // }
+  }, [student]);
 
   return (
     <Container>
@@ -63,7 +94,7 @@ const ExaminationProtocol = (props) => {
               secondPlaceholder="Ответ родителя"
             >
               <FormRow customStyle="protocol__row">
-                <p className="protocol__person">Иван Климов</p>
+                {/* <p className="protocol__person">{`${student.first_name} ${student.last_name} `}</p> */}
                 <p className="protocol__person-descr">
                   Дата рождения: 12 мая 2016
                 </p>
