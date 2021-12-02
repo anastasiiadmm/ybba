@@ -100,3 +100,12 @@ h5, h4, h3 {
 .notifications__clear {
     margin-right: 28px;
 }
+
+.chars_input {
+    color: #A3B3CC;
+    margin-left: 11px;
+}
+
+.textarea_content {
+    width: 658px;
+}

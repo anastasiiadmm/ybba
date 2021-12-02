@@ -8,7 +8,10 @@ import { ChildProfileContext } from 'context/ChildProfileContext/ChildProfileCon
 import StagesLinks from 'Containers/ChildProfile/StagesLinks/StagesLinks';
 import Actions from 'Containers/ChildProfile/Actions/Actions';
 import { getChild, childSelector, clearChildState, updateChildAdditionalInfo } from 'redux/child/childSlice.js';
+import { inputValidation } from 'yupSchemas/commonYupSchemas';
 
+
+const max_chars = 100;
 
 const ChildProfileStageTwo = () => {
 
@@ -33,6 +36,7 @@ const ChildProfileStageTwo = () => {
 
     const [childAdditionalData, setChildAdditionalData] = useState(null)
     const [isOtherInputActive, setIsOtherInputActive] = useState(false)
+    const [chars, setChars] = useState(max_chars)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -42,13 +46,32 @@ const ChildProfileStageTwo = () => {
     const checkboxChangeHandler = (e, name) => {
         setChildAdditionalData({ ...childAdditionalData, [name]: e.target.checked })
     };
-    const textInputChangeHandler = e => {
-        setChildAdditionalData({ ...childAdditionalData, [e.target.name]: e.target.value })
-    };
+
     const otherCheckboxChangeHandler = e => {
-        setChildAdditionalData({ ...childAdditionalData, help_other_text: '' })
-        setIsOtherInputActive(e.target.checked)
+        const { name, value } = e.target
+
+        let x = document.getElementById('textarea').value
+        let text
+
+        if(inputValidation(x) || x === '') {
+            text = ''
+        } else {
+            text = 'Это поле должно состоять из кириллицы, цифр и символов'
+        }
+
+        document.getElementById('error').innerHTML = text
+
+        setChildAdditionalData({ ...childAdditionalData, [name]: value })
+        setChars(max_chars - value.length)
     }
+
+    useEffect(()=>{
+        if (childAdditionalData && childAdditionalData.help_other_text) {
+            setIsOtherInputActive(true)
+        } else {
+            setIsOtherInputActive(false)
+        }
+    },[childAdditionalData])
 
     const updateAdditionalData = async e => {
         e.preventDefault()
@@ -202,13 +225,18 @@ const ChildProfileStageTwo = () => {
                                             onChange={otherCheckboxChangeHandler}
                                             value={isOtherInputActive}
                                         />
-                                        <textarea
-                                            className='form__area profile-child__area'
-                                            value={childAdditionalData.help_other_text}
-                                            name='help_other_text'
-                                            onChange={textInputChangeHandler}
-                                            disabled={!isOtherInputActive}
-                                        />
+                                        <div className='textarea_content'>
+                                            <textarea
+                                                id='textarea'
+                                                className='form__area profile-child__area'
+                                                value={childAdditionalData.help_other_text}
+                                                name='help_other_text'
+                                                onChange={otherCheckboxChangeHandler}
+                                                maxLength='100'
+                                            />
+                                            <p className='form2__error' id='error' />
+                                        </div>
+                                        <span className='chars_input'>{chars}</span>
                                     </li>
                                 </ul>
                             </div>

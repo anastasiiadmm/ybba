@@ -4,6 +4,9 @@ import * as yup from 'yup';
 const passwordValidation = (value) =>
     [/[a-z]/, /[A-Z]/, /[0-9]/, /[^a-zA-Z0-9]/].every((pattern) => pattern.test(value))
 
+export const inputValidation = (value) =>
+    [/[А-ЯёЁа-я!#$%&'*+-/=?^_`{|}~().]/].every((pattern) => pattern.test(value))
+
 
 export const passwordSchema = yup.string()
     .required('Пароль обязателен')
