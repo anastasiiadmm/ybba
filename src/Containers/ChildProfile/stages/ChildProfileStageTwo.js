@@ -64,11 +64,13 @@ const ChildProfileStageTwo = () => {
         setChars(max_chars - value.length)
     }
 
-    useEffect(()=>{
-        if (childAdditionalData && childAdditionalData.help_other_text) {
-            setIsOtherInputActive(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        if (childAdditionalData?.help_other_text) {
+            console.log(childAdditionalData)
+           setIsOtherInputActive(true)
         } else {
-            setIsOtherInputActive(false)
+           setIsOtherInputActive(false)
         }
     },[childAdditionalData])
 
@@ -227,6 +229,7 @@ const ChildProfileStageTwo = () => {
                                             <textarea
                                                 id='textarea'
                                                 className='form__area profile-child__area'
+                                                value={childAdditionalData.help_other_text}
                                                 name='help_other_text'
                                                 maxLength='100'
                                                 errors={errors}
