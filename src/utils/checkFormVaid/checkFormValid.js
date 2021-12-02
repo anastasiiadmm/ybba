@@ -1,5 +1,8 @@
 import * as Yup from 'yup';
 
+const inputValidation = (value) =>
+    [/[А-ЯёЁа-я!#$%&'*+-/=?^_`{|}~().]/].every((pattern) => pattern.test(value))
+
 export const validationResetPasswordSchema = Yup.object().shape({
     password: Yup.string()
         .required('Введите пароль')
@@ -9,4 +12,10 @@ export const validationResetPasswordSchema = Yup.object().shape({
     passwordRepeat: Yup.string()
         .required('Подтвердите пароль')
         .oneOf([Yup.ref('password')], 'Пароли не совпадают')
+});
+
+export const validationTextareaSchema = Yup.object().shape({
+    help_other_text: Yup.string()
+        .max(100)
+        .test('passwordRequirements', 'Поле должно состоять из кириллицы, цифр и символов', inputValidation)
 });
