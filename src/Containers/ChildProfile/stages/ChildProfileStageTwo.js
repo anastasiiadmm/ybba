@@ -2,13 +2,15 @@ import React, { useContext, useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import FormField from 'Components/FormField/FormField';
 import { ChildProfileContext } from 'context/ChildProfileContext/ChildProfileContext.js';
 import StagesLinks from 'Containers/ChildProfile/StagesLinks/StagesLinks';
 import Actions from 'Containers/ChildProfile/Actions/Actions';
 import { getChild, childSelector, clearChildState, updateChildAdditionalInfo } from 'redux/child/childSlice.js';
-import { inputValidation } from 'yupSchemas/commonYupSchemas';
+import { validationTextareaSchema } from 'utils/checkFormVaid/checkFormValid';
 
 
 const max_chars = 100;
@@ -47,19 +49,16 @@ const ChildProfileStageTwo = () => {
         setChildAdditionalData({ ...childAdditionalData, [name]: e.target.checked })
     };
 
+    const formOptions = { resolver: yupResolver(validationTextareaSchema) }
+
+    const { register, setValue, handleSubmit, getValues, formState } = useForm(formOptions)
+    const { errors } = formState;
+
     const otherCheckboxChangeHandler = e => {
         const { name, value } = e.target
 
-        let x = document.getElementById('textarea').value
-        let text
-
-        if(inputValidation(x) || x === '') {
-            text = ''
-        } else {
-            text = 'Это поле должно состоять из кириллицы, цифр и символов'
-        }
-
-        document.getElementById('error').innerHTML = text
+        setValue(name, value)
+        getValues(name)
 
         setChildAdditionalData({ ...childAdditionalData, [name]: value })
         setChars(max_chars - value.length)
@@ -73,8 +72,7 @@ const ChildProfileStageTwo = () => {
         }
     },[childAdditionalData])
 
-    const updateAdditionalData = async e => {
-        e.preventDefault()
+    const updateAdditionalData = async () => {
 
         await dispatch(updateChildAdditionalInfo({
             additionalDataId: childAdditionalData.id,
@@ -127,7 +125,7 @@ const ChildProfileStageTwo = () => {
 
     return (
         <>
-            <form onSubmit={updateAdditionalData}>
+            <form onSubmit={handleSubmit(updateAdditionalData)}>
                 <div className='profile-child'>
                     <StagesLinks/>
                     <div className='profile-child__survey'>
@@ -229,12 +227,14 @@ const ChildProfileStageTwo = () => {
                                             <textarea
                                                 id='textarea'
                                                 className='form__area profile-child__area'
-                                                value={childAdditionalData.help_other_text}
                                                 name='help_other_text'
-                                                onChange={otherCheckboxChangeHandler}
                                                 maxLength='100'
+                                                errors={errors}
+                                                {...register('help_other_text', {
+                                                    onChange: otherCheckboxChangeHandler,
+                                                })}
                                             />
-                                            <p className='form2__error' id='error' />
+                                            <p className='form2__error'>{errors.help_other_text?.message}</p>
                                         </div>
                                         <span className='chars_input'>{chars}</span>
                                     </li>
