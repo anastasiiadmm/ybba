@@ -284,7 +284,7 @@ const ChildProfileStageTwo = () => {
                                     disabled={!isMainSpecialistDataFilled}
                                     onClick={workWithSpecialist}
                                 >
-                                    Добавить специалиста
+                                    Сохранить
                                 </Button>
                             </form>
                         </div>
