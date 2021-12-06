@@ -136,7 +136,6 @@ const ChildrenForm = (props) => {
                         name='country'
                         options={countriesOptions}
                         onChange={(event, newValue) => {
-                            console.log('new value: ', newValue);
                             setCountry(newValue.value)
                         }}
                         value={childrenData.country}
