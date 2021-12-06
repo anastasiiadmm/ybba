@@ -118,6 +118,13 @@ export const domains = {
     [envs.production]: 'diagnostika.pro'
 }
 
+export const frontUrls = {
+    [envs.local]: `http://${domains[envs.local]}:3000`,
+    [envs.development]: `https://${domains[envs.development]}`,
+    [envs.staging]: `https://${domains[envs.staging]}`,
+    [envs.production]: `https://${domains[envs.production]}`
+}
+
 export const serverUrls = {
     [envs.local]: `http://${domains[envs.local]}:8000`,
     [envs.development]: `https://${domains[envs.development]}`,
