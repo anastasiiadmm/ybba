@@ -24,11 +24,12 @@ const ChildProfileStageOne = () => {
 
     const { child, updateChildSuccess } = useSelector(childSelector)
 
+    const setCountry = data => {
+        setChildrenData({ ...childrenData, country: data })
+    }
+
     const setCity = data => {
         setChildrenData({ ...childrenData, city: data.value })
-    }
-    const setCountry = data => {
-        setChildrenData({ ...childrenData, country: data.value })
     }
 
     const updateUser = async e => {

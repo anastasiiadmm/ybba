@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import {childSelector, getSpecialists} from 'redux/child/childSlice.js';
+import { childSelector, getSpecialists } from 'redux/child/childSlice.js';
 
 
 function ChildData(props) {
@@ -12,9 +12,10 @@ function ChildData(props) {
         childProfile
     } = props
 
+
     const dispatch = useDispatch()
 
-    const {specialists} = useSelector(childSelector)
+    const { specialists } = useSelector(childSelector)
 
     const mapping = {
         child_does_not_speak_or_speaks_poorly: 'Ребёнок не говорит или плохо говорит',
@@ -31,15 +32,15 @@ function ChildData(props) {
 
     useEffect(() => {
         dispatch(getSpecialists())
-    }, [])
+    }, [dispatch])
 
     return (
-        <div className="profile-card modal__gray-bg h-100">
-            <h5 className="profile-card__title">Профиль ребенка
+        <div className='profile-card modal__gray-bg h-100'>
+            <h5 className='profile-card__title'>Профиль ребенка
                 - {childProfile.first_name} {childProfile.last_name} </h5>
-            <div className="profile-card__item">
-                <p className="profile-card__item-title">Основная информация ребенка</p>
-                <div className="profile-card__main-options">
+            <div className='profile-card__item'>
+                <p className='profile-card__item-title'>Основная информация ребенка</p>
+                <div className='profile-card__main-options'>
                     <dl>
                         <dt>Имя</dt>
                         <dd>{childProfile.first_name}</dd>
@@ -54,7 +55,7 @@ function ChildData(props) {
                     </dl>
                     {/*<dl>*/}
                     {/*    <dt>Страна проживания</dt>*/}
-                    {/*    <dd>Российская Федерация</dd>*/}
+                    {/*    <dd>Россия</dd>*/}
                     {/*</dl>*/}
                     {/*<dl>*/}
                     {/*    <dt>Город проживания</dt>*/}
@@ -64,8 +65,8 @@ function ChildData(props) {
             </div>
             {childProfile.additional_information && specialists && (
                 <>
-                    <div className="profile-card__item">
-                        <p className="profile-card__item-title">С чем вам помочь?</p>
+                    <div className='profile-card__item'>
+                        <p className='profile-card__item-title'>С чем вам помочь?</p>
                         {Object.keys(mapping).map(key => {
                             if (childProfile.additional_information[key]) {
                                 if (key === 'help_other_text' && childProfile.additional_information[key]) {
@@ -81,8 +82,8 @@ function ChildData(props) {
                             }
                         })}
                     </div>
-                    <div className="profile-card__item">
-                        <p className="profile-card__item-title">Был ли у вас опыт работы с другими специалистами?</p>
+                    <div className='profile-card__item'>
+                        <p className='profile-card__item-title'>Был ли у вас опыт работы с другими специалистами?</p>
                         <p>{childProfile.specialists.length ? 'Да' : 'Нет'}</p>
                         {!!childProfile.specialists.length && (
                             childProfile.specialists.map((specialist, index) => {

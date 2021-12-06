@@ -51,7 +51,7 @@ const ChildProfileStageTwo = () => {
 
     const formOptions = { resolver: yupResolver(validationTextareaSchema) }
 
-    const { register, setValue, handleSubmit, getValues, formState } = useForm(formOptions)
+    const { register, setValue, handleSubmit, getValues, formState } = useForm({ mode: 'onChange' }, formOptions)
     const { errors } = formState;
 
     const otherCheckboxChangeHandler = e => {

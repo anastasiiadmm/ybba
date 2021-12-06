@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 
 import FormField from 'Components/FormField/FormField.js';
 import { allRussianWardsAndHyphen } from 'regex/patterns/html.js';
-import FormRow from 'Components/FormRow/FormRow';
 import { childSelector, getCountriesList, getCitiesList } from 'redux/child/childSlice.js';
 import config from 'config.js';
+import { Russian } from 'assets/vendor/flatpickr/ru';
+import { namesOfMonths } from 'constants.js';
+import { momentDateToStr } from 'utils/date/dateUtils';
 
 
 const ChildrenForm = (props) => {
@@ -32,7 +35,8 @@ const ChildrenForm = (props) => {
         setToLocalStorage(newChildrenData)
     }
     const ageChangeHandler = data => {
-        const validDate = data === 'dd/mm/yyyy' ? '' : data
+        const newDate = momentDateToStr(data.toString())
+        const validDate = newDate === 'dd/mm/yyyy' ? '' : momentDateToStr(data.toString())
         const newChildrenData = { ...childrenData, date_of_birth: validDate }
         setChildrenData(newChildrenData)
         setToLocalStorage(newChildrenData)
@@ -98,8 +102,19 @@ const ChildrenForm = (props) => {
         </div>
         <div className='form__row'>
             <FormField
-                showMaskOnHover={true}
-                showMaskOnFocus={true}
+                configs={{
+                    locale: {
+                        ...Russian,
+                        months: {
+                            ...Russian.months,
+                            longhand: namesOfMonths
+                        }
+                    },
+                    firstDayOfWeek: 2,
+                    dateFormat: 'd/m/Y',
+                    enableTime: false,
+                    maxDate: momentDateToStr(moment())
+                }}
                 label='Дата рождения'
                 type='datepicker'
                 className='form__field'
@@ -108,35 +123,41 @@ const ChildrenForm = (props) => {
                 required
                 value={childrenData.date_of_birth}
                 onChange={ageChangeHandler}
+                isClearable
             />
         </div>
         {countriesOptions && citiesOptions && (
-            <>
-                <FormRow>
+            <div className='form__row form__row_flex'>
+                <div className='form__col2 form__label'>
                     <FormField
                         label='Страна проживания'
                         type='select'
                         className='w-100'
                         name='country'
                         options={countriesOptions}
-                        onChange={setCountry}
+                        onChange={(event, newValue) => {
+                            console.log('new value: ', newValue);
+                            setCountry(newValue.value)
+                        }}
                         value={childrenData.country}
                     />
-                </FormRow>
+                </div>
                 {countriesOptions.find(option => option.value === childrenData.country)?.label === 'Россия' && (
-                    <FormRow>
+                    <div className='form__col2 form__label'>
                         <FormField
                             label='Город проживания'
                             type='select'
                             className='w-100'
                             name='country'
                             options={citiesOptions}
-                            onChange={setCity}
+                            onChange={(event, newValue) => {
+                                setCity(newValue)
+                            }}
                             value={childrenData.city}
                         />
-                    </FormRow>
+                    </div>
                 )}
-            </>
+            </div>
         )}
     </>;
 }
