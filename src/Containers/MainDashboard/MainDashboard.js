@@ -10,10 +10,12 @@ import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import { getTimesDay, getNowDate, strDateToMoment } from 'utils/date/dateUtils.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import UpcomingLessonBlock from 'Containers/MainDashboard/UpcomingLessonBlock/UpcomingLessonBlock';
-import {getLessons, dashBoardSelector, getTeacherLesson} from 'redux/dashBoard/dashBoardSlice.js';
+import { getLessons, dashBoardSelector, getTeacherLesson } from 'redux/dashBoard/dashBoardSlice.js';
 import { lessonStatuses, userRoles } from 'constants.js';
 import Calendar from 'Containers/MainDashboard/Calendar/Calendar';
 import { checkUserRole } from 'utils/user.js';
+import ChildData from 'Containers/ChildProfiles/ChildData/ChildData.js';
+import Modal from 'Components/Modal/Modal.js';
 
 
 const MainDashboard = () => {
@@ -23,10 +25,13 @@ const MainDashboard = () => {
 
     const [nowDate, setNowDate] = useState()
     const [closesLesson, setClosesLesson] = useState(null)
+    const [childProfileModalIsOpen, setChildProfileModalIsOpen] = useState(false)
 
     const dispatch = useDispatch()
 
     const partOfDay = getTimesDay()
+
+    const toggleChildProfileModal = () => setChildProfileModalIsOpen(!childProfileModalIsOpen)
 
     useEffect(() => {
         if (lessons) {
@@ -68,45 +73,59 @@ const MainDashboard = () => {
     }, [])
 
     return (
-        <SidebarContainer>
-            {user && (
-                <div className='main__inner'>
-                    <MainTitleBlock
-                        leftTitle={`${user?.profile?.first_name} ${user?.profile?.last_name}`}
-                        middleTitle={partOfDay}
-                        rightTitle={nowDate}
+        <>
+            {checkUserRole(userRoles.therapist) && closesLesson && (
+                <Modal
+                    isOpen={childProfileModalIsOpen}
+                    toggle={toggleChildProfileModal}
+                    width={40}
+                >
+                    <ChildData
+                        childProfile={closesLesson.student}
                     />
-                    <div className='content'>
-                        <div className='content__inner'>
+                </Modal>
+            )}
+            <SidebarContainer>
+                {user && (
+                    <div className='main__inner'>
+                        <MainTitleBlock
+                            leftTitle={`${user?.profile?.first_name} ${user?.profile?.last_name}`}
+                            middleTitle={partOfDay}
+                            rightTitle={nowDate}
+                        />
+                        <div className='content'>
+                            <div className='content__inner'>
 
-                            <div className='content__row'>
-                                <div className='content__col'>
-                                    {closesLesson && (
-                                        <UpcomingLessonBlock
-                                            lesson={closesLesson}
-                                        />
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className='content__row'>
-                                <div className='content__col content__col_w60'>
-                                    {checkUserRole(userRoles.parent) && (
-                                        <NextLessons/>
-                                    )}
-                                </div>
-                                {checkUserRole(userRoles.parent) && (
-                                    <div className='content__col content__col_w40'>
-                                        <Balance/>
-                                        <Calendar/>
+                                <div className='content__row'>
+                                    <div className='content__col'>
+                                        {closesLesson && (
+                                            <UpcomingLessonBlock
+                                                lesson={closesLesson}
+                                                toggleModal={toggleChildProfileModal}
+                                            />
+                                        )}
                                     </div>
-                                )}
+                                </div>
+
+                                <div className='content__row'>
+                                    <div className='content__col content__col_w60'>
+                                        {checkUserRole(userRoles.parent) && (
+                                            <NextLessons/>
+                                        )}
+                                    </div>
+                                    {checkUserRole(userRoles.parent) && (
+                                        <div className='content__col content__col_w40'>
+                                            <Balance/>
+                                            <Calendar/>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </SidebarContainer>
+                )}
+            </SidebarContainer>
+        </>
     );
 }
 
