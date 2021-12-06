@@ -128,7 +128,10 @@ const SideBar = () => {
                                    <div className='notifications__item notifications__item_viewed'>
                                        <div className='notice'>
                                            <h5 className='notice__title'>{notification.title}</h5>
-                                           <p className='notice__info'>{notification.body}</p>
+                                           <p
+                                               className='notice__info'
+                                               dangerouslySetInnerHTML={{ __html:  notification.body }}
+                                           />
                                            <span className='notice__icon notice__icon_lesson'/>
                                            <div className='notice__time'>{notificationDate.fromNow()}</div>
                                        </div>
