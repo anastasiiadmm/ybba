@@ -20,6 +20,7 @@ h5, h4, h3 {
 
 .form__label {
     line-height: 3.1;
+    margin-bottom: 0;
 }
 
 .btn-out {

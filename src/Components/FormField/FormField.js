@@ -34,6 +34,11 @@ const FormField = props => {
         placeholder,
     } = props
 
+    const adult = (el) => {
+        if (el.value === value)
+            return true;
+    }
+
     const toolTip = <>
         {(tooltipTitle || tooltipText) && <>
             <div className='form__inp-info form__inp-info_left'>
@@ -222,33 +227,33 @@ const FormField = props => {
 
     if (type === 'select') {
         field = <>
-            <label className='w-100'>
-                {label}
-                <Autocomplete
-                    className={className}
-                    sx={{
-                        '& input': {
-                            padding: '12px',
-                            borderRadius: '10px',
-                            outline: 'none',
-                            border: '1px solid #A3B3CC'
-                        },
-                    }}
-                    name={name}
-                    autoComplete='no'
-                    onChange={onChange}
-                    options={options}
-                    renderInput={(params) => {
-                        params.inputProps.autoComplete = 'new-password';
-                        return (
-                            <div ref={params.InputProps.ref}>
-                                <input autoComplete='no' value={options?.filter(option => option.value === value)}
-                                       type='text' {...params.inputProps} name={name}/>
-                            </div>
-                        )
-                    }}
-                />
-            </label>
+            <label className='w-100 form__label'>{label}</label>
+            <Autocomplete
+                className={className}
+                sx={{
+                    '& input': {
+                        padding: '12px',
+                        borderRadius: '10px',
+                        outline: 'none',
+                        border: '1px solid #A3B3CC'
+                    },
+                }}
+                value={options?.filter(adult).map(res => res.label)}
+                name={name}
+                autoComplete='no'
+                onChange={onChange}
+                options={options}
+                renderInput={(params) => {
+                    params.inputProps.autoComplete = 'new-password';
+                    return (
+                        <div ref={params.InputProps.ref}>
+                            <input autoComplete='no'
+                                   type='text' {...params.inputProps} name={name}
+                            />
+                        </div>
+                    )
+                }}
+            />
         </>
     }
 
