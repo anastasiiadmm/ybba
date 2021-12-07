@@ -234,7 +234,7 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     outline: none;
-    border: black solid;
+    border: white solid;
     border-width: 2px 0 2px 2px;
     background: #fff;
 }
@@ -280,13 +280,14 @@
 }
 
 .play-game-button_active {
+    margin-right: 8px;
     position: relative;
     width: 42px;
     height: 42px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     outline: none;
-    border: black solid;
+    border: white solid;
     border-width: 2px 2px 2px 0;
     background: #fff;
 }
@@ -307,6 +308,7 @@
 
 .play-game-button_inactive {
     position: relative;
+    margin-right: 8px;
     width: 42px;
     height: 42px;
     border-top-right-radius: 10px;

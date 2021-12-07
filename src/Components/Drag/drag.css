@@ -2,3 +2,8 @@
     position: absolute;
     cursor: move;
 }
+
+.position-absolute {
+    right: -118px;
+    transform: translate3d(-117px, 0px, 0px) !important;
+}
