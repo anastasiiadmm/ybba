@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('speechLanguageCompetence', []);
-const reviewBlock = new BlockContent('speechLanguageCompetence.review', []);
+const mainBlock = new BlockContent('', []);
+const reviewBlock = new BlockContent('', []);
 
 mainBlock.content = [
   mainBlock.textFieldObject('what_is_your_name', 'Как тебя зовут?'),

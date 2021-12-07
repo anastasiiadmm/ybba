@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('giraffeGame', []);
-const reviewBlock = new BlockContent('giraffeGame.review', []);
+const mainBlock = new BlockContent('game_giraffe', []);
+const reviewBlock = new BlockContent('game_giraffe', []);
 
 mainBlock.content = [
   mainBlock.textFieldObject('fish_cow_fence_crab', 'Рыба-Корова-Забор-Краб /Р'),

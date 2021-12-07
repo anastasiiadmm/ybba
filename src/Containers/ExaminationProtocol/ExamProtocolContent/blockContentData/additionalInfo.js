@@ -1,6 +1,6 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('additionalInfo', []);
+const mainBlock = new BlockContent('additional_information', []);
 
 mainBlock.content = [
   mainBlock.questionObject(

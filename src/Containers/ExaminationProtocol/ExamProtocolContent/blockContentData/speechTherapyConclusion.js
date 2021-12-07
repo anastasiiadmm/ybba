@@ -1,6 +1,6 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('speechTherapyConclusion', []);
+const mainBlock = new BlockContent('additional_information', []);
 
 mainBlock.content = [
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Логопедическое заключение'),

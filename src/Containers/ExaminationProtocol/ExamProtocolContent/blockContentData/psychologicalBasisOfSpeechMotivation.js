@@ -1,10 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('psychologicalBasisOfSpeechMotivation', []);
-const reviewBlock = new BlockContent(
-  'psychologicalBasisOfSpeechMotivation.review',
-  []
-);
+const mainBlock = new BlockContent('game_on_the_farm_part_three', []);
+const reviewBlock = new BlockContent('game_on_the_farm_part_three', []);
 
 mainBlock.content = [
   mainBlock.fieldObject(mainBlock.fieldTypes.text, 'fatigue', 'Утомляемость'),

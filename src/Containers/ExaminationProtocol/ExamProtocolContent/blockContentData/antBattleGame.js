@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('antBattleGame', []);
-const reviewBlock = new BlockContent('antBattleGame.review', []);
+const mainBlock = new BlockContent('game_ant_battle', []);
+const reviewBlock = new BlockContent('game_ant_battle', []);
 
 mainBlock.content = [
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Статический праксис'),

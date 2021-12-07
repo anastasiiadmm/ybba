@@ -19,6 +19,12 @@ export class BlockContent {
     this.fieldTypes = fieldTypes;
   }
 
+  checkFieldName = (name) => {
+    return name === '' ? `` : `${name}.`;
+  };
+  nameWithParent = (name) => {
+    return `${this.checkFieldName(this.name)}${name}`;
+  };
   fieldObject = (type, name, label) => ({
     type,
     name,
@@ -26,17 +32,25 @@ export class BlockContent {
   });
 
   textFieldObject = (name, label) => {
-    return this.fieldObject(fieldTypes.text, `${this.name}.${name}`, label);
+    return this.fieldObject(
+      fieldTypes.text,
+      `${this.checkFieldName(this.name)}${name}`,
+      label
+    );
   };
 
   textAreaFieldObject = (name, label) => {
-    return this.fieldObject(fieldTypes.textarea, `${this.name}.${name}`, label);
+    return this.fieldObject(
+      fieldTypes.textarea,
+      `${this.checkFieldName(this.name)}${name}`,
+      label
+    );
   };
   boxTitle = (type, text) => ({ type, text });
 
   radioOrCheckFieldObject = (type, name, description, options) => ({
     type,
-    name: `${this.name}.${name}`,
+    name: `${this.checkFieldName(this.name)}${name}`,
     description,
     options,
   });
@@ -46,7 +60,10 @@ export class BlockContent {
       const fullObjectData = [
         this.radioOrCheckFieldObject(
           fieldTypes.radio,
-          `${this.name}.${mainName}.${curr.name}`,
+
+          `${this.checkFieldName(this.name)}${this.checkFieldName(mainName)}${
+            curr.name
+          }`,
           curr.description,
           curr.options
         ),

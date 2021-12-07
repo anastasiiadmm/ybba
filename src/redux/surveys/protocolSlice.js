@@ -61,7 +61,7 @@ const protocolSlice = createSlice({
       state.loading = false;
       state.success = false;
       state.speechCard = null;
-      state.erros = null;
+      state.errors = null;
     },
   },
   extraReducers: {

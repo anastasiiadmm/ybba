@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('farmGameOne', []);
-const reviewBlock = new BlockContent('farmGameOne.review', []);
+const mainBlock = new BlockContent('game_on_the_farm', []);
+const reviewBlock = new BlockContent('game_on_the_farm', []);
 
 mainBlock.content = [
   mainBlock.textGroup([

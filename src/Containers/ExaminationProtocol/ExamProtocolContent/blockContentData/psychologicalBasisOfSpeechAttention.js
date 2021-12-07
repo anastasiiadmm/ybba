@@ -1,22 +1,31 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('psychologicalBasisOfSpeechAttention', []);
+const mainBlock = new BlockContent('game_on_the_farm_part_three', []);
 
 mainBlock.content = [
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'there_are_difficulties_in_distributing_attention',
+    'speech_comprehensionthere_are_difficulties_in_distributing_attention',
     'Речевое внимание:',
     ['Сформировано ', 'Сформировано недостаточно', 'Не сформировано']
   ),
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.checkbox,
-    'concentration',
+    'there_are_difficulties_in_distributing_attention',
     'Распределение:',
     [{ label: 'Наблюдаются трудности распределения внимания' }]
   ),
 
+  mainBlock.radioOrCheckFieldObject(
+    mainBlock.fieldTypes.radio,
+    'concentration',
+    'Концентрация:',
+    [
+      'Низкая концентрация и неустойчивость внимания в целом (ребенок плохо сосредоточивается, с трудом удерживает внимание на объекте)',
+      'Наблюдаются трудности концентрации произвольного внимания',
+    ]
+  ),
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
     'sustainability',

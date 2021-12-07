@@ -1,59 +1,45 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('soundAnalysisAndSynthesis', []);
-const reviewBlock = new BlockContent('soundAnalysisAndSynthesis.review', []);
+const mainBlock = new BlockContent('game_magic_exam', []);
+const reviewBlock = new BlockContent('game_magic_exam', []);
 
 mainBlock.content = [
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Синтез'),
 
-  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'nose', 'Н – О – С - нос'),
-  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'poppy', 'М - А – К – мак'),
+  mainBlock.textFieldObject('nose', 'Н – О – С - нос'),
+  mainBlock.textFieldObject('poppy', 'М - А – К – мак'),
 
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
-    'fly',
-    'М – У – Х – А – муха'
-  ),
+  mainBlock.textFieldObject('fly', 'М – У – Х – А – муха'),
 
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
-    'cats',
-    'К – О – Ш – К – И - кошки'
-  ),
+  mainBlock.textFieldObject('cats', 'К – О – Ш – К – И - кошки'),
 
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Анализ'),
 
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
+  mainBlock.textFieldObject(
     'what_is_first_sound_in_words_poppy_and_fly',
     'Какой первый звук в словах «мак» и «муха»?'
   ),
 
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
+  mainBlock.textFieldObject(
     'what_is_first_sound_in_word_nose',
     'Какой первый звук в слове «нос»?'
   ),
 
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
+  mainBlock.textFieldObject(
     'what_is_last_sound_in_words_cat_and_fly',
     'Какой последний звук в словах «кошка» и «муха»?'
   ),
 
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
+  mainBlock.textFieldObject(
     'what_is_last_sound_in_word_poppy',
     'Какой последний звук в слове «мак»?'
   ),
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
+  mainBlock.textFieldObject(
     'what_is_common_sound_in_words_of_a_cat_and_anose',
     'Какой общий звук в словах «кошки» и «нос»?'
   ),
 
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
+  mainBlock.textFieldObject(
     'in_which_of_words_there_is_no_sound_about_nose_of_cat_poppy',
     'В каком из слов нет звука О: нос, кошки, мак?'
   ),

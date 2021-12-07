@@ -21,6 +21,7 @@ import { getProtocol, createProtocol } from 'redux/surveys/protocolSlice';
 import { authSelector } from 'redux/auth/authSlice.js';
 import { getChildren, lessonsSelector } from 'redux/lessons/lessonsSlice.js';
 import { getChild } from 'redux/child/childSlice';
+import { getSpeechCard, createSpeechCard } from 'redux/surveys/surveysSlice';
 
 const ExaminationProtocol = (props) => {
   const dispatch = useDispatch();
@@ -37,13 +38,10 @@ const ExaminationProtocol = (props) => {
     mode: 'onChange',
   });
 
-<<<<<<< HEAD
   const {
     getValues,
     formState: { errors },
   } = formMethods;
-
-  const dispatch = useDispatch();
 
   let timeout = null;
 
@@ -51,30 +49,27 @@ const ExaminationProtocol = (props) => {
     clearTimeout(timeout);
 
     timeout = setTimeout(function () {
-      console.log(getValues(e.target.name));
+      console.log({ [e.target.name]: getValues(e.target.name) });
     }, 1000);
   };
 
-=======
   // useEffect(() => {
-  //   console.log(dispatch(getProtocol('171d0536-68c8-4344-861f-5ac9a0cf2984')));
+  //   console.log(dispatch(getProtocol('a15600f0-1a08-49e2-9d5d-71dd54fc0183')));
   // }, []);
-  const { getValues } = formMethods;
 
->>>>>>> bcadab4... API related corrections
   const inputChangeHandler = (e) => {
     return inputTimer(e);
   };
 
-  useEffect(() => {
-    // if (student) {
-    // console.log({ this_is_protocol: student.id });
-    dispatch(createProtocol('171d0536-68c8-4344-861f-5ac9a0cf2984')).then(
-      (data) => console.log(data)
-    );
-    // console.log({ this_is_protocol: dispatch(createProtocol(student.id)) });
-    // }
-  }, [student]);
+  // useEffect(() => {
+  //   // if (student) {
+  //   // console.log({ this_is_protocol: student.id });
+  //   dispatch(createProtocol('171d0536-68c8-4344-861f-5ac9a0cf2984')).then(
+  //     (data) => console.log(data)
+  //   );
+  //   // console.log({ this_is_protocol: dispatch(createProtocol(student.id)) });
+  //   // }
+  // }, [student]);
 
   return (
     <Container>

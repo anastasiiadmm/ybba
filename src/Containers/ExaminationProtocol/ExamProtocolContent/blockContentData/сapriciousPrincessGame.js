@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('сapriciousPrincessGame', []);
-const reviewBlock = new BlockContent('сapriciousPrincessGame.review', []);
+const mainBlock = new BlockContent('game_capricious_princess', []);
+const reviewBlock = new BlockContent('game_capricious_princess', []);
 
 mainBlock.content = [
   mainBlock.textFieldObject('chair', 'Стул'),

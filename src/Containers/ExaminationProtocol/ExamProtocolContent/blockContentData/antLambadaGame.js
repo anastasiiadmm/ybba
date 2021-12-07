@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('antLambadaGame', []);
-const reviewBlock = new BlockContent('antLambadaGame.review', []);
+const mainBlock = new BlockContent('game_ant_lambada', []);
+const reviewBlock = new BlockContent('game_ant_lambada', []);
 
 mainBlock.content = [
   mainBlock.textFieldObject('woodpecker_house', 'Дом-Дятел /Д, Дь'),
@@ -15,7 +15,7 @@ mainBlock.content = [
 reviewBlock.content = [
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'front_lingual',
+    '',
     'Переднеязычные:',
     [
       { name: 'nasal', label: 'Носовой' },
@@ -36,7 +36,7 @@ reviewBlock.content = [
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'back_lingual',
+    '',
     'Заднеязычные:',
     [
       { name: 'replacing_k_with', withText: true, checkboxText: 'Замена К на' },

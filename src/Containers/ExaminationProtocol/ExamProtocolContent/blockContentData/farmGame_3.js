@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('farmGameThree', []);
-const reviewBlock = new BlockContent('farmGameThree.review', []);
+const mainBlock = new BlockContent('game_on_the_farm_part_three', []);
+const reviewBlock = new BlockContent('game_on_the_farm_part_three', []);
 
 mainBlock.content = [
   mainBlock.textFieldObject('one_white_chicken', 'Одна белая курица'),

@@ -1,6 +1,6 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('articulationApparatusStructureReview', []);
+const mainBlock = new BlockContent('game_ant_battle', []);
 
 mainBlock.content = [
   mainBlock.radioOrCheckFieldObject(

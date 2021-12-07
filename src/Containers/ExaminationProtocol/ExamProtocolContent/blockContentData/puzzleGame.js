@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('puzzleGame', []);
-const reviewBlock = new BlockContent('puzzleGame.review', []);
+const mainBlock = new BlockContent('game_puzzle', []);
+const reviewBlock = new BlockContent('game_puzzle', []);
 
 mainBlock.content = [
   mainBlock.textFieldObject(

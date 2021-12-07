@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('examMagicGame', []);
-const reviewBlock = new BlockContent('examMagicGame.review', []);
+const mainBlock = new BlockContent('game_magic_exam', []);
+const reviewBlock = new BlockContent('game_magic_exam', []);
 
 mainBlock.content = [
   mainBlock.textFieldObject('bear_bowl', 'Мишка-Миска (Ш – С)'),

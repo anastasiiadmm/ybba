@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('fishGame', []);
-const reviewBlock = new BlockContent('fishGame.review', []);
+const mainBlock = new BlockContent('game_pictures_for_fish', []);
+const reviewBlock = new BlockContent('game_pictures_for_fish', []);
 
 mainBlock.content = [
   mainBlock.textFieldObject(
@@ -34,7 +34,7 @@ mainBlock.content = [
 reviewBlock.content = [
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'whistling',
+    '',
     'Свистящие:',
     [
       { name: 'sibilant_parasigmatism', label: 'Парасигматизм свистящих' },
@@ -71,7 +71,7 @@ reviewBlock.content = [
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'sizzling',
+    '',
     'Шипящие:',
     [
       {

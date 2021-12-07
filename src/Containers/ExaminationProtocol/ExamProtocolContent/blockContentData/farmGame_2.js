@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('farmGameTwo', []);
-const reviewBlock = new BlockContent('farmGameTwo.review', []);
+const mainBlock = new BlockContent('game_on_the_farm_part_two', []);
+const reviewBlock = new BlockContent('game_on_the_farm_part_two', []);
 
 mainBlock.content = [
   mainBlock.boxTitle(

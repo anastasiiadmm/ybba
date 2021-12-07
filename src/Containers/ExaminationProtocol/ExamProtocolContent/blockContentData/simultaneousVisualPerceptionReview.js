@@ -1,6 +1,6 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('simultaneousVisualPerceptionReview', []);
+const mainBlock = new BlockContent('game_puzzle', []);
 
 mainBlock.content = [
   mainBlock.radioOrCheckFieldObject(

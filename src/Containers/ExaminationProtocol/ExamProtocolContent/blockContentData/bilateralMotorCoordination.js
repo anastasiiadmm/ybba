@@ -1,11 +1,11 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('bilateralMotorCoordination', []);
+const mainBlock = new BlockContent('', []);
 
 mainBlock.content = [
   mainBlock.questionObject(
     mainBlock.fieldTypes.question,
-    'imaginary_phone',
+    '',
     '— Возьми воображаемый телефон в руку и приложи к ухо',
     [
       {
@@ -22,7 +22,7 @@ mainBlock.content = [
   ),
   mainBlock.questionObject(
     mainBlock.fieldTypes.question,
-    'imaginary_binocular',
+    '',
     '— Посмотри в воображаемую подзорную трубу',
     [
       {
@@ -39,7 +39,7 @@ mainBlock.content = [
   ),
   mainBlock.questionObject(
     mainBlock.fieldTypes.question,
-    'imaginary_kick',
+    '',
     '— Ударь ногой по воображаемому мячу',
     [
       {

@@ -1,18 +1,18 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('generalAndFineMotorSkills', []);
-const reviewBlock = new BlockContent('generalAndFineMotorSkills.review', []);
+const mainBlock = new BlockContent('game_ant_battle', []);
+const reviewBlock = new BlockContent('game_ant_battle', []);
 
 mainBlock.content = [
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Статический праксис'),
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'static_praxis_stand_on_one_leg_over_the_other',
+    mainBlock.nameWithParent('static_praxis_stand_on_one_leg_over_the_other'),
     'Постой на одной ноге, на другой (под счет до 4х)'
   ),
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'static_praxis_get_up_on_tiptoe_wait',
+    mainBlock.nameWithParent('static_praxis_get_up_on_tiptoe_wait'),
     'Поднимись на цыпочки, постой (под счет до 4х)'
   ),
 
@@ -20,7 +20,7 @@ mainBlock.content = [
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'dynamic_praxis_jump_on_one_leg_the_other_two',
+    mainBlock.nameWithParent('dynamic_praxis_jump_on_one_leg_the_other_two'),
     'Попрыгай на одной ноге, другой, двух (под счет до 5ти на каждую ногу'
   ),
 
@@ -28,7 +28,7 @@ mainBlock.content = [
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'spatial_praxis_turn_right_left',
+    mainBlock.nameWithParent('spatial_praxis_turn_right_left'),
     'Повернись направо, налево'
   ),
 
@@ -38,13 +38,13 @@ mainBlock.content = [
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'show_v',
+    mainBlock.nameWithParent('show_v'),
     'Покажи «V» («зайку»)'
   ),
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'show_the_cow',
+    mainBlock.nameWithParent('show_the_cow'),
     'Покажи «корову»'
   ),
 
@@ -52,7 +52,7 @@ mainBlock.content = [
 
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'show_the_bunny_the_cow_is_counted',
+    mainBlock.nameWithParent('show_the_bunny_the_cow_is_counted'),
     'Покажи «зайку» - «корову» под счет'
   ),
 ];

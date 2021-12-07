@@ -1,6 +1,6 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('basisOfSpeechAndMemoryReview', []);
+const mainBlock = new BlockContent('game_pictures_for_fish', []);
 
 mainBlock.content = [
   mainBlock.radioOrCheckFieldObject(

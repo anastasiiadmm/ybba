@@ -1,7 +1,7 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('notSleepingMouseGame', []);
-const reviewBlock = new BlockContent('notSleepingMouseGame.review', []);
+const mainBlock = new BlockContent('game_how_the_mouse_could_not_sleep', []);
+const reviewBlock = new BlockContent('game_how_the_mouse_could_not_sleep', []);
 
 const gameStory = `Маленькому мышонку не спалось. Пошел темной ночью он по лесу гулять.
 Увидел яблочко в траве и съел его. Увидел ягодку и тоже съел.

@@ -1,19 +1,27 @@
 import { BlockContent } from '../blockContenCreation';
 
-const mainBlock = new BlockContent('mimicMusculature', []);
-const reviewBlock = new BlockContent('mimicMusculature.review', []);
+const mainBlock = new BlockContent('game_ant_battle', []);
+const reviewBlock = new BlockContent('game_ant_battle', []);
 
 mainBlock.content = [
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'raise_eyebrows',
+    mainBlock.nameWithParent('raise_eyebrows'),
     'Поднять брови'
   ),
-  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'frown', 'Нахмурить брови'),
-  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'wink', 'Подмигнуть'),
   mainBlock.fieldObject(
     mainBlock.fieldTypes.text,
-    'puff_out_cheeks',
+    mainBlock.nameWithParent('frown'),
+    'Нахмурить брови'
+  ),
+  mainBlock.fieldObject(
+    mainBlock.fieldTypes.text,
+    mainBlock.nameWithParent('wink'),
+    'Подмигнуть'
+  ),
+  mainBlock.fieldObject(
+    mainBlock.fieldTypes.text,
+    mainBlock.nameWithParent('puff_out_cheeks'),
     'Надуть щеки'
   ),
 ];
