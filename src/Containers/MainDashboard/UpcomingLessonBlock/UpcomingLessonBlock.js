@@ -5,6 +5,8 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import { IconButton } from '@mui/material';
+import { checkUserRole } from 'utils/user.js';
+import { userRoles } from 'constants.js';
 
 
 const UpcomingLessonBlock = (props) => {
@@ -72,11 +74,11 @@ const UpcomingLessonBlock = (props) => {
                             </Link>
                         )
                     )}
-                    <div>
+                    {checkUserRole(userRoles.therapist) && (
                         <IconButton onClick={toggleModal}>
                             <ChildCareIcon fontSize='large'/>
                         </IconButton>
-                    </div>
+                    )}
                 </div>
             )}
         </>
