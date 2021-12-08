@@ -85,6 +85,27 @@ export const refreshToken = createAsyncThunk(
     }
 )
 
+export const updateUserData = createAsyncThunk(
+    `${nameSpace}/updateUserData`,
+    async (data, { rejectWithValue }) => {
+        try {
+            const userData = { ...data.data }
+            if (userData.profile && userData.profile.phone_number && !userData.profile.phone_number.includes('+')) {
+                userData.profile.phone_number = `+${userData.profile.phone_number}`
+            }
+            const resp = await axiosApi.put(`/accounts/${data.userId}/update/`, userData)
+            return resp.data
+        } catch (e) {
+            console.log(e)
+            let error = e?.response?.data
+            if (!e.response) {
+                error = defaultError
+            }
+            return rejectWithValue(error)
+        }
+    }
+)
+
 const authSlice = createSlice({
     name: nameSpace,
     initialState: INITIAL_STATE,
@@ -157,7 +178,22 @@ const authSlice = createSlice({
 
         [refreshToken.fulfilled]: (state, { payload }) => {
             state.tokens = { ...state.tokens, ...payload }
-        }
+        },
+
+        [updateUserData.pending]: state => {
+            state.success = false
+            state.loading = true
+        },
+        [updateUserData.fulfilled]: (state, { payload }) => {
+            state.user = payload
+            state.success = true
+            state.loading = false
+        },
+        [updateUserData.rejected]: (state, { payload }) => {
+            state.errors = payload
+            state.success = false
+            state.loading = false
+        },
     }
 })
 
