@@ -4,6 +4,6 @@
 }
 
 .position-absolute {
-    right: -118px;
-    transform: translate3d(-117px, 0px, 0px) !important;
+    right: 0;
+    transform: translate3d(-13px, 0px, 0px) !important;
 }
