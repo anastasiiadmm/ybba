@@ -146,20 +146,22 @@ const ParentTimeSlots = props => {
                 toggle={modalToggle}
                 onClose={onModalClose}
             >
-                <div className='text-center'>
-                    {timeSlots && selectedTimeSlots.length && lesson && lesson.lesson_number === 1 && (<>
-                        <h5 className='message__title'>Диагностическое занятие добавлено</h5>
-                        <p className='message__body'>
-                            Первая часть диагностического занятия состоится
-                            “{getTimeSlot(selectedTimeSlots[0]).day.date} в {getTimeSlot(selectedTimeSlots[0]).start_time}”.
-                            Теперь вы можете записаться на вторую часть диагностического занятия.
-                        </p>
-                        <Link className='btn' to='/lessons/'>Записаться на 2-ю часть</Link>
-                    </>)}
-                    {lesson && lesson.lesson_number !== 1 && (<>
-                        <h5 className='message__title'>Занятие было добавлено</h5>
-                        <Link className='btn' to='/'>На Главную</Link>
-                    </>)}
+                <div className='d-flex align-items-center justify-content-center h-100'>
+                    <div className='text-center'>
+                        {timeSlots && selectedTimeSlots.length && lesson && lesson.lesson_number === 1 && (<>
+                            <h5 className='message__title'>Диагностическое занятие добавлено</h5>
+                            <p className='message__body'>
+                                Первая часть диагностического занятия состоится
+                                “{getTimeSlot(selectedTimeSlots[0]).day.date} в {getTimeSlot(selectedTimeSlots[0]).start_time}”.
+                                Теперь вы можете записаться на вторую часть диагностического занятия.
+                            </p>
+                            <Link className='btn' to='/lessons/'>Записаться на 2-ю часть</Link>
+                        </>)}
+                        {lesson && lesson.lesson_number !== 1 && (<>
+                            <h5 className='message__title'>Занятие было добавлено</h5>
+                            <Link className='btn' to='/'>На Главную</Link>
+                        </>)}
+                    </div>
                 </div>
             </Modal>
 

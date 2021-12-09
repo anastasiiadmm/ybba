@@ -40,7 +40,7 @@ const Modal = (props) => {
                 onClick={e => e.stopPropagation()}
             >
                 <div
-                    className='modal__body d-flex align-items-center justify-content-center'
+                    className='modal__body'
                     style={{ height: '100%' }}
                 >
                     {children}
