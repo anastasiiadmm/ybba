@@ -13,7 +13,7 @@ import TimeSlot from 'Components/TimeSlot/TimeSlot';
 import Modal from 'Components/Modal/Modal';
 import { strDateToMoment, getCurrentDate, momentDateToStr, strDateTimeToMoment } from 'utils/date/dateUtils.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
-import { getLessons, dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
+import { getLessons, dashBoardSelector, clearDashBoardLessons } from 'redux/dashBoard/dashBoardSlice.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import { lessonTypes } from 'constants.js';
 
@@ -153,39 +153,39 @@ const ParentTimeSlots = props => {
     }, [dateTo])
 
     useEffect(() => {
+        console.log('Asd', user)
         dispatch(getLesson(lessonId))
         dispatch(getLessons({ userId: user?.id }))
     }, [dispatch, lessonId, user])
 
     useEffect(() => {
-        if (timeSlots) {
-            setLessonCreatedModalIsOpen(true)
-        }
-    }, [timeSlots])
+        setLessonCreatedModalIsOpen(false)
+    }, [])
 
     return (
         <SidebarContainer>
             <Modal
                 width={30}
+                height={30}
                 isOpen={lessonCreatedModalIsOpen}
                 toggle={modalToggle}
                 onClose={onModalClose}
             >
                 <div className='d-flex align-items-center justify-content-center h-100'>
                     <div className='text-center'>
-                        {/*{timeSlots && selectedTimeSlots.length && lesson && lesson.lesson_number === 1 && (<>*/}
+                        {timeSlots && selectedTimeSlots.length && lesson && lesson.lesson_number === 1 && (<>
                             <h5 className='message__title'>Диагностическое занятие добавлено</h5>
                             <p className='message__body'>
                                 Первая часть диагностического занятия состоится
-                                {/*“{getTimeSlot(selectedTimeSlots[0]).day.date} в {getTimeSlot(selectedTimeSlots[0]).start_time}”.*/}
+                                “{getTimeSlot(selectedTimeSlots[0]).day.date} в {getTimeSlot(selectedTimeSlots[0]).start_time}”.
                                 Теперь вы можете записаться на вторую часть диагностического занятия.
                             </p>
                             <Link className='btn' to='/lessons/'>Записаться на 2-ю часть</Link>
-                        {/*</>)}*/}
-                        {/*{lesson && lesson.lesson_number !== 1 && (<>*/}
-                        {/*    <h5 className='message__title'>Занятие было добавлено</h5>*/}
-                        {/*    <Link className='btn' to='/'>На Главную</Link>*/}
-                        {/*</>)}*/}
+                        </>)}
+                        {lesson && lesson.lesson_number !== 1 && (<>
+                            <h5 className='message__title'>Занятие было добавлено</h5>
+                            <Link className='btn' to='/'>На Главную</Link>
+                        </>)}
                     </div>
                 </div>
             </Modal>
