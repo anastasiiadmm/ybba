@@ -11,8 +11,11 @@ import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlo
 import { getTimeSlots, lessonsSelector, createLessons, clearLessons, getLesson, } from 'redux/lessons/lessonsSlice.js';
 import TimeSlot from 'Components/TimeSlot/TimeSlot';
 import Modal from 'Components/Modal/Modal';
-import { strDateToMoment, getCurrentDate, momentDateToStr } from 'utils/date/dateUtils.js';
+import { strDateToMoment, getCurrentDate, momentDateToStr, strDateTimeToMoment } from 'utils/date/dateUtils.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
+import { getLessons, dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
+import { authSelector } from 'redux/auth/authSlice.js';
+import { lessonTypes } from 'constants.js';
 
 import 'Containers/ParentTimeSlots/parentTimeSlots.css'
 
@@ -25,6 +28,8 @@ const ParentTimeSlots = props => {
     const history = useHistory()
 
     const { timeSlots, selectedChild, lessonCreated, loading, lesson } = useSelector(lessonsSelector)
+    const { user } = useSelector(authSelector)
+    const { lessons } = useSelector(dashBoardSelector)
 
     const [timeSlotsSchedule, setTimeSlotsSchedule] = useState()
     const [selectedTimeSlots, setSelectedTimeSlots] = useState([])
@@ -104,6 +109,25 @@ const ParentTimeSlots = props => {
         dispatch(createLessons(data))
     }
 
+    const isTimeSlotActive = timeSlot => {
+        if (lesson && lesson.lesson_type === lessonTypes.diagnostic) {
+            const firstStageOfDiagnostic = lessons.find(lesson => (
+                lesson.time_slot &&
+                lesson.lesson_number === 1
+            ))
+            if (firstStageOfDiagnostic) {
+                const firstStageDate = strDateTimeToMoment(
+                    `${firstStageOfDiagnostic.time_slot.day.date} ${firstStageOfDiagnostic.time_slot.start_time}`
+                )
+                const timeSlotDate = strDateTimeToMoment(`${timeSlot.day.date} ${timeSlot.start_time}`)
+                const diff = timeSlotDate.diff(firstStageDate)
+
+                return timeSlot.teachers.length && diff > 0
+            }
+        }
+        return timeSlot.teachers.length
+    }
+
     useEffect(() => {
         if (lessonCreated) {
             modalToggle()
@@ -129,11 +153,12 @@ const ParentTimeSlots = props => {
     }, [dateTo])
 
     useEffect(() => {
+        console.log('Asd', user)
         dispatch(getLesson(lessonId))
-    }, [dispatch, lessonId])
+        dispatch(getLessons({ userId: user?.id }))
+    }, [dispatch, lessonId, user])
 
     useEffect(() => {
-        console.log(12423143214)
         setLessonCreatedModalIsOpen(false)
     }, [])
 
@@ -219,7 +244,7 @@ const ParentTimeSlots = props => {
                                                                         timeSlot={timeSlot}
                                                                         onClick={timeSlotOnClick}
                                                                         isActive={selectedTimeSlots.indexOf(timeSlot.id) > -1}
-                                                                        allowsToChoice={timeSlot.teachers.length}
+                                                                        allowsToChoice={isTimeSlotActive(timeSlot)}
                                                                     >
                                                                         {moment(timeSlot.start_time, 'H:m:s').format('H:mm')}
                                                                     </TimeSlot>
