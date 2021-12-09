@@ -13,7 +13,7 @@ import TimeSlot from 'Components/TimeSlot/TimeSlot';
 import Modal from 'Components/Modal/Modal';
 import { strDateToMoment, getCurrentDate, momentDateToStr, strDateTimeToMoment } from 'utils/date/dateUtils.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
-import { getLessons, dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
+import { getLessons, dashBoardSelector, clearDashBoardLessons } from 'redux/dashBoard/dashBoardSlice.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import { lessonTypes } from 'constants.js';
 

@@ -32,11 +32,15 @@ const Modal = (props) => {
     return (
         <BackDrop isOpen={isOpen} toggle={closeModal}>
             <div
-                className={addClasses(`modal d-block top-0 mt-5`, {
+                className={addClasses(`modal d-block top-0 mt-5 p-5`, {
                     [className || '']: true
                 })}
                 // style={{width: `${width}%`}}
-                style={{ maxWidth: `${width}%`, top: '72px', height: `${modalHeight || 75}%` }}
+                style={{
+                    maxWidth: `${width}%`,
+                    top: '72px', height: `${modalHeight || 75}%`,
+                    blockSize: 'auto',
+                }}
                 onClick={e => e.stopPropagation()}
             >
                 <div
