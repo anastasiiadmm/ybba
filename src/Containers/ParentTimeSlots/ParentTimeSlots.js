@@ -8,12 +8,7 @@ import moment from 'moment';
 
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
-import {
-    getTimeSlots,
-    lessonsSelector,
-    createLessons,
-    clearLessons, getLesson,
-} from 'redux/lessons/lessonsSlice.js';
+import { getTimeSlots, lessonsSelector, createLessons, clearLessons, getLesson, } from 'redux/lessons/lessonsSlice.js';
 import TimeSlot from 'Components/TimeSlot/TimeSlot';
 import Modal from 'Components/Modal/Modal';
 import { strDateToMoment, getCurrentDate, momentDateToStr } from 'utils/date/dateUtils.js';
@@ -145,7 +140,8 @@ const ParentTimeSlots = props => {
     return (
         <SidebarContainer>
             <Modal
-                width={50}
+                width={30}
+                height={30}
                 isOpen={lessonCreatedModalIsOpen}
                 toggle={modalToggle}
                 onClose={onModalClose}
@@ -154,7 +150,8 @@ const ParentTimeSlots = props => {
                     {timeSlots && selectedTimeSlots.length && lesson && lesson.lesson_number === 1 && (<>
                         <h5 className='message__title'>Диагностическое занятие добавлено</h5>
                         <p className='message__body'>
-                            Первая часть диагностического занятия состоится “{getTimeSlot(selectedTimeSlots[0]).day.date} в {getTimeSlot(selectedTimeSlots[0]).start_time}”.
+                            Первая часть диагностического занятия состоится
+                            “{getTimeSlot(selectedTimeSlots[0]).day.date} в {getTimeSlot(selectedTimeSlots[0]).start_time}”.
                             Теперь вы можете записаться на вторую часть диагностического занятия.
                         </p>
                         <Link className='btn' to='/lessons/'>Записаться на 2-ю часть</Link>
