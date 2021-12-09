@@ -110,7 +110,7 @@ const ParentTimeSlots = props => {
     }
 
     const isTimeSlotActive = timeSlot => {
-        if (lesson && lesson.lesson_type === lessonTypes.diagnostic) {
+        if (lesson && lesson.lesson_type === lessonTypes.diagnostic && timeSlot.teachers.length) {
             const firstStageOfDiagnostic = lessons.find(lesson => (
                 lesson.time_slot &&
                 lesson.lesson_number === 1
