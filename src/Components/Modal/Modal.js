@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import BackDrop from 'Components/BackDrop/BackDrop.js';
@@ -11,7 +11,7 @@ import 'Components/Modal/modal.css';
 const Modal = (props) => {
 
     const {
-        children, toggle, isOpen, width, onClose, className
+        children, toggle, isOpen, width, height: modalHeight, onClose, className
     } = props
 
     const closeModal = () => {
@@ -21,18 +21,26 @@ const Modal = (props) => {
         toggle()
     }
 
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isOpen])
+
     return (
         <BackDrop isOpen={isOpen} toggle={closeModal}>
             <div
-                className={addClasses('modal d-block top-0 h-75 mt-5', {
+                className={addClasses(`modal d-block top-0 mt-5`, {
                     [className || '']: true
                 })}
                 // style={{width: `${width}%`}}
-                style={{ maxWidth: `${width}%`, top: '72px' }}
+                style={{ maxWidth: `${width}%`, top: '72px', height: `${modalHeight || 75}%` }}
                 onClick={e => e.stopPropagation()}
             >
                 <div
-                    className='modal__body'
+                    className='modal__body d-flex align-items-center justify-content-center'
                     style={{ height: '100%' }}
                 >
                     {children}
@@ -52,7 +60,11 @@ Modal.propTypes = {
     isOpen: PropTypes.bool,
     width: PropTypes.number,
     onClose: PropTypes.func,
-    className: PropTypes.string
+    className: PropTypes.string,
+    height: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string
+    ])
 }
 
 export default Modal;
