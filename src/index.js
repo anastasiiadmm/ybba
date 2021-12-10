@@ -7,7 +7,7 @@ import configureStore from 'redux/store.js';
 import reportWebVitals from 'reportWebVitals';
 import { initSentry } from 'sentry/sentry';
 import App from 'App.js';
-// import BrowserPermissionsBlock from 'Containers/BrowserPermissionsBlock/BrowserPermissionsBlock';
+import BrowserPermissionsBlock from 'Containers/BrowserPermissionsBlock/BrowserPermissionsBlock';
 
 import 'assets/vendor/flatpickr/flatpickr';
 import 'assets/vendor/flatpickr/ru';
@@ -23,31 +23,18 @@ initSentry();
 export const store = configureStore();
 
 ReactDOM.render(
-<<<<<<< HEAD
   <React.StrictMode>
-    {/* <BrowserPermissionsBlock> */}
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-    {/* </BrowserPermissionsBlock> */}
+    <FirebaseBlock>
+      <BrowserPermissionsBlock>
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Provider>
+      </BrowserPermissionsBlock>
+    </FirebaseBlock>
   </React.StrictMode>,
   document.getElementById('root')
-=======
-    <React.StrictMode>
-        <FirebaseBlock>
-            <BrowserPermissionsBlock>
-                <Provider store={store}>
-                    <BrowserRouter>
-                        <App/>
-                    </BrowserRouter>
-                </Provider>
-            </BrowserPermissionsBlock>
-        </FirebaseBlock>
-    </React.StrictMode>,
-    document.getElementById('root')
->>>>>>> development
 );
 
 reportWebVitals();
