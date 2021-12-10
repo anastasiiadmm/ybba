@@ -167,19 +167,10 @@ const LessonPage = (props) => {
 
     useEffect(() => {
         if (lesson) {
-            const active = lesson.games.find(game => game.id === lesson.active_game_id)
+            const active = lesson?.games?.find(game => game.id === lesson.active_game_id)
             setActiveGame(active)
         }
     }, [lesson])
-
-    useEffect(() => {
-        if (lessonFinished) {
-            if (checkUserRole(userRoles.parent)) {
-                history.push('/')
-                sendChildrenQuestionnaireNotification()
-            }
-        }
-    }, [lessonFinished, history, sendChildrenQuestionnaireNotification])
 
     useEffect(() => {
         if (unityContext) {
