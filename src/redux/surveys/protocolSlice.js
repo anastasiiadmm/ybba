@@ -6,7 +6,7 @@ const nameSpace = 'surveys';
 const INITIAL_STATE = {
   loading: false,
   success: false,
-  speechCard: null,
+  protocol: null,
   errors: null,
 };
 
@@ -24,27 +24,13 @@ export const getProtocol = createAsyncThunk(
   }
 );
 
-export const createProtocol = createAsyncThunk(
-  `${nameSpace}/createProtocol`,
-  async (childId, { rejectWithValue }) => {
+export const updateProtocol = createAsyncThunk(
+  `${nameSpace}/updateProtocol`,
+  async ({ protocolId, newData }, { rejectWithValue }) => {
     try {
-      await axiosApi.post(
-        `/surveys/children/${childId}/create-examination-protocol/`,
-        {}
-      );
-    } catch (e) {
-      return rejectWithValue(e);
-    }
-  }
-);
-
-export const updateSpeechCard = createAsyncThunk(
-  `${nameSpace}/updateSpeechCard`,
-  async ({ speechCardId, speechCardData }, { rejectWithValue }) => {
-    try {
-      const resp = axiosApi.put(
-        `/charts/speech-card/${speechCardId}/`,
-        speechCardData
+      const resp = await axiosApi.put(
+        `/surveys/examination-protocol/${protocolId}/?finish-saving=1`,
+        newData
       );
       return resp.data;
     } catch (e) {
@@ -53,6 +39,49 @@ export const updateSpeechCard = createAsyncThunk(
   }
 );
 
+export const getSpeechCard = createAsyncThunk(
+  `${nameSpace}/getSpeechCard`,
+  async (childId, { rejectWithValue }) => {
+    try {
+      const resp = await axiosApi.get(
+        `/surveys/children/${childId}/speech-card/`
+      );
+      return resp.data;
+    } catch (e) {
+      return rejectWithValue(e);
+    }
+  }
+);
+
+export const createSpeechCard = createAsyncThunk(
+  `${nameSpace}/createSpeechCard`,
+  async ({ childId, speechCardData }, { rejectWithValue }) => {
+    try {
+      await axiosApi.post(
+        `/surveys/children/${childId}/create-speech-card/`,
+        speechCardData
+      );
+    } catch (e) {
+      return rejectWithValue(e);
+    }
+  }
+);
+
+// export const updateSpeechCard = createAsyncThunk(
+//   `${nameSpace}/updateSpeechCard`,
+//   async ({ speechCardId, speechCardData }, { rejectWithValue }) => {
+//     try {
+//       const resp = axiosApi.put(
+//         `/charts/speech-card/${speechCardId}/`,
+//         speechCardData
+//       );
+//       return resp.data;
+//     } catch (e) {
+//       return rejectWithValue(e);
+//     }
+//   }
+// );
+
 const protocolSlice = createSlice({
   name: nameSpace,
   initialState: INITIAL_STATE,
@@ -60,7 +89,7 @@ const protocolSlice = createSlice({
     clearSurveysState: (state) => {
       state.loading = false;
       state.success = false;
-      state.speechCard = null;
+      state.protocol = null;
       state.errors = null;
     },
   },
@@ -68,8 +97,8 @@ const protocolSlice = createSlice({
     [getProtocol.pending]: (state) => {
       state.success = false;
     },
-    [getProtocol.fulfilled]: (state, { payload }) => {
-      state.speechCard = payload;
+    [getProtocol.fulfilled]: (state, action) => {
+      state.protocol = action.payload;
       state.loading = false;
       state.success = true;
     },
@@ -79,29 +108,41 @@ const protocolSlice = createSlice({
       state.errors = payload;
     },
 
-    [createProtocol.pending]: (state) => {
+    [updateProtocol.pending]: (state) => {
       state.loading = true;
       state.success = false;
     },
-    [createProtocol.fulfilled]: (state, { payload }) => {
+    [updateProtocol.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.success = true;
     },
-    [createProtocol.rejected]: (state, { payload }) => {
+    [updateProtocol.rejected]: (state, { payload }) => {
       state.loading = false;
       state.success = false;
       state.errors = payload;
     },
-
-    [updateSpeechCard.pending]: (state) => {
-      state.loading = true;
+    [getSpeechCard.pending]: (state) => {
       state.success = false;
     },
-    [updateSpeechCard.fulfilled]: (state) => {
+    [getSpeechCard.fulfilled]: (state, { payload }) => {
+      state.speechCard = payload;
       state.loading = false;
       state.success = true;
     },
-    [updateSpeechCard.rejected]: (state, { payload }) => {
+    [getSpeechCard.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.success = false;
+      state.errors = payload;
+    },
+    [createSpeechCard.pending]: (state) => {
+      state.loading = true;
+      state.success = false;
+    },
+    [createSpeechCard.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.success = true;
+    },
+    [createSpeechCard.rejected]: (state, { payload }) => {
       state.loading = false;
       state.success = false;
       state.errors = payload;
