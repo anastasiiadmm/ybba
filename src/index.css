@@ -1277,7 +1277,7 @@ a.disabled {
     width: 100%;
     max-width: 394px;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1500px) {
     .form__row-spec .form__col {
         width: 50%;
     }

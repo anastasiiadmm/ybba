@@ -13,7 +13,7 @@ const BackDrop = (props) => {
 
     return <React.Fragment>
         {isOpen && <div
-            className={addClasses('modal__overlay', {
+            className={addClasses('modal__overlay position-fixed', {
                 open: isOpen
             })}
             onClick={toggle}

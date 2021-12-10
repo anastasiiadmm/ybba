@@ -19,7 +19,8 @@ const JitsiBlock = (props) => {
             configOverwrite: { prejoinPageEnabled: false },
             interfaceConfigOverwrite: {
                 TOOLBAR_BUTTONS: toolbarItems || [],
-                SHOW_WATERMARK_FOR_GUESTS: false
+                SHOW_WATERMARK_FOR_GUESTS: false,
+                SHOW_CHROME_EXTENSION_BANNER: false
             },
             parentNode: document.querySelector(jitsiBlockSelector),
             userInfo: { ...userInfo }
