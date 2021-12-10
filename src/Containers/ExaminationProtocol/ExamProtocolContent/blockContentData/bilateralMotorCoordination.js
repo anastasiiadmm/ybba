@@ -10,12 +10,18 @@ mainBlock.content = [
     [
       {
         name: 'leading_ear_phone',
-        options: ['Правое', 'Левое'],
+        options: [
+          { label: 'Правое', value: 'правое ухо' },
+          { label: 'Левое', value: 'левое ухо' },
+        ],
         description: 'Ведущее ухо:',
       },
       {
         name: 'leading_hand_phone',
-        options: ['Правая', 'Левая'],
+        options: [
+          { label: 'Правая', value: 'правая рука' },
+          { label: 'Левая', value: 'левая рука' },
+        ],
         description: 'Ведущая рука:',
       },
     ]
@@ -27,12 +33,10 @@ mainBlock.content = [
     [
       {
         name: 'leading_hand_spyglass',
-        options: ['Правая', 'Левая'],
-        description: 'Ведущая рука:',
-      },
-      {
-        name: 'leading_eye_spyglass',
-        options: ['Правый', 'Левый'],
+        options: [
+          { label: 'Правая', value: 'правая рука' },
+          { label: 'Левая', value: 'левая рука' },
+        ],
         description: 'Ведущая рука:',
       },
     ]
@@ -44,7 +48,10 @@ mainBlock.content = [
     [
       {
         name: 'leading_leg_ball',
-        options: ['Правая', 'Левая'],
+        options: [
+          { label: 'Правая', value: 'правая нога' },
+          { label: 'Левая', value: 'левая нога' },
+        ],
         description: 'Ведущая нога:',
       },
     ]

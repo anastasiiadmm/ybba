@@ -17,7 +17,7 @@ mainBlock.content = [
   ),
   mainBlock.textFieldObject('went_to', 'Пошел в:'),
   mainBlock.textFieldObject(
-    'llearned_to_jump_on_two_legs_in',
+    'learned_to_jump_on_two_legs_in',
     'Научился прыгать на двух ногах в:'
   ),
   mainBlock.textFieldObject(

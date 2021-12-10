@@ -4,15 +4,11 @@ const mainBlock = new BlockContent('game_on_the_farm_part_three', []);
 const reviewBlock = new BlockContent('game_on_the_farm_part_three', []);
 
 mainBlock.content = [
-  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'fatigue', 'Утомляемость'),
-  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'contact', 'Контактность'),
-  mainBlock.fieldObject(
-    mainBlock.fieldTypes.text,
-    'working_capacity',
-    'Работоспособность'
-  ),
-  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'motivation', 'Мотивация'),
-  mainBlock.fieldObject(mainBlock.fieldTypes.text, 'interest', 'Интерес'),
+  mainBlock.textFieldObject('fatigue', 'Утомляемость'),
+  mainBlock.textFieldObject('contact', 'Контактность'),
+  mainBlock.textFieldObject('working_capacity', 'Работоспособность'),
+  mainBlock.textFieldObject('motivation', 'Мотивация'),
+  mainBlock.textFieldObject('interest', 'Интерес'),
 ];
 
 reviewBlock.content = [

@@ -7,13 +7,22 @@ mainBlock.content = [
     mainBlock.fieldTypes.radio,
     'perception',
     'Восприятие:',
-    ['Нарушено ', 'Не нарушено']
+    ['Нарушено', 'Не нарушено']
   ),
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
     'level_of_perception',
     '',
-    ['Cоответствует возрасту', 'Не соответствует возраст']
+    [
+      {
+        label: 'Cоответствует возрасту',
+        value: 'уровень восприятия соответствует возрасту',
+      },
+      {
+        label: 'Не соответствует возрасту',
+        value: 'уровень не восприятия соответствует возрасту',
+      },
+    ]
   ),
 
   mainBlock.textAreaFieldObject('expert_comment', 'Комментарий'),

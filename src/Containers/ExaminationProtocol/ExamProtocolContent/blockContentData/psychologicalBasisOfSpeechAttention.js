@@ -5,9 +5,9 @@ const mainBlock = new BlockContent('game_on_the_farm_part_three', []);
 mainBlock.content = [
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'speech_comprehensionthere_are_difficulties_in_distributing_attention',
+    'speech_comprehension',
     'Речевое внимание:',
-    ['Сформировано ', 'Сформировано недостаточно', 'Не сформировано']
+    ['Сформировано', 'Сформировано недостаточно', 'Не сформировано']
   ),
 
   mainBlock.radioOrCheckFieldObject(

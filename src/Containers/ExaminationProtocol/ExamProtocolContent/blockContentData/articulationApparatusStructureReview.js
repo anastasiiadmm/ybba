@@ -7,7 +7,11 @@ mainBlock.content = [
     mainBlock.fieldTypes.radio,
     'lips',
     'Губы:',
-    ['Тонкие', 'Полные', 'Несмыкание губ']
+    [
+      { label: 'Тонкие', value: 'тонкие губы' },
+      { label: 'Полные', value: 'полные губы' },
+      { label: 'Несмыкание губ', value: 'несмыкание губ' },
+    ]
   ),
 
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Зубо-челюстные аномалии:'),

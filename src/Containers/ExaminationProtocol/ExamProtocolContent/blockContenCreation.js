@@ -4,6 +4,7 @@ export const fieldTypes = {
   textGroup: 'textgroup',
   table: 'table',
   radio: 'radio',
+  select: 'select',
   radioWithText: 'radioWithText',
   question: 'question',
   yesNoQuestion: 'yesNoQuestion',
@@ -47,6 +48,15 @@ export class BlockContent {
     );
   };
   boxTitle = (type, text) => ({ type, text });
+
+  selectObject = (type, name, label, options) => {
+    return {
+      type,
+      name: `${this.checkFieldName(this.name)}${name}`,
+      label,
+      options,
+    };
+  };
 
   radioOrCheckFieldObject = (type, name, description, options) => ({
     type,

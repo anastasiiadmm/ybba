@@ -18,7 +18,7 @@ reviewBlock.content = [
     reviewBlock.fieldTypes.radio,
     'tone',
     'Тонус:',
-    ['Cпастичность мышц языка', 'Гипотония мышц языка', 'Дистония мышц языка']
+    ['Спастичность мышц языка', 'Гипотония мышц языка', 'Дистония мышц языка']
   ),
   reviewBlock.radioOrCheckFieldObject(reviewBlock.fieldTypes.checkbox, '', '', [
     {

@@ -31,7 +31,7 @@ reviewBlock.content = [
     reviewBlock.fieldTypes.radio,
     'facial_muscle_tone',
     'Тонус мышц лица:',
-    ['Cпастичность', 'Гипотония', 'Дистония']
+    ['Спастичность', 'Гипотония', 'Дистония']
   ),
   reviewBlock.radioOrCheckFieldObject(reviewBlock.fieldTypes.checkbox, '', '', [
     { name: 'hypomimia', label: 'Гипомимия' },
@@ -47,7 +47,7 @@ reviewBlock.content = [
     reviewBlock.fieldTypes.radio,
     'lip_muscle_tone',
     'Тонус мышц губ:',
-    ['Cпастичность', 'Гипотония', 'Дистония']
+    ['Спастичность', 'Гипотония', 'Дистония']
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,

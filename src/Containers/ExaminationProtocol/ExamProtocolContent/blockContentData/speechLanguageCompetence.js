@@ -56,7 +56,10 @@ reviewBlock.content = [
     reviewBlock.fieldTypes.radio,
     'knows_how_old_time_of_year_what_time_of_day_it_is',
     'Знает сколько ему лет, какое сейчас время года, какое сейчас время суток, что он делал вчера, что делал утром, что он будет делать завтра',
-    ['Да, знает', 'Нет, не знает']
+    [
+      { label: 'Да, знает', value: 'true' },
+      { label: 'Нет, не знает', value: 'false' },
+    ]
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
@@ -68,19 +71,29 @@ reviewBlock.content = [
     reviewBlock.fieldTypes.radio,
     'knows_his_name_the_name_of_his_parents_where_he_lives',
     'Знает, как его зовут, как зовут его родителей, где он живет',
-    ['Да, знает', 'Нет, не знает']
+    [
+      { label: 'Да, знает', value: 'true' },
+      { label: 'Нет, не знает', value: 'false' },
+    ]
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
     'somatognosis_understanding_your_own_body',
     'Соматогнозис: представление о собственном теле',
-    ['Сформировано', 'Не сформировано']
+    [
+      { label: 'Сформировано', value: 'сформирован' },
+      { label: 'Не сформировано', value: 'не сформирован' },
+    ]
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
     'contact_with_the_child',
     'Контакт с ребенком:',
-    ['Установлен', 'Не установлен']
+
+    [
+      { label: 'Установлен', value: 'true' },
+      { label: 'Не установлен', value: 'false' },
+    ]
   ),
   reviewBlock.textAreaFieldObject(
     'formation_of_ideas_about_the_world_around_comment',

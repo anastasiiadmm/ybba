@@ -111,7 +111,11 @@ reviewBlock.content = [
     reviewBlock.fieldTypes.radio,
     'topic',
     'Тема:',
-    ['Раскрыта ', 'Раскрыта частично', 'Не раскрыта']
+    [
+      'Раскрыта',
+      { label: 'Раскрыта частично', value: 'тема раскрыта частично' },
+      { label: 'Не раскрыта', value: 'не раскрыто' },
+    ]
   ),
 
   reviewBlock.radioOrCheckFieldObject(
@@ -125,15 +129,31 @@ reviewBlock.content = [
     'language_means',
     'Языковые средства:',
     [
-      'Свободно владеет языковыми средствами и адекватно их использует при построении связного текста',
-      'Неадекватно использует языковые средства при построении связного текста',
+      {
+        label:
+          'Свободно владеет языковыми средствами и адекватно их использует при построении связного текста',
+        value:
+          'свободно владеет языковыми средствами и адекватно их использует при построении связного текста',
+      },
+      {
+        label:
+          'Неадекватно использует языковые средства при построении связного текста',
+        value:
+          'неадекватно использует языковые средства при построении связного текста',
+      },
     ]
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.checkbox,
-    'phrasal_perseverations',
     '',
-    ['Фразовые персеверации']
+    '',
+
+    [
+      {
+        name: 'phrasal_perseverations',
+        label: 'Фразовые персеверации',
+      },
+    ]
   ),
 
   reviewBlock.boxTitle(reviewBlock.fieldTypes.par, 'Репродуцирование:'),
@@ -190,15 +210,15 @@ reviewBlock.content = [
     [
       {
         name: 'retelling_does_not_correspond_to_original',
-        label: 'Пересказ не соответствует оригиналу<',
+        label: 'Пересказ не соответствует оригиналу',
       },
       {
         name: 'semantic_organization_of_text_is_broken',
-        label: 'Нарушена смысловая организация текста<',
+        label: 'Нарушена смысловая организация текста',
       },
       {
         name: 'coherence_and_consistency_of_presentation_is_broken',
-        label: 'Нарушена связность и логичность изложения <',
+        label: 'Нарушена связность и логичность изложения',
       },
       {
         name: 'significant_difficulties_in_language_design_of_text',
@@ -213,7 +233,7 @@ reviewBlock.content = [
     reviewBlock.fieldTypes.radio,
     'content_semantic_meaning_of_text',
     ' Содержательно-смысловое значение текста:',
-    ['Идентифицирует', 'Не идентифицирует ']
+    ['Идентифицирует', 'Не идентифицирует']
   ),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
@@ -221,7 +241,7 @@ reviewBlock.content = [
     'Понимание:',
     [
       'понимает только основную информацию текста',
-      'доступно понимание как основной, так и дополнительной информа¬ции каждой смысловой части текста',
+      'доступно понимание как основной, так и дополнительной информации каждой смысловой части текста',
       'доступно понимание скрытого смысла',
     ]
   ),
