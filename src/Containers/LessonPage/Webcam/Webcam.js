@@ -101,7 +101,7 @@ const Webcam = (props) => {
                     (checkUserRole(userRoles.parent) && isParentWebcamIncreased)
                 ),
             })}
-            style={{ transformOrigin: '100% 0' }}
+            style={{ transformOrigin: `${checkUserRole(userRoles.parent) ? '100% 0' : ''}` }}
         >
             <div className='gamef__person-in'>
                 <button
@@ -111,7 +111,11 @@ const Webcam = (props) => {
                 >
                     {isUserWebcamInZoom() ? '-' : '+'}
                 </button>
-                <div className='frontWebcamBlock dragBlock'/>
+                <div
+                    className={addClasses('frontWebcamBlock', {
+                        'dragBlock': checkUserRole(userRoles.parent)
+                    })}
+                />
                 {checkUserRole(userRoles.therapist) && (
                     <button
                         className='gamef__person-btn soundBtn d-flex align-items-center justify-content-center'
