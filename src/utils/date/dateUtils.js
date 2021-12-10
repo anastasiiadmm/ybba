@@ -38,6 +38,15 @@ export const strDateToMoment = date => {
 }
 
 /**
+ * Sync function converts string date time to moment date object
+ * @param {string} date String date time to convert
+ * @returns {moment.Moment} Moment date object
+ */
+export const strDateTimeToMoment = date => {
+    return moment(date, `${config.dateFormat} ${config.timeFormat}`)
+}
+
+/**
  * Sync function converts moment date to string
  * @param {moment.Moment} date
  * @returns {string}

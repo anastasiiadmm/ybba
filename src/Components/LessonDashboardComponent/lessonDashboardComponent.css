@@ -1,0 +1,8 @@
+.disable_btn {
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+.inactive {
+    opacity: .5;
+}

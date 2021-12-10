@@ -48,8 +48,10 @@ const ChildProfiles = () => {
     }, [children])
 
     useEffect(() => {
-        dispatch(getChildren(user.id))
-    }, [dispatch, user.id])
+        if (user) {
+            dispatch(getChildren(user.id))
+        }
+    }, [dispatch, user])
 
     return (
         <SidebarContainer>

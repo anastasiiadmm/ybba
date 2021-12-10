@@ -18,26 +18,6 @@ const INITIAL_STATE = {
     isPasswordUpdated: false
 }
 
-export const updateUserData = createAsyncThunk(
-    `${nameSpace}/updateUserData`,
-    async (data, { rejectWithValue }) => {
-        try {
-            const userData = { ...data.data }
-            if (userData.profile && userData.profile.phone_number && !userData.profile.phone_number.includes('+')) {
-                userData.profile.phone_number = `+${userData.profile.phone_number}`
-            }
-            await axiosApi.put(`/accounts/${data.userId}/update/`, userData)
-        } catch (e) {
-            console.log(e)
-            let error = e?.response?.data
-            if (!e.response) {
-                error = defaultError
-            }
-            return rejectWithValue(error)
-        }
-    }
-)
-
 export const updateUserPassword = createAsyncThunk(
     `${nameSpace}/updateUserPassword`,
     async (data, { rejectWithValue }) => {
@@ -87,20 +67,6 @@ const userSlice = createSlice({
         }
     },
     extraReducers: {
-
-        [updateUserData.pending]: state => {
-            state.success = false
-            state.loading = true
-        },
-        [updateUserData.fulfilled]: state => {
-            state.success = true
-            state.loading = false
-        },
-        [updateUserData.rejected]: (state, { payload }) => {
-            state.errors = payload
-            state.success = false
-            state.loading = false
-        },
 
         [updateUserPassword.fulfilled]: state => {
             state.success = true
