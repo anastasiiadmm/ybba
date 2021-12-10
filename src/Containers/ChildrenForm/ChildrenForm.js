@@ -7,7 +7,6 @@ import { allRussianWardsAndHyphen } from 'regex/patterns/html.js';
 import { childSelector, getCountriesList, getCitiesList } from 'redux/child/childSlice.js';
 import Field from 'Components/Field/Field';
 
-
 const ChildrenForm = (props) => {
 
     const {
@@ -142,15 +141,18 @@ const ChildrenForm = (props) => {
                     </div>
                 )}
             </div>
-        )}
-    </>;
-}
+          )}
+        </div>
+      )}
+    </>
+  );
+};
 
 ChildrenForm.propTypes = {
-    childrenData: PropTypes.object.isRequired,
-    setChildrenData: PropTypes.func.isRequired,
-    setCity: PropTypes.func,
-    setCountry: PropTypes.func
-}
+  childrenData: PropTypes.object.isRequired,
+  setChildrenData: PropTypes.func.isRequired,
+  setCity: PropTypes.func,
+  setCountry: PropTypes.func,
+};
 
 export default ChildrenForm;

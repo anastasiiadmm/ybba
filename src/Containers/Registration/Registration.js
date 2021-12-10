@@ -68,7 +68,6 @@ const Registration = () => {
         if (user) {
             const { child } = getValues()
             child.date_of_birth = momentDateToStr(moment(child.date_of_birth))
-            console.log(user)
             child.parent = user.id
             child.tokens = tokens
             dispatch(createChild(child))

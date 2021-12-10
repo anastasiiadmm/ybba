@@ -1,7 +1,7 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import axiosApi from '../../axios';
-import {toQueryParams} from '../../utils/url/toQueryParams';
+import { toQueryParams } from '../../utils/url/toQueryParams';
 
 
 const nameSpace = 'dashBoard'
@@ -19,7 +19,7 @@ const INITIAl_STATE = {
 
 export const getLessons = createAsyncThunk(
     `${nameSpace}/getLessons`,
-    async (data, {rejectWithValue}) => {
+    async (data, { rejectWithValue }) => {
         try {
             let query = ''
             if (data?.query) {
@@ -35,7 +35,7 @@ export const getLessons = createAsyncThunk(
 
 export const getTeacherLesson = createAsyncThunk(
     `${nameSpace}/getTeacherLesson`,
-    async (_, {rejectWithValue}) => {
+    async (_, { rejectWithValue }) => {
         try {
             const resp = await axiosApi.get('/lessons/teacher-closest-lesson/')
             return resp.data
@@ -51,17 +51,20 @@ const dashBoardSlice = createSlice({
     reducers: {
         clearDashBoard: state => {
             state.errors = null
+        },
+        clearDashBoardLessons: state => {
+            state.lessons = null
         }
     },
     extraReducers: {
         [getLessons.pending]: state => {
             state.loading = true
         },
-        [getLessons.fulfilled]: (state, {payload}) => {
+        [getLessons.fulfilled]: (state, { payload }) => {
             state.lessons = payload
             state.loading = false
         },
-        [getLessons.rejected]: (state, {payload}) => {
+        [getLessons.rejected]: (state, { payload }) => {
             state.errors = payload
             state.loading = true
         },
@@ -81,6 +84,6 @@ const dashBoardSlice = createSlice({
 })
 
 
-export const {clearDashBoard} = dashBoardSlice.actions
+export const { clearDashBoard, clearDashBoardLessons } = dashBoardSlice.actions
 export const dashBoardSelector = state => state.dashBoard
 export default dashBoardSlice.reducer

@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom';
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
 import ParentProfileData from 'Containers/ParentProfileData/ParentProfileData';
-import { authSelector } from 'redux/auth/authSlice.js';
-import { clearUserState } from 'redux/user/userSlice.js';
+import { authSelector, clearAuthState } from 'redux/auth/authSlice.js';
 
 
 const ParentProfile = () => {
@@ -16,9 +15,8 @@ const ParentProfile = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(clearUserState())
-        // eslint-disable-next-line
-    }, [])
+        dispatch(clearAuthState())
+    }, [dispatch])
 
     return (
         <SidebarContainer>
