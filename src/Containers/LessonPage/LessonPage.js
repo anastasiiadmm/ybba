@@ -12,7 +12,11 @@ import Unity, { UnityContext } from 'react-unity-webgl';
 import { ProgressBar } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 
-import { lessonSelector, clearLessonState } from 'redux/lesson/lessonSlice.js';
+import {
+  lessonSelector,
+  clearLessonState,
+  fetchLesson,
+} from 'redux/lesson/lessonSlice.js';
 import {
   changeActiveGame,
   changeLessonStatus,
@@ -56,7 +60,6 @@ const LessonPage = (props) => {
   const [activeGame, setActiveGame] = useState(null);
   const [unityContext, setUnityContext] = useState(null);
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
-  const [studentInfo, setStudentInfo] = useState(0);
 
   const onChangeActiveGame = (game) => {
     if (game.id !== activeGame.id) {
@@ -148,8 +151,13 @@ const LessonPage = (props) => {
   );
 
   useEffect(() => {
+    console.log({ TEEESTSSTSSTS: lesson });
     dispatch(clearLessonState());
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(fetchLesson());
+  // }, [dispatch]);
 
   useEffect(() => {
     setUnity();
@@ -157,18 +165,11 @@ const LessonPage = (props) => {
 
   useEffect(() => {
     if (lesson) {
+      console.log(lesson);
       const active = lesson.games.find(
         (game) => game.id === lesson.active_game_id
       );
       setActiveGame(active);
-    }
-  }, [lesson]);
-
-  useEffect(() => {
-    if (lesson) {
-      setStudentInfo(lesson.student);
-
-      //   console.log({ role: lesson });
     }
   }, [lesson]);
 
@@ -225,8 +226,9 @@ const LessonPage = (props) => {
   const canvasParent = useRef();
 
   return (
-    <div className="gamef position-relative">
-      <header
+    <div>
+      {/* <div className="gamef position-relative"> */}
+      {/* <header
         className={addClasses('gamef__head position-relative', {
           gamef__head_teacher: checkUserRole(userRoles.therapist),
           gamef__head_child: checkUserRole(userRoles.parent),
@@ -275,9 +277,9 @@ const LessonPage = (props) => {
             )}
           </div>
         </div>
-      </main>
-      {checkUserRole(userRoles.therapist) && (
-        <footer className="gamef__footer">
+      </main> */}
+      {/* {checkUserRole(userRoles.therapist) && (
+        <footer className="">
           <div className="gamef__previews-wrap">
             <div className="gamef__previews gamesLitsScrollbar">
               <div className="gamef__previews-inner w-100">
@@ -303,9 +305,9 @@ const LessonPage = (props) => {
                     );
                   })}
               </div>
-              {/*<button className='gamef__preview-next' type='button'/>*/}
-              {/*<button className='gamef__preview-prev' type='button'/>*/}
-            </div>
+          <button className='gamef__preview-next' type='button'/>
+          <button className='gamef__preview-prev' type='button'/>
+          </div>
           </div>
           <div className="gamef__controls">
             <button
@@ -364,14 +366,14 @@ const LessonPage = (props) => {
             >
               Завершить занятие
             </button>
-          </div>
+          </div> 
         </footer>
-      )}
+      )} */}
       {checkUserRole(userRoles.therapist) && (
         <div className="gamef__sidebar">
           <div className="gamef__sidebar-in">
             {/* <Notes lessonId={lessonId} /> */}
-            <ExaminationProtocol student={studentInfo} />
+            <ExaminationProtocol />
           </div>
         </div>
       )}
