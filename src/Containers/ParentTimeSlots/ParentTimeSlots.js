@@ -139,7 +139,7 @@ const ParentTimeSlots = props => {
 
     useEffect(() => {
         console.log(12423143214)
-        setLessonCreatedModalIsOpen(false)
+        setLessonCreatedModalIsOpen(true)
     }, [])
 
     return (
