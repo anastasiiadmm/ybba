@@ -3,6 +3,14 @@ import * as Yup from 'yup';
 const inputValidation = (value) =>
     [/[А-ЯёЁа-я!#$%&'*+-/=?^_`{|}~().]/].every((pattern) => pattern.test(value))
 
+const dateValidation = date => {
+    let result
+
+    result = Date.parse(date) < Date.now()
+
+    return result
+}
+
 export const validationResetPasswordSchema = Yup.object().shape({
     password: Yup.string()
         .required('Введите пароль')
@@ -19,3 +27,9 @@ export const validationTextareaSchema = Yup.object().shape({
         .max(100)
         .test('passwordRequirements', 'Поле должно состоять из кириллицы, цифр и символов', inputValidation)
 });
+
+export const childProfileSchema = Yup.object().shape({
+    date_of_birth: Yup.string()
+        .max(100)
+        .test('passwordRequirements', 'Дата не может быть позднее текущей', dateValidation)
+})

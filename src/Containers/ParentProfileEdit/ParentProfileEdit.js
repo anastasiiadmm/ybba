@@ -23,7 +23,7 @@ const ParentProfileEdit = () => {
             first_name: user?.profile?.first_name || '',
             last_name: user?.profile?.last_name || '',
             date_of_birth: user?.profile?.date_of_birth || '',
-            phone_number: user?.profile.phone_number || '',
+            phone_number: user?.profile?.phone_number || '',
             country: user?.profile?.country || '',
             city: user?.profile?.city || ''
         }
@@ -56,16 +56,16 @@ const ParentProfileEdit = () => {
         const submitData = { data: formData, userId: user.id }
         const userProfile = submitData.data.profile
         if (!userProfile.phone_number) {
-            delete submitData.data.profile.phone_number
+            delete submitData.data.profile?.phone_number
         }
         if (!userProfile.date_of_birth) {
-            delete submitData.data.profile.date_of_birth
+            delete submitData.data.profile?.date_of_birth
         }
         if(!userProfile.country) {
-            delete submitData.data.profile.country
+            delete submitData.data.profile?.country
         }
         if(!userProfile.city) {
-            delete submitData.data.profile.city
+            delete submitData.data.profile?.city
         }
         dispatch(updateUserData(submitData))
     }

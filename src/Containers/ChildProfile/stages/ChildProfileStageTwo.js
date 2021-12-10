@@ -67,7 +67,6 @@ const ChildProfileStageTwo = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         if (childAdditionalData?.help_other_text) {
-            console.log(childAdditionalData)
            setIsOtherInputActive(true)
         } else {
            setIsOtherInputActive(false)
