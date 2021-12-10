@@ -28,9 +28,11 @@ const Lessons = () => {
 
     const dispatch = useDispatch()
 
-    const onSelectChange = ({ value: childId }) => {
-        const selectedChild = children.find(child => child.id === childId)
-        dispatch(setSelectedChild(selectedChild))
+    const onSelectChange = (_, data) => {
+        if (data) {
+            const selectedChild = children.find(child => child.id === data.value)
+            dispatch(setSelectedChild(selectedChild))
+        }
     }
     const getLessonsData = async () => {
         await dispatch(clearLessons())
@@ -102,15 +104,21 @@ const Lessons = () => {
                                     )}
                                 </div>
 
-                                {lessons && lessons.map(lesson => {
-                                    const lessonTitle = `${lessonTypesMapping[lesson.lesson_type]} занятие`
-                                    const lessonDescription = 'Позволит нам лучше узнать вашего ребенка и разработать план занятий.'
+                                {lessons && lessons.map((lesson) => {
+                                    const lessonTitle = `${lessonTypesMapping[lesson.lesson_type]} занятие #${lesson.lesson_number}`
+                                    const inactiveLessonDescription = 'Пожалуйста, сначала запишитесь на предыдущую часть диагностического занятия.'
+                                    const activeLessonDescription = 'Позволит нам лучше узнать вашего ребенка и разработать план занятий.'
+                                    const description = lesson.lesson_can_be_assigned_to_child
+                                        ? activeLessonDescription
+                                        : inactiveLessonDescription
                                     return (
                                         <div className='classes__items w-100'>
                                             <LessonDashboardComponent
                                                 title={lessonTitle}
-                                                description={lessonDescription}
+                                                description={description}
                                                 lessonId={lesson.id}
+                                                lessonNumber={lesson.lesson_number}
+                                                active={lesson.lesson_can_be_assigned_to_child}
                                             />
                                         </div>
                                     )

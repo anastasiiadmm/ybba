@@ -13,8 +13,30 @@ export const getNotificationsList = createAsyncThunk(
     `${nameSpace}/notifications`,
     async (_, { rejectWithValue }) => {
         try {
-            const resp = await axiosApi.get('')
+            const resp = await axiosApi.get('/notifications/')
             return resp.data
+        } catch (e) {
+            return rejectWithValue(e)
+        }
+    }
+)
+
+export const sendNotificationToMe = createAsyncThunk(
+    `${nameSpace}/sendNotification`,
+    async (notificationData, { rejectWithValue }) => {
+        try {
+            await axiosApi.post('/notifications/send-notification-to-me/', notificationData)
+        } catch (e) {
+            return rejectWithValue(e)
+        }
+    }
+)
+
+export const deleteNotifications = createAsyncThunk(
+    `${nameSpace}/deleteNotifications`,
+    async (_, { rejectWithValue }) => {
+        try {
+            await axiosApi.delete('/notifications/')
         } catch (e) {
             return rejectWithValue(e)
         }

@@ -21,7 +21,8 @@ const CommonField = (props) => {
                 }
 
                 id={id}
-                name='first_name' {...register(name)}
+                name='first_name'
+                {...register(name)}
                 placeholder={placeholder}
                 disabled={disabled}
             />

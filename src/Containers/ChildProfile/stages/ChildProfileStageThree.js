@@ -197,7 +197,9 @@ const ChildProfileStageTwo = () => {
                                                     type='select'
                                                     label='С каким специалистом занимались?'
                                                     options={specialistsOptions}
-                                                    onChange={selectChangeHandler}
+                                                    onChange={(event, newValue) => {
+                                                        selectChangeHandler(newValue)
+                                                    }}
                                                     value={activeSpecialist?.specialist}
                                                 />
                                             )}
@@ -284,7 +286,7 @@ const ChildProfileStageTwo = () => {
                                     disabled={!isMainSpecialistDataFilled}
                                     onClick={workWithSpecialist}
                                 >
-                                    Добавить специалиста
+                                    Сохранить
                                 </Button>
                             </form>
                         </div>

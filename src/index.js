@@ -17,19 +17,22 @@ import 'assets/vendor/slimselect/slimselect.min.css'
 import 'index.css';
 import 'common.css';
 import 'react-toastify/dist/ReactToastify.css';
+import FirebaseBlock from 'Containers/FirebaseBlock/FirebaseBlock.js';
 
 initSentry()
 export const store = configureStore()
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserPermissionsBlock>
-            <Provider store={store}>
-                <BrowserRouter>
+        <FirebaseBlock>
+            <BrowserPermissionsBlock>
+                <Provider store={store}>
+                    <BrowserRouter>
                         <App/>
-                </BrowserRouter>
-            </Provider>
-        </BrowserPermissionsBlock>
+                    </BrowserRouter>
+                </Provider>
+            </BrowserPermissionsBlock>
+        </FirebaseBlock>
     </React.StrictMode>,
     document.getElementById('root')
 );

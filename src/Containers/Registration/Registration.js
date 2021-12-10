@@ -14,6 +14,7 @@ import { momentDateToStr } from 'utils/date/dateUtils.js';
 import { validationMessagesMapping } from 'mappings/validationErrors.js';
 import { getDeviceType } from 'utils/getDeviceType/getDeviceType.js';
 import { deviceTypes } from 'constants.js';
+import { authSelector } from 'redux/auth/authSlice.js';
 
 import 'Containers/Registration/Registration.css'
 
@@ -30,6 +31,7 @@ const Registration = () => {
     const country = watch('child.country')
     const { countries, cities } = useSelector(childSelector)
     const { user, tokens, errors: userCreateErrors } = useSelector(userSelector)
+    const { user: authUser } = useSelector(authSelector)
     const { success: registrationSuccess } = useSelector(childSelector)
     const [countiesOptions, setCountriesOptions] = useState([])
     const [citiesOptions, setCitiesOptions] = useState([])
@@ -39,6 +41,12 @@ const Registration = () => {
     const handleRegistrationFormSubmit = async ({ parent }) => {
         await dispatch(createUser(parent))
     }
+
+    const pushToMainPage = useCallback(() => {
+        if (authUser) {
+            history.push('/')
+        }
+    }, [authUser, history])
 
     const handleParentCreateErrors = useCallback(errors => {
         Object.keys(errors).forEach(fieldErrorName => {
@@ -60,7 +68,6 @@ const Registration = () => {
         if (user) {
             const { child } = getValues()
             child.date_of_birth = momentDateToStr(moment(child.date_of_birth))
-            console.log(user)
             child.parent = user.id
             child.tokens = tokens
             dispatch(createChild(child))
@@ -99,6 +106,10 @@ const Registration = () => {
             dispatch(getCitiesList(country))
         }
     }, [countiesOptions, country, dispatch])
+
+    useEffect(() => {
+        pushToMainPage()
+    }, [pushToMainPage])
 
     return (
         <div className='all-page2'>

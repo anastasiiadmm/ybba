@@ -2,13 +2,18 @@ import React, { useContext, useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import FormField from 'Components/FormField/FormField';
 import { ChildProfileContext } from 'context/ChildProfileContext/ChildProfileContext.js';
 import StagesLinks from 'Containers/ChildProfile/StagesLinks/StagesLinks';
 import Actions from 'Containers/ChildProfile/Actions/Actions';
 import { getChild, childSelector, clearChildState, updateChildAdditionalInfo } from 'redux/child/childSlice.js';
+import { validationTextareaSchema } from 'utils/checkFormVaid/checkFormValid';
 
+
+const max_chars = 100;
 
 const ChildProfileStageTwo = () => {
 
@@ -33,6 +38,7 @@ const ChildProfileStageTwo = () => {
 
     const [childAdditionalData, setChildAdditionalData] = useState(null)
     const [isOtherInputActive, setIsOtherInputActive] = useState(false)
+    const [chars, setChars] = useState(max_chars)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -42,16 +48,32 @@ const ChildProfileStageTwo = () => {
     const checkboxChangeHandler = (e, name) => {
         setChildAdditionalData({ ...childAdditionalData, [name]: e.target.checked })
     };
-    const textInputChangeHandler = e => {
-        setChildAdditionalData({ ...childAdditionalData, [e.target.name]: e.target.value })
-    };
+
+    const formOptions = { resolver: yupResolver(validationTextareaSchema) }
+
+    const { register, setValue, handleSubmit, getValues, formState } = useForm({ mode: 'onChange' }, formOptions)
+    const { errors } = formState;
+
     const otherCheckboxChangeHandler = e => {
-        setChildAdditionalData({ ...childAdditionalData, help_other_text: '' })
-        setIsOtherInputActive(e.target.checked)
+        const { name, value } = e.target
+
+        setValue(name, value)
+        getValues(name)
+
+        setChildAdditionalData({ ...childAdditionalData, [name]: value })
+        setChars(max_chars - value.length)
     }
 
-    const updateAdditionalData = async e => {
-        e.preventDefault()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => {
+        if (childAdditionalData?.help_other_text) {
+           setIsOtherInputActive(true)
+        } else {
+           setIsOtherInputActive(false)
+        }
+    },[childAdditionalData])
+
+    const updateAdditionalData = async () => {
 
         await dispatch(updateChildAdditionalInfo({
             additionalDataId: childAdditionalData.id,
@@ -104,7 +126,7 @@ const ChildProfileStageTwo = () => {
 
     return (
         <>
-            <form onSubmit={updateAdditionalData}>
+            <form onSubmit={handleSubmit(updateAdditionalData)}>
                 <div className='profile-child'>
                     <StagesLinks/>
                     <div className='profile-child__survey'>
@@ -202,13 +224,21 @@ const ChildProfileStageTwo = () => {
                                             onChange={otherCheckboxChangeHandler}
                                             value={isOtherInputActive}
                                         />
-                                        <textarea
-                                            className='form__area profile-child__area'
-                                            value={childAdditionalData.help_other_text}
-                                            name='help_other_text'
-                                            onChange={textInputChangeHandler}
-                                            disabled={!isOtherInputActive}
-                                        />
+                                        <div className='textarea_content'>
+                                            <textarea
+                                                id='textarea'
+                                                className='form__area profile-child__area'
+                                                value={childAdditionalData.help_other_text}
+                                                name='help_other_text'
+                                                maxLength='100'
+                                                errors={errors}
+                                                {...register('help_other_text', {
+                                                    onChange: otherCheckboxChangeHandler,
+                                                })}
+                                            />
+                                            <p className='form2__error'>{errors.help_other_text?.message}</p>
+                                        </div>
+                                        <span className='chars_input'>{chars}</span>
                                     </li>
                                 </ul>
                             </div>

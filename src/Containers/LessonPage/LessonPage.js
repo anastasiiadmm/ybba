@@ -16,7 +16,8 @@ import {
     GAME_FILE_TYPE_WASM,
     gameActions,
     userRoles,
-    envs
+    envs,
+    frontUrls
 } from 'constants.js';
 import { WsContext } from 'context/WsContext/WsContext.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
@@ -30,6 +31,8 @@ import { initSessionStack, defineUser, stopSessionStackRecording } from 'utils/s
 import { authSelector } from 'redux/auth/authSlice.js';
 import { checkEnv } from 'utils/common/commonUtils.js';
 import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
+import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js';
+import config from 'config.js';
 
 import 'Containers/LessonPage/lessonPage.css'
 
@@ -128,6 +131,17 @@ const LessonPage = (props) => {
         }
     }
 
+    const sendChildrenQuestionnaireNotification = useCallback(() => {
+        const children = user.profile.children
+        children.forEach(child => {
+            const link = `<a href="${frontUrls[config.appEnvironment]}/questionnaire/${child.id}">Перейти к анкете</a>`
+            const title = 'Анкета ребёнка'
+            const body = `Пожалуйста, ответьте на вопросы о развитии ребенка (${link})`
+
+            dispatch(sendNotificationToMe({ title, body }))
+        })
+    }, [dispatch, user])
+
     const webcamComponentProps = {
         meetingId: lessonId,
         lessonId: lessonId,
@@ -160,9 +174,12 @@ const LessonPage = (props) => {
 
     useEffect(() => {
         if (lessonFinished) {
-            history.push('/')
+            if (checkUserRole(userRoles.parent)) {
+                history.push('/')
+                sendChildrenQuestionnaireNotification()
+            }
         }
-    }, [lessonFinished, history])
+    }, [lessonFinished, history, sendChildrenQuestionnaireNotification])
 
     useEffect(() => {
         if (unityContext) {
