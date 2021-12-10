@@ -20,8 +20,10 @@ const NextLessons = () => {
     useEffect(() => {
         if (lessons) {
             setNextLessons(lessons.filter(lesson => {
-                const lessonDayDate = strDateToMoment(lesson.time_slot.day.date)
-                return lesson.status === lessonStatuses.pending && lessonDayDate.isSameOrAfter(moment().startOf('day'))
+                if (lesson.time_slot) {
+                    const lessonDayDate = strDateToMoment(lesson.time_slot.day.date)
+                    return lesson.status === lessonStatuses.pending && lessonDayDate.isSameOrAfter(moment().startOf('day'))
+                }
             }))
         }
     }, [lessons])
