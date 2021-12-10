@@ -21,18 +21,6 @@ const INITIAL_STATE = {
   isParentWebcamIncreased: false,
 };
 
-export const fetchLesson = createAsyncThunk(
-  `${nameSpace}/fetchLesson`,
-  async (lessonId, { rejectWithValue }) => {
-    try {
-      const resp = await axiosApi.get(`/lessons/${lessonId}`);
-      return { ...resp.data };
-    } catch (e) {
-      return rejectWithValue(e?.response?.data);
-    }
-  }
-);
-
 const lessonSlice = createSlice({
   name: nameSpace,
   initialState: INITIAL_STATE,
@@ -40,19 +28,8 @@ const lessonSlice = createSlice({
     clearLessonState: () => INITIAL_STATE,
   },
   extraReducers: {
-    [fetchLesson.pending]: (state) => {
-      //   state.lesson = false;
-    },
-    [fetchLesson.fulfilled]: (state, action) => {
-      state.lesson = action.payload;
-    },
-    [fetchLesson.rejected]: (state, { payload }) => {
-      //   state.error = payload;
-      //   state.lesson = false;
-    },
-
     [GET_LESSON]: (state, { payload }) => {
-      state.lesson_id = { payload };
+      state.lesson = payload.lesson;
     },
     [GET_LESSON_ERROR]: (state, { payload }) => {
       state.error = payload.message;
