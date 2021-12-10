@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
 import { Spinner } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import { dashBoardSelector } from 'redux/dashBoard/dashBoardSlice.js';
@@ -51,12 +50,6 @@ const NextLessons = () => {
             {(lessons && !nextLessons?.length && !loading) && (
                 <>
                     <p className='info-item__text'>В ближайшем времени занятий нет.</p>
-                    <Link
-                        className='btn info-item__btn'
-                        to='/by-lesson/'
-                    >
-                        Купить занятие
-                    </Link>
                 </>
             )}
         </div>
