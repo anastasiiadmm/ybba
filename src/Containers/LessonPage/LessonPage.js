@@ -214,7 +214,7 @@ const LessonPage = (props) => {
     const canvasParent = useRef()
 
     return (
-        <div className='gamef position-relative'>
+        <div className='gamef position-relative overflow-hidden'>
             <header
                 className={addClasses('gamef__head position-relative', {
                     'gamef__head_teacher': checkUserRole(userRoles.therapist),
