@@ -324,3 +324,15 @@
   width: 47px;
   margin-bottom: 3px;
 }
+
+.protocol__submit {
+  height: 42px;
+  width: 452px;
+  color: white;
+  border-radius: 12px;
+  padding: 9px 22px 9px 22px;
+  background-color: #ff622f;
+  border: none;
+  font-family: inherit;
+  font-weight: 800;
+}
