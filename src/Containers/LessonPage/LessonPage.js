@@ -218,28 +218,64 @@ const LessonPage = (props) => {
         sendChildrenQuestionnaireNotification();
       }
     }
-  }, [lessonFinished, history, sendChildrenQuestionnaireNotification]);
+    const webcamComponent = checkUserRole(userRoles.parent)
+        ? <Drag>
+            <Webcam
+                {...webcamComponentProps}
+            />
+        </Drag>
+        : <Webcam
+            {...webcamComponentProps}
+        />
 
-  useEffect(() => {
-    if (unityContext) {
-      unityContext.on('progress', (progress) => {
-        setUnityLoadProgress(progress);
-      });
+    useEffect(() => {
+        dispatch(clearLessonState())
+    }, [dispatch])
 
-      let json = {};
+    useEffect(() => {
+        setUnity()
+    }, [activeGame, setUnity])
 
-      if (checkUserRole(userRoles.therapist)) {
-        json = { IsServer: true, Id: lessonId, FreeGame: false };
-      }
-      if (checkUserRole(userRoles.parent)) {
-        json = { IsServer: false, Id: lessonId, FreeGame: false };
-      }
-      if (unityContext) {
-        // Controlling of sending JSON data to game
-        unityContext.on('ReadJavaData', async () => {
-          sendJsonToGameWithTimeout(json);
-        });
-      }
+    useEffect(() => {
+        if (lesson) {
+            const active = lesson?.games?.find(game => game.id === lesson.active_game_id)
+            setActiveGame(active)
+        }
+    }, [lesson])
+
+    useEffect(() => {
+        if (unityContext) {
+            unityContext.on('progress', progress => {
+                setUnityLoadProgress(progress)
+            })
+
+            let json = {}
+
+            if (checkUserRole(userRoles.therapist)) {
+                json = { IsServer: true, Id: lessonId, FreeGame: false }
+            }
+            if (checkUserRole(userRoles.parent)) {
+                json = { IsServer: false, Id: lessonId, FreeGame: false }
+            }
+            if (unityContext) {
+                // Controlling of sending JSON data to game
+                unityContext.on('ReadJavaData', async () => {
+                    sendJsonToGameWithTimeout(json)
+                })
+            }
+        }
+    }, [lessonId, sendJsonToGameWithTimeout, unityContext])
+
+    const toastInfo = () => {
+        return toast.info('Разрешите доступ для камеры и микрофона на вашем браузере', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
     }
   }, [lessonId, sendJsonToGameWithTimeout, unityContext]);
 
