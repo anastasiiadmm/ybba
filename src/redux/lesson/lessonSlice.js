@@ -7,7 +7,6 @@ import {
     CHANGE_LESSON_STATUS,
     RESIZE_CHILD_WEBCAM
 } from 'redux/actionTypes';
-import { LESSON_STATUS_FINISHED } from 'constants.js';
 
 
 const nameSpace = 'lesson'
