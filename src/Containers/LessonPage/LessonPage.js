@@ -53,9 +53,9 @@ import ExaminationProtocol from 'Containers/ExaminationProtocol/ExaminationProto
 import 'Containers/LessonPage/lessonPage.css';
 
 const LessonPage = (props) => {
-  //   const { isMicrophoneAllowed, isCameraAllowed } = useContext(
-  //     BrowserPermissionsContext
-  //   );
+  const { isMicrophoneAllowed, isCameraAllowed } = useContext(
+    BrowserPermissionsContext
+  );
 
   const { sendWsAction } = useContext(WsContext);
 
@@ -204,7 +204,6 @@ const LessonPage = (props) => {
 
   useEffect(() => {
     if (lesson) {
-      console.log({ the_lesson: lesson.lesson_type });
       const active = lesson.games.find(
         (game) => game.id === lesson.active_game_id
       );
@@ -265,11 +264,11 @@ const LessonPage = (props) => {
     return () => stopSTRecording();
   }, [startSTRecording]);
 
-  //   useEffect(() => {
-  //     if (!isMicrophoneAllowed && !isCameraAllowed) {
-  //       toastInfo();
-  //     }
-  //   }, [isCameraAllowed, isMicrophoneAllowed]);
+  useEffect(() => {
+    if (!isMicrophoneAllowed && !isCameraAllowed) {
+      toastInfo();
+    }
+  }, [isCameraAllowed, isMicrophoneAllowed]);
 
   const canvasParent = useRef();
 
