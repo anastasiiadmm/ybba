@@ -296,7 +296,12 @@ const LessonPage = (props) => {
                                                 })}
                                                 onClick={() => onChangeActiveGame(game)}
                                             >
-                                                <img src={game.preview} className='gamef__preview-img' alt='Game'/>
+                                                <img
+                                                    src={game.preview}
+                                                    className='gamef__preview-img'
+                                                    alt='Game'
+                                                    style={{ opacity: '.6' }}
+                                                />
                                                 <div className='gamef__preview-info'>
                                                     <span>Игра {index + 1}</span>
                                                     <p>{game.display_name}</p>
