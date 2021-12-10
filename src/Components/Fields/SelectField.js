@@ -6,11 +6,11 @@ import { resolve } from 'utils/resolve/resolve.js';
 
 const SelectField = (props) => {
 
-    const { label, name, control, options, className, errors, id } = props
+    const { label, name, control, options, className, errors, id, classNameLabel } = props
 
     return (
         <>
-            <label htmlFor={id} className='form2__label'>{label}</label>
+            <label htmlFor={id} className={`${classNameLabel}`}>{label}</label>
             <Controller
                 name={name}
                 control={control}
@@ -18,18 +18,20 @@ const SelectField = (props) => {
                     { field: { onChange, value } }
                 ) => {
                     return <Autocomplete
+                        size='small'
                         name={name}
                         autoComplete='no'
-                        onChange={(_, { id }) => {
-                            onChange(id)
+                        onChange={(_, data) => {
+                            if (data)
+                                onChange(data.id)
                         }}
+                        value={options?.find(option => option.id === value)}
                         options={options}
                         renderInput={(params) => {
                             params.inputProps.autoComplete = 'new-password';
                             return (
                                 <div ref={params.InputProps.ref}>
                                     <input
-                                        value={options?.filter(option => option.value === value)}
                                         type='text'
                                         {...params.inputProps}
                                         id={id}
@@ -43,7 +45,7 @@ const SelectField = (props) => {
                     />
                 }}
             />
-            <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
+            <div className='form2__error'> {resolve(name, errors, '.')?.message} </div>
         </>
     );
 }

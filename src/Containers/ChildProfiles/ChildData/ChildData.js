@@ -53,14 +53,17 @@ function ChildData(props) {
                         <dt>Дата рождения</dt>
                         <dd>{childProfile.date_of_birth}</dd>
                     </dl>
-                    {/*<dl>*/}
-                    {/*    <dt>Страна проживания</dt>*/}
-                    {/*    <dd>Россия</dd>*/}
-                    {/*</dl>*/}
-                    {/*<dl>*/}
-                    {/*    <dt>Город проживания</dt>*/}
-                    {/*    <dd>Москва</dd>*/}
-                    {/*</dl>*/}
+                    <dl>
+                        <dt>Страна проживания</dt>
+                        <dd>{childProfile?.country?.name || 'Страна проживания не указана'}</dd>
+                    </dl>
+
+                    {childProfile?.country?.name === 'Россия' && (
+                        <dl>
+                            <dt>Город проживания</dt>
+                            <dd>{childProfile?.country?.name ? childProfile?.city?.name : 'Город проживания не указан'}</dd>
+                        </dl>
+                    )}
                 </div>
             </div>
             {childProfile.additional_information && specialists && (
