@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Button from 'Components/Button/Button';
-import {addClasses} from 'utils/addClasses/addClasses.js';
+import { addClasses } from 'utils/addClasses/addClasses.js';
 
 
 const Actions = (props) => {
@@ -19,7 +19,7 @@ const Actions = (props) => {
                 className='btn btn_light'
                 to='/child-profile/'
             >
-                Отмена
+                Назад
             </Link>
             <Button
                 className={addClasses('btn', {
@@ -27,7 +27,7 @@ const Actions = (props) => {
                 })}
                 type='submit'
             >
-                Далее
+                Сохранить
             </Button>
         </div>
     );

@@ -3,12 +3,16 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import ChildCareIcon from '@mui/icons-material/ChildCare';
+import { IconButton } from '@mui/material';
+import { checkUserRole } from 'utils/user.js';
+import { userRoles } from 'constants.js';
 
 
 const UpcomingLessonBlock = (props) => {
 
     const {
-        lesson
+        lesson, toggleModal
     } = props
 
     const humanize = timestamp => {
@@ -70,6 +74,11 @@ const UpcomingLessonBlock = (props) => {
                             </Link>
                         )
                     )}
+                    {checkUserRole(userRoles.therapist) && (
+                        <IconButton onClick={toggleModal}>
+                            <ChildCareIcon fontSize='large'/>
+                        </IconButton>
+                    )}
                 </div>
             )}
         </>
@@ -86,7 +95,8 @@ UpcomingLessonBlock.propTypes = {
                 date: PropTypes.string
             })
         })
-    }).isRequired
+    }).isRequired,
+    toggleModal: PropTypes.func
 }
 
 export default UpcomingLessonBlock;

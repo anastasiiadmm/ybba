@@ -6,10 +6,12 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
 import FormField from 'Components/FormField/FormField';
-import Button from 'Components/Button/Button';
-import { editUserEmail, updateUserPassword, userSelector } from 'redux/user/userSlice';
-import { getCurrentUserData, authSelector } from 'redux/auth/authSlice';
+import { updateUserPassword, userSelector } from 'redux/user/userSlice';
+import { authSelector } from 'redux/auth/authSlice';
 import { childSelector, getCitiesList, getCountriesList } from 'redux/child/childSlice';
+import { Russian } from 'assets/vendor/flatpickr/ru';
+import { namesOfMonths } from 'constants.js';
+import { momentDateToStr } from 'utils/date/dateUtils';
 
 
 const ParentProfileForm = (props) => {
@@ -20,9 +22,8 @@ const ParentProfileForm = (props) => {
 
     const { cities, countries } = useSelector(childSelector)
     const { user } = useSelector(authSelector)
-    const { isPasswordUpdated, errors, editEmailErrors, editUserEmailSuccess } = useSelector(userSelector)
+    const { isPasswordUpdated, errors } = useSelector(userSelector)
 
-    const [emailChanging, setEmailChanging] = useState(false)
     const [passwordChanging, setPasswordChanging] = useState(false)
     const [countriesOptions, setCountriesOptions] = useState([])
     const [citiesOptions, setCitiesOptions] = useState([])
@@ -38,7 +39,8 @@ const ParentProfileForm = (props) => {
         setFormData(newData)
     }
     const birthDateHandler = data => {
-        const validDate = data === 'dd/mm/yyyy' ? '' : data
+        const newDate = momentDateToStr(data.toString())
+        const validDate = newDate === 'dd/mm/yyyy' ? '' : momentDateToStr(data.toString())
         const newData = { ...formData, profile: { ...formData.profile, date_of_birth: validDate } }
         setFormData(newData)
     }
@@ -46,12 +48,7 @@ const ParentProfileForm = (props) => {
         const newData = { ...formData, profile: { ...formData.profile, phone_number: number } }
         setFormData(newData)
     }
-    const emailChangeHandler = e => {
-        setFormData({ ...formData, email: e.target.value })
-    }
-    const editEmailChangeHandler = () => {
-        setEmailChanging(!emailChanging)
-    }
+
     const editPasswordChangeHandler = () => {
         setPasswordData({ ...passwordData, password: '', passwordRepeat: '' })
         setPasswordChanging(!passwordChanging)
@@ -60,9 +57,6 @@ const ParentProfileForm = (props) => {
         setPasswordData({ ...passwordData, [e.target.name]: e.target.value })
     }
 
-    const editEmail = async () => {
-        await dispatch(editUserEmail(formData))
-    }
     const editPassword = async () => {
         const submitData = { data: { password: passwordData.password }, userId: user.id }
         await dispatch(updateUserPassword(submitData))
@@ -71,13 +65,6 @@ const ParentProfileForm = (props) => {
     useEffect(() => {
         setPasswordChanging(false)
     }, [isPasswordUpdated])
-
-    useEffect(() => {
-        if (editUserEmailSuccess) {
-            setEmailChanging(false)
-            dispatch(getCurrentUserData())
-        }
-    }, [dispatch, editUserEmailSuccess])
 
     useEffect(() => {
         if (countries) {
@@ -134,16 +121,28 @@ const ParentProfileForm = (props) => {
             <div className='form__row form__row_flex'>
                 <div className='form__col2'>
                     <FormField
+                        configs={{
+                            locale: {
+                                ...Russian,
+                                months: {
+                                    ...Russian.months,
+                                    longhand: namesOfMonths
+                                }
+                            },
+                            firstDayOfWeek: 2,
+                            dateFormat: 'd/m/Y',
+                            enableTime: false,
+                            maxDate: momentDateToStr(moment())
+                        }}
                         label='Дата'
-                        showMaskOnHover={true}
-                        showMaskOnFocus={true}
-                        mask='dd/mm/yyyy'
                         type='datepicker'
                         className='form__field'
+                        selected={formData.profile.date_of_birth}
                         value={formData.profile.date_of_birth}
                         name='date_of_birth'
                         onChange={birthDateHandler}
                         errors={errors?.profile}
+                        isClearable
                     />
                 </div>
                 <div className='form__col2 form__label'>
@@ -159,16 +158,15 @@ const ParentProfileForm = (props) => {
             </div>
             {countriesOptions && citiesOptions && (
                 <div className='form__row form__row_flex'>
-                    <div className='form__col2 form__label form__input'>
+                    <div className='form__col2 form__label'>
                         <FormField
                             label='Страна проживания'
                             type='select'
-                            className='country_field'
-                            // readonly={true}
-                            // onFocus={{removeAttribute(readonly)}}
                             name='country'
                             options={countriesOptions}
-                            onChange={setCountry}
+                            onChange={(event, newValue) => {
+                                setCountry(newValue)
+                            }}
                             value={formData.profile.country}
                         />
                     </div>
@@ -177,10 +175,11 @@ const ParentProfileForm = (props) => {
                             <FormField
                                 label='Город проживания'
                                 type='select'
-                                className='country_field'
                                 name='country'
                                 options={citiesOptions}
-                                onChange={setCity}
+                                onChange={(event, newValue) => {
+                                    setCity(newValue)
+                                }}
                                 value={formData.profile.city}
                             />
                         </div>
@@ -191,42 +190,11 @@ const ParentProfileForm = (props) => {
             <div className='form__row form__row_flex'>
                 <div className='form__col2 is-hidden'>
                     <label htmlFor='email' className='form__label'>Email</label>
-                    {!emailChanging && <div className='form__visible-block'>
+                    <div className='form__visible-block'>
                         <div className='form__visible-in'>
                             <div className='form__text'>{formData.email}</div>
-                            <Button
-                                type='button'
-                                className='btn-out form__show-field'
-                                onClick={editEmailChangeHandler}
-                            >Сменить email</Button>
                         </div>
-                    </div>}
-                    {emailChanging && <div className='form__hidden-in'>
-                        <FormField
-                            type='email'
-                            className='form__field form__field_wfix-big'
-                            value={formData.email}
-                            onChange={emailChangeHandler}
-                            errors={editEmailErrors}
-                            name='email'
-                        />
-                        <div>
-                            <Button
-                                type='button'
-                                className='btn-out'
-                                onClick={editEmail}
-                            >
-                                Сохранить
-                            </Button>{' '}
-                            <Button
-                                type='button'
-                                className='btn-cancel'
-                                onClick={editEmailChangeHandler}
-                            >
-                                Отмена
-                            </Button>
-                        </div>
-                    </div>}
+                    </div>
                 </div>
             </div>
             <div className='form__row form__row_flex'>
@@ -283,7 +251,7 @@ const ParentProfileForm = (props) => {
             </div>
         </>
     );
-}
+};
 
 ParentProfileForm.propTypes = {
     formData: PropTypes.object,

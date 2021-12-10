@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
 
 @font-face {
     font-family: 'icomoon';
@@ -19,6 +20,7 @@ h5, h4, h3 {
 
 .form__label {
     line-height: 3.1;
+    margin-bottom: 0;
 }
 
 .btn-out {
@@ -68,10 +70,6 @@ h5, h4, h3 {
     width: 150% !important;
 }
 
-.form__input {
-    padding-right: 100px;
-}
-
 .timeslot__body {
     text-align: center;
 }
@@ -98,4 +96,17 @@ h5, h4, h3 {
 
 .dates__field {
     width: 196px;
+}
+
+.notifications__clear {
+    margin-right: 28px;
+}
+
+.chars_input {
+    color: #A3B3CC;
+    margin-left: 11px;
+}
+
+.textarea_content {
+    width: 658px;
 }

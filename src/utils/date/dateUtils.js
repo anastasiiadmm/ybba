@@ -38,6 +38,15 @@ export const strDateToMoment = date => {
 }
 
 /**
+ * Sync function converts string date time to moment date object
+ * @param {string} date String date time to convert
+ * @returns {moment.Moment} Moment date object
+ */
+export const strDateTimeToMoment = date => {
+    return moment(date, `${config.dateFormat} ${config.timeFormat}`)
+}
+
+/**
  * Sync function converts moment date to string
  * @param {moment.Moment} date
  * @returns {string}
@@ -96,3 +105,10 @@ export const getDateRange = (start, end) => {
 
     return dates
 }
+
+/**
+ * Sync function return bool value which shows if date is valid
+ * @param d
+ * @returns {boolean}
+ */
+export const isValidDate = (d) => d instanceof Date && !isNaN(d)

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import axiosApi from 'axios';
+import axiosApi from 'axios.js';
 import { defaultError } from 'config.js';
 
 
@@ -11,47 +11,12 @@ const INITIAL_STATE = {
     tokens: null,
     loading: false,
 
-    editUserEmailSuccess: false,
     success: false,
 
     commonError: null,
-    editEmailErrors: null,
 
     isPasswordUpdated: false
 }
-
-export const editUserEmail = createAsyncThunk(
-    `${nameSpace}/editUserEmail`,
-    async (email, { getState, rejectWithValue }) => {
-        try {
-            const user = getState().auth.user
-            const resp = await axiosApi.put(`/accounts/${user.id}/email/update/`, email)
-            return resp.data
-        } catch (e) {
-            return rejectWithValue(e.response.data)
-        }
-    }
-)
-
-export const updateUserData = createAsyncThunk(
-    `${nameSpace}/updateUserData`,
-    async (data, { rejectWithValue }) => {
-        try {
-            const userData = { ...data.data }
-            if (userData.profile && userData.profile.phone_number && !userData.profile.phone_number.includes('+')) {
-                userData.profile.phone_number = `+${userData.profile.phone_number}`
-            }
-            await axiosApi.put(`/accounts/${data.userId}/update/`, userData)
-        } catch (e) {
-            console.log(e)
-            let error = e?.response?.data
-            if (!e.response) {
-                error = defaultError
-            }
-            return rejectWithValue(error)
-        }
-    }
-)
 
 export const updateUserPassword = createAsyncThunk(
     `${nameSpace}/updateUserPassword`,
@@ -103,20 +68,6 @@ const userSlice = createSlice({
     },
     extraReducers: {
 
-        [updateUserData.pending]: state => {
-            state.success = false
-            state.loading = true
-        },
-        [updateUserData.fulfilled]: state => {
-            state.success = true
-            state.loading = false
-        },
-        [updateUserData.rejected]: (state, { payload }) => {
-            state.errors = payload
-            state.success = false
-            state.loading = false
-        },
-
         [updateUserPassword.fulfilled]: state => {
             state.success = true
             state.isPasswordUpdated = true
@@ -148,18 +99,6 @@ const userSlice = createSlice({
             state.errors = payload
         },
 
-        [editUserEmail.pending]: state => {
-            state.editEmailErrors = null
-            state.editUserEmailSuccess = false
-        },
-        [editUserEmail.fulfilled]: state => {
-            state.editEmailErrors = null
-            state.editUserEmailSuccess = true
-        },
-        [editUserEmail.rejected]: (state, { payload }) => {
-            state.editEmailErrors = payload
-            state.editUserEmailSuccess = false
-        }
     }
 })
 
