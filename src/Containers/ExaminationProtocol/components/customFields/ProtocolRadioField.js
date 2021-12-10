@@ -5,7 +5,16 @@ import { useFormContext } from 'react-hook-form';
 function ProtocolRadioField(props) {
   const { name, onChange, label, checked, value } = props;
 
-  const { register } = useFormContext();
+  const { register, getValues } = useFormContext();
+
+  const valueHandler = (value) => {
+    const currentValue = getValues(name);
+    if (`${value}`.toLowerCase() === `${currentValue}`) {
+      return 'on';
+    } else {
+      return checked;
+    }
+  };
 
   const onChangeHandler = {
     ...(onChange
@@ -19,9 +28,9 @@ function ProtocolRadioField(props) {
         <input
           type="radio"
           name={name}
-          value={value}
+          value={`${value}`.toLowerCase()}
           {...onChangeHandler}
-          checked={checked}
+          checked={valueHandler(value)}
         />
         <span>{label}</span>
       </label>

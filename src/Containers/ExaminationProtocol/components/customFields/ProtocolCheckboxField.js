@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 
 function ProtocolCheckboxField(props) {
-  const { name, onChange, label } = props;
+  const { name, onChange, label, checked } = props;
 
-  const { register } = useFormContext();
+  const { register, getValues } = useFormContext();
 
   const onChangeHandler = {
     ...(onChange
@@ -16,10 +16,11 @@ function ProtocolCheckboxField(props) {
     <div className="protocol__lbl-wrap">
       <label className="check2">
         <input
-          // value={label}
           type="checkbox"
           name={name}
           {...onChangeHandler}
+          checked={getValues(name)}
+          // value={getValues(name)}
         />
         <span>{label}</span>
       </label>

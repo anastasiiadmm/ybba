@@ -5,7 +5,16 @@ import { useFormContext } from 'react-hook-form';
 function ProtocolSwitchField(props) {
   const { name, onChange, checked } = props;
 
-  const { register } = useFormContext();
+  const { register, getValues } = useFormContext();
+
+  const valueHandler = (value) => {
+    const currentValue = getValues(name);
+    if (value === `${currentValue}`) {
+      return 'on';
+    } else {
+      return checked;
+    }
+  };
 
   const onChangeHandler = {
     ...(onChange
@@ -21,7 +30,7 @@ function ProtocolSwitchField(props) {
           name={name}
           value="true"
           {...onChangeHandler}
-          checked={checked}
+          checked={valueHandler('true')}
         />
         <span>+</span>
       </label>
@@ -32,7 +41,7 @@ function ProtocolSwitchField(props) {
           name={name}
           value="false"
           {...onChangeHandler}
-          checked={checked}
+          checked={valueHandler('false')}
         />
         <span>&ndash;</span>
       </label>

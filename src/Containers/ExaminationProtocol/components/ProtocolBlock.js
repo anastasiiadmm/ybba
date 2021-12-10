@@ -96,8 +96,8 @@ function ProtocolBlock(props) {
                         <ProtocolRadioField
                           name={field.name}
                           onChange={inputChangeHandler}
-                          label={option}
-                          value={option}
+                          label={option.label ? option.label : option}
+                          value={option.value ? option.value : option}
                         />
                       );
                     })}
@@ -121,8 +121,8 @@ function ProtocolBlock(props) {
                                 type="protocolRadio"
                                 name={radioGroup.name}
                                 onChange={inputChangeHandler}
-                                label={option}
-                                value={option}
+                                label={option.label ? option.label : option}
+                                value={option.value ? option.value : option}
                               />
                             );
                           })}
@@ -149,6 +149,7 @@ function ProtocolBlock(props) {
                     return (
                       <div className="protocol__col">
                         <ProtocolTextField
+                          key={inputField.label}
                           type="text"
                           label={inputField.label}
                           name={inputField.name}

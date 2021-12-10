@@ -15,13 +15,7 @@ function ProtocolRadioWithText(props) {
   return (
     <div className="protocol__lbl-wrap wrap">
       <label className="radio2">
-        <input
-          type="radio"
-          name={name}
-          value={checked}
-          {...register(`${name}.main`, { onChange: onChange })}
-          checked={checked}
-        />
+        <input type="radio" name={name} value={checked} checked={checked} />
         <span>{label}</span>
       </label>
       <input
