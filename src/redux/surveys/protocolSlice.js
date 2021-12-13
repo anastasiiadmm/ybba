@@ -51,20 +51,6 @@ export const updateProtocol = createAsyncThunk(
   }
 );
 
-export const createSpeechCard = createAsyncThunk(
-  `${nameSpace}/createSpeechCard`,
-  async ({ childId, speechCardData }, { rejectWithValue }) => {
-    try {
-      await axiosApi.post(
-        `/surveys/children/${childId}/create-speech-card/`,
-        speechCardData
-      );
-    } catch (e) {
-      return rejectWithValue(e);
-    }
-  }
-);
-
 const protocolSlice = createSlice({
   name: nameSpace,
   initialState: INITIAL_STATE,
@@ -107,19 +93,7 @@ const protocolSlice = createSlice({
       state.success = false;
       state.errors = payload;
     },
-    [createSpeechCard.pending]: (state) => {
-      state.loading = true;
-      state.success = false;
-    },
-    [createSpeechCard.fulfilled]: (state, { payload }) => {
-      state.loading = false;
-      state.success = true;
-    },
-    [createSpeechCard.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.success = false;
-      state.errors = payload;
-    },
+
     [PROTOCOL_VALIDATION_ERRORS]: (state, { payload }) => {
       state.validationErrors = payload;
     },
