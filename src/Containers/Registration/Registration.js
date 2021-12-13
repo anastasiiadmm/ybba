@@ -114,7 +114,7 @@ const Registration = () => {
 
     return (
         <div className='all-page2'>
-            <div className='form2'>
+            <div className='form2 form2__zoom'>
                 <div className='form2__inner'>
                     <h4 className='form2__title'>Регистрация</h4>
                     <form onSubmit={handleSubmit(handleRegistrationFormSubmit)}>
