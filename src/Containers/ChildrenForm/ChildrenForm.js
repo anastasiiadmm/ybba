@@ -14,6 +14,8 @@ const ChildrenForm = (props) => {
         childrenData, country, register, control, errors
     } = props
 
+    const getCountryName = id => countries?.find(country => country.id === id)?.name
+
     const { cities, countries } = useSelector(childSelector)
 
     const dispatch = useDispatch()
@@ -125,7 +127,7 @@ const ChildrenForm = (props) => {
                         />
                     )}
                 </div>
-                {!!citiesOptions.length && (
+                {getCountryName(country) === 'Россия' && (
                     <div className='form__col2 form__label'>
                         <Field
                             label='Город проживания'
