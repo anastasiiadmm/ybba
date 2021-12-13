@@ -230,30 +230,30 @@ const LessonPage = (props) => {
         sendChildrenQuestionnaireNotification();
       }
     }
-  }, [lessonFinished, history, sendChildrenQuestionnaireNotification]);
+  }, [lessonId, sendJsonToGameWithTimeout, unityContext]);
 
   useEffect(() => {
-    if (unityContext) {
-      unityContext.on('progress', (progress) => {
-        setUnityLoadProgress(progress);
-      });
-
-      let json = {};
-
-      if (checkUserRole(userRoles.therapist)) {
-        json = { IsServer: true, Id: lessonId, FreeGame: false };
-      }
-      if (checkUserRole(userRoles.parent)) {
-        json = { IsServer: false, Id: lessonId, FreeGame: false };
-      }
       if (unityContext) {
-        // Controlling of sending JSON data to game
-        unityContext.on('ReadJavaData', async () => {
-          sendJsonToGameWithTimeout(json);
-        });
+          unityContext.on('progress', progress => {
+              setUnityLoadProgress(progress)
+          })
+
+          let json = {}
+
+          if (checkUserRole(userRoles.therapist)) {
+              json = { IsServer: true, Id: lessonId, FreeGame: false }
+          }
+          if (checkUserRole(userRoles.parent)) {
+              json = { IsServer: false, Id: lessonId, FreeGame: false }
+          }
+          if (unityContext) {
+              // Controlling of sending JSON data to game
+              unityContext.on('ReadJavaData', async () => {
+                  sendJsonToGameWithTimeout(json)
+              })
+          }
       }
-    }
-  }, [lessonId, sendJsonToGameWithTimeout, unityContext]);
+  }, [lessonId, sendJsonToGameWithTimeout, unityContext])
 
   const toastInfo = () => {
     return toast.info(

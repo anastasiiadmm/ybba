@@ -8,7 +8,7 @@ import {
   CHANGE_LESSON_STATUS,
   RESIZE_CHILD_WEBCAM,
 } from 'redux/actionTypes';
-import { LESSON_STATUS_FINISHED } from 'constants.js';
+
 
 const nameSpace = 'lesson';
 
@@ -40,14 +40,12 @@ const lessonSlice = createSlice({
     },
 
     [CHANGE_LESSON_STATUS]: (state, { payload }) => {
-      if (payload.status === LESSON_STATUS_FINISHED) {
-        state.lesson = null;
-        state.lessonFinished = true;
-      }
+        state.lesson = { ...state.lesson, status: payload.status }
+        state.lessonFinished = true
     },
     [RESIZE_CHILD_WEBCAM]: (state, { payload }) => {
-      state.isParentWebcamIncreased = payload;
-    },
+        state.isParentWebcamIncreased = payload
+    }
   },
 });
 
