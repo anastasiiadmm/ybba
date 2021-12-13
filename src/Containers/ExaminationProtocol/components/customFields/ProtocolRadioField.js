@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
+import { addClasses } from 'utils/addClasses/addClasses.js';
 
 function ProtocolRadioField(props) {
-  const { name, onChange, label, checked, value } = props;
+  const { name, onChange, label, checked, value, validationErrorMessage } =
+    props;
 
   const { register, getValues } = useFormContext();
 
@@ -24,7 +26,14 @@ function ProtocolRadioField(props) {
 
   return (
     <div className="protocol__lbl-wrap">
-      <label className="radio2">
+      <label
+        className={addClasses('radio2', {
+          validation_message:
+            validationErrorMessage != null
+              ? validationErrorMessage.length
+              : null,
+        })}
+      >
         <input
           type="radio"
           name={name}
@@ -45,6 +54,7 @@ ProtocolRadioField.propTypes = {
   type: PropTypes.string,
   checked: PropTypes.bool,
   value: PropTypes.string,
+  validationErrorMessage: PropTypes.string,
 };
 
 export default ProtocolRadioField;

@@ -49,13 +49,14 @@ import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/Bro
 import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js';
 import config from 'config.js';
 import ExaminationProtocol from 'Containers/ExaminationProtocol/ExaminationProtocol.js';
+import showModal from 'Components/LessonRating/LessonRating';
 
 import 'Containers/LessonPage/lessonPage.css';
 
 const LessonPage = (props) => {
-  const { isMicrophoneAllowed, isCameraAllowed } = useContext(
-    BrowserPermissionsContext
-  );
+  // const { isMicrophoneAllowed, isCameraAllowed } = useContext(
+  //   BrowserPermissionsContext
+  // );
 
   const { sendWsAction } = useContext(WsContext);
 
@@ -71,6 +72,13 @@ const LessonPage = (props) => {
   const [activeGame, setActiveGame] = useState(null);
   const [unityContext, setUnityContext] = useState(null);
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
+
+  const scrollHandler = (e) => {
+    // showModal();
+    return document
+      .getElementById('finish-protocol')
+      .scrollIntoView({ behavior: 'smooth' });
+  };
 
   const onChangeActiveGame = (game) => {
     if (game.id !== activeGame.id) {
@@ -204,6 +212,7 @@ const LessonPage = (props) => {
 
   useEffect(() => {
     if (lesson) {
+      console.log({ this: lesson });
       const active = lesson.games.find(
         (game) => game.id === lesson.active_game_id
       );
@@ -214,6 +223,10 @@ const LessonPage = (props) => {
   useEffect(() => {
     if (lessonFinished) {
       if (checkUserRole(userRoles.parent)) {
+        history.push('/');
+        sendChildrenQuestionnaireNotification();
+      }
+      if (checkUserRole(userRoles.therapist)) {
         history.push('/');
         sendChildrenQuestionnaireNotification();
       }
@@ -264,11 +277,11 @@ const LessonPage = (props) => {
     return () => stopSTRecording();
   }, [startSTRecording]);
 
-  useEffect(() => {
-    if (!isMicrophoneAllowed && !isCameraAllowed) {
-      toastInfo();
-    }
-  }, [isCameraAllowed, isMicrophoneAllowed]);
+  // useEffect(() => {
+  //   if (!isMicrophoneAllowed && !isCameraAllowed) {
+  //     toastInfo();
+  //   }
+  // }, [isCameraAllowed, isMicrophoneAllowed]);
 
   const canvasParent = useRef();
 
@@ -432,8 +445,15 @@ const LessonPage = (props) => {
         <div className="gamef__sidebar">
           <div className="gamef__sidebar-in">
             {lesson && lesson.lesson_type === 'diagnostic' ? (
-              <div style={{ overflow: 'scroll' }}>
-                <ExaminationProtocol />
+              <div style={{ overflow: 'scroll', position: 'relative' }}>
+                <ExaminationProtocol
+                // showFields={
+                //   lesson && lesson.status === lessonStatuses.finished
+                //     ? true
+                //     : false
+                // }
+                />
+                <button className="scroll_down_btn" onClick={scrollHandler} />
               </div>
             ) : (
               <Notes lessonId={lessonId} />

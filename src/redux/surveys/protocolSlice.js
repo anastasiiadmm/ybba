@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import axiosApi from '../../axios';
 
 const nameSpace = 'surveys';
@@ -7,8 +7,20 @@ const INITIAL_STATE = {
   loading: false,
   success: false,
   protocol: null,
+  speechCard: null,
   errors: null,
+  validationErrors: null,
 };
+
+const PROTOCOL_VALIDATION_ERRORS = 'PROTOCOL_VALIDATION_ERRORS';
+export const setProtocolErrors = createAction(
+  'PROTOCOL_VALIDATION_ERRORS',
+  (payload) => {
+    return {
+      payload: payload,
+    };
+  }
+);
 
 export const getProtocol = createAsyncThunk(
   `${nameSpace}/getProtocol`,
@@ -39,20 +51,6 @@ export const updateProtocol = createAsyncThunk(
   }
 );
 
-export const getSpeechCard = createAsyncThunk(
-  `${nameSpace}/getSpeechCard`,
-  async (childId, { rejectWithValue }) => {
-    try {
-      const resp = await axiosApi.get(
-        `/surveys/children/${childId}/speech-card/`
-      );
-      return resp.data;
-    } catch (e) {
-      return rejectWithValue(e);
-    }
-  }
-);
-
 export const createSpeechCard = createAsyncThunk(
   `${nameSpace}/createSpeechCard`,
   async ({ childId, speechCardData }, { rejectWithValue }) => {
@@ -67,30 +65,18 @@ export const createSpeechCard = createAsyncThunk(
   }
 );
 
-// export const updateSpeechCard = createAsyncThunk(
-//   `${nameSpace}/updateSpeechCard`,
-//   async ({ speechCardId, speechCardData }, { rejectWithValue }) => {
-//     try {
-//       const resp = axiosApi.put(
-//         `/charts/speech-card/${speechCardId}/`,
-//         speechCardData
-//       );
-//       return resp.data;
-//     } catch (e) {
-//       return rejectWithValue(e);
-//     }
-//   }
-// );
-
 const protocolSlice = createSlice({
   name: nameSpace,
   initialState: INITIAL_STATE,
   reducers: {
-    clearSurveysState: (state) => {
+    clearProtocolState: (state) => {
       state.loading = false;
       state.success = false;
       state.protocol = null;
       state.errors = null;
+    },
+    clearProtocolErrors: (state) => {
+      state.validationErrors = null;
     },
   },
   extraReducers: {
@@ -121,19 +107,6 @@ const protocolSlice = createSlice({
       state.success = false;
       state.errors = payload;
     },
-    [getSpeechCard.pending]: (state) => {
-      state.success = false;
-    },
-    [getSpeechCard.fulfilled]: (state, { payload }) => {
-      state.speechCard = payload;
-      state.loading = false;
-      state.success = true;
-    },
-    [getSpeechCard.rejected]: (state, { payload }) => {
-      state.loading = false;
-      state.success = false;
-      state.errors = payload;
-    },
     [createSpeechCard.pending]: (state) => {
       state.loading = true;
       state.success = false;
@@ -147,9 +120,13 @@ const protocolSlice = createSlice({
       state.success = false;
       state.errors = payload;
     },
+    [PROTOCOL_VALIDATION_ERRORS]: (state, { payload }) => {
+      state.validationErrors = payload;
+    },
   },
 });
 
-export const { clearProtocolState } = protocolSlice.actions;
+export const { clearProtocolState, clearProtocolErrors } =
+  protocolSlice.actions;
 export const protocolSelector = (state) => state.surveys;
 export default protocolSlice.reducer;

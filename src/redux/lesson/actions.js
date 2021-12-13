@@ -7,11 +7,7 @@ import {
   RESIZE_CHILD_WEBCAM,
 } from 'redux/actionTypes';
 
-export const getLesson = createAction(GET_LESSON, (lessonId) => {
-  return {
-    payload: lessonId,
-  };
-});
+export const getLesson = createAction(GET_LESSON);
 
 export const changeActiveGame = createAction(CHANGE_ACTIVE_GAME);
 

@@ -37,13 +37,10 @@ mainBlock.content = [
     []
   ),
 
-  mainBlock.textFieldObject('babbling_in.babbling_age', 'Лепет в:'),
+  mainBlock.textFieldObject('babbling_in', 'Лепет в:'),
+  mainBlock.textFieldObject('first_words_in', 'Первые слова в:'),
   mainBlock.textFieldObject(
-    'first_words_in.first_words_age',
-    'Первые слова в:'
-  ),
-  mainBlock.textFieldObject(
-    'first_short_phrases_in.first_short_phrases_age',
+    'first_short_phrases_in',
     'Первые короткие фразы в:'
   ),
 

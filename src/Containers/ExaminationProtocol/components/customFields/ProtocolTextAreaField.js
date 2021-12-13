@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
+import { addClasses } from 'utils/addClasses/addClasses.js';
 
 function ProtocolTextAreaField(props) {
-  const { name, onChange, label, type, placeholder, withBg } = props;
+  const { name, onChange, label, placeholder, withBg, validationErrorMessage } =
+    props;
 
   const { register } = useFormContext();
 
@@ -14,14 +16,27 @@ function ProtocolTextAreaField(props) {
   };
 
   const textAreaClassName = withBg ? 'protocol__area bg' : 'protocol__area';
-
+  // const validationCheck = () => {
+  //   return validationErrorMessage != null && validationErrorMessage[name]?.message
+  //     ? true
+  //     : false;
+  // };
   return (
     <>
       <label className="protocol__lbl">{label}</label>
       <textarea
-        className={textAreaClassName}
+        className={addClasses(textAreaClassName, {
+          validation_message:
+            validationErrorMessage != null
+              ? validationErrorMessage.length
+              : null,
+        })}
         name={name}
-        placeholder={placeholder}
+        placeholder={
+          validationErrorMessage != null
+            ? `${validationErrorMessage}: ${placeholder}`
+            : placeholder
+        }
         {...onChangeHandler}
       />
     </>
@@ -34,6 +49,7 @@ ProtocolTextAreaField.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
+  validationErrorMessage: PropTypes.string,
 };
 
 export default ProtocolTextAreaField;

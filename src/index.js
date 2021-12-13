@@ -25,13 +25,13 @@ export const store = configureStore();
 ReactDOM.render(
   <React.StrictMode>
     <FirebaseBlock>
-      <BrowserPermissionsBlock>
-        <Provider store={store}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </Provider>
-      </BrowserPermissionsBlock>
+      {/* <BrowserPermissionsBlock> */}
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+      {/* </BrowserPermissionsBlock> */}
     </FirebaseBlock>
   </React.StrictMode>,
   document.getElementById('root')
