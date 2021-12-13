@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-import { loginUser, logoutUser, refreshToken } from 'redux/auth/authSlice.js';
+import { loginUser, logoutUser, refreshToken, updateUserData } from 'redux/auth/authSlice.js';
 
 
 export const cookieName = 'Ybba-state'
@@ -34,7 +34,12 @@ export const setToCookie = state => {
     }
 }
 
-const authActions = [String(loginUser.fulfilled), String(logoutUser), String(refreshToken.fulfilled)]
+const authActions = [
+    String(loginUser.fulfilled),
+    String(logoutUser),
+    String(refreshToken.fulfilled),
+    String(updateUserData.fulfilled)
+]
 
 export const cookieMiddleware = store => next => action => {
     let result = next(action);

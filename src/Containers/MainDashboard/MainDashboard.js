@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
-
-import Balance from 'Containers/MainDashboard/Balance/Balance.js';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock.js';
 import NextLessons from 'Containers/MainDashboard/NextLessons/NextLessons.js';
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
@@ -37,11 +35,13 @@ const MainDashboard = () => {
         if (lessons) {
             const now = moment()
             const lesson = lessons.filter(function (lesson) {
-                const lessonDayDate = strDateToMoment(lesson.time_slot.day.date)
-                return (
-                    lesson?.time_slot && lessonDayDate - now < 0 &&
-                    lesson.status === lessonStatuses.pending && lessonDayDate.isSame(moment().startOf('day'))
-                );
+                if (lesson.time_slot) {
+                    const lessonDayDate = strDateToMoment(lesson.time_slot.day.date)
+                    return (
+                        lesson?.time_slot && lessonDayDate - now < 0 &&
+                        lesson.status === lessonStatuses.pending && lessonDayDate.isSame(moment().startOf('day'))
+                    );
+                }
             })
             setClosesLesson(lesson[0])
         }
@@ -115,7 +115,7 @@ const MainDashboard = () => {
                                     </div>
                                     {checkUserRole(userRoles.parent) && (
                                         <div className='content__col content__col_w40'>
-                                            <Balance/>
+                                            {/*<Balance/>*/}
                                             <Calendar/>
                                         </div>
                                     )}

@@ -7,9 +7,8 @@ import { useHistory } from 'react-router';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import ParentProfileForm from 'Containers/ParentProfileForm/ParentProfileForm';
-import { updateUserData, userSelector, clearUserState } from 'redux/user/userSlice.js';
 import Button from 'Components/Button/Button';
-import { authSelector } from 'redux/auth/authSlice.js';
+import { authSelector, updateUserData, clearAuthState } from 'redux/auth/authSlice.js';
 
 
 const ParentProfileEdit = () => {
@@ -29,18 +28,20 @@ const ParentProfileEdit = () => {
         }
     }
 
-    const [formData, setFormData] = useState(initialFormData)
+    const [formData, setFormData] = useState({ ...user })
 
     const history = useHistory()
     const dispatch = useDispatch()
 
     const setCountry = async data => {
-        await setFormData({ ...formData,
-            profile: {
-                ...formData.profile,
-                country: data.value
-            }
-        })
+        if (data) {
+            await setFormData({ ...formData,
+                profile: {
+                    ...formData.profile,
+                    country: data.value
+                }
+            })
+        }
     }
 
     const setCity = data => {
@@ -78,7 +79,7 @@ const ParentProfileEdit = () => {
     }, [history, loading, success])
 
     useEffect(() => {
-        dispatch(clearUserState())
+        dispatch(clearAuthState())
         // eslint-disable-next-line
     }, [])
 
