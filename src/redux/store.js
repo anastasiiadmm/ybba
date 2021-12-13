@@ -6,7 +6,7 @@ import childReducer from 'redux/child/childSlice'
 import lessonsReducer from 'redux/lessons/lessonsSlice'
 import bashBoard from 'redux/dashBoard/dashBoardSlice'
 import webSocket from 'redux/webSocker/webSockerSlice'
-import surveys from 'redux/surveys/surveysSlice'
+import surveys from 'redux/surveys/protocolSlice'
 import payments from 'redux/payments/paymentsSlice'
 import notificationsSlice from 'redux/notifications/notificationsSlice';
 import { getFromCookie, cookieMiddleware } from 'redux/utils/cookies.js';
@@ -32,4 +32,4 @@ const configureStoreCreator = () => {
     })
 }
 
-export default configureStoreCreator
+export default configureStoreCreator;

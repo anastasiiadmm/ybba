@@ -35,6 +35,7 @@ import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js'
 import config from 'config.js';
 
 import 'Containers/LessonPage/lessonPage.css'
+import ExaminationProtocol from 'Containers/ExaminationProtocol/ExaminationProtocol.js';
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(BrowserPermissionsContext)
@@ -207,6 +208,12 @@ const LessonPage = (props) => {
         })
     }
 
+    const scrollHandler = (e) => {
+        return document
+            .getElementById('finish-protocol')
+            .scrollIntoView({ behavior: 'smooth' });
+    };
+
     useEffect(() => {
         startSTRecording()
 
@@ -370,9 +377,14 @@ const LessonPage = (props) => {
             {checkUserRole(userRoles.therapist) && (
                 <div className='gamef__sidebar'>
                     <div className='gamef__sidebar-in'>
-                        <Notes
-                            lessonId={lessonId}
-                        />
+                        {lesson && lesson.lesson_type === 'diagnostic' ? (
+                            <div style={{ overflow: 'scroll', position: 'relative' }}>
+                                <ExaminationProtocol/>
+                                <button className='scroll_down_btn' onClick={scrollHandler}/>
+                            </div>
+                        ) : (
+                            <Notes lessonId={lessonId}/>
+                        )}
                     </div>
                 </div>
             )}
