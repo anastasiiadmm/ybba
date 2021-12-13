@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Page404 from 'Components/Page404/Page404.js';
@@ -23,7 +23,7 @@ import RegistrationSuccess from 'Containers/RegistrationSuccess/RegistrationSucc
 
 const App = () => {
   return (
-    <>
+    <BrowserRouter basename="/platform">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -65,7 +65,7 @@ const App = () => {
         <Route path="/reset-password/:token" component={SetNewPassword} exact />
         <Route component={Page404} />
       </Switch>
-    </>
+    </BrowserRouter>
   );
 };
 

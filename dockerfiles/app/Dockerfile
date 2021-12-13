@@ -1,4 +1,4 @@
-FROM node:16-alpine3.11 AS builder
+FROM node:16-alpine3.11 as builder
 
 ARG REACT_APP_ENVIRONMENT
 ARG REACT_APP_API_URL
@@ -30,10 +30,8 @@ COPY . .
 
 RUN yarn build
 
-FROM nginx:1.21.1-alpine as production
-
-COPY --from=builder /app/build /usr/share/nginx/html
-
+FROM nginx:1.21.1-alpine
+COPY --from=builder /app/build /build
 COPY dockerfiles/nginx/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
