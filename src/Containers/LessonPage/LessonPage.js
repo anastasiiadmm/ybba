@@ -74,7 +74,6 @@ const LessonPage = (props) => {
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
 
   const scrollHandler = (e) => {
-    // showModal();
     return document
       .getElementById('finish-protocol')
       .scrollIntoView({ behavior: 'smooth' });
@@ -233,27 +232,27 @@ const LessonPage = (props) => {
   }, [lessonId, sendJsonToGameWithTimeout, unityContext]);
 
   useEffect(() => {
-      if (unityContext) {
-          unityContext.on('progress', progress => {
-              setUnityLoadProgress(progress)
-          })
+    if (unityContext) {
+      unityContext.on('progress', (progress) => {
+        setUnityLoadProgress(progress);
+      });
 
-          let json = {}
+      let json = {};
 
-          if (checkUserRole(userRoles.therapist)) {
-              json = { IsServer: true, Id: lessonId, FreeGame: false }
-          }
-          if (checkUserRole(userRoles.parent)) {
-              json = { IsServer: false, Id: lessonId, FreeGame: false }
-          }
-          if (unityContext) {
-              // Controlling of sending JSON data to game
-              unityContext.on('ReadJavaData', async () => {
-                  sendJsonToGameWithTimeout(json)
-              })
-          }
+      if (checkUserRole(userRoles.therapist)) {
+        json = { IsServer: true, Id: lessonId, FreeGame: false };
       }
-  }, [lessonId, sendJsonToGameWithTimeout, unityContext])
+      if (checkUserRole(userRoles.parent)) {
+        json = { IsServer: false, Id: lessonId, FreeGame: false };
+      }
+      if (unityContext) {
+        // Controlling of sending JSON data to game
+        unityContext.on('ReadJavaData', async () => {
+          sendJsonToGameWithTimeout(json);
+        });
+      }
+    }
+  }, [lessonId, sendJsonToGameWithTimeout, unityContext]);
 
   const toastInfo = () => {
     return toast.info(

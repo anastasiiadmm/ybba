@@ -185,8 +185,8 @@ function ProtocolBlock(props) {
                       <FormRadioBlock
                         validationErrorMessage={
                           validationErrors != null &&
-                          submitValidation(field.name, validationErrors) != null
-                            ? submitValidation(field.name, validationErrors)
+                          errorMessage(field.name) != null
+                            ? errorMessage(field.name).message
                             : null
                         }
                         description={radioGroup.description}

@@ -80,14 +80,14 @@ const ExaminationProtocol = (props) => {
 
   const submitHandler = (data, e) => {
     e.preventDefault();
-    console.log({ dirtyFields: data });
+    console.log({ STATUS: 'SUCCESS' });
     return console.log('checked');
   };
   const errorSubmitHandler = (errors, e) => {
     e.preventDefault();
     setValidationErrors(errors);
 
-    // console.log(keyValue);
+    console.log(errors);
     // console.log(validationErrors[name]);
     return console.log('not checked');
   };
