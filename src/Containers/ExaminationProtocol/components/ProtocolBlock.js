@@ -182,13 +182,13 @@ function ProtocolBlock(props) {
                 {field.newRadioGroups &&
                   field.newRadioGroups.map((radioGroup) => {
                     return (
-                      <FormRadioBlock
-                        validationErrorMessage={
-                          validationErrors != null &&
-                          submitValidation(field.name, validationErrors) != null
-                            ? submitValidation(field.name, validationErrors)
-                            : null
-                        }
+                        <FormRadioBlock
+                            validationErrorMessage={
+                              validationErrors != null &&
+                              errorMessage(field.name) != null
+                                  ? errorMessage(field.name).message
+                                  : null
+                            }
                         description={radioGroup.description}
                       >
                         {radioGroup.options &&
