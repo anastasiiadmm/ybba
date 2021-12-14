@@ -237,15 +237,15 @@
 }
 
 .check-game-button_active {
-  position: relative;
-  width: 42px;
-  height: 42px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  outline: none;
-  border: black solid;
-  border-width: 2px 0 2px 2px;
-  background: #fff;
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    outline: none;
+    border: white solid;
+    border-width: 2px 0 2px 2px;
+    background: #fff;
 }
 
 .check-game-button__active::after {
@@ -289,15 +289,16 @@
 }
 
 .play-game-button_active {
-  position: relative;
-  width: 42px;
-  height: 42px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  outline: none;
-  border: black solid;
-  border-width: 2px 2px 2px 0;
-  background: #fff;
+    margin-right: 8px;
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    outline: none;
+    border: white solid;
+    border-width: 2px 2px 2px 0;
+    background: #fff;
 }
 
 .play-game-button__active::before {
@@ -315,15 +316,16 @@
 }
 
 .play-game-button_inactive {
-  position: relative;
-  width: 42px;
-  height: 42px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  outline: none;
-  border: white solid;
-  border-width: 2px 2px 2px 0;
-  background: #000;
+    position: relative;
+    margin-right: 8px;
+    width: 42px;
+    height: 42px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    outline: none;
+    border: white solid;
+    border-width: 2px 2px 2px 0;
+    background: #000;
 }
 
 .play-game-button__inactive::before {
@@ -348,6 +350,7 @@
   width: 5px;
   height: 3px;
 }
+
 
 /* Track */
 
