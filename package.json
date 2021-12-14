@@ -39,6 +39,8 @@
     "react-toastify": "^8.1.0",
     "react-unity-webgl": "^8.4.10",
     "styled-components": "^5.3.3",
+    "sweetalert2": "^11.3.0",
+    "sweetalert2-react-content": "^4.2.0",
     "uuid": "^8.3.2",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.11"

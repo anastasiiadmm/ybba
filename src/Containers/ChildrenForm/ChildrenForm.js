@@ -4,9 +4,12 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { allRussianWardsAndHyphen } from 'regex/patterns/html.js';
-import { childSelector, getCountriesList, getCitiesList } from 'redux/child/childSlice.js';
+import {
+  childSelector,
+  getCountriesList,
+  getCitiesList,
+} from 'redux/child/childSlice.js';
 import Field from 'Components/Field/Field';
-
 
 const ChildrenForm = (props) => {
 
@@ -26,6 +29,10 @@ const ChildrenForm = (props) => {
     useEffect(() => {
         dispatch(getCountriesList())
     }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getCountriesList());
+  }, [dispatch]);
 
     useEffect(() => {
         if (childrenData?.country) {
