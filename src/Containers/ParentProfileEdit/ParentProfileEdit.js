@@ -7,9 +7,9 @@ import { useHistory } from 'react-router';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import ParentProfileForm from 'Containers/ParentProfileForm/ParentProfileForm';
-import { updateUserData, userSelector, clearUserState } from 'redux/user/userSlice.js';
+import { userSelector, clearUserState } from 'redux/user/userSlice.js';
 import Button from 'Components/Button/Button';
-import { authSelector } from 'redux/auth/authSlice.js';
+import { authSelector, updateUserData } from 'redux/auth/authSlice.js';
 
 
 const ParentProfileEdit = () => {
