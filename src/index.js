@@ -6,8 +6,8 @@ import { BrowserRouter } from 'react-router-dom';
 import configureStore from 'redux/store.js'
 import reportWebVitals from 'reportWebVitals';
 import { initSentry } from 'sentry/sentry';
-import App from 'App.js';
 import FirebaseBlock from 'Containers/FirebaseBlock/FirebaseBlock.js';
+import App from 'App.js';
 
 import 'assets/vendor/flatpickr/flatpickr'
 import 'assets/vendor/flatpickr/ru'
