@@ -17,7 +17,6 @@ import { momentDateToStr } from 'utils/date/dateUtils';
 const ParentProfileForm = (props) => {
 
     const { formData, setFormData, setCountry, setCity } = props
-
     const initialPasswordData = { 'password': '', 'passwordRepeat': '' }
 
     const { cities, countries } = useSelector(childSelector)

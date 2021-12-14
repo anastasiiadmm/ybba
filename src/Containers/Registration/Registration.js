@@ -125,6 +125,7 @@ const Registration = () => {
                                 name='parent.first_name'
                                 errors={errors}
                                 className='form2__field'
+                                classNameLabel='form2__label'
                             />
                         </div>
                         <div className='form2__row'>
@@ -135,6 +136,7 @@ const Registration = () => {
                                 name='parent.last_name'
                                 errors={errors}
                                 className='form2__field'
+                                classNameLabel='form2__label'
                             />
                         </div>
                         <div className='form2__row'>
@@ -147,6 +149,7 @@ const Registration = () => {
                                 className='form2__field'
                                 placeholder='username@gmail.com'
                                 disabled
+                                classNameLabel='form2__label'
                             />
                         </div>
                         <div className='form2__row'>
@@ -159,6 +162,7 @@ const Registration = () => {
                                 errors={errors}
                                 className='form2__field'
                                 placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
+                                classNameLabel='form2__label'
                             />
                         </div>
                         <div className='form2__row'>
@@ -171,6 +175,7 @@ const Registration = () => {
                                 errors={errors}
                                 className='form2__field'
                                 placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
+                                classNameLabel='form2__label'
                             />
                         </div>
                         <hr className='form2__line'/>
@@ -183,6 +188,7 @@ const Registration = () => {
                                 name='child.first_name'
                                 errors={errors}
                                 className='form2__field'
+                                classNameLabel='form2__label'
                             />
                         </div>
                         <div className='form2__row'>
@@ -193,6 +199,7 @@ const Registration = () => {
                                 name='child.last_name'
                                 errors={errors}
                                 className='form2__field'
+                                classNameLabel='form2__label'
                             />
                         </div>
                         <div className='form2__row'>
@@ -206,6 +213,7 @@ const Registration = () => {
                                 name='child.date_of_birth'
                                 label='Дата рождения'
                                 defaultValue={new Date()}
+                                classNameLabel='form2__label'
                             />
                         </div>
                         <div className='form2__row'>
@@ -219,6 +227,7 @@ const Registration = () => {
                                 register={register}
                                 options={countiesOptions}
                                 className='form2__field'
+                                classNameLabel='form2__label'
                             />
                         </div>
                         {!!citiesOptions.length && (
@@ -233,6 +242,7 @@ const Registration = () => {
                                     register={register}
                                     options={citiesOptions}
                                     className='form2__field'
+                                    classNameLabel='form2__label'
                                 />
                             </div>
                         )}
