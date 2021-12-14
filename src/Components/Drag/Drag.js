@@ -18,7 +18,6 @@ const Drag = (props) => {
         <div
 
             className='position-absolute'
-            style={{ right: 0 }}
             ref={jitsiRef}
         >
             {children}
