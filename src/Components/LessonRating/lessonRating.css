@@ -1,0 +1,22 @@
+.star-radio {
+  display: none;
+}
+
+.rating-inner-container {
+  display: flex;
+  width: 192px;
+  justify-content: space-between;
+}
+.rating-outer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rating-comment {
+  margin-top: 24px;
+  border: 1px solid #a3b3cc;
+  border-radius: 12px;
+  width: 394px;
+  height: 172px;
+}
