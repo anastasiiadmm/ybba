@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import moment from 'moment';
 
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,19 +8,20 @@ import FormField from 'Components/FormField/FormField';
 import { updateUserPassword, userSelector } from 'redux/user/userSlice';
 import { authSelector } from 'redux/auth/authSlice';
 import { childSelector, getCitiesList, getCountriesList } from 'redux/child/childSlice';
-import { Russian } from 'assets/vendor/flatpickr/ru';
-import { namesOfMonths } from 'constants.js';
-import { momentDateToStr } from 'utils/date/dateUtils';
+import Field from 'Components/Field/Field';
+import { allRussianWardsAndHyphen } from 'regex/patterns/html';
 
 
 const ParentProfileForm = (props) => {
 
-    const { formData, setFormData, setCountry, setCity } = props
+    const { formData, errors, control, register, country } = props
     const initialPasswordData = { 'password': '', 'passwordRepeat': '' }
 
     const { cities, countries } = useSelector(childSelector)
     const { user } = useSelector(authSelector)
-    const { isPasswordUpdated, errors } = useSelector(userSelector)
+    const { isPasswordUpdated } = useSelector(userSelector)
+
+    const getCountryName = id => countries?.find(country => country.id === id)?.name
 
     const [passwordChanging, setPasswordChanging] = useState(false)
     const [countriesOptions, setCountriesOptions] = useState([])
@@ -32,21 +32,6 @@ const ParentProfileForm = (props) => {
 
     const isPasswordsEquals = (passwordData.password === passwordData.passwordRepeat) &&
         (passwordData.password && passwordData.passwordRepeat)
-
-    const inputChangeHandler = e => {
-        const newData = { ...formData, profile: { ...formData.profile, [e.target.name]: e.target.value } }
-        setFormData(newData)
-    }
-    const birthDateHandler = data => {
-        const newDate = momentDateToStr(data.toString())
-        const validDate = newDate === 'dd/mm/yyyy' ? '' : momentDateToStr(data.toString())
-        const newData = { ...formData, profile: { ...formData.profile, date_of_birth: validDate } }
-        setFormData(newData)
-    }
-    const phoneInputChangeHandler = number => {
-        const newData = { ...formData, profile: { ...formData.profile, phone_number: number } }
-        setFormData(newData)
-    }
 
     const editPasswordChangeHandler = () => {
         setPasswordData({ ...passwordData, password: '', passwordRepeat: '' })
@@ -68,7 +53,7 @@ const ParentProfileForm = (props) => {
     useEffect(() => {
         if (countries) {
             setCountriesOptions(countries?.map(country => {
-                return { value: country.id, label: country.name }
+                return { id: country.id, label: country.name }
             }))
         }
     }, [countries])
@@ -76,7 +61,7 @@ const ParentProfileForm = (props) => {
     useEffect(() => {
         if (cities) {
             setCitiesOptions(cities?.map(city => {
-                return { value: city.id, label: city.name }
+                return { id: city.id, label: city.name }
             }))
         }
     }, [cities])
@@ -86,100 +71,107 @@ const ParentProfileForm = (props) => {
     }, [dispatch])
 
     useEffect(() => {
-        if (formData.profile?.country) {
-            dispatch(getCitiesList(formData.profile?.country))
+        if (country && countriesOptions.find(c => c.id === country)?.label === 'Россия') {
+            dispatch(getCitiesList(country))
         }
-    }, [dispatch, formData.profile?.country])
+    }, [countriesOptions, country, dispatch])
 
     return (
         <>
             <div className='form__row form__row_flex'>
                 <div className='form__col2'>
-                    <FormField
+                    <Field
+                        id='parentProfileFirstName'
+                        control={control}
+                        register={register}
                         label='Имя'
                         type='text'
                         className='form__field'
-                        value={formData.profile.first_name}
-                        name='first_name'
-                        onChange={inputChangeHandler}
-                        errors={errors?.profile}
+                        name='profile.first_name'
+                        errors={errors}
+                        classNameLabel='form__label'
+                        pattern={allRussianWardsAndHyphen}
+                        required
+                        maxLength='50'
+                        tooltipTitle='Имя'
+                        tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
                     />
                 </div>
                 <div className='form__col2'>
-                    <FormField
+                    <Field
+                        id='parentProfileLastName'
+                        control={control}
+                        register={register}
                         label='Фамилия'
                         type='text'
                         className='form__field'
-                        value={formData.profile.last_name}
-                        name='last_name'
-                        onChange={inputChangeHandler}
-                        errors={errors?.profile}
+                        name='profile.last_name'
+                        errors={errors}
+                        classNameLabel='form__label'
                     />
                 </div>
             </div>
             <div className='form__row form__row_flex'>
                 <div className='form__col2'>
-                    <FormField
-                        configs={{
-                            locale: {
-                                ...Russian,
-                                months: {
-                                    ...Russian.months,
-                                    longhand: namesOfMonths
-                                }
-                            },
-                            firstDayOfWeek: 2,
-                            dateFormat: 'd/m/Y',
-                            enableTime: false,
-                            maxDate: momentDateToStr(moment())
-                        }}
-                        label='Дата'
-                        type='datepicker'
+                    <Field
+                        id='parentProfileDate'
+                        label='Дата рождения'
+                        type='date'
                         className='form__field'
-                        selected={formData.profile.date_of_birth}
-                        value={formData.profile.date_of_birth}
-                        name='date_of_birth'
-                        onChange={birthDateHandler}
-                        errors={errors?.profile}
+                        name='profile.date_of_birth'
+                        required
+                        control={control}
+                        register={register}
+                        mask='dd/mm/yyyy'
+                        errors={errors}
                         isClearable
+                        classNameLabel='form__label'
                     />
                 </div>
                 <div className='form__col2 form__label'>
-                    <FormField
+                    <Field
+                        id='parentProfilePhone'
                         label='Мобильный телефон'
                         type='phone'
                         className='form__field'
-                        value={formData.profile.phone_number}
-                        onChange={phoneInputChangeHandler}
-                        errors={errors?.profile}
+                        name='profile.phone_number'
+                        errors={errors}
+                        control={control}
+                        register={register}
                     />
                 </div>
             </div>
             {countriesOptions && citiesOptions && (
                 <div className='form__row form__row_flex'>
                     <div className='form__col2 form__label'>
-                        <FormField
-                            label='Страна проживания'
-                            type='select'
-                            name='country'
-                            options={countriesOptions}
-                            onChange={(event, newValue) => {
-                                setCountry(newValue)
-                            }}
-                            value={formData.profile.country}
-                        />
+                        {countriesOptions.length && (
+                            <Field
+                                label='Страна проживания'
+                                errors={errors}
+                                type='select'
+                                className='select form__field'
+                                name='profile.country'
+                                id='parentProfileCountry'
+                                options={countriesOptions}
+                                register={register}
+                                control={control}
+                                classNameLabel='form__label'
+                            />
+                        )}
                     </div>
-                    {countriesOptions.find(option => option.value === formData.profile.country)?.label === 'Россия' && (
+                    {getCountryName(country) === 'Россия' && citiesOptions.length && (
                         <div className='form__col2 form__label'>
-                            <FormField
+                            <Field
                                 label='Город проживания'
                                 type='select'
-                                name='country'
+                                errors={errors}
+                                className='select form__field'
+                                name='profile.city'
+                                id='parentProfileCity'
                                 options={citiesOptions}
-                                onChange={(event, newValue) => {
-                                    setCity(newValue)
-                                }}
-                                value={formData.profile.city}
+                                register={register}
+                                control={control}
+                                classNameLabel='form__label'
                             />
                         </div>
                     )}
@@ -191,7 +183,7 @@ const ParentProfileForm = (props) => {
                     <label htmlFor='email' className='form__label'>Email</label>
                     <div className='form__visible-block'>
                         <div className='form__visible-in'>
-                            <div className='form__text'>{formData.email}</div>
+                            <div className='form__text'>{formData?.email}</div>
                         </div>
                     </div>
                 </div>
