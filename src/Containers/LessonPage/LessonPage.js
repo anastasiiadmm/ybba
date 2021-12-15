@@ -430,7 +430,8 @@ const LessonPage = (props) => {
       )}
       {lesson &&
         lesson.status === lessonStatuses.finished &&
-        lesson.lesson_type != 'diagnostic' && (
+        lesson.lesson_type === 'diagnostic' &&
+        lesson.lesson_number != 2 && (
           <div className="w-100 h-100 d-flex align-items-center justify-content-center">
             <h1 className="text-white">Урок завершен</h1>
           </div>
@@ -438,12 +439,13 @@ const LessonPage = (props) => {
       {checkUserRole(userRoles.therapist) && (
         <div className="gamef__sidebar">
           <div className="gamef__sidebar-in">
-            {lesson && lesson.lesson_type === 'diagnostic' ? (
+            {lesson && lesson.lesson_type === 'diagnostic' && (
               <div style={{ overflow: 'scroll', position: 'relative' }}>
                 <ExaminationProtocol lesson={lesson} />
                 <button className="scroll_down_btn" onClick={scrollHandler} />
               </div>
-            ) : (
+            )}
+            {lesson && lesson.lesson_type != 'diagnostic' && (
               <Notes lessonId={lessonId} />
             )}
           </div>
