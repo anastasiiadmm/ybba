@@ -96,7 +96,6 @@ export const updateUserData = createAsyncThunk(
             const resp = await axiosApi.put(`/accounts/${data.userId}/update/`, userData)
             return resp.data
         } catch (e) {
-            console.log(e)
             let error = e?.response?.data
             if (!e.response) {
                 error = defaultError

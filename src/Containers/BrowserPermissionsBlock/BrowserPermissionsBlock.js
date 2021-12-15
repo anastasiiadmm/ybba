@@ -4,74 +4,77 @@ import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/Bro
 import { permissionStates } from 'constants.js';
 
 const BrowserPermissionsBlock = (props) => {
-  const { children } = props;
 
-  const [isCameraAllowed, setIsCameraAllowed] = useState(false);
-  const [isMicrophoneAllowed, setIsMicrophoneAllowed] = useState(false);
+    const {
+        children
+    } = props
 
-  const checkIsCameraAllowed = async () => {
-    await setIsCameraAllowed(true);
-  };
-  const checkIsCameraDenied = async () => {
-    await setIsCameraAllowed(false);
-  };
-  const checkIsCameraPrompt = async () => {
-    await checkCameraPermissions();
-  };
+    const [isCameraAllowed, setIsCameraAllowed] = useState(false)
+    const [isMicrophoneAllowed, setIsMicrophoneAllowed] = useState(false)
 
-  const checkIsMicrophoneAllowed = async () => {
-    await setIsMicrophoneAllowed(true);
-  };
-  const checkIsMicrophoneDenied = async () => {
-    await setIsMicrophoneAllowed(false);
-  };
-  const checkIsMicrophonePrompt = async () => {
-    await checkMicrophonePermissions();
-  };
+    const checkIsCameraAllowed = async () => {
+        await setIsCameraAllowed(true)
+    }
+    const checkIsCameraDenied = async () => {
+        await setIsCameraAllowed(false)
+    }
+    const checkIsCameraPrompt = () => {
+        setTimeout(async () => {
+            await checkCameraPermissions()
+        }, 1000)
+    }
 
-  const checkCameraPermissions = useCallback(async () => {
-    const cameraPermissions = await navigator.permissions.query({
-      name: 'camera',
-    });
+    const checkIsMicrophoneAllowed = async () => {
+        await setIsMicrophoneAllowed(true)
+    }
+    const checkIsMicrophoneDenied = async () => {
+        await setIsMicrophoneAllowed(false)
+    }
+    const checkIsMicrophonePrompt = () => {
+        setTimeout(async () => {
+            await checkMicrophonePermissions()
+        }, 1000)
+    }
 
-    const permissionStateMapping = {
-      [permissionStates.granted]: checkIsCameraAllowed,
-      [permissionStates.prompt]: checkIsCameraDenied,
-      [permissionStates.denied]: checkIsCameraPrompt,
-    };
+    const checkCameraPermissions = useCallback(async () => {
+        const cameraPermissions = await navigator.permissions.query({ name: 'camera' })
 
-    await permissionStateMapping[cameraPermissions.state]();
-  }, [checkIsCameraPrompt]);
+        const permissionStateMapping = {
+            [permissionStates.granted]: checkIsCameraAllowed,
+            [permissionStates.prompt]: checkIsCameraPrompt,
+            [permissionStates.denied]: checkIsCameraDenied
+        }
 
-  const checkMicrophonePermissions = useCallback(async () => {
-    const microphonePermissions = await navigator.permissions.query({
-      name: 'microphone',
-    });
+        await permissionStateMapping[cameraPermissions.state]()
+    }, [checkIsCameraPrompt])
 
-    const permissionStateMapping = {
-      [permissionStates.granted]: checkIsMicrophoneAllowed,
-      [permissionStates.prompt]: checkIsMicrophoneDenied,
-      [permissionStates.denied]: checkIsMicrophonePrompt,
-    };
+    const checkMicrophonePermissions = useCallback(async () => {
+        const microphonePermissions = await navigator.permissions.query({ name: 'microphone' })
 
-    await permissionStateMapping[microphonePermissions.state]();
-  }, [checkIsMicrophonePrompt]);
+        const permissionStateMapping = {
+            [permissionStates.granted]: checkIsMicrophoneAllowed,
+            [permissionStates.prompt]: checkIsMicrophonePrompt,
+            [permissionStates.denied]: checkIsMicrophoneDenied
+        }
 
-  // useEffect(() => {
-  //     checkCameraPermissions()
-  //     checkMicrophonePermissions()
-  // }, [checkCameraPermissions, checkMicrophonePermissions, isCameraAllowed, isMicrophoneAllowed])
+        await permissionStateMapping[microphonePermissions.state]()
+    }, [checkIsMicrophonePrompt])
 
-  const context = {
-    isCameraAllowed,
-    isMicrophoneAllowed,
-  };
+    useEffect(() => {
+        checkCameraPermissions()
+        checkMicrophonePermissions()
+    }, [checkCameraPermissions, checkMicrophonePermissions, isCameraAllowed, isMicrophoneAllowed])
 
-  return (
-    <BrowserPermissionsContext.Provider value={context}>
-      {children}
-    </BrowserPermissionsContext.Provider>
-  );
+    const context = {
+        isCameraAllowed,
+        isMicrophoneAllowed,
+    }
+
+    return (
+        <BrowserPermissionsContext.Provider value={context}>
+            {children}
+        </BrowserPermissionsContext.Provider>
+    );
 };
 
 export default BrowserPermissionsBlock;
