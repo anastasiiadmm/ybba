@@ -4,8 +4,15 @@ import { useFormContext } from 'react-hook-form';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 
 function ProtocolTextField(props) {
-  const { name, onChange, label, placeholder, withBg, validationErrorMessage } =
-    props;
+  const {
+    name,
+    onChange,
+    label,
+    placeholder,
+    validationErrorMessage,
+    disabled,
+    withBG,
+  } = props;
 
   const { register } = useFormContext();
 
@@ -15,12 +22,15 @@ function ProtocolTextField(props) {
       : { ...register(name) }),
   };
 
+  const textFieldClassName = withBG ? 'protocol__field bg' : 'protocol__field';
+
   return (
     <>
       <label className="protocol__lbl">{label}</label>
       <input
+        disabled={disabled}
         type="text"
-        className={addClasses('protocol__field', {
+        className={addClasses(textFieldClassName, {
           validation_message:
             validationErrorMessage != null
               ? validationErrorMessage.length
@@ -46,6 +56,8 @@ ProtocolTextField.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   validationErrorMessage: PropTypes.string,
+  disabled: PropTypes.bool,
+  withBG: PropTypes.bool,
 };
 
 export default ProtocolTextField;

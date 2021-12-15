@@ -103,7 +103,7 @@ mainBlock.content = [
 
   mainBlock.radioOrCheckFieldObject(
     mainBlock.fieldTypes.radio,
-    'expiratory_force',
+    'exhalation_force',
     'Сила выдоха',
     ['Слабая', 'Сильная']
   ),

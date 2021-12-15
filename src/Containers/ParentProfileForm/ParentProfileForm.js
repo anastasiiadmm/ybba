@@ -11,8 +11,8 @@ import { childSelector, getCitiesList, getCountriesList } from 'redux/child/chil
 import Field from 'Components/Field/Field';
 import { allRussianWardsAndHyphen } from 'regex/patterns/html';
 
-
 const ParentProfileForm = (props) => {
+  const { formData, setFormData, setCountry, setCity } = props;
 
     const { formData, errors, control, register, country } = props
     const initialPasswordData = { 'password': '', 'passwordRepeat': '' }
@@ -23,15 +23,17 @@ const ParentProfileForm = (props) => {
 
     const getCountryName = id => countries?.find(country => country.id === id)?.name
 
-    const [passwordChanging, setPasswordChanging] = useState(false)
-    const [countriesOptions, setCountriesOptions] = useState([])
-    const [citiesOptions, setCitiesOptions] = useState([])
-    const [passwordData, setPasswordData] = useState(initialPasswordData)
+  const [passwordChanging, setPasswordChanging] = useState(false);
+  const [countriesOptions, setCountriesOptions] = useState([]);
+  const [citiesOptions, setCitiesOptions] = useState([]);
+  const [passwordData, setPasswordData] = useState(initialPasswordData);
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    const isPasswordsEquals = (passwordData.password === passwordData.passwordRepeat) &&
-        (passwordData.password && passwordData.passwordRepeat)
+  const isPasswordsEquals =
+    passwordData.password === passwordData.passwordRepeat &&
+    passwordData.password &&
+    passwordData.passwordRepeat;
 
     const editPasswordChangeHandler = () => {
         setPasswordData({ ...passwordData, password: '', passwordRepeat: '' })
@@ -41,14 +43,17 @@ const ParentProfileForm = (props) => {
         setPasswordData({ ...passwordData, [e.target.name]: e.target.value })
     }
 
-    const editPassword = async () => {
-        const submitData = { data: { password: passwordData.password }, userId: user.id }
-        await dispatch(updateUserPassword(submitData))
-    }
+  const editPassword = async () => {
+    const submitData = {
+      data: { password: passwordData.password },
+      userId: user.id,
+    };
+    await dispatch(updateUserPassword(submitData));
+  };
 
-    useEffect(() => {
-        setPasswordChanging(false)
-    }, [isPasswordUpdated])
+  useEffect(() => {
+    setPasswordChanging(false);
+  }, [isPasswordUpdated]);
 
     useEffect(() => {
         if (countries) {
@@ -66,9 +71,11 @@ const ParentProfileForm = (props) => {
         }
     }, [cities])
 
-    useEffect(() => {
-        dispatch(getCountriesList())
-    }, [dispatch])
+  useEffect(() => {
+    if (formData.profile?.country) {
+      dispatch(getCitiesList(formData.profile?.country));
+    }
+  }, [dispatch, formData.profile?.country]);
 
     useEffect(() => {
         if (country && countriesOptions.find(c => c.id === country)?.label === 'Россия') {
@@ -187,66 +194,41 @@ const ParentProfileForm = (props) => {
                         </div>
                     </div>
                 </div>
+              </div>
+              {passwordData.passwordRepeat &&
+                passwordData.password &&
+                !isPasswordsEquals && (
+                  <p className="form__error-text">Пароли не совпадают</p>
+                )}
+              <div>
+                {isPasswordsEquals && (
+                  <button
+                    type="button"
+                    className="btn-out"
+                    onClick={editPassword}
+                  >
+                    Сохранить
+                  </button>
+                )}{' '}
+                <button
+                  type="button"
+                  className="btn-cancel"
+                  onClick={editPasswordChangeHandler}
+                >
+                  Отмена
+                </button>
+              </div>
             </div>
-            <div className='form__row form__row_flex'>
-                <div className='form__col2 is-hidden'>
-                    <label htmlFor='passw' className='form__label'>Пароль</label>
-                    {!passwordChanging && <div className='form__visible-block'>
-                        <div className='form__visible-in'>
-                            <div className='form__text'>**********</div>
-                            <button type='button' className='btn-out form__show-field'
-                                    onClick={editPasswordChangeHandler}>Сменить пароль
-                            </button>
-                        </div>
-                    </div>}
-                    {passwordChanging && <div className='form__hidden-in'>
-                        <div className='dflex'>
-                            <div className='form__hidden-col'>
-                                <FormField
-                                    label='Введите пароль'
-                                    type='password'
-                                    className='form__field form__field_wfix-passw'
-                                    value={passwordData.password}
-                                    onChange={passwordInputChangeHandler}
-                                    name='password'
-                                    errors={errors}
-                                />
-                            </div>
-                            <div className='form__hidden-col'>
-                                <FormField
-                                    label='Повторите пароль'
-                                    type='password'
-                                    className='form__field form__field_wfix-passw'
-                                    value={passwordData.passwordRepeat}
-                                    onChange={passwordInputChangeHandler}
-                                    name='passwordRepeat'
-                                />
-                            </div>
-                        </div>
-                        {passwordData.passwordRepeat && passwordData.password && !isPasswordsEquals && (
-                            <p className='form__error-text'>Пароли не совпадают</p>
-                        )}
-                        <div>
-                            {isPasswordsEquals && <button
-                                type='button'
-                                className='btn-out'
-                                onClick={editPassword}
-                            >
-                                Сохранить
-                            </button>}{' '}
-                            <button type='button' className='btn-cancel' onClick={editPasswordChangeHandler}>Отмена
-                            </button>
-                        </div>
-                    </div>}
-                </div>
-            </div>
-        </>
-    );
+          )}
+        </div>
+      </div>
+    </>
+  );
 };
 
 ParentProfileForm.propTypes = {
-    formData: PropTypes.object,
-    setFormData: PropTypes.func
-}
+  formData: PropTypes.object,
+  setFormData: PropTypes.func,
+};
 
 export default ParentProfileForm;

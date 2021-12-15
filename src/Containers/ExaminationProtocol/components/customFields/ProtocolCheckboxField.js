@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 
 function ProtocolCheckboxField(props) {
-  const { name, onChange, label, checked } = props;
+  const { name, onChange, label, disabled } = props;
 
   const { register, getValues } = useFormContext();
 
@@ -20,7 +20,7 @@ function ProtocolCheckboxField(props) {
           name={name}
           {...onChangeHandler}
           checked={getValues(name)}
-          // value={getValues(name)}
+          disabled={disabled}
         />
         <span>{label}</span>
       </label>
@@ -32,6 +32,7 @@ ProtocolCheckboxField.propTypes = {
   name: PropTypes.string,
   onChange: PropTypes.func,
   label: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default ProtocolCheckboxField;
