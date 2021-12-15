@@ -48,11 +48,9 @@ import { checkEnv } from 'utils/common/commonUtils.js';
 import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
 import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js';
 import config from 'config.js';
-import ExaminationProtocol from 'Containers/ExaminationProtocol/ExaminationProtocol.js';
-import showModal from 'Components/LessonRating/LessonRating';
 
 import 'Containers/LessonPage/lessonPage.css';
-import SpeechCard from 'Containers/NewSpeechCard/SpeechCard';
+import ExaminationProtocol from 'Containers/ExaminationProtocol/ExaminationProtocol.js';
 
 const LessonPage = (props) => {
   const { isMicrophoneAllowed, isCameraAllowed } = useContext(
@@ -71,15 +69,8 @@ const LessonPage = (props) => {
   const { lessonId } = props.match.params;
 
   const [activeGame, setActiveGame] = useState(null);
-
   const [unityContext, setUnityContext] = useState(null);
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
-
-  const scrollHandler = (e) => {
-    return document
-      .getElementById('finish-protocol')
-      .scrollIntoView({ behavior: 'smooth' });
-  };
 
   const onChangeActiveGame = (game) => {
     if (game.id !== activeGame.id) {
@@ -213,25 +204,12 @@ const LessonPage = (props) => {
 
   useEffect(() => {
     if (lesson) {
-      const active = lesson.games.find(
+      const active = lesson?.games?.find(
         (game) => game.id === lesson.active_game_id
       );
       setActiveGame(active);
     }
   }, [lesson]);
-
-  useEffect(() => {
-    if (lessonFinished) {
-      if (checkUserRole(userRoles.parent)) {
-        history.push('/');
-        sendChildrenQuestionnaireNotification();
-      }
-      if (checkUserRole(userRoles.therapist)) {
-        history.push('/');
-        sendChildrenQuestionnaireNotification();
-      }
-    }
-  }, [lessonId, sendJsonToGameWithTimeout, unityContext]);
 
   useEffect(() => {
     if (unityContext) {
@@ -271,6 +249,12 @@ const LessonPage = (props) => {
     );
   };
 
+  const scrollHandler = (e) => {
+    return document
+      .getElementById('finish-protocol')
+      .scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
     startSTRecording();
 
@@ -287,30 +271,23 @@ const LessonPage = (props) => {
 
   return (
     <div className="gamef position-relative overflow-hidden">
-      {lesson && lesson.status !== lessonStatuses.finished && (
-        <header
-          className={addClasses('gamef__head position-relative', {
-            gamef__head_teacher: checkUserRole(userRoles.therapist),
-            gamef__head_child: checkUserRole(userRoles.parent),
-          })}
-        >
-          {((lesson?.status !== lessonStatuses.finished &&
-            checkUserRole(userRoles.parent)) ||
-            checkUserRole(userRoles.therapist)) &&
-            lesson?.time_slot && (
-              <Timer
-                startTime={lesson.time_slot.start_time}
-                endTime={lesson.time_slot.end_time}
-              />
-            )}
-          <JitsiBlock>{webcamComponent}</JitsiBlock>
-        </header>
-      )}
-      {lesson &&
-        lesson.status === lessonStatuses.finished &&
-        lesson.lesson_number === 2 && (
-          <SpeechCard childId={lesson?.student.id} />
-        )}
+      <header
+        className={addClasses('gamef__head position-relative', {
+          gamef__head_teacher: checkUserRole(userRoles.therapist),
+          gamef__head_child: checkUserRole(userRoles.parent),
+        })}
+      >
+        {((lesson?.status !== lessonStatuses.finished &&
+          checkUserRole(userRoles.parent)) ||
+          checkUserRole(userRoles.therapist)) &&
+          lesson?.time_slot && (
+            <Timer
+              startTime={lesson.time_slot.start_time}
+              endTime={lesson.time_slot.end_time}
+            />
+          )}
+        <JitsiBlock>{webcamComponent}</JitsiBlock>
+      </header>
       {lesson && lesson.status !== lessonStatuses.finished && (
         <>
           <main
@@ -443,19 +420,17 @@ const LessonPage = (props) => {
           )}
         </>
       )}
-      {lesson &&
-        lesson.status === lessonStatuses.finished &&
-        lesson.lesson_type != 'diagnostic' && (
-          <div className="w-100 h-100 d-flex align-items-center justify-content-center">
-            <h1 className="text-white">Урок завершен</h1>
-          </div>
-        )}
+      {lesson && lesson.status === lessonStatuses.finished && (
+        <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+          <h1 className="text-white">Урок завершен</h1>
+        </div>
+      )}
       {checkUserRole(userRoles.therapist) && (
         <div className="gamef__sidebar">
           <div className="gamef__sidebar-in">
             {lesson && lesson.lesson_type === 'diagnostic' ? (
               <div style={{ overflow: 'scroll', position: 'relative' }}>
-                <ExaminationProtocol lesson={lesson} />
+                <ExaminationProtocol />
                 <button className="scroll_down_btn" onClick={scrollHandler} />
               </div>
             ) : (

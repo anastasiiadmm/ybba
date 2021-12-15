@@ -39,9 +39,9 @@ const ParentProfileData = (props) => {
                 <div className='cabinet__col'>
                     <dl className='cabinet__info'>
                         <dt>Фамилия</dt>
-                        <dd>{user.profile.last_name || 'Фамилия не указана'}</dd>
+                        <dd>{user.profile?.last_name || 'Фамилия не указана'}</dd>
                         <dt>Мобильный телефон</dt>
-                        <dd>{user.profile.phone_number || 'Номер телефона не указан'}</dd>
+                        <dd>{user.profile?.phone_number || 'Номер телефона не указан'}</dd>
                         <dt>Город проживания</dt>
                         <dd>{getCityName(user?.profile?.city) || 'Город проживания не указан'}</dd>
                     </dl>

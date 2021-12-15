@@ -13,11 +13,11 @@ import { isValidDate } from 'utils/date/dateUtils.js';
 
 const DateField = (props) => {
 
-    const { id, name, control, errors, className, label } = props
+    const { id, name, control, errors, className, label, classNameLabel } = props
 
     return (
         <>
-            <label htmlFor={id} className='form2__label'>{label}</label>
+            <label htmlFor={id} className={`${classNameLabel}`}>{label}</label>
             <Controller
                 name={name}
                 control={control}
@@ -33,7 +33,9 @@ const DateField = (props) => {
                                 mask='__.__.____'
                                 value={field.value}
                                 onChange={
-                                    (newValue) => field.onChange(isValidDate(newValue) ? newValue : null)}
+                                    (newValue) => {
+                                        return field.onChange(isValidDate(newValue) ? newValue : null)}
+                                }
                                 renderInput={
                                     (params) => {
                                         return <input

@@ -7,28 +7,40 @@ import { useHistory } from 'react-router';
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import ParentProfileForm from 'Containers/ParentProfileForm/ParentProfileForm';
+import { userSelector, clearUserState } from 'redux/user/userSlice.js';
 import Button from 'Components/Button/Button';
-import { authSelector, updateUserData, clearAuthState } from 'redux/auth/authSlice.js';
+import { authSelector, updateUserData } from 'redux/auth/authSlice.js';
 
 
 const ParentProfileEdit = () => {
 
-    const { user, loading, success } = useSelector(authSelector)
+    const { loading, success } = useSelector(userSelector)
+    const { user } = useSelector(authSelector)
 
-    const [formData, setFormData] = useState({ ...user })
+    const initialFormData = {
+        email: user?.email,
+        profile: {
+            first_name: user?.profile?.first_name || '',
+            last_name: user?.profile?.last_name || '',
+            date_of_birth: user?.profile?.date_of_birth || '',
+            phone_number: user?.profile?.phone_number || '',
+            country: user?.profile?.country || '',
+            city: user?.profile?.city || ''
+        }
+    }
+
+    const [formData, setFormData] = useState(initialFormData)
 
     const history = useHistory()
     const dispatch = useDispatch()
 
     const setCountry = async data => {
-        if (data) {
-            await setFormData({ ...formData,
-                profile: {
-                    ...formData.profile,
-                    country: data.value
-                }
-            })
-        }
+        await setFormData({ ...formData,
+            profile: {
+                ...formData.profile,
+                country: data.value
+            }
+        })
     }
 
     const setCity = data => {
@@ -44,16 +56,16 @@ const ParentProfileEdit = () => {
         const submitData = { data: formData, userId: user.id }
         const userProfile = submitData.data.profile
         if (!userProfile.phone_number) {
-            delete submitData.data.profile.phone_number
+            delete submitData.data.profile?.phone_number
         }
         if (!userProfile.date_of_birth) {
-            delete submitData.data.profile.date_of_birth
+            delete submitData.data.profile?.date_of_birth
         }
         if(!userProfile.country) {
-            delete submitData.data.profile.country
+            delete submitData.data.profile?.country
         }
         if(!userProfile.city) {
-            delete submitData.data.profile.city
+            delete submitData.data.profile?.city
         }
         dispatch(updateUserData(submitData))
     }
@@ -66,7 +78,7 @@ const ParentProfileEdit = () => {
     }, [history, loading, success])
 
     useEffect(() => {
-        dispatch(clearAuthState())
+        dispatch(clearUserState())
         // eslint-disable-next-line
     }, [])
 
