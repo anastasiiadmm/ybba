@@ -140,7 +140,7 @@ const ChildrenForm = (props) => {
               />
             )}
           </div>
-          {getCountryName(country) === 'Россия' && (
+          {getCountryName(country) === 'Россия' && citiesOptions.length && (
             <div className="form__col2 form__label">
               <Field
                 label="Город проживания"
@@ -151,43 +151,9 @@ const ChildrenForm = (props) => {
                 id="childProfileCity"
                 options={citiesOptions}
                 register={register}
-                classNameLabel='form__label'
-            />
-        </div>
-        {countriesOptions && citiesOptions && (
-            <div className='form__row form__row_flex'>
-                <div className='form__col2 form__label'>
-                    {countriesOptions.length && (
-                        <Field
-                            label='Страна проживания'
-                            errors={errors}
-                            type='select'
-                            className='classes__select select form__field'
-                            name='country'
-                            id='childProfileCountry'
-                            options={countriesOptions}
-                            register={register}
-                            control={control}
-                            classNameLabel='form__label'
-                        />
-                    )}
-                </div>
-                {getCountryName(country) === 'Россия' && citiesOptions.length && (
-                    <div className='form__col2 form__label'>
-                        <Field
-                            label='Город проживания'
-                            type='select'
-                            errors={errors}
-                            className='classes__select select form__field'
-                            name='city'
-                            id='childProfileCity'
-                            options={citiesOptions}
-                            register={register}
-                            control={control}
-                            classNameLabel='form__label'
-                        />
-                    </div>
-                )}
+                control={control}
+                classNameLabel="form__label"
+              />
             </div>
           )}
         </div>
