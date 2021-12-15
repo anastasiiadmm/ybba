@@ -1,6 +1,6 @@
 import { SpeechCardBlockContent } from '../blockContentCreation';
 
-const mainBlock = new SpeechCardBlockContent('self_image', []);
+const mainBlock = new SpeechCardBlockContent('', []);
 
 mainBlock.content = [
   mainBlock.textAreaFieldObject('image_i', 'Образ «Я»'),

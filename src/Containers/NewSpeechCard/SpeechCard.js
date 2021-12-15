@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import PropTypes, { resetWarningCache } from 'prop-types';
 import 'Containers/NewSpeechCard/speechcard.css';
 
 import blockContent from './blockContent/blockContent';
@@ -9,26 +9,87 @@ import CustomFormProvider from 'Components/CustomFormProvider/CustomFormProvider
 import SpeechCardBlock from './components/SpeechCardBlock';
 import SpeechCardBlockBox from './components/SpeechCardBlockBox';
 import SpeechCardTextField from './components/customFields/SpeechCardTextField';
+import { useDispatch, useSelector } from 'react-redux';
+
+import speechCardSchema from 'utils/formValidationSchemas/speechCardSchema';
+
+import {
+  getSpeechCard,
+  surveysSelector,
+  updateSpeechCard,
+} from 'redux/surveys/surveysSlice';
+import dummyData from './dummyData';
 
 function SpeechCard(props) {
+  const dispatch = useDispatch();
+  const [defaultData, setDefaultData] = useState(null);
+
   const formMethods = useForm({
     mode: 'onChange',
+    defaultValues: defaultData,
+    resolver: yupResolver(speechCardSchema),
   });
 
-  const { getValues } = formMethods;
+  const { childId } = props;
+  const { speechCard } = useSelector(surveysSelector);
+
+  const { getValues, reset, handleSubmit } = formMethods;
+
   const inputChangeHandler = (e) => {
-    console.log(getValues());
-    // console.log(e.target.name);
+    setDefaultData({ ...defaultData, [e.target.name]: e.target.value });
   };
+
+  const submitHandler = (data, e) => {
+    e.preventDefault();
+    console.log({ STATUS: 'SUCCESS' });
+    console.log({ DATA: data });
+    const { parent, ...rest } = defaultData;
+    dispatch(
+      updateSpeechCard({
+        speechCardId: speechCard.id,
+        speechCardData: rest,
+      })
+    );
+    return console.log('checked');
+  };
+  const errorSubmitHandler = (errors, e) => {
+    e.preventDefault();
+    // setValidationErrors(errors);
+
+    console.log({ ERRORS: errors });
+    // console.log(validationErrors[name]);
+    return console.log('not checked');
+  };
+
+  useEffect(() => {
+    if (childId) {
+      dispatch(getSpeechCard(childId));
+    }
+  }, [childId]);
+
+  useEffect(() => {
+    if (speechCard) {
+      const temporarySolution = {
+        understanding_the_text: 'temporarySolution',
+        reproduction_of_text: 'temporarySolution',
+        level_of_formation_of_phonemic_perception: 'temporarySolution',
+        inflectional_skills_and_abilities: 'temporarySolution',
+      };
+      let unchangedCard = { ...temporarySolution, ...speechCard };
+      reset(unchangedCard);
+      setDefaultData(unchangedCard);
+      console.log({ SPEECH: unchangedCard });
+    }
+  }, [speechCard]);
+
   return (
-    <div style={{ width: '65.3%' }}>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
-        rel="stylesheet"
-      />
+    // <div style={{ width: '65.3%' }}>
+    <div
+      style={{ overflowY: 'scroll', overflowX: 'hidden', height: 'inherit' }}
+    >
       <div className="speech-card-form">
         <CustomFormProvider customMethods={formMethods}>
-          <form action="#">
+          <form onSubmit={handleSubmit(submitHandler, errorSubmitHandler)}>
             <div className="speach-card-form__timer">
               До заверешения заполнения речевой карты 19:24
             </div>
@@ -104,9 +165,38 @@ function SpeechCard(props) {
               />
               <SpeechCardBlock
                 blockTitle="4. Речеязыковая компетенция"
-                listOfFields={blockContent.selfImage}
                 onChange={inputChangeHandler}
-              />
+              >
+                <SpeechCardBlockBox
+                  listOfFields={
+                    blockContent.speechAndLanguageCompetence
+                      .speech_comprehension_level
+                  }
+                  boxTitle="4.1. Уровень понимания речи"
+                />
+                <SpeechCardBlockBox
+                  listOfFields={
+                    blockContent.speechAndLanguageCompetence
+                      .vocabulary_formation_level
+                  }
+                  boxTitle="4.2. Уровень сформированности лексикона "
+                />
+                <SpeechCardBlockBox
+                  listOfFields={
+                    blockContent.speechAndLanguageCompetence
+                      .grammatical_competence_formation_level
+                  }
+                  boxTitle="4.3. Уровень сформированности грамматической компетенции "
+                />
+
+                <SpeechCardBlockBox
+                  listOfFields={
+                    blockContent.speechAndLanguageCompetence
+                      .phonetic_phonological_competence_formation_level
+                  }
+                  boxTitle="4.4. Уровень сформированности фонетико-фонологической компетенции "
+                />
+              </SpeechCardBlock>
               <SpeechCardBlock
                 blockTitle="5. Понимание и самостоятельное продуцирование/репродуцирование текста повествовательного характера в соответствии с предложенным сюжетом (рассказ/пересказ) "
                 listOfFields={blockContent.storyRetelling}
@@ -180,21 +270,23 @@ function SpeechCard(props) {
             <hr className="speech-card-form__line" />
             <div className="speech-card-form__section">
               <SpeechCardBlock
-                title="Логопедическое заключение"
+                title="Логопедическое заключение ---> заполняется логопедом самостоятельно"
                 onChange={inputChangeHandler}
               >
                 <SpeechCardTextField
                   onChange={inputChangeHandler}
                   type="textarea"
                   className="speech-card-form__area speech-card-form__area_md2"
-                  name="conclusion"
+                  name="logopedic_conclusion"
                 />
-                <h1 className="speech-card-form__title">Рекомендации</h1>
+                <h1 className="speech-card-form__title">
+                  Рекомендации --- заполняется логопедом самостоятельно
+                </h1>
                 <SpeechCardTextField
                   onChange={inputChangeHandler}
                   type="textarea"
                   className="speech-card-form__area speech-card-form__area_bigX"
-                  name="recommendations"
+                  name="recommendation"
                 />
               </SpeechCardBlock>
             </div>

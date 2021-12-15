@@ -2,7 +2,7 @@ import { SpeechCardBlockContent } from '../blockContentCreation';
 
 // Main Block
 
-const mainBlock = new SpeechCardBlockContent('motorDevelopment', []);
+const mainBlock = new SpeechCardBlockContent('', []);
 
 mainBlock.content = [
   mainBlock.textAreaFieldObject(
@@ -29,12 +29,15 @@ mainBlock.content = [
 
 // Block 1
 const motor_functions_of_the_hands_and_fingers = new SpeechCardBlockContent(
-  `${mainBlock.name}.motor_functions_of_hands_and_fingers`,
+  '',
   []
 );
 
 motor_functions_of_the_hands_and_fingers.content = [
-  motor_functions_of_the_hands_and_fingers.textAreaFieldObject(null, ''),
+  motor_functions_of_the_hands_and_fingers.textAreaFieldObject(
+    'motor_functions_of_hands_and_fingers',
+    ''
+  ),
 ];
 
 export const motorDevelopment = {

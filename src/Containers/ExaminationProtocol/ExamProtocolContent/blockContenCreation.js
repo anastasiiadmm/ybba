@@ -11,6 +11,7 @@ export const fieldTypes = {
   checkbox: 'checkbox',
   checkboxWithText: 'checkboxWithText',
   par: 'par',
+  question_label: 'questionLabel',
 };
 
 export class BlockContent {

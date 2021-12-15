@@ -4,8 +4,15 @@ import { useFormContext } from 'react-hook-form';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 
 function ProtocolRadioField(props) {
-  const { name, onChange, label, checked, value, validationErrorMessage } =
-    props;
+  const {
+    name,
+    onChange,
+    label,
+    checked,
+    value,
+    validationErrorMessage,
+    disabled,
+  } = props;
 
   const { register, getValues } = useFormContext();
 
@@ -35,6 +42,7 @@ function ProtocolRadioField(props) {
         })}
       >
         <input
+          disabled={disabled}
           type="radio"
           name={name}
           value={`${value}`.toLowerCase()}
@@ -55,6 +63,7 @@ ProtocolRadioField.propTypes = {
   checked: PropTypes.bool,
   value: PropTypes.string,
   validationErrorMessage: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 export default ProtocolRadioField;

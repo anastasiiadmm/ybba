@@ -9,18 +9,7 @@ const INITIAL_STATE = {
   protocol: null,
   speechCard: null,
   errors: null,
-  validationErrors: null,
 };
-
-const PROTOCOL_VALIDATION_ERRORS = 'PROTOCOL_VALIDATION_ERRORS';
-export const setProtocolErrors = createAction(
-  'PROTOCOL_VALIDATION_ERRORS',
-  (payload) => {
-    return {
-      payload: payload,
-    };
-  }
-);
 
 export const getProtocol = createAsyncThunk(
   `${nameSpace}/getProtocol`,
@@ -92,10 +81,6 @@ const protocolSlice = createSlice({
       state.loading = false;
       state.success = false;
       state.errors = payload;
-    },
-
-    [PROTOCOL_VALIDATION_ERRORS]: (state, { payload }) => {
-      state.validationErrors = payload;
     },
   },
 });

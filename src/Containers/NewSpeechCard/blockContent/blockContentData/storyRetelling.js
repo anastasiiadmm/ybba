@@ -1,6 +1,6 @@
 import { SpeechCardBlockContent } from '../blockContentCreation';
 
-const mainBlock = new SpeechCardBlockContent('story_retelling', []);
+const mainBlock = new SpeechCardBlockContent('', []);
 
 mainBlock.content = [
   mainBlock.textAreaFieldObject(

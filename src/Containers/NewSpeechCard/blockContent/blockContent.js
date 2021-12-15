@@ -7,6 +7,7 @@ import { psychologicalBasisOfSpeech } from './blockContentData/psychologicalBasi
 import { speechAndLanguageCompetence } from './blockContentData/speechAndLanguageCompetence';
 import { stateOfTheSpeechApparatus } from './blockContentData/stateOfTheSpeechApparatus';
 import { storyRetelling } from './blockContentData/storyRetelling';
+import { recommendations } from './blockContentData/recommendations';
 
 export default {
   parentBlock,

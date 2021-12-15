@@ -47,6 +47,7 @@ SpeechCardBlock.propTypes = {
   blockTitle: PropTypes.string,
   listOfFields: PropTypes.array,
   onChange: PropTypes.func,
+  children: PropTypes.element,
 };
 
 export default SpeechCardBlock;

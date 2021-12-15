@@ -42,6 +42,8 @@ function ProtocolBlock(props) {
     placeholder,
     secondPlaceholder,
     validationErrors,
+    disabled,
+    withBG,
   } = props;
 
   const submitValidation = (name, errors) => {
@@ -80,7 +82,10 @@ function ProtocolBlock(props) {
   };
 
   return (
-    <div className="protocol__block">
+    <div
+      className="protocol__block"
+      style={disabled ? { backgroundColor: '#d9d9d9' } : {}}
+    >
       {title && <h3 className="protocol__title">{title}</h3>}
       {titleBlock && (
         <p className="protocol__title-block">
@@ -102,12 +107,16 @@ function ProtocolBlock(props) {
             [fieldTypes.par]: (
               <p className="protocol__box-title">{field.text}</p>
             ),
+            [fieldTypes.question_label]: (
+              <p className="protocol__qu protocol__qu_lbl">{field.text}</p>
+            ),
             [fieldTypes.text]: (
               <ProtocolRow customStyle="protocol__row">
                 <ProtocolTextField
                   type="text"
                   label={field.label}
                   name={field.name}
+                  disabled={disabled}
                   placeholder={placeholder}
                   onChange={inputChangeHandler}
                   validationErrorMessage={
@@ -115,12 +124,14 @@ function ProtocolBlock(props) {
                       ? errorMessage(field.name).message
                       : null
                   }
+                  withBG={withBG}
                 />
               </ProtocolRow>
             ),
             [fieldTypes.textarea]: (
               <ProtocolRow customStyle="protocol__row">
                 <ProtocolTextAreaField
+                  disabled={disabled}
                   type="textarea"
                   label={field.label}
                   name={field.name}
@@ -133,6 +144,7 @@ function ProtocolBlock(props) {
                       ? errorMessage(field.name).message
                       : null
                   }
+                  withBG={withBG}
                 />
               </ProtocolRow>
             ),
@@ -150,6 +162,7 @@ function ProtocolBlock(props) {
                     field.options.map((option, index) => {
                       return option.withText ? (
                         <ProtocolRadioWithText
+                          disabled={disabled}
                           name={field.name}
                           onChange={inputChangeHandler}
                           label={option.radioText}
@@ -157,6 +170,7 @@ function ProtocolBlock(props) {
                         />
                       ) : (
                         <ProtocolRadioField
+                          disabled={disabled}
                           name={field.name}
                           onChange={inputChangeHandler}
                           label={option.label ? option.label : option}
@@ -195,6 +209,7 @@ function ProtocolBlock(props) {
                           radioGroup.options.map((option) => {
                             return (
                               <ProtocolRadioField
+                                disabled={disabled}
                                 type="protocolRadio"
                                 name={radioGroup.name}
                                 onChange={inputChangeHandler}
@@ -214,6 +229,7 @@ function ProtocolBlock(props) {
                   {field.order}) {field.question}
                 </p>
                 <ProtocolSwitchField
+                  disabled={disabled}
                   name={field.name}
                   onChange={inputChangeHandler}
                 />
@@ -226,12 +242,14 @@ function ProtocolBlock(props) {
                     return (
                       <div className="protocol__col">
                         <ProtocolTextField
+                          disabled={disabled}
                           key={inputField.label}
                           type="text"
                           label={inputField.label}
                           name={inputField.name}
                           placeholder={placeholder}
                           onChange={inputChangeHandler}
+                          withBG={withBG}
                         />
                       </div>
                     );
@@ -252,6 +270,7 @@ function ProtocolBlock(props) {
                     field.options.map((option, index) => {
                       return option.withText ? (
                         <ProtocolCheckboxWithText
+                          disabled={disabled}
                           name={
                             option.name
                               ? `${field.name}${option.name}`
@@ -262,6 +281,7 @@ function ProtocolBlock(props) {
                         />
                       ) : (
                         <ProtocolCheckboxField
+                          disabled={disabled}
                           name={
                             option.name
                               ? `${field.name}${option.name}`
@@ -297,6 +317,8 @@ ProtocolBlock.propTypes = {
   description: PropTypes.string,
   validationErrors: PropTypes.string,
   children: PropTypes.element,
+  disabled: PropTypes.bool,
+  withBG: PropTypes.bool,
 };
 
 export default ProtocolBlock;

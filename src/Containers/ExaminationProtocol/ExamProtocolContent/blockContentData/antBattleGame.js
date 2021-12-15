@@ -31,7 +31,7 @@ reviewBlock.content = [
   ]),
   reviewBlock.radioOrCheckFieldObject(
     reviewBlock.fieldTypes.radio,
-    'pace_of_movement',
+    'pace_of_the_movements',
     'Темп выполнения движений:',
     [
       'Замедленный темп выполнения движений',

@@ -1,29 +1,23 @@
 import { SpeechCardBlockContent } from '../blockContentCreation';
 
 // Block 1
-const speechComprehensionLevel = new SpeechCardBlockContent(
-  'speechAndLanguageCompetence.speech_comprehension_level',
-  []
-);
+const speechComprehensionLevel = new SpeechCardBlockContent('', []);
 
 speechComprehensionLevel.content = [
-  speechComprehensionLevel.textFieldObject(null, ''),
+  speechComprehensionLevel.textFieldObject('speech_comprehension_level', ''),
 ];
 
 //Block 2
-const vocabularyFormationLevel = new SpeechCardBlockContent(
-  'speechAndLanguageCompetence.vocabulary_formation_level',
-  []
-);
+const vocabularyFormationLevel = new SpeechCardBlockContent('', []);
 
 vocabularyFormationLevel.content = [
-  vocabularyFormationLevel.textFieldObject('main', 'Лепет в:'),
+  vocabularyFormationLevel.textFieldObject('level_of_vocabulary_formation', ''),
   vocabularyFormationLevel.textAreaFieldObject(
-    'active_semantic_component',
+    'active_semantic_component_active_vocabulary',
     'Активный семантический компонент'
   ),
   vocabularyFormationLevel.textAreaFieldObject(
-    'vocabulary_volume',
+    'volume_vocabulary',
     'Объем словаря'
   ),
   vocabularyFormationLevel.textAreaFieldObject(
@@ -34,20 +28,20 @@ vocabularyFormationLevel.content = [
 
 //Block 3
 
-const grammaticalCompetenceFormationLevel = new SpeechCardBlockContent(
-  'speechAndLanguageCompetence.grammatical_competence_formation_level',
-  []
-);
+const grammaticalCompetenceFormationLevel = new SpeechCardBlockContent('', []);
 
 grammaticalCompetenceFormationLevel.content = [
-  grammaticalCompetenceFormationLevel.textFieldObject('main_description', ''),
+  grammaticalCompetenceFormationLevel.textFieldObject(
+    'level_of_grammatical_competence_formation',
+    ''
+  ),
 
   grammaticalCompetenceFormationLevel.textAreaFieldObject(
-    'state_of_phonemic_perception',
-    'Состояние фонематического восприятия'
+    'inflectional_skills_and_abilities_part_one',
+    'Словоизменительные навыки и умения'
   ),
   grammaticalCompetenceFormationLevel.textAreaFieldObject(
-    'цord_building_skills_and_abilities',
+    'word_building_skills_and_abilities',
     'Словообразовательные навыки и умения'
   ),
 
@@ -60,13 +54,13 @@ grammaticalCompetenceFormationLevel.content = [
 //Block 4
 
 const phoneticPhonologicalCompetenceFormationLevel = new SpeechCardBlockContent(
-  'speechAndLanguageCompetence.phonetic_phonological_competence_formation_level',
+  '',
   []
 );
 
 phoneticPhonologicalCompetenceFormationLevel.content = [
   phoneticPhonologicalCompetenceFormationLevel.textAreaFieldObject(
-    'main_description',
+    'level_of_formation_of_phonetic_phonological_competence',
     ''
   ),
   phoneticPhonologicalCompetenceFormationLevel.textAreaFieldObject(
@@ -78,23 +72,20 @@ phoneticPhonologicalCompetenceFormationLevel.content = [
     'Состояние фонематического слуха'
   ),
   phoneticPhonologicalCompetenceFormationLevel.textAreaFieldObject(
-    'sound_analysis_and_synthesis_skills',
+    'formation_of_skills_of_sound_analysis_and_synthesis',
     'Сформированность навыков звукового анализа и синтеза'
   ),
   phoneticPhonologicalCompetenceFormationLevel.textAreaFieldObject(
-    'word_syllable_structure',
+    'syllabic_structure_of_a_word',
     'Слоговая структура слова'
   ),
-  phoneticPhonologicalCompetenceFormationLevel.textAreaFieldObject(
-    'word_syllable_structure',
-    'Слоговая структура слова'
-  ),
+
   phoneticPhonologicalCompetenceFormationLevel.textAreaFieldObject(
     'sound_articulating_side_of_speech',
     'Звукопроизносительная сторона речи'
   ),
   phoneticPhonologicalCompetenceFormationLevel.textAreaFieldObject(
-    'prosodic_side_of_speech',
+    'prosodic_side_of_speech_game_on_the_farm_part_three',
     'Просодическая сторона речи'
   ),
   phoneticPhonologicalCompetenceFormationLevel.textFieldObject(
@@ -102,35 +93,38 @@ phoneticPhonologicalCompetenceFormationLevel.content = [
     'Голос'
   ),
   phoneticPhonologicalCompetenceFormationLevel.textFieldObject(
-    'smoothness',
+    'smoothness_game_on_the_farm_part_three',
     'Плавность'
   ),
-  phoneticPhonologicalCompetenceFormationLevel.textFieldObject('tempo', 'Темп'),
   phoneticPhonologicalCompetenceFormationLevel.textFieldObject(
-    'speech',
+    'pace_game_on_the_farm_part_three',
+    'Темп'
+  ),
+  phoneticPhonologicalCompetenceFormationLevel.textFieldObject(
+    'speech_game_on_the_farm_part_three',
     'Речь'
   ),
   phoneticPhonologicalCompetenceFormationLevel.textFieldObject(
-    'breath',
+    'breath_game_on_the_farm_part_three',
     'Дыхание'
   ),
   phoneticPhonologicalCompetenceFormationLevel.textFieldObject(
-    'rhythm',
+    'rhythm_game_on_the_farm_part_three',
     'Ритм'
   ),
   phoneticPhonologicalCompetenceFormationLevel.textFieldObject(
-    'exhalation_strength',
+    'exhalation_force',
     'Сила выдоха'
   ),
   phoneticPhonologicalCompetenceFormationLevel.textFieldObject(
-    'inspiratory_expiratory_differentiation_and_control_capability',
+    'inspiratory_expiratory_differentiation',
     'Дифференцированность вдоха/выдоха и возможность управления'
   ),
 ];
 
 export const speechAndLanguageCompetence = {
   speech_comprehension_level: speechComprehensionLevel.content,
-  vocabulary_formationLevel: vocabularyFormationLevel.content,
+  vocabulary_formation_level: vocabularyFormationLevel.content,
   phonetic_phonological_competence_formation_level:
     phoneticPhonologicalCompetenceFormationLevel.content,
   grammatical_competence_formation_level:

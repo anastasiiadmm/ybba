@@ -1,19 +1,11 @@
 import { SpeechCardBlockContent } from '../blockContentCreation';
 
-const mainBlock = new SpeechCardBlockContent('parentBlock', []);
+const mainBlock = new SpeechCardBlockContent('', []);
 
 mainBlock.content = [
-  mainBlock.textFieldObject(
-    'child_full_name',
-    'Фамилия, имя ребенка',
-    'Иван Климов'
-  ),
-  mainBlock.textFieldObject(
-    'child_date_of_birth',
-    'Дата рождения/Возраст',
-    '12 мая 2016'
-  ),
-  mainBlock.textAreaFieldObject('parents', 'Родители (законные представители)'),
+  mainBlock.textFieldObject('child_full_name', 'Фамилия, имя ребенка'),
+  mainBlock.textFieldObject('child_date_of_birth', 'Дата рождения/Возраст'),
+  mainBlock.textAreaFieldObject('parent', 'Родители (законные представители)'),
   mainBlock.textAreaFieldObject(
     'main_complaints_from_parents',
     'Основные жалобы родителей'

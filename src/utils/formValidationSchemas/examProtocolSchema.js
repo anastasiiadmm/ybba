@@ -2,8 +2,10 @@ import * as yup from 'yup';
 
 const requiredMessage = 'Заполнение обязательно';
 
+// const examProtocolSchema = yup.object().shape({});
 const examProtocolSchema = yup.object().shape({
   child_full_name: yup.string().required(requiredMessage).nullable(true),
+  child_date_of_birth: yup.string().required(requiredMessage).nullable(true),
   what_are_your_complaints: yup
     .string()
     .required(requiredMessage)
@@ -49,7 +51,6 @@ const examProtocolSchema = yup.object().shape({
       .required(requiredMessage)
       .nullable(true),
   }),
-
   motivation_and_interest: yup
     .string()
     .required(requiredMessage)
@@ -257,6 +258,11 @@ const examProtocolSchema = yup.object().shape({
     speech: yup.string().required(requiredMessage).nullable(true),
     breath: yup.string().required(requiredMessage).nullable(true),
     rhythm: yup.string().required(requiredMessage).nullable(true),
+    exhalation_force: yup.string().required(requiredMessage).nullable(true),
+    inspiratory_expiratory_differentiation: yup
+      .string()
+      .required(requiredMessage)
+      .nullable(true),
     // 8.4
     speech_comprehension: yup.string().required(requiredMessage).nullable(true),
     there_are_difficulties_in_distributing_attention: yup
@@ -350,7 +356,10 @@ const examProtocolSchema = yup.object().shape({
   // articulation_apparatus_structure
   game_ant_battle: yup.object().shape({
     tone: yup.string().required(requiredMessage).nullable(true),
-    pace_of_movement: yup.string().required(requiredMessage).nullable(true),
+    pace_of_the_movements: yup
+      .string()
+      .required(requiredMessage)
+      .nullable(true),
     facial_muscle_tone: yup.string().required(requiredMessage).nullable(true),
     lip_muscle_tone: yup.string().required(requiredMessage).nullable(true),
     hypersalivation: yup.string().required(requiredMessage).nullable(true),

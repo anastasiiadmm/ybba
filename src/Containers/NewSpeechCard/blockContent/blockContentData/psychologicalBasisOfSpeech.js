@@ -2,34 +2,36 @@ import { SpeechCardBlockContent } from '../blockContentCreation';
 
 // Main Block
 
-const mainBlock = new SpeechCardBlockContent('psychologicalBasisOfSpeech', []);
+const mainBlock = new SpeechCardBlockContent('', []);
 
 // Block 1
-const verbal_memory = new SpeechCardBlockContent(
-  `${mainBlock.name}.verbal_memory`,
-  []
-);
+const verbal_memory = new SpeechCardBlockContent('', []);
 
-verbal_memory.content = [verbal_memory.textAreaFieldObject(null, '')];
+verbal_memory.content = [
+  verbal_memory.textAreaFieldObject('verbal_memory', ''),
+];
 const thinking_verbal_and_non_verbal_intelligence = new SpeechCardBlockContent(
-  `${mainBlock.name}.thinking_verbal_and_non_verbal_intelligence`,
+  '',
   []
 );
 
 thinking_verbal_and_non_verbal_intelligence.content = [
-  thinking_verbal_and_non_verbal_intelligence.textAreaFieldObject(null, ''),
+  thinking_verbal_and_non_verbal_intelligence.textAreaFieldObject(
+    'thinking_verbal_and_non_verbal_intelligence',
+    ''
+  ),
 ];
-const simultaneous_visual_perception = new SpeechCardBlockContent(
-  `${mainBlock.name}.simultaneous_visual_perception`,
-  []
-);
+const simultaneous_visual_perception = new SpeechCardBlockContent('', []);
 
 simultaneous_visual_perception.content = [
-  simultaneous_visual_perception.textAreaFieldObject(null, ''),
+  simultaneous_visual_perception.textAreaFieldObject(
+    'simultaneous_visual_perception',
+    ''
+  ),
 ];
-const attention = new SpeechCardBlockContent(`${mainBlock.name}.attention`, []);
+const attention = new SpeechCardBlockContent('', []);
 
-attention.content = [attention.textAreaFieldObject(null, '')];
+attention.content = [attention.textAreaFieldObject('attention', '')];
 
 export const psychologicalBasisOfSpeech = {
   mainBlock: mainBlock.content,

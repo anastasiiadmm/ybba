@@ -1,10 +1,7 @@
 import { SpeechCardBlockContent } from '../blockContentCreation';
 
 // Block 1
-const physicalDevelopment = new SpeechCardBlockContent(
-  'briefAnamnesisBlock.physical_development',
-  []
-);
+const physicalDevelopment = new SpeechCardBlockContent('', []);
 
 physicalDevelopment.content = [
   physicalDevelopment.textFieldObject('sat_in', 'Сел в:'),
@@ -13,7 +10,7 @@ physicalDevelopment.content = [
     'Пополз на четвереньках в:'
   ),
   physicalDevelopment.textFieldObject('went_to', 'Пошел в:'),
-  physicalDevelopment.textFieldObject('started_walking__age', 'Пошел в:'),
+
   physicalDevelopment.textFieldObject(
     'learned_to_jump_on_two_legs_in',
     'Научился прыгать на двух ногах в:'
@@ -25,10 +22,7 @@ physicalDevelopment.content = [
 ];
 
 //Block 2
-const speechDevelopment = new SpeechCardBlockContent(
-  'briefAnamnesisBlock.speech_development',
-  []
-);
+const speechDevelopment = new SpeechCardBlockContent('', []);
 
 speechDevelopment.content = [
   speechDevelopment.textFieldObject('babbling_in', 'Лепет в:'),
@@ -41,10 +35,7 @@ speechDevelopment.content = [
 
 //Block 3
 
-const speechEnvironment = new SpeechCardBlockContent(
-  'briefAnamnesisBlock.speech_environment',
-  []
-);
+const speechEnvironment = new SpeechCardBlockContent('', []);
 
 speechEnvironment.content = [
   speechEnvironment.textAreaFieldObject('speech_environment', ''),
@@ -52,10 +43,7 @@ speechEnvironment.content = [
 
 //Block 4
 
-const neurologicalStatus = new SpeechCardBlockContent(
-  'briefAnamnesisBlock.neurological_status_and_condition_of_sensory_perceptual_organs',
-  []
-);
+const neurologicalStatus = new SpeechCardBlockContent('', []);
 
 neurologicalStatus.content = [
   neurologicalStatus.textAreaFieldObject('neurological_status', ''),
@@ -69,10 +57,7 @@ neurologicalStatus.content = [
 
 //Block 5
 
-const currentAndPastTraumas = new SpeechCardBlockContent(
-  'briefAnamnesisBlock.current_and_past_traumas',
-  []
-);
+const currentAndPastTraumas = new SpeechCardBlockContent('', []);
 
 currentAndPastTraumas.content = [
   neurologicalStatus.textAreaFieldObject('present_and_past_diseases', ''),
@@ -80,10 +65,7 @@ currentAndPastTraumas.content = [
 
 //Block 6
 
-const drugTreatment = new SpeechCardBlockContent(
-  'briefAnamnesisBlock.drug_treatment',
-  []
-);
+const drugTreatment = new SpeechCardBlockContent('', []);
 
 drugTreatment.content = [
   neurologicalStatus.textAreaFieldObject('drug_treatment', ''),
@@ -91,10 +73,7 @@ drugTreatment.content = [
 
 //Block 7
 
-const emotionalAndPsychologicalLevel = new SpeechCardBlockContent(
-  'briefAnamnesisBlock.emotional_and_psychological_level',
-  []
-);
+const emotionalAndPsychologicalLevel = new SpeechCardBlockContent('', []);
 
 emotionalAndPsychologicalLevel.content = [
   emotionalAndPsychologicalLevel.textAreaFieldObject(

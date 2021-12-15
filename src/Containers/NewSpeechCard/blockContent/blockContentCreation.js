@@ -4,7 +4,9 @@ export class SpeechCardBlockContent {
     this.content = content;
     this.fieldTypes = { text: 'text', textarea: 'textarea' };
   }
-
+  checkFieldName = (name) => {
+    return name === '' ? `` : `${name}.`;
+  };
   fieldObject = (type, name, label, value) => ({
     type,
     name,
@@ -13,17 +15,19 @@ export class SpeechCardBlockContent {
   });
 
   textFieldObject = (name, label, value) => {
-    const fullName = name === null ? this.name : `${this.name}.${name}`;
     return this.fieldObject(
       this.fieldTypes.text,
-      fullName,
+      `${this.checkFieldName(this.name)}${name}`,
       label,
       value ? value : null
     );
   };
 
   textAreaFieldObject = (name, label) => {
-    const fullName = name === null ? this.name : `${this.name}.${name}`;
-    return this.fieldObject(this.fieldTypes.textarea, fullName, label);
+    return this.fieldObject(
+      this.fieldTypes.textarea,
+      `${this.checkFieldName(this.name)}${name}`,
+      label
+    );
   };
 }
