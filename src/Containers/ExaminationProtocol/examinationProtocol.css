@@ -336,3 +336,14 @@
   font-family: inherit;
   font-weight: 800;
 }
+
+.protocol__area.validation_message,
+.protocol__field.validation_message,
+.radio2.validation_message span::before {
+  color: red;
+  border-color: red;
+}
+
+.protocol__descr.validation_message {
+  color: red;
+}

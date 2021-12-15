@@ -16,7 +16,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import examProtocolSchema from 'utils/formValidationSchemas/examProtocolSchema';
 
+import { clearProtocolState } from 'redux/surveys/protocolSlice';
+
 import './examinationProtocol.css';
+
 import {
   getProtocol,
   protocolSelector,
@@ -29,8 +32,9 @@ const ExaminationProtocol = (props) => {
   const { protocol } = useSelector(protocolSelector);
   const { lesson } = useSelector(lessonSelector);
 
-  const [student, setStudent] = useState();
-  const [protocolValues, setProtocolValues] = useState();
+  const { showFields } = props;
+
+  const [validationErrors, setValidationErrors] = useState(null);
 
   const formMethods = useForm({
     resolver: yupResolver(examProtocolSchema),
@@ -38,13 +42,7 @@ const ExaminationProtocol = (props) => {
     defaultValues: protocol,
   });
 
-  const {
-    getValues,
-    formState: { errors },
-    reset,
-    setValue,
-    handleSubmit,
-  } = formMethods;
+  const { getValues, reset, setValue, handleSubmit } = formMethods;
 
   let timeout = null;
 
@@ -52,8 +50,7 @@ const ExaminationProtocol = (props) => {
     clearTimeout(timeout);
     setValue(e.target.name, e.target.value);
     const splitName = e.target.name.split('.');
-    console.log({ [e.target.name]: e.target.value });
-    console.log({ errors });
+    // console.log({ [e.target.name]: e.target.value });
 
     timeout = setTimeout(function () {
       const formValue = getValues(e.target.name);
@@ -81,9 +78,18 @@ const ExaminationProtocol = (props) => {
     }, 500);
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = (data, e) => {
     e.preventDefault();
+    console.log({ dirtyFields: data });
     return console.log('checked');
+  };
+  const errorSubmitHandler = (errors, e) => {
+    e.preventDefault();
+    setValidationErrors(errors);
+
+    // console.log(keyValue);
+    // console.log(validationErrors[name]);
+    return console.log('not checked');
   };
 
   useEffect(() => {
@@ -96,21 +102,15 @@ const ExaminationProtocol = (props) => {
 
   useEffect(() => {
     reset(protocol);
-
-    console.log(getValues());
+    // console.log(protocol);
   }, [protocol]);
 
-  // useEffect(() => {
-  //   if (student.id != undefined) {
-  //     console.log(dispatch(getProtocol(student.id)));
-  //     setProtocolValues(protocol);
-  //     console.log({ protval: student });
-  //   }
-  // }, [student]);
+  useEffect(() => {
+    // console.log(validationErrors);
+  }, [validationErrors]);
 
   return (
     <Container>
-      {/* <link rel="stylesheet" href="./examinationProtocol.css" /> */}
       <link
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap"
         rel="stylesheet"
@@ -119,8 +119,9 @@ const ExaminationProtocol = (props) => {
       {protocol ? (
         <div className="protocol">
           <CustomFormProvider customMethods={formMethods}>
-            <form onSubmit={handleSubmit(submitHandler)}>
+            <form onSubmit={handleSubmit(submitHandler, errorSubmitHandler)}>
               <ProtocolBlock
+                validationErrors={validationErrors}
                 listOfFields={blockContent.parentProtocolBlock}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
@@ -135,6 +136,7 @@ const ExaminationProtocol = (props) => {
                 </FormRow>
               </ProtocolBlock>
               <ProtocolBlock
+                validationErrors={validationErrors}
                 title="Рече-языковая компетенция"
                 titleBlock="Общие представления об окружающем мире. Понимание ребенком обращенной
               к нему речи"
@@ -145,21 +147,25 @@ const ExaminationProtocol = (props) => {
                 secondPlaceholder="Комментарий специалиста"
               />
               <ProtocolBlock
+                validationErrors={validationErrors}
                 listOfFields={blockContent.speechLanguageCompetenceReview}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
                 description="Сформированность представлений об окружающем мире. Запас знаний:"
                 secondPlaceholder="Комментарий специалиста"
+                disabled={!showFields}
               >
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
               <ProtocolBlock
+                validationErrors={validationErrors}
                 title="Билатеральная моторная координация"
                 listOfFields={blockContent.bilateralMotorCoordination}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
               />
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра “Картинки для рыбки”"
                 titleBlock="Звукопроизношение"
                 titleBlockSpan="Звуки С, Сь, З, Зь, Ц, Ч, Щ, Ж, Ш"
@@ -174,6 +180,7 @@ const ExaminationProtocol = (props) => {
               />
 
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра “Жираф”"
                 titleBlock="Звукопроизношение"
                 titleBlockSpan="Звуки Р, Рь, Л, Ль"
@@ -187,6 +194,7 @@ const ExaminationProtocol = (props) => {
                 sectionReviewFields={blockContent.baseOfSpeechAndThinkingReview}
               />
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра “Пазл”"
                 titleBlock="Звукопроизношение"
                 titleBlockSpan="Звуки В, Вь, Ф, Фь"
@@ -202,6 +210,7 @@ const ExaminationProtocol = (props) => {
                 }
               />
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра “Муравьиная ламбада”"
                 titleBlock="Звукопроизношение"
                 titleBlockSpan="Звуки Д, Дь, Т, Ть, К, Г, Х"
@@ -213,6 +222,7 @@ const ExaminationProtocol = (props) => {
                 gameReviewFields={blockContent.antLambadaGameReview}
               />
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра “Муравьиный батл”"
                 titleBlock="Состояние артикуляционного аппарата и двигательного развития "
                 placeholder="Комментарий специалиста"
@@ -226,6 +236,7 @@ const ExaminationProtocol = (props) => {
               />
 
               <ProtocolBlock
+                validationErrors={validationErrors}
                 titleBlock="Мимическая мускулатура "
                 titleBlockSpan="Упражнение:"
                 placeholder="Комментарий специалиста"
@@ -235,6 +246,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
               />
               <ProtocolBlock
+                validationErrors={validationErrors}
                 listOfFields={blockContent.mimicMusculatureReview}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
@@ -243,6 +255,7 @@ const ExaminationProtocol = (props) => {
               </ProtocolBlock>
 
               <ProtocolBlock
+                validationErrors={validationErrors}
                 subtitleBlock="Общая и мелкая моторика"
                 subtitleBlock2="Праксис"
                 placeholder="Комментарий специалиста"
@@ -252,6 +265,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
               />
               <ProtocolBlock
+                validationErrors={validationErrors}
                 listOfFields={blockContent.generalAndFineMotorSkillsReview}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
@@ -260,6 +274,7 @@ const ExaminationProtocol = (props) => {
               </ProtocolBlock>
 
               <ProtocolBlock
+                validationErrors={validationErrors}
                 titleBlock="Строение артикуляционного аппарата "
                 listOfFields={blockContent.articulationApparatusStructureReview}
                 fieldTypes={blockContent.fieldTypes}
@@ -268,6 +283,7 @@ const ExaminationProtocol = (props) => {
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра “Экзамен по магии”"
                 titleBlock="Фонематическое восприятие"
                 placeholder="Ответ ребенка"
@@ -278,6 +294,7 @@ const ExaminationProtocol = (props) => {
                 gameReviewFields={blockContent.examMagicGameReview}
               />
               <ProtocolBlock
+                validationErrors={validationErrors}
                 subtitleBlock2="Звуковой анализ и синтез"
                 placeholder="Ответ ребенка"
                 secondPlaceholder="Комментарий специалиста"
@@ -286,6 +303,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
               />
               <ProtocolBlock
+                validationErrors={validationErrors}
                 listOfFields={blockContent.soundAnalysisAndSynthesisReview}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
@@ -293,6 +311,7 @@ const ExaminationProtocol = (props) => {
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра “Капризная принцесса”"
                 titleBlock="Слоговая структура"
                 placeholder="Ответ ребенка"
@@ -303,6 +322,7 @@ const ExaminationProtocol = (props) => {
                 gameReviewFields={blockContent.сapriciousPrincessGameReview}
               />
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра «Как мышонку не спалось»"
                 titleBlock="Обследование связной речи"
                 placeholder="Ответ ребенка"
@@ -312,6 +332,7 @@ const ExaminationProtocol = (props) => {
                 gameReviewFields={blockContent.notSleepingMouseGameReview}
               />
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра «На ферме». Часть 1"
                 titleBlock="Обследование связной речи"
                 subtitleBlock2="Предметный словарь"
@@ -322,6 +343,7 @@ const ExaminationProtocol = (props) => {
                 gameReviewFields={blockContent.farmGameOneReview}
               />
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра «На ферме». Часть 2"
                 titleBlock="Обследование уровня сформированности грамматической компетенции "
                 subtitleBlock2="Словообразование"
@@ -332,6 +354,7 @@ const ExaminationProtocol = (props) => {
                 gameReviewFields={blockContent.farmGameTwoReview}
               />
               <GameSectionBlock
+                validationErrors={validationErrors}
                 gameTitle="Игра «На ферме». Часть 3"
                 subtitleBlock2="Согласование сущ.+числ."
                 placeholder="Ответ ребенка"
@@ -341,6 +364,7 @@ const ExaminationProtocol = (props) => {
                 gameReviewFields={blockContent.farmGameThreeReview}
               />
               <ProtocolBlock
+                validationErrors={validationErrors}
                 titleBlock="Психологическая база речи: Внимание"
                 listOfFields={blockContent.psychologicalBasisOfSpeechAttention}
                 fieldTypes={blockContent.fieldTypes}
@@ -350,6 +374,7 @@ const ExaminationProtocol = (props) => {
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
               <ProtocolBlock
+                validationErrors={validationErrors}
                 titleBlock="Психологическая база речи: Познавательная активность. Мотивация и интерес"
                 listOfFields={blockContent.psychologicalBasisOfSpeechMotivation}
                 fieldTypes={blockContent.fieldTypes}
@@ -357,6 +382,7 @@ const ExaminationProtocol = (props) => {
                 placeholder="Комментарий специалиста"
               />
               <ProtocolBlock
+                validationErrors={validationErrors}
                 listOfFields={
                   blockContent.psychologicalBasisOfSpeechMotivationReview
                 }
@@ -366,6 +392,7 @@ const ExaminationProtocol = (props) => {
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
               <ProtocolBlock
+                validationErrors={validationErrors}
                 titleBlock="Просодическая сторона речи"
                 subtitleBlock2="Компоненты:"
                 listOfFields={blockContent.prosodicSideOfSpeech}
@@ -374,6 +401,7 @@ const ExaminationProtocol = (props) => {
                 placeholder="Комментарий специалиста"
               />
               <ProtocolBlock
+                validationErrors={validationErrors}
                 listOfFields={blockContent.prosodicSideOfSpeechReview}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
@@ -381,6 +409,7 @@ const ExaminationProtocol = (props) => {
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
               <ProtocolBlock
+                validationErrors={validationErrors}
                 titleBlock="Дополнительная информация"
                 subtitleBlock2="Данные о развитии: Раннее/ позднее физическое развитие "
                 listOfFields={blockContent.additionalInfo}
@@ -389,22 +418,27 @@ const ExaminationProtocol = (props) => {
                 placeholder="Ответ родителя"
               />
               <ProtocolBlock
+                validationErrors={validationErrors}
                 listOfFields={blockContent.speechTherapyConclusion}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
               />
               <FormRow customStyle="protocol__row">
                 <p className="protocol__finish-title">
-                  Логопед: {`${lesson?.teacher.email}`}
+                  Логопед:{' '}
+                  {`${lesson?.teacher.profile.first_name} ${lesson?.teacher.profile.last_name}`}
                 </p>
                 <p className="protocol__descr">Дата рождения: 12 мая 2016</p>
                 <p className="protocol__info">Родитель: Ирина Климова</p>
-                <p className="protocol__info">Родитель: Ирина Климова</p>
+                {/* <p className="protocol__info">Родитель: Ирина Климова</p> */}
               </FormRow>
               <FormRow customStyle="protocol__row">
-                <button type="submit" className="protocol__submit">
-                  Завершить заполнение протокола
-                </button>
+                <input
+                  id="finish-protocol"
+                  type="submit"
+                  className="protocol__submit"
+                  value="Завершить заполнение протокола"
+                />
               </FormRow>
             </form>
           </CustomFormProvider>
@@ -419,6 +453,7 @@ const ExaminationProtocol = (props) => {
 ExaminationProtocol.propTypes = {
   child: PropTypes.object,
   lessonId: PropTypes.string,
+  showFields: PropTypes.bool,
   parent: PropTypes.shape({
     profile: PropTypes.shape({
       first_name: PropTypes.string,

@@ -17,11 +17,13 @@ function GameSectionBlock({
   placeholder,
   secondPlaceholder,
   inputChangeHandler,
+  validationErrors,
 }) {
   return (
     <>
       <p className="protocol__title-game">{gameTitle}</p>
       <ProtocolBlock
+        validationErrors={validationErrors}
         title={title}
         titleBlock={titleBlock}
         subtitleBlock={subtitleBlock}
@@ -34,6 +36,7 @@ function GameSectionBlock({
         inputChangeHandler={inputChangeHandler}
       />
       <ProtocolBlock
+        validationErrors={validationErrors}
         listOfFields={gameReviewFields}
         fieldTypes={fieldTypes}
         inputChangeHandler={inputChangeHandler}
@@ -43,6 +46,7 @@ function GameSectionBlock({
       </ProtocolBlock>
       {sectionReviewFields && (
         <ProtocolBlock
+          validationErrors={validationErrors}
           title={sectionReviewTitle}
           listOfFields={sectionReviewFields}
           fieldTypes={fieldTypes}

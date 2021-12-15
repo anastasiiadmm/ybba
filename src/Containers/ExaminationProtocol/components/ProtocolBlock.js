@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProtocolRow from './customFields/ProtocolRow';
-import FormField from 'Components/FormField/FormField';
 import ProtocolTextField from './customFields/ProtocolTextField';
 import ProtocolRadioField from './customFields/ProtocolRadioField';
 import ProtocolCheckboxField from './customFields/ProtocolCheckboxField';
@@ -9,11 +8,21 @@ import ProtocolSwitchField from './customFields/ProtocolSwitchField';
 import ProtocolCheckboxWithText from './customFields/ProtocolCheckboxWithText';
 import ProtocolRadioWithText from './customFields/ProtocolRadioWithText';
 import ProtocolTextAreaField from './customFields/ProtocolTextAreaField';
+import { addClasses } from 'utils/addClasses/addClasses.js';
 
-const FormRadioBlock = ({ children, description }) => {
+const FormRadioBlock = ({ children, description, validationErrorMessage }) => {
   return (
     <>
-      <p className="protocol__descr">{description}</p>
+      <p
+        className={addClasses('protocol__descr', {
+          validation_message:
+            validationErrorMessage != null
+              ? validationErrorMessage.length
+              : null,
+        })}
+      >
+        {description}
+      </p>
       <div className="protocol__result-item">{children}</div>
     </>
   );
@@ -32,7 +41,43 @@ function ProtocolBlock(props) {
     subtitleBlock2,
     placeholder,
     secondPlaceholder,
+    validationErrors,
   } = props;
+
+  const submitValidation = (name, errors) => {
+    const nameArr = name != undefined ? name.split('.') : [];
+    if (errors === undefined || errors === null || name === undefined) {
+      return null;
+    }
+    const keyValue = nameArr.reduce(
+      (acc, curr, index) => {
+        if (acc[curr] != undefined) {
+          acc = acc[curr];
+        } else {
+          return acc;
+        }
+      },
+      { ...errors }
+    );
+    return keyValue;
+  };
+
+  const errorMessage = (name) => {
+    if (name === undefined) {
+      return null;
+    }
+    let splitName = name.split('.');
+    let keyValue = {};
+    splitName.map((objectName, index) => {
+      if (index === 0 && validationErrors[objectName]) {
+        return (keyValue = validationErrors[objectName]);
+      } else if (index > 0 && keyValue[objectName]) {
+        return (keyValue = keyValue[objectName]);
+      }
+    });
+
+    return keyValue;
+  };
 
   return (
     <div className="protocol__block">
@@ -65,6 +110,11 @@ function ProtocolBlock(props) {
                   name={field.name}
                   placeholder={placeholder}
                   onChange={inputChangeHandler}
+                  validationErrorMessage={
+                    validationErrors != null && errorMessage(field.name) != null
+                      ? errorMessage(field.name).message
+                      : null
+                  }
                 />
               </ProtocolRow>
             ),
@@ -78,19 +128,32 @@ function ProtocolBlock(props) {
                     secondPlaceholder ? secondPlaceholder : placeholder
                   }
                   onChange={inputChangeHandler}
+                  validationErrorMessage={
+                    validationErrors != null && errorMessage(field.name) != null
+                      ? errorMessage(field.name).message
+                      : null
+                  }
                 />
               </ProtocolRow>
             ),
             [fieldTypes.radio]: (
               <ProtocolRow customStyle="protocol__row">
-                <FormRadioBlock description={field.description}>
+                <FormRadioBlock
+                  validationErrorMessage={
+                    validationErrors != null && errorMessage(field.name) != null
+                      ? errorMessage(field.name).message
+                      : null
+                  }
+                  description={field.description}
+                >
                   {field.options &&
-                    field.options.map((option) => {
+                    field.options.map((option, index) => {
                       return option.withText ? (
                         <ProtocolRadioWithText
                           name={field.name}
                           onChange={inputChangeHandler}
                           label={option.radioText}
+                          id={index}
                         />
                       ) : (
                         <ProtocolRadioField
@@ -98,6 +161,12 @@ function ProtocolBlock(props) {
                           onChange={inputChangeHandler}
                           label={option.label ? option.label : option}
                           value={option.value ? option.value : option}
+                          validationErrorMessage={
+                            validationErrors != null &&
+                            errorMessage(field.name) != null
+                              ? errorMessage(field.name).message
+                              : null
+                          }
                         />
                       );
                     })}
@@ -113,7 +182,15 @@ function ProtocolBlock(props) {
                 {field.newRadioGroups &&
                   field.newRadioGroups.map((radioGroup) => {
                     return (
-                      <FormRadioBlock description={radioGroup.description}>
+                        <FormRadioBlock
+                            validationErrorMessage={
+                              validationErrors != null &&
+                              errorMessage(field.name) != null
+                                  ? errorMessage(field.name).message
+                                  : null
+                            }
+                        description={radioGroup.description}
+                      >
                         {radioGroup.options &&
                           radioGroup.options.map((option) => {
                             return (
@@ -163,7 +240,14 @@ function ProtocolBlock(props) {
             ),
             [fieldTypes.checkbox]: (
               <ProtocolRow customStyle="protocol__row">
-                <FormRadioBlock description={field.description}>
+                <FormRadioBlock
+                  validationErrorMessage={
+                    validationErrors != null && errorMessage(field.name) != null
+                      ? errorMessage(field.name).message
+                      : null
+                  }
+                  description={field.description}
+                >
                   {field.options &&
                     field.options.map((option, index) => {
                       return option.withText ? (
@@ -211,6 +295,7 @@ ProtocolBlock.propTypes = {
   placeholder: PropTypes.string,
   secondPlaceholder: PropTypes.string,
   description: PropTypes.string,
+  validationErrors: PropTypes.string,
   children: PropTypes.element,
 };
 

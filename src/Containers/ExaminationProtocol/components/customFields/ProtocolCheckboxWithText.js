@@ -4,18 +4,29 @@ import { useFormContext } from 'react-hook-form';
 
 function ProtocolCheckboxWithText(props) {
   const { name, onChange, label } = props;
-
-  const { register } = useFormContext();
+  const [checked, setChecked] = useState(false);
+  const { register, getValues } = useFormContext();
 
   const onChangeHandler = {
     ...(onChange
-      ? { ...register(name, { onChange: onChange }) }
+      ? {
+          ...register(name, {
+            onChange: (e) => {
+              e.target.value ? setChecked(true) : setChecked(false);
+              onChange(e);
+            },
+          }),
+        }
       : { ...register(name) }),
   };
+
+  // const checkHandler = ()=>{
+  //   const value = getValues(name);
+  // }
   return (
     <div className="protocol__lbl-wrap">
       <label className="check2">
-        <input type="checkbox" />
+        <input type="checkbox" checked={checked} />
         <span>{label}</span>
       </label>
       <input
