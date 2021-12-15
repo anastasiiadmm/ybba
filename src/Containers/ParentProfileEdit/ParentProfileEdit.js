@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+
 
 import MainTitleBlock from 'Containers/MainDashboard/MainTitleBlock/MainTitleBlock';
 import SidebarContainer from 'Components/SidebarContainer/SidebarContainer';
 import ParentProfileForm from 'Containers/ParentProfileForm/ParentProfileForm';
-import { userSelector, clearUserState } from 'redux/user/userSlice.js';
+import { clearUserState } from 'redux/user/userSlice.js';
 import Button from 'Components/Button/Button';
 import { authSelector, updateUserData } from 'redux/auth/authSlice.js';
+import { momentDateToStr, strDateToMoment } from 'utils/date/dateUtils';
+import { parentProfileSchema } from 'Containers/ParentProfileForm/yupSchema';
 
 
 const ParentProfileEdit = () => {
 
-    const { loading, success } = useSelector(userSelector)
-    const { user } = useSelector(authSelector)
+    const { user, success, loading } = useSelector(authSelector)
 
     const initialFormData = {
         email: user?.email,
@@ -23,7 +28,7 @@ const ParentProfileEdit = () => {
             first_name: user?.profile?.first_name || '',
             last_name: user?.profile?.last_name || '',
             date_of_birth: user?.profile?.date_of_birth || '',
-            phone_number: user?.profile?.phone_number || '',
+            phone_number: user?.profile.phone_number || '',
             country: user?.profile?.country || '',
             city: user?.profile?.city || ''
         }
@@ -34,39 +39,34 @@ const ParentProfileEdit = () => {
     const history = useHistory()
     const dispatch = useDispatch()
 
-    const setCountry = async data => {
-        await setFormData({ ...formData,
-            profile: {
-                ...formData.profile,
-                country: data.value
-            }
-        })
-    }
+    const { register, handleSubmit, watch, formState: { errors }, setValue, control } = useForm({
+        resolver: yupResolver(parentProfileSchema),
+        defaultValues: formData
+    })
 
-    const setCity = data => {
-        setFormData({ ...formData,
-            profile: {
-                ...formData.profile,
-                city: data.value
-            } })
-    }
+    const country = watch('profile.country')
+    watch('profile.city')
+    console.log(country)
 
-    const onSubmit = e => {
-        e.preventDefault()
-        const submitData = { data: formData, userId: user.id }
-        const userProfile = submitData.data.profile
-        if (!userProfile.phone_number) {
-            delete submitData.data.profile?.phone_number
+    useEffect(() => {
+        if (formData) {
+            setValue('profile.date_of_birth', strDateToMoment(formData.profile.date_of_birth).toDate())
+            setValue('profile.first_name', formData.profile.first_name)
+            setValue('profile.last_name', formData.profile.last_name)
+            setValue('profile.phone_number', formData.profile.phone_number)
+            setValue('profile.country', formData.profile.country)
+            setValue('profile.city', formData.profile.city)
         }
-        if (!userProfile.date_of_birth) {
-            delete submitData.data.profile?.date_of_birth
+    }, [formData, setValue])
+
+    const onSubmit = data => {
+        data.profile.date_of_birth = momentDateToStr(moment(data.profile.date_of_birth))
+
+        const submitData = {
+            data,
+            userId: user.id
         }
-        if(!userProfile.country) {
-            delete submitData.data.profile?.country
-        }
-        if(!userProfile.city) {
-            delete submitData.data.profile?.city
-        }
+
         dispatch(updateUserData(submitData))
     }
 
@@ -82,6 +82,12 @@ const ParentProfileEdit = () => {
         // eslint-disable-next-line
     }, [])
 
+    useEffect(() => {
+        if (user) {
+            setFormData(user)
+        }
+    }, [user])
+
     return (
         <SidebarContainer>
             <div className='main__inner'>
@@ -90,15 +96,16 @@ const ParentProfileEdit = () => {
                 />
                 <div className='content'>
                     <div className='content__inner'>
-                        <form onSubmit={onSubmit}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='cabinet'>
 
                                 <ParentProfileForm
+                                    control={control}
+                                    register={register}
+                                    errors={errors}
+                                    country={country}
                                     user={user}
                                     formData={formData}
-                                    setFormData={setFormData}
-                                    setCountry={setCountry}
-                                    setCity={setCity}
                                 />
 
                             </div>

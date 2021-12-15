@@ -134,7 +134,7 @@ const ChildrenForm = (props) => {
                         />
                     )}
                 </div>
-                {getCountryName(country) === 'Россия' && (
+                {getCountryName(country) === 'Россия' && citiesOptions.length && (
                     <div className='form__col2 form__label'>
                         <Field
                             label='Город проживания'
