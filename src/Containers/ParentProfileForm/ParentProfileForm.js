@@ -12,8 +12,6 @@ import Field from 'Components/Field/Field';
 import { allRussianWardsAndHyphen } from 'regex/patterns/html';
 
 const ParentProfileForm = (props) => {
-  const { formData, setFormData, setCountry, setCity } = props;
-
     const { formData, errors, control, register, country } = props
     const initialPasswordData = { 'password': '', 'passwordRepeat': '' }
 
