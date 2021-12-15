@@ -51,6 +51,7 @@ import config from 'config.js';
 
 import 'Containers/LessonPage/lessonPage.css';
 import ExaminationProtocol from 'Containers/ExaminationProtocol/ExaminationProtocol.js';
+import SpeechCard from 'Containers/NewSpeechCard/SpeechCard';
 
 const LessonPage = (props) => {
   const { isMicrophoneAllowed, isCameraAllowed } = useContext(
@@ -271,23 +272,30 @@ const LessonPage = (props) => {
 
   return (
     <div className="gamef position-relative overflow-hidden">
-      <header
-        className={addClasses('gamef__head position-relative', {
-          gamef__head_teacher: checkUserRole(userRoles.therapist),
-          gamef__head_child: checkUserRole(userRoles.parent),
-        })}
-      >
-        {((lesson?.status !== lessonStatuses.finished &&
-          checkUserRole(userRoles.parent)) ||
-          checkUserRole(userRoles.therapist)) &&
-          lesson?.time_slot && (
-            <Timer
-              startTime={lesson.time_slot.start_time}
-              endTime={lesson.time_slot.end_time}
-            />
-          )}
-        <JitsiBlock>{webcamComponent}</JitsiBlock>
-      </header>
+      {lesson && lesson.status !== lessonStatuses.finished && (
+        <header
+          className={addClasses('gamef__head position-relative', {
+            gamef__head_teacher: checkUserRole(userRoles.therapist),
+            gamef__head_child: checkUserRole(userRoles.parent),
+          })}
+        >
+          {((lesson?.status !== lessonStatuses.finished &&
+            checkUserRole(userRoles.parent)) ||
+            checkUserRole(userRoles.therapist)) &&
+            lesson?.time_slot && (
+              <Timer
+                startTime={lesson.time_slot.start_time}
+                endTime={lesson.time_slot.end_time}
+              />
+            )}
+          <JitsiBlock>{webcamComponent}</JitsiBlock>
+        </header>
+      )}
+      {lesson &&
+        lesson.status === lessonStatuses.finished &&
+        lesson.lesson_number === 2 && (
+          <SpeechCard childId={lesson?.student.id} />
+        )}
       {lesson && lesson.status !== lessonStatuses.finished && (
         <>
           <main
@@ -420,17 +428,19 @@ const LessonPage = (props) => {
           )}
         </>
       )}
-      {lesson && lesson.status === lessonStatuses.finished && (
-        <div className="w-100 h-100 d-flex align-items-center justify-content-center">
-          <h1 className="text-white">Урок завершен</h1>
-        </div>
-      )}
+      {lesson &&
+        lesson.status === lessonStatuses.finished &&
+        lesson.lesson_type != 'diagnostic' && (
+          <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+            <h1 className="text-white">Урок завершен</h1>
+          </div>
+        )}
       {checkUserRole(userRoles.therapist) && (
         <div className="gamef__sidebar">
           <div className="gamef__sidebar-in">
             {lesson && lesson.lesson_type === 'diagnostic' ? (
               <div style={{ overflow: 'scroll', position: 'relative' }}>
-                <ExaminationProtocol />
+                <ExaminationProtocol lesson={lesson} />
                 <button className="scroll_down_btn" onClick={scrollHandler} />
               </div>
             ) : (
