@@ -67,8 +67,8 @@ const App = () => {
         <Route path='/registration-success/' component={RegistrationSuccess} />
         <Route path='/reset-password/' component={PasswordRecovery} exact />
         <Route path='/reset-password/:token' component={SetNewPassword} exact />
-        <Route path='/page-success/' component={PageSuccess} exact />
-        <Route path='/page-fail/' component={PageFail} exact />
+        <Route path='/payment-success/' component={PageSuccess} exact />
+        <Route path='/payment-fail/' component={PageFail} exact />
         <Route component={Page404} />
       </Switch>
     </BrowserRouter>
