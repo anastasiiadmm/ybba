@@ -364,6 +364,7 @@ const ChildProfileStageTwo = () => {
                 </div>
                 <Actions
                     isNextButtonActive={canGoToNextStage}
+                    to={`/child-profile/${childId}/${parseInt(stage) - 1}`}
                 />
             </form>
         </>

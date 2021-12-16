@@ -106,6 +106,7 @@ const ChildProfileStageOne = () => {
 
                 <Actions
                     isNextButtonActive={conGoToNextPage}
+                    to='/child-profile/'
                 />
             </form>
         </>
