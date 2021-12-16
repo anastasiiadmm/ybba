@@ -82,6 +82,7 @@ const Login = () => {
                                 name='password'
                                 onChange={inputChangeHandler}
                                 value={loginData.password}
+                                classNameLabel='form2__label'
                             />
                             {commonError && <p className='form__error-text'>Неверный пароль или email</p>}
                         </div>
