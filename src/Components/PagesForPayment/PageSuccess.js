@@ -3,7 +3,7 @@ import React from 'react';
 import Container from 'Components/Container/Container.js';
 
 
-const Page404 = () => {
+const PageSuccess = () => {
     return (
         <Container>
             <div
@@ -16,4 +16,4 @@ const Page404 = () => {
     );
 }
 
-export default Page404;
+export default PageSuccess;
