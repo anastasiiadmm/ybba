@@ -17,9 +17,13 @@ import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
 import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
 import Registration from 'Containers/Registration/Registration.js';
+import RegistrationSuccess from 'Containers/RegistrationSuccess/RegistrationSuccess.js';
+import PageSuccess from 'Components/PagesForPayment/PageSuccess';
+import PageFail from 'Components/PagesForPayment/PageFail';
+
 
 import 'App.css';
-import RegistrationSuccess from 'Containers/RegistrationSuccess/RegistrationSuccess.js';
+
 
 const App = () => {
   return (
@@ -63,6 +67,8 @@ const App = () => {
         <Route path='/registration-success/' component={RegistrationSuccess} />
         <Route path='/reset-password/' component={PasswordRecovery} exact />
         <Route path='/reset-password/:token' component={SetNewPassword} exact />
+        <Route path='/page-success/' component={PageSuccess} exact />
+        <Route path='/page-fail/' component={PageFail} exact />
         <Route component={Page404} />
       </Switch>
     </BrowserRouter>
