@@ -1,27 +1,49 @@
+.all-page__registration {
+    height: 957px !important;
+}
+
 .form2__zoom {
-    transform: translate(10px, -186px) scale(.6);
+    transform: translate(10px, -120px) scale(.6);
 }
 
 @media screen and (min-width: 900px) {
+    .all-page__registration {
+        height: 813px !important;
+    }
+
     .form2__zoom {
-        transform: translate(10px, -186px) scale(.6);
+        transform: translate(10px, -141px) scale(.6);
     }
 }
 
 @media screen and (min-width: 1024px) {
     .form2__zoom {
-        transform: translate(10px, -186px) scale(.7);
+        transform: translate(10px, -120px) scale(.7);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .all-page__registration {
+        height: 957px !important;
+    }
+
+    .form2__zoom {
+        transform: translate(10px, -120px) scale(.7);
     }
 }
 
 @media screen and (min-width: 1536px) {
+    .all-page__registration {
+        height: 1260px !important;
+    }
+
     .form2__zoom {
-        transform: translate(10px, -66px) scale(.9);
+        transform: translate(10px, -15px) scale(.9);
     }
 }
 
 @media screen and (min-width: 1920px) {
     .form2__zoom {
-        transform: translate(10px, -66px) scale(.9);
+        transform: translate(10px, 2px) scale(.9);
     }
 }
