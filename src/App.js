@@ -20,12 +20,14 @@ import Registration from 'Containers/Registration/Registration.js';
 
 import 'App.css';
 import RegistrationSuccess from 'Containers/RegistrationSuccess/RegistrationSuccess.js';
+import PageSuccess from './Components/PagesForPayment/PageSuccess';
+import PageFail from './Components/PagesForPayment/PageFail';
 
 const App = () => {
   return (
-    <BrowserRouter basename="/platform">
+    <BrowserRouter basename='/platform'>
       <ToastContainer
-        position="top-right"
+        position='top-right'
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -37,33 +39,35 @@ const App = () => {
       />
       <Switch>
         {/*<PrivateRoute path='/payments/' component={Payments} />*/}
-        <PrivateRoute path="/child-profile/" component={ChildProfiles} exact />
+        <PrivateRoute path='/child-profile/' component={ChildProfiles} exact />
         <PrivateRoute
-          path="/child-profile/:childId/:stage/"
+          path='/child-profile/:childId/:stage/'
           component={ChildProfile}
           exact
         />
         <PrivateRoute
-          path="/lessons/:lessonId/timeSlots/"
+          path='/lessons/:lessonId/timeSlots/'
           exact
           component={ParentTimeSlots}
         />
         <PrivateRoute
-          path="/timetable-schedule/"
+          path='/timetable-schedule/'
           component={ParentTimeTableSchedule}
         />
-        <PrivateRoute path="/lessons/" component={Lessons} exact />
-        <PrivateRoute path="/profile/edit/" component={ParentProfileEdit} />
-        <PrivateRoute path="/profile/" component={ParentProfile} exact />
-        <PrivateRoute path="/" component={MainDashboard} exact />
-        <PrivateRoute path="/lessons/:lessonId" component={Lesson} />
-        <PrivateRoute path="/video-test/" component={DevicesTestPage} />
-        <Route path="/login/" component={Login} />
-        <Route path="/registration/" component={Registration} />
-        <Route path="/registration-success/" component={RegistrationSuccess} />
-        <Route path="/reset-password/" component={PasswordRecovery} exact />
-        <Route path="/reset-password/:token" component={SetNewPassword} exact />
+        <PrivateRoute path='/lessons/' component={Lessons} exact />
+        <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
+        <PrivateRoute path='/profile/' component={ParentProfile} exact />
+        <PrivateRoute path='/' component={MainDashboard} exact />
+        <PrivateRoute path='/lessons/:lessonId' component={Lesson} />
+        <PrivateRoute path='/video-test/' component={DevicesTestPage} />
+        <Route path='/login/' component={Login} />
+        <Route path='/registration/' component={Registration} />
+        <Route path='/registration-success/' component={RegistrationSuccess} />
+        <Route path='/reset-password/' component={PasswordRecovery} exact />
+        <Route path='/reset-password/:token' component={SetNewPassword} exact />
         <Route component={Page404} />
+        <Route component={PageSuccess} />
+        <Route component={PageFail} />
       </Switch>
     </BrowserRouter>
   );

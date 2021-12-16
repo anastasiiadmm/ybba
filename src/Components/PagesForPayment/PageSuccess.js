@@ -10,8 +10,7 @@ const Page404 = () => {
                 className='text-center m-auto'
                 style={{ transform: 'scale(2)' }}
             >
-                <h1>404</h1>
-                <p>Страница не найдена</p>
+                <p>Оплата прошла успешно</p>
             </div>
         </Container>
     );
