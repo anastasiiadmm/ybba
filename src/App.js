@@ -20,13 +20,8 @@ import Registration from 'Containers/Registration/Registration.js';
 
 import 'App.css';
 import RegistrationSuccess from 'Containers/RegistrationSuccess/RegistrationSuccess.js';
-import { useEffect } from 'react';
 
 const App = () => {
-
-  useEffect(() => {
-    console.log(12341234132)
-  })
 
   return (
     <BrowserRouter basename='/platform'>
