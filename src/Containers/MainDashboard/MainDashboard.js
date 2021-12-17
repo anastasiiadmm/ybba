@@ -14,6 +14,7 @@ import Calendar from 'Containers/MainDashboard/Calendar/Calendar';
 import { checkUserRole } from 'utils/user.js';
 import ChildData from 'Containers/ChildProfiles/ChildData/ChildData.js';
 import Modal from 'Components/Modal/Modal.js';
+import { createSpeechCard } from 'redux/surveys/surveysSlice.js';
 
 
 const MainDashboard = () => {
@@ -30,6 +31,10 @@ const MainDashboard = () => {
     const partOfDay = getTimesDay()
 
     const toggleChildProfileModal = () => setChildProfileModalIsOpen(!childProfileModalIsOpen)
+
+    useEffect(() => {
+        dispatch(createSpeechCard({ childId: 'c89ba1c6-671d-421a-b11d-cbe807773555', speechCardData: {} }))
+    }, [])
 
     useEffect(() => {
         if (lessons) {
