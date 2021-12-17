@@ -19,7 +19,6 @@ const BrowserPermissionsBlock = (props) => {
         await setIsCameraAllowed(false)
     }
     const checkIsCameraPrompt = async () => {
-        console.log(1234123234)
         await checkCameraPermissions()
     }
 
