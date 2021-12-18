@@ -40,7 +40,8 @@ CommonField.propTypes = {
     register: PropTypes.object,
     placeholder: PropTypes.string,
     disabled: PropTypes.bool,
-    label: PropTypes.string
+    label: PropTypes.string,
+    classNameLabel: PropTypes.string,
 }
 
 export default CommonField;
