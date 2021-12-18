@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+const yup = require('yup');
 
 
 export const examinationProtocolSchema = yup.object().shape({

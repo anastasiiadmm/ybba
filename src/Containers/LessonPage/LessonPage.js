@@ -1,10 +1,4 @@
-import React, {
-    useState,
-    useEffect,
-    useContext,
-    useCallback,
-    useRef,
-} from 'react';
+import React, { useState, useEffect, useContext, useCallback, useRef, } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -13,11 +7,7 @@ import { ProgressBar } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 
 import { lessonSelector, clearLessonState } from 'redux/lesson/lessonSlice.js';
-import {
-    changeActiveGame,
-    changeLessonStatus,
-    resizeChildWebcam,
-} from 'redux/lesson/actions.js';
+import { changeActiveGame, changeLessonStatus, resizeChildWebcam, } from 'redux/lesson/actions.js';
 import {
     LESSON_STATUS_FINISHED,
     GAME_FILE_TYPE_LOADER,
@@ -34,15 +24,10 @@ import { WsContext } from 'context/WsContext/WsContext.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import Webcam from 'Containers/LessonPage/Webcam/Webcam.js';
 import Timer from 'Containers/LessonPage/Timer/Timer.js';
-import Notes from 'Containers/LessonPage/Notes/Notes.js';
 import { checkUserRole } from 'utils/user.js';
 import Drag from 'Components/Drag/Drag.js';
 import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
-import {
-    initSessionStack,
-    defineUser,
-    stopSessionStackRecording,
-} from 'utils/sessionstack/utils.js';
+import { initSessionStack, defineUser, stopSessionStackRecording, } from 'utils/sessionstack/utils.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import { checkEnv } from 'utils/common/commonUtils.js';
 import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
@@ -50,10 +35,9 @@ import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js'
 import config from 'config.js';
 
 import 'Containers/LessonPage/lessonPage.css';
-import ExaminationProtocol from 'Containers/ExaminationProtocol/ExaminationProtocol.js';
 import SpeechCard from 'Containers/NewSpeechCard/SpeechCard';
-import ExaminationProtocol2 from 'Containers/ExaminationProtocol2/ExaminationProtocol2.js';
 import { getProtocol, surveysSelector } from 'redux/surveys/surveysSlice.js';
+import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(
@@ -446,7 +430,7 @@ const LessonPage = (props) => {
             {checkUserRole(userRoles.therapist) && (
                 <div className='gamef__sidebar'>
                     <div className='gamef__sidebar-in overflow-scroll'>
-                        {protocol && <ExaminationProtocol2
+                        {protocol && <ExaminationProtocol
                             protocol={protocol}
                             lesson={{ id: '72660f61-830d-4652-8418-a2bf02fcc195' }}
                         />}
