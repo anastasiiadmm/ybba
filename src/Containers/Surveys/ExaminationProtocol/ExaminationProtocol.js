@@ -5,7 +5,7 @@ import { strDateToMoment, momentDateToHuman } from 'utils/date/dateUtils.js';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { updateProtocol } from 'redux/surveys/surveysSlice.js';
+import { updateProtocol, createSpeechCard } from 'redux/surveys/surveysSlice.js';
 import { examinationProtocolSchema } from 'Containers/Surveys/ExaminationProtocol/yupSchema.js';
 import ProtocolMain from 'Components/Surveys/ExaminationProtocol/ProtocolMain/ProtocolMain.js';
 import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow.js';
@@ -17,6 +17,9 @@ import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/
 import ProtocolResultBlock from 'Components/Surveys/ExaminationProtocol/ProtocolResultBlock/ProtocolResultBlock.js';
 import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper.js';
 import ProtocolPlaceholderTitle from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle.js';
+
+import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
+import SurveySubmitButton from 'Components/Surveys/Common/SurveySubmitButton.js';
 
 const ExaminationProtocol = (props) => {
 
@@ -35,6 +38,13 @@ const ExaminationProtocol = (props) => {
     })
     const data = useWatch({ control })
     let timer = null
+
+    const finishFilling = async () => {
+        await dispatch(createSpeechCard({
+            childId: protocol.child.id,
+            speechCardData: data
+        }))
+    }
 
     useEffect(() => {
         clearTimeout(timer)
@@ -478,6 +488,12 @@ const ExaminationProtocol = (props) => {
                     </ProtocolResultBlock>
                 </ProtocolRow>
             </ProtocolBlock>
+            <SurveySubmitButton
+                type='button'
+                onClick={finishFilling}
+            >
+                Завершить заполнение протокола
+            </SurveySubmitButton>
         </ProtocolMain>
     );
 }

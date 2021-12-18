@@ -35,9 +35,9 @@ import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js'
 import config from 'config.js';
 
 import 'Containers/LessonPage/lessonPage.css';
-import SpeechCard from 'Containers/NewSpeechCard/SpeechCard';
-import { getProtocol, surveysSelector } from 'redux/surveys/surveysSlice.js';
+import { getProtocol, surveysSelector, getSpeechCard } from 'redux/surveys/surveysSlice.js';
 import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
+import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(
@@ -52,7 +52,7 @@ const LessonPage = (props) => {
     const { lesson, lessonFinished, isParentWebcamIncreased } =
         useSelector(lessonSelector);
     const { user } = useSelector(authSelector);
-    const { protocol } = useSelector(surveysSelector)
+    const { protocol, speechCard } = useSelector(surveysSelector)
 
     const { lessonId } = props.match.params;
 
@@ -257,13 +257,14 @@ const LessonPage = (props) => {
 
     useEffect(() => {
         dispatch(getProtocol('1cc86d2b-b45e-4630-8873-380c3adb0a70'))
+        dispatch(getSpeechCard('1cc86d2b-b45e-4630-8873-380c3adb0a70'))
     }, [])
 
     const canvasParent = useRef();
 
     return (
         <div className='gamef position-relative overflow-hidden'>
-            {lesson && lesson.status !== lessonStatuses.finished && (
+            {false && <>
                 <header
                     className={addClasses('gamef__head position-relative', {
                         gamef__head_teacher: checkUserRole(userRoles.therapist),
@@ -281,13 +282,6 @@ const LessonPage = (props) => {
                     )}
                     <JitsiBlock>{webcamComponent}</JitsiBlock>
                 </header>
-            )}
-            {lesson &&
-            lesson.status === lessonStatuses.finished &&
-            lesson.lesson_number === 2 && (
-                <SpeechCard childId={lesson?.student.id}/>
-            )}
-            {lesson && lesson.status !== lessonStatuses.finished && (
                 <>
                     <main
                         className={addClasses('gamef__main', {
@@ -417,14 +411,18 @@ const LessonPage = (props) => {
                             </div>
                         </footer>
                     )}
+                    {lesson && lesson.status === lessonStatuses.finished && (
+                        <div className='w-100 h-100 d-flex align-items-center justify-content-center'>
+                            <h1 className='text-white'>Урок завершен</h1>
+                        </div>
+                    )}
                 </>
-            )}
-            {lesson &&
-            lesson.status === lessonStatuses.finished &&
-            lesson.lesson_type === 'diagnostic' &&
-            lesson.lesson_number != 2 && (
-                <div className='w-100 h-100 d-flex align-items-center justify-content-center'>
-                    <h1 className='text-white'>Урок завершен</h1>
+            </>}
+            {speechCard && (
+                <div className='' style={{ height: '100vh' }}>
+                    <SpeechCard
+                        speechCard={speechCard}
+                    />
                 </div>
             )}
             {checkUserRole(userRoles.therapist) && (
