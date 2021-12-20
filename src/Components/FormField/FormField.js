@@ -32,6 +32,7 @@ const FormField = props => {
         configs,
         checked,
         placeholder,
+        classNameLabel
     } = props
 
     const adult = (el) => {
@@ -200,7 +201,7 @@ const FormField = props => {
     if (type === 'password') {
         field = <>
 
-            <label className='form2__label'>{label}</label>
+            <label className={`${classNameLabel}`}>{label}</label>
 
             <input
                 type={type}

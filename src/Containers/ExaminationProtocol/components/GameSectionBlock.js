@@ -18,6 +18,7 @@ function GameSectionBlock({
   secondPlaceholder,
   inputChangeHandler,
   validationErrors,
+  disabled,
 }) {
   return (
     <>
@@ -41,6 +42,7 @@ function GameSectionBlock({
         fieldTypes={fieldTypes}
         inputChangeHandler={inputChangeHandler}
         secondPlaceholder={secondPlaceholder}
+        disabled={disabled}
       >
         <p className="protocol__result-title">Варианты заключения:</p>
       </ProtocolBlock>
@@ -52,6 +54,7 @@ function GameSectionBlock({
           fieldTypes={fieldTypes}
           secondPlaceholder={secondPlaceholder}
           inputChangeHandler={inputChangeHandler}
+          disabled={disabled}
         >
           <p className="protocol__result-title">Варианты заключения:</p>
         </ProtocolBlock>
@@ -75,6 +78,7 @@ GameSectionBlock.propTypes = {
   sectionReviewFields: PropTypes.array,
   fieldTypes: PropTypes.object,
   inputChangeHandler: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 export default GameSectionBlock;

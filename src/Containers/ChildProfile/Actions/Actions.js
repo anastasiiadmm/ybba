@@ -10,14 +10,15 @@ import { addClasses } from 'utils/addClasses/addClasses.js';
 const Actions = (props) => {
 
     const {
-        isNextButtonActive
+        isNextButtonActive,
+        to
     } = props
 
     return (
         <div className='content__bottom'>
             <Link
                 className='btn btn_light'
-                to='/child-profile/'
+                to={to}
             >
                 Назад
             </Link>

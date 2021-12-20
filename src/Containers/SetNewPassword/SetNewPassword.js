@@ -64,6 +64,7 @@ const SetNewPassword = props => {
                                 errors={errors}
                                 id='password'
                                 register={validate}
+                                classNameLabel='form2__label'
                             />
                         </div>
 
@@ -77,6 +78,7 @@ const SetNewPassword = props => {
                                 errors={errors}
                                 id='passwordRepeat'
                                 register={validate}
+                                classNameLabel='form2__label'
                             />
                         </div>
 

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import CommonField from 'Components/Fields/CommonField.js';
 import DateField from 'Components/Fields/DateField.js';
 import SelectField from 'Components/Fields/SelectField.js';
+import PhoneField from 'Components/Fields/PhoneField';
 
 
 export const Field = (props) => {
@@ -14,6 +15,7 @@ export const Field = (props) => {
     switch (type) {
         case 'date': return <DateField {...props} />
         case 'select': return <SelectField {...props} />
+        case 'phone': return <PhoneField {...props} />
         default: return <CommonField {...props} />
     }
 }

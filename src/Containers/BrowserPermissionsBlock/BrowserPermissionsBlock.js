@@ -18,8 +18,10 @@ const BrowserPermissionsBlock = (props) => {
     const checkIsCameraDenied = async () => {
         await setIsCameraAllowed(false)
     }
-    const checkIsCameraPrompt = async () => {
-        await checkCameraPermissions()
+    const checkIsCameraPrompt = () => {
+        setTimeout(async () => {
+            await checkCameraPermissions()
+        }, 1000)
     }
 
     const checkIsMicrophoneAllowed = async () => {
@@ -28,8 +30,10 @@ const BrowserPermissionsBlock = (props) => {
     const checkIsMicrophoneDenied = async () => {
         await setIsMicrophoneAllowed(false)
     }
-    const checkIsMicrophonePrompt = async () => {
-        await checkMicrophonePermissions()
+    const checkIsMicrophonePrompt = () => {
+        setTimeout(async () => {
+            await checkMicrophonePermissions()
+        }, 1000)
     }
 
     const checkCameraPermissions = useCallback(async () => {
@@ -37,8 +41,8 @@ const BrowserPermissionsBlock = (props) => {
 
         const permissionStateMapping = {
             [permissionStates.granted]: checkIsCameraAllowed,
-            [permissionStates.prompt]: checkIsCameraDenied,
-            [permissionStates.denied]: checkIsCameraPrompt
+            [permissionStates.prompt]: checkIsCameraPrompt,
+            [permissionStates.denied]: checkIsCameraDenied
         }
 
         await permissionStateMapping[cameraPermissions.state]()
@@ -49,8 +53,8 @@ const BrowserPermissionsBlock = (props) => {
 
         const permissionStateMapping = {
             [permissionStates.granted]: checkIsMicrophoneAllowed,
-            [permissionStates.prompt]: checkIsMicrophoneDenied,
-            [permissionStates.denied]: checkIsMicrophonePrompt
+            [permissionStates.prompt]: checkIsMicrophonePrompt,
+            [permissionStates.denied]: checkIsMicrophoneDenied
         }
 
         await permissionStateMapping[microphonePermissions.state]()

@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import id from 'date-fns/locale/id';
 
 function ProtocolRadioWithText(props) {
-  const { name, onChange, label, id } = props;
+  const { name, onChange, label, id, disabled } = props;
   const [checked, setChecked] = useState(false);
   const [value, setValue] = useState('');
   const { register, getValues } = useFormContext();
@@ -49,6 +49,7 @@ function ProtocolRadioWithText(props) {
         <span>{label}</span>
       </label>
       <input
+        disabled={disabled}
         type="text"
         className="protocol__field"
         placeholder="Напечатать конкретный тип"
@@ -66,6 +67,7 @@ ProtocolRadioWithText.propTypes = {
   onChange: PropTypes.func,
   label: PropTypes.string,
   id: PropTypes.number,
+  disabled: PropTypes.bool,
 };
 
 export default ProtocolRadioWithText;

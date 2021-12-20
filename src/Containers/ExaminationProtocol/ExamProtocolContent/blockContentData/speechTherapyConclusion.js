@@ -4,7 +4,7 @@ const mainBlock = new BlockContent('additional_information', []);
 
 mainBlock.content = [
   mainBlock.boxTitle(mainBlock.fieldTypes.par, 'Логопедическое заключение'),
-  mainBlock.textAreaFieldObject('speech_therapy_conclusion', ''),
+  mainBlock.textAreaFieldObject('logopedic_conclusion', ''),
   mainBlock.textAreaFieldObject(
     'dynamic_conclusion',
     'Динамическое заключение (5 занятий)'

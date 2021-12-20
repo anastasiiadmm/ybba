@@ -36,14 +36,6 @@ const ChildProfileStageOne = () => {
 
     const country = watch('country')
 
-    const setCountry = data => {
-        setChildrenData({ ...childrenData, country: data })
-    }
-
-    const setCity = data => {
-        setChildrenData({ ...childrenData, city: data.value })
-    }
-
     const updateUser = async (data) => {
         data.date_of_birth = momentDateToStr(moment(data.date_of_birth))
 
@@ -105,8 +97,6 @@ const ChildProfileStageOne = () => {
                                     childrenData={childrenData}
                                     control={control}
                                     setChildrenData={setChildrenData}
-                                    setCountry={setCountry}
-                                    setCity={setCity}
                                     watch={watch}
                                 />
                             )}
@@ -116,6 +106,7 @@ const ChildProfileStageOne = () => {
 
                 <Actions
                     isNextButtonActive={conGoToNextPage}
+                    to='/child-profile/'
                 />
             </form>
         </>

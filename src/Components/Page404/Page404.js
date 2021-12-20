@@ -8,7 +8,7 @@ const Page404 = () => {
         <Container>
             <div
                 className='text-center m-auto'
-                style={{transform: 'scale(2)'}}
+                style={{ transform: 'scale(2)' }}
             >
                 <h1>404</h1>
                 <p>Страница не найдена</p>

@@ -16,25 +16,26 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import examProtocolSchema from 'utils/formValidationSchemas/examProtocolSchema';
 
-import { clearProtocolState } from 'redux/surveys/protocolSlice';
-
 import './examinationProtocol.css';
+import requiredFields from './ExamProtocolContent/dummyDataP';
 
 import {
   getProtocol,
-  protocolSelector,
+  surveysSelector,
   updateProtocol,
-} from 'redux/surveys/protocolSlice';
-import { lessonSelector } from 'redux/lesson/lessonSlice';
+} from 'redux/surveys/surveysSlice';
+import { createSpeechCard } from 'redux/surveys/surveysSlice';
 
 const ExaminationProtocol = (props) => {
   const dispatch = useDispatch();
-  const { protocol } = useSelector(protocolSelector);
-  const { lesson } = useSelector(lessonSelector);
+  const { protocol } = useSelector(surveysSelector);
+  const { lesson } = props;
 
-  const { showFields } = props;
+  // const showFields = false;
+  const showFields = lesson?.status === 'finished' ? false : true;
 
   const [validationErrors, setValidationErrors] = useState(null);
+  const [protocolData, setProtocolData] = useState(null);
 
   const formMethods = useForm({
     resolver: yupResolver(examProtocolSchema),
@@ -48,52 +49,71 @@ const ExaminationProtocol = (props) => {
 
   const inputChangeHandler = (e) => {
     clearTimeout(timeout);
+
+    // setProtocolData({ ...protocolData, [e.target.name]: e.target.value });
     setValue(e.target.name, e.target.value);
-    const splitName = e.target.name.split('.');
+
     // console.log({ [e.target.name]: e.target.value });
 
     timeout = setTimeout(function () {
       const formValue = getValues(e.target.name);
+      console.log({ [e.target.name]: protocolData[e.target.name] });
+      const splitName = e.target.name.split('.');
+      const editedField =
+        splitName.length > 1
+          ? {
+              [splitName[0]]: {
+                [splitName[1]]:
+                  typeof formValue === 'string'
+                    ? formValue.toLowerCase()
+                    : formValue,
+              },
+            }
+          : {
+              [e.target.name]:
+                typeof formValue === 'string'
+                  ? formValue.toLowerCase()
+                  : formValue,
+            };
+
+      const newData = { lesson: lesson.id, ...editedField };
       dispatch(
         updateProtocol({
           protocolId: protocol.id,
-          newData:
-            splitName.length > 1
-              ? {
-                  [splitName[0]]: {
-                    [splitName[1]]:
-                      typeof formValue === 'string'
-                        ? formValue.toLowerCase()
-                        : formValue,
-                  },
-                }
-              : {
-                  [e.target.name]:
-                    typeof formValue === 'string'
-                      ? formValue.toLowerCase()
-                      : formValue,
-                },
+          newData: newData,
         })
       );
-    }, 500);
+    }, 1000);
   };
 
   const submitHandler = (data, e) => {
     e.preventDefault();
-    console.log({ dirtyFields: data });
+    console.log({ STATUS: 'SUCCESS' });
+    console.log({ DATA: data });
+    dispatch(
+      createSpeechCard({
+        childId: lesson.student.id,
+        speechCardData: {
+          ...requiredFields,
+          ...protocolData,
+          main_complaints_from_parents: protocolData.what_are_your_complaints,
+        },
+      })
+    );
     return console.log('checked');
   };
   const errorSubmitHandler = (errors, e) => {
     e.preventDefault();
     setValidationErrors(errors);
 
-    // console.log(keyValue);
+    console.log({ ERRORS: errors });
     // console.log(validationErrors[name]);
     return console.log('not checked');
   };
 
   useEffect(() => {
     if (lesson) {
+      console.log({ LESSON: lesson });
       dispatch(getProtocol(lesson.student.id));
     } else {
       console.log('NO LESSON');
@@ -101,8 +121,20 @@ const ExaminationProtocol = (props) => {
   }, [lesson]);
 
   useEffect(() => {
-    reset(protocol);
-    // console.log(protocol);
+    if (protocol && protocol.lesson === null) {
+      dispatch(
+        updateProtocol({
+          protocolId: protocol.id,
+          newData: { lesson: lesson.id },
+        })
+      );
+    }
+    if (protocol) {
+      const { id, ...rest } = protocol;
+      setProtocolData(rest);
+      reset(rest);
+      console.log(protocol);
+    }
   }, [protocol]);
 
   useEffect(() => {
@@ -126,13 +158,16 @@ const ExaminationProtocol = (props) => {
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
                 secondPlaceholder="Ответ родителя"
+                withBG={true}
               >
                 <FormRow customStyle="protocol__row">
-                  <p className="protocol__person">{`${lesson?.student.first_name} ${lesson?.student.last_name}`}</p>
+                  <p className="protocol__person">{`${protocol?.child_full_name}`}</p>
                   <p className="protocol__person-descr">
-                    Дата рождения: {`${lesson?.student.date_of_birth} `}
+                    Дата рождения: {`${protocol?.child_date_of_birth} `}
                   </p>
-                  <p className="protocol__person">Родитель: Ирина Климова</p>
+                  <p className="protocol__person">
+                    Родитель: {`${protocol?.parent} `}
+                  </p>
                 </FormRow>
               </ProtocolBlock>
               <ProtocolBlock
@@ -153,7 +188,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
                 description="Сформированность представлений об окружающем мире. Запас знаний:"
                 secondPlaceholder="Комментарий специалиста"
-                disabled={!showFields}
+                disabled={showFields}
               >
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
@@ -177,6 +212,7 @@ const ExaminationProtocol = (props) => {
                 gameReviewFields={blockContent.fishGameReview}
                 sectionReviewTitle="Психологическая база речи. Память"
                 sectionReviewFields={blockContent.basisOfSpeechAndMemoryReview}
+                disabled={showFields}
               />
 
               <GameSectionBlock
@@ -192,6 +228,7 @@ const ExaminationProtocol = (props) => {
                 gameReviewFields={blockContent.giraffeGameReview}
                 sectionReviewTitle="Психологическая база речи. Мышление"
                 sectionReviewFields={blockContent.baseOfSpeechAndThinkingReview}
+                disabled={showFields}
               />
               <GameSectionBlock
                 validationErrors={validationErrors}
@@ -208,6 +245,7 @@ const ExaminationProtocol = (props) => {
                 sectionReviewFields={
                   blockContent.simultaneousVisualPerceptionReview
                 }
+                disabled={showFields}
               />
               <GameSectionBlock
                 validationErrors={validationErrors}
@@ -220,6 +258,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
                 gameFields={blockContent.antLambadaGame}
                 gameReviewFields={blockContent.antLambadaGameReview}
+                disabled={showFields}
               />
               <GameSectionBlock
                 validationErrors={validationErrors}
@@ -233,6 +272,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
                 gameFields={blockContent.antBattleGame}
                 gameReviewFields={blockContent.antBattleGameReview}
+                disabled={showFields}
               />
 
               <ProtocolBlock
@@ -250,6 +290,7 @@ const ExaminationProtocol = (props) => {
                 listOfFields={blockContent.mimicMusculatureReview}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
+                disabled={showFields}
               >
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
@@ -269,6 +310,7 @@ const ExaminationProtocol = (props) => {
                 listOfFields={blockContent.generalAndFineMotorSkillsReview}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
+                disabled={showFields}
               >
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
@@ -279,6 +321,7 @@ const ExaminationProtocol = (props) => {
                 listOfFields={blockContent.articulationApparatusStructureReview}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
+                disabled={showFields}
               >
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
@@ -292,6 +335,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
                 gameFields={blockContent.examMagicGame}
                 gameReviewFields={blockContent.examMagicGameReview}
+                disabled={showFields}
               />
               <ProtocolBlock
                 validationErrors={validationErrors}
@@ -307,6 +351,7 @@ const ExaminationProtocol = (props) => {
                 listOfFields={blockContent.soundAnalysisAndSynthesisReview}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
+                disabled={showFields}
               >
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
@@ -320,6 +365,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
                 gameFields={blockContent.сapriciousPrincessGame}
                 gameReviewFields={blockContent.сapriciousPrincessGameReview}
+                disabled={showFields}
               />
               <GameSectionBlock
                 validationErrors={validationErrors}
@@ -330,6 +376,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
                 gameFields={blockContent.notSleepingMouseGame}
                 gameReviewFields={blockContent.notSleepingMouseGameReview}
+                disabled={showFields}
               />
               <GameSectionBlock
                 validationErrors={validationErrors}
@@ -341,6 +388,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
                 gameFields={blockContent.farmGameOne}
                 gameReviewFields={blockContent.farmGameOneReview}
+                disabled={showFields}
               />
               <GameSectionBlock
                 validationErrors={validationErrors}
@@ -352,6 +400,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
                 gameFields={blockContent.farmGameTwo}
                 gameReviewFields={blockContent.farmGameTwoReview}
+                disabled={showFields}
               />
               <GameSectionBlock
                 validationErrors={validationErrors}
@@ -362,6 +411,7 @@ const ExaminationProtocol = (props) => {
                 inputChangeHandler={inputChangeHandler}
                 gameFields={blockContent.farmGameThree}
                 gameReviewFields={blockContent.farmGameThreeReview}
+                disabled={showFields}
               />
               <ProtocolBlock
                 validationErrors={validationErrors}
@@ -370,6 +420,8 @@ const ExaminationProtocol = (props) => {
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
                 placeholder="Комментарий специалиста"
+                disabled={showFields}
+                withBG={true}
               >
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
@@ -380,6 +432,7 @@ const ExaminationProtocol = (props) => {
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
                 placeholder="Комментарий специалиста"
+                withBG={true}
               />
               <ProtocolBlock
                 validationErrors={validationErrors}
@@ -388,6 +441,7 @@ const ExaminationProtocol = (props) => {
                 }
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
+                disabled={showFields}
               >
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
@@ -405,6 +459,7 @@ const ExaminationProtocol = (props) => {
                 listOfFields={blockContent.prosodicSideOfSpeechReview}
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
+                disabled={showFields}
               >
                 <p className="protocol__result-title">Варианты заключения:</p>
               </ProtocolBlock>
@@ -416,6 +471,7 @@ const ExaminationProtocol = (props) => {
                 fieldTypes={blockContent.fieldTypes}
                 inputChangeHandler={inputChangeHandler}
                 placeholder="Ответ родителя"
+                withBG={true}
               />
               <ProtocolBlock
                 validationErrors={validationErrors}
@@ -425,11 +481,14 @@ const ExaminationProtocol = (props) => {
               />
               <FormRow customStyle="protocol__row">
                 <p className="protocol__finish-title">
-                  Логопед:{' '}
-                  {`${lesson?.teacher.profile.first_name} ${lesson?.teacher.profile.last_name}`}
+                  Логопед: {`${protocol?.child_full_name} `}
                 </p>
-                <p className="protocol__descr">Дата рождения: 12 мая 2016</p>
-                <p className="protocol__info">Родитель: Ирина Климова</p>
+                <p className="protocol__descr">
+                  Дата рождения: {`${protocol?.child_date_of_birth} `}
+                </p>
+                <p className="protocol__info">
+                  Родитель: {`${protocol?.parent} `}
+                </p>
                 {/* <p className="protocol__info">Родитель: Ирина Климова</p> */}
               </FormRow>
               <FormRow customStyle="protocol__row">
@@ -452,14 +511,7 @@ const ExaminationProtocol = (props) => {
 
 ExaminationProtocol.propTypes = {
   child: PropTypes.object,
-  lessonId: PropTypes.string,
-  showFields: PropTypes.bool,
-  parent: PropTypes.shape({
-    profile: PropTypes.shape({
-      first_name: PropTypes.string,
-      last_name: PropTypes.string,
-    }),
-  }).isRequired,
+  lesson: PropTypes.object,
 };
 
 export default ExaminationProtocol;
