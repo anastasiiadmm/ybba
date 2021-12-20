@@ -1,16 +1,16 @@
 import React from 'react';
 
-const ProtocolSubtitle = (props) => {
+const ProtocolBlockSubTitle = (props) => {
 
     const {
         children
     } = props
 
     return (
-        <p className='protocol__title-block'>
+        <p className='protocol__sub2title-block'>
             {children}
         </p>
     );
 }
 
-export default ProtocolSubtitle;
+export default ProtocolBlockSubTitle;

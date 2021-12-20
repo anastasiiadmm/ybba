@@ -11,7 +11,7 @@ import ProtocolMain from 'Components/Surveys/ExaminationProtocol/ProtocolMain/Pr
 import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow.js';
 import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFormField/ProtocolFormField.js';
 import ProtocolTitle from 'Components/Surveys/ExaminationProtocol/ProtocolTitle/ProtocolTitle.js';
-import ProtocolSubtitle from 'Components/Surveys/ExaminationProtocol/ProtocolSubtitle/ProtocolSubtitle.js';
+import ProtocolBlockTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBlockTitle/ProtocolBlockTitle.js';
 import ProtocolResultTitle from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle.js';
 import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle.js';
 import ProtocolResultBlock from 'Components/Surveys/ExaminationProtocol/ProtocolResultBlock/ProtocolResultBlock.js';
@@ -20,6 +20,8 @@ import ProtocolPlaceholderTitle from 'Components/Surveys/ExaminationProtocol/Pro
 
 import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
 import SurveySubmitButton from 'Components/Surveys/Common/SurveySubmitButton.js';
+import Questionnaire from 'Containers/Surveys/Questionnaire/Questionnaire.js';
+import PicturesForFish from 'Containers/Surveys/ExaminationProtocol/games/PicturesForFish.js';
 
 const ExaminationProtocol = (props) => {
 
@@ -29,7 +31,7 @@ const ExaminationProtocol = (props) => {
 
     const dispatch = useDispatch()
 
-    const { register, formState: { errors }, setValue, control, watch, getValues } = useForm({
+    const { register, formState: { errors }, setValue, control, watch, getValues, handleSubmit } = useForm({
         resolver: yupResolver(examinationProtocolSchema),
         defaultValues: {
             ...protocol,
@@ -38,13 +40,6 @@ const ExaminationProtocol = (props) => {
     })
     const data = useWatch({ control })
     let timer = null
-
-    const finishFilling = async () => {
-        await dispatch(createSpeechCard({
-            childId: protocol.child.id,
-            speechCardData: data
-        }))
-    }
 
     useEffect(() => {
         clearTimeout(timer)
@@ -57,8 +52,24 @@ const ExaminationProtocol = (props) => {
         return () => clearTimeout(timer)
     }, [data])
 
+    const onSubmit = async data => {
+        console.log(data)
+        // await dispatch(createSpeechCard({
+        //     childId: protocol.child.id,
+        //     speechCardData: data
+        // }))
+    }
+
     return (
-        <ProtocolMain>
+        <ProtocolMain
+            submitHandler={handleSubmit}
+            onSubmit={onSubmit}
+        >
+            <PicturesForFish
+                register={register}
+                control={control}
+                errors={errors}
+            />
             <ProtocolBlock>
                 <ProtocolRow>
                     <p className='protocol__person'>{protocol.child.first_name} {protocol.child.last_name}</p>
@@ -88,8 +99,8 @@ const ExaminationProtocol = (props) => {
             </ProtocolBlock>
             <ProtocolBlock>
                 <ProtocolTitle>Рече-языковая компетенция</ProtocolTitle>
-                <ProtocolSubtitle>Общие представления об окружающем мире. Понимание ребенком обращенной к нему
-                    речи</ProtocolSubtitle>
+                <ProtocolBlockTitle>Общие представления об окружающем мире. Понимание ребенком обращенной к нему
+                    речи</ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
@@ -190,6 +201,7 @@ const ExaminationProtocol = (props) => {
                                 label='Запас знаний об окружающем мире крайне низкий'
                                 name='stock_of_knowledge_about_the_world_around'
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -198,6 +210,7 @@ const ExaminationProtocol = (props) => {
                                 label='Запас знаний об окружающем мире ниже возрастной нормы'
                                 name='stock_of_knowledge_about_the_world_around'
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -206,6 +219,7 @@ const ExaminationProtocol = (props) => {
                                 label='Запас знаний об окружающем мире соответствует возрасту'
                                 name='stock_of_knowledge_about_the_world_around'
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -219,6 +233,7 @@ const ExaminationProtocol = (props) => {
                                 label='Ориентируется'
                                 name='in_a_time_space_situation'
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -227,6 +242,7 @@ const ExaminationProtocol = (props) => {
                                 label='Не ориентируется'
                                 name='in_a_time_space_situation'
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -243,6 +259,7 @@ const ExaminationProtocol = (props) => {
                                 register={register}
                                 value={true}
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -252,6 +269,7 @@ const ExaminationProtocol = (props) => {
                                 name='knows_how_old_time_of_year_what_time_of_day_it_is'
                                 value={false}
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -265,6 +283,7 @@ const ExaminationProtocol = (props) => {
                                 label='Сформирован'
                                 name='image_i'
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -273,6 +292,7 @@ const ExaminationProtocol = (props) => {
                                 label='Не сформирован'
                                 name='image_i'
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -288,6 +308,7 @@ const ExaminationProtocol = (props) => {
                                     name='knows_his_name_the_name_of_his_parents_where_he_lives'
                                     control={control}
                                     value={true}
+                                    errors={errors}
                                 />
                             </ProtocolResultWrapper>
                             <ProtocolResultWrapper>
@@ -297,6 +318,7 @@ const ExaminationProtocol = (props) => {
                                     name='knows_his_name_the_name_of_his_parents_where_he_lives'
                                     control={control}
                                     value={false}
+                                    errors={errors}
                                 />
                             </ProtocolResultWrapper>
                         </ProtocolResultBlock>
@@ -312,6 +334,7 @@ const ExaminationProtocol = (props) => {
                                     label='Сформирован'
                                     name='somatognosis_understanding_your_own_body'
                                     control={control}
+                                    errors={errors}
                                 />
                             </ProtocolResultWrapper>
                             <ProtocolResultWrapper>
@@ -320,6 +343,7 @@ const ExaminationProtocol = (props) => {
                                     label='Не сформирован'
                                     name='somatognosis_understanding_your_own_body'
                                     control={control}
+                                    errors={errors}
                                 />
                             </ProtocolResultWrapper>
                         </ProtocolResultBlock>
@@ -336,6 +360,7 @@ const ExaminationProtocol = (props) => {
                                     name='contact_with_the_child'
                                     control={control}
                                     value={true}
+                                    errors={errors}
                                 />
                             </ProtocolResultWrapper>
                             <ProtocolResultWrapper>
@@ -345,6 +370,7 @@ const ExaminationProtocol = (props) => {
                                     name='contact_with_the_child'
                                     control={control}
                                     value={false}
+                                    errors={errors}
                                 />
                             </ProtocolResultWrapper>
                         </ProtocolResultBlock>
@@ -375,6 +401,7 @@ const ExaminationProtocol = (props) => {
                                 name='leading_ear_phone'
                                 control={control}
                                 value='правое ухо'
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -384,6 +411,7 @@ const ExaminationProtocol = (props) => {
                                 name='leading_ear_phone'
                                 control={control}
                                 value='левое ухо'
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -398,6 +426,7 @@ const ExaminationProtocol = (props) => {
                                 name='leading_hand_phone'
                                 control={control}
                                 value='правая рука'
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -407,6 +436,7 @@ const ExaminationProtocol = (props) => {
                                 name='leading_hand_phone'
                                 control={control}
                                 value='левая рука'
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -421,6 +451,7 @@ const ExaminationProtocol = (props) => {
                                 name='leading_eye_spyglass'
                                 control={control}
                                 value='правый глаз'
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -430,6 +461,7 @@ const ExaminationProtocol = (props) => {
                                 name='leading_eye_spyglass'
                                 control={control}
                                 value='левый глаз'
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -445,6 +477,7 @@ const ExaminationProtocol = (props) => {
                                 name='leading_leg_ball'
                                 control={control}
                                 value='правая нога'
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -454,6 +487,7 @@ const ExaminationProtocol = (props) => {
                                 name='leading_leg_ball'
                                 control={control}
                                 value='левая нога'
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -467,6 +501,7 @@ const ExaminationProtocol = (props) => {
                                 label='Левшество, все 4 показателя совпадают'
                                 name='conclusion_options'
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -475,6 +510,7 @@ const ExaminationProtocol = (props) => {
                                 label='Правшество, все 4 показателя совпадают'
                                 name='conclusion_options'
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -483,17 +519,59 @@ const ExaminationProtocol = (props) => {
                                 label='Дисбаланс межполушарных связей'
                                 name='conclusion_options'
                                 control={control}
+                                errors={errors}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                 </ProtocolRow>
             </ProtocolBlock>
-            <SurveySubmitButton
-                type='button'
-                onClick={finishFilling}
-            >
-                Завершить заполнение протокола
-            </SurveySubmitButton>
+            <PicturesForFish
+                register={register}
+                errors={errors}
+                control={control}
+            />
+            <Questionnaire
+                register={register}
+                errors={errors}
+            />
+            <ProtocolBlock>
+                <ProtocolBlockTitle>Логопедическое заключение</ProtocolBlockTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        name='speech_therapy_conclusion'
+                        register={register}
+                        errors={errors}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        label='Динамическое заключение (5 занятий)'
+                        name='dynamic_conclusion'
+                        register={register}
+                        errors={errors}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        label='Итоговое заключение (10 занятий)'
+                        name='final_conclusion'
+                        register={register}
+                        errors={errors}
+                    />
+                </ProtocolRow>
+            </ProtocolBlock>
+            <ProtocolBlock>
+                <ProtocolRow>
+                    <SurveySubmitButton
+                        type='submit'
+                    >
+                        Завершить заполнение протокола
+                    </SurveySubmitButton>
+                </ProtocolRow>
+            </ProtocolBlock>
         </ProtocolMain>
     );
 }

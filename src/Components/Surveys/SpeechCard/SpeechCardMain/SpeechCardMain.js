@@ -7,7 +7,7 @@ const SpeechCardMain = (props) => {
     } = props
 
     return (
-        <div className='speech-card-form overflow-scroll h-100'>
+        <div className='speech-card-form overflow-scroll h-100 customScrollbar'>
             <form>
                 {children}
             </form>

@@ -27,6 +27,10 @@ const ProtocolFormField = (props) => {
             classNameLabel='radio2'
             {...props}
         />
+        case 'checkbox': return <Field
+            classNameLabel='check2'
+            {...props}
+        />
         default: return <p>Field</p>
     }
 }
@@ -36,7 +40,8 @@ ProtocolFormField.propTypes = {
         'textarea',
         'text',
         'radio',
-        'number'
+        'number',
+        'checkbox'
     ]),
     label: PropTypes.string,
     placeholder: PropTypes.string,

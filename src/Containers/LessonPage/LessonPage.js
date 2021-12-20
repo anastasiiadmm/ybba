@@ -38,6 +38,7 @@ import 'Containers/LessonPage/lessonPage.css';
 import { getProtocol, surveysSelector, getSpeechCard } from 'redux/surveys/surveysSlice.js';
 import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
 import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
+import Notes from 'Containers/LessonPage/Notes/Notes.js';
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(
@@ -264,7 +265,7 @@ const LessonPage = (props) => {
 
     return (
         <div className='gamef position-relative overflow-hidden'>
-            {false && <>
+            <>
                 <header
                     className={addClasses('gamef__head position-relative', {
                         gamef__head_teacher: checkUserRole(userRoles.therapist),
@@ -298,18 +299,17 @@ const LessonPage = (props) => {
                                 ref={canvasParent}
                             >
                                 {unityContext && (
-                                    <Unity
-                                        unityContext={unityContext}
-                                        style={{
-                                            width: `${getCanvasWidth(
-                                                canvasParent.current.clientHeight
-                                            )}px`,
-                                            height: `${canvasParent.current.clientHeight}px`,
-                                        }}
-                                        className={addClasses('', {
-                                            'd-none': unityLoadProgress < 1,
-                                        })}
-                                    />
+                                    // <Unity
+                                    //     unityContext={unityContext}
+                                    //     style={{
+                                    //         width: '100%',
+                                    //         height: `${canvasParent.current.clientHeight}px`,
+                                    //     }}
+                                    //     className={addClasses('', {
+                                    //         'd-none': unityLoadProgress < 1,
+                                    //     })}
+                                    // />
+                                    <div/>
                                 )}
                                 {unityLoadProgress < 1 && (
                                     <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
@@ -417,21 +417,22 @@ const LessonPage = (props) => {
                         </div>
                     )}
                 </>
-            </>}
-            {speechCard && (
-                <div className='' style={{ height: '100vh' }}>
-                    <SpeechCard
-                        speechCard={speechCard}
-                    />
-                </div>
-            )}
+            </>
+            {/*{speechCard && (*/}
+            {/*    <div className='' style={{ height: '100vh' }}>*/}
+            {/*        <SpeechCard*/}
+            {/*            speechCard={speechCard}*/}
+            {/*        />*/}
+            {/*    </div>*/}
+            {/*)}*/}
             {checkUserRole(userRoles.therapist) && (
                 <div className='gamef__sidebar'>
-                    <div className='gamef__sidebar-in overflow-scroll'>
-                        {protocol && <ExaminationProtocol
-                            protocol={protocol}
-                            lesson={{ id: '72660f61-830d-4652-8418-a2bf02fcc195' }}
-                        />}
+                    <div className='gamef__sidebar-in overflow-scroll customScrollbar'>
+                        <Notes lessonId={lessonId}/>
+                        {/*{protocol && <ExaminationProtocol*/}
+                        {/*    protocol={protocol}*/}
+                        {/*    lesson={{ id: '72660f61-830d-4652-8418-a2bf02fcc195' }}*/}
+                        {/*/>}*/}
                     </div>
                 </div>
             )}

@@ -23,56 +23,58 @@ import PageFail from 'Components/PagesForPayment/PageFail';
 
 
 import 'App.css';
+import ParentQuestionnaire from 'Containers/ParentQuestionnaire/ParentQuestionnaire.js';
 
 
 const App = () => {
-  return (
-    <BrowserRouter basename='/platform'>
-      <ToastContainer
-        position='top-right'
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-      <Switch>
-        {/*<PrivateRoute path='/payments/' component={Payments} />*/}
-        <PrivateRoute path='/child-profile/' component={ChildProfiles} exact />
-        <PrivateRoute
-          path='/child-profile/:childId/:stage/'
-          component={ChildProfile}
-          exact
-        />
-        <PrivateRoute
-          path='/lessons/:lessonId/timeSlots/'
-          exact
-          component={ParentTimeSlots}
-        />
-        <PrivateRoute
-          path='/timetable-schedule/'
-          component={ParentTimeTableSchedule}
-        />
-        <PrivateRoute path='/lessons/' component={Lessons} exact />
-        <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
-        <PrivateRoute path='/profile/' component={ParentProfile} exact />
-        <PrivateRoute path='/' component={MainDashboard} exact />
-        <PrivateRoute path='/lessons/:lessonId' component={Lesson} />
-        <PrivateRoute path='/video-test/' component={DevicesTestPage} />
-        <Route path='/login/' component={Login} />
-        <Route path='/registration/' component={Registration} />
-        <Route path='/registration-success/' component={RegistrationSuccess} />
-        <Route path='/reset-password/' component={PasswordRecovery} exact />
-        <Route path='/reset-password/:token' component={SetNewPassword} exact />
-        <Route path='/payment-success/' component={PageSuccess} exact />
-        <Route path='/payment-fail/' component={PageFail} exact />
-        <Route component={Page404} />
-      </Switch>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter basename='/platform'>
+            <ToastContainer
+                position='top-right'
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <Switch>
+                {/*<PrivateRoute path='/payments/' component={Payments} />*/}
+                <PrivateRoute path='/child-profile/' component={ChildProfiles} exact/>
+                <PrivateRoute
+                    path='/child-profile/:childId/:stage/'
+                    component={ChildProfile}
+                    exact
+                />
+                <PrivateRoute
+                    path='/lessons/:lessonId/timeSlots/'
+                    exact
+                    component={ParentTimeSlots}
+                />
+                <PrivateRoute
+                    path='/timetable-schedule/'
+                    component={ParentTimeTableSchedule}
+                />
+                <PrivateRoute path='/lessons/' component={Lessons} exact/>
+                <PrivateRoute path='/profile/edit/' component={ParentProfileEdit}/>
+                <PrivateRoute path='/profile/' component={ParentProfile} exact/>
+                <PrivateRoute path='/' component={MainDashboard} exact/>
+                <PrivateRoute path='/lessons/:lessonId' component={Lesson}/>
+                <PrivateRoute path='/video-test/' component={DevicesTestPage}/>
+                <PrivateRoute path='/questionnaire/:childId/' component={ParentQuestionnaire} />
+                <Route path='/login/' component={Login}/>
+                <Route path='/registration/' component={Registration}/>
+                <Route path='/registration-success/' component={RegistrationSuccess}/>
+                <Route path='/reset-password/' component={PasswordRecovery} exact/>
+                <Route path='/reset-password/:token' component={SetNewPassword} exact/>
+                <Route path='/payment-success/' component={PageSuccess} exact/>
+                <Route path='/payment-fail/' component={PageFail} exact/>
+                <Route component={Page404}/>
+            </Switch>
+        </BrowserRouter>
+    );
 };
 
 export default App;
