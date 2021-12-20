@@ -135,6 +135,9 @@ deploy-staging:
   environment:
     name: staging
     url: https://staging.yba.ltestl.com/
+  only:
+    refs:
+      - main
   variables:
     SSH_PRIVATE_KEY: $STAGING_SSH_PRIVATE_KEY
     DEPLOY_SERVER: 104.248.254.28
@@ -150,6 +153,9 @@ deploy-production:
   environment:
     name: production
     url: https://diagnostika.pro/
+  only:
+    refs:
+      - main
   variables:
     SSH_PRIVATE_KEY: $PRODUCTION_SSH_PRIVATE_KEY
     DEPLOY_SERVER: 207.154.202.69
