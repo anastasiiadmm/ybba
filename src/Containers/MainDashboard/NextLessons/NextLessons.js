@@ -9,6 +9,7 @@ import LessonItem from 'Containers/MainDashboard/NextLessons/LessonItem/LessonIt
 import { lessonStatuses } from 'constants.js';
 import { strDateToMoment } from 'utils/date/dateUtils.js';
 import { lessonTypesMapping } from 'mappings/lessons.js';
+import { Link } from 'react-router-dom';
 
 
 const NextLessons = () => {
@@ -31,7 +32,7 @@ const NextLessons = () => {
     return (
         <div className='info-item info-item_high'>
             <h5 className='info-item__title'>
-                <b>Следующие занятия</b>
+                <b>Запись на занятия откроется 15 января 2022 года — либо мы вернём вам деньги.</b>
             </h5>
             {nextLessons && nextLessons.map(lesson => {
                 const lessonDescription = `${lessonTypesMapping[lesson.lesson_type]} занятие`
@@ -49,7 +50,10 @@ const NextLessons = () => {
             )}
             {(lessons && !nextLessons?.length && !loading) && (
                 <>
-                    <p className='info-item__text'>В ближайшем времени занятий нет.</p>
+                    <p className='info-item__text'>
+                        Заполните <Link to='/child-profile/'>профиль ребёнка</Link>, чтобы логопед получила все нужные данные до открытия записи
+                        на ваше первое диагностическое занятие.
+                    </p>
                 </>
             )}
         </div>

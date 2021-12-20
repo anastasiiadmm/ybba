@@ -12,7 +12,6 @@ import ParentProfile from 'Containers/ParentProfile/ParentProfile';
 import ParentTimeTableSchedule from 'Containers/ParentTimeTableSchedule/ParentTimeTableSchedule';
 import ParentProfileEdit from 'Containers/ParentProfileEdit/ParentProfileEdit';
 import DevicesTestPage from 'Containers/DevicesTestPage/DevicesTestPage';
-import Lessons from 'Containers/Lessons/Lessons';
 import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
 import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
@@ -57,7 +56,7 @@ const App = () => {
           path='/timetable-schedule/'
           component={ParentTimeTableSchedule}
         />
-        <PrivateRoute path='/lessons/' component={Lessons} exact />
+        {/*<PrivateRoute path='/lessons/' component={Lessons} exact />*/}
         <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
         <PrivateRoute path='/profile/' component={ParentProfile} exact />
         <PrivateRoute path='/' component={MainDashboard} exact />
