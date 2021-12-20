@@ -67,11 +67,11 @@ const SideBar = () => {
                         <SideBarLink to='/' classes='main-nav__link_home'>
                             Главная
                         </SideBarLink>
-                        {checkUserRole(userRoles.parent) && (
-                            <SideBarLink to='/lessons/' classes='main-nav__link main-nav__link_classes'>
-                                Занятия
-                            </SideBarLink>
-                        )}
+                        {/*{checkUserRole(userRoles.parent) && (*/}
+                        {/*    <SideBarLink to='/lessons/' classes='main-nav__link main-nav__link_classes'>*/}
+                        {/*        Занятия*/}
+                        {/*    </SideBarLink>*/}
+                        {/*)}*/}
                         {checkUserRole(userRoles.parent) && (
                             <SideBarLink to='/profile/' classes='main-nav__link_lk'>
                                 Личный кабинет

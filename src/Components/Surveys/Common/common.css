@@ -1,0 +1,11 @@
+.protocol__submit {
+    height: 42px;
+    width: 100%;
+    color: white;
+    border-radius: 12px;
+    padding: 9px 22px 9px 22px;
+    background-color: #ff622f;
+    border: none;
+    font-family: inherit;
+    font-weight: 800;
+}

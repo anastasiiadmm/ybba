@@ -2,6 +2,7 @@ import moment from 'moment';
 import 'moment/locale/ru.js'
 
 import config from 'config';
+import { dateNameOfMonth } from 'constants.js';
 
 /**
  * Sync function to get human readable format of current time of day
@@ -112,3 +113,12 @@ export const getDateRange = (start, end) => {
  * @returns {boolean}
  */
 export const isValidDate = (d) => d instanceof Date && !isNaN(d)
+
+/**
+ * Sync function returns human readable format of date
+ * @param date Moment date
+ * @returns {string}
+ */
+export const momentDateToHuman = date => {
+    return `${date.date()} ${dateNameOfMonth[date.month()]} ${date.year()}`
+}

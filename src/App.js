@@ -12,7 +12,6 @@ import ParentProfile from 'Containers/ParentProfile/ParentProfile';
 import ParentTimeTableSchedule from 'Containers/ParentTimeTableSchedule/ParentTimeTableSchedule';
 import ParentProfileEdit from 'Containers/ParentProfileEdit/ParentProfileEdit';
 import DevicesTestPage from 'Containers/DevicesTestPage/DevicesTestPage';
-import Lessons from 'Containers/Lessons/Lessons';
 import ParentTimeSlots from 'Containers/ParentTimeSlots/ParentTimeSlots';
 import ChildProfile from 'Containers/ChildProfile/ChildProfile';
 import ChildProfiles from 'Containers/ChildProfiles/ChildProfiles';
@@ -20,7 +19,7 @@ import Registration from 'Containers/Registration/Registration.js';
 import RegistrationSuccess from 'Containers/RegistrationSuccess/RegistrationSuccess.js';
 import PageSuccess from 'Components/PagesForPayment/PageSuccess';
 import PageFail from 'Components/PagesForPayment/PageFail';
-
+import ParentQuestionnaire from 'Containers/ParentQuestionnaire/ParentQuestionnaire.js';
 
 import 'App.css';
 
@@ -57,12 +56,13 @@ const App = () => {
           path='/timetable-schedule/'
           component={ParentTimeTableSchedule}
         />
-        <PrivateRoute path='/lessons/' component={Lessons} exact />
+        {/*<PrivateRoute path='/lessons/' component={Lessons} exact />*/}
         <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
         <PrivateRoute path='/profile/' component={ParentProfile} exact />
         <PrivateRoute path='/' component={MainDashboard} exact />
         <PrivateRoute path='/lessons/:lessonId' component={Lesson} />
         <PrivateRoute path='/video-test/' component={DevicesTestPage} />
+        <PrivateRoute path='/questionnaire/:childId/' component={ParentQuestionnaire} />
         <Route path='/login/' component={Login} />
         <Route path='/registration/:registrationKey' component={Registration} />
         <Route path='/registration-success/' component={RegistrationSuccess} />

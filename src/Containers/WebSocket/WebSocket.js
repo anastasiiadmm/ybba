@@ -70,9 +70,9 @@ function WebSocket(props) {
             ws.onclose = async () => {
                 console.log('ws closed');
                 console.log('Try to reconnect ws')
-                await setTimeout(() => {
-                    connectToWs()
-                }, 1000)
+                // await setTimeout(() => {
+                //     connectToWs()
+                // }, 1000)
             }
 
             ws.onmessage = msg => {

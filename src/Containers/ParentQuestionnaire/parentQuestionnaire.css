@@ -1,0 +1,41 @@
+.questionnaireBlock {
+    height: 100vh;
+    overflow-y: scroll;
+    width: 50%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.questionnaireSpinner {
+    transform: scale(1.5);
+}
+
+.centerContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.questionnaireScrollbar {
+    overflow-x: scroll !important;
+}
+
+.questionnaireScrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 3px;
+}
+
+
+/* Track */
+
+.questionnaireScrollbar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px transparent;
+    border-radius: 10px;
+}
+
+/* Handle */
+
+.questionnaireScrollbar::-webkit-scrollbar-thumb {
+    background: lightgrey;
+    border-radius: 10px;
+}
