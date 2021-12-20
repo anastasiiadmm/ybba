@@ -14,12 +14,13 @@ import { momentDateToStr } from 'utils/date/dateUtils.js';
 import { validationMessagesMapping } from 'mappings/validationErrors.js';
 import { getDeviceType } from 'utils/getDeviceType/getDeviceType.js';
 import { deviceTypes } from 'constants.js';
-import { authSelector } from 'redux/auth/authSlice.js';
+import { authSelector, checkRegistrationToken, clearAuthState } from 'redux/auth/authSlice.js';
 
 import 'Containers/Registration/Registration.css'
 
-const Registration = () => {
+const Registration = props => {
     const queryParams = new URLSearchParams(useLocation().search)
+    const { registrationKey } = props.match.params
 
     const { register, handleSubmit, formState: { errors }, setError, control, watch, getValues } = useForm({
         resolver: yupResolver(registrationSchema),
@@ -31,7 +32,7 @@ const Registration = () => {
     const country = watch('child.country')
     const { countries, cities } = useSelector(childSelector)
     const { user, tokens, errors: userCreateErrors } = useSelector(userSelector)
-    const { user: authUser } = useSelector(authSelector)
+    const { user: authUser, errors: authErrors } = useSelector(authSelector)
     const { success: registrationSuccess } = useSelector(childSelector)
     const [countiesOptions, setCountriesOptions] = useState([])
     const [citiesOptions, setCitiesOptions] = useState([])
@@ -39,14 +40,18 @@ const Registration = () => {
     const history = useHistory()
 
     const handleRegistrationFormSubmit = async ({ parent }) => {
-        await dispatch(createUser(parent))
+        const parentData = {
+            ...parent,
+            registration_token: registrationKey
+        }
+        await dispatch(createUser(parentData))
     }
 
     const pushToMainPage = useCallback(() => {
-        if (authUser) {
+        if (authUser || !!authErrors) {
             history.push('/')
         }
-    }, [authUser, history])
+    }, [authUser, history, authErrors])
 
     const handleParentCreateErrors = useCallback(errors => {
         Object.keys(errors).forEach(fieldErrorName => {
@@ -109,7 +114,17 @@ const Registration = () => {
 
     useEffect(() => {
         pushToMainPage()
-    }, [pushToMainPage])
+    }, [pushToMainPage, authErrors])
+
+    useEffect(() => {
+        dispatch(checkRegistrationToken({
+            registrationToken: registrationKey,
+            email: queryParams.get('email')
+        }))
+        return () => {
+            dispatch(clearAuthState())
+        }
+    }, [dispatch, registrationKey])
 
     return (
         <div className='all-page2 all-page__registration'>

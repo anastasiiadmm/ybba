@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import axiosApi from '../../axios';
 import { defaultError } from '../../config';
+import { toQueryParams } from 'utils/url/toQueryParams.js';
 
 
 const nameSpace = 'auth'
@@ -105,6 +106,19 @@ export const updateUserData = createAsyncThunk(
     }
 )
 
+export const checkRegistrationToken = createAsyncThunk(
+    `${nameSpace}/checkRegistrationToken`,
+    async ({ registrationToken, email }, { rejectWithValue }) => {
+        try {
+            const params = toQueryParams({ email })
+            const resp = await axiosApi.get(`/accounts/check-registration-token/${registrationToken}/${params}`)
+            return resp.data
+        } catch (e) {
+            return rejectWithValue(e)
+        }
+    }
+)
+
 const authSlice = createSlice({
     name: nameSpace,
     initialState: INITIAL_STATE,
@@ -193,6 +207,20 @@ const authSlice = createSlice({
             state.success = false
             state.loading = false
         },
+
+        [checkRegistrationToken.pending]: (state) => {
+            state.loading = true
+        },
+        [checkRegistrationToken.fulfilled]: (state, { payload }) => {
+            state.loading = false
+            console.log('====================')
+            console.log(payload)
+            console.log('====================')
+        },
+        [checkRegistrationToken.rejected]: (state, { payload }) => {
+            state.loading = false
+            state.errors = payload
+        }
     }
 })
 

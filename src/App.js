@@ -26,6 +26,7 @@ import 'App.css';
 
 
 const App = () => {
+
   return (
     <BrowserRouter basename='/platform'>
       <ToastContainer
@@ -63,7 +64,7 @@ const App = () => {
         <PrivateRoute path='/lessons/:lessonId' component={Lesson} />
         <PrivateRoute path='/video-test/' component={DevicesTestPage} />
         <Route path='/login/' component={Login} />
-        <Route path='/registration/' component={Registration} />
+        <Route path='/registration/:registrationKey' component={Registration} />
         <Route path='/registration-success/' component={RegistrationSuccess} />
         <Route path='/reset-password/' component={PasswordRecovery} exact />
         <Route path='/reset-password/:token' component={SetNewPassword} exact />
