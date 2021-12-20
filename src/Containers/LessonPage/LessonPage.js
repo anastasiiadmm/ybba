@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useContext, useCallback, useRef, } from 'react';
+import React, {
+    useState,
+    useEffect,
+    useContext,
+    useCallback,
+    useRef,
+} from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -7,7 +13,11 @@ import { ProgressBar } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 
 import { lessonSelector, clearLessonState } from 'redux/lesson/lessonSlice.js';
-import { changeActiveGame, changeLessonStatus, resizeChildWebcam, } from 'redux/lesson/actions.js';
+import {
+    changeActiveGame,
+    changeLessonStatus,
+    resizeChildWebcam,
+} from 'redux/lesson/actions.js';
 import {
     LESSON_STATUS_FINISHED,
     GAME_FILE_TYPE_LOADER,
@@ -24,10 +34,15 @@ import { WsContext } from 'context/WsContext/WsContext.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import Webcam from 'Containers/LessonPage/Webcam/Webcam.js';
 import Timer from 'Containers/LessonPage/Timer/Timer.js';
+import Notes from 'Containers/LessonPage/Notes/Notes.js';
 import { checkUserRole } from 'utils/user.js';
 import Drag from 'Components/Drag/Drag.js';
 import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
-import { initSessionStack, defineUser, stopSessionStackRecording, } from 'utils/sessionstack/utils.js';
+import {
+    initSessionStack,
+    defineUser,
+    stopSessionStackRecording,
+} from 'utils/sessionstack/utils.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import { checkEnv } from 'utils/common/commonUtils.js';
 import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
@@ -35,10 +50,8 @@ import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js'
 import config from 'config.js';
 
 import 'Containers/LessonPage/lessonPage.css';
-import { getProtocol, surveysSelector, getSpeechCard } from 'redux/surveys/surveysSlice.js';
-import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
-import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
-import Notes from 'Containers/LessonPage/Notes/Notes.js';
+import ExaminationProtocol from 'Containers/ExaminationProtocol/ExaminationProtocol.js';
+import SpeechCard from 'Containers/NewSpeechCard/SpeechCard';
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(
@@ -48,12 +61,10 @@ const LessonPage = (props) => {
     const { sendWsAction } = useContext(WsContext);
 
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const { lesson, lessonFinished, isParentWebcamIncreased } =
         useSelector(lessonSelector);
     const { user } = useSelector(authSelector);
-    const { protocol, speechCard } = useSelector(surveysSelector)
 
     const { lessonId } = props.match.params;
 
@@ -251,21 +262,16 @@ const LessonPage = (props) => {
     }, [startSTRecording]);
 
     useEffect(() => {
-        if (false) {
+        if (!isMicrophoneAllowed && !isCameraAllowed) {
             toastInfo();
         }
     }, [isCameraAllowed, isMicrophoneAllowed]);
-
-    useEffect(() => {
-        dispatch(getProtocol('1cc86d2b-b45e-4630-8873-380c3adb0a70'))
-        dispatch(getSpeechCard('1cc86d2b-b45e-4630-8873-380c3adb0a70'))
-    }, [])
 
     const canvasParent = useRef();
 
     return (
         <div className='gamef position-relative overflow-hidden'>
-            <>
+            {lesson && lesson.status !== lessonStatuses.finished && (<>
                 <header
                     className={addClasses('gamef__head position-relative', {
                         gamef__head_teacher: checkUserRole(userRoles.therapist),
@@ -299,17 +305,16 @@ const LessonPage = (props) => {
                                 ref={canvasParent}
                             >
                                 {unityContext && (
-                                    // <Unity
-                                    //     unityContext={unityContext}
-                                    //     style={{
-                                    //         width: '100%',
-                                    //         height: `${canvasParent.current.clientHeight}px`,
-                                    //     }}
-                                    //     className={addClasses('', {
-                                    //         'd-none': unityLoadProgress < 1,
-                                    //     })}
-                                    // />
-                                    <div/>
+                                    <Unity
+                                        unityContext={unityContext}
+                                        style={{
+                                            width: `100%`,
+                                            height: `${canvasParent?.current?.clientHeight}px`,
+                                        }}
+                                        className={addClasses('', {
+                                            'd-none': unityLoadProgress < 1,
+                                        })}
+                                    />
                                 )}
                                 {unityLoadProgress < 1 && (
                                     <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
@@ -411,33 +416,26 @@ const LessonPage = (props) => {
                             </div>
                         </footer>
                     )}
-                    {lesson && lesson.status === lessonStatuses.finished && (
-                        <div className='w-100 h-100 d-flex align-items-center justify-content-center'>
-                            <h1 className='text-white'>Урок завершен</h1>
-                        </div>
-                    )}
                 </>
-            </>
-            {/*{speechCard && (*/}
-            {/*    <div className='' style={{ height: '100vh' }}>*/}
-            {/*        <SpeechCard*/}
-            {/*            speechCard={speechCard}*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*)}*/}
+            </>)}
+            {lesson && lesson.status === lessonStatuses.finished && (
+                <div
+                    className='w-100 d-flex align-items-center justify-content-center'
+                    style={{ height: '100vh' }}
+                >
+                    <h1 className='text-white'>Урок завершен</h1>
+                </div>
+            )}
             {checkUserRole(userRoles.therapist) && (
                 <div className='gamef__sidebar'>
-                    <div className='gamef__sidebar-in overflow-scroll customScrollbar'>
+                    <div className='gamef__sidebar-in'>
                         <Notes lessonId={lessonId}/>
-                        {/*{protocol && <ExaminationProtocol*/}
-                        {/*    protocol={protocol}*/}
-                        {/*    lesson={{ id: '72660f61-830d-4652-8418-a2bf02fcc195' }}*/}
-                        {/*/>}*/}
                     </div>
                 </div>
             )}
         </div>
     );
-};
+}
+;
 
 export default LessonPage;

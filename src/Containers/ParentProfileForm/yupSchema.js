@@ -14,5 +14,6 @@ export const parentProfileSchema = Yup.object().shape({
         date_of_birth: Yup.string()
             .max(100)
             .test('passwordRequirements', 'Дата не может быть позднее текущей', dateValidation)
+            .nullable(true)
     })
 })
