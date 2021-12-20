@@ -20,7 +20,7 @@ import Registration from 'Containers/Registration/Registration.js';
 import RegistrationSuccess from 'Containers/RegistrationSuccess/RegistrationSuccess.js';
 import PageSuccess from 'Components/PagesForPayment/PageSuccess';
 import PageFail from 'Components/PagesForPayment/PageFail';
-
+import ParentQuestionnaire from 'Containers/ParentQuestionnaire/ParentQuestionnaire.js';
 
 import 'App.css';
 
@@ -63,6 +63,7 @@ const App = () => {
         <PrivateRoute path='/' component={MainDashboard} exact />
         <PrivateRoute path='/lessons/:lessonId' component={Lesson} />
         <PrivateRoute path='/video-test/' component={DevicesTestPage} />
+        <PrivateRoute path='/questionnaire/:childId/' component={ParentQuestionnaire} />
         <Route path='/login/' component={Login} />
         <Route path='/registration/:registrationKey' component={Registration} />
         <Route path='/registration-success/' component={RegistrationSuccess} />
