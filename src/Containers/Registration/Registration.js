@@ -25,8 +25,7 @@ const Registration = props => {
     const { register, handleSubmit, formState: { errors }, setError, control, watch, getValues } = useForm({
         resolver: yupResolver(registrationSchema),
         defaultValues: {
-            parent: { email: queryParams.get('email') },
-            child: { date_of_birth: new Date() }
+            parent: { email: queryParams.get('email') }
         }
     })
     const country = watch('child.country')
@@ -227,7 +226,7 @@ const Registration = props => {
                                 className='form2__field'
                                 name='child.date_of_birth'
                                 label='Дата рождения'
-                                defaultValue={new Date()}
+                                placeholder='дд.мм.гггг'
                                 classNameLabel='form2__label'
                             />
                         </div>

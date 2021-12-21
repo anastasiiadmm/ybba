@@ -13,11 +13,11 @@ import { isValidDate } from 'utils/date/dateUtils.js';
 
 const DateField = (props) => {
 
-    const { id, name, control, errors, className, label, classNameLabel } = props
+    const { id, name, control, errors, className, label, classNameLabel, placeholder } = props
 
     return (
         <>
-            <label htmlFor={id} className={`${classNameLabel}`}>{label}</label>
+            <label htmlFor={id} className={classNameLabel}>{label}</label>
             <Controller
                 name={name}
                 control={control}
@@ -30,6 +30,9 @@ const DateField = (props) => {
                             locale={ruLocale}
                         >
                             <DesktopDatePicker
+                                date={null}
+                                rawValue={null}
+                                openPicker={null}
                                 mask='__.__.____'
                                 value={field.value}
                                 onChange={
@@ -41,7 +44,7 @@ const DateField = (props) => {
                                         return <input
                                             {...params.inputProps}
                                             ref={params.inputRef}
-                                            placeholder='_ _ _'
+                                            placeholder={placeholder ? placeholder : '_ _ _'}
                                             className={addClasses(className, {
                                                 'error': resolve(name, errors, '.')
                                             })}
@@ -65,7 +68,8 @@ DateField.propTypes = {
     control: PropTypes.object,
     errors: PropTypes.object,
     className: PropTypes.string,
-    label: PropTypes.string
+    label: PropTypes.string,
+    placeholder: PropTypes.string
 }
 
 export default DateField;
