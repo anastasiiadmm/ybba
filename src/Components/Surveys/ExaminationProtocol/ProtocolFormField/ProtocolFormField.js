@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Field from 'Components/Field/Field.js';
+import CheckBoxWithField
+    from 'Components/Surveys/ExaminationProtocol/ProtocolFormField/Fields/CheckBoxWithField/CheckBoxWithField.js';
 
 const ProtocolFormField = (props) => {
 
@@ -31,6 +33,10 @@ const ProtocolFormField = (props) => {
             classNameLabel='check2'
             {...props}
         />
+        case 'checkboxWithField': return <CheckBoxWithField
+            classNameLabel='check2'
+            {...props}
+        />
         default: return <p>Field</p>
     }
 }
@@ -41,7 +47,8 @@ ProtocolFormField.propTypes = {
         'text',
         'radio',
         'number',
-        'checkbox'
+        'checkbox',
+        'checkboxWithField'
     ]),
     label: PropTypes.string,
     placeholder: PropTypes.string,
