@@ -57,9 +57,6 @@ const Login = () => {
                     <div className='form2__inner'>
                         <div className='form2__title-block'>
                             <h4 className='form2__title'>Авторизация</h4>
-                            <p className='form2__subtitle'>Чтобы зарегистрироваться в системе,
-                                <a href='https://diagnostika.pro/' className='form2__link'> оплатите</a> занятие
-                            </p>
                         </div>
                         <div className='form2__row'>
                             <FormField
@@ -94,6 +91,11 @@ const Login = () => {
                             >
                                 Войти
                             </Button>
+                        </div>
+                        <div className='form2__subtitle-block'>
+                            <p className='form2__subtitle'>Если у вас еще нет логина и пароля на платформе,
+                                <a href='https://diagnostika.pro/' className='form2__link'> оплатите</a> занятие
+                            </p>
                         </div>
                     </div>
                 </form>
