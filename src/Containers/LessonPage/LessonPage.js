@@ -257,8 +257,7 @@ const LessonPage = (props) => {
     }, [isCameraAllowed, isMicrophoneAllowed]);
 
     useEffect(() => {
-        if (lesson) {
-            console.log('Asd', lesson)
+        if (lesson && lesson?.student?.id) {
             dispatch(getProtocol(lesson.student.id))
             dispatch(getSpeechCard(lesson.student.id))
         }
@@ -268,158 +267,163 @@ const LessonPage = (props) => {
 
     return (
         <div className='gamef position-relative overflow-hidden'>
-            <>
-                <header
-                    className={addClasses('gamef__head position-relative', {
-                        gamef__head_teacher: checkUserRole(userRoles.therapist),
-                        gamef__head_child: checkUserRole(userRoles.parent),
-                    })}
-                >
-                    {((lesson?.status !== lessonStatuses.finished &&
-                        checkUserRole(userRoles.parent)) ||
-                        checkUserRole(userRoles.therapist)) &&
-                    lesson?.time_slot && (
-                        <Timer
-                            startTime={lesson.time_slot.start_time}
-                            endTime={lesson.time_slot.end_time}
-                        />
-                    )}
-                    <JitsiBlock>{webcamComponent}</JitsiBlock>
-                </header>
+            {lesson && lesson.status !== lessonStatuses.finished && (
                 <>
-                    <main
-                        className={addClasses('gamef__main', {
-                            gamef__main_full: checkUserRole(userRoles.parent),
-                            parentGameMain: checkUserRole(userRoles.parent),
-                            therapistGameMain: checkUserRole(userRoles.therapist),
+                    <header
+                        className={addClasses('gamef__head position-relative', {
+                            gamef__head_teacher: checkUserRole(userRoles.therapist),
+                            gamef__head_child: checkUserRole(userRoles.parent),
                         })}
                     >
-                        <div className='gamef__work-space'>
-                            <div
-                                className={addClasses('gamef__work-space-in', {
-                                    'd-flex justify-content-center': unityLoadProgress >= 1,
-                                })}
-                                ref={canvasParent}
-                            >
-                                {unityContext && (
-                                    <Unity
-                                        unityContext={unityContext}
-                                        style={{
-                                            width: '100%',
-                                            height: `${canvasParent.current.clientHeight}px`,
-                                        }}
-                                        className={addClasses('', {
-                                            'd-none': unityLoadProgress < 1,
-                                        })}
-                                    />
-                                )}
-                                {unityLoadProgress < 1 && (
-                                    <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
-                                        <ProgressBar now={unityLoadProgress * 100}/>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </main>
-                    {checkUserRole(userRoles.therapist) && (
-                        <footer className='gamef__footer'>
-                            <div className='gamef__previews-wrap'>
-                                <div className='gamef__previews gamesLitsScrollbar'>
-                                    <div className='gamef__previews-inner w-100'>
-                                        {lesson?.games.length &&
-                                        lesson.games.map((game, index) => {
-                                            return (
-                                                <div
-                                                    className={addClasses('gamef__preview gameItem', {
-                                                        active: game?.id === activeGame?.id,
-                                                    })}
-                                                    onClick={() => onChangeActiveGame(game)}
-                                                >
-                                                    <img
-                                                        src={game.preview}
-                                                        className='gamef__preview-img'
-                                                        alt='Game'
-                                                        style={{ opacity: '.6' }}
-                                                    />
-                                                    <div className='gamef__preview-info'>
-                                                        <span>Игра {index + 1}</span>
-                                                        <p>{game.display_name}</p>
-                                                    </div>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                    {/*<button className='gamef__preview-next' type='button'/>*/}
-                                    {/*<button className='gamef__preview-prev' type='button'/>*/}
+                        {((lesson?.status !== lessonStatuses.finished &&
+                            checkUserRole(userRoles.parent)) ||
+                            checkUserRole(userRoles.therapist)) &&
+                        lesson?.time_slot && (
+                            <Timer
+                                startTime={lesson.time_slot.start_time}
+                                endTime={lesson.time_slot.end_time}
+                            />
+                        )}
+                        <JitsiBlock>{webcamComponent}</JitsiBlock>
+                    </header>
+                    <>
+                        <main
+                            className={addClasses('gamef__main', {
+                                gamef__main_full: checkUserRole(userRoles.parent),
+                                parentGameMain: checkUserRole(userRoles.parent),
+                                therapistGameMain: checkUserRole(userRoles.therapist),
+                            })}
+                        >
+                            <div className='gamef__work-space'>
+                                <div
+                                    className={addClasses('gamef__work-space-in', {
+                                        'd-flex justify-content-center': unityLoadProgress >= 1,
+                                    })}
+                                    ref={canvasParent}
+                                >
+                                    {unityContext && (
+                                        <Unity
+                                            unityContext={unityContext}
+                                            style={{
+                                                width: '100%',
+                                                height: `${canvasParent.current.clientHeight}px`,
+                                            }}
+                                            className={addClasses('', {
+                                                'd-none': unityLoadProgress < 1,
+                                            })}
+                                        />
+                                    )}
+                                    {unityLoadProgress < 1 && (
+                                        <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
+                                            <ProgressBar now={unityLoadProgress * 100}/>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
-                            <div className='gamef__controls'>
-                                <button
-                                    className='gamef__pause'
-                                    type='button'
-                                    onClick={GameActionHandler(gameActions.PAUSE_GAME)}
-                                />
-                                <button
-                                    className='gamef__restart'
-                                    type='button'
-                                    onClick={GameActionHandler(gameActions.RESTART_GAME)}
-                                />
-                                <button
-                                    className='gamef__microphone'
-                                    type='button'
-                                    onClick={GameActionHandler(gameActions.MUTE_AUDIO)}
-                                />
-                                <button
-                                    type='button'
-                                    className={addClasses('', {
-                                        'check-game-button_active check-game-button__active':
-                                            !isParentWebcamIncreased,
-                                        'check-game-button_inactive check-game-button__inactive':
-                                        isParentWebcamIncreased,
-                                    })}
-                                    onClick={() => switchChildWebcamSize(false)}
-                                />
-                                <button
-                                    type='button'
-                                    className={addClasses('', {
-                                        'play-game-button_active play-game-button__active':
-                                        isParentWebcamIncreased,
-                                        'play-game-button_inactive play-game-button__inactive':
-                                            !isParentWebcamIncreased,
-                                    })}
-                                    onClick={() => switchChildWebcamSize(true)}
-                                />
-                                <button
-                                    className='gamef__next'
-                                    type='button'
-                                    onClick={GameActionHandler(gameActions.NEXT_ACTION)}
-                                >
-                                    Следующее действие
-                                </button>
-                                <button
-                                    className='gamef__prev'
-                                    type='button'
-                                    onClick={GameActionHandler(gameActions.PREV_ACTION)}
-                                >
-                                    Предыдущее действие
-                                </button>
-                                <button
-                                    className='gamef__finish'
-                                    type='button'
-                                    onClick={onLessonFinish}
-                                >
-                                    Завершить занятие
-                                </button>
-                            </div>
-                        </footer>
-                    )}
-                    {lesson && lesson.status === lessonStatuses.finished && (
-                        <div className='w-100 h-100 d-flex align-items-center justify-content-center'>
-                            <h1 className='text-white'>Урок завершен</h1>
-                        </div>
-                    )}
+                        </main>
+                        {checkUserRole(userRoles.therapist) && (
+                            <footer className='gamef__footer'>
+                                <div className='gamef__previews-wrap'>
+                                    <div className='gamef__previews gamesLitsScrollbar'>
+                                        <div className='gamef__previews-inner w-100'>
+                                            {lesson?.games.length &&
+                                            lesson.games.map((game, index) => {
+                                                return (
+                                                    <div
+                                                        className={addClasses('gamef__preview gameItem', {
+                                                            active: game?.id === activeGame?.id,
+                                                        })}
+                                                        onClick={() => onChangeActiveGame(game)}
+                                                    >
+                                                        <img
+                                                            src={game.preview}
+                                                            className='gamef__preview-img'
+                                                            alt='Game'
+                                                            style={{ opacity: '.6' }}
+                                                        />
+                                                        <div className='gamef__preview-info'>
+                                                            <span>Игра {index + 1}</span>
+                                                            <p>{game.display_name}</p>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                        {/*<button className='gamef__preview-next' type='button'/>*/}
+                                        {/*<button className='gamef__preview-prev' type='button'/>*/}
+                                    </div>
+                                </div>
+                                <div className='gamef__controls'>
+                                    <button
+                                        className='gamef__pause'
+                                        type='button'
+                                        onClick={GameActionHandler(gameActions.PAUSE_GAME)}
+                                    />
+                                    <button
+                                        className='gamef__restart'
+                                        type='button'
+                                        onClick={GameActionHandler(gameActions.RESTART_GAME)}
+                                    />
+                                    <button
+                                        className='gamef__microphone'
+                                        type='button'
+                                        onClick={GameActionHandler(gameActions.MUTE_AUDIO)}
+                                    />
+                                    <button
+                                        type='button'
+                                        className={addClasses('', {
+                                            'check-game-button_active check-game-button__active':
+                                                !isParentWebcamIncreased,
+                                            'check-game-button_inactive check-game-button__inactive':
+                                            isParentWebcamIncreased,
+                                        })}
+                                        onClick={() => switchChildWebcamSize(false)}
+                                    />
+                                    <button
+                                        type='button'
+                                        className={addClasses('', {
+                                            'play-game-button_active play-game-button__active':
+                                            isParentWebcamIncreased,
+                                            'play-game-button_inactive play-game-button__inactive':
+                                                !isParentWebcamIncreased,
+                                        })}
+                                        onClick={() => switchChildWebcamSize(true)}
+                                    />
+                                    <button
+                                        className='gamef__next'
+                                        type='button'
+                                        onClick={GameActionHandler(gameActions.NEXT_ACTION)}
+                                    >
+                                        Следующее действие
+                                    </button>
+                                    <button
+                                        className='gamef__prev'
+                                        type='button'
+                                        onClick={GameActionHandler(gameActions.PREV_ACTION)}
+                                    >
+                                        Предыдущее действие
+                                    </button>
+                                    <button
+                                        className='gamef__finish'
+                                        type='button'
+                                        onClick={onLessonFinish}
+                                    >
+                                        Завершить занятие
+                                    </button>
+                                </div>
+                            </footer>
+                        )}
+                    </>
                 </>
-            </>
+            )}
+            {lesson && lesson.status === lessonStatuses.finished && (
+                <div
+                    className='w-100 d-flex align-items-center justify-content-center'
+                    style={{ height: '100vh' }}
+                >
+                    <h1 className='text-white'>Урок завершен</h1>
+                </div>
+            )}
             {checkUserRole(userRoles.therapist) && (
                 <div className='gamef__sidebar'>
                     <div className='gamef__sidebar-in overflow-scroll customScrollbar'>
