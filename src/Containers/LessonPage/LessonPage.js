@@ -1,23 +1,13 @@
-import React, {
-    useState,
-    useEffect,
-    useContext,
-    useCallback,
-    useRef,
-} from 'react';
+import React, { useState, useEffect, useContext, useCallback, useRef, } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import Unity, { UnityContext } from 'react-unity-webgl';
-import { ProgressBar } from 'react-bootstrap';
+import { ProgressBar, Spinner } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 
 import { lessonSelector, clearLessonState } from 'redux/lesson/lessonSlice.js';
-import {
-    changeActiveGame,
-    changeLessonStatus,
-    resizeChildWebcam,
-} from 'redux/lesson/actions.js';
+import { changeActiveGame, changeLessonStatus, resizeChildWebcam, } from 'redux/lesson/actions.js';
 import {
     LESSON_STATUS_FINISHED,
     GAME_FILE_TYPE_LOADER,
@@ -34,15 +24,10 @@ import { WsContext } from 'context/WsContext/WsContext.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import Webcam from 'Containers/LessonPage/Webcam/Webcam.js';
 import Timer from 'Containers/LessonPage/Timer/Timer.js';
-import Notes from 'Containers/LessonPage/Notes/Notes.js';
 import { checkUserRole } from 'utils/user.js';
 import Drag from 'Components/Drag/Drag.js';
 import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
-import {
-    initSessionStack,
-    defineUser,
-    stopSessionStackRecording,
-} from 'utils/sessionstack/utils.js';
+import { initSessionStack, defineUser, stopSessionStackRecording, } from 'utils/sessionstack/utils.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import { checkEnv } from 'utils/common/commonUtils.js';
 import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
@@ -50,8 +35,10 @@ import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js'
 import config from 'config.js';
 
 import 'Containers/LessonPage/lessonPage.css';
-import ExaminationProtocol from 'Containers/ExaminationProtocol/ExaminationProtocol.js';
-import SpeechCard from 'Containers/NewSpeechCard/SpeechCard';
+import { getProtocol, surveysSelector, getSpeechCard } from 'redux/surveys/surveysSlice.js';
+import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
+import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
+import Notes from 'Containers/LessonPage/Notes/Notes.js';
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(
@@ -61,10 +48,12 @@ const LessonPage = (props) => {
     const { sendWsAction } = useContext(WsContext);
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const { lesson, lessonFinished, isParentWebcamIncreased } =
         useSelector(lessonSelector);
     const { user } = useSelector(authSelector);
+    const { protocol, speechCard } = useSelector(surveysSelector)
 
     const { lessonId } = props.match.params;
 
@@ -262,16 +251,24 @@ const LessonPage = (props) => {
     }, [startSTRecording]);
 
     useEffect(() => {
-        if (!isMicrophoneAllowed && !isCameraAllowed) {
+        if (false) {
             toastInfo();
         }
     }, [isCameraAllowed, isMicrophoneAllowed]);
+
+    useEffect(() => {
+        if (lesson) {
+            console.log('Asd', lesson)
+            dispatch(getProtocol(lesson.student.id))
+            dispatch(getSpeechCard(lesson.student.id))
+        }
+    }, [dispatch, lesson])
 
     const canvasParent = useRef();
 
     return (
         <div className='gamef position-relative overflow-hidden'>
-            {lesson && lesson.status !== lessonStatuses.finished && (<>
+            <>
                 <header
                     className={addClasses('gamef__head position-relative', {
                         gamef__head_teacher: checkUserRole(userRoles.therapist),
@@ -308,8 +305,8 @@ const LessonPage = (props) => {
                                     <Unity
                                         unityContext={unityContext}
                                         style={{
-                                            width: `100%`,
-                                            height: `${canvasParent?.current?.clientHeight}px`,
+                                            width: '100%',
+                                            height: `${canvasParent.current.clientHeight}px`,
                                         }}
                                         className={addClasses('', {
                                             'd-none': unityLoadProgress < 1,
@@ -416,26 +413,30 @@ const LessonPage = (props) => {
                             </div>
                         </footer>
                     )}
+                    {lesson && lesson.status === lessonStatuses.finished && (
+                        <div className='w-100 h-100 d-flex align-items-center justify-content-center'>
+                            <h1 className='text-white'>Урок завершен</h1>
+                        </div>
+                    )}
                 </>
-            </>)}
-            {lesson && lesson.status === lessonStatuses.finished && (
-                <div
-                    className='w-100 d-flex align-items-center justify-content-center'
-                    style={{ height: '100vh' }}
-                >
-                    <h1 className='text-white'>Урок завершен</h1>
-                </div>
-            )}
+            </>
             {checkUserRole(userRoles.therapist) && (
                 <div className='gamef__sidebar'>
-                    <div className='gamef__sidebar-in'>
-                        <Notes lessonId={lessonId}/>
+                    <div className='gamef__sidebar-in overflow-scroll customScrollbar'>
+                        {protocol && lesson ?
+                            <ExaminationProtocol
+                                protocol={protocol}
+                                lesson={lesson}
+                            /> :
+                            <div className='h-100 w-100 d-flex align-items-center justify-content-center'>
+                                <Spinner animation='grow'/>
+                            </div>}
+                        {/*<Notes lessonId={lessonId}/>*/}
                     </div>
                 </div>
             )}
         </div>
     );
-}
-;
+};
 
 export default LessonPage;

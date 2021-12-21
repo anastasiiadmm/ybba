@@ -148,3 +148,7 @@ h3 {
     background: lightgrey;
     border-radius: 10px;
 }
+
+.disabled {
+    opacity: .5;
+}
