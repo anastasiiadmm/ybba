@@ -15,7 +15,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const PicturesForFish = (props) => {
 
     const  {
-        register, errors, control
+        register, errors, control, isConclusionDisabled
     } = props
 
     return <>
@@ -335,6 +335,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.verbal_memory'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -344,6 +345,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.verbal_memory'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolResultBlock>
@@ -355,6 +357,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.verbal_memory_part_two'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -364,6 +367,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.verbal_memory_part_two'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolResultBlock>
@@ -385,6 +389,7 @@ PicturesForFish.propTypes = {
     register: PropTypes.func.isRequired,
     control: PropTypes.object,
     errors: PropTypes.object.isRequired,
+    isConclusionDisabled: PropTypes.bool
 }
 
 export default PicturesForFish;
