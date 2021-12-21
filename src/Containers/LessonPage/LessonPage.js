@@ -264,7 +264,7 @@ const LessonPage = (props) => {
     const canvasParent = useRef();
 
     return (
-        <div className="gamef position-relative overflow-hidden">
+        <div className='gamef position-relative overflow-hidden'>
             {/*<>*/}
             {/*    <header*/}
             {/*        className={addClasses('gamef__head position-relative', {*/}
@@ -426,8 +426,8 @@ const LessonPage = (props) => {
             {/*    </div>*/}
             {/*)}*/}
             {checkUserRole(userRoles.therapist) && (
-                <div className="gamef__sidebar">
-                    <div className="gamef__sidebar-in overflow-scroll customScrollbar">
+                <div className='gamef__sidebar'>
+                    <div className='gamef__sidebar-in overflow-scroll customScrollbar'>
                         {/*<Notes lessonId={lessonId}/>*/}
                         {protocol && <ExaminationProtocol
                             protocol={protocol}
