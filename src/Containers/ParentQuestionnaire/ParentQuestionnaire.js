@@ -49,7 +49,7 @@ const ParentQuestionnaire = (props) => {
 
     useEffect(() => {
         if (protocol) {
-            if (protocol.parent.id !== user.id) {
+            if (protocol.parent.id !== user.profile.id) {
                 history.push('/')
             }
             reset(protocol)

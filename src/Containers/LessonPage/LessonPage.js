@@ -37,8 +37,6 @@ import config from 'config.js';
 import 'Containers/LessonPage/lessonPage.css';
 import { getProtocol, surveysSelector, getSpeechCard } from 'redux/surveys/surveysSlice.js';
 import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
-import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
-import Notes from 'Containers/LessonPage/Notes/Notes.js';
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(
@@ -262,6 +260,13 @@ const LessonPage = (props) => {
             dispatch(getSpeechCard(lesson.student.id))
         }
     }, [dispatch, lesson])
+
+    useEffect(() => {
+        if (lesson && checkUserRole(userRoles.parent) && lesson.status === lessonStatuses.finished) {
+            history.push('/')
+            sendChildrenQuestionnaireNotification()
+        }
+    }, [history, lesson, sendChildrenQuestionnaireNotification])
 
     const canvasParent = useRef();
 
