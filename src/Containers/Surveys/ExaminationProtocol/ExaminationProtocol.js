@@ -65,11 +65,6 @@ const ExaminationProtocol = (props) => {
             submitHandler={handleSubmit}
             onSubmit={onSubmit}
         >
-            <PicturesForFish
-                register={register}
-                control={control}
-                errors={errors}
-            />
             <ProtocolBlock>
                 <ProtocolRow>
                     <p className='protocol__person'>{protocol.child.first_name} {protocol.child.last_name}</p>
