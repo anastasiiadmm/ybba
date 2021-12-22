@@ -22,7 +22,7 @@ import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
 import SurveySubmitButton from 'Components/Surveys/Common/SurveySubmitButton.js';
 import Questionnaire from 'Containers/Surveys/Questionnaire/Questionnaire.js';
 import PicturesForFish from 'Containers/Surveys/ExaminationProtocol/games/PicturesForFish.js';
-import GiraffeGame from 'games/GiraffeGame';
+import GiraffeGame from 'Containers/Surveys/ExaminationProtocol/games/GiraffeGame';
 
 const ExaminationProtocol = (props) => {
 
