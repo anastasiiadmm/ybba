@@ -26,7 +26,8 @@ const Registration = props => {
         resolver: yupResolver(registrationSchema),
         defaultValues: {
             parent: { email: queryParams.get('email') }
-        }
+        },
+        mode: 'onBlur'
     })
     const country = watch('child.country')
     const { countries, cities } = useSelector(childSelector)
