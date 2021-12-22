@@ -160,3 +160,8 @@ export const deviceTypes = {
     mobile: 'mobile',
     desktop: 'desktop'
 }
+
+export const examinationProtocolStatuses = {
+    open: 'open',
+    closed: 'closed'
+}

@@ -19,6 +19,7 @@ import {
     envs,
     frontUrls,
     lessonStatuses,
+    examinationProtocolStatuses,
 } from 'constants.js';
 import { WsContext } from 'context/WsContext/WsContext.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
@@ -35,8 +36,16 @@ import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js'
 import config from 'config.js';
 
 import 'Containers/LessonPage/lessonPage.css';
-import { getProtocol, surveysSelector, getSpeechCard } from 'redux/surveys/surveysSlice.js';
+import {
+    getProtocol,
+    surveysSelector,
+    getSpeechCard,
+    updateProtocol,
+    closeProtocol,
+    createSpeechCard
+} from 'redux/surveys/surveysSlice.js';
 import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
+import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(
@@ -48,8 +57,7 @@ const LessonPage = (props) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const { lesson, lessonFinished, isParentWebcamIncreased } =
-        useSelector(lessonSelector);
+    const { lesson, isParentWebcamIncreased } = useSelector(lessonSelector);
     const { user } = useSelector(authSelector);
     const { protocol, speechCard } = useSelector(surveysSelector)
 
@@ -131,10 +139,6 @@ const LessonPage = (props) => {
         );
     };
 
-    const getCanvasWidth = (parentHeight) => {
-        return (parentHeight / 9) * 16;
-    };
-
     const startSTRecording = useCallback(() => {
         if (!checkEnv(envs.local)) {
             initSessionStack();
@@ -173,6 +177,34 @@ const LessonPage = (props) => {
         lessonId: lessonId,
         switchChildWebcamSize,
     };
+
+    const onProtocolFinish = async data => {
+        if (lesson.status !== lessonStatuses.finished) {
+            toast.warning('Сначала завершите занятие')
+        } else {
+            dispatch(closeProtocol())
+            await dispatch(createSpeechCard({
+                childId: protocol.child.id,
+                speechCardData: data
+            }))
+            await dispatch(updateProtocol({
+                protocolId: protocol.id,
+                newData: {
+                    status: examinationProtocolStatuses.closed,
+                    lesson: lesson.id
+                },
+            }))
+            if (lesson?.student?.id) {
+                await dispatch(getSpeechCard(lesson.student.id))
+            }
+        }
+    }
+
+    const onSpeechCardFinish = () => {
+        console.log(123413243132)
+        history.push('/')
+    }
+
     const webcamComponent = checkUserRole(userRoles.parent) ? (
         <Drag>
             <Webcam {...webcamComponentProps} />
@@ -221,27 +253,6 @@ const LessonPage = (props) => {
         }
     }, [lessonId, sendJsonToGameWithTimeout, unityContext]);
 
-    const toastInfo = () => {
-        return toast.info(
-            'Разрешите доступ для камеры и микрофона на вашем браузере',
-            {
-                position: 'top-right',
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            }
-        );
-    };
-
-    const scrollHandler = (e) => {
-        return document
-            .getElementById('finish-protocol')
-            .scrollIntoView({ behavior: 'smooth' });
-    };
-
     useEffect(() => {
         startSTRecording();
 
@@ -249,17 +260,22 @@ const LessonPage = (props) => {
     }, [startSTRecording]);
 
     useEffect(() => {
-        if (false) {
-            toastInfo();
+        if (!isMicrophoneAllowed || !isCameraAllowed) {
+            toast.info('Разрешите доступ для камеры и микрофона на вашем браузере');
         }
     }, [isCameraAllowed, isMicrophoneAllowed]);
 
     useEffect(() => {
         if (lesson && lesson?.student?.id) {
             dispatch(getProtocol(lesson.student.id))
-            dispatch(getSpeechCard(lesson.student.id))
         }
     }, [dispatch, lesson])
+
+    useEffect(() => {
+        if (lesson && lesson?.student?.id && protocol && protocol.status === examinationProtocolStatuses.closed) {
+            dispatch(getSpeechCard(lesson.student.id))
+        }
+    }, [dispatch, lesson, protocol])
 
     useEffect(() => {
         if (lesson && checkUserRole(userRoles.parent) && lesson.status === lessonStatuses.finished) {
@@ -423,10 +439,26 @@ const LessonPage = (props) => {
             )}
             {lesson && lesson.status === lessonStatuses.finished && (
                 <div
-                    className='w-100 d-flex align-items-center justify-content-center'
+                    className={addClasses('w-100 d-flex', {
+                        'align-items-center justify-content-center': !speechCard
+                    })}
                     style={{ height: '100vh' }}
                 >
-                    <h1 className='text-white'>Урок завершен</h1>
+                    {((protocol && protocol.status !== examinationProtocolStatuses.closed) || checkUserRole(userRoles.parent)) ?
+                        <h1 className='text-white'>Урок завершен</h1> :
+                        (speechCard ?
+                                <>
+                                    <div className='speach-card-form__timer'>
+                                        <Timer
+                                            startTime={lesson.time_slot.start_time}
+                                            endTime={lesson.time_slot.end_time}
+                                        />
+                                    </div>
+                                    <SpeechCard speechCard={speechCard} onSubmit={onSpeechCardFinish}/>
+                                </> :
+                                <Spinner animation='grow' variant='light'/>
+                        )
+                    }
                 </div>
             )}
             {checkUserRole(userRoles.therapist) && (
@@ -436,6 +468,7 @@ const LessonPage = (props) => {
                             <ExaminationProtocol
                                 protocol={protocol}
                                 lesson={lesson}
+                                onSubmit={onProtocolFinish}
                             /> :
                             <div className='h-100 w-100 d-flex align-items-center justify-content-center'>
                                 <Spinner animation='grow'/>

@@ -7,11 +7,18 @@ import { resolve } from 'utils/resolve/resolve.js';
 
 const CommonField = (props) => {
 
-    const { id, type, className, name, errors, register, placeholder, disabled, label, classNameLabel } = props
+    const {
+        id, type, className, name, errors, register, placeholder, disabled, label, classNameLabel
+    } = props
 
     return (
         <>
-            <label htmlFor={id} className={`${classNameLabel}`}> {label} < /label>
+            <label
+                htmlFor={id}
+                className={addClasses(classNameLabel, {
+                    'disabled': disabled
+                })}
+            >{label}< /label>
             <input
                 type={type || 'text'}
                 className={

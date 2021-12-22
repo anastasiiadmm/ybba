@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
+
 import PropTypes from 'prop-types';
-import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock.js';
-import { strDateToMoment, momentDateToHuman } from 'utils/date/dateUtils.js';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { updateProtocol, createSpeechCard } from 'redux/surveys/surveysSlice.js';
+
+import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock.js';
+import { strDateToMoment, momentDateToHuman } from 'utils/date/dateUtils.js';
+import { updateProtocol } from 'redux/surveys/surveysSlice.js';
 import { examinationProtocolSchema } from 'Containers/Surveys/ExaminationProtocol/yupSchema.js';
 import ProtocolMain from 'Components/Surveys/ExaminationProtocol/ProtocolMain/ProtocolMain.js';
 import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow.js';
@@ -13,21 +15,24 @@ import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFo
 import ProtocolTitle from 'Components/Surveys/ExaminationProtocol/ProtocolTitle/ProtocolTitle.js';
 import ProtocolBlockTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBlockTitle/ProtocolBlockTitle.js';
 import ProtocolResultTitle from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle.js';
-import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle.js';
+import ProtocolDescriptionSubtitle
+    from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle.js';
 import ProtocolResultBlock from 'Components/Surveys/ExaminationProtocol/ProtocolResultBlock/ProtocolResultBlock.js';
-import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper.js';
-import ProtocolPlaceholderTitle from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle.js';
+import ProtocolResultWrapper
+    from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper.js';
+import ProtocolPlaceholderTitle
+    from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle.js';
 
 import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
 import SurveySubmitButton from 'Components/Surveys/Common/SurveySubmitButton.js';
 import Questionnaire from 'Containers/Surveys/Questionnaire/Questionnaire.js';
 import PicturesForFish from 'Containers/Surveys/ExaminationProtocol/games/PicturesForFish.js';
-import { lessonStatuses } from 'constants.js';
+import { lessonStatuses, examinationProtocolStatuses } from 'constants.js';
 
 const ExaminationProtocol = (props) => {
 
     const {
-        protocol, lesson
+        protocol, lesson, onSubmit
     } = props
 
     const dispatch = useDispatch()
@@ -42,6 +47,7 @@ const ExaminationProtocol = (props) => {
     const data = useWatch({ control })
     let timer = null
     const isConclusionDisabled = lesson.status !== lessonStatuses.finished
+    const isProtocolClosed = protocol.status === examinationProtocolStatuses.closed
 
     useEffect(() => {
         clearTimeout(timer)
@@ -53,14 +59,6 @@ const ExaminationProtocol = (props) => {
         }, 1000)
         return () => clearTimeout(timer)
     }, [data])
-
-    const onSubmit = async data => {
-        console.log(data)
-        // await dispatch(createSpeechCard({
-        //     childId: protocol.child.id,
-        //     speechCardData: data
-        // }))
-    }
 
     return (
         <ProtocolMain
@@ -81,6 +79,7 @@ const ExaminationProtocol = (props) => {
                         name='what_are_your_complaints'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -91,6 +90,7 @@ const ExaminationProtocol = (props) => {
                         name='for_what_purpose_did_you_turn_to_a_speech_therapist'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
             </ProtocolBlock>
@@ -106,6 +106,7 @@ const ExaminationProtocol = (props) => {
                         name='what_is_your_name'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -116,6 +117,7 @@ const ExaminationProtocol = (props) => {
                         name='how_old_are_you'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -126,6 +128,7 @@ const ExaminationProtocol = (props) => {
                         name='what_is_your_moms_name_your_daddy'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -136,6 +139,7 @@ const ExaminationProtocol = (props) => {
                         name='where_do_you_live'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -146,6 +150,7 @@ const ExaminationProtocol = (props) => {
                         name='what_time_of_year_is_it'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -156,6 +161,7 @@ const ExaminationProtocol = (props) => {
                         name='what_did_you_do_yesterday'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -166,6 +172,7 @@ const ExaminationProtocol = (props) => {
                         name='what_toys_do_you_have'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -176,6 +183,7 @@ const ExaminationProtocol = (props) => {
                         name='what_kind_of_animals_do_you_know'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -186,11 +194,13 @@ const ExaminationProtocol = (props) => {
                         name='general_ideas_about_the_world_around_comment'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Сформированность представлений об окружающем мире. Запас знаний:</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>Сформированность представлений об окружающем мире. Запас
+                        знаний:</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
@@ -199,7 +209,7 @@ const ExaminationProtocol = (props) => {
                                 name='stock_of_knowledge_about_the_world_around'
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -209,7 +219,7 @@ const ExaminationProtocol = (props) => {
                                 name='stock_of_knowledge_about_the_world_around'
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -219,7 +229,7 @@ const ExaminationProtocol = (props) => {
                                 name='stock_of_knowledge_about_the_world_around'
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -234,7 +244,7 @@ const ExaminationProtocol = (props) => {
                                 name='in_a_time_space_situation'
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -244,13 +254,14 @@ const ExaminationProtocol = (props) => {
                                 name='in_a_time_space_situation'
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Знает сколько ему лет, какое сейчас время года, какое сейчас время суток, что
+                    <ProtocolDescriptionSubtitle>Знает сколько ему лет, какое сейчас время года, какое сейчас время
+                        суток, что
                         он делал вчера, что делал утром, что он будет делать завтра</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
@@ -262,7 +273,7 @@ const ExaminationProtocol = (props) => {
                                 value={true}
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -273,7 +284,7 @@ const ExaminationProtocol = (props) => {
                                 value={false}
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -288,7 +299,7 @@ const ExaminationProtocol = (props) => {
                                 name='image_i'
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -298,13 +309,14 @@ const ExaminationProtocol = (props) => {
                                 name='image_i'
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Знает, как его зовут, как зовут его родителей, где он живет</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>Знает, как его зовут, как зовут его родителей, где он
+                        живет</ProtocolDescriptionSubtitle>
                     <ProtocolResultWrapper>
                         <ProtocolResultBlock>
                             <ProtocolResultWrapper>
@@ -315,7 +327,7 @@ const ExaminationProtocol = (props) => {
                                     control={control}
                                     value={true}
                                     errors={errors}
-                                    disabled={isConclusionDisabled}
+                                    disabled={isConclusionDisabled || isProtocolClosed}
                                 />
                             </ProtocolResultWrapper>
                             <ProtocolResultWrapper>
@@ -326,14 +338,15 @@ const ExaminationProtocol = (props) => {
                                     control={control}
                                     value={false}
                                     errors={errors}
-                                    disabled={isConclusionDisabled}
+                                    disabled={isConclusionDisabled || isProtocolClosed}
                                 />
                             </ProtocolResultWrapper>
                         </ProtocolResultBlock>
                     </ProtocolResultWrapper>
                 </ProtocolRow>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Соматогнозис: представление о собственном теле</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>Соматогнозис: представление о собственном
+                        теле</ProtocolDescriptionSubtitle>
                     <ProtocolResultWrapper>
                         <ProtocolResultBlock>
                             <ProtocolResultWrapper>
@@ -343,7 +356,7 @@ const ExaminationProtocol = (props) => {
                                     name='somatognosis_understanding_your_own_body'
                                     control={control}
                                     errors={errors}
-                                    disabled={isConclusionDisabled}
+                                    disabled={isConclusionDisabled || isProtocolClosed}
                                 />
                             </ProtocolResultWrapper>
                             <ProtocolResultWrapper>
@@ -353,7 +366,7 @@ const ExaminationProtocol = (props) => {
                                     name='somatognosis_understanding_your_own_body'
                                     control={control}
                                     errors={errors}
-                                    disabled={isConclusionDisabled}
+                                    disabled={isConclusionDisabled || isProtocolClosed}
                                 />
                             </ProtocolResultWrapper>
                         </ProtocolResultBlock>
@@ -371,6 +384,7 @@ const ExaminationProtocol = (props) => {
                                     control={control}
                                     value={true}
                                     errors={errors}
+                                    disabled={isProtocolClosed}
                                 />
                             </ProtocolResultWrapper>
                             <ProtocolResultWrapper>
@@ -381,6 +395,7 @@ const ExaminationProtocol = (props) => {
                                     control={control}
                                     value={false}
                                     errors={errors}
+                                    disabled={isProtocolClosed}
                                 />
                             </ProtocolResultWrapper>
                         </ProtocolResultBlock>
@@ -394,13 +409,15 @@ const ExaminationProtocol = (props) => {
                         name='formation_of_ideas_about_the_world_around_comment'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
             </ProtocolBlock>
 
             <ProtocolBlock>
                 <ProtocolTitle>Билатеральная моторная координация</ProtocolTitle>
-                <ProtocolPlaceholderTitle>— Возьми воображаемый телефон в руку и приложи к уху</ProtocolPlaceholderTitle>
+                <ProtocolPlaceholderTitle>— Возьми воображаемый телефон в руку и приложи к
+                    уху</ProtocolPlaceholderTitle>
                 <ProtocolRow>
                     <ProtocolDescriptionSubtitle>Ведущее ухо:</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
@@ -412,6 +429,7 @@ const ExaminationProtocol = (props) => {
                                 control={control}
                                 value='правое ухо'
                                 errors={errors}
+                                disabled={isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -422,6 +440,7 @@ const ExaminationProtocol = (props) => {
                                 control={control}
                                 value='левое ухо'
                                 errors={errors}
+                                disabled={isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -437,6 +456,7 @@ const ExaminationProtocol = (props) => {
                                 control={control}
                                 value='правая рука'
                                 errors={errors}
+                                disabled={isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -447,6 +467,7 @@ const ExaminationProtocol = (props) => {
                                 control={control}
                                 value='левая рука'
                                 errors={errors}
+                                disabled={isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -462,6 +483,7 @@ const ExaminationProtocol = (props) => {
                                 control={control}
                                 value='правый глаз'
                                 errors={errors}
+                                disabled={isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -472,6 +494,7 @@ const ExaminationProtocol = (props) => {
                                 control={control}
                                 value='левый глаз'
                                 errors={errors}
+                                disabled={isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -488,6 +511,7 @@ const ExaminationProtocol = (props) => {
                                 control={control}
                                 value='правая нога'
                                 errors={errors}
+                                disabled={isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -498,6 +522,7 @@ const ExaminationProtocol = (props) => {
                                 control={control}
                                 value='левая нога'
                                 errors={errors}
+                                disabled={isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -512,7 +537,7 @@ const ExaminationProtocol = (props) => {
                                 name='conclusion_options'
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -522,7 +547,7 @@ const ExaminationProtocol = (props) => {
                                 name='conclusion_options'
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -532,7 +557,7 @@ const ExaminationProtocol = (props) => {
                                 name='conclusion_options'
                                 control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled}
+                                disabled={isConclusionDisabled || isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -543,10 +568,12 @@ const ExaminationProtocol = (props) => {
                 errors={errors}
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <Questionnaire
                 register={register}
                 errors={errors}
+                disabled={isProtocolClosed}
             />
             <ProtocolBlock>
                 <ProtocolBlockTitle>Логопедическое заключение</ProtocolBlockTitle>
@@ -556,6 +583,7 @@ const ExaminationProtocol = (props) => {
                         name='speech_therapy_conclusion'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -565,6 +593,7 @@ const ExaminationProtocol = (props) => {
                         name='dynamic_conclusion'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -574,18 +603,21 @@ const ExaminationProtocol = (props) => {
                         name='final_conclusion'
                         register={register}
                         errors={errors}
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
             </ProtocolBlock>
-            <ProtocolBlock>
-                <ProtocolRow>
-                    <SurveySubmitButton
-                        type='submit'
-                    >
-                        Завершить заполнение протокола
-                    </SurveySubmitButton>
-                </ProtocolRow>
-            </ProtocolBlock>
+            {protocol.status !== examinationProtocolStatuses.closed && (
+                <ProtocolBlock>
+                    <ProtocolRow>
+                        <SurveySubmitButton
+                            type='submit'
+                        >
+                            Завершить заполнение протокола
+                        </SurveySubmitButton>
+                    </ProtocolRow>
+                </ProtocolBlock>
+            )}
         </ProtocolMain>
     );
 }
@@ -593,6 +625,7 @@ const ExaminationProtocol = (props) => {
 ExaminationProtocol.propTypes = {
     protocol: PropTypes.object.isRequired,
     lesson: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 }
 
 export default ExaminationProtocol;

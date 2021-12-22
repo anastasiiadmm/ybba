@@ -16,8 +16,12 @@ import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFo
 const Questionnaire = (props) => {
 
     const {
-        register, errors
+        register, errors, disabled
     } = props
+
+    const commonFieldProps = {
+        register, errors, disabled
+    }
 
     return (
         <ProtocolBlock>
@@ -35,8 +39,7 @@ const Questionnaire = (props) => {
                         type='text'
                         label='Сел в:'
                         name='additional_information.sat_in'
-                        errors={errors}
-                        register={register}
+                        {...commonFieldProps}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -44,8 +47,7 @@ const Questionnaire = (props) => {
                         type='text'
                         label='Пополз на четвереньках в:'
                         name='additional_information.crawled_on_all_fours_into'
-                        errors={errors}
-                        register={register}
+                        {...commonFieldProps}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -53,8 +55,7 @@ const Questionnaire = (props) => {
                         type='text'
                         label='Пошел в:'
                         name='additional_information.went_to'
-                        errors={errors}
-                        register={register}
+                        {...commonFieldProps}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -62,8 +63,7 @@ const Questionnaire = (props) => {
                         type='text'
                         label='Научился прыгать на двух ногах в:'
                         name='additional_information.learned_to_jump_on_two_legs_in'
-                        errors={errors}
-                        register={register}
+                        {...commonFieldProps}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -71,8 +71,7 @@ const Questionnaire = (props) => {
                         type='text'
                         label='Травмы/инфекции до, во время и/или после родов:'
                         name='additional_information.injury_infection_before_during_and_or_after_childbirth'
-                        errors={errors}
-                        register={register}
+                        {...commonFieldProps}
                     />
                 </ProtocolRow>
             </ProtocolSubBlock>
@@ -86,8 +85,7 @@ const Questionnaire = (props) => {
                         type='text'
                         label='Лепет в:'
                         name='additional_information.babbling_in'
-                        errors={errors}
-                        register={register}
+                        {...commonFieldProps}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -95,8 +93,7 @@ const Questionnaire = (props) => {
                         type='text'
                         label='Первые слова в:'
                         name='additional_information.first_words_in'
-                        errors={errors}
-                        register={register}
+                        {...commonFieldProps}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -104,8 +101,7 @@ const Questionnaire = (props) => {
                         type='text'
                         label='Первые короткие фразы в:'
                         name='additional_information.first_short_phrases_in'
-                        errors={errors}
-                        register={register}
+                        {...commonFieldProps}
                     />
                 </ProtocolRow>
             </ProtocolSubBlock>
@@ -119,8 +115,7 @@ const Questionnaire = (props) => {
                     type='textarea'
                     name='additional_information.speech_environment'
                     placeholder='Ответ родителя'
-                    errors={errors}
-                    register={register}
+                    {...commonFieldProps}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -133,8 +128,7 @@ const Questionnaire = (props) => {
                     type='textarea'
                     name='additional_information.present_and_past_diseases'
                     placeholder='Ответ родителя'
-                    errors={errors}
-                    register={register}
+                    {...commonFieldProps}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -146,8 +140,7 @@ const Questionnaire = (props) => {
                     type='textarea'
                     name='additional_information.drug_treatment'
                     placeholder='Ответ родителя'
-                    errors={errors}
-                    register={register}
+                    {...commonFieldProps}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -160,8 +153,7 @@ const Questionnaire = (props) => {
                     type='textarea'
                     name='additional_information.neurological_status'
                     placeholder='Ответ родителя'
-                    errors={errors}
-                    register={register}
+                    {...commonFieldProps}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -171,8 +163,7 @@ const Questionnaire = (props) => {
                     type='textarea'
                     name='additional_information.vision'
                     placeholder='Ответ родителя'
-                    errors={errors}
-                    register={register}
+                    {...commonFieldProps}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -182,8 +173,7 @@ const Questionnaire = (props) => {
                     type='textarea'
                     name='additional_information.hearing'
                     placeholder='Ответ родителя'
-                    errors={errors}
-                    register={register}
+                    {...commonFieldProps}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -196,8 +186,7 @@ const Questionnaire = (props) => {
                     type='textarea'
                     name='additional_information.eating_behavior'
                     placeholder='Ответ родителя'
-                    errors={errors}
-                    register={register}
+                    {...commonFieldProps}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -210,8 +199,7 @@ const Questionnaire = (props) => {
                     type='textarea'
                     name='additional_information.emotional_and_psychological_level'
                     placeholder='Ответ родителя'
-                    errors={errors}
-                    register={register}
+                    {...commonFieldProps}
                 />
             </ProtocolSubBlock>
         </ProtocolBlock>
@@ -220,7 +208,8 @@ const Questionnaire = (props) => {
 
 Questionnaire.propTypes = {
     register: PropTypes.func.isRequired,
-    errors: PropTypes.object
+    errors: PropTypes.object,
+    disabled: PropTypes.bool,
 }
 
 export default Questionnaire;
