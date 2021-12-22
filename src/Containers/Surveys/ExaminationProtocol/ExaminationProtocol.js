@@ -23,6 +23,7 @@ import SurveySubmitButton from 'Components/Surveys/Common/SurveySubmitButton.js'
 import Questionnaire from 'Containers/Surveys/Questionnaire/Questionnaire.js';
 import PicturesForFish from 'Containers/Surveys/ExaminationProtocol/games/PicturesForFish.js';
 import GiraffeGame from 'Containers/Surveys/ExaminationProtocol/games/GiraffeGame';
+import PuzzleGame from 'Containers/Surveys/ExaminationProtocol/games/PuzzleGame';
 
 const ExaminationProtocol = (props) => {
 
@@ -527,6 +528,11 @@ const ExaminationProtocol = (props) => {
                 control={control}
             />
             <GiraffeGame
+                register={register}
+                errors={errors}
+                control={control}
+            />
+            <PuzzleGame
                 register={register}
                 errors={errors}
                 control={control}

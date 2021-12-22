@@ -74,7 +74,7 @@ const GiraffeGame = (props) => {
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='checkbox'
+                                type='checkboxWithField'
                                 label='Замена Р на'
                                 name='game_giraffe.replacing_p_with'
                                 control={control}
@@ -83,7 +83,7 @@ const GiraffeGame = (props) => {
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='checkbox'
+                                type='checkboxWithField'
                                 label='Замена Рь на'
                                 name='game_giraffe.replacing_p_soft_with'
                                 control={control}
@@ -142,7 +142,7 @@ const GiraffeGame = (props) => {
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='checkbox'
+                                type='checkboxWithField'
                                 label='Замена Л на'
                                 name='game_giraffe.replacing_l_with'
                                 control={control}
@@ -151,7 +151,7 @@ const GiraffeGame = (props) => {
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='checkbox'
+                                type='checkboxWithField'
                                 label='Замена Ль на'
                                 name='game_giraffe.replacing_l_soft_with'
                                 control={control}
