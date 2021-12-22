@@ -22,7 +22,7 @@ export const registrationSchema = yup.object().shape({
     child: yup.object().shape({
         first_name: yup.string()
             .required('Имя ребёнка обязательно')
-            .max(50, 'Максимум 50 симфолов')
+            .max(50, 'Максимум 50 символов')
             .test('Is first name correct', 'Имя ребёнка может содержать только кириллицу', lastNameValidation),
         last_name: yup.string()
             .required('Фамилия ребёнка обязательна')

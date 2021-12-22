@@ -22,7 +22,7 @@ const Registration = props => {
     const queryParams = new URLSearchParams(useLocation().search)
     const { registrationKey } = props.match.params
 
-    const { register, handleSubmit, formState: { errors }, setError, control, watch, getValues } = useForm({
+    const { register, handleSubmit, formState: { errors }, setError, control, watch, getValues, trigger } = useForm({
         resolver: yupResolver(registrationSchema),
         defaultValues: {
             parent: { email: queryParams.get('email') }
@@ -222,6 +222,7 @@ const Registration = props => {
                                 errors={errors}
                                 control={control}
                                 register={register}
+                                onBlur={() => trigger('child.date_of_birth')}
                                 className='form2__field'
                                 name='child.date_of_birth'
                                 label='Дата рождения'
@@ -239,6 +240,7 @@ const Registration = props => {
                                 errors={errors}
                                 register={register}
                                 options={countiesOptions}
+                                onBlur={() => trigger('child.country')}
                                 className='form2__field'
                                 classNameLabel='form2__label'
                             />

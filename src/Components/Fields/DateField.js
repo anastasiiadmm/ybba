@@ -13,7 +13,7 @@ import { isValidDate } from 'utils/date/dateUtils.js';
 
 const DateField = (props) => {
 
-    const { id, name, control, errors, className, label, classNameLabel, placeholder } = props
+    const { id, name, control, errors, className, label, classNameLabel, placeholder, onBlur } = props
 
     return (
         <>
@@ -49,6 +49,7 @@ const DateField = (props) => {
                                                 'error': resolve(name, errors, '.')
                                             })}
                                             id={id}
+                                            onBlur={onBlur}
                                         />
                                     }
                                 }
@@ -57,7 +58,7 @@ const DateField = (props) => {
                     )
                 }}
             />
-            <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
+            <div className='form2__error'> {resolve(name, errors, '.')?.message} </div>
         </>
     );
 }
@@ -67,6 +68,7 @@ DateField.propTypes = {
     name: PropTypes.string,
     control: PropTypes.object,
     errors: PropTypes.object,
+    onBlur: PropTypes.func,
     className: PropTypes.string,
     label: PropTypes.string,
     placeholder: PropTypes.string
