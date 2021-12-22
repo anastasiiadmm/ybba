@@ -260,7 +260,7 @@ const LessonPage = (props) => {
     }, [startSTRecording]);
 
     useEffect(() => {
-        if (!isMicrophoneAllowed || !isCameraAllowed) {
+        if (!isMicrophoneAllowed && !isCameraAllowed) {
             toast.info('Разрешите доступ для камеры и микрофона на вашем браузере');
         }
     }, [isCameraAllowed, isMicrophoneAllowed]);
