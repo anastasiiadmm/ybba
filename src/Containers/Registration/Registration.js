@@ -175,7 +175,6 @@ const Registration = props => {
                                 name='parent.password'
                                 errors={errors}
                                 className='form2__field'
-                                placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                                 classNameLabel='form2__label'
                             />
                         </div>
@@ -188,7 +187,6 @@ const Registration = props => {
                                 name='parent.passwordConfirmation'
                                 errors={errors}
                                 className='form2__field'
-                                placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                                 classNameLabel='form2__label'
                             />
                         </div>
