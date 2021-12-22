@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosApi from '../../axios';
+import { examinationProtocolStatuses } from 'constants.js';
 
 const nameSpace = 'surveys';
 
@@ -94,6 +95,9 @@ const surveysSlice = createSlice({
             state.protocol = null;
             state.errors = null;
         },
+        closeProtocol: state => {
+            state.protocol = { ...state.protocol, status: examinationProtocolStatuses.closed }
+        }
     },
     extraReducers: {
         [getProtocol.pending]: (state) => {
@@ -114,7 +118,7 @@ const surveysSlice = createSlice({
             state.loading = true;
             state.success = false;
         },
-        [updateProtocol.fulfilled]: (state, { payload }) => {
+        [updateProtocol.fulfilled]: (state) => {
             state.loading = false;
             state.success = true;
         },
@@ -142,7 +146,7 @@ const surveysSlice = createSlice({
             state.loading = true;
             state.success = false;
         },
-        [createSpeechCard.fulfilled]: (state, { payload }) => {
+        [createSpeechCard.fulfilled]: (state) => {
             state.loading = false;
             state.success = true;
         },
@@ -168,6 +172,6 @@ const surveysSlice = createSlice({
     },
 });
 
-export const { clearSurveysState } = surveysSlice.actions;
+export const { clearSurveysState, closeProtocol } = surveysSlice.actions;
 export const surveysSelector = (state) => state.surveys;
 export default surveysSlice.reducer;

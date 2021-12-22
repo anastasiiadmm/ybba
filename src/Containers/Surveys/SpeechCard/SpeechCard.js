@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SpeechCardMain from 'Components/Surveys/SpeechCard/SpeechCardMain/SpeechCardMain.js';
 import PropTypes from 'prop-types';
 import SpeechCardFormBlock from 'Components/Surveys/SpeechCard/SpeechCardFormBlock/SpeechCardFormBlock.js';
@@ -6,31 +6,54 @@ import SpeechCardBlock from 'Components/Surveys/SpeechCard/SpeechCardBlock/Speec
 import SpeechCardTitle from 'Components/Surveys/SpeechCard/SpeechCardTitle/SpeechCardTitle.js';
 import SpeechCardRow from 'Components/Surveys/SpeechCard/SpeechCardRow/SpeechCardRow.js';
 import SpeechCardFormField from 'Components/Surveys/SpeechCard/SpeechCardFormField/SpeechCardFormField.js';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { examinationProtocolSchema } from 'Containers/Surveys/ExaminationProtocol/yupSchema.js';
 import SpeechCardBlockTitle from 'Components/Surveys/SpeechCard/SpeechCardSubtitle/SpeechCardBlockTitle.js';
 import SpeechCardSubBlock from 'Components/Surveys/SpeechCard/SpeechCardSubBlock/SpeechCardSubBlock.js';
 import SpeechCardSubBlockTitle from 'Components/Surveys/SpeechCard/SpeechCardSubBlockTitle/SpeechCardSubBlockTitle.js';
 import SpeechCardFormLine from 'Components/Surveys/SpeechCard/SpeechCardFormLine/SpeechCardFormLine.js';
 import SurveySubmitButton from 'Components/Surveys/Common/SurveySubmitButton.js';
+import { updateSpeechCard } from 'redux/surveys/surveysSlice.js';
+import { useDispatch } from 'react-redux';
+import { speechCardSchema } from 'Containers/Surveys/SpeechCard/yupSchema.js';
 
 const SpeechCard = (props) => {
 
     const {
-        speechCard
+        speechCard, onSubmit
     } = props
 
-    const { register, formState: { errors }, setValue, control, watch, getValues } = useForm({
-        resolver: yupResolver(examinationProtocolSchema),
+    const { register, formState: { errors }, control, handleSubmit } = useForm({
+        resolver: yupResolver(speechCardSchema),
         defaultValues: {
             ...speechCard,
         }
     })
 
+    const dispatch = useDispatch()
+    const data = useWatch({ control })
+    let timer = null
+
+    useEffect(() => {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+            dispatch(updateSpeechCard({
+                speechCardId: speechCard.id,
+                speechCardData: data
+            }))
+        }, 1000)
+        return () => clearTimeout(timer)
+    }, [data])
+
+    useEffect(() => {
+        console.log(errors)
+    }, [errors])
+
     return (
-        <SpeechCardMain>
-            <div className='speach-card-form__timer'>До заверешения заполнения речевой карты 19:24</div>
+        <SpeechCardMain
+            submitHandler={handleSubmit}
+            onSubmit={onSubmit}
+        >
             <SpeechCardFormBlock>
                 <SpeechCardBlock>
                     <SpeechCardTitle>Речевая карта</SpeechCardTitle>
@@ -671,7 +694,8 @@ const SpeechCard = (props) => {
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
                     <SpeechCardSubBlock>
-                        <SpeechCardSubBlockTitle>8.2. Мышление (вербальный и невербальный интеллект)</SpeechCardSubBlockTitle>
+                        <SpeechCardSubBlockTitle>8.2. Мышление (вербальный и невербальный
+                            интеллект)</SpeechCardSubBlockTitle>
                         <SpeechCardRow>
                             <SpeechCardFormField
                                 type='textarea'
@@ -723,7 +747,9 @@ const SpeechCard = (props) => {
             </SpeechCardFormBlock>
             <SpeechCardFormLine/>
             <SpeechCardFormBlock>
-                <SurveySubmitButton>
+                <SurveySubmitButton
+                    type='submit'
+                >
                     Завершить заполнение
                 </SurveySubmitButton>
             </SpeechCardFormBlock>
@@ -732,7 +758,8 @@ const SpeechCard = (props) => {
 }
 
 SpeechCard.propTypes = {
-    speechCard: PropTypes.object.isRequired
+    speechCard: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func.isRequired,
 }
 
 export default SpeechCard;
