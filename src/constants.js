@@ -2,6 +2,7 @@ export const GAME_FILE_TYPE_LOADER = 'file_loader'
 export const GAME_FILE_TYPE_DATA = 'file_data'
 export const GAME_FILE_TYPE_FRAMEWORK = 'file_framework'
 export const GAME_FILE_TYPE_WASM = 'file_wasm'
+export const GAME_FOLDER_STREAMING_ASSETS = 'steaming_assets_folder'
 
 export const LESSON_STATUS_NEW = 'new'
 export const LESSON_STATUS_PENDING = 'pending'
@@ -17,7 +18,7 @@ export const MUTE_AUDIO = 'AudioMute';
 export const PAUSE_GAME = 'PauseEnable';
 export const RESTART_GAME = 'Restart';
 export  const NEXT_ACTION = 'NextAction';
-export const PREV_ACTION = 'PrevAction';
+export const PREV_ACTION = 'StepBack';
 export const NEXT_GAME = 'NextGame';
 export const PREV_GAME = 'PrevGame';
 
@@ -164,4 +165,9 @@ export const deviceTypes = {
 export const examinationProtocolStatuses = {
     open: 'open',
     closed: 'closed'
+}
+
+export const gameUserRoles = {
+    [userRoles.therapist]: 1,
+    [userRoles.parent]: 2,
 }
