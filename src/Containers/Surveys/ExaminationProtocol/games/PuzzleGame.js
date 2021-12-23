@@ -146,7 +146,7 @@ const PuzzleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Нарушено'
-                                name='game_giraffe.perception'
+                                name='game_puzzle.perception'
                                 control={control}
                                 errors={errors}
                             />
@@ -155,7 +155,7 @@ const PuzzleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Не нарушено'
-                                name='game_giraffe.perception'
+                                name='game_puzzle.perception'
                                 control={control}
                                 errors={errors}
                             />
@@ -166,7 +166,7 @@ const PuzzleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Cоответствует возрасту'
-                                name='game_giraffe.level_of_perception'
+                                name='game_puzzle.level_of_perception'
                                 control={control}
                                 errors={errors}
                             />
@@ -175,7 +175,7 @@ const PuzzleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Не соответствует возрасту'
-                                name='game_giraffe.level_of_perception'
+                                name='game_puzzle.level_of_perception'
                                 control={control}
                                 errors={errors}
                             />
@@ -186,7 +186,7 @@ const PuzzleGame = (props) => {
                     <ProtocolFormField
                         type='textarea'
                         label='Комментарий'
-                        name='game_giraffe.expert_comment'
+                        name='game_puzzle.expert_comment'
                         placeholder='Комментарий специалиста'
                         register={register}
                     />
