@@ -177,6 +177,8 @@ const Registration = props => {
                                 errors={errors}
                                 className='form2__field'
                                 classNameLabel='form2__label'
+                                tooltipMessage='Пароль должен состоять из цифр, букв, минимум одной заглавной буквы
+                                    и минимум одного символа и должен содержать не менее 8 знаков'
                             />
                         </div>
                         <div className='form2__row'>
