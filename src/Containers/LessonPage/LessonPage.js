@@ -14,12 +14,14 @@ import {
     GAME_FILE_TYPE_DATA,
     GAME_FILE_TYPE_FRAMEWORK,
     GAME_FILE_TYPE_WASM,
+    GAME_FOLDER_STREAMING_ASSETS,
     gameActions,
     userRoles,
     envs,
     frontUrls,
     lessonStatuses,
     examinationProtocolStatuses,
+    gameUserRoles,
 } from 'constants.js';
 import { WsContext } from 'context/WsContext/WsContext.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
@@ -68,7 +70,7 @@ const LessonPage = (props) => {
     const [unityLoadProgress, setUnityLoadProgress] = useState(0);
 
     const onChangeActiveGame = (game) => {
-        if (game.id !== activeGame.id) {
+        if (!activeGame || (game.id !== activeGame.id)) {
             setUnityLoadProgress(0);
             sendWsAction(
                 changeActiveGame({ lesson_id: lesson.id, game_id: game.id })
@@ -87,7 +89,7 @@ const LessonPage = (props) => {
     const triggerGameAction = (gameAction) => {
         if (unityContext) {
             console.log('Triggered action:', gameAction);
-            unityContext.send('WebData', gameAction);
+            unityContext.send('JavaHook', gameAction);
         }
     };
     const GameActionHandler = (gameAction) => {
@@ -109,6 +111,7 @@ const LessonPage = (props) => {
                 dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
                 frameworkUrl: getFileUrl(GAME_FILE_TYPE_FRAMEWORK),
                 codeUrl: getFileUrl(GAME_FILE_TYPE_WASM),
+                streamingAssetsUrl: getFileUrl(GAME_FOLDER_STREAMING_ASSETS)
             });
             await setUnityContext(context);
         }
@@ -235,23 +238,20 @@ const LessonPage = (props) => {
             unityContext.on('progress', (progress) => {
                 setUnityLoadProgress(progress);
             });
-
-            let json = {};
-
-            if (checkUserRole(userRoles.therapist)) {
-                json = { IsServer: true, Id: lessonId, FreeGame: false };
-            }
-            if (checkUserRole(userRoles.parent)) {
-                json = { IsServer: false, Id: lessonId, FreeGame: false };
+            const userGameData = {
+                nickName: user.email,
+                roomId: lessonId,
+                gameType: 1,
+                developmentMode: config.appEnvironment === envs.local,
+                userRole: gameUserRoles[user.role],
             }
             if (unityContext) {
-                // Controlling of sending JSON data to game
-                unityContext.on('ReadJavaData', async () => {
-                    sendJsonToGameWithTimeout(json);
-                });
+                unityContext.on('GameInitialized', () => {
+                    unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData))
+                })
             }
         }
-    }, [lessonId, sendJsonToGameWithTimeout, unityContext]);
+    }, [user, lessonId, sendJsonToGameWithTimeout, unityContext]);
 
     useEffect(() => {
         startSTRecording();
