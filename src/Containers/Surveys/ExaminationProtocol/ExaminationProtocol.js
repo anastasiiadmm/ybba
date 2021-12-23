@@ -25,6 +25,7 @@ import PicturesForFish from 'Containers/Surveys/ExaminationProtocol/games/Pictur
 import GiraffeGame from 'Containers/Surveys/ExaminationProtocol/games/GiraffeGame';
 import PuzzleGame from 'Containers/Surveys/ExaminationProtocol/games/PuzzleGame';
 import AntLambadaGame from 'Containers/Surveys/ExaminationProtocol/games/AntLambadaGame';
+import AntBattleGame from 'Containers/Surveys/ExaminationProtocol/games/AntBattleGame';
 
 const ExaminationProtocol = (props) => {
 
@@ -539,6 +540,11 @@ const ExaminationProtocol = (props) => {
                 control={control}
             />
             <AntLambadaGame
+                register={register}
+                errors={errors}
+                control={control}
+            />
+            <AntBattleGame
                 register={register}
                 errors={errors}
                 control={control}
