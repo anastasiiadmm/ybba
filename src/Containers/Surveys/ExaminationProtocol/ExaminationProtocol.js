@@ -29,7 +29,7 @@ import AntLambadaGame from 'Containers/Surveys/ExaminationProtocol/games/AntLamb
 import AntBattleGame from 'Containers/Surveys/ExaminationProtocol/games/AntBattleGame';
 import MagicExamGame from 'Containers/Surveys/ExaminationProtocol/games/MagicExamGame';
 import CapriciousPrincessGame from 'Containers/Surveys/ExaminationProtocol/games/CapriciousPrincessGame';
-import HowTheMouseCouldNotSleep from 'Containers/Surveys/ExaminationProtocol/games/HowTheMouseCouldNotSleep/HowTheMouseCouldNotSleep';
+import HowTheMouseCouldNotSleep from 'Containers/Surveys/ExaminationProtocol/games/HowTheMouseCouldNotSleep';
 
 import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
 
