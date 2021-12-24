@@ -28,6 +28,7 @@ import PuzzleGame from 'Containers/Surveys/ExaminationProtocol/games/PuzzleGame'
 import AntLambadaGame from 'Containers/Surveys/ExaminationProtocol/games/AntLambadaGame';
 import AntBattleGame from 'Containers/Surveys/ExaminationProtocol/games/AntBattleGame';
 import MagicExamGame from 'Containers/Surveys/ExaminationProtocol/games/MagicExamGame';
+import CapriciousPrincessGame from 'Containers/Surveys/ExaminationProtocol/games/CapriciousPrincessGame';
 
 import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
 
@@ -554,6 +555,11 @@ const ExaminationProtocol = (props) => {
                 control={control}
             />
             <MagicExamGame
+                register={register}
+                errors={errors}
+                control={control}
+            />
+            <CapriciousPrincessGame
                 register={register}
                 errors={errors}
                 control={control}
