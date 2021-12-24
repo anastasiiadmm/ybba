@@ -22,6 +22,8 @@ import PageFail from 'Components/PagesForPayment/PageFail';
 import ParentQuestionnaire from 'Containers/ParentQuestionnaire/ParentQuestionnaire.js';
 
 import 'App.css';
+import Lessons from 'Containers/Lessons/Lessons.js';
+import Payments from 'Containers/Payments/Payments.js';
 
 
 const App = () => {
@@ -40,7 +42,7 @@ const App = () => {
         pauseOnHover
       />
       <Switch>
-        {/*<PrivateRoute path='/payments/' component={Payments} />*/}
+        <PrivateRoute path='/payments/' component={Payments} />
         <PrivateRoute path='/child-profile/' component={ChildProfiles} exact />
         <PrivateRoute
           path='/child-profile/:childId/:stage/'
@@ -56,7 +58,7 @@ const App = () => {
           path='/timetable-schedule/'
           component={ParentTimeTableSchedule}
         />
-        {/*<PrivateRoute path='/lessons/' component={Lessons} exact />*/}
+        <PrivateRoute path='/lessons/' component={Lessons} exact />
         <PrivateRoute path='/profile/edit/' component={ParentProfileEdit} />
         <PrivateRoute path='/profile/' component={ParentProfile} exact />
         <PrivateRoute path='/' component={MainDashboard} exact />

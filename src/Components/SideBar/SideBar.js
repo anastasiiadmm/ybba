@@ -67,11 +67,11 @@ const SideBar = () => {
                         <SideBarLink to='/' classes='main-nav__link_home'>
                             Главная
                         </SideBarLink>
-                        {/*{checkUserRole(userRoles.parent) && (*/}
-                        {/*    <SideBarLink to='/lessons/' classes='main-nav__link main-nav__link_classes'>*/}
-                        {/*        Занятия*/}
-                        {/*    </SideBarLink>*/}
-                        {/*)}*/}
+                        {checkUserRole(userRoles.parent) && (
+                            <SideBarLink to='/lessons/' classes='main-nav__link main-nav__link_classes'>
+                                Занятия
+                            </SideBarLink>
+                        )}
                         {checkUserRole(userRoles.parent) && (
                             <SideBarLink to='/profile/' classes='main-nav__link_lk'>
                                 Личный кабинет
@@ -82,11 +82,11 @@ const SideBar = () => {
                                 Профиль ребёнка
                             </SideBarLink>
                         )}
-                        {/*{checkUserRole(userRoles.parent) && (*/}
-                        {/*    <SideBarLink to='/payments/' classes='main-nav__link_payment'>*/}
-                        {/*        Управление платежами*/}
-                        {/*    </SideBarLink>*/}
-                        {/*)}*/}
+                        {checkUserRole(userRoles.parent) && (
+                            <SideBarLink to='/payments/' classes='main-nav__link_payment'>
+                                Управление платежами
+                            </SideBarLink>
+                        )}
                         {/*<SideBarLink to='/settings/' classes='main-nav__link_setting'>*/}
                         {/*    Настройки*/}
                         {/*</SideBarLink>*/}
