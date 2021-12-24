@@ -42,7 +42,7 @@ import {
     getSpeechCard,
     updateProtocol,
     closeProtocol,
-    createSpeechCard
+    createSpeechCard, moveDataFromProtocolToSpeechCard
 } from 'redux/surveys/surveysSlice.js';
 import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
 import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
@@ -159,19 +159,6 @@ const LessonPage = (props) => {
         }
     };
 
-    const sendChildrenQuestionnaireNotification = useCallback(() => {
-        const children = user.profile.children;
-        children.forEach((child) => {
-            const link = `<a href="${
-                frontUrls[config.appEnvironment]
-            }/questionnaire/${child.id}">Перейти к анкете</a>`;
-            const title = 'Анкета ребёнка';
-            const body = `Пожалуйста, ответьте на вопросы о развитии ребенка (${link})`;
-
-            dispatch(sendNotificationToMe({ title, body }));
-        });
-    }, [dispatch, user]);
-
     const webcamComponentProps = {
         meetingId: lessonId,
         lessonId: lessonId,
@@ -183,9 +170,9 @@ const LessonPage = (props) => {
             toast.warning('Сначала завершите занятие')
         } else {
             dispatch(closeProtocol())
-            await dispatch(createSpeechCard({
+            await dispatch(moveDataFromProtocolToSpeechCard({
                 childId: protocol.child.id,
-                speechCardData: data
+                data: data
             }))
             await dispatch(updateProtocol({
                 protocolId: protocol.id,
@@ -201,7 +188,6 @@ const LessonPage = (props) => {
     }
 
     const onSpeechCardFinish = () => {
-        console.log(123413243132)
         history.push('/')
     }
 
@@ -280,9 +266,8 @@ const LessonPage = (props) => {
     useEffect(() => {
         if (lesson && checkUserRole(userRoles.parent) && lesson.status === lessonStatuses.finished) {
             history.push('/')
-            sendChildrenQuestionnaireNotification()
         }
-    }, [history, lesson, sendChildrenQuestionnaireNotification])
+    }, [history, lesson])
 
     const canvasParent = useRef();
 

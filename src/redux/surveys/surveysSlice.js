@@ -69,6 +69,18 @@ export const createSpeechCard = createAsyncThunk(
     }
 );
 
+export const moveDataFromProtocolToSpeechCard = createAsyncThunk(
+    `${nameSpace}/moveDataFromProtocolToSpeechCard`,
+    async ({ childId, data }, { rejectWithValue }) => {
+        try {
+            const resp = await axiosApi.put(`/surveys/children/${childId}/move-protocol-to-speech-card/`, data)
+            return resp.data
+        } catch (e) {
+            return rejectWithValue(e)
+        }
+    }
+)
+
 export const updateSpeechCard = createAsyncThunk(
     `${nameSpace}/updateSpeechCard`,
     async ({ speechCardId, speechCardData }, { rejectWithValue }) => {

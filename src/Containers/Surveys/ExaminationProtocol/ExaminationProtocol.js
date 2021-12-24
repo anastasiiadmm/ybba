@@ -612,6 +612,7 @@ const ExaminationProtocol = (props) => {
                     <ProtocolRow>
                         <SurveySubmitButton
                             type='submit'
+                            id='finish-protocol'
                         >
                             Завершить заполнение протокола
                         </SurveySubmitButton>
