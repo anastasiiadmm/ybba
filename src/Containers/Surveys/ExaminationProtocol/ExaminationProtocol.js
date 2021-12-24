@@ -31,6 +31,7 @@ import MagicExamGame from 'Containers/Surveys/ExaminationProtocol/games/MagicExa
 import CapriciousPrincessGame from 'Containers/Surveys/ExaminationProtocol/games/CapriciousPrincessGame';
 import HowTheMouseCouldNotSleep from 'Containers/Surveys/ExaminationProtocol/games/HowTheMouseCouldNotSleep';
 import OnTheFarmGame from 'Containers/Surveys/ExaminationProtocol/games/OnTheFarmGame';
+import OnTheFarmPartTwoGame from 'Containers/Surveys/ExaminationProtocol/games/OnTheFarmPartTwoGame';
 
 import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
 
@@ -572,6 +573,11 @@ const ExaminationProtocol = (props) => {
                 control={control}
             />
             <OnTheFarmGame
+                register={register}
+                errors={errors}
+                control={control}
+            />
+            <OnTheFarmPartTwoGame
                 register={register}
                 errors={errors}
                 control={control}
