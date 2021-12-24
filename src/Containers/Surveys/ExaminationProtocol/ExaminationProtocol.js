@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
+
 import PropTypes from 'prop-types';
 import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock.js';
 import { strDateToMoment, momentDateToHuman } from 'utils/date/dateUtils.js';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
+
 import { updateProtocol, createSpeechCard } from 'redux/surveys/surveysSlice.js';
 import { examinationProtocolSchema } from 'Containers/Surveys/ExaminationProtocol/yupSchema.js';
+
 import ProtocolMain from 'Components/Surveys/ExaminationProtocol/ProtocolMain/ProtocolMain.js';
 import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow.js';
 import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFormField/ProtocolFormField.js';
@@ -17,8 +20,6 @@ import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/
 import ProtocolResultBlock from 'Components/Surveys/ExaminationProtocol/ProtocolResultBlock/ProtocolResultBlock.js';
 import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper.js';
 import ProtocolPlaceholderTitle from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle.js';
-
-import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
 import SurveySubmitButton from 'Components/Surveys/Common/SurveySubmitButton.js';
 import Questionnaire from 'Containers/Surveys/Questionnaire/Questionnaire.js';
 import PicturesForFish from 'Containers/Surveys/ExaminationProtocol/games/PicturesForFish.js';
@@ -26,6 +27,8 @@ import GiraffeGame from 'Containers/Surveys/ExaminationProtocol/games/GiraffeGam
 import PuzzleGame from 'Containers/Surveys/ExaminationProtocol/games/PuzzleGame';
 import AntLambadaGame from 'Containers/Surveys/ExaminationProtocol/games/AntLambadaGame';
 import AntBattleGame from 'Containers/Surveys/ExaminationProtocol/games/AntBattleGame';
+
+import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
 
 const ExaminationProtocol = (props) => {
 
@@ -553,189 +556,6 @@ const ExaminationProtocol = (props) => {
                 register={register}
                 errors={errors}
             />
-            <ProtocolBlock>
-                <ProtocolBlockTitle>Мимическая мускулатура <span>Упражнение:</span></ProtocolBlockTitle>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Поднять брови'
-                        name='raise_eyebrows'
-                        register={register}
-                        errors={errors}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Нахмурить брови'
-                        name='frown'
-                        register={register}
-                        errors={errors}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Подмигнуть'
-                        name='wink'
-                        register={register}
-                        errors={errors}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Надуть щеки'
-                        name='puff_out_cheeks'
-                        register={register}
-                        errors={errors}
-                    />
-                </ProtocolRow>
-                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Тонус мышц лица:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Достаточный для полноценной коммуникации'
-                                name='facial_muscle_tone'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Достаточный для полноценной коммуникации'
-                                name='facial_muscle_tone'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Достаточный для полноценной коммуникации'
-                                name='facial_muscle_tone'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Гипомимия'
-                                name='hypomimia'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Сглаженность носогубной складки'
-                                name='smoothness_of_nasolabial_fold'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Асимметрия лица'
-                                name='asymmetry_of_face'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Гиперкинезы лица'
-                                name='facial_hyperkinesis'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Синкинезии'
-                                name='synkinesis'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolResultTitle>Тонус мышц губ:</ProtocolResultTitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Cпастичность'
-                                name='lip_muscle_tone'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Гипотония'
-                                name='lip_muscle_tone'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Дистония'
-                                name='lip_muscle_tone'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Ограничение подвижности губ'
-                                name='restriction_of_lip_mobility'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolResultTitle>Гиперсаливация:</ProtocolResultTitle>
-                    <ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Постоянная'
-                                name='hypersalivation'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='После функциональной нагрузки'
-                                name='hypersalivation'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultWrapper>
-                </ProtocolRow>
-            </ProtocolBlock>
             <ProtocolBlock>
                 <ProtocolBlockTitle>Логопедическое заключение</ProtocolBlockTitle>
                 <ProtocolRow>
