@@ -169,11 +169,11 @@ const LessonPage = (props) => {
         if (lesson.status !== lessonStatuses.finished) {
             toast.warning('Сначала завершите занятие')
         } else {
-            dispatch(closeProtocol())
             await dispatch(moveDataFromProtocolToSpeechCard({
                 childId: protocol.child.id,
                 data: data
             }))
+            await dispatch(closeProtocol())
             await dispatch(updateProtocol({
                 protocolId: protocol.id,
                 newData: {
@@ -258,7 +258,7 @@ const LessonPage = (props) => {
     }, [dispatch, lesson])
 
     useEffect(() => {
-        if (lesson && lesson?.student?.id && protocol && protocol.status === examinationProtocolStatuses.closed) {
+        if (lesson && protocol && protocol.status === examinationProtocolStatuses.closed) {
             dispatch(getSpeechCard(lesson.student.id))
         }
     }, [dispatch, lesson, protocol])
@@ -429,7 +429,9 @@ const LessonPage = (props) => {
                     })}
                     style={{ height: '100vh' }}
                 >
-                    {((protocol && protocol.status !== examinationProtocolStatuses.closed) || checkUserRole(userRoles.parent)) ?
+                    {protocol && (
+                        protocol.status === examinationProtocolStatuses.open || checkUserRole(userRoles.parent)
+                    ) ?
                         <h1 className='text-white'>Урок завершен</h1> :
                         (speechCard ?
                                 <>
