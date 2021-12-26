@@ -16,6 +16,7 @@ import SurveySubmitButton from 'Components/Surveys/Common/SurveySubmitButton.js'
 import { updateSpeechCard } from 'redux/surveys/surveysSlice.js';
 import { useDispatch } from 'react-redux';
 import { speechCardSchema } from 'Containers/Surveys/SpeechCard/yupSchema.js';
+import { speechCardStatuses } from 'constants.js';
 
 const SpeechCard = (props) => {
 
@@ -33,6 +34,7 @@ const SpeechCard = (props) => {
     const dispatch = useDispatch()
     const data = useWatch({ control })
     let timer = null
+    const isCardClosed = speechCard.status === speechCardStatuses.closed
 
     useEffect(() => {
         clearTimeout(timer)
@@ -64,6 +66,7 @@ const SpeechCard = (props) => {
                             label='Фамилия, имя ребенка'
                             register={register}
                             name='child_full_name'
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                     <SpeechCardRow>
@@ -72,6 +75,7 @@ const SpeechCard = (props) => {
                             label='Дата рождения/Возраст'
                             name='child_date_of_birth'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                     <SpeechCardRow>
@@ -80,6 +84,7 @@ const SpeechCard = (props) => {
                             label='Родители (законные представители)'
                             name='parent'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                     <SpeechCardRow>
@@ -88,6 +93,7 @@ const SpeechCard = (props) => {
                             label='Основные жалобы родителей'
                             name='main_complaints_from_parents'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                     <SpeechCardRow>
@@ -96,6 +102,7 @@ const SpeechCard = (props) => {
                             label='С какой целью обратились к логопеду'
                             name='for_what_purpose_did_you_turn_to_a_speech_therapist'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                 </SpeechCardBlock>
@@ -109,6 +116,7 @@ const SpeechCard = (props) => {
                                 label='Сел в:'
                                 name='sat_in'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -117,6 +125,7 @@ const SpeechCard = (props) => {
                                 label='Пополз на четвереньках в:'
                                 name='crawled_on_all_fours_into'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -125,6 +134,7 @@ const SpeechCard = (props) => {
                                 label='Пошел в:'
                                 name='went_to'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -133,6 +143,7 @@ const SpeechCard = (props) => {
                                 label='Научился прыгать на двух ногах в:'
                                 name='learned_to_jump_on_two_legs_in'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -141,6 +152,7 @@ const SpeechCard = (props) => {
                                 label='Травмы/инфекции до, во время и/или после родов:'
                                 name='injury_infection_before_during_and_or_after_childbirth'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -152,6 +164,7 @@ const SpeechCard = (props) => {
                                 label='Лепет в:'
                                 name='babbling_in'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -160,6 +173,7 @@ const SpeechCard = (props) => {
                                 label='Первые слова в:'
                                 name='first_words_in'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -168,6 +182,7 @@ const SpeechCard = (props) => {
                                 label='Первые короткие фразы в:'
                                 name='first_short_phrases_in'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -179,6 +194,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='speech_environment'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -191,6 +207,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='neurological_status'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -199,6 +216,7 @@ const SpeechCard = (props) => {
                                 label='Особенности зрительной системы'
                                 name='vision'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -207,6 +225,7 @@ const SpeechCard = (props) => {
                                 label='Особенности слуховой системы'
                                 name='hearing'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -215,6 +234,7 @@ const SpeechCard = (props) => {
                                 label='Пищевое поведение'
                                 name='eating_behavior'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -227,6 +247,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='present_and_past_diseases'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -237,6 +258,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='drug_treatment'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -247,6 +269,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='emotional_and_psychological_level'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -255,6 +278,7 @@ const SpeechCard = (props) => {
                                 label='Эмоциональный фон во время занятия'
                                 name='emotional_background_during_class'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -263,6 +287,7 @@ const SpeechCard = (props) => {
                                 label='Мотивация и интерес'
                                 name='motivation_and_interest'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -271,6 +296,7 @@ const SpeechCard = (props) => {
                                 label='Эмоциональный отклик на эмоцию взрослого'
                                 name='emotional_response_to_adult_emotion'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -279,6 +305,7 @@ const SpeechCard = (props) => {
                                 label='Мимические проявления'
                                 name='mimic_manifestations'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -287,6 +314,7 @@ const SpeechCard = (props) => {
                                 label='Базовые эмоции, которые проявлял во время занятия'
                                 name='basic_emotions_that_it_exhibits'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -298,6 +326,7 @@ const SpeechCard = (props) => {
                             type='textarea'
                             name='formation_of_ideas_about_world_around'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                     <SpeechCardRow>
@@ -306,6 +335,7 @@ const SpeechCard = (props) => {
                             label='В пространственно-временной ситуации'
                             name='in_a_time_space_situation'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                 </SpeechCardBlock>
@@ -317,6 +347,7 @@ const SpeechCard = (props) => {
                             label='Образ «Я»'
                             name='image_i'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                     <SpeechCardRow>
@@ -325,6 +356,7 @@ const SpeechCard = (props) => {
                             label='Соматогнозис'
                             name='somatognosis'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                 </SpeechCardBlock>
@@ -337,6 +369,7 @@ const SpeechCard = (props) => {
                                 type='text'
                                 name='speech_comprehension_level'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -347,6 +380,7 @@ const SpeechCard = (props) => {
                                 type='text'
                                 name='level_of_vocabulary_formation'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -355,6 +389,7 @@ const SpeechCard = (props) => {
                                 label='Активный семантический компонент'
                                 name='active_semantic_component_active_vocabulary'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -363,6 +398,7 @@ const SpeechCard = (props) => {
                                 label='Объем словаря'
                                 name='volume_vocabulary'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -371,6 +407,7 @@ const SpeechCard = (props) => {
                                 label='Системная организация словаря (ассоциативные связи)'
                                 name='system_organization_of_dictionary_associative_links'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -383,6 +420,7 @@ const SpeechCard = (props) => {
                                 type='text'
                                 name='level_of_grammatical_competence_formation'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -391,6 +429,7 @@ const SpeechCard = (props) => {
                                 label='Словоизменительные навыки и умения'
                                 name='inflectional_skills_and_abilities_part_one'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -399,6 +438,7 @@ const SpeechCard = (props) => {
                                 label='Словообразовательные навыки и умения'
                                 name='word_building_skills_and_abilities'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -407,6 +447,7 @@ const SpeechCard = (props) => {
                                 label='Синтаксические навыки и умения'
                                 name='syntactic_skills_and_abilities'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -419,6 +460,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='level_of_formation_of_phonemic_perception'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -427,6 +469,7 @@ const SpeechCard = (props) => {
                                 label='Состояние фонематического восприятия'
                                 name='state_of_phonemic_perception'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -435,6 +478,7 @@ const SpeechCard = (props) => {
                                 label='Состояние фонематического слуха'
                                 name='state_of_phonemic_hearing'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -443,6 +487,7 @@ const SpeechCard = (props) => {
                                 label='Сформированность навыков звукового анализа и синтеза'
                                 name='formation_of_skills_of_sound_analysis_and_synthesis'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -451,6 +496,7 @@ const SpeechCard = (props) => {
                                 label='Слоговая структура слова'
                                 name='syllabic_structure_of_a_word'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -459,6 +505,7 @@ const SpeechCard = (props) => {
                                 label='Звукопроизносительная сторона речи'
                                 name='sound_articulating_side_of_speech'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -467,6 +514,7 @@ const SpeechCard = (props) => {
                                 label='Просодическая сторона речи'
                                 name='prosodic_side_of_speech_game_on_the_farm_part_three'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -475,6 +523,7 @@ const SpeechCard = (props) => {
                                 label='Голос'
                                 name='voice'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -483,6 +532,7 @@ const SpeechCard = (props) => {
                                 label='Плавность'
                                 name='smoothness'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -491,6 +541,7 @@ const SpeechCard = (props) => {
                                 label='Темп'
                                 name='pace'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -499,6 +550,7 @@ const SpeechCard = (props) => {
                                 label='Речь'
                                 name='speech_game_on_the_farm_part_three'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -507,6 +559,7 @@ const SpeechCard = (props) => {
                                 label='Дыхание'
                                 name='breath_game_on_the_farm_part_three'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -515,6 +568,7 @@ const SpeechCard = (props) => {
                                 label='Ритм'
                                 name='rhythm_game_on_the_farm_part_three'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -523,6 +577,7 @@ const SpeechCard = (props) => {
                                 label='Сила выдоха'
                                 name='exhalation_force'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -531,6 +586,7 @@ const SpeechCard = (props) => {
                                 label='Дифференцированность вдоха/выдоха и возможность управления'
                                 name='inspiratory_expiratory_differentiation'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -546,6 +602,7 @@ const SpeechCard = (props) => {
                             label='Понимание текста'
                             name='understanding_the_text'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                     <SpeechCardRow>
@@ -554,6 +611,7 @@ const SpeechCard = (props) => {
                             label='Продуцирование текста'
                             name='text_production'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                     <SpeechCardRow>
@@ -562,6 +620,7 @@ const SpeechCard = (props) => {
                             label='Репродуцирование текста'
                             name='reproduction_of_text'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardRow>
                 </SpeechCardBlock>
@@ -574,6 +633,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='articulation_apparatus_structure_game_how_the_mouse_could'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -584,6 +644,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='articulation_apparatus_structure'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -592,6 +653,7 @@ const SpeechCard = (props) => {
                                 label='Оральный праксис'
                                 name='oral_praxis'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -600,6 +662,7 @@ const SpeechCard = (props) => {
                                 label='Артикуляционный праксис'
                                 name='articulatory_praxis'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -613,6 +676,7 @@ const SpeechCard = (props) => {
                                 label='Основные двигательные навыки и состояние координаторной сферы'
                                 name='basic_motor_skills_and_state_of_coordinating_sphere'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -621,6 +685,7 @@ const SpeechCard = (props) => {
                                 label='Постуральный контроль спокойного состояния'
                                 name='postural_control_of_calm_state'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -629,6 +694,7 @@ const SpeechCard = (props) => {
                                 label='Билатеральная моторная координация'
                                 name='bilateral_motor_coordination'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -637,6 +703,7 @@ const SpeechCard = (props) => {
                                 label='Ведущее ухо'
                                 name='leading_ear'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -645,6 +712,7 @@ const SpeechCard = (props) => {
                                 label='Ведущая рука'
                                 name='leading_hand'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -653,6 +721,7 @@ const SpeechCard = (props) => {
                                 label='Ведущий глаз'
                                 name='leading_eye'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -661,6 +730,7 @@ const SpeechCard = (props) => {
                                 label='Ведущая нога'
                                 name='leading_leg'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                         <SpeechCardRow>
@@ -669,6 +739,7 @@ const SpeechCard = (props) => {
                                 label='Сформированность моторной имитации'
                                 name='formation_of_motor_imitation'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -678,6 +749,7 @@ const SpeechCard = (props) => {
                             type='textarea'
                             name='motor_functions_of_hands_and_fingers'
                             register={register}
+                            disabled={isCardClosed}
                         />
                     </SpeechCardSubBlock>
                 </SpeechCardBlock>
@@ -690,6 +762,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='verbal_memory'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -701,6 +774,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='thinking_verbal_and_non_verbal_intelligence'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -711,6 +785,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='simultaneous_visual_perception'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -721,6 +796,7 @@ const SpeechCard = (props) => {
                                 type='textarea'
                                 name='attention'
                                 register={register}
+                                disabled={isCardClosed}
                             />
                         </SpeechCardRow>
                     </SpeechCardSubBlock>
@@ -734,6 +810,7 @@ const SpeechCard = (props) => {
                         type='textarea'
                         name='logopedic_conclusion'
                         register={register}
+                        disabled={isCardClosed}
                     />
                 </SpeechCardRow>
                 <SpeechCardTitle>Рекомендации</SpeechCardTitle>
@@ -742,20 +819,23 @@ const SpeechCard = (props) => {
                         type='textarea'
                         name='recommendation'
                         register={register}
+                        disabled={isCardClosed}
                     />
                 </SpeechCardRow>
             </SpeechCardFormBlock>
-            <SpeechCardFormLine/>
-            <SpeechCardFormBlock>
-                <SurveySubmitButton
-                    type='submit'
-                >
-                    Завершить заполнение
-                </SurveySubmitButton>
-            </SpeechCardFormBlock>
+            {!isCardClosed && (<>
+                <SpeechCardFormLine/>
+                <SpeechCardFormBlock>
+                    <SurveySubmitButton
+                        type='submit'
+                    >
+                        Завершить заполнение
+                    </SurveySubmitButton>
+                </SpeechCardFormBlock>
+            </>)}
         </SpeechCardMain>
     );
-}
+};
 
 SpeechCard.propTypes = {
     speechCard: PropTypes.object.isRequired,
