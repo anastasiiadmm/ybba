@@ -165,3 +165,8 @@ export const examinationProtocolStatuses = {
     open: 'open',
     closed: 'closed'
 }
+
+export const speechCardStatuses = {
+    open: 'open',
+    closed: 'closed'
+}
