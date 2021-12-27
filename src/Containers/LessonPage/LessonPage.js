@@ -241,6 +241,7 @@ const LessonPage = (props) => {
         }
     }, [isCameraAllowed, isMicrophoneAllowed]);
 
+
     useEffect(() => {
         if (lesson && lesson?.student?.id) {
             dispatch(getProtocol(lesson.student.id))
