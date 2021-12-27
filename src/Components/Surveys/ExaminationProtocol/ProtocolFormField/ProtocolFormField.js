@@ -11,15 +11,10 @@ const ProtocolFormField = (props) => {
     } = props
 
     switch (type) {
-        case '=': return <Field
+        case 'textarea': return <Field
             {...props}
             className='protocol__area bg'
             classNameLabel='protocol__lbl'
-            id={props.name}
-        />
-        case 'textarea': return <Field
-            {...props}
-            className='protocol__area'
             id={props.name}
         />
         case 'number':
