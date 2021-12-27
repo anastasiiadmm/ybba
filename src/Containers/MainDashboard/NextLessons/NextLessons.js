@@ -32,7 +32,10 @@ const NextLessons = () => {
     return (
         <div className='info-item info-item_high'>
             <h5 className='info-item__title'>
-                <b>Запись на занятия откроется 15 января 2022 года — либо мы вернём вам деньги.</b>
+                <b>
+                    Спасибо, что подключились к платформе diagnostika.pro!
+                    Запись на занятия откроется 15 января 2022 года — либо мы вернём вам деньги.
+                </b>
             </h5>
             {nextLessons && nextLessons.map(lesson => {
                 const lessonDescription = `${lessonTypesMapping[lesson.lesson_type]} занятие`

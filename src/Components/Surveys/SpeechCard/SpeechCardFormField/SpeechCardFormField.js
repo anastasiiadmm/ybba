@@ -10,10 +10,10 @@ const SpeechCardFormField = (props) => {
 
     switch (type) {
         case 'textarea': return <Field
-            {...props}
             className='speech-card-form__area'
             classNameLabel='speech-card-form__lbl'
             id={props.name}
+            {...props}
         />
         case 'number':
         case 'text': return <Field
@@ -44,7 +44,8 @@ SpeechCardFormField.propTypes = {
     name: PropTypes.string,
     errors: PropTypes.object,
     value: PropTypes.any,
-    control: PropTypes.object
+    control: PropTypes.object,
+    disabled: PropTypes.bool
 }
 
 export default SpeechCardFormField;

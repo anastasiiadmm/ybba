@@ -8,7 +8,6 @@ export const initSessionStack = () => {
         (
             function (a, b) {
                 let c = window;
-                console.log('Asd', c)
                 c.SessionStackKey = a
                 c[a] = c[a] || {
                     t: b,

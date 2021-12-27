@@ -15,7 +15,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const PicturesForFish = (props) => {
 
     const  {
-        register, errors, control
+        register, errors, control, isConclusionDisabled, disabled
     } = props
 
     return <>
@@ -29,6 +29,7 @@ const PicturesForFish = (props) => {
                     name='game_pictures_for_fish.shop_hay_cornflower'
                     register={register}
                     errors={errors}
+                    disabled={disabled}
                 />
             </ProtocolRow>
             <ProtocolRow>
@@ -38,6 +39,7 @@ const PicturesForFish = (props) => {
                     name='game_pictures_for_fish.dog_pump_lock_goat'
                     register={register}
                     errors={errors}
+                    disabled={disabled}
                 />
             </ProtocolRow>
             <ProtocolRow>
@@ -47,6 +49,7 @@ const PicturesForFish = (props) => {
                     name='game_pictures_for_fish.starling_heron_finger'
                     register={register}
                     errors={errors}
+                    disabled={disabled}
                 />
             </ProtocolRow>
             <ProtocolRow>
@@ -56,6 +59,7 @@ const PicturesForFish = (props) => {
                     name='game_pictures_for_fish.detective_tongs_garlic'
                     register={register}
                     errors={errors}
+                    disabled={disabled}
                 />
             </ProtocolRow>
             <ProtocolRow>
@@ -65,6 +69,7 @@ const PicturesForFish = (props) => {
                     name='game_pictures_for_fish.pike_things_bream'
                     register={register}
                     errors={errors}
+                    disabled={disabled}
                 />
             </ProtocolRow>
             <ProtocolRow>
@@ -74,6 +79,7 @@ const PicturesForFish = (props) => {
                     name='game_pictures_for_fish.beetle_soot_scissors'
                     register={register}
                     errors={errors}
+                    disabled={disabled}
                 />
             </ProtocolRow>
             <ProtocolRow>
@@ -83,6 +89,7 @@ const PicturesForFish = (props) => {
                     name='game_pictures_for_fish.fur_coat_cat_reed_freckles'
                     register={register}
                     errors={errors}
+                    disabled={disabled}
                 />
             </ProtocolRow>
             <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
@@ -96,6 +103,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.sibilant_parasigmatism'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -105,6 +113,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.replacing_s_with'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -114,6 +123,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.replacing_s_soft_with'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -123,6 +133,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.replacing_z_with'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -132,6 +143,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.replacing_z_soft_with'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -141,6 +153,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.replacing_c_with'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -150,6 +163,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.replacing_ch_with'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -159,6 +173,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.prominent_sigmatism'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -168,6 +183,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.nasal_sigmatism'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -177,6 +193,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.hissing_sigmatism'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -186,6 +203,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.lateral_sigmatism'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -195,6 +213,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.labiodental_pronunciation_of_whistling'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -204,6 +223,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.skip_whistling_sound'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -213,6 +233,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.mixing_sounds'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -222,6 +243,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.interdental_sigmatism'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolResultBlock>
@@ -236,6 +258,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.replacing_shch_to'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -245,6 +268,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.replacing_zh_to'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -254,6 +278,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.replacing_sh_to'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -263,6 +288,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.pristine_sigmatism'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -272,6 +298,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.hissing_nasal_sigmatism'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -281,6 +308,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.hissing_sigmatism_two'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -290,6 +318,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.lateral_sigmatism_two'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -299,6 +328,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.labiodental_pronunciation_of_sibilants'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -308,6 +338,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.skip_whistling_sound_two'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -317,6 +348,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.mixing_sounds_two'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolResultBlock>
@@ -335,6 +367,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.verbal_memory'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -344,6 +377,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.verbal_memory'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolResultBlock>
@@ -355,6 +389,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.verbal_memory_part_two'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -364,6 +399,7 @@ const PicturesForFish = (props) => {
                             name='game_pictures_for_fish.verbal_memory_part_two'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolResultBlock>
@@ -375,6 +411,7 @@ const PicturesForFish = (props) => {
                     name='game_pictures_for_fish.expert_comment'
                     placeholder='Комментарий специалиста'
                     register={register}
+                    disabled={disabled}
                 />
             </ProtocolRow>
         </ProtocolBlock>
@@ -385,6 +422,7 @@ PicturesForFish.propTypes = {
     register: PropTypes.func.isRequired,
     control: PropTypes.object,
     errors: PropTypes.object.isRequired,
+    isConclusionDisabled: PropTypes.bool
 }
 
 export default PicturesForFish;

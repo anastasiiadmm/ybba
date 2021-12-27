@@ -1,0 +1,9 @@
+.skipButton {
+    position: fixed;
+    top: 3px;
+    right: 3px;
+}
+
+.speechCardBlock {
+    grid-row: 1/4;
+}

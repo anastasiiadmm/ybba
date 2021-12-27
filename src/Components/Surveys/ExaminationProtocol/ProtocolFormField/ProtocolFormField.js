@@ -56,7 +56,8 @@ ProtocolFormField.propTypes = {
     name: PropTypes.string,
     errors: PropTypes.object,
     value: PropTypes.any,
-    control: PropTypes.object
+    control: PropTypes.object,
+    disabled: PropTypes.bool
 }
 
 export default ProtocolFormField;
