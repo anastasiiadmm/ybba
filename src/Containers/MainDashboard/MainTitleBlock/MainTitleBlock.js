@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 
 const MainTitleBlock = (props) => {
 
-    const {leftTitle, middleTitle, rightTitle} = props
+    const {leftTitle, rightTitle} = props
 
     return (
         <div className='main__title-block'>
-            <h1 className='main__title'>{leftTitle}{middleTitle && <>, <span className='times-day'>{middleTitle}</span></>}</h1>
+            <h1 className='main__title'>{leftTitle}</h1>
             <div className='main__date'>{rightTitle}</div>
         </div>
     );
@@ -17,7 +17,6 @@ const MainTitleBlock = (props) => {
 
 MainTitleBlock.propTypes = {
     leftTitle: PropTypes.string,
-    middleTitle: PropTypes.string,
     rightTitle: PropTypes.string
 }
 
