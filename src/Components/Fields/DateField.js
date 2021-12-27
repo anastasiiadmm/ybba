@@ -13,11 +13,11 @@ import { isValidDate } from 'utils/date/dateUtils.js';
 
 const DateField = (props) => {
 
-    const { id, name, control, errors, className, label, classNameLabel } = props
+    const { id, name, control, errors, className, label, classNameLabel, placeholder, onBlur } = props
 
     return (
         <>
-            <label htmlFor={id} className={`${classNameLabel}`}>{label}</label>
+            <label htmlFor={id} className={classNameLabel}>{label}</label>
             <Controller
                 name={name}
                 control={control}
@@ -30,6 +30,9 @@ const DateField = (props) => {
                             locale={ruLocale}
                         >
                             <DesktopDatePicker
+                                date={null}
+                                rawValue={field.value || null}
+                                openPicker={null}
                                 mask='__.__.____'
                                 value={field.value}
                                 onChange={
@@ -41,11 +44,12 @@ const DateField = (props) => {
                                         return <input
                                             {...params.inputProps}
                                             ref={params.inputRef}
-                                            placeholder='_ _ _'
+                                            placeholder={placeholder ? placeholder : '_ _ _'}
                                             className={addClasses(className, {
                                                 'error': resolve(name, errors, '.')
                                             })}
                                             id={id}
+                                            onBlur={onBlur}
                                         />
                                     }
                                 }
@@ -54,7 +58,7 @@ const DateField = (props) => {
                     )
                 }}
             />
-            <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
+            <div className='form2__error'> {resolve(name, errors, '.')?.message} </div>
         </>
     );
 }
@@ -64,8 +68,10 @@ DateField.propTypes = {
     name: PropTypes.string,
     control: PropTypes.object,
     errors: PropTypes.object,
+    onBlur: PropTypes.func,
     className: PropTypes.string,
-    label: PropTypes.string
+    label: PropTypes.string,
+    placeholder: PropTypes.string
 }
 
 export default DateField;

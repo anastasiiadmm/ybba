@@ -22,12 +22,12 @@ const Registration = props => {
     const queryParams = new URLSearchParams(useLocation().search)
     const { registrationKey } = props.match.params
 
-    const { register, handleSubmit, formState: { errors }, setError, control, watch, getValues } = useForm({
+    const { register, handleSubmit, formState: { errors }, setError, control, watch, getValues, trigger } = useForm({
         resolver: yupResolver(registrationSchema),
         defaultValues: {
-            parent: { email: queryParams.get('email') },
-            child: { date_of_birth: new Date() }
-        }
+            parent: { email: queryParams.get('email') }
+        },
+        mode: 'onBlur'
     })
     const country = watch('child.country')
     const { countries, cities } = useSelector(childSelector)
@@ -176,8 +176,9 @@ const Registration = props => {
                                 name='parent.password'
                                 errors={errors}
                                 className='form2__field'
-                                placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                                 classNameLabel='form2__label'
+                                tooltipMessage='Пароль должен состоять из цифр, букв, минимум одной заглавной буквы
+                                    и минимум одного символа и должен содержать не менее 8 знаков'
                             />
                         </div>
                         <div className='form2__row'>
@@ -189,7 +190,6 @@ const Registration = props => {
                                 name='parent.passwordConfirmation'
                                 errors={errors}
                                 className='form2__field'
-                                placeholder='&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'
                                 classNameLabel='form2__label'
                             />
                         </div>
@@ -224,10 +224,11 @@ const Registration = props => {
                                 errors={errors}
                                 control={control}
                                 register={register}
+                                onBlur={() => trigger('child.date_of_birth')}
                                 className='form2__field'
                                 name='child.date_of_birth'
                                 label='Дата рождения'
-                                defaultValue={new Date()}
+                                placeholder='дд.мм.гггг'
                                 classNameLabel='form2__label'
                             />
                         </div>
@@ -241,6 +242,7 @@ const Registration = props => {
                                 errors={errors}
                                 register={register}
                                 options={countiesOptions}
+                                onBlur={() => trigger('child.country')}
                                 className='form2__field'
                                 classNameLabel='form2__label'
                             />

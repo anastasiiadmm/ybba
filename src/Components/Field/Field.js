@@ -32,6 +32,7 @@ Field.propTypes = {
     register: PropTypes.func,
     className: PropTypes.string,
     errors: PropTypes.object.isRequired,
+    onBlur: PropTypes.func,
     id: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     disabled: PropTypes.bool,
@@ -51,6 +52,7 @@ Field.propTypes = {
         id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
     })),
     classNameLabel: PropTypes.string,
+    tooltipMessage: PropTypes.string
 }
 
 export default Field;

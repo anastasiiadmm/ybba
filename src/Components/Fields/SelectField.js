@@ -6,7 +6,7 @@ import { resolve } from 'utils/resolve/resolve.js';
 
 const SelectField = (props) => {
 
-    const { label, name, control, options, className, errors, id, classNameLabel } = props
+    const { label, name, control, options, className, errors, id, classNameLabel, onBlur } = props
 
     return (
         <>
@@ -25,6 +25,7 @@ const SelectField = (props) => {
                             if (data)
                                 onChange(data.id)
                         }}
+                        onBlur={onBlur}
                         value={options?.find(option => option.id === value)}
                         options={options}
                         renderInput={(params) => {

@@ -1,15 +1,21 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
+import { Tooltip } from 'bootstrap';
 
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import { resolve } from 'utils/resolve/resolve.js';
 
 const CommonField = (props) => {
 
-    const {
-        id, type, className, name, errors, register, placeholder, disabled, label, classNameLabel
-    } = props
+    const { id, type, className, name, errors, register, placeholder,
+      disabled, label, classNameLabel, tooltipMessage } = props
+
+    if (tooltipMessage) {
+      const tooltipOptions = { trigger: 'focus' }
+      const inputElement = document.getElementById(id)
+      inputElement && new Tooltip(inputElement, tooltipOptions)
+    }
 
     return (
         <>
@@ -32,6 +38,9 @@ const CommonField = (props) => {
                 {...register(name)}
                 placeholder={placeholder}
                 disabled={disabled}
+                data-bs-toggle={tooltipMessage && 'tooltip'}
+                data-bs-placement={tooltipMessage && 'left'}
+                title={tooltipMessage && tooltipMessage}
             />
             <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
         </>
@@ -49,6 +58,7 @@ CommonField.propTypes = {
     disabled: PropTypes.bool,
     label: PropTypes.string,
     classNameLabel: PropTypes.string,
+    tooltipMessage: PropTypes.string
 }
 
 export default CommonField;

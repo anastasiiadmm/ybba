@@ -69,90 +69,91 @@ const ChildrenForm = (props) => {
 
   return (
     <>
-      <h4 className="form__title">Основная информация ребенка</h4>
-      <div className="form__row">
+      <h4 className='form__title'>Основная информация ребенка</h4>
+      <div className='form__row'>
         <Field
-          id="childProfileFirstName"
+          id='childProfileFirstName'
           errors={errors}
-          label="Имя"
-          type="text"
-          name="first_name"
-          className="form__field"
+          label='Имя'
+          type='text'
+          name='first_name'
+          className='form__field'
           pattern={allRussianWardsAndHyphen}
           required
-          maxLength="50"
-          tooltipTitle="Имя"
-          tooltipText="Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”)."
+          maxLength='50'
+          tooltipTitle='Имя'
+          tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
           value={childrenData.first_name}
           register={register}
-          classNameLabel="form__label"
+          classNameLabel='form__label'
         />
       </div>
-      <div className="form__row">
+      <div className='form__row'>
         <Field
-          label="Фамилия"
-          id="childProfileLastName"
+          label='Фамилия'
+          id='childProfileLastName'
           errors={errors}
-          type="text"
-          className="form__field"
-          name="last_name"
+          type='text'
+          className='form__field'
+          name='last_name'
           pattern={allRussianWardsAndHyphen}
           required
-          maxLength="50"
-          tooltipTitle="Фамилия"
-          tooltipText="Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”)."
+          maxLength='50'
+          tooltipTitle='Фамилия'
+          tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
           value={childrenData.last_name}
           register={register}
-          classNameLabel="form__label"
+          classNameLabel='form__label'
         />
       </div>
-      <div className="form__row">
+      <div className='form__row'>
         <Field
-          id="childProfileDate"
-          label="Дата рождения"
-          type="date"
-          className="form__field"
-          name="date_of_birth"
+          id='childProfileDate'
+          label='Дата рождения'
+          type='date'
+          className='form__field'
+          name='date_of_birth'
           required
           control={control}
-          mask="dd/mm/yyyy"
+          placeholder='дд.мм.гггг'
           errors={errors}
           isClearable
           register={register}
-          classNameLabel="form__label"
+          classNameLabel='form__label'
+          value={childrenData.date_of_birth}
         />
       </div>
       {countriesOptions && citiesOptions && (
-        <div className="form__row form__row_flex">
-          <div className="form__col2 form__label">
+        <div className='form__row form__row_flex'>
+          <div className='form__col2 form__label'>
             {countriesOptions.length && (
               <Field
-                label="Страна проживания"
+                label='Страна проживания'
                 errors={errors}
-                type="select"
-                className="classes__select select form__field"
-                name="country"
-                id="childProfileCountry"
+                type='select'
+                className='classes__select select form__field'
+                name='country'
+                id='childProfileCountry'
                 options={countriesOptions}
                 register={register}
                 control={control}
-                classNameLabel="form__label"
+                classNameLabel='form__label'
               />
             )}
           </div>
           {getCountryName(country) === 'Россия' && citiesOptions.length && (
-            <div className="form__col2 form__label">
+            <div className='form__col2 form__label'>
               <Field
-                label="Город проживания"
-                type="select"
+                label='Город проживания'
+                type='select'
                 errors={errors}
-                className="classes__select select form__field"
-                name="city"
-                id="childProfileCity"
+                className='classes__select select form__field'
+                name='city'
+                id='childProfileCity'
                 options={citiesOptions}
                 register={register}
                 control={control}
-                classNameLabel="form__label"
+                classNameLabel='form__label'
               />
             </div>
           )}
