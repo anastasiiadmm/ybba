@@ -109,6 +109,9 @@ const surveysSlice = createSlice({
         },
         closeProtocol: state => {
             state.protocol = { ...state.protocol, status: examinationProtocolStatuses.closed }
+        },
+        clearSpeechCard: (state) => {
+            state.speechCard = null
         }
     },
     extraReducers: {
@@ -184,6 +187,6 @@ const surveysSlice = createSlice({
     },
 });
 
-export const { clearSurveysState, closeProtocol } = surveysSlice.actions;
+export const { clearSurveysState, closeProtocol, clearSpeechCard } = surveysSlice.actions;
 export const surveysSelector = (state) => state.surveys;
 export default surveysSlice.reducer;
