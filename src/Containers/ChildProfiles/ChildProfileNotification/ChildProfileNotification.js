@@ -12,17 +12,19 @@ const ChildProfileNotification = (props) => {
     } = props
 
     return (
-        <div className='info-item info-item_row'>
+        <div className='info-item info-item_row info-item--separate-block'>
             <div className='notice notice_warning'>
-                <h5 className='notice__title'>Не полностью заполнен профиль ребенка</h5>
-                <p className='notice__info'>Пожалуйста заполните профиль ребенка</p>
+                <h5 className='notice__title'>Пожалуйста, заполните профиль ребёнка полностью</h5>
+                <p className='notice__info'>Это нужно для того,  чтобы логопед получил все необходимые данные
+                  до открытия записи на ваше первое диагностическое занятие
+                </p>
                 <span className='notice__icon notice__icon_warning'/>
             </div>
             <Link
                 className='btn info-item__btn'
                 to={`/child-profile/${child.id}/1/`}
             >
-                Редактировать профиль
+              Заполнить профиль
             </Link>
         </div>
     );

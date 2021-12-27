@@ -27,7 +27,6 @@ const MainDashboard = () => {
 
     const dispatch = useDispatch()
 
-    const partOfDay = getTimesDay()
 
     const toggleChildProfileModal = () => setChildProfileModalIsOpen(!childProfileModalIsOpen)
 
@@ -90,7 +89,6 @@ const MainDashboard = () => {
                     <div className='main__inner'>
                         <MainTitleBlock
                             leftTitle={`${user?.profile?.first_name} ${user?.profile?.last_name}`}
-                            middleTitle={partOfDay}
                             rightTitle={nowDate}
                         />
                         <div className='content'>
