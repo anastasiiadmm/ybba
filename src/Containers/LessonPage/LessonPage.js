@@ -241,6 +241,25 @@ const LessonPage = (props) => {
         }
     }, [isCameraAllowed, isMicrophoneAllowed]);
 
+
+    useEffect(() => {
+        if (lesson && lesson?.student?.id) {
+            dispatch(getProtocol(lesson.student.id))
+        }
+    }, [dispatch, lesson])
+
+    useEffect(() => {
+        if (lesson && protocol && protocol.status === examinationProtocolStatuses.closed) {
+            dispatch(getSpeechCard(lesson.student.id))
+        }
+    }, [dispatch, lesson, protocol])
+
+    useEffect(() => {
+        if (lesson && checkUserRole(userRoles.parent) && lesson.status === lessonStatuses.finished) {
+            history.push('/')
+        }
+    }, [history, lesson])
+
     const canvasParent = useRef();
 
     return (
