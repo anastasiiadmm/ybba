@@ -31,7 +31,7 @@ const DateField = (props) => {
                         >
                             <DesktopDatePicker
                                 date={null}
-                                rawValue={null}
+                                rawValue={field.value || null}
                                 openPicker={null}
                                 mask='__.__.____'
                                 value={field.value}

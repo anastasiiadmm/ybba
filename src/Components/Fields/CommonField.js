@@ -12,8 +12,9 @@ const CommonField = (props) => {
       disabled, label, classNameLabel, tooltipMessage } = props
 
     if (tooltipMessage) {
+      const tooltipOptions = { trigger: 'focus' }
       const inputElement = document.getElementById(id)
-      inputElement && new Tooltip(inputElement)
+      inputElement && new Tooltip(inputElement, tooltipOptions)
     }
 
     return (
