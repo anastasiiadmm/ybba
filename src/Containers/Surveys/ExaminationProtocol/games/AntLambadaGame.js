@@ -13,7 +13,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const AntLambadaGame = (props) => {
 
     const  {
-        register, errors, control
+        register, errors, control, isConclusionDisabled, disabled
     } = props
 
     return (
@@ -28,6 +28,7 @@ const AntLambadaGame = (props) => {
                         name='game_ant_lambada.woodpecker_house'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -37,6 +38,7 @@ const AntLambadaGame = (props) => {
                         name='game_ant_lambada.slipper_dress'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -46,6 +48,7 @@ const AntLambadaGame = (props) => {
                         name='game_ant_lambada.kitchen_hamster_goose'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
@@ -59,6 +62,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.nasal'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -68,6 +72,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.skip'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -77,6 +82,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.replacing_d_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -86,6 +92,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.replacing_d_soft_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -95,6 +102,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.replacing_t_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -104,6 +112,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.replacing_t_soft_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -118,6 +127,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.replacing_k_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -127,6 +137,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.replacing_g_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -145,6 +156,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.mixing'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -154,6 +166,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.distortion'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -165,6 +178,7 @@ const AntLambadaGame = (props) => {
                         name='game_ant_lambada.expert_comment'
                         placeholder='Комментарий специалиста'
                         register={register}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
             </ProtocolBlock>

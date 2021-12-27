@@ -18,7 +18,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const HowTheMouseCouldNotSleep = (props) => {
 
     const  {
-        register, errors, control
+        register, errors, control, isConclusionDisabled, disabled
     } = props
 
     return (
@@ -48,6 +48,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             label='+'
                             name='game_how_the_mouse_could_not_sleep.mouse_in_the_yard_at_night'
                             control={control}
+                            disabled={disabled}
                         />
                         <ProtocolFormField
                             type='radio'
@@ -57,6 +58,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             label='-'
                             name='game_how_the_mouse_could_not_sleep.mouse_in_the_yard_at_night'
                             control={control}
+                            disabled={disabled}
                         />
                     </ProtocolSwitchText>
                 </ProtocolRowText>
@@ -71,6 +73,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             label='+'
                             name='game_how_the_mouse_could_not_sleep.mouse_is_eating_an_apple_and_a_berry'
                             control={control}
+                            disabled={disabled}
                         />
                         <ProtocolFormField
                             type='radio'
@@ -80,6 +83,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             label='-'
                             name='game_how_the_mouse_could_not_sleep.mouse_is_eating_an_apple_and_a_berry'
                             control={control}
+                            disabled={disabled}
                         />
                     </ProtocolSwitchText>
                 </ProtocolRowText>
@@ -94,6 +98,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             label='+'
                             name='game_how_the_mouse_could_not_sleep.moon_in_the_reflection_of_the_water_in_a_puddle'
                             control={control}
+                            disabled={disabled}
                         />
                         <ProtocolFormField
                             type='radio'
@@ -103,6 +108,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             label='-'
                             name='game_how_the_mouse_could_not_sleep.moon_in_the_reflection_of_the_water_in_a_puddle'
                             control={control}
+                            disabled={disabled}
                         />
                     </ProtocolSwitchText>
                 </ProtocolRowText>
@@ -117,6 +123,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             label='+'
                             name='game_how_the_mouse_could_not_sleep.mouse_covers_the_puddle_with_burdock'
                             control={control}
+                            disabled={disabled}
                         />
                         <ProtocolFormField
                             type='radio'
@@ -126,6 +133,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             label='-'
                             name='game_how_the_mouse_could_not_sleep.mouse_covers_the_puddle_with_burdock'
                             control={control}
+                            disabled={disabled}
                         />
                     </ProtocolSwitchText>
                 </ProtocolRowText>
@@ -140,6 +148,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             label='+'
                             name='game_how_the_mouse_could_not_sleep.sun_in_water_reflection_in_a_puddle'
                             control={control}
+                            disabled={disabled}
                         />
                         <ProtocolFormField
                             type='radio'
@@ -149,6 +158,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             label='-'
                             name='game_how_the_mouse_could_not_sleep.sun_in_water_reflection_in_a_puddle'
                             control={control}
+                            disabled={disabled}
                         />
                     </ProtocolSwitchText>
                 </ProtocolRowText>
@@ -160,6 +170,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             name='game_how_the_mouse_could_not_sleep.what_was_the_white_glowing_circle'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -169,6 +180,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             name='game_how_the_mouse_could_not_sleep.when_did_the_mouse_go_for_a_walk'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -178,6 +190,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             name='game_how_the_mouse_could_not_sleep.what_did_the_mouse_see_in_the_forest'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -187,6 +200,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             name='game_how_the_mouse_could_not_sleep.what_did_the_mouse_cover_the_moon_with'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -196,6 +210,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             name='game_how_the_mouse_could_not_sleep.what_did_the_mouse_see_in_the_puddle_in_the_morning'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -205,6 +220,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             name='game_how_the_mouse_could_not_sleep.why_instead_of_the_moon_the_mouse_found_the_sun'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                 <ProtocolPlaceholderTitle>— Повтори всю историю, как запомнил:</ProtocolPlaceholderTitle>
@@ -214,6 +230,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                         name='game_how_the_mouse_could_not_sleep.repeat_the_whole_story_as_you_remember'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
@@ -228,6 +245,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.constructing_a_statement'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -237,6 +255,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.constructing_a_statement'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -249,6 +268,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.consistency_with_the_plot'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -258,6 +278,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.consistency_with_the_plot'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -270,6 +291,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.topic'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -279,6 +301,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.topic'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -288,6 +311,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.topic'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -300,6 +324,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.chronological_event_logic'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -309,6 +334,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.chronological_event_logic'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -320,6 +346,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             name='game_how_the_mouse_could_not_sleep.language_means'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -329,6 +356,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             name='game_how_the_mouse_could_not_sleep.language_means'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultBlock>
@@ -339,6 +367,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.phrasal_perseverations'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -352,6 +381,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.retelling_corresponds_to_original'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -361,6 +391,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.retelling_contains_both_basic_and_additional_information'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -370,6 +401,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.retelling_uses_variability_of_speech'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -382,6 +414,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.retelling_partially_corresponds_to_original'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -391,6 +424,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.retelling_contains_only_basic_information'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -400,6 +434,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.vocabulary_and_syntactic_constructions_of_original'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -409,6 +444,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_not_broken'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -421,6 +457,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.retelling_does_not_correspond_to_original'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -430,6 +467,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.semantic_organization_of_text_is_broken'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -439,6 +477,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_broken'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -448,6 +487,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.significant_difficulties_in_language_design_of_text'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -461,6 +501,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.content_semantic_meaning_of_text'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -470,6 +511,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.content_semantic_meaning_of_text'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -482,6 +524,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -491,6 +534,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -500,6 +544,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -511,6 +556,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                         name='game_how_the_mouse_could_not_sleep.expert_comment'
                         placeholder='Комментарий специалиста'
                         register={register}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
             </ProtocolBlock>

@@ -13,7 +13,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const GiraffeGame = (props) => {
 
     const  {
-        register, errors, control
+        register, errors, control, isConclusionDisabled, disabled
     } = props
 
     return (
@@ -28,6 +28,7 @@ const GiraffeGame = (props) => {
                         name='game_giraffe.fish_cow_fence_crab'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -37,6 +38,7 @@ const GiraffeGame = (props) => {
                         name='game_giraffe.river_jam_door'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -46,6 +48,7 @@ const GiraffeGame = (props) => {
                         name='game_giraffe.lamp_milk_floor_treasure'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -55,6 +58,7 @@ const GiraffeGame = (props) => {
                         name='game_giraffe.wheel_salt'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
 
@@ -70,6 +74,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.throat_rotacism'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -79,6 +84,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.replacing_p_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -88,6 +94,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.replacing_p_soft_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -97,6 +104,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.buccal'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -106,6 +114,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.side'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -115,6 +124,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.one_hit_pronunciation'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -124,6 +134,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.skip'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -138,6 +149,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.interdental_lambdacism'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -147,6 +159,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.replacing_l_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -156,6 +169,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.replacing_l_soft_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -165,6 +179,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.nasal'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -174,6 +189,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.lambdacism_pass'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -183,6 +199,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.two_lipped'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -192,6 +209,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.distortion'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -210,6 +228,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.thinking'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -219,6 +238,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.thinking'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -230,6 +250,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.thinking_part_two'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -239,6 +260,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.thinking_part_two'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -251,6 +273,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.there_are_difficulties_in_protecting_adequate_connections'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -267,6 +290,7 @@ const GiraffeGame = (props) => {
                             name='game_giraffe.kind_of_thinking'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -276,6 +300,7 @@ const GiraffeGame = (props) => {
                             name='game_giraffe.kind_of_thinking'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -286,6 +311,7 @@ const GiraffeGame = (props) => {
                             name='game_giraffe.kind_of_thinking'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -295,6 +321,7 @@ const GiraffeGame = (props) => {
                             name='game_giraffe.kind_of_thinking'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolResultBlock>
@@ -306,6 +333,7 @@ const GiraffeGame = (props) => {
                     name='game_giraffe.expert_comment'
                     placeholder='Комментарий специалиста'
                     register={register}
+                    disabled={disabled}
                 />
             </ProtocolRow>
         </>

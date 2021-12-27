@@ -14,7 +14,7 @@ import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/
 const OnTheFarmPartThree = (props) => {
 
     const {
-        register, errors, control
+        register, errors, control, isConclusionDisabled, disabled
     } = props
 
     return (
@@ -30,6 +30,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.one_white_chicken'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -39,6 +40,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.three_ginger_hens'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -48,6 +50,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.five_speckled_hens'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
@@ -60,6 +63,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.options_for_confinement'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -69,6 +73,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.options_for_confinement'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -80,6 +85,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.expert_comment'
                         placeholder='Комментарий специалиста'
                         register={register}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
             </ProtocolBlock>
@@ -96,6 +102,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.speech_comprehension'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -105,6 +112,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.speech_comprehension'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -114,6 +122,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.speech_comprehension'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -126,6 +135,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.there_are_difficulties_in_distributing_attention'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -138,6 +148,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.concentration'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -147,6 +158,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.concentration'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -159,6 +171,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.sustainability'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -168,6 +181,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.sustainability'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -177,6 +191,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.sustainability'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -189,6 +204,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.child_s_attention_is_characterized_by_rapid_exhaustion'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -200,6 +216,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.volume'
                         register={register}
                         errors={errors}
+                        disabled={isConclusionDisabled || disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -217,10 +234,11 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Утомляемость'
+                        label='Утомляемость:'
                         name='game_on_the_farm_part_three.fatigue'
                         register={register}
                         errors={errors}
+                        disabled={isConclusionDisabled || disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -230,6 +248,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.contact'
                         register={register}
                         errors={errors}
+                        disabled={isConclusionDisabled || disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -239,6 +258,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.working_capacity'
                         register={register}
                         errors={errors}
+                        disabled={isConclusionDisabled || disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -248,6 +268,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.motivation'
                         register={register}
                         errors={errors}
+                        disabled={isConclusionDisabled || disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -257,6 +278,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.interest'
                         register={register}
                         errors={errors}
+                        disabled={isConclusionDisabled || disabled}
                     />
                 </ProtocolRow>
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
@@ -269,6 +291,7 @@ const OnTheFarmPartThree = (props) => {
                             name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -280,6 +303,7 @@ const OnTheFarmPartThree = (props) => {
                             name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -290,6 +314,7 @@ const OnTheFarmPartThree = (props) => {
                             name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -300,6 +325,7 @@ const OnTheFarmPartThree = (props) => {
                             name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolRow>
@@ -317,6 +343,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -326,6 +353,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -335,6 +363,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -346,6 +375,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice_part_two'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -355,6 +385,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice_part_two'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -366,6 +397,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice_part_three'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -375,6 +407,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice_part_three'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -386,6 +419,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice_part_four'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -395,6 +429,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice_part_four'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -406,6 +441,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice_part_five'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -415,6 +451,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.voice_part_five'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -426,6 +463,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.nasalized_voice'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -438,6 +476,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.smoothness'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -447,6 +486,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.smoothness'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -459,6 +499,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.pace'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -468,6 +509,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.pace'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -477,6 +519,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.pace'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -486,6 +529,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.pace'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -495,6 +539,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.pace'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -507,6 +552,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.speech'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -516,6 +562,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.speech'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -525,6 +572,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.speech'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -537,6 +585,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.breath'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -546,6 +595,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.breath'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -555,6 +605,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.breath'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -564,6 +615,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.breath'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -575,6 +627,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.exhalation'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -584,6 +637,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.exhalation'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -595,6 +649,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.hindered'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -604,6 +659,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.superficial'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -613,6 +669,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.breathing_is_not_rhythmic'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -622,6 +679,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.shallow_breath'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -634,6 +692,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.rhythm'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -643,6 +702,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.rhythm'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -655,6 +715,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.expiratory_force'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -664,6 +725,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.expiratory_force'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -676,6 +738,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.inspiratory_expiratory_differentiation'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -685,6 +748,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.inspiratory_expiratory_differentiation'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -701,6 +765,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.prosodic_side_of_speech'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -710,6 +775,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.prosodic_side_of_speech'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -719,6 +785,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.prosodic_side_of_speech'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -730,6 +797,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.speech_intonationally'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -739,6 +807,7 @@ const OnTheFarmPartThree = (props) => {
                                 name='game_on_the_farm_part_three.speech_intonationally'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -752,6 +821,7 @@ const OnTheFarmPartThree = (props) => {
                             name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -761,6 +831,7 @@ const OnTheFarmPartThree = (props) => {
                             name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolResultBlock>

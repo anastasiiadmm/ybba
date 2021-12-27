@@ -16,7 +16,7 @@ import ProtocolBoxTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBox
 const MagicExamGame = (props) => {
 
     const  {
-        register, errors, control
+        register, errors, control, isConclusionDisabled, disabled
     } = props
 
 
@@ -32,6 +32,7 @@ const MagicExamGame = (props) => {
                         name='game_magic_exam.bear_bowl'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -41,6 +42,7 @@ const MagicExamGame = (props) => {
                         name='game_magic_exam.cancer_varnish'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -50,6 +52,7 @@ const MagicExamGame = (props) => {
                         name='game_magic_exam.scythe_goat'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -59,6 +62,7 @@ const MagicExamGame = (props) => {
                         name='game_magic_exam.duck_fishing_rod'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -68,6 +72,7 @@ const MagicExamGame = (props) => {
                         name='game_magic_exam.barrel_kidney'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -77,6 +82,7 @@ const MagicExamGame = (props) => {
                         name='game_magic_exam.saber_heron'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
@@ -90,6 +96,7 @@ const MagicExamGame = (props) => {
                                 name='game_magic_exam.level_of_formation_of_phonetic_phonological_competence'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -99,6 +106,7 @@ const MagicExamGame = (props) => {
                                 name='game_magic_exam.level_of_formation_of_phonetic_phonological_competence'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -111,6 +119,7 @@ const MagicExamGame = (props) => {
                                 name='game_magic_exam.state_of_phonemic_perception'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -120,6 +129,7 @@ const MagicExamGame = (props) => {
                                 name='game_magic_exam.state_of_phonemic_perception'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -131,6 +141,7 @@ const MagicExamGame = (props) => {
                                 name='game_magic_exam.there_are_difficulties_in_distinguishing'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -140,6 +151,7 @@ const MagicExamGame = (props) => {
                                 name='game_magic_exam.distinction_between_hard_and_soft_consonants'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -149,6 +161,7 @@ const MagicExamGame = (props) => {
                                 name='game_magic_exam.distinction_between_affricates_and_their_constituent'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -174,6 +187,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.nose'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -183,6 +197,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.poppy'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -192,6 +207,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.fly'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -201,6 +217,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.cats'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                 </ProtocolBox>
@@ -213,6 +230,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.what_is_first_sound_in_words_poppy_and_fly'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -222,6 +240,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.what_is_first_sound_in_word_nose'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -231,6 +250,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.what_is_last_sound_in_words_cat_and_fly'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -240,6 +260,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.what_is_last_sound_in_word_poppy'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -249,6 +270,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.what_is_common_sound_in_words_of_a_cat_and_anose'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -258,6 +280,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.in_which_of_words_there_is_no_sound_about_nose_of_cat_poppy'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                 </ProtocolBox>
@@ -271,6 +294,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.phonemic_hearing'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -280,6 +304,7 @@ const MagicExamGame = (props) => {
                             name='game_magic_exam.phonemic_hearing'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolDescriptionSubtitle>Навыки фонологического (звукового) анализа и синтеза:</ProtocolDescriptionSubtitle>
@@ -291,6 +316,7 @@ const MagicExamGame = (props) => {
                                 name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -300,6 +326,7 @@ const MagicExamGame = (props) => {
                                 name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -309,6 +336,7 @@ const MagicExamGame = (props) => {
                                 name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -320,6 +348,7 @@ const MagicExamGame = (props) => {
                         name='game_magic_exam.phonemic_hearing_expert_comment'
                         placeholder='Комментарий специалиста'
                         register={register}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
             </ProtocolBlock>

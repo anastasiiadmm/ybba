@@ -17,7 +17,7 @@ import ProtocolDescriptionMain from 'Components/Surveys/ExaminationProtocol/Prot
 const AntBattleGame = (props) => {
 
     const {
-        register, errors, control
+        register, errors, control, disabled
     } = props
 
     return (
@@ -36,6 +36,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.fence'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -45,6 +46,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.spatula'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -54,6 +56,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.needle'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                 </ProtocolBox>
@@ -66,6 +69,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.watch'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -75,6 +79,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.swing'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                 </ProtocolBox>
@@ -88,6 +93,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.tone'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultBlock>
                     <ProtocolResultBlock>
@@ -97,6 +103,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.tone'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultBlock>
                     <ProtocolResultBlock>
@@ -106,6 +113,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.tone'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultBlock>
                     <ProtocolResultBlock>
@@ -116,6 +124,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.deviation_of_the_tongue'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -125,6 +134,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.hyperkinesis_of_the_tongue'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -134,6 +144,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.tremor_of_the_tongue'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -143,6 +154,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.switching_difficulties'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -157,6 +169,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.pace_of_the_movements'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -166,6 +179,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.pace_of_the_movements'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -189,6 +203,7 @@ const AntBattleGame = (props) => {
                         name='game_ant_battle.raise_eyebrows'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -198,6 +213,7 @@ const AntBattleGame = (props) => {
                         name='game_ant_battle.frown'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -207,6 +223,7 @@ const AntBattleGame = (props) => {
                         name='game_ant_battle.wink'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -216,6 +233,7 @@ const AntBattleGame = (props) => {
                         name='game_ant_battle.puff_out_cheeks'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
@@ -229,6 +247,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.facial_muscle_tone'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -238,6 +257,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.facial_muscle_tone'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -247,6 +267,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.facial_muscle_tone'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -258,6 +279,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.hypomimia'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -267,6 +289,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.smoothness_of_nasolabial_fold'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -276,6 +299,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.asymmetry_of_face'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -285,6 +309,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.facial_hyperkinesis'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -294,6 +319,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.synkinesis'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -308,6 +334,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.lip_muscle_tone'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -317,6 +344,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.lip_muscle_tone'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -326,6 +354,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.lip_muscle_tone'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -335,6 +364,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.restriction_of_lip_mobility'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -348,6 +378,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.hypersalivation'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -357,6 +388,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.hypersalivation'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolRow>
@@ -373,6 +405,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.static_praxis_stand_on_one_leg_over_the_other'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                     <ProtocolRow>
@@ -382,6 +415,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.static_praxis_get_up_on_tiptoe_wait'
                             register={register}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolRow>
                 </ProtocolBox>
@@ -393,6 +427,7 @@ const AntBattleGame = (props) => {
                         name='game_ant_battle.dynamic_praxis_jump_on_one_leg_the_other_two'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolBox>
                 <ProtocolBox>
@@ -403,6 +438,7 @@ const AntBattleGame = (props) => {
                         name='game_ant_battle.spatial_praxis_turn_right_left'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolBox>
                 <p className='protocol__sub2title-block'>Пальцевый праксис</p>
@@ -414,6 +450,7 @@ const AntBattleGame = (props) => {
                         name='game_ant_battle.show_v'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                     <ProtocolFormField
                         type='text'
@@ -421,6 +458,7 @@ const AntBattleGame = (props) => {
                         name='game_ant_battle.show_the_cow'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolBox>
                 <ProtocolBox>
@@ -431,6 +469,7 @@ const AntBattleGame = (props) => {
                         name='game_ant_battle.show_the_bunny_the_cow_is_counted'
                         register={register}
                         errors={errors}
+                        disabled={disabled}
                     />
                 </ProtocolBox>
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
@@ -444,6 +483,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.basic_motor_skills'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -453,6 +493,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.basic_motor_skills'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -462,6 +503,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.basic_motor_skills'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -471,6 +513,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.basic_motor_skills'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -480,6 +523,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.basic_motor_skills'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -495,6 +539,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.disturbances_in_tone'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -504,6 +549,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.disturbances_in_tone'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -513,6 +559,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.disturbances_in_tone'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -524,6 +571,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.decrease_in_strength'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -533,6 +581,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.impaired_coordination_of_movement_ataxia'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -542,6 +591,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.hand_coordination_crashes'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -566,6 +616,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.body_schema_disorders'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -575,6 +626,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.disorders_of_hand_eye_coordination'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -589,6 +641,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.orolingual'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -598,6 +651,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.opto_lingual'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -612,6 +666,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.motor_functions_of_hands_and_fingers'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -621,6 +676,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.motor_functions_of_hands_and_fingers'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -630,6 +686,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.motor_functions_of_hands_and_fingers'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -648,6 +705,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.lips'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -657,6 +715,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.lips'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -666,6 +725,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.lips'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -679,6 +739,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.malocclusion'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -688,6 +749,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.malocclusion'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -697,6 +759,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.malocclusion'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -706,6 +769,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.malocclusion'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -715,6 +779,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.malocclusion'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -727,6 +792,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.incorrect_position_of_teeth'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -736,6 +802,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.incorrect_position_of_teeth'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -745,6 +812,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.incorrect_position_of_teeth'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -757,6 +825,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.tooth_reshaping'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -766,6 +835,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.tooth_reshaping'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -779,6 +849,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.changing_size_of_tongue'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -788,6 +859,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.changing_size_of_tongue'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -799,6 +871,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.deviation_of_tongue'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -808,6 +881,7 @@ const AntBattleGame = (props) => {
                             name='game_ant_battle.deviation_of_tongue'
                             control={control}
                             errors={errors}
+                            disabled={disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultBlock>
@@ -818,6 +892,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.split_tongue'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -827,6 +902,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.shortened_hyoid_fold'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -839,6 +915,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.anomalies_of_frenum_of_upper_lower_lip'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -848,6 +925,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.anomalies_of_frenum_of_upper_lower_lip'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -862,6 +940,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.cleft'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -871,6 +950,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.cleft'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -880,6 +960,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.cleft'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -889,6 +970,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.cleft'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -900,6 +982,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.gothic_palate'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -909,6 +992,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.jaw_deformities'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>

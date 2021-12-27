@@ -13,7 +13,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const PuzzleGame = (props) => {
 
     const  {
-        register, errors, control
+        register, errors, control, isConclusionDisabled, disabled
     } = props
 
     return (
@@ -28,6 +28,7 @@ const PuzzleGame = (props) => {
                     name='game_puzzle.wolf_scoop_fork_scroll'
                     register={register}
                     errors={errors}
+                    disabled={disabled}
                 />
             </ProtocolRow>
             <ProtocolRow>
@@ -37,6 +38,7 @@ const PuzzleGame = (props) => {
                     name='game_puzzle.beans_dates'
                     register={register}
                     errors={errors}
+                    disabled={disabled}
                 />
             </ProtocolRow>
             <ProtocolRow>
@@ -46,6 +48,7 @@ const PuzzleGame = (props) => {
                     name='game_puzzle.waffles'
                     register={register}
                     errors={errors}
+                    disabled={disabled}
                 />
             </ProtocolRow>
             <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
@@ -59,6 +62,7 @@ const PuzzleGame = (props) => {
                             name='game_puzzle.nasal'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -68,6 +72,7 @@ const PuzzleGame = (props) => {
                             name='game_puzzle.skip'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -77,6 +82,7 @@ const PuzzleGame = (props) => {
                             name='game_puzzle.replacing_with_b'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -86,6 +92,7 @@ const PuzzleGame = (props) => {
                             name='game_puzzle.replacing_with_b_soft'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -95,6 +102,7 @@ const PuzzleGame = (props) => {
                             name='game_puzzle.replacing_with_f'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -113,6 +121,7 @@ const PuzzleGame = (props) => {
                             name='game_puzzle.two_lipped'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -122,6 +131,7 @@ const PuzzleGame = (props) => {
                             name='game_puzzle.mixing'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
@@ -131,6 +141,7 @@ const PuzzleGame = (props) => {
                             name='game_puzzle.distortion'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                 </ProtocolResultBlock>
@@ -149,6 +160,7 @@ const PuzzleGame = (props) => {
                                 name='game_puzzle.perception'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -158,6 +170,7 @@ const PuzzleGame = (props) => {
                                 name='game_puzzle.perception'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -169,6 +182,7 @@ const PuzzleGame = (props) => {
                                 name='game_puzzle.level_of_perception'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -178,6 +192,7 @@ const PuzzleGame = (props) => {
                                 name='game_puzzle.level_of_perception'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -189,6 +204,7 @@ const PuzzleGame = (props) => {
                         name='game_puzzle.expert_comment'
                         placeholder='Комментарий специалиста'
                         register={register}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
             </ProtocolBlock>

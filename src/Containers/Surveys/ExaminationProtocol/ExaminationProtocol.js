@@ -7,7 +7,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { updateProtocol, createSpeechCard } from 'redux/surveys/surveysSlice.js';
 import { examinationProtocolSchema } from 'Containers/Surveys/ExaminationProtocol/yupSchema.js';
+import { examinationProtocolStatuses, lessonStatuses } from 'constants.js';
+import { momentDateToHuman, strDateToMoment } from 'utils/date/dateUtils';
 
+import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock';
 import ProtocolMain from 'Components/Surveys/ExaminationProtocol/ProtocolMain/ProtocolMain.js';
 import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow.js';
 import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFormField/ProtocolFormField.js';
@@ -580,56 +583,77 @@ const ExaminationProtocol = (props) => {
                 register={register}
                 errors={errors}
                 control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <PuzzleGame
                 register={register}
                 errors={errors}
                 control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <AntLambadaGame
                 register={register}
                 errors={errors}
                 control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <AntBattleGame
                 register={register}
                 errors={errors}
                 control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <MagicExamGame
                 register={register}
                 errors={errors}
                 control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <CapriciousPrincessGame
                 register={register}
                 errors={errors}
                 control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <HowTheMouseCouldNotSleep
                 register={register}
                 errors={errors}
                 control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <OnTheFarmGame
                 register={register}
                 errors={errors}
                 control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <OnTheFarmPartTwoGame
                 register={register}
                 errors={errors}
                 control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <OnTheFarmPartThree
                 register={register}
                 errors={errors}
                 control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
             />
             <Questionnaire
                 register={register}
                 errors={errors}
                 disabled={isProtocolClosed}
+                isConclusionDisabled={isConclusionDisabled}
             />
             <ProtocolBlock>
                 <ProtocolBlockTitle>Логопедическое заключение</ProtocolBlockTitle>
@@ -640,6 +664,7 @@ const ExaminationProtocol = (props) => {
                         register={register}
                         errors={errors}
                         classNameLabel='protocol__result-lbl'
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -650,6 +675,7 @@ const ExaminationProtocol = (props) => {
                         register={register}
                         errors={errors}
                         classNameLabel='protocol__result-lbl'
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -660,6 +686,7 @@ const ExaminationProtocol = (props) => {
                         register={register}
                         errors={errors}
                         classNameLabel='protocol__result-lbl'
+                        disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
