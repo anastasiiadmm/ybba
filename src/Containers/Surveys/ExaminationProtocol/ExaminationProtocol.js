@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock.js';
 import { strDateToMoment, momentDateToHuman } from 'utils/date/dateUtils.js';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
 
 import { updateProtocol, createSpeechCard } from 'redux/surveys/surveysSlice.js';
 import { examinationProtocolSchema } from 'Containers/Surveys/ExaminationProtocol/yupSchema.js';
@@ -41,6 +41,8 @@ const ExaminationProtocol = (props) => {
     const {
         protocol, lesson
     } = props
+
+    console.log('protocol', protocol)
 
     const dispatch = useDispatch()
 
@@ -600,6 +602,7 @@ const ExaminationProtocol = (props) => {
                         name='speech_therapy_conclusion'
                         register={register}
                         errors={errors}
+                        classNameLabel='protocol__result-lbl'
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -609,6 +612,7 @@ const ExaminationProtocol = (props) => {
                         name='dynamic_conclusion'
                         register={register}
                         errors={errors}
+                        classNameLabel='protocol__result-lbl'
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -618,7 +622,13 @@ const ExaminationProtocol = (props) => {
                         name='final_conclusion'
                         register={register}
                         errors={errors}
+                        classNameLabel='protocol__result-lbl'
                     />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <p className='protocol__finish-title'>Логопед</p>
+                    <ProtocolDescriptionSubtitle>Дата рождения: {protocol.child_date_of_birth}</ProtocolDescriptionSubtitle>
+                    <p className='protocol__info'>Родитель: {protocol.parent.first_name} {protocol.parent.last_name}</p>
                 </ProtocolRow>
             </ProtocolBlock>
             <ProtocolBlock>
