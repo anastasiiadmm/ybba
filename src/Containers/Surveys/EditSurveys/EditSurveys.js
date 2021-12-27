@@ -2,8 +2,16 @@ import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { Spinner, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router';
 
-import { surveysSelector, getProtocol, getSpeechCard } from 'redux/surveys/surveysSlice.js';
+import {
+    surveysSelector,
+    getProtocol,
+    getSpeechCard,
+    moveDataFromProtocolToSpeechCard,
+    closeProtocol,
+    clearSpeechCard
+} from 'redux/surveys/surveysSlice.js';
 import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
 import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
 
@@ -16,13 +24,20 @@ const EditSurveys = (props) => {
 
     const { protocol, speechCard } = useSelector(surveysSelector)
     const dispatch = useDispatch()
+    const history = useHistory()
 
-    const onProtocolSubmit = data => {
-        console.log('asd protocol', data)
+    const onProtocolSubmit = async data => {
+        await dispatch(moveDataFromProtocolToSpeechCard({
+            childId: protocol.child.id,
+            data: data
+        }))
+        await dispatch(closeProtocol())
+        await dispatch(clearSpeechCard())
+        await dispatch(getSpeechCard(childId))
     }
 
-    const onSpeechCardSubmit = data => {
-        console.log('asd speech card', data)
+    const onSpeechCardSubmit = () => {
+        history.push('/')
     }
 
     const scrollToEndOfProtocol = () => {
