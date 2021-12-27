@@ -42,8 +42,6 @@ const ExaminationProtocol = (props) => {
         protocol, lesson
     } = props
 
-    console.log('protocol', protocol)
-
     const dispatch = useDispatch()
 
     const { register, formState: { errors }, setValue, control, watch, getValues, handleSubmit } = useForm({
