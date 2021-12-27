@@ -171,3 +171,8 @@ export const gameUserRoles = {
     [userRoles.therapist]: 1,
     [userRoles.parent]: 2,
 }
+
+export const speechCardStatuses = {
+    open: 'open',
+    closed: 'closed'
+}

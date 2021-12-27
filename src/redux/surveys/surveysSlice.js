@@ -69,6 +69,18 @@ export const createSpeechCard = createAsyncThunk(
     }
 );
 
+export const moveDataFromProtocolToSpeechCard = createAsyncThunk(
+    `${nameSpace}/moveDataFromProtocolToSpeechCard`,
+    async ({ childId, data }, { rejectWithValue }) => {
+        try {
+            const resp = await axiosApi.put(`/surveys/children/${childId}/move-protocol-to-speech-card/`, data)
+            return resp.data
+        } catch (e) {
+            return rejectWithValue(e)
+        }
+    }
+)
+
 export const updateSpeechCard = createAsyncThunk(
     `${nameSpace}/updateSpeechCard`,
     async ({ speechCardId, speechCardData }, { rejectWithValue }) => {
@@ -97,6 +109,9 @@ const surveysSlice = createSlice({
         },
         closeProtocol: state => {
             state.protocol = { ...state.protocol, status: examinationProtocolStatuses.closed }
+        },
+        clearSpeechCard: (state) => {
+            state.speechCard = null
         }
     },
     extraReducers: {
@@ -172,6 +187,6 @@ const surveysSlice = createSlice({
     },
 });
 
-export const { clearSurveysState, closeProtocol } = surveysSlice.actions;
+export const { clearSurveysState, closeProtocol, clearSpeechCard } = surveysSlice.actions;
 export const surveysSelector = (state) => state.surveys;
 export default surveysSlice.reducer;

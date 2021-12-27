@@ -18,7 +18,6 @@ import {
     gameActions,
     userRoles,
     envs,
-    frontUrls,
     lessonStatuses,
     examinationProtocolStatuses,
     gameUserRoles,
@@ -34,17 +33,14 @@ import { initSessionStack, defineUser, stopSessionStackRecording, } from 'utils/
 import { authSelector } from 'redux/auth/authSlice.js';
 import { checkEnv } from 'utils/common/commonUtils.js';
 import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
-import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js';
-import config from 'config.js';
 
 import 'Containers/LessonPage/lessonPage.css';
 import {
     getProtocol,
     surveysSelector,
     getSpeechCard,
-    updateProtocol,
     closeProtocol,
-    createSpeechCard
+    moveDataFromProtocolToSpeechCard
 } from 'redux/surveys/surveysSlice.js';
 import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
 import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
@@ -162,19 +158,6 @@ const LessonPage = (props) => {
         }
     };
 
-    const sendChildrenQuestionnaireNotification = useCallback(() => {
-        const children = user.profile.children;
-        children.forEach((child) => {
-            const link = `<a href="${
-                frontUrls[config.appEnvironment]
-            }/questionnaire/${child.id}">Перейти к анкете</a>`;
-            const title = 'Анкета ребёнка';
-            const body = `Пожалуйста, ответьте на вопросы о развитии ребенка (${link})`;
-
-            dispatch(sendNotificationToMe({ title, body }));
-        });
-    }, [dispatch, user]);
-
     const webcamComponentProps = {
         meetingId: lessonId,
         lessonId: lessonId,
@@ -185,18 +168,11 @@ const LessonPage = (props) => {
         if (lesson.status !== lessonStatuses.finished) {
             toast.warning('Сначала завершите занятие')
         } else {
-            dispatch(closeProtocol())
-            await dispatch(createSpeechCard({
+            await dispatch(moveDataFromProtocolToSpeechCard({
                 childId: protocol.child.id,
-                speechCardData: data
+                data: data
             }))
-            await dispatch(updateProtocol({
-                protocolId: protocol.id,
-                newData: {
-                    status: examinationProtocolStatuses.closed,
-                    lesson: lesson.id
-                },
-            }))
+            await dispatch(closeProtocol())
             if (lesson?.student?.id) {
                 await dispatch(getSpeechCard(lesson.student.id))
             }
@@ -204,7 +180,6 @@ const LessonPage = (props) => {
     }
 
     const onSpeechCardFinish = () => {
-        console.log(123413243132)
         history.push('/')
     }
 
@@ -272,7 +247,7 @@ const LessonPage = (props) => {
     }, [dispatch, lesson])
 
     useEffect(() => {
-        if (lesson && lesson?.student?.id && protocol && protocol.status === examinationProtocolStatuses.closed) {
+        if (lesson && protocol && protocol.status === examinationProtocolStatuses.closed) {
             dispatch(getSpeechCard(lesson.student.id))
         }
     }, [dispatch, lesson, protocol])
@@ -280,9 +255,8 @@ const LessonPage = (props) => {
     useEffect(() => {
         if (lesson && checkUserRole(userRoles.parent) && lesson.status === lessonStatuses.finished) {
             history.push('/')
-            sendChildrenQuestionnaireNotification()
         }
-    }, [history, lesson, sendChildrenQuestionnaireNotification])
+    }, [history, lesson])
 
     const canvasParent = useRef();
 
@@ -444,7 +418,9 @@ const LessonPage = (props) => {
                     })}
                     style={{ height: '100vh' }}
                 >
-                    {((protocol && protocol.status !== examinationProtocolStatuses.closed) || checkUserRole(userRoles.parent)) ?
+                    {protocol && (
+                        protocol.status === examinationProtocolStatuses.open || checkUserRole(userRoles.parent)
+                    ) ?
                         <h1 className='text-white'>Урок завершен</h1> :
                         (speechCard ?
                                 <>
