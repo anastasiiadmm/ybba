@@ -44,6 +44,7 @@ import {
 } from 'redux/surveys/surveysSlice.js';
 import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
 import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
+import config from 'config.js';
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(
