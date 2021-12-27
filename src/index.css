@@ -2482,6 +2482,26 @@ form .profile-child {
     font-size: 20px;
 }
 
+.info-item--separate-block .notice {
+    width: 100%;
+}
+
+.info-item--separate-block .notice .notice__info {
+    white-space: unset;
+    overflow: unset;
+    text-overflow: unset;
+}
+
+@media screen and (min-width: 1400px) {
+    .info-item--separate-block .notice {
+        width: 70%;
+    }
+
+    .info-item--separate-block .info-item__btn {
+        margin: unset;
+    }
+}
+
 .speech-card {
     background: #fff;
     border-radius: 12px;
