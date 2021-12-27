@@ -17,7 +17,6 @@ import {
     gameActions,
     userRoles,
     envs,
-    frontUrls,
     lessonStatuses,
     examinationProtocolStatuses,
 } from 'constants.js';
@@ -32,17 +31,14 @@ import { initSessionStack, defineUser, stopSessionStackRecording, } from 'utils/
 import { authSelector } from 'redux/auth/authSlice.js';
 import { checkEnv } from 'utils/common/commonUtils.js';
 import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
-import { sendNotificationToMe } from 'redux/notifications/notificationsSlice.js';
-import config from 'config.js';
 
 import 'Containers/LessonPage/lessonPage.css';
 import {
     getProtocol,
     surveysSelector,
     getSpeechCard,
-    updateProtocol,
     closeProtocol,
-    createSpeechCard, moveDataFromProtocolToSpeechCard
+    moveDataFromProtocolToSpeechCard
 } from 'redux/surveys/surveysSlice.js';
 import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
 import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
@@ -174,13 +170,6 @@ const LessonPage = (props) => {
                 data: data
             }))
             await dispatch(closeProtocol())
-            await dispatch(updateProtocol({
-                protocolId: protocol.id,
-                newData: {
-                    status: examinationProtocolStatuses.closed,
-                    lesson: lesson.id
-                },
-            }))
             if (lesson?.student?.id) {
                 await dispatch(getSpeechCard(lesson.student.id))
             }
