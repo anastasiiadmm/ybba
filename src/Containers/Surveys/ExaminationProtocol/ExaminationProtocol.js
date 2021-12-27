@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
 
-import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock.js';
-import { strDateToMoment, momentDateToHuman } from 'utils/date/dateUtils.js';
-import { updateProtocol } from 'redux/surveys/surveysSlice.js';
+import { updateProtocol, createSpeechCard } from 'redux/surveys/surveysSlice.js';
 import { examinationProtocolSchema } from 'Containers/Surveys/ExaminationProtocol/yupSchema.js';
+import { examinationProtocolStatuses, lessonStatuses } from 'constants.js';
+import { momentDateToHuman, strDateToMoment } from 'utils/date/dateUtils';
+
+import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock';
 import ProtocolMain from 'Components/Surveys/ExaminationProtocol/ProtocolMain/ProtocolMain.js';
 import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow.js';
 import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFormField/ProtocolFormField.js';
@@ -18,16 +20,23 @@ import ProtocolResultTitle from 'Components/Surveys/ExaminationProtocol/Protocol
 import ProtocolDescriptionSubtitle
     from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle.js';
 import ProtocolResultBlock from 'Components/Surveys/ExaminationProtocol/ProtocolResultBlock/ProtocolResultBlock.js';
-import ProtocolResultWrapper
-    from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper.js';
-import ProtocolPlaceholderTitle
-    from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle.js';
-
-import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
+import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper.js';
+import ProtocolPlaceholderTitle from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle.js';
 import SurveySubmitButton from 'Components/Surveys/Common/SurveySubmitButton.js';
 import Questionnaire from 'Containers/Surveys/Questionnaire/Questionnaire.js';
 import PicturesForFish from 'Containers/Surveys/ExaminationProtocol/games/PicturesForFish.js';
-import { lessonStatuses, examinationProtocolStatuses } from 'constants.js';
+import GiraffeGame from 'Containers/Surveys/ExaminationProtocol/games/GiraffeGame';
+import PuzzleGame from 'Containers/Surveys/ExaminationProtocol/games/PuzzleGame';
+import AntLambadaGame from 'Containers/Surveys/ExaminationProtocol/games/AntLambadaGame';
+import AntBattleGame from 'Containers/Surveys/ExaminationProtocol/games/AntBattleGame';
+import MagicExamGame from 'Containers/Surveys/ExaminationProtocol/games/MagicExamGame';
+import CapriciousPrincessGame from 'Containers/Surveys/ExaminationProtocol/games/CapriciousPrincessGame';
+import HowTheMouseCouldNotSleep from 'Containers/Surveys/ExaminationProtocol/games/HowTheMouseCouldNotSleep';
+import OnTheFarmGame from 'Containers/Surveys/ExaminationProtocol/games/OnTheFarmGame';
+import OnTheFarmPartTwoGame from 'Containers/Surveys/ExaminationProtocol/games/OnTheFarmPartTwoGame';
+import OnTheFarmPartThree from 'Containers/Surveys/ExaminationProtocol/games/OnTheFarmPartThree';
+
+import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
 
 const ExaminationProtocol = (props) => {
 
@@ -570,10 +579,81 @@ const ExaminationProtocol = (props) => {
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
             />
+            <GiraffeGame
+                register={register}
+                errors={errors}
+                control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
+            />
+            <PuzzleGame
+                register={register}
+                errors={errors}
+                control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
+            />
+            <AntLambadaGame
+                register={register}
+                errors={errors}
+                control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
+            />
+            <AntBattleGame
+                register={register}
+                errors={errors}
+                control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
+            />
+            <MagicExamGame
+                register={register}
+                errors={errors}
+                control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
+            />
+            <CapriciousPrincessGame
+                register={register}
+                errors={errors}
+                control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
+            />
+            <HowTheMouseCouldNotSleep
+                register={register}
+                errors={errors}
+                control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
+            />
+            <OnTheFarmGame
+                register={register}
+                errors={errors}
+                control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
+            />
+            <OnTheFarmPartTwoGame
+                register={register}
+                errors={errors}
+                control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
+            />
+            <OnTheFarmPartThree
+                register={register}
+                errors={errors}
+                control={control}
+                isConclusionDisabled={isConclusionDisabled}
+                disabled={isProtocolClosed}
+            />
             <Questionnaire
                 register={register}
                 errors={errors}
                 disabled={isProtocolClosed}
+                isConclusionDisabled={isConclusionDisabled}
             />
             <ProtocolBlock>
                 <ProtocolBlockTitle>Логопедическое заключение</ProtocolBlockTitle>
@@ -583,6 +663,7 @@ const ExaminationProtocol = (props) => {
                         name='speech_therapy_conclusion'
                         register={register}
                         errors={errors}
+                        classNameLabel='protocol__result-lbl'
                         disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
@@ -593,6 +674,7 @@ const ExaminationProtocol = (props) => {
                         name='dynamic_conclusion'
                         register={register}
                         errors={errors}
+                        classNameLabel='protocol__result-lbl'
                         disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
@@ -603,8 +685,14 @@ const ExaminationProtocol = (props) => {
                         name='final_conclusion'
                         register={register}
                         errors={errors}
+                        classNameLabel='protocol__result-lbl'
                         disabled={isProtocolClosed}
                     />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <p className='protocol__finish-title'>Логопед</p>
+                    <ProtocolDescriptionSubtitle>Дата рождения: {protocol.child_date_of_birth}</ProtocolDescriptionSubtitle>
+                    <p className='protocol__info'>Родитель: {protocol.parent.first_name} {protocol.parent.last_name}</p>
                 </ProtocolRow>
             </ProtocolBlock>
             {protocol.status !== examinationProtocolStatuses.closed && (

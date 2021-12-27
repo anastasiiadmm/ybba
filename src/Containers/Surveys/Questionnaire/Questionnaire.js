@@ -16,7 +16,7 @@ import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFo
 const Questionnaire = (props) => {
 
     const {
-        register, errors, disabled
+        register, errors, disabled, isConclusionDisabled
     } = props
 
     const commonFieldProps = {
@@ -40,6 +40,7 @@ const Questionnaire = (props) => {
                         label='Сел в:'
                         name='additional_information.sat_in'
                         {...commonFieldProps}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -48,6 +49,7 @@ const Questionnaire = (props) => {
                         label='Пополз на четвереньках в:'
                         name='additional_information.crawled_on_all_fours_into'
                         {...commonFieldProps}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -56,6 +58,7 @@ const Questionnaire = (props) => {
                         label='Пошел в:'
                         name='additional_information.went_to'
                         {...commonFieldProps}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -64,6 +67,7 @@ const Questionnaire = (props) => {
                         label='Научился прыгать на двух ногах в:'
                         name='additional_information.learned_to_jump_on_two_legs_in'
                         {...commonFieldProps}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -72,6 +76,7 @@ const Questionnaire = (props) => {
                         label='Травмы/инфекции до, во время и/или после родов:'
                         name='additional_information.injury_infection_before_during_and_or_after_childbirth'
                         {...commonFieldProps}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
             </ProtocolSubBlock>
@@ -86,6 +91,7 @@ const Questionnaire = (props) => {
                         label='Лепет в:'
                         name='additional_information.babbling_in'
                         {...commonFieldProps}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -94,6 +100,7 @@ const Questionnaire = (props) => {
                         label='Первые слова в:'
                         name='additional_information.first_words_in'
                         {...commonFieldProps}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
                 <ProtocolRow>
@@ -102,6 +109,7 @@ const Questionnaire = (props) => {
                         label='Первые короткие фразы в:'
                         name='additional_information.first_short_phrases_in'
                         {...commonFieldProps}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
             </ProtocolSubBlock>
@@ -116,6 +124,7 @@ const Questionnaire = (props) => {
                     name='additional_information.speech_environment'
                     placeholder='Ответ родителя'
                     {...commonFieldProps}
+                    disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -129,6 +138,7 @@ const Questionnaire = (props) => {
                     name='additional_information.present_and_past_diseases'
                     placeholder='Ответ родителя'
                     {...commonFieldProps}
+                    disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -141,6 +151,7 @@ const Questionnaire = (props) => {
                     name='additional_information.drug_treatment'
                     placeholder='Ответ родителя'
                     {...commonFieldProps}
+                    disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -154,6 +165,7 @@ const Questionnaire = (props) => {
                     name='additional_information.neurological_status'
                     placeholder='Ответ родителя'
                     {...commonFieldProps}
+                    disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -164,6 +176,7 @@ const Questionnaire = (props) => {
                     name='additional_information.vision'
                     placeholder='Ответ родителя'
                     {...commonFieldProps}
+                    disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -174,6 +187,7 @@ const Questionnaire = (props) => {
                     name='additional_information.hearing'
                     placeholder='Ответ родителя'
                     {...commonFieldProps}
+                    disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -187,6 +201,7 @@ const Questionnaire = (props) => {
                     name='additional_information.eating_behavior'
                     placeholder='Ответ родителя'
                     {...commonFieldProps}
+                    disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
@@ -200,6 +215,7 @@ const Questionnaire = (props) => {
                     name='additional_information.emotional_and_psychological_level'
                     placeholder='Ответ родителя'
                     {...commonFieldProps}
+                    disabled={disabled}
                 />
             </ProtocolSubBlock>
         </ProtocolBlock>
