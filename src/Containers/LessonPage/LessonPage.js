@@ -242,8 +242,8 @@ const LessonPage = (props) => {
     }, [isCameraAllowed, isMicrophoneAllowed]);
 
     useEffect(() => {
-        dispatch(getProtocol('4c78b513-8129-4917-8aff-35df7495a0e4'))
-        dispatch(getSpeechCard('4c78b513-8129-4917-8aff-35df7495a0e4'))
+        dispatch(getProtocol('1cc86d2b-b45e-4630-8873-380c3adb0a70'))
+        dispatch(getSpeechCard('1cc86d2b-b45e-4630-8873-380c3adb0a70'))
     }, [dispatch])
 
     const canvasParent = useRef();
@@ -440,7 +440,7 @@ const LessonPage = (props) => {
                         {/*<Notes lessonId={lessonId}/>*/}
                         {protocol && <ExaminationProtocol
                             protocol={protocol}
-                            lesson={{ id: '6482f36a-a5ee-4860-9472-4f252bae50e1' }}
+                            lesson={{ id: '72660f61-830d-4652-8418-a2bf02fcc195' }}
                         />}
                     </div>
                 </div>
