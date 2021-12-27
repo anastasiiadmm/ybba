@@ -78,10 +78,10 @@ build&push_staging:
   stage: build
   only:
     refs:
-      - main
+      - staging
   variables:
     REACT_APP_SENTRY_DSN: $REACT_APP_SENTRY_DSN
-    REACT_APP_ENVIRONMENT: development
+    REACT_APP_ENVIRONMENT: staging
     REACT_APP_ROBOKASSA_MERCHANT_LOGIN: $ROBOKASSA_MERCHANT_LOGIN
     REACT_APP_ROBOKASSA_PASSWORD: $ROBOKASSA_PASSWORD
     REACT_APP_DROPBOX_TOKEN: $REACT_APP_DROPBOX_TOKEN
@@ -137,7 +137,7 @@ deploy-staging:
     url: https://staging.yba.ltestl.com/
   only:
     refs:
-      - main
+      - staging
   variables:
     SSH_PRIVATE_KEY: $STAGING_SSH_PRIVATE_KEY
     DEPLOY_SERVER: 104.248.254.28

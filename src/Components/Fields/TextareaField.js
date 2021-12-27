@@ -6,17 +6,23 @@ import PropTypes from 'prop-types';
 
 const TextareaField = (props) => {
     const {
-        label, placeholder, name, errors, register, classNameLabel, className
+        label, placeholder, name, errors, register, classNameLabel, className, disabled
     } = props
 
     return <>
-        <label className={classNameLabel}>{label}</label>
+        <label
+            className={addClasses(classNameLabel, {
+                'disabled': disabled
+            })}
+        >{label}</label>
         <textarea
             className={addClasses(className, {
-                'error': resolve(name, errors, '.')
+                'error': resolve(name, errors, '.'),
+                'disabled': disabled
             })}
             placeholder={placeholder}
             {...register(name)}
+            disabled={disabled}
         />
         <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
     </>
@@ -29,7 +35,8 @@ TextareaField.propTypes = {
     errors: PropTypes.object,
     register: PropTypes.func,
     classNameLabel: PropTypes.string,
-    className: PropTypes.string
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
 }
 
 export default TextareaField;

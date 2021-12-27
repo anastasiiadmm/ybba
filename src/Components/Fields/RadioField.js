@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Controller } from 'react-hook-form'
+import { addClasses } from 'utils/addClasses/addClasses.js';
 
 const RadioField = (props) => {
 
     const {
-        label, name, classNameLabel, className, register, value: radioValue, control
+        label, name, classNameLabel, className, register, value: radioValue, control, disabled
     } = props
     
     return (
@@ -14,7 +15,9 @@ const RadioField = (props) => {
             name={name}
             render={(params) => {
                 return (
-                    <label className={classNameLabel}>
+                    <label className={addClasses(classNameLabel, {
+                        'disabled': disabled
+                    })}>
                         <input
                             type='radio'
                             className={className}
@@ -23,6 +26,7 @@ const RadioField = (props) => {
                                 params.field.onChange(e.target.value)
                             }}
                             checked={String(radioValue) === String(params.field.value)}
+                            disabled={disabled}
                         />
                         <span>{label}</span>
                     </label>
@@ -39,7 +43,8 @@ RadioField.propTypes = {
     classNameLabel: PropTypes.string,
     className: PropTypes.string,
     value: PropTypes.string,
-    control: PropTypes.object
+    control: PropTypes.object,
+    disabled: PropTypes.bool,
 }
 
 export default RadioField;

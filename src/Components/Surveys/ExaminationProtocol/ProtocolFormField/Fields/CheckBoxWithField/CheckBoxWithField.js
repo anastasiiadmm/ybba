@@ -1,13 +1,13 @@
 import React from 'react';
-import Field from 'Components/Field/Field.js';
 import { resolve } from 'utils/resolve/resolve.js';
 import { Controller } from 'react-hook-form';
 import PropTypes from 'prop-types';
+import { addClasses } from 'utils/addClasses/addClasses.js';
 
 const CheckBoxWithField = (props) => {
 
     const {
-        name, control, classNameLabel, className, label, errors, defaultValue
+        name, control, classNameLabel, className, label, errors, defaultValue, disabled
     } = props
 
     return <>
@@ -16,7 +16,11 @@ const CheckBoxWithField = (props) => {
             control={control}
             render={params => {
                 return <>
-                    <label className={classNameLabel}>
+                    <label
+                        className={addClasses(classNameLabel, {
+                            'disabled': disabled
+                        })}
+                    >
                         <input
                             type='checkbox'
                             className={className}
@@ -48,7 +52,8 @@ CheckBoxWithField.propTypes = {
     className: PropTypes.string,
     label: PropTypes.string,
     errors: PropTypes.object,
-    defaultValue: PropTypes.string
+    defaultValue: PropTypes.string,
+    disabled: PropTypes.bool
 }
 
 export default CheckBoxWithField;
