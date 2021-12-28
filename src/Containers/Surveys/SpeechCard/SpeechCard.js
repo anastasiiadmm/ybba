@@ -600,7 +600,7 @@ const SpeechCard = (props) => {
                         <SpeechCardFormField
                             type='textarea'
                             label='Понимание текста'
-                            name='understanding_the_text'
+                            name='understanding_the_text_game_how_the_mouse_could_not_sleep'
                             register={register}
                             disabled={isCardClosed}
                         />

@@ -278,7 +278,6 @@ const examProtocolSchema = yup.object().shape({
     switchability: yup.string().required(requiredMessage).nullable(true),
   }),
   game_how_the_mouse_could_not_sleep: yup.object().shape({
-    // understanding_the_text
     content_semantic_meaning_of_text: yup
       .string()
       .required(requiredMessage)
