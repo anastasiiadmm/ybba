@@ -37,6 +37,8 @@ import OnTheFarmPartTwoGame from 'Containers/Surveys/ExaminationProtocol/games/O
 import OnTheFarmPartThree from 'Containers/Surveys/ExaminationProtocol/games/OnTheFarmPartThree';
 
 import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
+import ProtocolBlockSubTitle
+    from '../../../Components/Surveys/ExaminationProtocol/ProtocolBlockSubTitle/ProtocolBlockSubTitle';
 
 const ExaminationProtocol = (props) => {
 
@@ -649,12 +651,17 @@ const ExaminationProtocol = (props) => {
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
             />
-            <Questionnaire
-                register={register}
-                errors={errors}
-                disabled={isProtocolClosed}
-                isConclusionDisabled={isConclusionDisabled}
-            />
+            <ProtocolBlock>
+                <ProtocolBlockTitle>Дополнительная информация</ProtocolBlockTitle>
+                <ProtocolBlockSubTitle>Данные о развитии:</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>Раннее/ позднее физическое развитие</ProtocolBlockSubTitle>
+                <Questionnaire
+                    register={register}
+                    errors={errors}
+                    disabled={isProtocolClosed}
+                    isConclusionDisabled={isConclusionDisabled}
+                />
+            </ProtocolBlock>
             <ProtocolBlock>
                 <ProtocolBlockTitle>Логопедическое заключение</ProtocolBlockTitle>
                 <ProtocolRow>

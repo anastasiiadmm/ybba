@@ -12,6 +12,11 @@ import { Spinner } from 'react-bootstrap';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import { useHistory } from 'react-router';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import ProtocolRow from '../../Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow';
+
+import logo2 from 'assets/img/logo2.svg'
 
 const ParentQuestionnaire = (props) => {
 
@@ -63,8 +68,20 @@ const ParentQuestionnaire = (props) => {
                 'centerContent': !protocol
             })}>
                 {protocol ?
-                    <Questionnaire register={register} /> :
-                    <Spinner animation='grow'/>
+                    <>
+                        <div className='form2__logo'>
+                            <img src={logo2} alt='бибарыба.ру diagnostika.com' />
+                        </div>
+                        <h1 className='form2__title form2__title_qu'>Вопросы о развитии ребенка</h1>
+                        <p className='form2__descr'>Это позволит более точно описать заключение и рекомендации. На заполнение
+                            потребуется не
+                            более 15 минут.
+                        </p>
+                        <Questionnaire register={register} />
+                        <ProtocolRow>
+                            <Button component={Link} to='/' className='btn2'>Отправить ответы</Button>
+                        </ProtocolRow>
+                    </> : <Spinner animation='grow'/>
                 }
             </div>
         </Container>
