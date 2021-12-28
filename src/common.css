@@ -184,3 +184,11 @@ h3 {
         margin: unset;
     }
 }
+
+.protocol__col:first-child.w50 {
+    width: 81%;
+}
+
+.protocol__col:first-child {
+    padding-right: 2px;
+}

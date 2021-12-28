@@ -112,6 +112,7 @@ const PuzzleGame = (props) => {
                             name='game_puzzle.replacing_with_f_soft'
                             control={control}
                             errors={errors}
+                            disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
                     <ProtocolResultWrapper>

@@ -147,6 +147,7 @@ const AntLambadaGame = (props) => {
                                 name='game_ant_lambada.replacing_kh_with'
                                 control={control}
                                 errors={errors}
+                                disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
