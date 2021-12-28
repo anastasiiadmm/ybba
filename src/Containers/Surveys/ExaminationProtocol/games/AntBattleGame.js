@@ -603,6 +603,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.motor_shifting_difficulties'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
