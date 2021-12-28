@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
 
 import { useForm, useWatch } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useHistory } from 'react-router';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
+
 
 import Questionnaire from 'Containers/Surveys/Questionnaire/Questionnaire.js';
 import Container from 'Components/Container/Container.js';
 
 import 'Containers/ParentQuestionnaire/parentQuestionnaire.css'
-import { useDispatch, useSelector } from 'react-redux';
 import { getProtocol, surveysSelector, updateProtocol } from 'redux/surveys/surveysSlice.js';
-import { Spinner } from 'react-bootstrap';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import { authSelector } from 'redux/auth/authSlice.js';
-import { useHistory } from 'react-router';
-import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
-import ProtocolRow from '../../Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow';
+import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow';
 
 import logo2 from 'assets/img/logo2.svg'
 
