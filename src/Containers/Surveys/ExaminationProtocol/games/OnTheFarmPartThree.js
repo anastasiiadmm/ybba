@@ -226,6 +226,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.switchability'
                         register={register}
                         errors={errors}
+                        disabled={isConclusionDisabled || disabled}
                     />
                 </ProtocolRow>
             </ProtocolBlock>
@@ -425,7 +426,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Oчень низкий'
+                                label='Очень низкий'
                                 name='game_on_the_farm_part_three.voice_part_four'
                                 control={control}
                                 errors={errors}
@@ -644,7 +645,7 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='radio'
+                                type='checkbox'
                                 label='Затруднённое'
                                 name='game_on_the_farm_part_three.hindered'
                                 control={control}
@@ -654,7 +655,7 @@ const OnTheFarmPartThree = (props) => {
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='radio'
+                                type='checkbox'
                                 label='Поверхностное'
                                 name='game_on_the_farm_part_three.superficial'
                                 control={control}
@@ -664,7 +665,7 @@ const OnTheFarmPartThree = (props) => {
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='radio'
+                                type='checkbox'
                                 label='Неритмичное'
                                 name='game_on_the_farm_part_three.breathing_is_not_rhythmic'
                                 control={control}
@@ -674,7 +675,7 @@ const OnTheFarmPartThree = (props) => {
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='radio'
+                                type='checkbox'
                                 label='Вдох неглубокий'
                                 name='game_on_the_farm_part_three.shallow_breath'
                                 control={control}
@@ -761,7 +762,7 @@ const OnTheFarmPartThree = (props) => {
                                 type='radio'
                                 label='Просодическая организация речи характеризуется неадекватным интонационным оформлением высказывания;
 									речь
-									невнятная, "смазанная", малопонятная для окружающих'
+									невнятная, смазанная, малопонятная для окружающих'
                                 name='game_on_the_farm_part_three.prosodic_side_of_speech'
                                 control={control}
                                 errors={errors}

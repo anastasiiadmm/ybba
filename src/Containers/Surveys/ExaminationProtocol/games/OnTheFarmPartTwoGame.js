@@ -240,7 +240,7 @@ const OnTheFarmPartTwoGame = (props) => {
                                 type='radio'
                                 label='Сформированы на уровне, соответствующем данной возрастной группе; в речи наблюдается незначительное
 									количество словоизменительных ошибок (в основном при непродуктивном словоизменении)'
-                                name='game_on_the_farm_part_two.inflectional_skills_and_abilities_part_two'
+                                name='game_on_the_farm_part_two.inflectional_skills_and_abilities_part_one'
                                 control={control}
                                 errors={errors}
                                 disabled={isConclusionDisabled || disabled}
@@ -250,7 +250,7 @@ const OnTheFarmPartTwoGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Словоизменительные навыки и умения сформированы'
-                                name='game_on_the_farm_part_two.inflectional_skills_and_abilities_part_two'
+                                name='game_on_the_farm_part_two.inflectional_skills_and_abilities_part_one'
                                 control={control}
                                 errors={errors}
                                 disabled={isConclusionDisabled || disabled}

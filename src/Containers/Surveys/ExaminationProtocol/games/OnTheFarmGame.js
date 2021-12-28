@@ -25,7 +25,7 @@ const OnTheFarmGame = (props) => {
         <>
             <ProtocolBlock>
                 <ProtocolTitleGame>Игра «На ферме». Часть 1</ProtocolTitleGame>
-                <ProtocolBlockTitle>Обследование связной речи</ProtocolBlockTitle>
+                <ProtocolBlockTitle>Обследование уровня сформированности лексикона</ProtocolBlockTitle>
                 <ProtocolBlockSubTitle>Предметный словарь</ProtocolBlockSubTitle>
                 <ProtocolBox>
                     <ProtocolBoxTitle>Обобщающие понятия</ProtocolBoxTitle>
@@ -415,8 +415,8 @@ const OnTheFarmGame = (props) => {
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='checkbox'
-                                label='Нарушение актуализации слов – нарушен выбор слова из семантического поля'
+                                type='radio'
+                                label='Нарушение актуализации слов - нарушен выбор слова из семантического поля'
                                 name='game_on_the_farm.active_semantic_component_active_vocabulary'
                                 control={control}
                                 errors={errors}
@@ -425,7 +425,7 @@ const OnTheFarmGame = (props) => {
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='checkbox'
+                                type='radio'
                                 label='Наличие неологизмов'
                                 name='game_on_the_farm.active_semantic_component_active_vocabulary'
                                 control={control}
@@ -482,7 +482,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Вербальные – смешение признаков часть/тело'
+                                label='Вербальные - смешение признаков часть/тело'
                                 name='game_on_the_farm.verbal_paraphasias'
                                 control={control}
                                 errors={errors}
@@ -492,7 +492,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Вербальные – замена названия предмета контекстным действием'
+                                label='Вербальные - замена названия предмета контекстным действием'
                                 name='game_on_the_farm.verbal_paraphasias'
                                 control={control}
                                 errors={errors}
@@ -502,7 +502,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Вербальные – смешение по внешнему сходству'
+                                label='Вербальные - смешение по внешнему сходству'
                                 name='game_on_the_farm.verbal_paraphasias'
                                 control={control}
                                 errors={errors}
@@ -558,7 +558,7 @@ const OnTheFarmGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Словарь преимущественно состоит из слов, обозначающих предметы, наблюдается дефицит
-                                глагольного сло¬варя, практически отсутствуют слова, обозначающие признаки и качества предметов.
+                                глагольного словаря, практически отсутствуют слова, обозначающие признаки и качества предметов.
                                 Словарь представлен небольшим количеством слов обиходно-бытовой тематики'
                                 name='game_on_the_farm.vocabulary_size_part_two'
                                 control={control}

@@ -180,6 +180,7 @@ const PuzzleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Cоответствует возрасту'
+                                value='уровень восприятия соответствует возрасту'
                                 name='game_puzzle.level_of_perception'
                                 control={control}
                                 errors={errors}
@@ -190,6 +191,7 @@ const PuzzleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Не соответствует возрасту'
+                                value='уровень не восприятия соответствует возрасту'
                                 name='game_puzzle.level_of_perception'
                                 control={control}
                                 errors={errors}

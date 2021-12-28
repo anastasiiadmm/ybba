@@ -29,6 +29,7 @@ const CheckBoxField = (props) => {
                                 params.field.onChange(e.target.checked)
                             }}
                             checked={params.field.value}
+                            disabled={disabled}
                         />
                         <span>{label}</span>
                     </label>
