@@ -226,6 +226,7 @@ const OnTheFarmPartThree = (props) => {
                         name='game_on_the_farm_part_three.switchability'
                         register={register}
                         errors={errors}
+                        disabled={isConclusionDisabled || disabled}
                     />
                 </ProtocolRow>
             </ProtocolBlock>
