@@ -485,7 +485,7 @@ const SpeechCard = (props) => {
                             <SpeechCardFormField
                                 type='textarea'
                                 label='Сформированность навыков звукового анализа и синтеза'
-                                name='formation_of_skills_of_sound_analysis_and_synthesis'
+                                name='formation_of_the_skills_of_sound_analysis_and_synthesis'
                                 register={register}
                                 disabled={isCardClosed}
                             />

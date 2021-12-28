@@ -142,7 +142,7 @@ const speechCardSchema = yup.object().shape({
     .string()
     .required(requiredMessage)
     .nullable(true),
-  formation_of_skills_of_sound_analysis_and_synthesis: yup
+  formation_of_the_skills_of_sound_analysis_and_synthesis: yup
     .string()
     .required(requiredMessage)
     .nullable(true),
