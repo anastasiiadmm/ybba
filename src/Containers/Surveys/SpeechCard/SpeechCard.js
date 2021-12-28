@@ -458,7 +458,7 @@ const SpeechCard = (props) => {
                         <SpeechCardRow>
                             <SpeechCardFormField
                                 type='textarea'
-                                name='level_of_formation_of_phonemic_perception'
+                                name='level_of_formation_of_phonetic_phonological_competence'
                                 register={register}
                                 disabled={isCardClosed}
                             />
@@ -485,7 +485,7 @@ const SpeechCard = (props) => {
                             <SpeechCardFormField
                                 type='textarea'
                                 label='Сформированность навыков звукового анализа и синтеза'
-                                name='formation_of_skills_of_sound_analysis_and_synthesis'
+                                name='formation_of_the_skills_of_sound_analysis_and_synthesis'
                                 register={register}
                                 disabled={isCardClosed}
                             />
@@ -600,7 +600,7 @@ const SpeechCard = (props) => {
                         <SpeechCardFormField
                             type='textarea'
                             label='Понимание текста'
-                            name='understanding_the_text'
+                            name='understanding_the_text_game_how_the_mouse_could_not_sleep'
                             register={register}
                             disabled={isCardClosed}
                         />
@@ -618,7 +618,7 @@ const SpeechCard = (props) => {
                         <SpeechCardFormField
                             type='textarea'
                             label='Репродуцирование текста'
-                            name='reproduction_of_text'
+                            name='reproduction_of_text_game_how_the_mouse_could_not_sleep'
                             register={register}
                             disabled={isCardClosed}
                         />
