@@ -1,16 +1,14 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
 
-import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock.js';
-import ProtocolBlockTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBlockTitle/ProtocolBlockTitle.js';
-import ProtocolBlockSubTitle
-    from 'Components/Surveys/ExaminationProtocol/ProtocolBlockSubTitle/ProtocolBlockSubTitle.js';
-import ProtocolSubBlock from 'Components/Surveys/ExaminationProtocol/ProtocolSubBlock/ProtocolSubBlock.js';
-import ProtocolPlaceholderTitle
-    from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle.js';
 import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow.js';
 import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFormField/ProtocolFormField.js';
+import FormBlock from 'Components/ParentQuestionnaire/FormBlock/FormBlock';
+import FormQuTitle from 'Components/ParentQuestionnaire/FormQuTitle/FormQuTitle';
+
+import logo2 from 'assets/img/logo2.svg'
 
 
 const Questionnaire = (props) => {
@@ -24,16 +22,18 @@ const Questionnaire = (props) => {
     }
 
     return (
-        <ProtocolBlock>
-            <ProtocolBlockTitle>Дополнительная информация</ProtocolBlockTitle>
-            <ProtocolBlockSubTitle>Данные о развитии:</ProtocolBlockSubTitle>
-            <ProtocolBlockSubTitle>Раннее/ позднее физическое развитие</ProtocolBlockSubTitle>
-            <ProtocolSubBlock>
-                <ProtocolPlaceholderTitle>
-                    — Во сколько ребенок сел самостоятельно? В каком возрасте пополз? Пошел самостоятельно? Были ли
-                    какие-либо
-                    травмы/инфекции у ребенка до, во время или после родов?
-                </ProtocolPlaceholderTitle>
+        <>
+            <div className='form2__logo'>
+                <img src={logo2} alt='бибарыба.ру diagnostika.com' />
+            </div>
+            <h1 className='form2__title form2__title_qu'>Вопросы о развитии ребенка</h1>
+            <p className='form2__descr'>Это позволит более точно описать заключение и рекомендации. На заполнение
+                потребуется не
+                более 15 минут.
+            </p>
+            <FormBlock>
+                <FormQuTitle>— Во сколько ребенок сел самостоятельно? В каком возрасте пополз? Пошел
+                    самостоятельно? Были ли какие-либо травмы/инфекции у ребенка до, во время или после родов?</FormQuTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
@@ -79,12 +79,10 @@ const Questionnaire = (props) => {
                         disabled={disabled}
                     />
                 </ProtocolRow>
-            </ProtocolSubBlock>
-            <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Раннее речевое/позднее речевое развитие</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>
-                    — В каком возрасте появился лепет? Первые слова? Первые короткие фразы?
-                </ProtocolPlaceholderTitle>
+            </FormBlock>
+            <FormBlock>
+                <h4 className='form2__block-title'>Раннее речевое/позднее речевое развитие</h4>
+                <FormQuTitle>— В каком возрасте появился лепет? Первые слова? Первые короткие фразы?</FormQuTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
@@ -112,113 +110,123 @@ const Questionnaire = (props) => {
                         disabled={disabled}
                     />
                 </ProtocolRow>
-            </ProtocolSubBlock>
-            <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Речевая среда</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>
-                    — На каком языке говорят с ребенком дома? Много ли общаетесь с ребенком? Опишите ваш обычный
-                    разговор с ребенком дома и вне дома
-                </ProtocolPlaceholderTitle>
-                <ProtocolFormField
-                    type='textarea'
-                    name='additional_information.speech_environment'
-                    placeholder='Ответ родителя'
-                    {...commonFieldProps}
-                    disabled={disabled}
-                />
-            </ProtocolSubBlock>
-            <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Настоящие и перенесенные заболевания, травмы, операции</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>
-                    — Были ли у ребенка серьезные операции, и в каком возрасте? Травмы головы? Заболевания, о
-                    которых логопеду стоит знать?
-                </ProtocolPlaceholderTitle>
-                <ProtocolFormField
-                    type='textarea'
-                    name='additional_information.present_and_past_diseases'
-                    placeholder='Ответ родителя'
-                    {...commonFieldProps}
-                    disabled={disabled}
-                />
-            </ProtocolSubBlock>
-            <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Медикаментозное лечение</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>
-                    — Проходил/проходит ли медикаментозное лечение? Если да, то какое?
-                </ProtocolPlaceholderTitle>
-                <ProtocolFormField
-                    type='textarea'
-                    name='additional_information.drug_treatment'
-                    placeholder='Ответ родителя'
-                    {...commonFieldProps}
-                    disabled={disabled}
-                />
-            </ProtocolSubBlock>
-            <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Неврологический статус</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>
-                    — Ставил ли невролог когда-либо какой-либо диагноз? Имеется ли у ребенка эпилепсия или другие
-                    похожие состояния?
-                </ProtocolPlaceholderTitle>
-                <ProtocolFormField
-                    type='textarea'
-                    name='additional_information.neurological_status'
-                    placeholder='Ответ родителя'
-                    {...commonFieldProps}
-                    disabled={disabled}
-                />
-            </ProtocolSubBlock>
-            <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Зрение</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>— Какое зрение у ребенка? Что говорит окулист?</ProtocolPlaceholderTitle>
-                <ProtocolFormField
-                    type='textarea'
-                    name='additional_information.vision'
-                    placeholder='Ответ родителя'
-                    {...commonFieldProps}
-                    disabled={disabled}
-                />
-            </ProtocolSubBlock>
-            <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Слух</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>— Какой слух у ребенка? Что говорит отоларинголог?</ProtocolPlaceholderTitle>
-                <ProtocolFormField
-                    type='textarea'
-                    name='additional_information.hearing'
-                    placeholder='Ответ родителя'
-                    {...commonFieldProps}
-                    disabled={disabled}
-                />
-            </ProtocolSubBlock>
-            <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Пищевое поведение</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>
-                    — Какой аппетит у ребенка? Он предпочитает твердую или пюреобразную пищу? Имеется ли
-                    избирательность в еде?
-                </ProtocolPlaceholderTitle>
-                <ProtocolFormField
-                    type='textarea'
-                    name='additional_information.eating_behavior'
-                    placeholder='Ответ родителя'
-                    {...commonFieldProps}
-                    disabled={disabled}
-                />
-            </ProtocolSubBlock>
-            <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Эмоционально-психологический уровень</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>
-                    — Как обычно ведет себя дома в привычной обстановке? Как ведет себя в незнакомой ситуации? Как ведет
-                    себя с незнакомыми людьми?
-                </ProtocolPlaceholderTitle>
-                <ProtocolFormField
-                    type='textarea'
-                    name='additional_information.emotional_and_psychological_level'
-                    placeholder='Ответ родителя'
-                    {...commonFieldProps}
-                    disabled={disabled}
-                />
-            </ProtocolSubBlock>
-        </ProtocolBlock>
+            </FormBlock>
+            <FormBlock>
+                <h4 className='form2__block-title'>Речевая среда</h4>
+                <FormQuTitle>— На каком языке говорят с ребенком дома? Много ли общаетесь с ребенком?
+                    Опишите ваш
+                    обычный
+                    разговор с ребенком дома и вне дома</FormQuTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        name='additional_information.speech_environment'
+                        placeholder='Ваш ответ'
+                        {...commonFieldProps}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+            </FormBlock>
+            <FormBlock>
+                <h4 className='form2__block-title'>Настоящие и перенесенные заболевания, травмы, операции</h4>
+                <FormQuTitle>— Были ли у ребенка серьезные операции, и в каком возрасте? Травмы головы?
+                    Заболевания, о которых логопеду стоит знать?</FormQuTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        name='additional_information.present_and_past_diseases'
+                        placeholder='Ваш ответ'
+                        {...commonFieldProps}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+            </FormBlock>
+            <FormBlock>
+                <h4 className='form2__block-title'>Медикаментозное лечение</h4>
+                <FormQuTitle>— Проходил/проходит ли медикаментозное лечение? Если да, то какое?</FormQuTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        name='additional_information.drug_treatment'
+                        placeholder='Ваш ответ'
+                        {...commonFieldProps}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+            </FormBlock>
+            <FormBlock>
+                <h4 className='form2__block-title'>Неврологический статус</h4>
+                <FormQuTitle>— Ставил ли невролог когда-либо какой-либо диагноз? Имеется ли у ребенка
+                    эпилепсия или другие похожие состояния?</FormQuTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        name='additional_information.neurological_status'
+                        placeholder='Ваш ответ'
+                        {...commonFieldProps}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+            </FormBlock>
+            <FormBlock>
+                <h4 className='form2__block-title'>Зрение</h4>
+                <FormQuTitle>— Какое зрение у ребенка? Что говорит окулист?</FormQuTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        name='additional_information.vision'
+                        placeholder='Ваш ответ'
+                        {...commonFieldProps}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+            </FormBlock>
+            <FormBlock>
+                <h4 className='form2__block-title'>Слух</h4>
+                <FormQuTitle>— Какой слух у ребенка? Что говорит отоларинголог?</FormQuTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        name='additional_information.hearing'
+                        placeholder='Ваш ответ'
+                        {...commonFieldProps}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+            </FormBlock>
+            <FormBlock>
+                <h4 className='form2__block-title'>Пищевое поведение</h4>
+                <FormQuTitle>— Какой аппетит у ребенка? Он предпочитает твердую или пюреобразную пищу?
+                    Имеется ли избирательность в еде?</FormQuTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        name='additional_information.eating_behavior'
+                        placeholder='Ваш ответ'
+                        {...commonFieldProps}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+            </FormBlock>
+            <FormBlock className='last'>
+                <h4 className='form2__block-title'>Эмоционально-психологический уровень</h4>
+                <FormQuTitle>— Как обычно ведет себя дома в привычной обстановке? Как ведет себя в
+                    незнакомой
+                    ситуации? Как ведет себя с незнакомыми людьми?</FormQuTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        name='additional_information.emotional_and_psychological_level'
+                        placeholder='Ваш ответ'
+                        {...commonFieldProps}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+            </FormBlock>
+            <ProtocolRow>
+                <Button component={Link} to='/' className='btn2'>Отправить ответы</Button>
+            </ProtocolRow>
+        </>
     );
 }
 

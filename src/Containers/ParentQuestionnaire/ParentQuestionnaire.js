@@ -55,11 +55,11 @@ const ParentQuestionnaire = (props) => {
             }
             reset(protocol)
         }
-    }, [protocol])
+    }, [history, protocol, reset, user.profile.id])
 
     return (
-        <Container className='overflow-hidden'>
-            <div className={addClasses('questionnaireBlock questionnaireScrollbar', {
+        <Container className='all-page2 overflow-hidden'>
+            <div className={addClasses('form2 questionnaireBlock questionnaireScrollbar', {
                 'centerContent': !protocol
             })}>
                 {protocol ?
