@@ -730,7 +730,7 @@ const AntBattleGame = (props) => {
                             <ProtocolFormField
                                 type='checkbox'
                                 label='Несмыкание губ'
-                                name='game_ant_battle.lips'
+                                name='game_ant_battle.non_closure_of_lips'
                                 control={control}
                                 errors={errors}
                                 disabled={disabled}
