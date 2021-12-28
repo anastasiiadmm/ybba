@@ -56,7 +56,7 @@ const LessonPage = (props) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const { lesson, isParentWebcamIncreased } = useSelector(lessonSelector);
+    const { lesson, isParentWebcamIncreased, error } = useSelector(lessonSelector);
     const { user } = useSelector(authSelector);
     const { protocol, speechCard } = useSelector(surveysSelector)
 
@@ -259,6 +259,12 @@ const LessonPage = (props) => {
             history.push('/')
         }
     }, [history, lesson])
+
+    useEffect(() => {
+        if (error) {
+            history.push('/')
+        }
+    }, [error, history])
 
     const canvasParent = useRef();
 
