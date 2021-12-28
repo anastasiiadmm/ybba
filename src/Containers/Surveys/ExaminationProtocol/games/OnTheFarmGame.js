@@ -25,7 +25,7 @@ const OnTheFarmGame = (props) => {
         <>
             <ProtocolBlock>
                 <ProtocolTitleGame>Игра «На ферме». Часть 1</ProtocolTitleGame>
-                <ProtocolBlockTitle>Обследование связной речи</ProtocolBlockTitle>
+                <ProtocolBlockTitle>Обследование уровня сформированности лексикона</ProtocolBlockTitle>
                 <ProtocolBlockSubTitle>Предметный словарь</ProtocolBlockSubTitle>
                 <ProtocolBox>
                     <ProtocolBoxTitle>Обобщающие понятия</ProtocolBoxTitle>
