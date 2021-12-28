@@ -720,7 +720,7 @@ const AntBattleGame = (props) => {
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='radio'
+                                type='checkbox'
                                 label='Несмыкание губ'
                                 name='game_ant_battle.lips'
                                 control={control}
