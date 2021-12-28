@@ -454,7 +454,6 @@ const ExaminationProtocol = (props) => {
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                 </ProtocolRow>
-                <ProtocolPlaceholderTitle>— Посмотри в воображаемую подзорную трубу</ProtocolPlaceholderTitle>
                 <ProtocolRow>
                     <ProtocolDescriptionSubtitle>Ведущая рука:</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
@@ -474,6 +473,34 @@ const ExaminationProtocol = (props) => {
                                 type='radio'
                                 label='Левая'
                                 name='leading_hand_phone'
+                                control={control}
+                                value='левая рука'
+                                errors={errors}
+                                disabled={isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                </ProtocolRow>
+                <ProtocolPlaceholderTitle>— Посмотри в воображаемую подзорную трубу</ProtocolPlaceholderTitle>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Ведущая рука:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Правая'
+                                name='leading_hand_spyglass'
+                                control={control}
+                                value='правая рука'
+                                errors={errors}
+                                disabled={isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Левая'
+                                name='leading_hand_spyglass'
                                 control={control}
                                 value='левая рука'
                                 errors={errors}
