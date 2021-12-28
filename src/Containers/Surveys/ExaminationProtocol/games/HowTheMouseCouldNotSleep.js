@@ -298,6 +298,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Раскрыта частично'
+                                value='тема раскрыта частично'
                                 name='game_how_the_mouse_could_not_sleep.topic'
                                 control={control}
                                 errors={errors}
@@ -308,6 +309,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Не раскрыта'
+                                value='не раскрыто'
                                 name='game_how_the_mouse_could_not_sleep.topic'
                                 control={control}
                                 errors={errors}
@@ -530,7 +532,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Доступно понимание как основной, так и дополнительной информа¬ции каждой смысловой части текста'
+                                label='Доступно понимание как основной, так и дополнительной информации каждой смысловой части текста'
                                 name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
                                 control={control}
                                 errors={errors}
