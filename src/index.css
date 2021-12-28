@@ -113,6 +113,10 @@ body {
     background: #fff;
     display: flex;
 }
+.all-page2__in {
+    width: 100%;
+    padding: 0 15px;
+}
 
 .sidebar {
     width: 304px;
@@ -236,6 +240,10 @@ a.disabled {
 
 .dflex {
     display: flex;
+}
+
+.block {
+    display: block;
 }
 
 .ruble::after {
@@ -1253,16 +1261,13 @@ a.disabled {
 .form__row-spec .form__select {
     padding-bottom: 0;
 }
-.form__row-spec .form__field::-webkit-input-placeholder {
-    color: #A3B3CC;
-}
-.form__row-spec .form__field:-moz-placeholder {
-    color: #A3B3CC;
-}
 .form__row-spec .form__field::-moz-placeholder {
     color: #A3B3CC;
 }
 .form__row-spec .form__field:-ms-input-placeholder {
+    color: #A3B3CC;
+}
+.form__row-spec .form__field::placeholder {
     color: #A3B3CC;
 }
 .form__row-spec .fSelect {
@@ -1277,7 +1282,7 @@ a.disabled {
     width: 100%;
     max-width: 394px;
 }
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1200px) {
     .form__row-spec .form__col {
         width: 50%;
     }
@@ -1387,11 +1392,44 @@ a.disabled {
     line-height: 1.375;
     margin: 0 0 1em;
 }
+.form2__title_qu {
+    margin-bottom: 12px;
+    font-weight: 800;
+}
 
 .form2__add-title {
     font-size: 24px;
     margin: 0 0 1em;
     line-height: 1.08;
+}
+
+.form2__descr {
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 700;
+    margin: 0 0 40px;
+}
+
+.form2__qu {
+    color: rgba(0, 0, 0, 0.35);
+    font-weight: 700;
+    margin: 0 0 20px;
+}
+.form2__qu_down {
+    margin: 0 0 8px;
+}
+
+.form2__block {
+    margin: 0 0 32px;
+}
+.form2__block.last {
+    margin-bottom: 40px;
+}
+
+.form2__block-title {
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 0 0 24px;
 }
 
 .form2__row {
@@ -1425,17 +1463,18 @@ a.disabled {
     width: 100%;
     padding: 14px 20px;
 }
-.form2__field::-webkit-input-placeholder {
-    color: rgba(0, 0, 0, 0.5);
-}
-.form2__field:-moz-placeholder {
-    color: rgba(0, 0, 0, 0.5);
-}
 .form2__field::-moz-placeholder {
     color: rgba(0, 0, 0, 0.5);
 }
 .form2__field:-ms-input-placeholder {
     color: rgba(0, 0, 0, 0.5);
+}
+.form2__field::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+.form2__field_area {
+    height: 98px;
+    resize: vertical;
 }
 
 .form2__btn-close {
@@ -1448,17 +1487,13 @@ a.disabled {
         margin-right: -28px;
     }
 }
-
-.form2__field:focus::-webkit-input-placeholder {
-    opacity: 0;
-}
-.form2__field:focus:-moz-placeholder {
-    opacity: 0;
-}
 .form2__field:focus::-moz-placeholder {
     opacity: 0;
 }
 .form2__field:focus:-ms-input-placeholder {
+    opacity: 0;
+}
+.form2__field:focus::placeholder {
     opacity: 0;
 }
 
@@ -1466,16 +1501,13 @@ a.disabled {
     border-color: #F35454;
     color: #F35454;
 }
-.form2__field.error::-webkit-input-placeholder {
-    color: #F35454;
-}
-.form2__field.error:-moz-placeholder {
-    color: #F35454;
-}
 .form2__field.error::-moz-placeholder {
     color: #F35454;
 }
 .form2__field.error:-ms-input-placeholder {
+    color: #F35454;
+}
+.form2__field.error::placeholder {
     color: #F35454;
 }
 
@@ -1511,6 +1543,10 @@ a.disabled {
     font-weight: 600;
     margin: -16px 0 24px;
     line-height: 1.25;
+}
+
+.form2__logo {
+    margin: 10px 0 38px 52px;
 }
 
 .datepick {
@@ -2690,6 +2726,293 @@ form .profile-child {
 
 .speech-card-form__btn {
     margin-top: -16px;
+}
+
+.speech-card-doc {
+    color: #000;
+    font-family: "Nunito", sans-serif;
+    background: #fff;
+    font-size: 12px;
+    line-height: 1.33;
+}
+
+.speech-card-doc__head {
+    position: relative;
+    z-index: 10;
+    font-size: 10px;
+    line-height: 1.4;
+    padding-top: 43.86%;
+    background: url(assets/img/head.jpg) 50% 0/100% auto no-repeat;
+}
+
+.speech-card-doc__head-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.speech-card-doc__contact {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 32px;
+    position: absolute;
+    bottom: 23%;
+}
+
+.speech-card-doc__phone,
+.speech-card-doc__insta {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 0 12px 20px;
+}
+@media screen and (min-width: 1024px) {
+    .speech-card-doc__phone,
+    .speech-card-doc__insta {
+        font-size: calc(10px + 2*100vw/1200);
+    }
+}
+
+.speech-card-doc__phone {
+    background: url(assets/img/phone.svg) 0 0 no-repeat;
+}
+
+.speech-card-doc__insta {
+    background: url(assets/img/insta.svg) 0 0 no-repeat;
+}
+
+.speech-card-doc__content {
+    padding: 0 16px 16px;
+    margin-top: -10.25%;
+    position: relative;
+    z-index: 20;
+}
+
+.speech-card-doc__card {
+    background: #EBF4FC;
+    border-radius: 12px;
+    padding: 8px 17px;
+    margin-bottom: 20px;
+}
+.speech-card-doc__card .col {
+    width: 50%;
+}
+
+.speech-card-doc__card-top {
+    padding: 0 17px 9px;
+    margin: 0 -17px 16px;
+    border-bottom: 1px solid rgba(14, 1, 66, 0.1);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.speech-card-doc__card-title {
+    margin: 0;
+    font-size: 32px;
+}
+
+.speech-card-doc__date {
+    padding-bottom: 7px;
+}
+.speech-card-doc__date b {
+    font-weight: 800;
+}
+
+.speech-card-doc__card-cols {
+    display: flex;
+}
+
+.speech-card-doc__card-cols p {
+    margin: 0 0 16px;
+}
+
+.speech-card-doc__card-cols .block {
+    margin-top: 4px;
+}
+
+.speech-card-doc__title {
+    font-size: 32px;
+    margin: 0 0 24px;
+}
+
+.speech-card-doc__reserch {
+    margin-top: 25px;
+    padding: 0 17px 25px;
+}
+
+.speech-card-doc__item {
+    padding: 0 0 0 20px;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.speech-card-doc__item::before,
+.speech-card-doc__item-title {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.speech-card-doc__item::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.speech-card-doc__item-title {
+    margin: 0 0 10px;
+}
+
+.speech-card-doc__sub {
+    padding: 0 0 0 22px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.speech-card-doc__item p {
+    margin: 0 0 8px;
+}
+
+.speech-card-doc__item span {
+    background: #E1EAF8;
+    padding: 0 1px;
+}
+
+.speech-card-doc__sub::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 700;
+}
+
+.speech-card-doc__sub-in {
+    margin: 16px 0;
+}
+.speech-card-doc__sub-in.pl {
+    padding-left: 20px;
+}
+.speech-card-doc__sub-in h5 {
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.speech-card-doc__card-body.result p {
+    font-weight: 800;
+}
+
+.recomendation {
+    margin: 0 0 24px;
+}
+
+.recomendation__title {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0 0 12px;
+}
+
+ol.recomendation__list {
+    margin: 0 13px 24px;
+}
+
+ol.recomendation__list.count-list2 {
+    margin-left: 0;
+}
+
+.recomendation__list > li {
+    margin-bottom: 12px;
+    font-weight: 800;
+}
+
+.recomendation__list.count-list2 > li {
+    display: block;
+    padding-left: 15px;
+}
+.recomendation__list.count-list2 > li::before {
+    margin-left: -15px;
+}
+
+.recomendation__list > li > span {
+    margin-bottom: 12px;
+    display: block;
+}
+
+.recomendation__list.count-list2 > li > span {
+    margin-top: -16px;
+}
+
+ol.recomendation__list-in {
+    margin: 0 0 12px;
+}
+
+.recomendation__list-in li {
+    font-weight: 400;
+    margin-bottom: 12px;
+    margin-left: 13px;
+}
+
+.recomendation__list-in.count-list2 {
+    padding-top: 10px;
+}
+
+.recomendation__list-in.count-list2 li {
+    margin: -10px 0 12px;
+    padding-left: 13px;
+    display: block;
+}
+.recomendation__list-in.count-list2 li::before {
+    margin-left: -13px;
+}
+
+.recomendation-med {
+    font-weight: 800;
+}
+
+.speech-card-doc__auth {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 10px;
+}
+.speech-card-doc__auth b {
+    display: block;
+}
+.speech-card-doc__auth span {
+    margin-left: 5px;
+}
+
+.speach-card-doc__bottom {
+    border-top: 1px solid rgba(14, 1, 66, 0.1);
+}
+
+.speach-card-doc__bottom-in {
+    padding: 0 17px 24px;
+}
+
+.speach-card-doc__bottom a {
+    color: inherit;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.count-list {
+    counter-reset: list;
+}
+
+.count-list > .count-item::before {
+    counter-increment: list;
+    content: counters(list, ".") ".";
+}
+
+.count-list2 {
+    counter-reset: list2;
+    list-style: none;
+}
+
+.count-list2 > li::before {
+    counter-increment: list2;
+    content: counter(list2) ") ";
 }
 
 .game-wrap {
