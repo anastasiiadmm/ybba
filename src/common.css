@@ -192,3 +192,11 @@ h3 {
 .protocol__col:first-child {
     padding-right: 2px;
 }
+
+.protocol__qu-test {
+    max-width: 267px;
+}
+
+.switch2 {
+    width: 112px;
+}

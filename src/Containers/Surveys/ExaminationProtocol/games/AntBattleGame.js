@@ -603,6 +603,7 @@ const AntBattleGame = (props) => {
                                 name='game_ant_battle.motor_shifting_difficulties'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
@@ -727,9 +728,9 @@ const AntBattleGame = (props) => {
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
-                                type='radio'
+                                type='checkbox'
                                 label='Несмыкание губ'
-                                name='game_ant_battle.lips'
+                                name='game_ant_battle.non_closure_of_lips'
                                 control={control}
                                 errors={errors}
                                 disabled={disabled}
