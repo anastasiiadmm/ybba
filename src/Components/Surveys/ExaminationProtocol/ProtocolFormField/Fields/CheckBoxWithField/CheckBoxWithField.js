@@ -38,6 +38,7 @@ const CheckBoxWithField = (props) => {
                         className='lbl-field'
                         onChange={params.field.onChange}
                         value={params.field.value}
+                        disabled={disabled}
                     />
                     <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
                 </>
