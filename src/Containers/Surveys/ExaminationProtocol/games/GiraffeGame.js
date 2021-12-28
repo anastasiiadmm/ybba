@@ -224,7 +224,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Cоответствует возрасту'
+                                label='Соответствует возрасту'
                                 name='game_giraffe.thinking'
                                 control={control}
                                 errors={errors}
@@ -234,7 +234,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Не соответствует возрастy'
+                                label='Не соответствует возрасту'
                                 name='game_giraffe.thinking'
                                 control={control}
                                 errors={errors}
@@ -288,6 +288,8 @@ const GiraffeGame = (props) => {
                             label='Мышление наглядно-действенное. Решение мыслительных задач осуществляется только на уровне
 									практических действий'
                             name='game_giraffe.kind_of_thinking'
+                            value='мышление наглядно действенное. Решение мыслительных задач осуществляется только на уровне
+									практических действий'
                             control={control}
                             errors={errors}
                             disabled={isConclusionDisabled || disabled}
@@ -308,6 +310,7 @@ const GiraffeGame = (props) => {
                             type='radio'
                             label='Мышление наглядно-образное, присутствуют элементы абстрактно-логического/словесно-логического
 									мышления'
+                            value='мышление наглядно-образное, присутствиют элементы абстрактно-логического'
                             name='game_giraffe.kind_of_thinking'
                             control={control}
                             errors={errors}

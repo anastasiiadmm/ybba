@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Field from 'Components/Field/Field.js';
 import CheckBoxWithField
     from 'Components/Surveys/ExaminationProtocol/ProtocolFormField/Fields/CheckBoxWithField/CheckBoxWithField.js';
+import { lowercaseFirstLetter } from 'utils/common/commonUtils.js';
 
 const ProtocolFormField = (props) => {
 
@@ -25,7 +26,7 @@ const ProtocolFormField = (props) => {
             {...props}
         />
         case 'radio': return <Field
-            value={props.label.toLocaleLowerCase()}
+            value={lowercaseFirstLetter(props.label)}
             classNameLabel='radio2'
             {...props}
         />
