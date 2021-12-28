@@ -458,7 +458,7 @@ const SpeechCard = (props) => {
                         <SpeechCardRow>
                             <SpeechCardFormField
                                 type='textarea'
-                                name='level_of_formation_of_phonemic_perception'
+                                name='level_of_formation_of_phonetic_phonological_competence'
                                 register={register}
                                 disabled={isCardClosed}
                             />
