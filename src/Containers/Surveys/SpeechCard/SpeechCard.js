@@ -618,7 +618,7 @@ const SpeechCard = (props) => {
                         <SpeechCardFormField
                             type='textarea'
                             label='Репродуцирование текста'
-                            name='reproduction_of_text'
+                            name='reproduction_of_text_game_how_the_mouse_could_not_sleep'
                             register={register}
                             disabled={isCardClosed}
                         />
