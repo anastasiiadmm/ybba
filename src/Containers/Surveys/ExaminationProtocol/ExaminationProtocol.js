@@ -456,7 +456,6 @@ const ExaminationProtocol = (props) => {
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                 </ProtocolRow>
-                <ProtocolPlaceholderTitle>— Посмотри в воображаемую подзорную трубу</ProtocolPlaceholderTitle>
                 <ProtocolRow>
                     <ProtocolDescriptionSubtitle>Ведущая рука:</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
