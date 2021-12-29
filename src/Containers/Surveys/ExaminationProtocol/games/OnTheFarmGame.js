@@ -311,16 +311,6 @@ const OnTheFarmGame = (props) => {
                         />
                     </ProtocolRow>
                 </ProtocolBox>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Ответ ребенка'
-                        name='game_on_the_farm.cold_hot_ice_cream_potatoes'
-                        register={register}
-                        errors={errors}
-                        disabled={disabled}
-                    />
-                </ProtocolRow>
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
                 <ProtocolRow>
                     <ProtocolDescriptionSubtitle>Уровень понимания речи:</ProtocolDescriptionSubtitle>
