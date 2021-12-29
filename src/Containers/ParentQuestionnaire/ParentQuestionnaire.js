@@ -35,21 +35,21 @@ const ParentQuestionnaire = (props) => {
     const { register, formState: { errors }, reset, setValue, control, watch, getValues } = useForm()
     const data = useWatch({ control })
 
-    useEffect(() => {
-        console.log(protocol)
-        if (protocol) {
-            clearTimeout(timer)
-            timer = setTimeout(() => {
-                const formData = { ...data }
-                formData.lesson = data.lesson.id
-                dispatch(updateProtocol({
-                    protocolId: protocol.id,
-                    newData: formData,
-                }))
-            }, 1000)
-        }
-        return () => clearTimeout(timer)
-    }, [data])
+    // useEffect(() => {
+    //     console.log(protocol)
+    //     if (protocol) {
+    //         clearTimeout(timer)
+    //         timer = setTimeout(() => {
+    //             const formData = { ...data }
+    //             formData.lesson = data.lesson.id
+    //             dispatch(updateProtocol({
+    //                 protocolId: protocol.id,
+    //                 newData: formData,
+    //             }))
+    //         }, 1000)
+    //     }
+    //     return () => clearTimeout(timer)
+    // }, [data])
 
     useEffect(() => {
         dispatch(getProtocol(childId))
@@ -75,9 +75,8 @@ const ParentQuestionnaire = (props) => {
                             <img src={logo2} alt='бибарыба.ру diagnostika.com' />
                         </div>
                         <h1 className='form2__title form2__title_qu'>Вопросы о развитии ребенка</h1>
-                        <p className='form2__descr'>Это позволит более точно описать заключение и рекомендации. На заполнение
-                            потребуется не
-                            более 15 минут.
+                        <p className='form2__descr'>Это позволит более точно описать заключение и рекомендации.
+                            На заполнение потребуется не более 15 минут.
                         </p>
                         <Questionnaire register={register} />
                         <ProtocolRow>
