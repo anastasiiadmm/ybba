@@ -35,21 +35,21 @@ const ParentQuestionnaire = (props) => {
     const { register, formState: { errors }, reset, setValue, control, watch, getValues } = useForm()
     const data = useWatch({ control })
 
-    // useEffect(() => {
-    //     console.log(protocol)
-    //     if (protocol) {
-    //         clearTimeout(timer)
-    //         timer = setTimeout(() => {
-    //             const formData = { ...data }
-    //             formData.lesson = data.lesson.id
-    //             dispatch(updateProtocol({
-    //                 protocolId: protocol.id,
-    //                 newData: formData,
-    //             }))
-    //         }, 1000)
-    //     }
-    //     return () => clearTimeout(timer)
-    // }, [data])
+    useEffect(() => {
+        console.log(protocol)
+        if (protocol) {
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                const formData = { ...data }
+                formData.lesson = data.lesson.id
+                dispatch(updateProtocol({
+                    protocolId: protocol.id,
+                    newData: formData,
+                }))
+            }, 1000)
+        }
+        return () => clearTimeout(timer)
+    }, [data])
 
     useEffect(() => {
         dispatch(getProtocol(childId))
