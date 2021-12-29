@@ -74,7 +74,7 @@ const CapriciousPrincessGame = (props) => {
                     <ProtocolFormField
                         type='text'
                         label='Фотоаппарат'
-                        name='game_capricious_princess.shop_hay_cornflower'
+                        name='game_capricious_princess.camera'
                         register={register}
                         errors={errors}
                         disabled={disabled}
