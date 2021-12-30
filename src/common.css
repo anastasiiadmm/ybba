@@ -20,11 +20,6 @@ h3 {
     font-weight: bold;
 }
 
-.form__label {
-    line-height: 3.1;
-    margin-bottom: 0;
-}
-
 .btn-out {
     margin-right: 28px;
 }
@@ -94,6 +89,12 @@ h3 {
 .form__label {
     display: flex;
     flex-direction: column;
+    margin: 10px 0 8px 0;
+}
+
+.form__label textarea,
+.form__label input {
+    margin: 8px 0;
 }
 
 .dates__field {
@@ -155,8 +156,17 @@ h3 {
 
 /* Tooltips */
 
-.tooltip-arrow::before {
+.bs-tooltip-start .tooltip-arrow::before {
     border-left-color: #A3B3CC !important;
+}
+.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: #A3B3CC !important;
+}
+.bs-tooltip-end .tooltip-arrow::before {
+    border-right-color: #A3B3CC !important;
+}
+.bs-tooltip-bottom .tooltip-arrow::before {
+    border-bottom-color: #A3B3CC !important;
 }
 
 .tooltip-inner {
