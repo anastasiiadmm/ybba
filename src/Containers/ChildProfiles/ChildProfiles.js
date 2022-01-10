@@ -49,6 +49,7 @@ const ChildProfiles = () => {
 
     useEffect(() => {
         if (user) {
+            setChildWithoutAdditionalData(null)
             dispatch(getChildren(user.id))
         }
     }, [dispatch, user])
@@ -81,7 +82,7 @@ const ChildProfiles = () => {
                         </div>
                         <div className='content__row'>
                             <div className='content__col content__col_w50'>
-                                {children && children.map(child => {
+                                {children && !childWithoutAdditionalData && children.map(child => {
                                     return (
                                         <ChildProfileCard
                                             child={child}
