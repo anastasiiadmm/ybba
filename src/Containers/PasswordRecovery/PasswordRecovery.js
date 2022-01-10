@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Button } from '@mui/material';
+import Button from 'Components/Button/Button';
 import Container from 'Components/Container/Container';
 import { emailPattern } from 'regex/patterns/html.js';
 import FormField from 'Components/FormField/FormField';
@@ -37,11 +37,17 @@ const PasswordRecovery = () => {
 
     const successSend = (
         <div className='form2__inner'>
-            <Button component={Link} to='/login/' type='button' className='btn-close form2__btn-close' />
+            <Link to='/login/'>
+              <Button type='button' className='btn-close form2__btn-close' />
+            </Link>
             <h4 className='form2__title'>Восстановление пароля</h4>
             <p className='form2__message'>Руководство по восстановлению пароля отправлено на вашу почту</p>
             <div className='form2__row'>
-                <Button component={Link} to='/login/' type='button' className='btn2'>Закрыть</Button>
+              <Link to='/login/'>
+                <Button type='button' className='btn2'>
+                  Закрыть
+                </Button>
+              </Link>
             </div>
         </div>
     )
@@ -52,7 +58,9 @@ const PasswordRecovery = () => {
                 {success ? successSend :
                     <form onSubmit={onSubmit}>
                         <div className='form2__inner'>
-                            <Button component={Link} to='/login/' type='button' className='btn-close form2__btn-close' />
+                            <Link to='/login/'>
+                              <Button type='button' className='btn-close form2__btn-close' />
+                            </Link>
                             <h4 className='form2__title'>Восстановление пароля</h4>
                             
                             <div className='form2__row'>
