@@ -20,9 +20,10 @@ import RegistrationSuccess from 'Containers/RegistrationSuccess/RegistrationSucc
 import PageSuccess from 'Components/PagesForPayment/PageSuccess';
 import PageFail from 'Components/PagesForPayment/PageFail';
 import ParentQuestionnaire from 'Containers/ParentQuestionnaire/ParentQuestionnaire.js';
+import EditSurveys from 'Containers/Surveys/EditSurveys/EditSurveys.js';
+import ChildSpeechCard from 'Containers/ChildSpeechCard/ChildSpeechCard.js';
 
 import 'App.css';
-import EditSurveys from 'Containers/Surveys/EditSurveys/EditSurveys.js';
 
 
 const App = () => {
@@ -54,6 +55,7 @@ const App = () => {
                 <PrivateRoute path='/video-test/' component={DevicesTestPage}/>
                 <PrivateRoute path='/questionnaire/:childId/' component={ParentQuestionnaire}/>
                 <PrivateRoute path='/children/:childId/surveys/edit/' component={EditSurveys} />
+                <PrivateRoute path='/children/:childId/surveys/speech-card/' component={ChildSpeechCard} />
                 <Route path='/login/' component={Login}/>
                 <Route path='/registration/:registrationKey' component={Registration}/>
                 <Route path='/registration-success/' component={RegistrationSuccess}/>

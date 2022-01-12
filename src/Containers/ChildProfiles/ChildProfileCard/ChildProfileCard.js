@@ -39,6 +39,14 @@ const ChildProfileCard = (props) => {
                         Редактировать профиль
                     </Link>
                 </div>
+                <div className='child__link-item'>
+                    <Link
+                        className='child__link child__link_card'
+                        to={`/children/${child.id}/surveys/speech-card/`}
+                    >
+                        Речевая карта
+                    </Link>
+                </div>
                 {/*<div className='child__link-item'>*/}
                 {/*    <button type='button' className='child__link child__link_card'>Речевая*/}
                 {/*        карта*/}

@@ -109,7 +109,7 @@ export const getDateRange = (start, end) => {
 
 /**
  * Sync function return bool value which shows if date is valid
- * @param d
+ * @param {moment.Moment} d
  * @returns {boolean}
  */
 export const isValidDate = (d) => d instanceof Date && !isNaN(d)
@@ -121,4 +121,26 @@ export const isValidDate = (d) => d instanceof Date && !isNaN(d)
  */
 export const momentDateToHuman = date => {
     return `${date.date()} ${dateNameOfMonth[date.month()]} ${date.year()}`
+}
+
+/**
+ * Sync function returns humanized age (10 лет/2 года/1 год)
+ * @param {number} age
+ */
+export const getHumanizeAge = age => {
+    if (age < 1) {
+        return `меньше 1 года`
+    }
+
+    const lastDigitOfAge = age % 10
+
+    if (lastDigitOfAge === 0 || lastDigitOfAge > 4) {
+        return `${age} лет`
+    } else if (lastDigitOfAge === 1) {
+        return `${age} год`
+    } else if (lastDigitOfAge > 1 && lastDigitOfAge < 5) {
+        return `${age} года`
+    } else {
+        return 'Wrong age'
+    }
 }
