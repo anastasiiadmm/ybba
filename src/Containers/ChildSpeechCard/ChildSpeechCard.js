@@ -5,6 +5,7 @@ import SpeechCardView from 'Containers/Surveys/SpeechCardView/SpeechCardView.js'
 import { useReactToPrint } from 'react-to-print';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpeechCard, surveysSelector } from 'redux/surveys/surveysSlice.js';
+import { Spinner } from 'react-bootstrap';
 
 const ChildSpeechCard = (props) => {
 
@@ -34,14 +35,18 @@ const ChildSpeechCard = (props) => {
                     >Скачать</button>
                 }
             />
-            {speechCard && (
+            {speechCard ? (
                 <SpeechCardView
                     ref={speechCardRef}
                     speechCard={speechCard}
                 />
+            ) : (
+                <div className='w-100 h-100 d-flex align-items-center justify-content-center'>
+                    <Spinner animation='grow'/>
+                </div>
             )}
         </SidebarContainer>
     );
-}
+};
 
 export default ChildSpeechCard;
