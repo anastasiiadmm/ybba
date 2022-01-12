@@ -21,13 +21,14 @@ import { speechCardStatuses } from 'constants.js';
 const SpeechCard = (props) => {
 
     const {
-        speechCard, onSubmit
+        speechCard, lesson, onSubmit
     } = props
 
     const { register, formState: { errors }, control, handleSubmit } = useForm({
         resolver: yupResolver(speechCardSchema),
         defaultValues: {
             ...speechCard,
+            lesson: lesson.id,
         }
     })
 
@@ -839,6 +840,7 @@ const SpeechCard = (props) => {
 
 SpeechCard.propTypes = {
     speechCard: PropTypes.object.isRequired,
+    lesson: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
 }
 
