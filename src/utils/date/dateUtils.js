@@ -134,12 +134,12 @@ export const getHumanizeAge = age => {
 
     const lastDigitOfAge = age % 10
 
-    if (lastDigitOfAge === 0 || lastDigitOfAge > 4) {
-        return `${age} лет`
+    if (lastDigitOfAge < 1 || lastDigitOfAge > 4) {
+        return `${parseInt(age)} лет`
     } else if (lastDigitOfAge === 1) {
-        return `${age} год`
+        return `${parseInt(age)} год`
     } else if (lastDigitOfAge > 1 && lastDigitOfAge < 5) {
-        return `${age} года`
+        return `${parseInt(age)} года`
     } else {
         return 'Wrong age'
     }
