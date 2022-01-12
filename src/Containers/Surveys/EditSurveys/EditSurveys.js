@@ -57,6 +57,7 @@ const EditSurveys = (props) => {
                     <SpeechCard
                         speechCard={speechCard}
                         onSubmit={onSpeechCardSubmit}
+                        lesson={protocol.lesson}
                     /> :
                     <div className='h-100 w-100 d-flex align-items-center justify-content-center'>
                         <Spinner animation='grow'/>

@@ -438,7 +438,11 @@ const LessonPage = (props) => {
                                             endTime={lesson.time_slot.end_time}
                                         />
                                     </div>
-                                    <SpeechCard speechCard={speechCard} onSubmit={onSpeechCardFinish}/>
+                                    <SpeechCard
+                                        speechCard={speechCard}
+                                        onSubmit={onSpeechCardFinish}
+                                        lesson={lesson}
+                                    />
                                 </> :
                                 <Spinner animation='grow' variant='light'/>
                         )
