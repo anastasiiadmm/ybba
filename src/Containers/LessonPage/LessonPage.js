@@ -28,7 +28,6 @@ import Webcam from 'Containers/LessonPage/Webcam/Webcam.js';
 import Timer from 'Containers/LessonPage/Timer/Timer.js';
 import { checkUserRole } from 'utils/user.js';
 import Drag from 'Components/Drag/Drag.js';
-import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
 import { initSessionStack, defineUser, stopSessionStackRecording, } from 'utils/sessionstack/utils.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import { checkEnv } from 'utils/common/commonUtils.js';
@@ -45,11 +44,14 @@ import {
 import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/ExaminationProtocol.js';
 import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
 import config from 'config.js';
+import { JitsiContext } from 'context/JitsiContext/JitsiContext.js';
+import { startJitsiRecording, stopJitsiRecording } from 'utils/jitsi/utils.js';
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(
         BrowserPermissionsContext
     );
+    const { api } = useContext(JitsiContext)
 
     const { sendWsAction } = useContext(WsContext);
 
@@ -65,6 +67,7 @@ const LessonPage = (props) => {
     const [activeGame, setActiveGame] = useState(null);
     const [unityContext, setUnityContext] = useState(null);
     const [unityLoadProgress, setUnityLoadProgress] = useState(0);
+    const [isMuted, setIsMuted] = useState(false)
 
     const onChangeActiveGame = (game) => {
         if (!activeGame || (game.id !== activeGame.id)) {
@@ -99,6 +102,18 @@ const LessonPage = (props) => {
         },
         [activeGame]
     );
+
+    const setMuted = useCallback(async () => {
+        const muted = await api.isAudioMuted()
+        await setIsMuted(muted)
+    }, [api])
+
+    const toggleMute = useCallback(async () => {
+        if (api) {
+            api.executeCommand('toggleAudio')
+            await setIsMuted(!isMuted)
+        }
+    }, [api, isMuted])
 
     const setUnity = useCallback(async () => {
         if (activeGame) {
@@ -191,6 +206,31 @@ const LessonPage = (props) => {
     ) : (
         <Webcam {...webcamComponentProps} />
     );
+
+    const startRecording = useCallback(() => {
+        if (api && !checkEnv(envs.local)) {
+            startJitsiRecording(api)
+        }
+    }, [api])
+
+    const stopRecording = useCallback(() => {
+        if (api && !checkEnv(envs.local)) {
+            stopJitsiRecording(api)
+        }
+    }, [api])
+
+    useEffect(() => {
+        startRecording()
+        return () => {
+            stopRecording()
+        }
+    }, [api, startRecording, stopRecording])
+
+    useEffect(() => {
+        if (api) {
+            setMuted()
+        }
+    }, [api, setMuted])
 
     useEffect(() => {
         dispatch(clearLessonState());
@@ -287,7 +327,7 @@ const LessonPage = (props) => {
                                 endTime={lesson.time_slot.end_time}
                             />
                         )}
-                        <JitsiBlock>{webcamComponent}</JitsiBlock>
+                        {webcamComponent}
                     </header>
                     <>
                         <main
@@ -363,9 +403,11 @@ const LessonPage = (props) => {
                                         onClick={GameActionHandler(gameActions.RESTART_GAME)}
                                     />
                                     <button
-                                        className='gamef__microphone'
+                                        className={addClasses('gamef__microphone', {
+                                            'gamef__microphone_muted': isMuted
+                                        })}
                                         type='button'
-                                        onClick={GameActionHandler(gameActions.MUTE_AUDIO)}
+                                        onClick={toggleMute}
                                     />
                                     <button
                                         className='gamef__get-control'

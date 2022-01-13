@@ -215,6 +215,10 @@
     background: url(../../assets/img/ic-get-control.svg) 50% no-repeat;
 }
 
+.gamef__microphone_muted {
+    background: url(../../assets/img/ic-unmuted-mic.svg) 50% no-repeat !important;
+}
+
 .gamef__sidebar {
     grid-row: 1/4;
     grid-column: 2/3;
