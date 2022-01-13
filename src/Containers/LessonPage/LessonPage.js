@@ -68,6 +68,7 @@ const LessonPage = (props) => {
     const [unityContext, setUnityContext] = useState(null);
     const [unityLoadProgress, setUnityLoadProgress] = useState(0);
     const [isMuted, setIsMuted] = useState(false)
+    const  [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false)
 
     const onChangeActiveGame = (game) => {
         if (!activeGame || (game.id !== activeGame.id)) {
@@ -86,15 +87,19 @@ const LessonPage = (props) => {
         );
         await dispatch(clearLessonState());
     };
-    const triggerGameAction = (gameAction) => {
+    const triggerGameAction = (gameAction, arg) => {
         if (unityContext) {
             console.log('Triggered action:', gameAction);
-            unityContext.send('JavaHook', gameAction);
+            unityContext.send('JavaHook', gameAction, arg);
         }
     };
     const GameActionHandler = (gameAction) => {
         return () => triggerGameAction(gameAction);
     };
+    const getGameControlForTeacher = () => {
+        triggerGameAction(gameActions.TEACHER_MOD, +!isTeacherHaveControlOnGame)
+        setIsTeacherHaveControlOnGame(!isTeacherHaveControlOnGame)
+    }
 
     const getFileUrl = useCallback(
         (fileName) => {
@@ -114,6 +119,22 @@ const LessonPage = (props) => {
             await setIsMuted(!isMuted)
         }
     }, [api, isMuted])
+
+    const muteJitsiAudio = useCallback(async () => {
+        const muted = await api.isAudioMuted()
+        if (!muted) {
+            api.executeCommand('toggleAudio')
+            setIsMuted(true)
+        }
+    }, [api])
+
+    const unMuteJitsiAudio = useCallback(async () => {
+        const muted = await api.isAudioMuted()
+        if (muted) {
+            api.executeCommand('toggleAudio')
+            setIsMuted(false)
+        }
+    }, [api])
 
     const setUnity = useCallback(async () => {
         if (activeGame) {
@@ -265,9 +286,15 @@ const LessonPage = (props) => {
                 unityContext.on('GameInitialized', () => {
                     unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData))
                 })
+                unityContext.on('MuteMicrophone', () => {
+                    muteJitsiAudio()
+                })
+                unityContext.on('UnMuteMicrophone', () => {
+                    unMuteJitsiAudio()
+                })
             }
         }
-    }, [user, lessonId, sendJsonToGameWithTimeout, unityContext]);
+    }, [user, lessonId, sendJsonToGameWithTimeout, unityContext, muteJitsiAudio, unMuteJitsiAudio]);
 
     useEffect(() => {
         startSTRecording();
@@ -410,9 +437,11 @@ const LessonPage = (props) => {
                                         onClick={toggleMute}
                                     />
                                     <button
-                                        className='gamef__get-control'
+                                        className={addClasses('gamef__get-control', {
+                                            'active': isTeacherHaveControlOnGame
+                                        })}
                                         type='button'
-                                        onClick={GameActionHandler(gameActions.MUTE_AUDIO)}
+                                        onClick={getGameControlForTeacher}
                                     />
                                     <button
                                         type='button'

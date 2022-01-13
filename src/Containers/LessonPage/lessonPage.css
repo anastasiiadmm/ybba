@@ -215,6 +215,10 @@
     background: url(../../assets/img/ic-get-control.svg) 50% no-repeat;
 }
 
+.gamef__get-control.active {
+    background: white url(../../assets/img/ic-get-control-active.svg) 50% no-repeat;
+}
+
 .gamef__microphone_muted {
     background: url(../../assets/img/ic-unmuted-mic.svg) 50% no-repeat !important;
 }
