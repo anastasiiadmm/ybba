@@ -21,6 +21,7 @@ export  const NEXT_ACTION = 'NextAction';
 export const PREV_ACTION = 'StepBack';
 export const NEXT_GAME = 'NextGame';
 export const PREV_GAME = 'PrevGame';
+export const INTRO_SOUND = 'IntroSound';
 
 export const gameActions = {
     MUTE_AUDIO: MUTE_AUDIO,
@@ -30,6 +31,7 @@ export const gameActions = {
     PREV_ACTION: PREV_ACTION,
     NEXT_GAME: NEXT_GAME,
     PREV_GAME: PREV_GAME,
+    INTRO_SOUND: INTRO_SOUND
 }
 
 export const userRoles = {

@@ -358,17 +358,17 @@ const LessonPage = (props) => {
                                 </div>
                                 <div className='gamef__controls'>
                                     <button
-                                        className='gamef__pause'
-                                        type='button'
-                                        onClick={GameActionHandler(gameActions.PAUSE_GAME)}
-                                    />
-                                    <button
                                         className='gamef__restart'
                                         type='button'
                                         onClick={GameActionHandler(gameActions.RESTART_GAME)}
                                     />
                                     <button
                                         className='gamef__microphone'
+                                        type='button'
+                                        onClick={GameActionHandler(gameActions.MUTE_AUDIO)}
+                                    />
+                                    <button
+                                        className='gamef__get-control'
                                         type='button'
                                         onClick={GameActionHandler(gameActions.MUTE_AUDIO)}
                                     />
@@ -395,16 +395,24 @@ const LessonPage = (props) => {
                                     <button
                                         className='gamef__next'
                                         type='button'
-                                        onClick={GameActionHandler(gameActions.NEXT_ACTION)}
+                                        onClick={GameActionHandler(gameActions.INTRO_SOUND)}
                                     >
-                                        Следующее действие
+                                        Интро
                                     </button>
                                     <button
                                         className='gamef__prev'
                                         type='button'
                                         onClick={GameActionHandler(gameActions.PREV_ACTION)}
                                     >
-                                        Предыдущее действие
+                                        Ещё раз
+                                    </button>
+                                    <button
+                                        className='gamef__next'
+                                        style={{ marginLeft: '0', marginRight: 'auto' }}
+                                        type='button'
+                                        onClick={GameActionHandler(gameActions.NEXT_ACTION)}
+                                    >
+                                        Далее
                                     </button>
                                     <button
                                         className='gamef__finish'
