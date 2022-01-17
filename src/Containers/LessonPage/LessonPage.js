@@ -68,7 +68,8 @@ const LessonPage = (props) => {
     const [unityContext, setUnityContext] = useState(null);
     const [unityLoadProgress, setUnityLoadProgress] = useState(0);
     const [isMuted, setIsMuted] = useState(false)
-    const  [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false)
+    const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false)
+    const [_activeGame, _setActiveGame] = useState(1)
 
     const onChangeActiveGame = (game) => {
         if (!activeGame || (game.id !== activeGame.id)) {
@@ -240,6 +241,26 @@ const LessonPage = (props) => {
         }
     }, [api])
 
+    const getUserDataForGame = () => {
+        return {
+            nickName: user.email,
+            roomId: lessonId,
+            gameType: _activeGame,
+            developmentMode: config.appEnvironment === envs.local,
+            userRole: gameUserRoles[user.role],
+        }
+    }
+
+    const updateGameJsonData = () => {
+        const userGameData = getUserDataForGame()
+        unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData))
+    }
+
+    const inputGameChangeHandler = e => {
+        console.log(e.target.value)
+        _setActiveGame(e.target.value)
+    }
+
     useEffect(() => {
         startRecording()
         return () => {
@@ -275,16 +296,12 @@ const LessonPage = (props) => {
             unityContext.on('progress', (progress) => {
                 setUnityLoadProgress(progress);
             });
-            const userGameData = {
-                nickName: user.email,
-                roomId: lessonId,
-                gameType: 1,
-                developmentMode: config.appEnvironment === envs.local,
-                userRole: gameUserRoles[user.role],
-            }
             if (unityContext) {
                 unityContext.on('GameInitialized', () => {
-                    unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData))
+                    console.log('===============')
+                    console.log('asd', 'GameInitialized')
+                    console.log('===============')
+                    updateGameJsonData()
                 })
                 unityContext.on('MuteMicrophone', () => {
                     muteJitsiAudio()
@@ -463,6 +480,10 @@ const LessonPage = (props) => {
                                         })}
                                         onClick={() => switchChildWebcamSize(true)}
                                     />
+                                    <input type='number' onChange={inputGameChangeHandler} value={_activeGame} />
+                                    <button onClick={async () => updateGameJsonData()}>
+                                        Start game
+                                    </button>
                                     <button
                                         className='gamef__next'
                                         type='button'
