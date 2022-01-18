@@ -447,8 +447,9 @@ const LessonPage = (props) => {
                                         onClick={GameActionHandler(gameActions.RESTART_GAME)}
                                     />
                                     <button
-                                        className={addClasses('gamef__microphone', {
-                                            'gamef__microphone_muted': isMuted
+                                        className={addClasses('', {
+                                            'gamef__microphone_muted': isMuted,
+                                            'gamef__microphone': !isMuted,
                                         })}
                                         type='button'
                                         onClick={toggleMute}

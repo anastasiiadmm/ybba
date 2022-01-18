@@ -186,6 +186,7 @@
 .gamef__pause,
 .gamef__restart,
 .gamef__microphone,
+.gamef__microphone_muted,
 .gamef__prev,
 .gamef__next,
 .gamef__finish,
@@ -201,6 +202,7 @@
 .gamef__pause,
 .gamef__restart,
 .gamef__microphone,
+.gamef__microphone_muted,
 .gamef__get-control {
     width: 42px;
     height: 42px;
@@ -220,6 +222,9 @@
 }
 
 .gamef__microphone_muted {
+    background: url(../../assets/img/ic-microph.svg) 50% no-repeat !important;
+}
+.gamef__microphone {
     background: url(../../assets/img/ic-unmuted-mic.svg) 50% no-repeat !important;
 }
 

@@ -16,8 +16,7 @@ const Drag = (props) => {
 
     return (
         <div
-
-            className='position-absolute'
+            className='position-absolute drag'
             ref={jitsiRef}
         >
             {children}
