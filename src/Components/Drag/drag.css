@@ -1,9 +1,6 @@
 .drag {
     position: absolute;
-    cursor: move;
-}
-
-.position-absolute {
     right: 0;
-    transform: translate3d(-13px, 0px, 0px) !important;
+    top: 0;
+    cursor: move;
 }
