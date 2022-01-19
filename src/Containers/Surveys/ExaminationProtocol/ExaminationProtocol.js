@@ -35,10 +35,10 @@ import HowTheMouseCouldNotSleep from 'Containers/Surveys/ExaminationProtocol/gam
 import OnTheFarmGame from 'Containers/Surveys/ExaminationProtocol/games/OnTheFarmGame';
 import OnTheFarmPartTwoGame from 'Containers/Surveys/ExaminationProtocol/games/OnTheFarmPartTwoGame';
 import OnTheFarmPartThree from 'Containers/Surveys/ExaminationProtocol/games/OnTheFarmPartThree';
+import ProtocolBlockSubTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBlockSubTitle/ProtocolBlockSubTitle';
 
 import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
-import ProtocolBlockSubTitle
-    from '../../../Components/Surveys/ExaminationProtocol/ProtocolBlockSubTitle/ProtocolBlockSubTitle';
+
 
 const ExaminationProtocol = (props) => {
 
@@ -57,6 +57,7 @@ const ExaminationProtocol = (props) => {
     })
     const data = useWatch({ control })
     let timer = null
+    const isLessonFinished = lesson.status === lessonStatuses.finished
     const isConclusionDisabled = lesson.status !== lessonStatuses.finished
     const isProtocolClosed = protocol.status === examinationProtocolStatuses.closed
 
@@ -82,648 +83,667 @@ const ExaminationProtocol = (props) => {
                     <p className='protocol__person-descr'>{momentDateToHuman(strDateToMoment(protocol.child_date_of_birth))}</p>
                     <p className='protocol__person'>Родитель: {protocol.parent.first_name} {protocol.parent.last_name}</p>
                 </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='textarea'
-                        label='Какие у вас жалобы?'
-                        placeholder='Ответ родителя'
-                        name='what_are_your_complaints'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='textarea'
-                        label='С какой целью вы обратились к логопеду?'
-                        placeholder='Ответ родителя'
-                        name='for_what_purpose_did_you_turn_to_a_speech_therapist'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-            </ProtocolBlock>
-            <ProtocolBlock>
-                <ProtocolTitle>Рече-языковая компетенция</ProtocolTitle>
-                <ProtocolBlockTitle>Общие представления об окружающем мире. Понимание ребенком обращенной к нему
-                    речи</ProtocolBlockTitle>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Как тебя зовут?'
-                        placeholder='Ответ ребенка'
-                        name='what_is_your_name'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='number'
-                        label='Сколько тебе лет?'
-                        placeholder='Ответ ребенка'
-                        name='how_old_are_you'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Как зовут твою маму? Твоего папу?'
-                        placeholder='Ответ ребенка'
-                        name='what_is_your_moms_name_your_daddy'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Где ты живешь?'
-                        placeholder='Ответ ребенка'
-                        name='where_do_you_live'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Какое сейчас время года? Время суток?'
-                        placeholder='Ответ ребенка'
-                        name='what_time_of_year_is_it'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Что ты делал вчера? Что делал утром? Что ты будешь делать завтра?'
-                        placeholder='Ответ ребенка'
-                        name='what_did_you_do_yesterday'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Какие у тебя есть игрушки?'
-                        placeholder='Ответ ребенка'
-                        name='what_toys_do_you_have'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='text'
-                        label='Каких животных ты знаешь?'
-                        placeholder='Ответ ребенка'
-                        name='what_kind_of_animals_do_you_know'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='textarea'
-                        label='Комментарий'
-                        placeholder='Комментарий специалиста'
-                        name='general_ideas_about_the_world_around_comment'
-                        register={register}
-                        errors={errors}
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Сформированность представлений об окружающем мире. Запас
-                        знаний:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
+                {isLessonFinished && (
+                    <>
+                        <ProtocolRow>
                             <ProtocolFormField
-                                type='radio'
-                                label='Запас знаний об окружающем мире крайне низкий'
-                                name='stock_of_knowledge_about_the_world_around'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Запас знаний об окружающем мире ниже возрастной нормы'
-                                name='stock_of_knowledge_about_the_world_around'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Запас знаний об окружающем мире соответствует возрасту'
-                                name='stock_of_knowledge_about_the_world_around'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>В пространственно-временной ситуации:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Ориентируется'
-                                name='in_a_time_space_situation'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Не ориентируется'
-                                name='in_a_time_space_situation'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Знает сколько ему лет, какое сейчас время года, какое сейчас время
-                        суток, что
-                        он делал вчера, что делал утром, что он будет делать завтра</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Да, знает'
-                                name='knows_how_old_time_of_year_what_time_of_day_it_is'
+                                type='textarea'
+                                label='Какие у вас жалобы?'
+                                placeholder='Ответ родителя'
+                                name='what_are_your_complaints'
                                 register={register}
-                                value={true}
-                                control={control}
                                 errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
+                                disabled={isProtocolClosed}
                             />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
+                        </ProtocolRow>
+                        <ProtocolRow>
                             <ProtocolFormField
-                                type='radio'
-                                label='Нет, не знает'
-                                name='knows_how_old_time_of_year_what_time_of_day_it_is'
-                                value={false}
-                                control={control}
+                                type='textarea'
+                                label='С какой целью вы обратились к логопеду?'
+                                placeholder='Ответ родителя'
+                                name='for_what_purpose_did_you_turn_to_a_speech_therapist'
+                                register={register}
                                 errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
+                                disabled={isProtocolClosed}
                             />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Образ «Я»</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
+                        </ProtocolRow>
+                    </>
+                )}
+            </ProtocolBlock>
+            {isLessonFinished && (
+                <>
+                    <ProtocolBlock>
+                        <ProtocolTitle>Рече-языковая компетенция</ProtocolTitle>
+                        <ProtocolBlockTitle>Общие представления об окружающем мире. Понимание ребенком обращенной к нему
+                            речи</ProtocolBlockTitle>
+                        <ProtocolRow>
                             <ProtocolFormField
-                                type='radio'
-                                label='Сформирован'
-                                name='image_i'
-                                control={control}
+                                type='text'
+                                label='Как тебя зовут?'
+                                placeholder='Ответ ребенка'
+                                name='what_is_your_name'
+                                register={register}
                                 errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
+                                disabled={isProtocolClosed}
                             />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
+                        </ProtocolRow>
+                        <ProtocolRow>
                             <ProtocolFormField
-                                type='radio'
-                                label='Не сформирован'
-                                name='image_i'
-                                control={control}
+                                type='number'
+                                label='Сколько тебе лет?'
+                                placeholder='Ответ ребенка'
+                                name='how_old_are_you'
+                                register={register}
                                 errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
+                                disabled={isProtocolClosed}
                             />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Знает, как его зовут, как зовут его родителей, где он
-                        живет</ProtocolDescriptionSubtitle>
-                    <ProtocolResultWrapper>
-                        <ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolFormField
+                                type='text'
+                                label='Как зовут твою маму? Твоего папу?'
+                                placeholder='Ответ ребенка'
+                                name='what_is_your_moms_name_your_daddy'
+                                register={register}
+                                errors={errors}
+                                disabled={isProtocolClosed}
+                            />
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolFormField
+                                type='text'
+                                label='Где ты живешь?'
+                                placeholder='Ответ ребенка'
+                                name='where_do_you_live'
+                                register={register}
+                                errors={errors}
+                                disabled={isProtocolClosed}
+                            />
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolFormField
+                                type='text'
+                                label='Какое сейчас время года? Время суток?'
+                                placeholder='Ответ ребенка'
+                                name='what_time_of_year_is_it'
+                                register={register}
+                                errors={errors}
+                                disabled={isProtocolClosed}
+                            />
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolFormField
+                                type='text'
+                                label='Что ты делал вчера? Что делал утром? Что ты будешь делать завтра?'
+                                placeholder='Ответ ребенка'
+                                name='what_did_you_do_yesterday'
+                                register={register}
+                                errors={errors}
+                                disabled={isProtocolClosed}
+                            />
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolFormField
+                                type='text'
+                                label='Какие у тебя есть игрушки?'
+                                placeholder='Ответ ребенка'
+                                name='what_toys_do_you_have'
+                                register={register}
+                                errors={errors}
+                                disabled={isProtocolClosed}
+                            />
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolFormField
+                                type='text'
+                                label='Каких животных ты знаешь?'
+                                placeholder='Ответ ребенка'
+                                name='what_kind_of_animals_do_you_know'
+                                register={register}
+                                errors={errors}
+                                disabled={isProtocolClosed}
+                            />
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolFormField
+                                type='textarea'
+                                label='Комментарий'
+                                placeholder='Комментарий специалиста'
+                                name='general_ideas_about_the_world_around_comment'
+                                register={register}
+                                errors={errors}
+                                disabled={isProtocolClosed}
+                            />
+                        </ProtocolRow>
+                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Сформированность представлений об окружающем мире. Запас
+                                знаний:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Запас знаний об окружающем мире крайне низкий'
+                                        name='stock_of_knowledge_about_the_world_around'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Запас знаний об окружающем мире ниже возрастной нормы'
+                                        name='stock_of_knowledge_about_the_world_around'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Запас знаний об окружающем мире соответствует возрасту'
+                                        name='stock_of_knowledge_about_the_world_around'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>В пространственно-временной ситуации:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Ориентируется'
+                                        name='in_a_time_space_situation'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Не ориентируется'
+                                        name='in_a_time_space_situation'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Знает сколько ему лет, какое сейчас время года, какое сейчас время
+                                суток, что
+                                он делал вчера, что делал утром, что он будет делать завтра</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Да, знает'
+                                        name='knows_how_old_time_of_year_what_time_of_day_it_is'
+                                        register={register}
+                                        value={true}
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Нет, не знает'
+                                        name='knows_how_old_time_of_year_what_time_of_day_it_is'
+                                        value={false}
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Образ «Я»</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Сформирован'
+                                        name='image_i'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Не сформирован'
+                                        name='image_i'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Знает, как его зовут, как зовут его родителей, где он
+                                живет</ProtocolDescriptionSubtitle>
                             <ProtocolResultWrapper>
-                                <ProtocolFormField
-                                    type='radio'
-                                    label='Да, знает'
-                                    name='knows_his_name_the_name_of_his_parents_where_he_lives'
-                                    control={control}
-                                    value={true}
-                                    errors={errors}
-                                    disabled={isConclusionDisabled || isProtocolClosed}
-                                />
+                                <ProtocolResultBlock>
+                                    <ProtocolResultWrapper>
+                                        <ProtocolFormField
+                                            type='radio'
+                                            label='Да, знает'
+                                            name='knows_his_name_the_name_of_his_parents_where_he_lives'
+                                            control={control}
+                                            value={true}
+                                            errors={errors}
+                                            disabled={isConclusionDisabled || isProtocolClosed}
+                                        />
+                                    </ProtocolResultWrapper>
+                                    <ProtocolResultWrapper>
+                                        <ProtocolFormField
+                                            type='radio'
+                                            label='Нет, не знает'
+                                            name='knows_his_name_the_name_of_his_parents_where_he_lives'
+                                            control={control}
+                                            value={false}
+                                            errors={errors}
+                                            disabled={isConclusionDisabled || isProtocolClosed}
+                                        />
+                                    </ProtocolResultWrapper>
+                                </ProtocolResultBlock>
                             </ProtocolResultWrapper>
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Соматогнозис: представление о собственном
+                                теле</ProtocolDescriptionSubtitle>
                             <ProtocolResultWrapper>
-                                <ProtocolFormField
-                                    type='radio'
-                                    label='Нет, не знает'
-                                    name='knows_his_name_the_name_of_his_parents_where_he_lives'
-                                    control={control}
-                                    value={false}
-                                    errors={errors}
-                                    disabled={isConclusionDisabled || isProtocolClosed}
-                                />
+                                <ProtocolResultBlock>
+                                    <ProtocolResultWrapper>
+                                        <ProtocolFormField
+                                            type='radio'
+                                            label='Сформирован'
+                                            name='somatognosis_understanding_your_own_body'
+                                            control={control}
+                                            errors={errors}
+                                            disabled={isConclusionDisabled || isProtocolClosed}
+                                        />
+                                    </ProtocolResultWrapper>
+                                    <ProtocolResultWrapper>
+                                        <ProtocolFormField
+                                            type='radio'
+                                            label='Не сформирован'
+                                            name='somatognosis_understanding_your_own_body'
+                                            control={control}
+                                            errors={errors}
+                                            disabled={isConclusionDisabled || isProtocolClosed}
+                                        />
+                                    </ProtocolResultWrapper>
+                                </ProtocolResultBlock>
                             </ProtocolResultWrapper>
-                        </ProtocolResultBlock>
-                    </ProtocolResultWrapper>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Соматогнозис: представление о собственном
-                        теле</ProtocolDescriptionSubtitle>
-                    <ProtocolResultWrapper>
-                        <ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Контакт с ребенком:</ProtocolDescriptionSubtitle>
                             <ProtocolResultWrapper>
-                                <ProtocolFormField
-                                    type='radio'
-                                    label='Сформирован'
-                                    name='somatognosis_understanding_your_own_body'
-                                    control={control}
-                                    errors={errors}
-                                    disabled={isConclusionDisabled || isProtocolClosed}
-                                />
+                                <ProtocolResultBlock>
+                                    <ProtocolResultWrapper>
+                                        <ProtocolFormField
+                                            type='radio'
+                                            label='Установлен'
+                                            name='contact_with_the_child'
+                                            control={control}
+                                            value={true}
+                                            errors={errors}
+                                            disabled={isProtocolClosed}
+                                        />
+                                    </ProtocolResultWrapper>
+                                    <ProtocolResultWrapper>
+                                        <ProtocolFormField
+                                            type='radio'
+                                            label='Не установлен'
+                                            name='contact_with_the_child'
+                                            control={control}
+                                            value={false}
+                                            errors={errors}
+                                            disabled={isProtocolClosed}
+                                        />
+                                    </ProtocolResultWrapper>
+                                </ProtocolResultBlock>
                             </ProtocolResultWrapper>
-                            <ProtocolResultWrapper>
-                                <ProtocolFormField
-                                    type='radio'
-                                    label='Не сформирован'
-                                    name='somatognosis_understanding_your_own_body'
-                                    control={control}
-                                    errors={errors}
-                                    disabled={isConclusionDisabled || isProtocolClosed}
-                                />
-                            </ProtocolResultWrapper>
-                        </ProtocolResultBlock>
-                    </ProtocolResultWrapper>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Контакт с ребенком:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultWrapper>
-                        <ProtocolResultBlock>
-                            <ProtocolResultWrapper>
-                                <ProtocolFormField
-                                    type='radio'
-                                    label='Установлен'
-                                    name='contact_with_the_child'
-                                    control={control}
-                                    value={true}
-                                    errors={errors}
-                                    disabled={isProtocolClosed}
-                                />
-                            </ProtocolResultWrapper>
-                            <ProtocolResultWrapper>
-                                <ProtocolFormField
-                                    type='radio'
-                                    label='Не установлен'
-                                    name='contact_with_the_child'
-                                    control={control}
-                                    value={false}
-                                    errors={errors}
-                                    disabled={isProtocolClosed}
-                                />
-                            </ProtocolResultWrapper>
-                        </ProtocolResultBlock>
-                    </ProtocolResultWrapper>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='textarea'
-                        label='Комментарий'
-                        placeholder='Комментарий специалиста'
-                        name='formation_of_ideas_about_the_world_around_comment'
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolFormField
+                                type='textarea'
+                                label='Комментарий'
+                                placeholder='Комментарий специалиста'
+                                name='formation_of_ideas_about_the_world_around_comment'
+                                register={register}
+                                errors={errors}
+                                disabled={isProtocolClosed}
+                            />
+                        </ProtocolRow>
+                    </ProtocolBlock>
+                    <ProtocolBlock>
+                        <ProtocolTitle>Билатеральная моторная координация</ProtocolTitle>
+                        <ProtocolPlaceholderTitle>— Возьми воображаемый телефон в руку и приложи к
+                            уху</ProtocolPlaceholderTitle>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Ведущее ухо:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Правое'
+                                        name='leading_ear_phone'
+                                        control={control}
+                                        value='правое ухо'
+                                        errors={errors}
+                                        disabled={isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Левое'
+                                        name='leading_ear_phone'
+                                        control={control}
+                                        value='левое ухо'
+                                        errors={errors}
+                                        disabled={isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Ведущая рука:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Правая'
+                                        name='leading_hand_phone'
+                                        control={control}
+                                        value='правая рука'
+                                        errors={errors}
+                                        disabled={isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Левая'
+                                        name='leading_hand_phone'
+                                        control={control}
+                                        value='левая рука'
+                                        errors={errors}
+                                        disabled={isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolPlaceholderTitle>— Посмотри в воображаемую подзорную трубу</ProtocolPlaceholderTitle>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Ведущая рука:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Правая'
+                                        name='leading_hand_spyglass'
+                                        control={control}
+                                        value='правая рука'
+                                        errors={errors}
+                                        disabled={isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Левая'
+                                        name='leading_hand_spyglass'
+                                        control={control}
+                                        value='левая рука'
+                                        errors={errors}
+                                        disabled={isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Ведущий глаз:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Правый'
+                                        name='leading_eye_spyglass'
+                                        control={control}
+                                        value='правый глаз'
+                                        errors={errors}
+                                        disabled={isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Левый'
+                                        name='leading_eye_spyglass'
+                                        control={control}
+                                        value='левый глаз'
+                                        errors={errors}
+                                        disabled={isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolPlaceholderTitle>— Ударь ногой по воображаемому мячу</ProtocolPlaceholderTitle>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Ведущая нога:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Правая'
+                                        name='leading_leg_ball'
+                                        control={control}
+                                        value='правая нога'
+                                        errors={errors}
+                                        disabled={isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Левая'
+                                        name='leading_leg_ball'
+                                        control={control}
+                                        value='левая нога'
+                                        errors={errors}
+                                        disabled={isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolRow>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Левшество, все 4 показателя совпадают'
+                                        name='conclusion_options'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Правшество, все 4 показателя совпадают'
+                                        name='conclusion_options'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Дисбаланс межполушарных связей'
+                                        name='conclusion_options'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || isProtocolClosed}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                    </ProtocolBlock>
+                    <PicturesForFish
                         register={register}
                         errors={errors}
+                        control={control}
+                        isConclusionDisabled={isConclusionDisabled}
                         disabled={isProtocolClosed}
                     />
-                </ProtocolRow>
-            </ProtocolBlock>
-
-            <ProtocolBlock>
-                <ProtocolTitle>Билатеральная моторная координация</ProtocolTitle>
-                <ProtocolPlaceholderTitle>— Возьми воображаемый телефон в руку и приложи к
-                    уху</ProtocolPlaceholderTitle>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Ведущее ухо:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Правое'
-                                name='leading_ear_phone'
-                                control={control}
-                                value='правое ухо'
-                                errors={errors}
-                                disabled={isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Левое'
-                                name='leading_ear_phone'
-                                control={control}
-                                value='левое ухо'
-                                errors={errors}
-                                disabled={isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Ведущая рука:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Правая'
-                                name='leading_hand_phone'
-                                control={control}
-                                value='правая рука'
-                                errors={errors}
-                                disabled={isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Левая'
-                                name='leading_hand_phone'
-                                control={control}
-                                value='левая рука'
-                                errors={errors}
-                                disabled={isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolPlaceholderTitle>— Посмотри в воображаемую подзорную трубу</ProtocolPlaceholderTitle>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Ведущая рука:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Правая'
-                                name='leading_hand_spyglass'
-                                control={control}
-                                value='правая рука'
-                                errors={errors}
-                                disabled={isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Левая'
-                                name='leading_hand_spyglass'
-                                control={control}
-                                value='левая рука'
-                                errors={errors}
-                                disabled={isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Ведущий глаз:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Правый'
-                                name='leading_eye_spyglass'
-                                control={control}
-                                value='правый глаз'
-                                errors={errors}
-                                disabled={isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Левый'
-                                name='leading_eye_spyglass'
-                                control={control}
-                                value='левый глаз'
-                                errors={errors}
-                                disabled={isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolPlaceholderTitle>— Ударь ногой по воображаемому мячу</ProtocolPlaceholderTitle>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Ведущая нога:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Правая'
-                                name='leading_leg_ball'
-                                control={control}
-                                value='правая нога'
-                                errors={errors}
-                                disabled={isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Левая'
-                                name='leading_leg_ball'
-                                control={control}
-                                value='левая нога'
-                                errors={errors}
-                                disabled={isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                <ProtocolRow>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Левшество, все 4 показателя совпадают'
-                                name='conclusion_options'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Правшество, все 4 показателя совпадают'
-                                name='conclusion_options'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Дисбаланс межполушарных связей'
-                                name='conclusion_options'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || isProtocolClosed}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-            </ProtocolBlock>
-            <PicturesForFish
-                register={register}
-                errors={errors}
-                control={control}
-                isConclusionDisabled={isConclusionDisabled}
-                disabled={isProtocolClosed}
-            />
+                </>
+            )}
             <GiraffeGame
                 register={register}
                 errors={errors}
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
+                lessonStatusFinished={isLessonFinished}
             />
-            <PuzzleGame
-                register={register}
-                errors={errors}
-                control={control}
-                isConclusionDisabled={isConclusionDisabled}
-                disabled={isProtocolClosed}
-            />
-            <AntLambadaGame
-                register={register}
-                errors={errors}
-                control={control}
-                isConclusionDisabled={isConclusionDisabled}
-                disabled={isProtocolClosed}
-            />
-            <AntBattleGame
-                register={register}
-                errors={errors}
-                control={control}
-                isConclusionDisabled={isConclusionDisabled}
-                disabled={isProtocolClosed}
-            />
-            <MagicExamGame
-                register={register}
-                errors={errors}
-                control={control}
-                isConclusionDisabled={isConclusionDisabled}
-                disabled={isProtocolClosed}
-            />
-            <CapriciousPrincessGame
-                register={register}
-                errors={errors}
-                control={control}
-                isConclusionDisabled={isConclusionDisabled}
-                disabled={isProtocolClosed}
-            />
-            <HowTheMouseCouldNotSleep
-                register={register}
-                errors={errors}
-                control={control}
-                isConclusionDisabled={isConclusionDisabled}
-                disabled={isProtocolClosed}
-            />
-            <OnTheFarmGame
-                register={register}
-                errors={errors}
-                control={control}
-                isConclusionDisabled={isConclusionDisabled}
-                disabled={isProtocolClosed}
-            />
-            <OnTheFarmPartTwoGame
-                register={register}
-                errors={errors}
-                control={control}
-                isConclusionDisabled={isConclusionDisabled}
-                disabled={isProtocolClosed}
-            />
+            {isLessonFinished && (
+                <>
+                    <PuzzleGame
+                        register={register}
+                        errors={errors}
+                        control={control}
+                        isConclusionDisabled={isConclusionDisabled}
+                        disabled={isProtocolClosed}
+                    />
+                    <AntLambadaGame
+                        register={register}
+                        errors={errors}
+                        control={control}
+                        isConclusionDisabled={isConclusionDisabled}
+                        disabled={isProtocolClosed}
+                    />
+                    <AntBattleGame
+                        register={register}
+                        errors={errors}
+                        control={control}
+                        isConclusionDisabled={isConclusionDisabled}
+                        disabled={isProtocolClosed}
+                    />
+                    <MagicExamGame
+                        register={register}
+                        errors={errors}
+                        control={control}
+                        isConclusionDisabled={isConclusionDisabled}
+                        disabled={isProtocolClosed}
+                    />
+                    <CapriciousPrincessGame
+                        register={register}
+                        errors={errors}
+                        control={control}
+                        isConclusionDisabled={isConclusionDisabled}
+                        disabled={isProtocolClosed}
+                    />
+                    <HowTheMouseCouldNotSleep
+                        register={register}
+                        errors={errors}
+                        control={control}
+                        isConclusionDisabled={isConclusionDisabled}
+                        disabled={isProtocolClosed}
+                    />
+                    <OnTheFarmGame
+                        register={register}
+                        errors={errors}
+                        control={control}
+                        isConclusionDisabled={isConclusionDisabled}
+                        disabled={isProtocolClosed}
+                    />
+                    <OnTheFarmPartTwoGame
+                        register={register}
+                        errors={errors}
+                        control={control}
+                        isConclusionDisabled={isConclusionDisabled}
+                        disabled={isProtocolClosed}
+                    />
+                </>
+            )}
             <OnTheFarmPartThree
                 register={register}
                 errors={errors}
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
+                lessonStatusFinished={isLessonFinished}
             />
+            {isLessonFinished && (
+                <ProtocolBlock>
+                    <ProtocolBlockTitle>Дополнительная информация</ProtocolBlockTitle>
+                    <ProtocolBlockSubTitle>Данные о развитии:</ProtocolBlockSubTitle>
+                    <ProtocolBlockSubTitle>Раннее/ позднее физическое развитие</ProtocolBlockSubTitle>
+                    <Questionnaire
+                        register={register}
+                        errors={errors}
+                        disabled={isProtocolClosed}
+                        isConclusionDisabled={isConclusionDisabled}
+                    />
+                </ProtocolBlock>
+            )}
             <ProtocolBlock>
-                <ProtocolBlockTitle>Дополнительная информация</ProtocolBlockTitle>
-                <ProtocolBlockSubTitle>Данные о развитии:</ProtocolBlockSubTitle>
-                <ProtocolBlockSubTitle>Раннее/ позднее физическое развитие</ProtocolBlockSubTitle>
-                <Questionnaire
-                    register={register}
-                    errors={errors}
-                    disabled={isProtocolClosed}
-                    isConclusionDisabled={isConclusionDisabled}
-                />
-            </ProtocolBlock>
-            <ProtocolBlock>
-                <ProtocolBlockTitle>Логопедическое заключение</ProtocolBlockTitle>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='textarea'
-                        name='speech_therapy_conclusion'
-                        register={register}
-                        errors={errors}
-                        classNameLabel='protocol__result-lbl'
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='textarea'
-                        label='Динамическое заключение (5 занятий)'
-                        name='dynamic_conclusion'
-                        register={register}
-                        errors={errors}
-                        classNameLabel='protocol__result-lbl'
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
-                <ProtocolRow>
-                    <ProtocolFormField
-                        type='textarea'
-                        label='Итоговое заключение (10 занятий)'
-                        name='final_conclusion'
-                        register={register}
-                        errors={errors}
-                        classNameLabel='protocol__result-lbl'
-                        disabled={isProtocolClosed}
-                    />
-                </ProtocolRow>
+                {isLessonFinished && (
+                  <>
+                      <ProtocolBlockTitle>Логопедическое заключение</ProtocolBlockTitle>
+                      <ProtocolRow>
+                          <ProtocolFormField
+                              type='textarea'
+                              name='speech_therapy_conclusion'
+                              register={register}
+                              errors={errors}
+                              classNameLabel='protocol__result-lbl'
+                              disabled={isProtocolClosed}
+                          />
+                      </ProtocolRow>
+                      <ProtocolRow>
+                          <ProtocolFormField
+                              type='textarea'
+                              label='Динамическое заключение (5 занятий)'
+                              name='dynamic_conclusion'
+                              register={register}
+                              errors={errors}
+                              classNameLabel='protocol__result-lbl'
+                              disabled={isProtocolClosed}
+                          />
+                      </ProtocolRow>
+                      <ProtocolRow>
+                          <ProtocolFormField
+                              type='textarea'
+                              label='Итоговое заключение (10 занятий)'
+                              name='final_conclusion'
+                              register={register}
+                              errors={errors}
+                              classNameLabel='protocol__result-lbl'
+                              disabled={isProtocolClosed}
+                          />
+                      </ProtocolRow>
+                  </>
+                )}
                 <ProtocolRow>
                     <p className='protocol__finish-title'>Логопед</p>
                     <ProtocolDescriptionSubtitle>Дата рождения: {protocol.child_date_of_birth}</ProtocolDescriptionSubtitle>
