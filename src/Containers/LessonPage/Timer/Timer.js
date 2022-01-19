@@ -6,6 +6,7 @@ import moment from 'moment'
 import { strTimeToMoment, getCurrentTime } from 'utils/date/dateUtils.js';
 
 import 'Containers/LessonPage/Timer/timer.css'
+import { addClasses } from 'utils/addClasses/addClasses.js';
 
 const Timer = (props) => {
 
@@ -39,10 +40,12 @@ const Timer = (props) => {
     }, [])
 
     return (
-        <p className='gamef__time'>
+        <p className={addClasses('gamef__time', {
+            'warning': minutes <= 3
+        })}>
             {checkIfLessonFinished() ?
                 'Урок окончен' :
-                `До конца занятия ${hours}:${minutes}:${seconds}`
+                `До конца занятия ${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`
             }
         </p>
     );
