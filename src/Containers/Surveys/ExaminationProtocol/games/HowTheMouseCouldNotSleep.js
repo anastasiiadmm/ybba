@@ -412,7 +412,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label='Пересказ частично соответствует оригиналуи'
+                                label='Пересказ частично соответствует оригиналу'
                                 name='game_how_the_mouse_could_not_sleep.retelling_partially_corresponds_to_original'
                                 control={control}
                                 errors={errors}

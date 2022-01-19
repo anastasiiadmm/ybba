@@ -143,7 +143,7 @@ const OnTheFarmPartTwoGame = (props) => {
                     <ProtocolColWidth>
                         <ProtocolFormField
                             type='text'
-                            label='Выглядывает из-за Мишы'
+                            label='Выглядывает из-за Миши'
                             name='game_on_the_farm_part_two.peeps_out_from_behind_Misha'
                             register={register}
                             errors={errors}
@@ -165,7 +165,7 @@ const OnTheFarmPartTwoGame = (props) => {
                     <ProtocolColWidth>
                         <ProtocolFormField
                             type='text'
-                            label='У Мишы в капюшоне'
+                            label='У Миши в капюшоне'
                             name='game_on_the_farm_part_two.misha_has_a_hood'
                             register={register}
                             errors={errors}

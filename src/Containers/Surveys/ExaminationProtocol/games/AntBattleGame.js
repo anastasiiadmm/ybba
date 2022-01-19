@@ -589,7 +589,7 @@ const AntBattleGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label='Крушения согласованности действий рук'
+                                label='Нарушения согласованности действий рук'
                                 name='game_ant_battle.hand_coordination_crashes'
                                 control={control}
                                 errors={errors}

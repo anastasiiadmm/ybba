@@ -144,7 +144,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Низкая концентрация и неустойчивость внимания в целом (ребенок плохо сосредоточивается, с трудом удерживает внимание на объекте)'
+                                label='Низкая концентрация и неустойчивость внимания в целом (ребенок плохо сосредотачивается, с трудом удерживает внимание на объекте)'
                                 name='game_on_the_farm_part_three.concentration'
                                 control={control}
                                 errors={errors}
