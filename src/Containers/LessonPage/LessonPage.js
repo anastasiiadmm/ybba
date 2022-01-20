@@ -28,6 +28,7 @@ import Webcam from 'Containers/LessonPage/Webcam/Webcam.js';
 import Timer from 'Containers/LessonPage/Timer/Timer.js';
 import { checkUserRole } from 'utils/user.js';
 import Drag from 'Components/Drag/Drag.js';
+import Modal from 'Components/Modal/Modal';
 import { initSessionStack, defineUser, stopSessionStackRecording, } from 'utils/sessionstack/utils.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 import { checkEnv } from 'utils/common/commonUtils.js';
@@ -46,6 +47,7 @@ import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
 import config from 'config.js';
 import { JitsiContext } from 'context/JitsiContext/JitsiContext.js';
 import { startJitsiRecording, stopJitsiRecording } from 'utils/jitsi/utils.js';
+
 
 const LessonPage = (props) => {
     const { isMicrophoneAllowed, isCameraAllowed } = useContext(
@@ -71,6 +73,9 @@ const LessonPage = (props) => {
     const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false)
     const [_activeGame, _setActiveGame] = useState(1)
 
+    const [protocolModalIsOpen, setProtocolModalIsOpen] = useState(false)
+    const toggleProtocolModal = async () => await setProtocolModalIsOpen(!protocolModalIsOpen)
+
     const onChangeActiveGame = (game) => {
         if (!activeGame || (game.id !== activeGame.id)) {
             setUnityLoadProgress(0);
@@ -80,6 +85,7 @@ const LessonPage = (props) => {
         }
     };
     const onLessonFinish = async () => {
+        await toggleProtocolModal()
         await sendWsAction(
             changeLessonStatus({
                 status: LESSON_STATUS_FINISHED,
@@ -353,7 +359,16 @@ const LessonPage = (props) => {
     const canvasParent = useRef();
 
     return (
-        <div className='gamef position-relative overflow-hidden'>
+        <>
+            <Modal
+                isOpen={protocolModalIsOpen}
+                toggle={toggleProtocolModal}
+                width={30}
+            >
+                <p>Заполните пропущенные поля и выберите варианты заключения, которые будут использованы для заполнения речевой карты</p>
+                <button className='protocol__submit' onClick={toggleProtocolModal}>OK</button>
+            </Modal>
+            <div className='gamef position-relative overflow-hidden'>
             {lesson && lesson.status !== lessonStatuses.finished && (
                 <>
                     <header
@@ -567,6 +582,7 @@ const LessonPage = (props) => {
                 </div>
             )}
         </div>
+        </>
     );
 };
 
