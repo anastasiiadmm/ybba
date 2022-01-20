@@ -71,16 +71,15 @@ const LessonPage = (props) => {
     const [unityLoadProgress, setUnityLoadProgress] = useState(0);
     const [isMuted, setIsMuted] = useState(false)
     const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false)
-    const [_activeGame, _setActiveGame] = useState(1)
+    const [isUnityInitialized, setIsUnityInitialized] = useState(false)
 
     const [protocolModalIsOpen, setProtocolModalIsOpen] = useState(false)
     const toggleProtocolModal = async () => await setProtocolModalIsOpen(!protocolModalIsOpen)
 
     const onChangeActiveGame = (game) => {
         if (!activeGame || (game.id !== activeGame.id)) {
-            setUnityLoadProgress(0);
             sendWsAction(
-                changeActiveGame({ lesson_id: lesson.id, game_id: game.id })
+                changeActiveGame({ lesson_id: lesson.id, game_id: game.game_type })
             );
         }
     };
@@ -108,12 +107,9 @@ const LessonPage = (props) => {
         setIsTeacherHaveControlOnGame(!isTeacherHaveControlOnGame)
     }
 
-    const getFileUrl = useCallback(
-        (fileName) => {
-            return activeGame[fileName];
-        },
-        [activeGame]
-    );
+    const getFileUrl = useCallback((fileName) => {
+        return lesson.game_build[fileName];
+    }, [lesson]);
 
     const setMuted = useCallback(async () => {
         const muted = await api.isAudioMuted()
@@ -142,20 +138,6 @@ const LessonPage = (props) => {
             setIsMuted(false)
         }
     }, [api])
-
-    const setUnity = useCallback(async () => {
-        if (activeGame) {
-            await setUnityContext(null);
-            const context = new UnityContext({
-                loaderUrl: getFileUrl(GAME_FILE_TYPE_LOADER),
-                dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
-                frameworkUrl: getFileUrl(GAME_FILE_TYPE_FRAMEWORK),
-                codeUrl: getFileUrl(GAME_FILE_TYPE_WASM),
-                streamingAssetsUrl: getFileUrl(GAME_FOLDER_STREAMING_ASSETS)
-            });
-            await setUnityContext(context);
-        }
-    }, [activeGame, getFileUrl]);
 
     const sendJsonToGame = useCallback(
         (jsonData) => {
@@ -247,25 +229,37 @@ const LessonPage = (props) => {
         }
     }, [api])
 
-    const getUserDataForGame = () => {
+    const getUserDataForGame = useCallback(() => {
         return {
             nickName: user.email,
             roomId: lessonId,
-            gameType: _activeGame,
+            gameType: lesson.active_game_id,
             developmentMode: config.appEnvironment === envs.local,
             userRole: gameUserRoles[user.role],
         }
-    }
+    }, [lesson, lessonId, user])
 
-    const updateGameJsonData = () => {
+    const updateGameJsonData = useCallback(() => {
         const userGameData = getUserDataForGame()
         unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData))
-    }
+    }, [getUserDataForGame, unityContext])
 
-    const inputGameChangeHandler = e => {
-        console.log(e.target.value)
-        _setActiveGame(e.target.value)
-    }
+    const setUnity = useCallback(async () => {
+        if (lesson) {
+            if (isUnityInitialized) {
+                updateGameJsonData()
+            } else {
+                const context = new UnityContext({
+                    loaderUrl: getFileUrl(GAME_FILE_TYPE_LOADER),
+                    dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
+                    frameworkUrl: getFileUrl(GAME_FILE_TYPE_FRAMEWORK),
+                    codeUrl: getFileUrl(GAME_FILE_TYPE_WASM),
+                    streamingAssetsUrl: getFileUrl(GAME_FOLDER_STREAMING_ASSETS)
+                });
+                await setUnityContext(context);
+            }
+        }
+    }, [getFileUrl, isUnityInitialized, lesson, updateGameJsonData]);
 
     useEffect(() => {
         startRecording()
@@ -286,13 +280,13 @@ const LessonPage = (props) => {
 
     useEffect(() => {
         setUnity();
-    }, [activeGame, setUnity]);
+    }, [lesson, setUnity]);
 
     useEffect(() => {
         if (lesson) {
-            const active = lesson?.games?.find(
-                (game) => game.id === lesson.active_game_id
-            );
+            const active = lesson?.games?.find((game) => {
+                return game.game_type === parseInt(lesson.active_game_id)
+            });
             setActiveGame(active);
         }
     }, [lesson]);
@@ -304,10 +298,8 @@ const LessonPage = (props) => {
             });
             if (unityContext) {
                 unityContext.on('GameInitialized', () => {
-                    console.log('===============')
-                    console.log('asd', 'GameInitialized')
-                    console.log('===============')
                     updateGameJsonData()
+                    setIsUnityInitialized(true)
                 })
                 unityContext.on('MuteMicrophone', () => {
                     muteJitsiAudio()
@@ -317,7 +309,7 @@ const LessonPage = (props) => {
                 })
             }
         }
-    }, [user, lessonId, sendJsonToGameWithTimeout, unityContext, muteJitsiAudio, unMuteJitsiAudio]);
+    }, [user, lessonId, sendJsonToGameWithTimeout, unityContext, muteJitsiAudio, unMuteJitsiAudio, updateGameJsonData]);
 
     useEffect(() => {
         startSTRecording();
@@ -333,10 +325,10 @@ const LessonPage = (props) => {
 
 
     useEffect(() => {
-        if (lesson && lesson?.student?.id) {
+        if (lesson && lesson?.student?.id && !isUnityInitialized) {
             dispatch(getProtocol(lesson.student.id))
         }
-    }, [dispatch, lesson])
+    }, [dispatch, isUnityInitialized, lesson])
 
     useEffect(() => {
         if (lesson && protocol && protocol.status === examinationProtocolStatuses.closed) {
@@ -433,7 +425,7 @@ const LessonPage = (props) => {
                                                 return (
                                                     <div
                                                         className={addClasses('gamef__preview gameItem', {
-                                                            active: game?.id === activeGame?.id,
+                                                            active: game?.game_type === activeGame?.game_type,
                                                         })}
                                                         onClick={() => onChangeActiveGame(game)}
                                                     >
@@ -445,7 +437,7 @@ const LessonPage = (props) => {
                                                         />
                                                         <div className='gamef__preview-info'>
                                                             <span>Игра {index + 1}</span>
-                                                            <p>{game.display_name}</p>
+                                                            <p>{game.name}</p>
                                                         </div>
                                                     </div>
                                                 );
@@ -496,10 +488,6 @@ const LessonPage = (props) => {
                                         })}
                                         onClick={() => switchChildWebcamSize(true)}
                                     />
-                                    <input type='number' onChange={inputGameChangeHandler} value={_activeGame} />
-                                    <button onClick={async () => updateGameJsonData()}>
-                                        Start game
-                                    </button>
                                     <button
                                         className='gamef__next'
                                         type='button'
