@@ -239,18 +239,21 @@ const LessonPage = (props) => {
     }, [getUserDataForGame, unityContext])
 
     const setUnity = useCallback(async () => {
+        console.log('asd', 1234)
         if (lesson) {
             if (isUnityInitialized) {
                 updateGameJsonData()
             } else {
-                const context = new UnityContext({
-                    loaderUrl: getFileUrl(GAME_FILE_TYPE_LOADER),
-                    dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
-                    frameworkUrl: getFileUrl(GAME_FILE_TYPE_FRAMEWORK),
-                    codeUrl: getFileUrl(GAME_FILE_TYPE_WASM),
-                    streamingAssetsUrl: getFileUrl(GAME_FOLDER_STREAMING_ASSETS)
-                });
-                await setUnityContext(context);
+                if (lesson.game_build) {
+                    const context = new UnityContext({
+                        loaderUrl: getFileUrl(GAME_FILE_TYPE_LOADER),
+                        dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
+                        frameworkUrl: getFileUrl(GAME_FILE_TYPE_FRAMEWORK),
+                        codeUrl: getFileUrl(GAME_FILE_TYPE_WASM),
+                        streamingAssetsUrl: getFileUrl(GAME_FOLDER_STREAMING_ASSETS)
+                    });
+                    await setUnityContext(context);
+                }
             }
         }
     }, [getFileUrl, isUnityInitialized, lesson, updateGameJsonData]);
@@ -274,7 +277,7 @@ const LessonPage = (props) => {
 
     useEffect(() => {
         setUnity();
-    }, [lesson, setUnity]);
+    }, [lesson]);
 
     useEffect(() => {
         if (lesson) {
