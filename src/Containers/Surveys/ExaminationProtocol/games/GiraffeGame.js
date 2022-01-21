@@ -1,70 +1,68 @@
 import React from 'react';
 
 import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock';
-import ProtocolPlaceholderTitle from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle';
+import ProtocolPlaceholderTitle
+    from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle';
 import ProtocolBlockTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBlockTitle/ProtocolBlockTitle';
 import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow';
 import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFormField/ProtocolFormField';
 import ProtocolResultTitle from 'Components/Surveys/ExaminationProtocol/ResultTitle/ResultTitle';
-import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle';
+import ProtocolDescriptionSubtitle
+    from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle';
 import ProtocolResultBlock from 'Components/Surveys/ExaminationProtocol/ProtocolResultBlock/ProtocolResultBlock';
 import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper';
 
 const GiraffeGame = (props) => {
 
-    const  {
-        register, errors, control, isConclusionDisabled, disabled, lessonStatusFinished
+    const {
+        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
     } = props
 
     return (
         <>
             <ProtocolBlock>
-                {lessonStatusFinished && (
-                    <>
-                        <ProtocolPlaceholderTitle>Игра “Жираф”</ProtocolPlaceholderTitle>
-                        <ProtocolBlockTitle>Звукопроизношение <span>Звуки Р, Рь, Л, Ль</span></ProtocolBlockTitle>
-                        <ProtocolRow>
-                            <ProtocolFormField
-                                type='text'
-                                label='Рыба-Корова-Забор-Краб /Р'
-                                name='game_giraffe.fish_cow_fence_crab'
-                                register={register}
-                                errors={errors}
-                                disabled={disabled}
-                            />
-                        </ProtocolRow>
-                        <ProtocolRow>
-                            <ProtocolFormField
-                                type='text'
-                                label='Река-Варенье-Дверь /Рь'
-                                name='game_giraffe.river_jam_door'
-                                register={register}
-                                errors={errors}
-                                disabled={disabled}
-                            />
-                        </ProtocolRow>
-                        <ProtocolRow>
-                            <ProtocolFormField
-                                type='text'
-                                label='Лампа-Молоко-Пол-Клад /Л'
-                                name='game_giraffe.lamp_milk_floor_treasure'
-                                register={register}
-                                errors={errors}
-                                disabled={disabled}
-                            />
-                        </ProtocolRow>
-                        <ProtocolRow>
-                            <ProtocolFormField
-                                type='text'
-                                label='Колесо-Соль /Ль'
-                                name='game_giraffe.wheel_salt'
-                                register={register}
-                                errors={errors}
-                                disabled={disabled}
-                            />
-                        </ProtocolRow>
-                    </>
-                )}
+                <ProtocolPlaceholderTitle>Игра “Жираф”</ProtocolPlaceholderTitle>
+                <ProtocolBlockTitle>Звукопроизношение <span>Звуки Р, Рь, Л, Ль</span></ProtocolBlockTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Рыба-Корова-Забор-Краб /Р'
+                        name='game_giraffe.fish_cow_fence_crab'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Река-Варенье-Дверь /Рь'
+                        name='game_giraffe.river_jam_door'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Лампа-Молоко-Пол-Клад /Л'
+                        name='game_giraffe.lamp_milk_floor_treasure'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Колесо-Соль /Ль'
+                        name='game_giraffe.wheel_salt'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
 
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
                 <ProtocolRow>
@@ -204,7 +202,7 @@ const GiraffeGame = (props) => {
                     </ProtocolResultBlock>
                 </ProtocolRow>
             </ProtocolBlock>
-            {lessonStatusFinished && (
+            {isLessonFinished && (
                 <>
                     <ProtocolBlock>
                         <ProtocolBlockTitle>Психологическая база речи. Мышление</ProtocolBlockTitle>
@@ -320,18 +318,18 @@ const GiraffeGame = (props) => {
                             </ProtocolResultWrapper>
                         </ProtocolResultBlock>
                     </ProtocolRow>
-                    <ProtocolRow>
-                        <ProtocolFormField
-                            type='textarea'
-                            label='Комментарий'
-                            name='game_giraffe.expert_comment'
-                            placeholder='Комментарий специалиста'
-                            register={register}
-                            disabled={disabled}
-                        />
-                    </ProtocolRow>
                 </>
             )}
+            <ProtocolRow>
+                <ProtocolFormField
+                    type='textarea'
+                    label='Комментарий'
+                    name='game_giraffe.expert_comment'
+                    placeholder='Комментарий специалиста'
+                    register={register}
+                    disabled={disabled}
+                />
+            </ProtocolRow>
         </>
     );
 };
