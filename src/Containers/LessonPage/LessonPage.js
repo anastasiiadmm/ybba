@@ -239,7 +239,6 @@ const LessonPage = (props) => {
     }, [getUserDataForGame, unityContext])
 
     const setUnity = useCallback(async () => {
-        console.log('asd', 1234)
         if (lesson) {
             if (isUnityInitialized) {
                 updateGameJsonData()
