@@ -386,7 +386,7 @@ const LessonPage = (props) => {
                                         <Unity
                                             unityContext={unityContext}
                                             style={{
-                                                width: '100%',
+                                                width: `${canvasParent.current.clientHeight / 9 * 16}px`,
                                                 height: `${canvasParent.current.clientHeight}px`,
                                             }}
                                             className={addClasses('', {
