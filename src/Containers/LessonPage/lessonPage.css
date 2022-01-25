@@ -102,13 +102,15 @@
 }
 
 .gamef__preview {
+    border: none;
+    background: transparent;
     overflow: hidden;
     position: relative;
 }
 
 .gamef__preview-img {
     display: block;
-    opacity: 0.3;
+    opacity: 0;
     position: relative;
     z-index: 20;
     border: 4px solid transparent;

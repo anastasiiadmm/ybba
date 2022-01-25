@@ -425,7 +425,7 @@ const LessonPage = (props) => {
                                             {lesson?.games.length &&
                                             lesson.games.map((game, index) => {
                                                 return (
-                                                    <div
+                                                    <button
                                                         className={addClasses('gamef__preview gameItem', {
                                                             active: game?.game_type === activeGame?.game_type,
                                                         })}
@@ -435,13 +435,12 @@ const LessonPage = (props) => {
                                                             src={game.preview}
                                                             className='gamef__preview-img'
                                                             alt='Game'
-                                                            style={{ opacity: '.6' }}
                                                         />
                                                         <div className='gamef__preview-info'>
                                                             <span>Игра {index + 1}</span>
                                                             <p>{game.name}</p>
                                                         </div>
-                                                    </div>
+                                                    </button>
                                                 );
                                             })}
                                         </div>
