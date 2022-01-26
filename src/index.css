@@ -2736,15 +2736,6 @@ form .profile-child {
     line-height: 1.33;
 }
 
-.speech-card-doc__head {
-    position: relative;
-    z-index: 10;
-    font-size: 10px;
-    line-height: 1.4;
-    padding-top: 43.86%;
-    background: url(assets/img/head.jpg) 50% 0/100% auto no-repeat;
-}
-
 .speech-card-doc__head-img {
     width: 100%;
     height: auto;
