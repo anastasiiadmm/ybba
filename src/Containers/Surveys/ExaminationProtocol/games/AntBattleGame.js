@@ -105,7 +105,7 @@ const AntBattleGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='лошадка'
+                            label='Лошадка'
                             name='game_ant_battle.horse'
                             register={register}
                             errors={errors}
