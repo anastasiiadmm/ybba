@@ -253,6 +253,16 @@ const PicturesForFish = (props) => {
                 <ProtocolResultBlock>
                     <ProtocolResultWrapper>
                         <ProtocolFormField
+                            type='checkbox'
+                            label='Парасигматизм шипящих'
+                            name='game_pictures_for_fish.parasigmatism_of_hissing'
+                            control={control}
+                            errors={errors}
+                            disabled={disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
                             type='checkboxWithField'
                             label='Замена Щ на'
                             name='game_pictures_for_fish.replacing_shch_to'
@@ -304,8 +314,8 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label='Шипящий сигматизм'
-                            name='game_pictures_for_fish.hissing_sigmatism_two'
+                            label='Свистящий сигматизм шипящих'
+                            name='game_pictures_for_fish.whistling_sigmatism_of_hissing'
                             control={control}
                             errors={errors}
                             disabled={disabled}
@@ -346,6 +356,16 @@ const PicturesForFish = (props) => {
                             type='checkbox'
                             label='Смешение звуков'
                             name='game_pictures_for_fish.mixing_sounds_two'
+                            control={control}
+                            errors={errors}
+                            disabled={disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkbox'
+                            label='Межзубный сигматизм шипящих'
+                            name='game_pictures_for_fish.interdental_sigmatism_of_hissing'
                             control={control}
                             errors={errors}
                             disabled={disabled}
