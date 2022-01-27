@@ -14,327 +14,325 @@ import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/
 const OnTheFarmPartThree = (props) => {
 
     const {
-        register, errors, control, isConclusionDisabled, disabled, lessonStatusFinished
+        register, errors, control, isConclusionDisabled, disabled
     } = props
 
     return (
         <>
-            {lessonStatusFinished && (
-              <>
-                  <ProtocolBlock>
-                      <ProtocolPlaceholderTitle>Игра «На ферме». Часть 3</ProtocolPlaceholderTitle>
-                      <ProtocolSubtitleThree>Согласование сущ.+числ.</ProtocolSubtitleThree>
+            <ProtocolBlock>
+                <ProtocolPlaceholderTitle>Игра «На ферме». Часть 3</ProtocolPlaceholderTitle>
+                <ProtocolSubtitleThree>Согласование сущ.+числ.</ProtocolSubtitleThree>
 
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='text'
-                              label='Одна белая курица'
-                              name='game_on_the_farm_part_three.one_white_chicken'
-                              register={register}
-                              errors={errors}
-                              disabled={disabled}
-                          />
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='text'
-                              label='Три рыжих курицы'
-                              name='game_on_the_farm_part_three.three_ginger_hens'
-                              register={register}
-                              errors={errors}
-                              disabled={disabled}
-                          />
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='text'
-                              label='Пять рябых куриц'
-                              name='game_on_the_farm_part_three.five_speckled_hens'
-                              register={register}
-                              errors={errors}
-                              disabled={disabled}
-                          />
-                      </ProtocolRow>
-                      <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                      <ProtocolRow>
-                          <ProtocolResultBlock>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Ребенок смешивает парадигмы разных окончаний'
-                                      name='game_on_the_farm_part_three.options_for_confinement'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Ребенок делает ошибки внутри одного падежа'
-                                      name='game_on_the_farm_part_three.options_for_confinement'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                          </ProtocolResultBlock>
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='textarea'
-                              label='Комментарий'
-                              name='game_on_the_farm_part_three.expert_comment'
-                              placeholder='Комментарий специалиста'
-                              register={register}
-                              disabled={disabled}
-                          />
-                      </ProtocolRow>
-                  </ProtocolBlock>
-                  <ProtocolBlock>
-                      <ProtocolBlockTitle>Психологическая база речи: Внимание</ProtocolBlockTitle>
-                      <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                      <ProtocolRow>
-                          <ProtocolDescriptionSubtitle>Речевое внимание:</ProtocolDescriptionSubtitle>
-                          <ProtocolResultBlock>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Сформировано'
-                                      name='game_on_the_farm_part_three.speech_comprehension'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Сформировано недостаточно'
-                                      name='game_on_the_farm_part_three.speech_comprehension'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Не сформировано'
-                                      name='game_on_the_farm_part_three.speech_comprehension'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                          </ProtocolResultBlock>
-                          <ProtocolDescriptionSubtitle>Распределение:</ProtocolDescriptionSubtitle>
-                          <ProtocolResultBlock>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='checkbox'
-                                      label='Наблюдаются трудности распределения внимания'
-                                      name='game_on_the_farm_part_three.there_are_difficulties_in_distributing_attention'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                          </ProtocolResultBlock>
-                          <ProtocolDescriptionSubtitle>Концентрация:</ProtocolDescriptionSubtitle>
-                          <ProtocolResultBlock>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Низкая концентрация и неустойчивость внимания в целом (ребенок плохо сосредотачивается, с трудом удерживает внимание на объекте)'
-                                      name='game_on_the_farm_part_three.concentration'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Наблюдаются трудности концентрации произвольного внимания'
-                                      name='game_on_the_farm_part_three.concentration'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                          </ProtocolResultBlock>
-                          <ProtocolDescriptionSubtitle>Устойчивость:</ProtocolDescriptionSubtitle>
-                          <ProtocolResultBlock>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Внимание неустойчивое, поверхностное, ребенок очень быстро истощается'
-                                      name='game_on_the_farm_part_three.sustainability'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Внимание недостаточно устойчивое'
-                                      name='game_on_the_farm_part_three.sustainability'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Внимание устойчивое'
-                                      name='game_on_the_farm_part_three.sustainability'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                          </ProtocolResultBlock>
-                          <ProtocolDescriptionSubtitle>Истощаемость:</ProtocolDescriptionSubtitle>
-                          <ProtocolResultBlock>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='checkbox'
-                                      label='Внимание ребенка характеризуется быстрой истощаемостью'
-                                      name='game_on_the_farm_part_three.child_s_attention_is_characterized_by_rapid_exhaustion'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || disabled}
-                                  />
-                              </ProtocolResultWrapper>
-                          </ProtocolResultBlock>
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='text'
-                              label='Объем:'
-                              name='game_on_the_farm_part_three.volume'
-                              register={register}
-                              errors={errors}
-                              disabled={isConclusionDisabled || disabled}
-                          />
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='text'
-                              label='Переключаемость:'
-                              name='game_on_the_farm_part_three.switchability'
-                              register={register}
-                              errors={errors}
-                              disabled={isConclusionDisabled || disabled}
-                          />
-                      </ProtocolRow>
-                  </ProtocolBlock>
-                  <ProtocolBlock>
-                      <ProtocolBlockTitle>Психологическая база речи: Познавательная активность. Мотивация и интерес</ProtocolBlockTitle>
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='text'
-                              label='Утомляемость:'
-                              name='game_on_the_farm_part_three.fatigue'
-                              register={register}
-                              errors={errors}
-                              disabled={isConclusionDisabled || disabled}
-                          />
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='text'
-                              label='Контактность'
-                              name='game_on_the_farm_part_three.contact'
-                              register={register}
-                              errors={errors}
-                              disabled={isConclusionDisabled || disabled}
-                          />
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='text'
-                              label='Работоспособность'
-                              name='game_on_the_farm_part_three.working_capacity'
-                              register={register}
-                              errors={errors}
-                              disabled={isConclusionDisabled || disabled}
-                          />
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='text'
-                              label='Мотивация'
-                              name='game_on_the_farm_part_three.motivation'
-                              register={register}
-                              errors={errors}
-                              disabled={isConclusionDisabled || disabled}
-                          />
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolFormField
-                              type='text'
-                              label='Интерес'
-                              name='game_on_the_farm_part_three.interest'
-                              register={register}
-                              errors={errors}
-                              disabled={isConclusionDisabled || disabled}
-                          />
-                      </ProtocolRow>
-                      <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                      <ProtocolRow>
-                          <ProtocolResultWrapper>
-                              <ProtocolFormField
-                                  type='radio'
-                                  label='Крайне низкая познавательная активность и мотивация к предметной, предметно-игровой
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Одна белая курица'
+                        name='game_on_the_farm_part_three.one_white_chicken'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Три рыжих курицы'
+                        name='game_on_the_farm_part_three.three_ginger_hens'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Пять рябых куриц'
+                        name='game_on_the_farm_part_three.five_speckled_hens'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                <ProtocolRow>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Ребенок смешивает парадигмы разных окончаний'
+                                name='game_on_the_farm_part_three.options_for_confinement'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Ребенок делает ошибки внутри одного падежа'
+                                name='game_on_the_farm_part_three.options_for_confinement'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='textarea'
+                        label='Комментарий'
+                        name='game_on_the_farm_part_three.expert_comment'
+                        placeholder='Комментарий специалиста'
+                        register={register}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+            </ProtocolBlock>
+            <ProtocolBlock>
+                <ProtocolBlockTitle>Психологическая база речи: Внимание</ProtocolBlockTitle>
+                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Речевое внимание:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Сформировано'
+                                name='game_on_the_farm_part_three.speech_comprehension'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Сформировано недостаточно'
+                                name='game_on_the_farm_part_three.speech_comprehension'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Не сформировано'
+                                name='game_on_the_farm_part_three.speech_comprehension'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                    <ProtocolDescriptionSubtitle>Распределение:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Наблюдаются трудности распределения внимания'
+                                name='game_on_the_farm_part_three.there_are_difficulties_in_distributing_attention'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                    <ProtocolDescriptionSubtitle>Концентрация:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Низкая концентрация и неустойчивость внимания в целом (ребенок плохо сосредотачивается, с трудом удерживает внимание на объекте)'
+                                name='game_on_the_farm_part_three.concentration'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Наблюдаются трудности концентрации произвольного внимания'
+                                name='game_on_the_farm_part_three.concentration'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                    <ProtocolDescriptionSubtitle>Устойчивость:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Внимание неустойчивое, поверхностное, ребенок очень быстро истощается'
+                                name='game_on_the_farm_part_three.sustainability'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Внимание недостаточно устойчивое'
+                                name='game_on_the_farm_part_three.sustainability'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Внимание устойчивое'
+                                name='game_on_the_farm_part_three.sustainability'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                    <ProtocolDescriptionSubtitle>Истощаемость:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Внимание ребенка характеризуется быстрой истощаемостью'
+                                name='game_on_the_farm_part_three.child_s_attention_is_characterized_by_rapid_exhaustion'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Объем:'
+                        name='game_on_the_farm_part_three.volume'
+                        register={register}
+                        errors={errors}
+                        disabled={isConclusionDisabled || disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Переключаемость:'
+                        name='game_on_the_farm_part_three.switchability'
+                        register={register}
+                        errors={errors}
+                        disabled={isConclusionDisabled || disabled}
+                    />
+                </ProtocolRow>
+            </ProtocolBlock>
+            <ProtocolBlock>
+                <ProtocolBlockTitle>Психологическая база речи: Познавательная активность. Мотивация и
+                    интерес</ProtocolBlockTitle>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Утомляемость:'
+                        name='game_on_the_farm_part_three.fatigue'
+                        register={register}
+                        errors={errors}
+                        disabled={isConclusionDisabled || disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Контактность'
+                        name='game_on_the_farm_part_three.contact'
+                        register={register}
+                        errors={errors}
+                        disabled={isConclusionDisabled || disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Работоспособность'
+                        name='game_on_the_farm_part_three.working_capacity'
+                        register={register}
+                        errors={errors}
+                        disabled={isConclusionDisabled || disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Мотивация'
+                        name='game_on_the_farm_part_three.motivation'
+                        register={register}
+                        errors={errors}
+                        disabled={isConclusionDisabled || disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='Интерес'
+                        name='game_on_the_farm_part_three.interest'
+                        register={register}
+                        errors={errors}
+                        disabled={isConclusionDisabled || disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                <ProtocolRow>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='radio'
+                            label='Крайне низкая познавательная активность и мотивация к предметной, предметно-игровой
 									деятельности'
-                                  name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
-                                  control={control}
-                                  errors={errors}
-                                  disabled={isConclusionDisabled || disabled}
-                              />
-                          </ProtocolResultWrapper>
-                          <ProtocolResultWrapper>
-                              <ProtocolFormField
-                                  type='radio'
-                                  label='Низкая познавательная активность и мотивация к различным видам деятельности, наблюдается
+                            name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='radio'
+                            label='Низкая познавательная активность и мотивация к различным видам деятельности, наблюдается
 									немотивированная
 									избирательность познавательной активности'
-                                  name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
-                                  control={control}
-                                  errors={errors}
-                                  disabled={isConclusionDisabled || disabled}
-                              />
-                          </ProtocolResultWrapper>
-                          <ProtocolResultWrapper>
-                              <ProtocolFormField
-                                  type='radio'
-                                  label='Отмечается некоторая недостаточность познавательной активности и мотивации к предметной
+                            name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='radio'
+                            label='Отмечается некоторая недостаточность познавательной активности и мотивации к предметной
 									деятельности'
-                                  name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
-                                  control={control}
-                                  errors={errors}
-                                  disabled={isConclusionDisabled || disabled}
-                              />
-                          </ProtocolResultWrapper>
-                          <ProtocolResultWrapper>
-                              <ProtocolFormField
-                                  type='radio'
-                                  label='Ярко выраженная познавательная активность и мотивация к предметной, предметно-игровой
+                            name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='radio'
+                            label='Ярко выраженная познавательная активность и мотивация к предметной, предметно-игровой
 									деятельности'
-                                  name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
-                                  control={control}
-                                  errors={errors}
-                                  disabled={isConclusionDisabled || disabled}
-                              />
-                          </ProtocolResultWrapper>
-                      </ProtocolRow>
-                  </ProtocolBlock>
-              </>
-            )}
+                            name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                </ProtocolRow>
+            </ProtocolBlock>
+
             <ProtocolBlock>
                 <ProtocolBlockTitle>Просодическая сторона речи</ProtocolBlockTitle>
                 <ProtocolSubtitleThree>Компоненты:</ProtocolSubtitleThree>
