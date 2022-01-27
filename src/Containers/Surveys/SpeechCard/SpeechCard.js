@@ -21,7 +21,7 @@ import { speechCardStatuses } from 'constants.js';
 const SpeechCard = (props) => {
 
     const {
-        speechCard, lesson, onSubmit
+        speechCard, lesson, onSubmit, isClosed
     } = props
 
     const { register, formState: { errors }, control, handleSubmit } = useForm({
@@ -35,7 +35,7 @@ const SpeechCard = (props) => {
     const dispatch = useDispatch()
     const data = useWatch({ control })
     let timer = null
-    const isCardClosed = speechCard.status === speechCardStatuses.closed
+    const isCardClosed = speechCard.status === speechCardStatuses.closed || isClosed
 
     useEffect(() => {
         clearTimeout(timer)
@@ -842,6 +842,7 @@ SpeechCard.propTypes = {
     speechCard: PropTypes.object.isRequired,
     lesson: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
+    isClosed: PropTypes.bool,
 }
 
 export default SpeechCard;
