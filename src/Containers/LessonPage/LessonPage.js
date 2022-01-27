@@ -85,7 +85,6 @@ const LessonPage = (props) => {
         }
     };
     const onLessonFinish = async () => {
-        await toggleProtocolModal()
         await sendWsAction(
             changeLessonStatus({
                 status: LESSON_STATUS_FINISHED,
@@ -209,6 +208,7 @@ const LessonPage = (props) => {
     };
 
     const onProtocolFinish = async data => {
+        await toggleProtocolModal()
         if (lesson.status !== lessonStatuses.finished) {
             toast.warning('Сначала завершите занятие')
         } else {
