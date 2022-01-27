@@ -172,6 +172,7 @@ const MagicExamGame = (props) => {
                         label='Комментарий'
                         name='game_magic_exam.expert_comment'
                         placeholder='Комментарий специалиста'
+                        errors={errors}
                         register={register}
                     />
                 </ProtocolRow>
@@ -347,6 +348,7 @@ const MagicExamGame = (props) => {
                         label='Комментарий'
                         name='game_magic_exam.phonemic_hearing_expert_comment'
                         placeholder='Комментарий специалиста'
+                        errors={errors}
                         register={register}
                         disabled={disabled}
                     />

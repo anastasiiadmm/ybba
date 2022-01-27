@@ -371,6 +371,7 @@ const OnTheFarmPartTwoGame = (props) => {
                         label='Комментарий'
                         name='game_on_the_farm_part_two.expert_comment'
                         placeholder='Комментарий специалиста'
+                        errors={errors}
                         register={register}
                         disabled={disabled}
                     />

@@ -31,7 +31,9 @@ const CheckBoxWithField = (props) => {
                             checked={params.field.value}
                             disabled={disabled}
                         />
-                        <span>{label}</span>
+                        <span className={addClasses(className, {
+                            'error': resolve(name, errors, '.')
+                        })}>{label}</span>
                     </label>
                     <input
                         type='text'
