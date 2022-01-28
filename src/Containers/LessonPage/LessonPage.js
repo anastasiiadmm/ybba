@@ -392,9 +392,6 @@ const LessonPage = (props) => {
                                 parentGameMain: checkUserRole(userRoles.parent),
                                 therapistGameMain: checkUserRole(userRoles.therapist),
                             })}
-                            style={{
-                                background: 'blue'
-                            }}
                         >
                             <div className='gamef__work-space'>
                                 <div
@@ -428,7 +425,6 @@ const LessonPage = (props) => {
                               <div className={addClasses('gamef__previews-wrap', {
                                   'hide': !carouselIsVisible,
                               })}>
-
                                   <div className='gamef__previews gamesLitsScrollbar'>
                                       <div className='gamef__under-carousel'>
                                           <div className='gamef__carousel-buttons'>
@@ -441,16 +437,12 @@ const LessonPage = (props) => {
                                               />
                                           </div>
                                       </div>
-                                      <div className={addClasses('gamef__previews-inner w-100', {
-                                          'hide': !carouselIsVisible,
-                                      })}>
+                                      <div className='gamef__previews-inner w-100'>
                                           {lesson?.games.length &&
                                             lesson.games.map((game, index) => {
                                                 return (
                                                   <button
-                                                    className={addClasses('gamef__preview gameItem', {
-                                                        active: game?.game_type === activeGame?.game_type,
-                                                    })}
+                                                    className='gamef__preview gameItem'
                                                     onClick={() => onChangeActiveGame(game)}
                                                   >
                                                       <img
