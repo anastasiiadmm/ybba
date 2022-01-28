@@ -442,7 +442,9 @@ const LessonPage = (props) => {
                                             lesson.games.map((game, index) => {
                                                 return (
                                                   <button
-                                                    className='gamef__preview gameItem'
+                                                    className={addClasses('gamef__preview gameItem', {
+                                                        active: game?.game_type === activeGame?.game_type,
+                                                    })}
                                                     onClick={() => onChangeActiveGame(game)}
                                                   >
                                                       <img
