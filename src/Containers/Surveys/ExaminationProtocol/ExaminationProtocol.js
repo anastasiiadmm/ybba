@@ -17,8 +17,7 @@ import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFo
 import ProtocolTitle from 'Components/Surveys/ExaminationProtocol/ProtocolTitle/ProtocolTitle.js';
 import ProtocolBlockTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBlockTitle/ProtocolBlockTitle.js';
 import ProtocolResultTitle from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle.js';
-import ProtocolDescriptionSubtitle
-    from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle.js';
+import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle.js';
 import ProtocolResultBlock from 'Components/Surveys/ExaminationProtocol/ProtocolResultBlock/ProtocolResultBlock.js';
 import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper.js';
 import ProtocolPlaceholderTitle from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle.js';
@@ -725,7 +724,8 @@ const ExaminationProtocol = (props) => {
                 </ProtocolRow>
                 <ProtocolRow>
                     <p className='protocol__finish-title'>Логопед</p>
-                    <ProtocolDescriptionSubtitle>Дата рождения: {protocol.child_date_of_birth}</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>Дата
+                        рождения: {protocol.child_date_of_birth}</ProtocolDescriptionSubtitle>
                     <p className='protocol__info'>Родитель: {protocol.parent.first_name} {protocol.parent.last_name}</p>
                 </ProtocolRow>
             </ProtocolBlock>

@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSpeechCard, surveysSelector } from 'redux/surveys/surveysSlice.js';
 import { Spinner } from 'react-bootstrap';
 
+import 'Containers/ChildSpeechCard/childSpeechCard.css'
+
 const ChildSpeechCard = (props) => {
 
     const { childId } = props.match.params

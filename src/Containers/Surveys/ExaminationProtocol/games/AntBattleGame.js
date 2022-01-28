@@ -59,6 +59,26 @@ const AntBattleGame = (props) => {
                             disabled={disabled}
                         />
                     </ProtocolRow>
+                    <ProtocolRow>
+                        <ProtocolFormField
+                            type='text'
+                            label='Грибочек'
+                            name='game_ant_battle.mushroom'
+                            register={register}
+                            errors={errors}
+                            disabled={disabled}
+                        />
+                    </ProtocolRow>
+                    <ProtocolRow>
+                        <ProtocolFormField
+                            type='text'
+                            label='Окошко (открой рот)'
+                            name='game_ant_battle.window'
+                            register={register}
+                            errors={errors}
+                            disabled={disabled}
+                        />
+                    </ProtocolRow>
                 </ProtocolBox>
                 <ProtocolBox>
                     <ProtocolBoxTitle>Динамический праксис</ProtocolBoxTitle>
@@ -77,6 +97,16 @@ const AntBattleGame = (props) => {
                             type='text'
                             label='Качели'
                             name='game_ant_battle.swing'
+                            register={register}
+                            errors={errors}
+                            disabled={disabled}
+                        />
+                    </ProtocolRow>
+                    <ProtocolRow>
+                        <ProtocolFormField
+                            type='text'
+                            label='Лошадка'
+                            name='game_ant_battle.horse'
                             register={register}
                             errors={errors}
                             disabled={disabled}

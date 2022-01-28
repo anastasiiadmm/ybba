@@ -18,7 +18,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const OnTheFarmGame = (props) => {
 
     const  {
-        register, errors, control, isConclusionDisabled, disabled
+        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
     } = props
 
     return (
@@ -311,304 +311,308 @@ const OnTheFarmGame = (props) => {
                         />
                     </ProtocolRow>
                 </ProtocolBox>
-                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Уровень понимания речи:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Нулевой'
-                                name='game_on_the_farm.speech_comprehension_level'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Ситуативный'
-                                name='game_on_the_farm.speech_comprehension_level'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Номинативный'
-                                name='game_on_the_farm.speech_comprehension_level'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Предикативный'
-                                name='game_on_the_farm.speech_comprehension_level'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Расчлененный'
-                                name='game_on_the_farm.speech_comprehension_level'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Наличие феномена отчуждения смысла слова'
-                                name='game_on_the_farm.presence_of_phenomenon_of_alienation'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Уровень сформированности лексикона:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Соответствует возрастной норме'
-                                name='game_on_the_farm.level_of_vocabulary_formation'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Не соответствует возрастной норме'
-                                name='game_on_the_farm.level_of_vocabulary_formation'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Активный семантический компонент (активный словарь):</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Нарушение актуализации слов - нарушен выбор слова из семантического поля'
-                                name='game_on_the_farm.active_semantic_component_active_vocabulary'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Наличие неологизмов'
-                                name='game_on_the_farm.active_semantic_component_active_vocabulary'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Предметная отнесенность слова:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Устойчивая'
-                                name='game_on_the_farm.subject_relation_of_a_word'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Неустойчивая'
-                                name='game_on_the_farm.subject_relation_of_a_word'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Вербальные парафазии:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Литеральные'
-                                name='game_on_the_farm.verbal_paraphasias'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Вербальные - смешение видовых признаков'
-                                name='game_on_the_farm.verbal_paraphasias'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Вербальные - смешение признаков часть/тело'
-                                name='game_on_the_farm.verbal_paraphasias'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Вербальные - замена названия предмета контекстным действием'
-                                name='game_on_the_farm.verbal_paraphasias'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Вербальные - смешение по внешнему сходству'
-                                name='game_on_the_farm.verbal_paraphasias'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Объем словаря:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Ограничен'
-                                name='game_on_the_farm.vocabulary_size'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Резко ограничен'
-                                name='game_on_the_farm.vocabulary_size'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Достаточный для осуществления полноценной коммуникации'
-                                name='game_on_the_farm.vocabulary_size'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Очень мало "периферийных" слов даже из наиболее распространенных, прагматически ценных для этого возраста тематических групп'
-                                name='game_on_the_farm.vocabulary_size_part_two'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Словарь преимущественно состоит из слов, обозначающих предметы, наблюдается дефицит
+                {isLessonFinished && (
+                    <>
+                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Уровень понимания речи:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Нулевой'
+                                        name='game_on_the_farm.speech_comprehension_level'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Ситуативный'
+                                        name='game_on_the_farm.speech_comprehension_level'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Номинативный'
+                                        name='game_on_the_farm.speech_comprehension_level'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Предикативный'
+                                        name='game_on_the_farm.speech_comprehension_level'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Расчлененный'
+                                        name='game_on_the_farm.speech_comprehension_level'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Наличие феномена отчуждения смысла слова'
+                                        name='game_on_the_farm.presence_of_phenomenon_of_alienation'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Уровень сформированности лексикона:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Соответствует возрастной норме'
+                                        name='game_on_the_farm.level_of_vocabulary_formation'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Не соответствует возрастной норме'
+                                        name='game_on_the_farm.level_of_vocabulary_formation'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Активный семантический компонент (активный словарь):</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Нарушение актуализации слов - нарушен выбор слова из семантического поля'
+                                        name='game_on_the_farm.active_semantic_component_active_vocabulary'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Наличие неологизмов'
+                                        name='game_on_the_farm.active_semantic_component_active_vocabulary'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Предметная отнесенность слова:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Устойчивая'
+                                        name='game_on_the_farm.subject_relation_of_a_word'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Неустойчивая'
+                                        name='game_on_the_farm.subject_relation_of_a_word'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Вербальные парафазии:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Литеральные'
+                                        name='game_on_the_farm.verbal_paraphasias'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Вербальные - смешение видовых признаков'
+                                        name='game_on_the_farm.verbal_paraphasias'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Вербальные - смешение признаков часть/тело'
+                                        name='game_on_the_farm.verbal_paraphasias'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Вербальные - замена названия предмета контекстным действием'
+                                        name='game_on_the_farm.verbal_paraphasias'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Вербальные - смешение по внешнему сходству'
+                                        name='game_on_the_farm.verbal_paraphasias'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Объем словаря:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Ограничен'
+                                        name='game_on_the_farm.vocabulary_size'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Резко ограничен'
+                                        name='game_on_the_farm.vocabulary_size'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Достаточный для осуществления полноценной коммуникации'
+                                        name='game_on_the_farm.vocabulary_size'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Очень мало "периферийных" слов даже из наиболее распространенных, прагматически ценных для этого возраста тематических групп'
+                                        name='game_on_the_farm.vocabulary_size_part_two'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Словарь преимущественно состоит из слов, обозначающих предметы, наблюдается дефицит
                                 глагольного словаря, практически отсутствуют слова, обозначающие признаки и качества предметов.
                                 Словарь представлен небольшим количеством слов обиходно-бытовой тематики'
-                                name='game_on_the_farm.vocabulary_size_part_two'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Системная организация словаря:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Системная организация словаря находится на самом начальном этапе формирования; наблюдаются слабые
+                                        name='game_on_the_farm.vocabulary_size_part_two'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Системная организация словаря:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Системная организация словаря находится на самом начальном этапе формирования; наблюдаются слабые
 									ассоциативные связи, преобладают случайные, немотивированные ассоциации'
-                                name='game_on_the_farm.systemic_vocabulary_organization'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Организация словаря отличается бессистемностью, отсутствием мотивированных адекватных
+                                        name='game_on_the_farm.systemic_vocabulary_organization'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Организация словаря отличается бессистемностью, отсутствием мотивированных адекватных
 									ассоциаций'
-                                name='game_on_the_farm.systemic_vocabulary_organization'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Системная организация словаря находится на уровне установления первичных тематически/ситуативно
+                                        name='game_on_the_farm.systemic_vocabulary_organization'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Системная организация словаря находится на уровне установления первичных тематически/ситуативно
 									обусловленных связей, наблюдаются выраженные (незначительные) трудности установления родовидовых,
 									антонимических и пр. отношений между словами, входящими в индивидуальный словарный запас; в лексиконе
 									много
 									слов, значение которых усвоено только на номинативном уровне'
-                                name='game_on_the_farm.systemic_vocabulary_organization'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Системная организация словаря отличается большим количеством и разнообразием смысловых и формальных
+                                        name='game_on_the_farm.systemic_vocabulary_organization'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Системная организация словаря отличается большим количеством и разнообразием смысловых и формальных
 									связей;
 									в лексиконе преобладают слова, значение которых усвоено на понятийном уровне'
-                                name='game_on_the_farm.systemic_vocabulary_organization'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
+                                        name='game_on_the_farm.systemic_vocabulary_organization'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                    </>
+                )}
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'

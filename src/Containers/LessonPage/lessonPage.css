@@ -73,6 +73,8 @@
     padding: 9px 0;
     grid-row: 3/4;
     grid-column: 1/2;
+    z-index: 1;
+    background: #000;
 }
 
 .gamef__footer_full {
@@ -80,18 +82,25 @@
 }
 
 .gamef__previews-wrap {
+    position: fixed;
+    bottom: 55px;
+    background: rgba(0,0,0);
+
     width: 100%;
     padding: 0 0 7px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
+    transition: .5s all;
+}
+.hide.gamef__previews-wrap {
+    transform: translateY(105px);
 }
 
 .gamef__previews {
     position: relative;
     grid-row: 1/2;
     grid-column: 1/2;
-    overflow: hidden;
 }
 
 .gamef__previews-inner {
@@ -99,24 +108,30 @@
     width: 5000px;
     position: relative;
     z-index: 10;
+    overflow: hidden;
+}
+
+.gamef__under-carousel {
+    position: relative;
+}
+.gamef__carousel-buttons {
+    position: absolute;
+    padding: 12px 10px;
+    top: -62px;
 }
 
 .gamef__preview {
-    overflow: hidden;
+    border: none;
+    background: transparent;
+    overflow: visible !important;
     position: relative;
 }
 
 .gamef__preview-img {
     display: block;
-    opacity: 0.3;
+    opacity: 0;
     position: relative;
     z-index: 20;
-    border: 4px solid transparent;
-}
-
-.active .gamef__preview-img {
-    opacity: 1;
-    border-color: #fff;
 }
 
 .gamef__preview-info {
@@ -190,6 +205,7 @@
     padding: 0 14px;
 }
 
+.gamef__hide-carousel,
 .gamef__pause,
 .gamef__restart,
 .gamef__microphone,
@@ -206,6 +222,7 @@
     font-weight: 800;
 }
 
+.gamef__hide-carousel,
 .gamef__pause,
 .gamef__restart,
 .gamef__microphone,
@@ -214,6 +231,20 @@
     width: 42px;
     height: 42px;
     margin-right: 8px;
+}
+
+.gamef__hide-carousel {
+    background: rgba(0,0,0,.65) !important;
+    border: none;
+}
+
+.gamef__hide-carousel:before {
+    content: url(../../assets/img/arrow-down-white.svg);
+    display:inline-block;
+    transition: .3s;
+}
+.hide.gamef__hide-carousel:before {
+    transform: rotate(180deg);
 }
 
 .gamef__pause {
@@ -252,14 +283,22 @@
 }
 
 .gameItem {
-    min-width: 180px !important;
-    max-width: 180px !important;
+    min-width: 170px !important;
+    max-width: 170px !important;
     height: 100px !important;
     cursor: pointer;
+    overflow: hidden !important;
+
+    padding: 0;
+    border: 4px solid transparent;
+}
+.active.gameItem {
+    opacity: 1;
+    border-color: #fff;
 }
 
 .gameItem:hover {
-    transform: scale(1.1);
+    /*transform: scale(1.1);*/
 }
 
 .check-game-button_active {

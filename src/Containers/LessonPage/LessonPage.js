@@ -69,18 +69,20 @@ const LessonPage = (props) => {
     const [activeGame, setActiveGame] = useState(null);
     const [unityContext, setUnityContext] = useState(null);
     const [unityLoadProgress, setUnityLoadProgress] = useState(0);
-    const [isMuted, setIsMuted] = useState(false)
-    const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false)
-    const [_activeGame, _setActiveGame] = useState(1)
+    const [isMuted, setIsMuted] = useState(false);
+    const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false);
+    const [isUnityInitialized, setIsUnityInitialized] = useState(false);
 
-    const [protocolModalIsOpen, setProtocolModalIsOpen] = useState(false)
-    const toggleProtocolModal = async () => await setProtocolModalIsOpen(!protocolModalIsOpen)
+    const [carouselIsVisible, setCarouselIsVisible] = useState(true);
+    const toggleCarousel = async () => await setCarouselIsVisible(!carouselIsVisible);
+
+    const [protocolModalIsOpen, setProtocolModalIsOpen] = useState(false);
+    const toggleProtocolModal = async () => await setProtocolModalIsOpen(!protocolModalIsOpen);
 
     const onChangeActiveGame = (game) => {
         if (!activeGame || (game.id !== activeGame.id)) {
-            setUnityLoadProgress(0);
             sendWsAction(
-                changeActiveGame({ lesson_id: lesson.id, game_id: game.id })
+                changeActiveGame({ lesson_id: lesson.id, game_id: game.game_type })
             );
         }
     };
@@ -107,12 +109,9 @@ const LessonPage = (props) => {
         setIsTeacherHaveControlOnGame(!isTeacherHaveControlOnGame)
     }
 
-    const getFileUrl = useCallback(
-        (fileName) => {
-            return activeGame[fileName];
-        },
-        [activeGame]
-    );
+    const getFileUrl = useCallback((fileName) => {
+        return lesson.game_build[fileName];
+    }, [lesson]);
 
     const setMuted = useCallback(async () => {
         const muted = await api.isAudioMuted()
@@ -141,20 +140,6 @@ const LessonPage = (props) => {
             setIsMuted(false)
         }
     }, [api])
-
-    const setUnity = useCallback(async () => {
-        if (activeGame) {
-            await setUnityContext(null);
-            const context = new UnityContext({
-                loaderUrl: getFileUrl(GAME_FILE_TYPE_LOADER),
-                dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
-                frameworkUrl: getFileUrl(GAME_FILE_TYPE_FRAMEWORK),
-                codeUrl: getFileUrl(GAME_FILE_TYPE_WASM),
-                streamingAssetsUrl: getFileUrl(GAME_FOLDER_STREAMING_ASSETS)
-            });
-            await setUnityContext(context);
-        }
-    }, [activeGame, getFileUrl]);
 
     const sendJsonToGame = useCallback(
         (jsonData) => {
@@ -247,25 +232,39 @@ const LessonPage = (props) => {
         }
     }, [api])
 
-    const getUserDataForGame = () => {
+    const getUserDataForGame = useCallback(() => {
         return {
             nickName: user.email,
             roomId: lessonId,
-            gameType: _activeGame,
+            gameType: lesson.active_game_id,
             developmentMode: config.appEnvironment === envs.local,
             userRole: gameUserRoles[user.role],
         }
-    }
+    }, [lesson, lessonId, user])
 
-    const updateGameJsonData = () => {
+    const updateGameJsonData = useCallback(() => {
         const userGameData = getUserDataForGame()
         unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData))
-    }
+    }, [getUserDataForGame, unityContext])
 
-    const inputGameChangeHandler = e => {
-        console.log(e.target.value)
-        _setActiveGame(e.target.value)
-    }
+    const setUnity = useCallback(async () => {
+        if (lesson) {
+            if (isUnityInitialized) {
+                updateGameJsonData()
+            } else {
+                if (lesson.game_build) {
+                    const context = new UnityContext({
+                        loaderUrl: getFileUrl(GAME_FILE_TYPE_LOADER),
+                        dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
+                        frameworkUrl: getFileUrl(GAME_FILE_TYPE_FRAMEWORK),
+                        codeUrl: getFileUrl(GAME_FILE_TYPE_WASM),
+                        streamingAssetsUrl: getFileUrl(GAME_FOLDER_STREAMING_ASSETS)
+                    });
+                    await setUnityContext(context);
+                }
+            }
+        }
+    }, [getFileUrl, isUnityInitialized, lesson, updateGameJsonData]);
 
     useEffect(() => {
         startRecording()
@@ -286,13 +285,13 @@ const LessonPage = (props) => {
 
     useEffect(() => {
         setUnity();
-    }, [activeGame, setUnity]);
+    }, [lesson]);
 
     useEffect(() => {
         if (lesson) {
-            const active = lesson?.games?.find(
-                (game) => game.id === lesson.active_game_id
-            );
+            const active = lesson?.games?.find((game) => {
+                return game.game_type === parseInt(lesson.active_game_id)
+            });
             setActiveGame(active);
         }
     }, [lesson]);
@@ -304,10 +303,8 @@ const LessonPage = (props) => {
             });
             if (unityContext) {
                 unityContext.on('GameInitialized', () => {
-                    console.log('===============')
-                    console.log('asd', 'GameInitialized')
-                    console.log('===============')
                     updateGameJsonData()
+                    setIsUnityInitialized(true)
                 })
                 unityContext.on('MuteMicrophone', () => {
                     muteJitsiAudio()
@@ -317,7 +314,7 @@ const LessonPage = (props) => {
                 })
             }
         }
-    }, [user, lessonId, sendJsonToGameWithTimeout, unityContext, muteJitsiAudio, unMuteJitsiAudio]);
+    }, [user, lessonId, sendJsonToGameWithTimeout, unityContext, muteJitsiAudio, unMuteJitsiAudio, updateGameJsonData]);
 
     useEffect(() => {
         startSTRecording();
@@ -333,10 +330,10 @@ const LessonPage = (props) => {
 
 
     useEffect(() => {
-        if (lesson && lesson?.student?.id) {
+        if (lesson && lesson?.student?.id && !isUnityInitialized) {
             dispatch(getProtocol(lesson.student.id))
         }
-    }, [dispatch, lesson])
+    }, [dispatch, isUnityInitialized, lesson])
 
     useEffect(() => {
         if (lesson && protocol && protocol.status === examinationProtocolStatuses.closed) {
@@ -407,7 +404,7 @@ const LessonPage = (props) => {
                                         <Unity
                                             unityContext={unityContext}
                                             style={{
-                                                width: '100%',
+                                                width: `${canvasParent.current.clientHeight / 9 * 16}px`,
                                                 height: `${canvasParent.current.clientHeight}px`,
                                             }}
                                             className={addClasses('', {
@@ -424,113 +421,121 @@ const LessonPage = (props) => {
                             </div>
                         </main>
                         {checkUserRole(userRoles.therapist) && (
-                            <footer className='gamef__footer'>
-                                <div className='gamef__previews-wrap'>
-                                    <div className='gamef__previews gamesLitsScrollbar'>
-                                        <div className='gamef__previews-inner w-100'>
-                                            {lesson?.games.length &&
+                          <>
+                              <div className={addClasses('gamef__previews-wrap', {
+                                  'hide': !carouselIsVisible,
+                              })}>
+                                  <div className='gamef__previews gamesLitsScrollbar'>
+                                      <div className='gamef__under-carousel'>
+                                          <div className='gamef__carousel-buttons'>
+                                              <button
+                                                className={addClasses('gamef__hide-carousel', {
+                                                    'hide': !carouselIsVisible,
+                                                })}
+                                                type='button'
+                                                onClick={() => toggleCarousel()}
+                                              />
+                                          </div>
+                                      </div>
+                                      <div className='gamef__previews-inner w-100'>
+                                          {lesson?.games.length &&
                                             lesson.games.map((game, index) => {
                                                 return (
-                                                    <div
-                                                        className={addClasses('gamef__preview gameItem', {
-                                                            active: game?.id === activeGame?.id,
-                                                        })}
-                                                        onClick={() => onChangeActiveGame(game)}
-                                                    >
-                                                        <img
-                                                            src={game.preview}
-                                                            className='gamef__preview-img'
-                                                            alt='Game'
-                                                            style={{ opacity: '.6' }}
-                                                        />
-                                                        <div className='gamef__preview-info'>
-                                                            <span>Игра {index + 1}</span>
-                                                            <p>{game.display_name}</p>
-                                                        </div>
-                                                    </div>
+                                                  <button
+                                                    className='gamef__preview gameItem'
+                                                    onClick={() => onChangeActiveGame(game)}
+                                                  >
+                                                      <img
+                                                        src={game.preview}
+                                                        className='gamef__preview-img'
+                                                        alt='Game'
+                                                      />
+                                                      <div className='gamef__preview-info'>
+                                                          <span>Игра {index + 1}</span>
+                                                          <p>{game.name}</p>
+                                                      </div>
+                                                  </button>
                                                 );
                                             })}
-                                        </div>
-                                        {/*<button className='gamef__preview-next' type='button'/>*/}
-                                        {/*<button className='gamef__preview-prev' type='button'/>*/}
-                                    </div>
-                                </div>
-                                <div className='gamef__controls'>
-                                    <button
+                                      </div>
+                                      {/*<button className='gamef__preview-next' type='button'/>*/}
+                                      {/*<button className='gamef__preview-prev' type='button'/>*/}
+                                  </div>
+                              </div>
+                              <footer className='gamef__footer'>
+                                  <div className='gamef__controls'>
+                                      <button
                                         className='gamef__restart'
                                         type='button'
                                         onClick={GameActionHandler(gameActions.RESTART_GAME)}
-                                    />
-                                    <button
+                                      />
+                                      <button
                                         className={addClasses('', {
                                             'gamef__microphone_muted': isMuted,
                                             'gamef__microphone': !isMuted,
                                         })}
                                         type='button'
                                         onClick={toggleMute}
-                                    />
-                                    <button
+                                      />
+                                      <button
                                         className={addClasses('gamef__get-control', {
                                             'active': isTeacherHaveControlOnGame
                                         })}
                                         type='button'
                                         onClick={getGameControlForTeacher}
-                                    />
-                                    <button
+                                      />
+                                      <button
                                         type='button'
                                         className={addClasses('', {
                                             'check-game-button_active check-game-button__active':
-                                                !isParentWebcamIncreased,
+                                              !isParentWebcamIncreased,
                                             'check-game-button_inactive check-game-button__inactive':
                                             isParentWebcamIncreased,
                                         })}
                                         onClick={() => switchChildWebcamSize(false)}
-                                    />
-                                    <button
+                                      />
+                                      <button
                                         type='button'
                                         className={addClasses('', {
                                             'play-game-button_active play-game-button__active':
                                             isParentWebcamIncreased,
                                             'play-game-button_inactive play-game-button__inactive':
-                                                !isParentWebcamIncreased,
+                                              !isParentWebcamIncreased,
                                         })}
                                         onClick={() => switchChildWebcamSize(true)}
-                                    />
-                                    <input type='number' onChange={inputGameChangeHandler} value={_activeGame} />
-                                    <button onClick={async () => updateGameJsonData()}>
-                                        Start game
-                                    </button>
-                                    <button
+                                      />
+                                      <button
                                         className='gamef__next'
                                         type='button'
                                         onClick={GameActionHandler(gameActions.INTRO_SOUND)}
-                                    >
-                                        Интро
-                                    </button>
-                                    <button
+                                      >
+                                          Интро
+                                      </button>
+                                      <button
                                         className='gamef__prev'
                                         type='button'
                                         onClick={GameActionHandler(gameActions.PREV_ACTION)}
-                                    >
-                                        Ещё раз
-                                    </button>
-                                    <button
+                                      >
+                                          Ещё раз
+                                      </button>
+                                      <button
                                         className='gamef__next'
                                         style={{ marginLeft: '0', marginRight: 'auto' }}
                                         type='button'
                                         onClick={GameActionHandler(gameActions.NEXT_ACTION)}
-                                    >
-                                        Далее
-                                    </button>
-                                    <button
+                                      >
+                                          Далее
+                                      </button>
+                                      <button
                                         className='gamef__finish'
                                         type='button'
                                         onClick={onLessonFinish}
-                                    >
-                                        Завершить занятие
-                                    </button>
-                                </div>
-                            </footer>
+                                      >
+                                          Завершить занятие
+                                      </button>
+                                  </div>
+                              </footer>
+                          </>
                         )}
                     </>
                 </>
