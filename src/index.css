@@ -3585,7 +3585,6 @@ ol.game__lesson-list {
 
 .gamef__preview-img {
     display: block;
-    opacity: 35%;
     position: relative;
     z-index: 20;
 }
