@@ -129,8 +129,8 @@
 
 .gamef__preview-img {
     display: block;
-    opacity: 0;
     position: relative;
+    opacity: 35%;
     z-index: 20;
 }
 
