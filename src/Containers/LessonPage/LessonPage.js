@@ -69,12 +69,15 @@ const LessonPage = (props) => {
     const [activeGame, setActiveGame] = useState(null);
     const [unityContext, setUnityContext] = useState(null);
     const [unityLoadProgress, setUnityLoadProgress] = useState(0);
-    const [isMuted, setIsMuted] = useState(false)
-    const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false)
-    const [isUnityInitialized, setIsUnityInitialized] = useState(false)
+    const [isMuted, setIsMuted] = useState(false);
+    const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false);
+    const [isUnityInitialized, setIsUnityInitialized] = useState(false);
 
-    const [protocolModalIsOpen, setProtocolModalIsOpen] = useState(false)
-    const toggleProtocolModal = async () => await setProtocolModalIsOpen(!protocolModalIsOpen)
+    const [carouselIsVisible, setCarouselIsVisible] = useState(true);
+    const toggleCarousel = async () => await setCarouselIsVisible(!carouselIsVisible);
+
+    const [protocolModalIsOpen, setProtocolModalIsOpen] = useState(false);
+    const toggleProtocolModal = async () => await setProtocolModalIsOpen(!protocolModalIsOpen);
 
     const onChangeActiveGame = (game) => {
         if (!activeGame || (game.id !== activeGame.id)) {
@@ -418,108 +421,121 @@ const LessonPage = (props) => {
                             </div>
                         </main>
                         {checkUserRole(userRoles.therapist) && (
-                            <footer className='gamef__footer'>
-                                <div className='gamef__previews-wrap'>
-                                    <div className='gamef__previews gamesLitsScrollbar'>
-                                        <div className='gamef__previews-inner w-100'>
-                                            {lesson?.games.length &&
+                          <>
+                              <div className={addClasses('gamef__previews-wrap', {
+                                  'hide': !carouselIsVisible,
+                              })}>
+                                  <div className='gamef__previews gamesLitsScrollbar'>
+                                      <div className='gamef__under-carousel'>
+                                          <div className='gamef__carousel-buttons'>
+                                              <button
+                                                className={addClasses('gamef__hide-carousel', {
+                                                    'hide': !carouselIsVisible,
+                                                })}
+                                                type='button'
+                                                onClick={() => toggleCarousel()}
+                                              />
+                                          </div>
+                                      </div>
+                                      <div className='gamef__previews-inner w-100'>
+                                          {lesson?.games.length &&
                                             lesson.games.map((game, index) => {
                                                 return (
-                                                    <button
-                                                        className={addClasses('gamef__preview gameItem', {
-                                                            active: game?.game_type === activeGame?.game_type,
-                                                        })}
-                                                        onClick={() => onChangeActiveGame(game)}
-                                                    >
-                                                        <img
-                                                            src={game.preview}
-                                                            className='gamef__preview-img'
-                                                            alt='Game'
-                                                        />
-                                                        <div className='gamef__preview-info'>
-                                                            <span>Игра {index + 1}</span>
-                                                            <p>{game.name}</p>
-                                                        </div>
-                                                    </button>
+                                                  <button
+                                                    className='gamef__preview gameItem'
+                                                    onClick={() => onChangeActiveGame(game)}
+                                                  >
+                                                      <img
+                                                        src={game.preview}
+                                                        className='gamef__preview-img'
+                                                        alt='Game'
+                                                      />
+                                                      <div className='gamef__preview-info'>
+                                                          <span>Игра {index + 1}</span>
+                                                          <p>{game.name}</p>
+                                                      </div>
+                                                  </button>
                                                 );
                                             })}
-                                        </div>
-                                        {/*<button className='gamef__preview-next' type='button'/>*/}
-                                        {/*<button className='gamef__preview-prev' type='button'/>*/}
-                                    </div>
-                                </div>
-                                <div className='gamef__controls'>
-                                    <button
+                                      </div>
+                                      {/*<button className='gamef__preview-next' type='button'/>*/}
+                                      {/*<button className='gamef__preview-prev' type='button'/>*/}
+                                  </div>
+                              </div>
+                              <footer className='gamef__footer'>
+                                  <div className='gamef__controls'>
+                                      <button
                                         className='gamef__restart'
                                         type='button'
                                         onClick={GameActionHandler(gameActions.RESTART_GAME)}
-                                    />
-                                    <button
+                                      />
+                                      <button
                                         className={addClasses('', {
                                             'gamef__microphone_muted': isMuted,
                                             'gamef__microphone': !isMuted,
                                         })}
                                         type='button'
                                         onClick={toggleMute}
-                                    />
-                                    <button
+                                      />
+                                      <button
                                         className={addClasses('gamef__get-control', {
                                             'active': isTeacherHaveControlOnGame
                                         })}
                                         type='button'
                                         onClick={getGameControlForTeacher}
-                                    />
-                                    <button
+                                      />
+                                      <button
                                         type='button'
                                         className={addClasses('', {
                                             'check-game-button_active check-game-button__active':
-                                                !isParentWebcamIncreased,
+                                              !isParentWebcamIncreased,
                                             'check-game-button_inactive check-game-button__inactive':
                                             isParentWebcamIncreased,
                                         })}
                                         onClick={() => switchChildWebcamSize(false)}
-                                    />
-                                    <button
+                                      />
+                                      <button
                                         type='button'
                                         className={addClasses('', {
                                             'play-game-button_active play-game-button__active':
                                             isParentWebcamIncreased,
                                             'play-game-button_inactive play-game-button__inactive':
-                                                !isParentWebcamIncreased,
+                                              !isParentWebcamIncreased,
                                         })}
                                         onClick={() => switchChildWebcamSize(true)}
-                                    />
-                                    <button
+                                      />
+                                      <button
                                         className='gamef__next'
                                         type='button'
                                         onClick={GameActionHandler(gameActions.INTRO_SOUND)}
-                                    >
-                                        Интро
-                                    </button>
-                                    <button
+                                      >
+                                          Интро
+                                      </button>
+                                      <button
                                         className='gamef__prev'
                                         type='button'
                                         onClick={GameActionHandler(gameActions.PREV_ACTION)}
-                                    >
-                                        Ещё раз
-                                    </button>
-                                    <button
+                                      >
+                                          Ещё раз
+                                      </button>
+                                      <button
                                         className='gamef__next'
                                         style={{ marginLeft: '0', marginRight: 'auto' }}
                                         type='button'
                                         onClick={GameActionHandler(gameActions.NEXT_ACTION)}
-                                    >
-                                        Далее
-                                    </button>
-                                    <button
+                                      >
+                                          Далее
+                                      </button>
+                                      <button
                                         className='gamef__finish'
                                         type='button'
                                         onClick={onLessonFinish}
-                                    >
-                                        Завершить занятие
-                                    </button>
-                                </div>
-                            </footer>
+                                      >
+                                          Завершить занятие
+                                      </button>
+                                  </div>
+                              </footer>
+                          </>
                         )}
                     </>
                 </>
