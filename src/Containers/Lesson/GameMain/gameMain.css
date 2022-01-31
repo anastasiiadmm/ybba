@@ -1,0 +1,11 @@
+.mainGame {
+    transition: all .3s;
+}
+
+.gameWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 76vh;
+    overflow: hidden;
+}
