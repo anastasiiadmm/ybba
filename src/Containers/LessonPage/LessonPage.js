@@ -67,14 +67,14 @@ const LessonPage = (props) => {
   };
 
   const startSTRecording = useCallback(() => {
-    if (!checkEnv(envs.local)) {
+    if (!checkEnv(envs.local) && user) {
       initSessionStack();
       defineUser({
-        userId: user.id,
-        email: user.email,
-        role: user.role,
+        userId: user?.id,
+        email: user?.email,
+        role: user?.role,
         displayName: user?.profile
-          ? `${user.profile.first_name} ${user.profile.last_name}`
+          ? `${user?.profile.first_name} ${user?.profile.last_name}`
           : 'anonymous',
       });
     }
