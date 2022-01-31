@@ -5,7 +5,7 @@ import { addClasses } from 'utils/addClasses/addClasses';
 
 const GameCarousel = (props) => {
   const {
-    activeGameId,
+    activeGame,
     lessonId,
     games,
     isStyleDebug,
@@ -13,7 +13,6 @@ const GameCarousel = (props) => {
 
   const { sendWsAction } = useContext(WsContext);
 
-  const [activeGame, setActiveGame] = useState(null);
   const [carouselIsVisible, setCarouselIsVisible] = useState(true);
   const toggleCarousel = async () => await setCarouselIsVisible(!carouselIsVisible);
 
@@ -24,15 +23,6 @@ const GameCarousel = (props) => {
       );
     }
   };
-
-  useEffect(() => {
-    if (games) {
-      const active = games?.find((game) => {
-        return game.game_type === parseInt(activeGameId)
-      });
-      setActiveGame(active);
-    }
-  }, [games]);
 
   return (
     <div className={addClasses('gamef__previews-wrap', {

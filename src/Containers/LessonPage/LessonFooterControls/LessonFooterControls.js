@@ -10,6 +10,8 @@ import { addClasses } from 'utils/addClasses/addClasses';
 const LessonFooterControls = (props) => {
   const {
     switchChildWebcamSize,
+    setIsGameTipOpen,
+    isGameTipOpen,
     unityContext,
     setIsMuted,
     isMuted,
@@ -50,8 +52,9 @@ const LessonFooterControls = (props) => {
     setGameIsStarted(true);
   }
 
-  const openGameTip = () => {
-    console.log('openGameTip');
+  const toggleGameTip = () => {
+    // console.log('openGameTip', !isGameTipOpen);
+    setIsGameTipOpen(!isGameTipOpen);
   }
 
   return (
@@ -145,32 +148,12 @@ const LessonFooterControls = (props) => {
             }}
           />
           <button
-            className='gamef__question'
+            className={addClasses('gamef__question', {
+              'open': isGameTipOpen
+            })}
             type='button'
-            onClick={() => openGameTip}
+            onClick={() => toggleGameTip()}
           />
-
-          {/*<button*/}
-          {/*  className='gamef__next'*/}
-          {/*  type='button'*/}
-          {/*  onClick={GameActionHandler(gameActions.INTRO_SOUND)}*/}
-          {/*>*/}
-          {/*  Интро*/}
-          {/*</button>*/}
-          {/*<button*/}
-          {/*  className='gamef__prev'*/}
-          {/*  type='button'*/}
-          {/*  onClick={GameActionHandler(gameActions.PREV_ACTION)}*/}
-          {/*>*/}
-          {/*  Ещё раз*/}
-          {/*</button>*/}
-          {/*<button*/}
-          {/*  className='gamef__next'*/}
-          {/*  type='button'*/}
-          {/*  onClick={GameActionHandler(gameActions.NEXT_ACTION)}*/}
-          {/*>*/}
-          {/*  Далее*/}
-          {/*</button>*/}
         </div>
       </div>
     </footer>

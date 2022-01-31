@@ -318,6 +318,9 @@
 .gamef__question {
     background: url(../../assets/img/question.svg) 50% no-repeat !important;
 }
+.open.gamef__question {
+    background: white url(../../assets/img/question-black.svg) 50% no-repeat !important;
+}
 
 
 .gamef__sidebar {

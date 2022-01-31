@@ -42,6 +42,8 @@ const GameContainer = (props) => {
       gameType: lesson.active_game_id,
       developmentMode: config.appEnvironment === envs.local,
       userRole: gameUserRoles[user.role],
+      //Выбор языка билда: 0 - русский; 1 - английский
+      languageType: 0,
     }
   }, [lesson, lessonId, user]);
 

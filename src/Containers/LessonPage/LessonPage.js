@@ -16,6 +16,7 @@ import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/Bro
 import { WsContext } from 'context/WsContext/WsContext';
 
 import Modal from 'Components/Modal/Modal';
+import GameTipSidebar from './GameTipSidebar/GameTipSidebar';
 import LessonFooterControls from './LessonFooterControls/LessonFooterControls';
 import LessonSpeechCard from './LessonSpeechCard/LessonSpeechCard';
 import ProtocolSidebar from './ProtocolSidebar/ProtocolSidebar';
@@ -34,7 +35,9 @@ const LessonPage = (props) => {
   const { sendWsAction } = useContext(WsContext);
 
   const [isUnityInitialized, setIsUnityInitialized] = useState(false);
+  const [isGameTipOpen, setIsGameTipOpen] = useState(false);
   const [unityContext, setUnityContext] = useState(null);
+  const [activeGame, setActiveGame] = useState(null);
   const [isMuted, setIsMuted] = useState(false);
   const [isStyleDebug, setIsStyleDebug] = useState(false);
 
@@ -44,7 +47,6 @@ const LessonPage = (props) => {
   const { isMicrophoneAllowed, isCameraAllowed } = useContext(BrowserPermissionsContext);
 
   const onLessonFinish = async () => {
-    // TODO event in props
     await toggleProtocolModal()
     await sendWsAction(
       changeLessonStatus({
@@ -82,6 +84,15 @@ const LessonPage = (props) => {
       stopSessionStackRecording();
     }
   };
+
+  useEffect(() => {
+    if (lesson?.games && lesson?.active_game_id) {
+      const active = lesson.games?.find((game) => {
+        return game.game_type === parseInt(lesson.active_game_id)
+      });
+      setActiveGame(active);
+    }
+  }, [lesson]);
 
   useEffect(() => {
     startSTRecording();
@@ -148,7 +159,7 @@ const LessonPage = (props) => {
                   {lesson?.games?.length &&
                     <GameCarousel
                       isStyleDebug={isStyleDebug}
-                      activeGameId={lesson?.active_game_id}
+                      activeGame={activeGame}
                       lessonId={lessonId}
                       games={lesson.games}
                     />
@@ -156,6 +167,8 @@ const LessonPage = (props) => {
                   <LessonFooterControls
                     isStyleDebug={isStyleDebug}
                     switchChildWebcamSize={switchChildWebcamSize}
+                    setIsGameTipOpen={setIsGameTipOpen}
+                    isGameTipOpen={isGameTipOpen}
                     unityContext={unityContext}
                     setIsMuted={setIsMuted}
                     isMuted={isMuted}
@@ -173,11 +186,18 @@ const LessonPage = (props) => {
         )}
 
         {checkUserRole(userRoles.therapist) &&
+          isGameTipOpen ? (
+            <GameTipSidebar
+              setIsGameTipOpen={setIsGameTipOpen}
+              gameDescription={activeGame.name}
+              gameName={activeGame.name}
+            />
+          ) : (
           <ProtocolSidebar
             isUnityInitialized={isUnityInitialized}
             lesson={lesson}
           />
-        }
+        )}
       </div>
     </>
   );
