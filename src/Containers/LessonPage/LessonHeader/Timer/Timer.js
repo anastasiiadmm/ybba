@@ -9,7 +9,10 @@ import './timer.css'
 
 const Timer = (props) => {
     const {
-        startTime, endTime,
+        isLessonFinished,
+        onLessonFinish,
+        startTime,
+        endTime,
     } = props;
 
     const startTimeMoment = strTimeToMoment(startTime);
@@ -28,24 +31,37 @@ const Timer = (props) => {
     };
 
     useEffect(() => {
+        console.log(isLessonFinished);
         setInterval(() => {
-            const currentTime = getCurrentTime()
+            const currentTime = getCurrentTime();
             const duration = moment.duration(endTimeMoment.diff(currentTime));
-            setHours(parseInt(duration.asHours()))
-            setMinutes(parseInt(duration.asMinutes()) % 60)
-            setSeconds(parseInt(duration.asSeconds()) % 60)
+            setHours(parseInt(duration.asHours()));
+            setMinutes(parseInt(duration.asMinutes()) % 60);
+            setSeconds(parseInt(duration.asSeconds()) % 60);
         }, 1000);
     }, []);
 
     return (
-        <p className={addClasses('gamef__time', {
-            'warning': minutes <= 3
-        })}>
-            {checkIfLessonFinished() ?
-                'Урок окончен' :
-                `До конца занятия ${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`
-            }
-        </p>
+        <div className='gamef__time'>
+            <p className={addClasses('', {
+                'warning': minutes <= 3
+            })}>
+                {checkIfLessonFinished() ?
+                  'Урок окончен' :
+                  `До конца ${hours ? `0${hours}:` : ''}${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`
+                }
+            </p>
+            {isLessonFinished}
+            {!isLessonFinished && (
+                <button
+                    className='gamef__finish'
+                    type='button'
+                    onClick={onLessonFinish}
+                >
+                    Завершить
+                </button>
+            )}
+        </div>
     );
 }
 

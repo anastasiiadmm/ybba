@@ -1,29 +1,23 @@
 import React, { useCallback, useContext, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { gameActions, LESSON_STATUS_FINISHED } from 'constants.js';
+import { useSelector } from 'react-redux';
+import { gameActions } from 'constants.js';
 
 import { JitsiContext } from 'context/JitsiContext/JitsiContext';
-import { WsContext } from 'context/WsContext/WsContext';
 
-import { clearLessonState, lessonSelector } from 'redux/lesson/lessonSlice';
-import { changeLessonStatus } from 'redux/lesson/actions';
+import { lessonSelector } from 'redux/lesson/lessonSlice';
 import { addClasses } from 'utils/addClasses/addClasses';
 
 const LessonFooterControls = (props) => {
   const {
-    toggleProtocolModal,
     switchChildWebcamSize,
     unityContext,
-    lessonId,
     setIsMuted,
     isMuted,
     isStyleDebug,
   } = props;
 
   const { isParentWebcamIncreased } = useSelector(lessonSelector);
-  const { sendWsAction } = useContext(WsContext);
   const { api } = useContext(JitsiContext);
-  const dispatch = useDispatch();
 
   const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false);
   const [gameIsStarted, setGameIsStarted] = useState(false);
@@ -56,17 +50,9 @@ const LessonFooterControls = (props) => {
     setGameIsStarted(true);
   }
 
-  const onLessonFinish = async () => {
-    // TODO event in props
-    await toggleProtocolModal()
-    await sendWsAction(
-      changeLessonStatus({
-        status: LESSON_STATUS_FINISHED,
-        lesson_id: lessonId,
-      })
-    );
-    await dispatch(clearLessonState());
-  };
+  const openGameTip = () => {
+    console.log('openGameTip');
+  }
 
   return (
     <footer className={addClasses('gamef__footer', {
@@ -129,27 +115,27 @@ const LessonFooterControls = (props) => {
           <button
             className='gamef__volume'
             type='button'
-            onClick={GameActionHandler(gameActions.START_GAME)}
+            onClick={GameActionHandler(gameActions.INTRO_SOUND)}
           />
-          <button
-            className='gamef__music'
-            type='button'
-            onClick={GameActionHandler(gameActions.START_GAME)}
-          />
+          {/*<button*/}
+          {/*  className='gamef__music'*/}
+          {/*  type='button'*/}
+          {/*  onClick={GameActionHandler(gameActions.)}*/}
+          {/*/>*/}
           <button
             className='gamef__repeat-sound'
             type='button'
-            onClick={GameActionHandler(gameActions.START_GAME)}
+            onClick={GameActionHandler(gameActions.REPEAT)}
           />
           <button
             className='gamef__arrow-left'
             type='button'
-            onClick={GameActionHandler(gameActions.START_GAME)}
+            onClick={GameActionHandler(gameActions.PREV_ACTION)}
           />
           <button
             className='gamef__arrow-right'
             type='button'
-            onClick={GameActionHandler(gameActions.START_GAME)}
+            onClick={GameActionHandler(gameActions.NEXT_ACTION)}
           />
           <div
             className='divider horizontal'
@@ -161,7 +147,7 @@ const LessonFooterControls = (props) => {
           <button
             className='gamef__question'
             type='button'
-            onClick={GameActionHandler(gameActions.START_GAME)}
+            onClick={() => openGameTip}
           />
 
           {/*<button*/}
@@ -184,14 +170,6 @@ const LessonFooterControls = (props) => {
           {/*  onClick={GameActionHandler(gameActions.NEXT_ACTION)}*/}
           {/*>*/}
           {/*  Далее*/}
-          {/*</button>*/}
-
-          {/*<button*/}
-          {/*  className='gamef__finish'*/}
-          {/*  type='button'*/}
-          {/*  onClick={onLessonFinish}*/}
-          {/*>*/}
-          {/*  Завершить занятие*/}
           {/*</button>*/}
         </div>
       </div>

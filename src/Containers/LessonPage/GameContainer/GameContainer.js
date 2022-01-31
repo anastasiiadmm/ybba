@@ -22,13 +22,11 @@ const GameContainer = (props) => {
     isUnityInitialized,
     setUnityContext,
     unityContext,
-    setIsMuted,
     lessonId,
     lesson,
     isStyleDebug,
   } = props;
 
-  const { api } = useContext(JitsiContext);
   const { user } = useSelector(userSelector);
 
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
@@ -45,33 +43,17 @@ const GameContainer = (props) => {
       developmentMode: config.appEnvironment === envs.local,
       userRole: gameUserRoles[user.role],
     }
-  }, [lesson, lessonId, user])
+  }, [lesson, lessonId, user]);
 
   const updateGameJsonData = useCallback(() => {
-    const userGameData = getUserDataForGame()
-    unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData))
-  }, [getUserDataForGame, unityContext])
-
-  const sendJsonToGame = useCallback(
-    (jsonData) => {
-      unityContext.send('WebData', 'ReadWebData', JSON.stringify(jsonData));
-    },
-    [unityContext]
-  );
-
-  // const sendJsonToGameWithTimeout = useCallback(
-  //   (jsonData) => {
-  //     setTimeout(() => {
-  //       sendJsonToGame(jsonData);
-  //     }, 1000);
-  //   },
-  //   [sendJsonToGame]
-  // );
+    const userGameData = getUserDataForGame();
+    unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData));
+  }, [getUserDataForGame, unityContext]);
 
   const setUnity = useCallback(async () => {
     if (lesson) {
       if (isUnityInitialized) {
-        updateGameJsonData()
+        updateGameJsonData();
       } else {
         if (lesson.game_build) {
           const context = new UnityContext({
@@ -87,24 +69,6 @@ const GameContainer = (props) => {
     }
   }, [getFileUrl, isUnityInitialized, lesson, updateGameJsonData]);
 
-  const muteJitsiAudio = useCallback(async () => {
-    const muted = await api.isAudioMuted()
-    if (!muted) {
-      api.executeCommand('toggleAudio')
-      setIsMuted(true)
-    }
-  }, [api])
-
-  const unMuteJitsiAudio = useCallback(async () => {
-    const muted = await api.isAudioMuted()
-    if (muted) {
-      api.executeCommand('toggleAudio')
-      setIsMuted(false)
-    }
-  }, [api])
-
-
-
   useEffect(() => {
     if (unityContext) {
       unityContext.on('progress', (progress) => {
@@ -112,18 +76,12 @@ const GameContainer = (props) => {
       });
       if (unityContext) {
         unityContext.on('GameInitialized', () => {
-          updateGameJsonData()
-          setIsUnityInitialized(true)
-        })
-        unityContext.on('MuteMicrophone', () => {
-          muteJitsiAudio()
-        })
-        unityContext.on('UnMuteMicrophone', () => {
-          unMuteJitsiAudio()
-        })
+          updateGameJsonData();
+          setIsUnityInitialized(true);
+        });
       }
     }
-  }, [user, lessonId, /*sendJsonToGameWithTimeout*/, unityContext, /*muteJitsiAudio, unMuteJitsiAudio*/, updateGameJsonData]);
+  }, [user, lessonId, unityContext, updateGameJsonData]);
 
 
   useEffect(() => {

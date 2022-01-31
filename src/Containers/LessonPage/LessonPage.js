@@ -6,10 +6,10 @@ import { toast } from 'react-toastify';
 import { defineUser, initSessionStack, stopSessionStackRecording } from 'utils/sessionstack/utils';
 import { checkEnv } from 'utils/common/commonUtils';
 import { checkUserRole } from 'utils/user';
-import { envs, lessonStatuses, userRoles } from 'constants.js';
+import { envs, LESSON_STATUS_FINISHED, lessonStatuses, userRoles } from 'constants.js';
 
 import { clearLessonState, lessonSelector } from 'redux/lesson/lessonSlice';
-import { resizeChildWebcam } from 'redux/lesson/actions';
+import { changeLessonStatus, resizeChildWebcam } from 'redux/lesson/actions';
 import { userSelector } from 'redux/user/userSlice';
 
 import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
@@ -42,6 +42,18 @@ const LessonPage = (props) => {
   const toggleProtocolModal = async () => await setProtocolModalIsOpen(!protocolModalIsOpen);
 
   const { isMicrophoneAllowed, isCameraAllowed } = useContext(BrowserPermissionsContext);
+
+  const onLessonFinish = async () => {
+    // TODO event in props
+    await toggleProtocolModal()
+    await sendWsAction(
+      changeLessonStatus({
+        status: LESSON_STATUS_FINISHED,
+        lesson_id: lessonId,
+      })
+    );
+    await dispatch(clearLessonState());
+  };
 
   const switchChildWebcamSize = (value) => {
     sendWsAction(
@@ -116,6 +128,7 @@ const LessonPage = (props) => {
             <LessonHeader
               isStyleDebug={isStyleDebug}
               switchChildWebcamSize={switchChildWebcamSize}
+              onLessonFinish={onLessonFinish}
               setIsMuted={setIsMuted}
               lessonId={lessonId}
               lesson={lesson}
@@ -127,7 +140,6 @@ const LessonPage = (props) => {
                 isUnityInitialized={isUnityInitialized}
                 setUnityContext={setUnityContext}
                 unityContext={unityContext}
-                setIsMuted={setIsMuted}
                 lessonId={lessonId}
                 lesson={lesson}
               />
@@ -144,9 +156,7 @@ const LessonPage = (props) => {
                   <LessonFooterControls
                     isStyleDebug={isStyleDebug}
                     switchChildWebcamSize={switchChildWebcamSize}
-                    toggleProtocolModal={toggleProtocolModal}
                     unityContext={unityContext}
-                    lessonId={lessonId}
                     setIsMuted={setIsMuted}
                     isMuted={isMuted}
                   />

@@ -16,6 +16,7 @@ const LessonHeader = (props) => {
 
   const {
     switchChildWebcamSize,
+    onLessonFinish,
     setIsMuted,
     lessonId,
     lesson,
@@ -80,21 +81,24 @@ const LessonHeader = (props) => {
           <Timer
             startTime={lesson.time_slot.start_time}
             endTime={lesson.time_slot.end_time}
+            onLessonFinish={onLessonFinish}
           />
         )}
       {webcamComponent}
-      <div
-        className={addClasses('webcam gamef__person-child', {
-          'debug--border': isStyleDebug
-        })}
-        style={{
-          height: '260px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        2-nd web camera
-      </div>
+      {checkUserRole(userRoles.therapist) && (
+        <div
+          className={addClasses('webcam gamef__person-child', {
+            'debug--border': isStyleDebug
+          })}
+          style={{
+            height: '260px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          2-nd web camera
+        </div>
+      )}
     </header>
   );
 };
