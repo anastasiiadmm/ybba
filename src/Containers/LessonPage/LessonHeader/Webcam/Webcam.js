@@ -3,48 +3,48 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { addClasses } from 'utils/addClasses/addClasses.js';
-import Jitsi from 'Components/Jitsi/Jitsi.js';
-import { userRoles } from 'constants.js';
-import { checkUserRole } from 'utils/user.js';
 import { lessonSelector } from 'redux/lesson/lessonSlice.js';
 import { authSelector } from 'redux/auth/authSlice.js';
 
-import 'Containers/LessonPage/Webcam/webcam.css'
+import { addClasses } from 'utils/addClasses/addClasses.js';
+import { checkUserRole } from 'utils/user.js';
+import { userRoles } from 'constants.js';
 
+import Jitsi from 'Components/Jitsi/Jitsi.js';
+import './webcam.css'
 
 const Webcam = (props) => {
-
     const {
-        meetingId, switchChildWebcamSize
-    } = props
+        switchChildWebcamSize,
+        meetingId,
+    } = props;
 
-    const { isParentWebcamIncreased } = useSelector(lessonSelector)
-    const { user } = useSelector(authSelector)
+    const { isParentWebcamIncreased } = useSelector(lessonSelector);
+    const { user } = useSelector(authSelector);
 
-    const [isWebcamInZoom, setWebcamInZoom] = useState(false)
+    const [isWebcamInZoom, setWebcamInZoom] = useState(false);
 
-    const toggleChildWebcamSize = async () => await switchChildWebcamSize(!isParentWebcamIncreased)
-    const toggleTherapistWebcamSize = async () => await setWebcamInZoom(!isWebcamInZoom)
+    const toggleChildWebcamSize = async () => await switchChildWebcamSize(!isParentWebcamIncreased);
+    const toggleTherapistWebcamSize = async () => await setWebcamInZoom(!isWebcamInZoom);
 
     const webcamZoomToggle = async () => {
         const toggles = {
             [userRoles.parent]: toggleChildWebcamSize,
-            [userRoles.therapist]: toggleTherapistWebcamSize
+            [userRoles.therapist]: toggleTherapistWebcamSize,
         }
         toggles[user.role]()
     }
 
-    const isTherapistWebcamInZoom = () => isWebcamInZoom
-    const isParentWebcamInZoom = () => isParentWebcamIncreased
+    const isTherapistWebcamInZoom = () => isWebcamInZoom;
+    const isParentWebcamInZoom = () => isParentWebcamIncreased;
 
     const isUserWebcamInZoom = () => {
         const usersChecks = {
             [userRoles.parent]: isParentWebcamInZoom,
-            [userRoles.therapist]: isTherapistWebcamInZoom
+            [userRoles.therapist]: isTherapistWebcamInZoom,
         }
 
-        return usersChecks[user?.role]()
+        return usersChecks[user?.role]();
     }
 
     return (
@@ -74,7 +74,7 @@ const Webcam = (props) => {
                 />
                 <Jitsi
                     meetingId={meetingId}
-                    height={195}
+                    height={260}
                 />
             </div>
         </div>

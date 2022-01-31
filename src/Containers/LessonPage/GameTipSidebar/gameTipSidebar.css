@@ -1,0 +1,26 @@
+.gamef__tip {
+    padding: 20px 40px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+.tip__title {
+    font-weight: 700;
+    font-size: 26px;
+    margin: 10px 0;
+}
+.tip__description {
+    font-size: 18px;
+}
+.tip__action {
+    text-align: center;
+}
+button.hide-tip {
+    background: none;
+    color: #000;
+    opacity: 0.3;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+}

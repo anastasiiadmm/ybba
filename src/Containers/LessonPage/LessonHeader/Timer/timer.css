@@ -1,0 +1,19 @@
+.gamef__time {
+    background: #000000B2;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin: 0;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.gamef__time p {
+    margin: 0;
+}
+
+.gamef__time .gamef__finish {
+    padding: 5px 10px;
+    margin-left: 15px;
+    border-radius: 4px;
+}
