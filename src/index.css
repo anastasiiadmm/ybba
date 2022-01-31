@@ -2604,15 +2604,12 @@ form .profile-child {
 }
 
 .speach-card-form__timer {
+    font-size: 12px;
     line-height: 1.33;
     max-width: 120px;
     position: fixed;
     top: 8px;
     left: 12px;
-}
-.speach-card-form__timer>.gamef__time {
-    background: none !important;
-    font-size: 16px;
 }
 
 .speech-card-form__section {
@@ -3355,6 +3352,11 @@ ol.game__lesson-list {
     flex-wrap: wrap;
 }
 
+.gamef__time {
+    font-size: 16px;
+    margin: 0;
+}
+
 .gamef__head_teacher .gamef__time {
     width: 100%;
 }
@@ -3370,6 +3372,12 @@ ol.game__lesson-list {
 }
 .gamef__main_full {
     grid-column: 1/3;
+}
+
+.gamef__sidebar {
+    grid-row: 1/4;
+    grid-column: 2/3;
+    background: #fff;
 }
 
 .gamef__sidebar-in {
@@ -3452,8 +3460,8 @@ ol.game__lesson-list {
 }
 
 .gamef__person-child {
-    width: 400px;
-    margin: 0;
+    width: 346px;
+    margin: 0 auto;
 }
 
 .gamef__person-child_big {
@@ -3539,8 +3547,21 @@ ol.game__lesson-list {
     transform-origin: top right;
 }
 
+.gamef__footer {
+    padding: 9px 0;
+    grid-row: 3/4;
+    grid-column: 1/2;
+}
 .gamef__footer_full {
     grid-column: 1/3;
+}
+
+.gamef__previews-wrap {
+    width: 100%;
+    padding: 0 0 7px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
 }
 
 .gamef__previews {
@@ -3548,6 +3569,13 @@ ol.game__lesson-list {
     grid-row: 1/2;
     grid-column: 1/2;
     overflow: visible !important;
+}
+
+.gamef__previews-inner {
+    /*display: flex;*/
+    /*width: 5000px;*/
+    /*position: relative;*/
+    /*z-index: 10;*/
 }
 
 .gamef__preview {
@@ -3673,6 +3701,7 @@ ol.game__lesson-list {
 }
 
 .gamef__next {
+    margin-left: auto;
     margin-right: 8px;
 }
 
