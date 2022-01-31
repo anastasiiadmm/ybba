@@ -14,6 +14,7 @@ import Unity, { UnityContext } from 'react-unity-webgl';
 import { addClasses } from 'utils/addClasses/addClasses';
 import { checkUserRole } from 'utils/user';
 import { authSelector } from 'redux/auth/authSlice';
+import { JitsiContext } from '../../../context/JitsiContext/JitsiContext';
 
 const GameContainer = (props) => {
   const {
@@ -21,12 +22,14 @@ const GameContainer = (props) => {
     isUnityInitialized,
     setUnityContext,
     unityContext,
+    setIsMuted,
     lessonId,
     lesson,
     isStyleDebug,
   } = props;
 
   const { user } = useSelector(authSelector);
+  const { api } = useContext(JitsiContext);
 
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
 
@@ -50,6 +53,23 @@ const GameContainer = (props) => {
     const userGameData = getUserDataForGame();
     unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData));
   }, [getUserDataForGame, unityContext]);
+
+  const muteJitsiAudio = useCallback(async () => {
+    const muted = await api.isAudioMuted();
+    if (!muted) {
+      api.executeCommand('toggleAudio');
+      setIsMuted(true);
+    }
+  }, [api])
+
+  const unMuteJitsiAudio = useCallback(async () => {
+    const muted = await api.isAudioMuted()
+    if (muted) {
+      api.executeCommand('toggleAudio')
+      setIsMuted(false);
+    }
+  }, [api]);
+
 
   const setUnity = useCallback(async () => {
     if (lesson) {
@@ -80,9 +100,16 @@ const GameContainer = (props) => {
           updateGameJsonData();
           setIsUnityInitialized(true);
         });
+        unityContext.on('MuteMicrophone', () => {
+          muteJitsiAudio()
+        })
+        unityContext.on('UnMuteMicrophone', () => {
+          unMuteJitsiAudio()
+        })
+
       }
     }
-  }, [user, lessonId, unityContext, updateGameJsonData]);
+  }, [user, lessonId, unityContext, muteJitsiAudio, unMuteJitsiAudio, updateGameJsonData]);
 
 
   useEffect(() => {
