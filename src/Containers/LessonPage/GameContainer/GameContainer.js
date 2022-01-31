@@ -10,11 +10,10 @@ import {
   GAME_FILE_TYPE_WASM, GAME_FOLDER_STREAMING_ASSETS, gameUserRoles,
   userRoles,
 } from 'constants.js';
-import { JitsiContext } from 'context/JitsiContext/JitsiContext';
 import Unity, { UnityContext } from 'react-unity-webgl';
 import { addClasses } from 'utils/addClasses/addClasses';
-import { userSelector } from 'redux/user/userSlice';
 import { checkUserRole } from 'utils/user';
+import { authSelector } from 'redux/auth/authSlice';
 
 const GameContainer = (props) => {
   const {
@@ -27,7 +26,7 @@ const GameContainer = (props) => {
     isStyleDebug,
   } = props;
 
-  const { user } = useSelector(userSelector);
+  const { user } = useSelector(authSelector);
 
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
 
