@@ -151,6 +151,7 @@ const LessonPage = (props) => {
                 isUnityInitialized={isUnityInitialized}
                 setUnityContext={setUnityContext}
                 unityContext={unityContext}
+                setIsMuted={setIsMuted}
                 lessonId={lessonId}
                 lesson={lesson}
               />
