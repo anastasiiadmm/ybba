@@ -12,7 +12,7 @@ import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/
 const CapriciousPrincessGame = (props) => {
 
     const  {
-        register, errors, control, isConclusionDisabled, disabled
+        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
     } = props
 
     return (

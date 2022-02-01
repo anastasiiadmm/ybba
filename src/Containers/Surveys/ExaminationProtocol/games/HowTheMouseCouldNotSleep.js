@@ -18,7 +18,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const HowTheMouseCouldNotSleep = (props) => {
 
     const  {
-        register, errors, control, isConclusionDisabled, disabled
+        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
     } = props
 
     return (

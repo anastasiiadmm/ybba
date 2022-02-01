@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import FormField from 'Components/FormField/FormField';
-import {getChildren, paymentsSelector} from 'redux/payments/paymentsSlice.js';
-import {authSelector} from 'redux/auth/authSlice.js';
-import {addClasses} from 'utils/addClasses/addClasses.js';
-import {setSelectedChild} from 'redux/lessons/lessonsSlice.js';
+import { getChildren, paymentsSelector } from 'redux/payments/paymentsSlice.js';
+import { authSelector } from 'redux/auth/authSlice.js';
+import { addClasses } from 'utils/addClasses/addClasses.js';
+import { setSelectedChild } from 'redux/lessons/lessonsSlice.js';
 
 
 const Payment = () => {
@@ -17,10 +17,10 @@ const Payment = () => {
     const [options, setOptions] = useState()
     const [selectedChild, setChild] = useState(null)
 
-    const {user} = useSelector(authSelector)
-    const {children} = useSelector(paymentsSelector)
+    const { user } = useSelector(authSelector)
+    const { children } = useSelector(paymentsSelector)
 
-    const selectChangeHandler = ({value}) => {
+    const selectChangeHandler = (e, { value }) => {
         const child = children?.find(child => child.id === value)
         setChild(child)
         dispatch(setSelectedChild(child))
@@ -29,7 +29,7 @@ const Payment = () => {
     useEffect(() => {
         setOptions(children?.map(child => {
             const full_name = `${child.first_name} ${child.last_name}`
-            return {value: child.id, label: full_name}
+            return { value: child.id, label: full_name }
         }))
     }, [children])
 

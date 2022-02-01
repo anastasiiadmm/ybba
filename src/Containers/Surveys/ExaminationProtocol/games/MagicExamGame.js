@@ -287,63 +287,67 @@ const MagicExamGame = (props) => {
                         />
                     </ProtocolRow>
                 </ProtocolBox>
-                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Фонематический слух:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Сформирован'
-                            name='game_magic_exam.phonemic_hearing'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Не сформирован'
-                            name='game_magic_exam.phonemic_hearing'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolDescriptionSubtitle>Навыки фонологического (звукового) анализа и синтеза:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Не сформированы'
-                                name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Находятся на самой начальной стадии формирования. Ребенку доступен анализ звукового ряда, состоящего из'
-                                name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Находятся в активной стадии формирования; ребенку доступен анализ слов типа'
-                                name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
+                {isLessonFinished && (
+                    <>
+                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Фонематический слух:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Сформирован'
+                                    name='game_magic_exam.phonemic_hearing'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Не сформирован'
+                                    name='game_magic_exam.phonemic_hearing'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolDescriptionSubtitle>Навыки фонологического (звукового) анализа и синтеза:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Не сформированы'
+                                        name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Находятся на самой начальной стадии формирования. Ребенку доступен анализ звукового ряда, состоящего из'
+                                        name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Находятся в активной стадии формирования; ребенку доступен анализ слов типа'
+                                        name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                    </>
+                )}
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'

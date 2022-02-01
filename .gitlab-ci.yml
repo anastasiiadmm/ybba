@@ -9,12 +9,12 @@ variables:
   - echo "$SSH_PRIVATE_KEY" | ssh-add -
   - mkdir -p ~/.ssh
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-  - ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
+  - ssh-keyscan -p 2222 -H $DEPLOY_SERVER >> ~/.ssh/known_hosts
 
 .deploy-script: &deploy
-  - ssh -T $DEPLOY_USER@$DEPLOY_SERVER "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
-  - ssh -T $DEPLOY_USER@$DEPLOY_SERVER "docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
-  - ssh -T $DEPLOY_USER@$DEPLOY_SERVER "docker rm -f ybba-frontend && docker run -d --name ybba-frontend -p 3000:80 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+  - ssh -p 2222 -T $DEPLOY_USER@$DEPLOY_SERVER "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+  - ssh -p 2222 -T $DEPLOY_USER@$DEPLOY_SERVER "docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
+  - ssh -p 2222 -T $DEPLOY_USER@$DEPLOY_SERVER "docker rm -f ybba-frontend && docker run -d --name ybba-frontend -p 3000:80 $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA"
 
 .build-and-push-script: &build-and-push
   - >

@@ -14,26 +14,23 @@ export const jitsiTools = {
     camera: 'camera'
 }
 
-export const MUTE_AUDIO = 'AudioMute';
-export const PAUSE_GAME = 'PauseEnable';
-export const RESTART_GAME = 'Restart';
-export  const NEXT_ACTION = 'NextAction';
-export const PREV_ACTION = 'StepBack';
-export const NEXT_GAME = 'NextGame';
-export const PREV_GAME = 'PrevGame';
-export const INTRO_SOUND = 'IntroSound';
+
 export const TEACHER_MOD = 'TeacherMode';
+export const START_GAME = 'Start';
+export const RESTART_GAME = 'Restart';
+export const INTRO_SOUND = 'IntroSound';
+export const REPEAT = 'Repeat';
+export const NEXT_ACTION = 'Next';
+export const PREV_ACTION = 'StepBack';
 
 export const gameActions = {
-    MUTE_AUDIO: MUTE_AUDIO,
-    PAUSE_GAME: PAUSE_GAME,
+    TEACHER_MOD: TEACHER_MOD,
+    START_GAME: START_GAME,
     RESTART_GAME: RESTART_GAME,
+    INTRO_SOUND: INTRO_SOUND,
+    REPEAT: REPEAT,
     NEXT_ACTION: NEXT_ACTION,
     PREV_ACTION: PREV_ACTION,
-    NEXT_GAME: NEXT_GAME,
-    PREV_GAME: PREV_GAME,
-    INTRO_SOUND: INTRO_SOUND,
-    TEACHER_MOD: TEACHER_MOD,
 }
 
 export const userRoles = {

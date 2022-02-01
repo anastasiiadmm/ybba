@@ -13,7 +13,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const PuzzleGame = (props) => {
 
     const  {
-        register, errors, control, isConclusionDisabled, disabled
+        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
     } = props
 
     return (
@@ -150,57 +150,61 @@ const PuzzleGame = (props) => {
             </ProtocolRow>
         </ProtocolBlock>
             <ProtocolBlock>
-                <ProtocolBlockTitle>Симультанное зрительное восприятие</ProtocolBlockTitle>
-                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Восприятие:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Нарушено'
-                                name='game_puzzle.perception'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Не нарушено'
-                                name='game_puzzle.perception'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Cоответствует возрасту'
-                                value='уровень восприятия соответствует возрасту'
-                                name='game_puzzle.level_of_perception'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Не соответствует возрасту'
-                                value='уровень не восприятия соответствует возрасту'
-                                name='game_puzzle.level_of_perception'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
+                {isLessonFinished && (
+                    <>
+                        <ProtocolBlockTitle>Симультанное зрительное восприятие</ProtocolBlockTitle>
+                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolRow>
+                            <ProtocolDescriptionSubtitle>Восприятие:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Нарушено'
+                                        name='game_puzzle.perception'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Не нарушено'
+                                        name='game_puzzle.perception'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Cоответствует возрасту'
+                                        value='уровень восприятия соответствует возрасту'
+                                        name='game_puzzle.level_of_perception'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Не соответствует возрасту'
+                                        value='уровень не восприятия соответствует возрасту'
+                                        name='game_puzzle.level_of_perception'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                    </>
+                )}
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
