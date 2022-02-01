@@ -16,7 +16,7 @@ export const jitsiTools = {
 
 
 export const TEACHER_MOD = 'TeacherMode';
-export const START_GAME = 'Start';
+export const START_GAME = 'GameStart';
 export const RESTART_GAME = 'Restart';
 export const INTRO_SOUND = 'IntroSound';
 export const REPEAT = 'Repeat';
