@@ -9,17 +9,19 @@ const RadioField = (props) => {
     const {
         label, name, classNameLabel, className, register, errors, value: radioValue, control, disabled
     } = props
-    
+
     return (
         <Controller
             control={control}
             name={name}
             render={(params) => {
                 return (
-                    <>
-                    <label className={addClasses(classNameLabel, {
-                        'disabled': disabled
-                    })}>
+                    <label
+                        className={addClasses(classNameLabel, {
+                            'disabled': disabled
+                        })}
+                        name={name}
+                    >
                         <input
                             type='radio'
                             className={className}

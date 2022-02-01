@@ -46,7 +46,6 @@
 .gamef__head_teacher .gamef__time {
     position: absolute;
     z-index: 999999999;
-    width: 100%;
     left: 15px;
 }
 
@@ -230,7 +229,8 @@
 .gamef__arrow-right,
 .gamef__arrow-left,
 .gamef__repeat-sound,
-.gamef__music,
+.gamef__unmute_music,
+.gamef__mute_music,
 .gamef__volume {
     padding: 9px 16px;
     background: transparent;
@@ -250,7 +250,8 @@
 .gamef__arrow-right,
 .gamef__arrow-left,
 .gamef__repeat-sound,
-.gamef__music,
+.gamef__unmute_music,
+.gamef__mute_music,
 .gamef__volume {
     width: 42px;
     height: 42px;
@@ -303,8 +304,11 @@
 .gamef__volume {
     background: url(../../assets/img/lesson-volume.svg) 50% no-repeat !important;
 }
-.gamef__music {
-    background: url(../../assets/img/lesson-music.svg) 50% no-repeat !important;
+.gamef__unmute_music {
+    background: url(../../assets/img/unmute-music.svg) 50% no-repeat !important;
+}
+.gamef__mute_music {
+    background: url(../../assets/img/mute-music.svg) 50% no-repeat !important;
 }
 .gamef__repeat-sound {
     background: url(../../assets/img/repeat-sound.svg) 50% no-repeat !important;

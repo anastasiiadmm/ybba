@@ -42,20 +42,20 @@ const HowTheMouseCouldNotSleep = (props) => {
                     <ProtocolSwitchText>
                         <ProtocolFormField
                             type='radio'
-                            classNameLabel='switch2__plus'
+                            classNameLabel='switch2__minus'
                             className='switch2__input'
-                            value={true}
-                            label='+'
+                            value={false}
+                            label='-'
                             name='game_how_the_mouse_could_not_sleep.mouse_in_the_yard_at_night'
                             control={control}
                             disabled={disabled}
                         />
                         <ProtocolFormField
                             type='radio'
-                            classNameLabel='switch2__minus'
+                            classNameLabel='switch2__plus'
                             className='switch2__input'
-                            value={false}
-                            label='-'
+                            value={true}
+                            label='+'
                             name='game_how_the_mouse_could_not_sleep.mouse_in_the_yard_at_night'
                             control={control}
                             disabled={disabled}
@@ -67,20 +67,20 @@ const HowTheMouseCouldNotSleep = (props) => {
                     <ProtocolSwitchText>
                         <ProtocolFormField
                             type='radio'
-                            classNameLabel='switch2__plus'
+                            classNameLabel='switch2__minus'
                             className='switch2__input'
-                            value={true}
-                            label='+'
+                            value={false}
+                            label='-'
                             name='game_how_the_mouse_could_not_sleep.mouse_is_eating_an_apple_and_a_berry'
                             control={control}
                             disabled={disabled}
                         />
                         <ProtocolFormField
                             type='radio'
-                            classNameLabel='switch2__minus'
+                            classNameLabel='switch2__plus'
                             className='switch2__input'
-                            value={false}
-                            label='-'
+                            value={true}
+                            label='+'
                             name='game_how_the_mouse_could_not_sleep.mouse_is_eating_an_apple_and_a_berry'
                             control={control}
                             disabled={disabled}
@@ -92,20 +92,20 @@ const HowTheMouseCouldNotSleep = (props) => {
                     <ProtocolSwitchText>
                         <ProtocolFormField
                             type='radio'
-                            classNameLabel='switch2__plus'
+                            classNameLabel='switch2__minus'
                             className='switch2__input'
-                            value={true}
-                            label='+'
+                            value={false}
+                            label='-'
                             name='game_how_the_mouse_could_not_sleep.moon_in_the_reflection_of_the_water_in_a_puddle'
                             control={control}
                             disabled={disabled}
                         />
                         <ProtocolFormField
                             type='radio'
-                            classNameLabel='switch2__minus'
+                            classNameLabel='switch2__plus'
                             className='switch2__input'
-                            value={false}
-                            label='-'
+                            value={true}
+                            label='+'
                             name='game_how_the_mouse_could_not_sleep.moon_in_the_reflection_of_the_water_in_a_puddle'
                             control={control}
                             disabled={disabled}
@@ -117,20 +117,20 @@ const HowTheMouseCouldNotSleep = (props) => {
                     <ProtocolSwitchText>
                         <ProtocolFormField
                             type='radio'
-                            classNameLabel='switch2__plus'
+                            classNameLabel='switch2__minus'
                             className='switch2__input'
-                            value={true}
-                            label='+'
+                            value={false}
+                            label='-'
                             name='game_how_the_mouse_could_not_sleep.mouse_covers_the_puddle_with_burdock'
                             control={control}
                             disabled={disabled}
                         />
                         <ProtocolFormField
                             type='radio'
-                            classNameLabel='switch2__minus'
+                            classNameLabel='switch2__plus'
                             className='switch2__input'
-                            value={false}
-                            label='-'
+                            value={true}
+                            label='+'
                             name='game_how_the_mouse_could_not_sleep.mouse_covers_the_puddle_with_burdock'
                             control={control}
                             disabled={disabled}
@@ -142,20 +142,20 @@ const HowTheMouseCouldNotSleep = (props) => {
                     <ProtocolSwitchText>
                         <ProtocolFormField
                             type='radio'
-                            classNameLabel='switch2__plus'
+                            classNameLabel='switch2__minus'
                             className='switch2__input'
-                            value={true}
-                            label='+'
+                            value={false}
+                            label='-'
                             name='game_how_the_mouse_could_not_sleep.sun_in_water_reflection_in_a_puddle'
                             control={control}
                             disabled={disabled}
                         />
                         <ProtocolFormField
                             type='radio'
-                            classNameLabel='switch2__minus'
+                            classNameLabel='switch2__plus'
                             className='switch2__input'
-                            value={false}
-                            label='-'
+                            value={true}
+                            label='+'
                             name='game_how_the_mouse_could_not_sleep.sun_in_water_reflection_in_a_puddle'
                             control={control}
                             disabled={disabled}

@@ -6,6 +6,8 @@ import moment from 'moment'
 import { strTimeToMoment, getCurrentTime } from 'utils/date/dateUtils.js';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import './timer.css'
+import { userRoles } from '../../../../constants';
+import { checkUserRole } from '../../../../utils/user';
 
 const Timer = (props) => {
     const {
@@ -51,8 +53,7 @@ const Timer = (props) => {
                   `До конца ${hours ? `0${hours}:` : ''}${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`
                 }
             </p>
-            {isLessonFinished}
-            {!isLessonFinished && (
+            {!isLessonFinished && checkUserRole(userRoles.therapist) && (
                 <button
                     className='gamef__finish'
                     type='button'
