@@ -406,6 +406,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                     <ProtocolDescriptionSubtitle>Наблюдаются некоторые трудности в репродуцировании текста:</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
@@ -449,6 +450,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                     <ProtocolDescriptionSubtitle>Наблюдаются значительные трудности в репродуцировании текста:</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
@@ -492,6 +494,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                 disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                     <ProtocolDescriptionMain>Понимание:</ProtocolDescriptionMain>
                     <ProtocolDescriptionSubtitle>Содержательно-смысловое значение текста:</ProtocolDescriptionSubtitle>
@@ -557,6 +560,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                         label='Комментарий'
                         name='game_how_the_mouse_could_not_sleep.expert_comment'
                         placeholder='Комментарий специалиста'
+                        errors={errors}
                         register={register}
                         disabled={disabled}
                     />

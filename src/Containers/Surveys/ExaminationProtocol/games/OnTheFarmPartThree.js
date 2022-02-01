@@ -653,6 +653,7 @@ const OnTheFarmPartThree = (props) => {
                                 errors={errors}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                     <ProtocolDescriptionSubtitle>Ритм</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>

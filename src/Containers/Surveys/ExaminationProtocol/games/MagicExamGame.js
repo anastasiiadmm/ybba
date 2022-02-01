@@ -16,8 +16,9 @@ import ProtocolBoxTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBox
 const MagicExamGame = (props) => {
 
     const  {
-        register, errors, control, isConclusionDisabled, disabled
+        register, errors, control, isConclusionDisabled, disabled,
     } = props
+
 
 
     return (
@@ -164,6 +165,7 @@ const MagicExamGame = (props) => {
                                 disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message} </div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>

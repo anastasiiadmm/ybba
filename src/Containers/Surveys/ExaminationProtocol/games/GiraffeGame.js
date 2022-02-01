@@ -130,6 +130,7 @@ const GiraffeGame = (props) => {
                                 errors={errors}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -198,6 +199,7 @@ const GiraffeGame = (props) => {
                                 errors={errors}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
             </ProtocolBlock>
@@ -321,6 +323,7 @@ const GiraffeGame = (props) => {
                     label='Комментарий'
                     name='game_giraffe.expert_comment'
                     placeholder='Комментарий специалиста'
+                    errors={errors}
                     register={register}
                     disabled={disabled}
                 />

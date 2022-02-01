@@ -115,6 +115,7 @@ const AntLambadaGame = (props) => {
                                 disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -170,6 +171,7 @@ const AntLambadaGame = (props) => {
                                 disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -178,6 +180,7 @@ const AntLambadaGame = (props) => {
                         label='Комментарий'
                         name='game_ant_lambada.expert_comment'
                         placeholder='Комментарий специалиста'
+                        errors={errors}
                         register={register}
                         disabled={disabled}
                     />

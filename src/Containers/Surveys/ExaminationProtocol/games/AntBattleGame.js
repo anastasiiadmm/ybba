@@ -157,6 +157,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -190,6 +191,7 @@ const AntBattleGame = (props) => {
                         label='Комментарий'
                         name='game_ant_battle.expert_comment'
                         placeholder='Комментарий специалиста'
+                        errors={errors}
                         register={register}
                     />
                 </ProtocolRow>
@@ -322,6 +324,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -606,6 +609,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -632,6 +636,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -657,6 +662,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -913,6 +919,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                     <ProtocolDescriptionSubtitle>Аномалии уздечек верхней/нижней губы</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
@@ -1003,6 +1010,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
             </ProtocolBlock>

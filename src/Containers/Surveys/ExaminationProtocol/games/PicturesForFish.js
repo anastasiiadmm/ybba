@@ -246,6 +246,7 @@ const PicturesForFish = (props) => {
                             disabled={disabled}
                         />
                     </ProtocolResultWrapper>
+                    {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                 </ProtocolResultBlock>
             </ProtocolRow>
             <ProtocolRow>
@@ -351,6 +352,7 @@ const PicturesForFish = (props) => {
                             disabled={disabled}
                         />
                     </ProtocolResultWrapper>
+                    {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                 </ProtocolResultBlock>
             </ProtocolRow>
         </ProtocolBlock>
@@ -411,6 +413,7 @@ const PicturesForFish = (props) => {
                     name='game_pictures_for_fish.expert_comment'
                     placeholder='Комментарий специалиста'
                     register={register}
+                    errors={errors}
                     disabled={disabled}
                 />
             </ProtocolRow>

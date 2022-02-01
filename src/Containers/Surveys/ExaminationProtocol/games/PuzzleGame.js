@@ -145,6 +145,7 @@ const PuzzleGame = (props) => {
                             disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
+                    {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                 </ProtocolResultBlock>
             </ProtocolRow>
         </ProtocolBlock>
@@ -207,6 +208,7 @@ const PuzzleGame = (props) => {
                         name='game_puzzle.expert_comment'
                         placeholder='Комментарий специалиста'
                         register={register}
+                        errors={errors}
                         disabled={disabled}
                     />
                 </ProtocolRow>
