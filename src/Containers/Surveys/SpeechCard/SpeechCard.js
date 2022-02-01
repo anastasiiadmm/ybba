@@ -24,7 +24,7 @@ const SpeechCard = (props) => {
         speechCard, lesson, onSubmit
     } = props
 
-    const { register, formState: { errors }, control, handleSubmit } = useForm({
+    const { register, control, handleSubmit } = useForm({
         resolver: yupResolver(speechCardSchema),
         defaultValues: {
             ...speechCard,
@@ -47,10 +47,6 @@ const SpeechCard = (props) => {
         }, 1000)
         return () => clearTimeout(timer)
     }, [data])
-
-    useEffect(() => {
-        console.log(errors)
-    }, [errors])
 
     return (
         <SpeechCardMain

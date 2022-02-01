@@ -8,8 +8,21 @@ import { resolve } from 'utils/resolve/resolve.js';
 
 const CommonField = (props) => {
 
-    const { id, type, className, name, errors, register, placeholder,
-      disabled, label, classNameLabel, tooltipMessage } = props
+    const {
+        id,
+        type,
+        className,
+        name,
+        errors,
+        register,
+        placeholder,
+        disabled,
+        label,
+        classNameLabel,
+        tooltipMessage,
+        onClick,
+        onFocus,
+    } = props
 
     if (tooltipMessage) {
       const tooltipOptions = { trigger: 'focus' }
@@ -32,7 +45,6 @@ const CommonField = (props) => {
                         'error': resolve(name, errors, '.')
                     })
                 }
-
                 id={id}
                 name='first_name'
                 {...register(name)}
@@ -41,6 +53,8 @@ const CommonField = (props) => {
                 data-bs-toggle={tooltipMessage && 'tooltip'}
                 data-bs-placement={tooltipMessage && 'left'}
                 title={tooltipMessage && tooltipMessage}
+                onClick={onClick}
+                onFocus={onFocus}
             />
             <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
         </>
@@ -58,7 +72,9 @@ CommonField.propTypes = {
     disabled: PropTypes.bool,
     label: PropTypes.string,
     classNameLabel: PropTypes.string,
-    tooltipMessage: PropTypes.string
+    tooltipMessage: PropTypes.string,
+    onClick: PropTypes.func,
+    onFocus: PropTypes.func,
 }
 
 export default CommonField;
