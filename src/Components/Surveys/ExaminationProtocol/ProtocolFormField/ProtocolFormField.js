@@ -14,28 +14,31 @@ const ProtocolFormField = (props) => {
     switch (type) {
         case 'textarea': return <Field
             {...props}
-            className='protocol__area bg'
+            className='protocol__area bg protocolField'
             classNameLabel='protocol__lbl'
             id={props.name}
         />
         case 'number':
         case 'text': return <Field
-            className='protocol__field'
+            className='protocol__field protocolField'
             classNameLabel='protocol__lbl'
             id={props.name}
             {...props}
         />
         case 'radio': return <Field
             value={lowercaseFirstLetter(props.label)}
-            classNameLabel='radio2'
+            classNameLabel='radio2 protocolField'
+            className='protocolField'
             {...props}
         />
         case 'checkbox': return <Field
             classNameLabel='check2'
+            className='protocolField'
             {...props}
         />
         case 'checkboxWithField': return <CheckBoxWithField
             classNameLabel='check2'
+            className='protocolField'
             {...props}
         />
         default: return <p>Field</p>
