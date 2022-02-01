@@ -3356,7 +3356,6 @@ ol.game__lesson-list {
 }
 
 .gamef__head_teacher .gamef__time {
-    width: 100%;
 }
 @media screen and (min-width: 1400px) {
     .gamef__head_teacher .gamef__time {
@@ -3449,11 +3448,6 @@ ol.game__lesson-list {
     right: 8px;
     box-shadow: 0 4px 34px 0 rgba(0, 0, 0, 0.55);
     z-index: 900;
-}
-
-.gamef__person-child {
-    width: 400px;
-    margin: 0;
 }
 
 .gamef__person-child_big {

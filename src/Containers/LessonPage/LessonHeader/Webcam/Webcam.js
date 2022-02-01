@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -16,6 +16,7 @@ import './webcam.css'
 const Webcam = (props) => {
     const {
         switchChildWebcamSize,
+        webcamHeight,
         meetingId,
     } = props;
 
@@ -74,7 +75,7 @@ const Webcam = (props) => {
                 />
                 <Jitsi
                     meetingId={meetingId}
-                    height={260}
+                    height={webcamHeight}
                 />
             </div>
         </div>

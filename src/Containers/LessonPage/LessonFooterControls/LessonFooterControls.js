@@ -27,8 +27,13 @@ const LessonFooterControls = (props) => {
 
   const toggleMute = useCallback(async () => {
     if (api) {
-      api.executeCommand('toggleAudio');
-      await setIsMuted(!isMuted);
+      try {
+        await setIsMuted(!isMuted);
+        api.executeCommand('toggleAudio');
+      } catch {
+        const muted = await api.isAudioMuted();
+        await setIsMuted(muted);
+      }
     }
   }, [api, isMuted]);
 
