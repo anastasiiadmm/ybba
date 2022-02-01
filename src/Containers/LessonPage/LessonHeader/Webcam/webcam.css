@@ -23,6 +23,9 @@
 }
 
 @media screen and (min-width: 1400px) {
+    .gamef__person-child .gamef__person-in #jitsi-iframe {
+        transform: none;
+    }
     .gamef__person-child .gamef__person-in {
         transform: translateX(-90px);
     }
