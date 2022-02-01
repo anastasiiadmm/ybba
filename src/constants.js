@@ -22,6 +22,8 @@ export const INTRO_SOUND = 'IntroSound';
 export const REPEAT = 'Repeat';
 export const NEXT_ACTION = 'Next';
 export const PREV_ACTION = 'StepBack';
+export const UN_MUTE_GAME_SOUND = 'UnMuteGameSound';
+export const MUTE_GAME_SOUND = 'MuteGameSound'
 
 export const gameActions = {
     TEACHER_MOD: TEACHER_MOD,
@@ -31,6 +33,8 @@ export const gameActions = {
     REPEAT: REPEAT,
     NEXT_ACTION: NEXT_ACTION,
     PREV_ACTION: PREV_ACTION,
+    UN_MUTE_GAME_SOUND: UN_MUTE_GAME_SOUND,
+    MUTE_GAME_SOUND: MUTE_GAME_SOUND,
 }
 
 export const userRoles = {
