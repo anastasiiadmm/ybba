@@ -23,6 +23,7 @@ const LessonFooterControls = (props) => {
 
   const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false);
   const [gameIsStarted, setGameIsStarted] = useState(false);
+  const [isGameMuted, setIsGameMuted] = useState(false);
 
   const toggleMute = useCallback(async () => {
     if (api) {
@@ -55,6 +56,12 @@ const LessonFooterControls = (props) => {
   const toggleGameTip = () => {
     // console.log('openGameTip', !isGameTipOpen);
     setIsGameTipOpen(!isGameTipOpen);
+  }
+  const toggleGameMusic = () => {
+    setIsGameMuted(!isGameMuted);
+    return isGameMuted
+      ? triggerGameAction(gameActions.UN_MUTE_GAME_SOUND)
+      : triggerGameAction(gameActions.MUTE_GAME_SOUND);
   }
 
   return (
@@ -120,11 +127,14 @@ const LessonFooterControls = (props) => {
             type='button'
             onClick={GameActionHandler(gameActions.INTRO_SOUND)}
           />
-          {/*<button*/}
-          {/*  className='gamef__music'*/}
-          {/*  type='button'*/}
-          {/*  onClick={GameActionHandler(gameActions.)}*/}
-          {/*/>*/}
+          <button
+            className={addClasses('', {
+              'gamef__unmute_music': !isGameMuted,
+              'gamef__mute_music': isGameMuted,
+            })}
+            type='button'
+            onClick={() => toggleGameMusic()}
+          />
           <button
             className='gamef__repeat-sound'
             type='button'
