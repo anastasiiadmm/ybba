@@ -187,18 +187,20 @@ const LessonPage = (props) => {
         )}
 
         {checkUserRole(userRoles.therapist) &&
-          isGameTipOpen ? (
+          <>
+            isGameTipOpen ? (
             <GameTipSidebar
               setIsGameTipOpen={setIsGameTipOpen}
               gameDescription={activeGame.name}
               gameName={activeGame.name}
             />
-          ) : (
-          <ProtocolSidebar
-            isUnityInitialized={isUnityInitialized}
-            lesson={lesson}
-          />
-        )}
+            ) : (
+            <ProtocolSidebar
+              isUnityInitialized={isUnityInitialized}
+              lesson={lesson}
+            />
+          </>
+        }
       </div>
     </>
   );
