@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { envs, lessonStatuses, userRoles } from 'constants.js';
 import { JitsiContext } from 'context/JitsiContext/JitsiContext';
 
@@ -23,10 +23,13 @@ const LessonHeader = (props) => {
     isStyleDebug,
   } = props;
 
+  const [webcamHeight, setWebcamHeight] = useState(260);
+
   const webcamComponentProps = {
+    switchChildWebcamSize,
     meetingId: lessonId,
     lessonId: lessonId,
-    switchChildWebcamSize,
+    webcamHeight,
   };
 
   const startRecording = useCallback(() => {
@@ -66,6 +69,13 @@ const LessonHeader = (props) => {
     <Webcam {...webcamComponentProps} />
   );
 
+  useEffect(() => {
+    const bodyWidth = +document.body.clientWidth;
+    bodyWidth <= 1440
+      ? setWebcamHeight(180)
+      : setWebcamHeight(260);
+  }, []);
+
   return (
     <header
       className={addClasses('gamef__head position-relative', {
@@ -91,7 +101,7 @@ const LessonHeader = (props) => {
             'debug--border': isStyleDebug
           })}
           style={{
-            height: '260px',
+            height: `${webcamHeight}px`,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',

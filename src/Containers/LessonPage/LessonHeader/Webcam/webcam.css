@@ -8,8 +8,11 @@
 }
 
 .gamef__person-child {
-    width: 400px;
+    width: 250px;
     margin: 0;
+}
+.gamef__person-in #jitsi-iframe {
+    transform: translateY(-35px) translateX(-30px);
 }
 
 .gamef__person-in {
@@ -21,6 +24,10 @@
 @media screen and (min-width: 1400px) {
     .gamef__person-child .gamef__person-in {
         transform: translateX(-90px);
+    }
+    .gamef__person-child {
+        width: 400px;
+        margin: 0;
     }
 }
 
