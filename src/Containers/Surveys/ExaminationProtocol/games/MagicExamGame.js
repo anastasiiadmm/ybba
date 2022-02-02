@@ -357,7 +357,7 @@ const MagicExamGame = (props) => {
                 </ProtocolRow>
             </ProtocolBlock>
         </>
-    );
+    )
 };
 
 export default MagicExamGame;
