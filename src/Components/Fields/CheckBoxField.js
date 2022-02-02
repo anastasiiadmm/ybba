@@ -31,9 +31,7 @@ const CheckBoxField = (props) => {
                             checked={params.field.value}
                             disabled={disabled}
                         />
-                        <span className={addClasses(className, {
-                            'error': resolve(name, errors, '.')
-                        })}>{label}</span>
+                        <span>{label}</span>
                     </label>
                     <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
                 </>
