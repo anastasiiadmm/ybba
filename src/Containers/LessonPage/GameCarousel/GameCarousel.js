@@ -5,7 +5,7 @@ import { addClasses } from 'utils/addClasses/addClasses';
 
 const GameCarousel = (props) => {
   const {
-    setGameIsStarted,
+    handleReInitGame,
     activeGame,
     lessonId,
     games,
@@ -19,7 +19,7 @@ const GameCarousel = (props) => {
 
   const onChangeActiveGame = (game) => {
     if (!activeGame || (game.id !== activeGame.id)) {
-      setGameIsStarted(false);
+      handleReInitGame();
       sendWsAction(
         changeActiveGame({ lesson_id: lessonId, game_id: game.game_type })
       );
