@@ -7,7 +7,7 @@ import { resolve } from 'utils/resolve/resolve';
 const RadioField = (props) => {
 
     const {
-        label, name, classNameLabel, className, register, errors, value: radioValue, control, disabled
+        label, name, classNameLabel, className, errors, value: radioValue, control, disabled
     } = props
     
     return (
