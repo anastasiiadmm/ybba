@@ -36,6 +36,7 @@ const LessonPage = (props) => {
 
   const [isUnityInitialized, setIsUnityInitialized] = useState(false);
   const [isGameTipOpen, setIsGameTipOpen] = useState(false);
+  const [gameIsStarted, setGameIsStarted] = useState(false);
   const [unityContext, setUnityContext] = useState(null);
   const [activeGame, setActiveGame] = useState(null);
   const [isMuted, setIsMuted] = useState(false);
@@ -160,6 +161,7 @@ const LessonPage = (props) => {
                   {lesson?.games?.length &&
                     <GameCarousel
                       isStyleDebug={isStyleDebug}
+                      setGameIsStarted={setGameIsStarted}
                       activeGame={activeGame}
                       lessonId={lessonId}
                       games={lesson.games}
@@ -169,6 +171,8 @@ const LessonPage = (props) => {
                     isStyleDebug={isStyleDebug}
                     switchChildWebcamSize={switchChildWebcamSize}
                     setIsGameTipOpen={setIsGameTipOpen}
+                    setGameIsStarted={setGameIsStarted}
+                    gameIsStarted={gameIsStarted}
                     isGameTipOpen={isGameTipOpen}
                     unityContext={unityContext}
                     setIsMuted={setIsMuted}

@@ -11,9 +11,6 @@
     width: 250px;
     margin: 0;
 }
-.gamef__person-in #jitsi-iframe {
-    transform: translateY(-35px) translateX(-30px);
-}
 
 .gamef__person-in {
     border-radius: 12px;
@@ -21,7 +18,14 @@
     overflow: hidden;
 }
 
+.gamef__person-child .gamef__person-in #jitsi-iframe {
+    transform: translateY(-35px) translateX(-30px);
+}
+
 @media screen and (min-width: 1400px) {
+    .gamef__person-child .gamef__person-in #jitsi-iframe {
+        transform: none;
+    }
     .gamef__person-child .gamef__person-in {
         transform: translateX(-90px);
     }
