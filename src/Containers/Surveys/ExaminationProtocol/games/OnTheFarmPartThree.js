@@ -332,7 +332,6 @@ const OnTheFarmPartThree = (props) => {
                     </ProtocolResultWrapper>
                 </ProtocolRow>
             </ProtocolBlock>
-
             <ProtocolBlock>
                 <ProtocolBlockTitle>Просодическая сторона речи</ProtocolBlockTitle>
                 <ProtocolSubtitleThree>Компоненты:</ProtocolSubtitleThree>
@@ -795,7 +794,6 @@ const OnTheFarmPartThree = (props) => {
                             </ProtocolResultWrapper>
                         </ProtocolResultBlock>
                     </ProtocolBlock>
-                </>
             )}
         </>
     );
