@@ -521,7 +521,7 @@ export let examinationProtocolSchema = yup.object().shape({
         level_of_perception: yup.string()
             .required(true)
             .nullable(true),
-        expert_comment: yup.boolean()
+        expert_comment: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
     }),
