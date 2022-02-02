@@ -56,7 +56,6 @@ const ExaminationProtocol = (props) => {
     })
     const data = useWatch({ control })
     let timer = null
-    const isLessonFinished = lesson.status === lessonStatuses.finished
     const isConclusionDisabled = lesson.status !== lessonStatuses.finished
     const isProtocolClosed = protocol.status === examinationProtocolStatuses.closed
 
@@ -208,188 +207,181 @@ const ExaminationProtocol = (props) => {
                         disabled={isProtocolClosed}
                     />
                 </ProtocolRow>
-                {isLessonFinished && (
-                  <>
-                      <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                      <ProtocolRow>
-                          <ProtocolDescriptionSubtitle>Сформированность представлений об окружающем мире. Запас
-                              знаний:</ProtocolDescriptionSubtitle>
-                          <ProtocolResultBlock>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Запас знаний об окружающем мире крайне низкий'
-                                      name='stock_of_knowledge_about_the_world_around'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || isProtocolClosed}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Запас знаний об окружающем мире ниже возрастной нормы'
-                                      name='stock_of_knowledge_about_the_world_around'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || isProtocolClosed}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Запас знаний об окружающем мире соответствует возрасту'
-                                      name='stock_of_knowledge_about_the_world_around'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || isProtocolClosed}
-                                  />
-                              </ProtocolResultWrapper>
-                          </ProtocolResultBlock>
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolDescriptionSubtitle>В пространственно-временной
-                              ситуации:</ProtocolDescriptionSubtitle>
-                          <ProtocolResultBlock>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Ориентируется'
-                                      name='in_a_time_space_situation'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || isProtocolClosed}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Не ориентируется'
-                                      name='in_a_time_space_situation'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || isProtocolClosed}
-                                  />
-                              </ProtocolResultWrapper>
-                          </ProtocolResultBlock>
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolDescriptionSubtitle>Знает сколько ему лет, какое сейчас время года, какое сейчас
-                              время
-                              суток, что
-                              он делал вчера, что делал утром, что он будет делать
-                              завтра</ProtocolDescriptionSubtitle>
-                          <ProtocolResultBlock>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Да, знает'
-                                      name='knows_how_old_time_of_year_what_time_of_day_it_is'
-                                      register={register}
-                                      value={true}
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || isProtocolClosed}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Нет, не знает'
-                                      name='knows_how_old_time_of_year_what_time_of_day_it_is'
-                                      value={false}
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || isProtocolClosed}
-                                  />
-                              </ProtocolResultWrapper>
-                          </ProtocolResultBlock>
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolDescriptionSubtitle>Образ «Я»</ProtocolDescriptionSubtitle>
-                          <ProtocolResultBlock>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Сформирован'
-                                      name='image_i'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || isProtocolClosed}
-                                  />
-                              </ProtocolResultWrapper>
-                              <ProtocolResultWrapper>
-                                  <ProtocolFormField
-                                      type='radio'
-                                      label='Не сформирован'
-                                      name='image_i'
-                                      control={control}
-                                      errors={errors}
-                                      disabled={isConclusionDisabled || isProtocolClosed}
-                                  />
-                              </ProtocolResultWrapper>
-                          </ProtocolResultBlock>
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolDescriptionSubtitle>Знает, как его зовут, как зовут его родителей, где он
-                              живет</ProtocolDescriptionSubtitle>
-                          <ProtocolResultWrapper>
-                              <ProtocolResultBlock>
-                                  <ProtocolResultWrapper>
-                                      <ProtocolFormField
-                                          type='radio'
-                                          label='Да, знает'
-                                          name='knows_his_name_the_name_of_his_parents_where_he_lives'
-                                          control={control}
-                                          value={true}
-                                          errors={errors}
-                                          disabled={isConclusionDisabled || isProtocolClosed}
-                                      />
-                                  </ProtocolResultWrapper>
-                                  <ProtocolResultWrapper>
-                                      <ProtocolFormField
-                                          type='radio'
-                                          label='Нет, не знает'
-                                          name='knows_his_name_the_name_of_his_parents_where_he_lives'
-                                          control={control}
-                                          value={false}
-                                          errors={errors}
-                                          disabled={isConclusionDisabled || isProtocolClosed}
-                                      />
-                                  </ProtocolResultWrapper>
-                              </ProtocolResultBlock>
-                          </ProtocolResultWrapper>
-                      </ProtocolRow>
-                      <ProtocolRow>
-                          <ProtocolDescriptionSubtitle>Соматогнозис: представление о собственном
-                              теле</ProtocolDescriptionSubtitle>
-                          <ProtocolResultWrapper>
-                              <ProtocolResultBlock>
-                                  <ProtocolResultWrapper>
-                                      <ProtocolFormField
-                                          type='radio'
-                                          label='Сформирован'
-                                          name='somatognosis_understanding_your_own_body'
-                                          control={control}
-                                          errors={errors}
-                                          disabled={isConclusionDisabled || isProtocolClosed}
-                                      />
-                                  </ProtocolResultWrapper>
-                                  <ProtocolResultWrapper>
-                                      <ProtocolFormField
-                                          type='radio'
-                                          label='Не сформирован'
-                                          name='somatognosis_understanding_your_own_body'
-                                          control={control}
-                                          errors={errors}
-                                          disabled={isConclusionDisabled || isProtocolClosed}
-                                      />
-                                  </ProtocolResultWrapper>
-                              </ProtocolResultBlock>
-                          </ProtocolResultWrapper>
-                      </ProtocolRow>
-                  </>
-                )}
+                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Сформированность представлений об окружающем мире. Запас
+                        знаний:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Запас знаний об окружающем мире крайне низкий'
+                                name='stock_of_knowledge_about_the_world_around'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Запас знаний об окружающем мире ниже возрастной нормы'
+                                name='stock_of_knowledge_about_the_world_around'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Запас знаний об окружающем мире соответствует возрасту'
+                                name='stock_of_knowledge_about_the_world_around'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>В пространственно-временной ситуации:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Ориентируется'
+                                name='in_a_time_space_situation'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Не ориентируется'
+                                name='in_a_time_space_situation'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Знает сколько ему лет, какое сейчас время года, какое сейчас время
+                        суток, что
+                        он делал вчера, что делал утром, что он будет делать завтра</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Да, знает'
+                                name='knows_how_old_time_of_year_what_time_of_day_it_is'
+                                register={register}
+                                value={true}
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Нет, не знает'
+                                name='knows_how_old_time_of_year_what_time_of_day_it_is'
+                                value={false}
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Образ «Я»</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Сформирован'
+                                name='image_i'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Не сформирован'
+                                name='image_i'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Знает, как его зовут, как зовут его родителей, где он
+                        живет</ProtocolDescriptionSubtitle>
+                    <ProtocolResultWrapper>
+                        <ProtocolResultBlock>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Да, знает'
+                                    name='knows_his_name_the_name_of_his_parents_where_he_lives'
+                                    control={control}
+                                    value={true}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || isProtocolClosed}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Нет, не знает'
+                                    name='knows_his_name_the_name_of_his_parents_where_he_lives'
+                                    control={control}
+                                    value={false}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || isProtocolClosed}
+                                />
+                            </ProtocolResultWrapper>
+                        </ProtocolResultBlock>
+                    </ProtocolResultWrapper>
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Соматогнозис: представление о собственном
+                        теле</ProtocolDescriptionSubtitle>
+                    <ProtocolResultWrapper>
+                        <ProtocolResultBlock>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Сформирован'
+                                    name='somatognosis_understanding_your_own_body'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || isProtocolClosed}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Не сформирован'
+                                    name='somatognosis_understanding_your_own_body'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || isProtocolClosed}
+                                />
+                            </ProtocolResultWrapper>
+                        </ProtocolResultBlock>
+                    </ProtocolResultWrapper>
+                </ProtocolRow>
                 <ProtocolRow>
                     <ProtocolDescriptionSubtitle>Контакт с ребенком:</ProtocolDescriptionSubtitle>
                     <ProtocolResultWrapper>
@@ -572,45 +564,41 @@ const ExaminationProtocol = (props) => {
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                 </ProtocolRow>
-                {isLessonFinished && (
-                    <>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                        <ProtocolRow>
-                            <ProtocolResultBlock>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Левшество, все 4 показателя совпадают'
-                                        name='conclusion_options'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || isProtocolClosed}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Правшество, все 4 показателя совпадают'
-                                        name='conclusion_options'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || isProtocolClosed}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Дисбаланс межполушарных связей'
-                                        name='conclusion_options'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || isProtocolClosed}
-                                    />
-                                </ProtocolResultWrapper>
-                            </ProtocolResultBlock>
-                        </ProtocolRow>
-                    </>
-                )}
+                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                <ProtocolRow>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Левшество, все 4 показателя совпадают'
+                                name='conclusion_options'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Правшество, все 4 показателя совпадают'
+                                name='conclusion_options'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Дисбаланс межполушарных связей'
+                                name='conclusion_options'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || isProtocolClosed}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                </ProtocolRow>
             </ProtocolBlock>
             <PicturesForFish
                 register={register}
@@ -625,7 +613,6 @@ const ExaminationProtocol = (props) => {
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
-                isLessonFinished={isLessonFinished}
             />
             <PuzzleGame
                 register={register}
@@ -633,7 +620,6 @@ const ExaminationProtocol = (props) => {
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
-                isLessonFinished={isLessonFinished}
             />
             <AntLambadaGame
                 register={register}
@@ -641,7 +627,6 @@ const ExaminationProtocol = (props) => {
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
-                isLessonFinished={isLessonFinished}
             />
             <AntBattleGame
                 register={register}
@@ -656,7 +641,6 @@ const ExaminationProtocol = (props) => {
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
-                isLessonFinished={isLessonFinished}
             />
             <CapriciousPrincessGame
                 register={register}
@@ -664,7 +648,6 @@ const ExaminationProtocol = (props) => {
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
-                isLessonFinished={isLessonFinished}
             />
             <HowTheMouseCouldNotSleep
                 register={register}
@@ -672,7 +655,6 @@ const ExaminationProtocol = (props) => {
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
-                isLessonFinished={isLessonFinished}
             />
             <OnTheFarmGame
                 register={register}
@@ -680,7 +662,6 @@ const ExaminationProtocol = (props) => {
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
-                isLessonFinished={isLessonFinished}
             />
             <OnTheFarmPartTwoGame
                 register={register}
@@ -688,7 +669,6 @@ const ExaminationProtocol = (props) => {
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
-                isLessonFinished={isLessonFinished}
             />
             <OnTheFarmPartThree
                 register={register}
@@ -696,7 +676,6 @@ const ExaminationProtocol = (props) => {
                 control={control}
                 isConclusionDisabled={isConclusionDisabled}
                 disabled={isProtocolClosed}
-                isLessonFinished={isLessonFinished}
             />
             <ProtocolBlock>
                 <ProtocolBlockTitle>Дополнительная информация</ProtocolBlockTitle>
@@ -710,7 +689,6 @@ const ExaminationProtocol = (props) => {
                 />
             </ProtocolBlock>
             <ProtocolBlock>
-
                 <ProtocolBlockTitle>Логопедическое заключение</ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField

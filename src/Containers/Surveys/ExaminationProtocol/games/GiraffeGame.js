@@ -15,7 +15,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const GiraffeGame = (props) => {
 
     const {
-        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
+        register, errors, control, isConclusionDisabled, disabled
     } = props
 
     return (
@@ -63,6 +63,7 @@ const GiraffeGame = (props) => {
                         disabled={disabled}
                     />
                 </ProtocolRow>
+
 
                 <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
                 <ProtocolRow>
@@ -131,6 +132,7 @@ const GiraffeGame = (props) => {
                                 errors={errors}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -199,133 +201,131 @@ const GiraffeGame = (props) => {
                                 errors={errors}
                             />
                         </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
             </ProtocolBlock>
-            {isLessonFinished && (
-                <>
-                    <ProtocolBlock>
-                        <ProtocolBlockTitle>Психологическая база речи. Мышление</ProtocolBlockTitle>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                        <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Мышление:</ProtocolDescriptionSubtitle>
-                            <ProtocolResultBlock>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Соответствует возрасту'
-                                        name='game_giraffe.thinking'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Не соответствует возрасту'
-                                        name='game_giraffe.thinking'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                            </ProtocolResultBlock>
-                            <ProtocolResultBlock>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Нарушено'
-                                        name='game_giraffe.thinking_part_two'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Не нарушено'
-                                        name='game_giraffe.thinking_part_two'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                            </ProtocolResultBlock>
-                            <ProtocolResultBlock>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Наблюдаются трудности установления адекватных связей между предметами и явлениями окружающего
+            <ProtocolBlock>
+                <ProtocolBlockTitle>Психологическая база речи. Мышление</ProtocolBlockTitle>
+                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Мышление:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Соответствует возрасту'
+                                name='game_giraffe.thinking'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Не соответствует возрасту'
+                                name='game_giraffe.thinking'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Нарушено'
+                                name='game_giraffe.thinking_part_two'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Не нарушено'
+                                name='game_giraffe.thinking_part_two'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Наблюдаются трудности установления адекватных связей между предметами и явлениями окружающего
 									мира'
-                                        name='game_giraffe.there_are_difficulties_in_protecting_adequate_connections'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                            </ProtocolResultBlock>
-                        </ProtocolRow>
-                    </ProtocolBlock>
-                    <ProtocolRow>
-                        <ProtocolDescriptionSubtitle>Вид мышления:</ProtocolDescriptionSubtitle>
-                        <ProtocolResultBlock>
-                            <ProtocolResultWrapper>
-                                <ProtocolFormField
-                                    type='radio'
-                                    label='Мышление наглядно-действенное. Решение мыслительных задач осуществляется только на уровне
+                                name='game_giraffe.there_are_difficulties_in_protecting_adequate_connections'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                </ProtocolRow>
+            </ProtocolBlock>
+            <ProtocolRow>
+                <ProtocolDescriptionSubtitle>Вид мышления:</ProtocolDescriptionSubtitle>
+                <ProtocolResultBlock>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='radio'
+                            label='Мышление наглядно-действенное. Решение мыслительных задач осуществляется только на уровне
 									практических действий'
-                                    name='game_giraffe.kind_of_thinking'
-                                    value='мышление наглядно действенное. Решение мыслительных задач осуществляется только на уровне
+                            name='game_giraffe.kind_of_thinking'
+                            value='мышление наглядно действенное. Решение мыслительных задач осуществляется только на уровне
 									практических действий'
-                                    control={control}
-                                    errors={errors}
-                                    disabled={isConclusionDisabled || disabled}
-                                />
-                            </ProtocolResultWrapper>
-                            <ProtocolResultWrapper>
-                                <ProtocolFormField
-                                    type='radio'
-                                    label='Мышление наглядно-образное, носит целевой, организованный характер'
-                                    name='game_giraffe.kind_of_thinking'
-                                    control={control}
-                                    errors={errors}
-                                    disabled={isConclusionDisabled || disabled}
-                                />
-                            </ProtocolResultWrapper>
-                            <ProtocolResultWrapper>
-                                <ProtocolFormField
-                                    type='radio'
-                                    label='Мышление наглядно-образное, присутствуют элементы абстрактно-логического/словесно-логического
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='radio'
+                            label='Мышление наглядно-образное, носит целевой, организованный характер'
+                            name='game_giraffe.kind_of_thinking'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='radio'
+                            label='Мышление наглядно-образное, присутствуют элементы абстрактно-логического/словесно-логического
 									мышления'
-                                    value='мышление наглядно-образное, присутствиют элементы абстрактно-логического'
-                                    name='game_giraffe.kind_of_thinking'
-                                    control={control}
-                                    errors={errors}
-                                    disabled={isConclusionDisabled || disabled}
-                                />
-                            </ProtocolResultWrapper>
-                            <ProtocolResultWrapper>
-                                <ProtocolFormField
-                                    type='radio'
-                                    label='Словесно-логическое, способен давать своим действиям логическое объяснение'
-                                    name='game_giraffe.kind_of_thinking'
-                                    control={control}
-                                    errors={errors}
-                                    disabled={isConclusionDisabled || disabled}
-                                />
-                            </ProtocolResultWrapper>
-                        </ProtocolResultBlock>
-                    </ProtocolRow>
-                </>
-            )}
+                            value='мышление наглядно-образное, присутствиют элементы абстрактно-логического'
+                            name='game_giraffe.kind_of_thinking'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='radio'
+                            label='Словесно-логическое, способен давать своим действиям логическое объяснение'
+                            name='game_giraffe.kind_of_thinking'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                </ProtocolResultBlock>
+            </ProtocolRow>
             <ProtocolRow>
                 <ProtocolFormField
                     type='textarea'
                     label='Комментарий'
                     name='game_giraffe.expert_comment'
                     placeholder='Комментарий специалиста'
+                    errors={errors}
                     register={register}
                     disabled={disabled}
                 />

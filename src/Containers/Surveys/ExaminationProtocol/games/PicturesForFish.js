@@ -246,6 +246,7 @@ const PicturesForFish = (props) => {
                             disabled={disabled}
                         />
                     </ProtocolResultWrapper>
+                    {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                 </ProtocolResultBlock>
             </ProtocolRow>
             <ProtocolRow>
@@ -361,16 +362,7 @@ const PicturesForFish = (props) => {
                             disabled={disabled}
                         />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='checkbox'
-                            label='Межзубный сигматизм шипящих'
-                            name='game_pictures_for_fish.interdental_sigmatism_of_hissing'
-                            control={control}
-                            errors={errors}
-                            disabled={disabled}
-                        />
-                    </ProtocolResultWrapper>
+                    {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
                 </ProtocolResultBlock>
             </ProtocolRow>
         </ProtocolBlock>
@@ -431,6 +423,7 @@ const PicturesForFish = (props) => {
                     name='game_pictures_for_fish.expert_comment'
                     placeholder='Комментарий специалиста'
                     register={register}
+                    errors={errors}
                     disabled={disabled}
                 />
             </ProtocolRow>

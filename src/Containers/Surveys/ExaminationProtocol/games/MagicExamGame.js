@@ -16,8 +16,9 @@ import ProtocolBoxTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBox
 const MagicExamGame = (props) => {
 
     const  {
-        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
+        register, errors, control, isConclusionDisabled, disabled,
     } = props
+
 
 
     return (
@@ -85,97 +86,95 @@ const MagicExamGame = (props) => {
                         disabled={disabled}
                     />
                 </ProtocolRow>
-                {isLessonFinished && (
-                    <>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                        <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Уровень сформированности фонетико-фонологической компетенции:</ProtocolDescriptionSubtitle>
-                            <ProtocolResultBlock>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Уровень сформированности фонетико-фонологической компетенции соответствует возрастной норме'
-                                        name='game_magic_exam.level_of_formation_of_phonetic_phonological_competence'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Уровень сформированности фонетико-фонологической компетенции не соответствует возрастной норме'
-                                        name='game_magic_exam.level_of_formation_of_phonetic_phonological_competence'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                            </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>Состояние фонематического восприятия:</ProtocolDescriptionSubtitle>
-                            <ProtocolResultBlock>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Фонематическое восприятие сформировано'
-                                        name='game_magic_exam.state_of_phonemic_perception'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='radio'
-                                        label='Фонематическое восприятие не сформировано'
-                                        name='game_magic_exam.state_of_phonemic_perception'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                            </ProtocolResultBlock>
-                            <ProtocolResultBlock>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Наблюдаются трудности различения глухих и звонких согласных'
-                                        name='game_magic_exam.there_are_difficulties_in_distinguishing'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Нарушено различение твердых и мягких согласных'
-                                        name='game_magic_exam.distinction_between_hard_and_soft_consonants'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Нарушено различение аффрикат и входящих в их состав звуков'
-                                        name='game_magic_exam.distinction_between_affricates_and_their_constituent'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                            </ProtocolResultBlock>
-                        </ProtocolRow>
-                    </>
-                )}
+                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Уровень сформированности фонетико-фонологической компетенции:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Уровень сформированности фонетико-фонологической компетенции соответствует возрастной норме'
+                                name='game_magic_exam.level_of_formation_of_phonetic_phonological_competence'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Уровень сформированности фонетико-фонологической компетенции не соответствует возрастной норме'
+                                name='game_magic_exam.level_of_formation_of_phonetic_phonological_competence'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                    <ProtocolDescriptionSubtitle>Состояние фонематического восприятия:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Фонематическое восприятие сформировано'
+                                name='game_magic_exam.state_of_phonemic_perception'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='radio'
+                                label='Фонематическое восприятие не сформировано'
+                                name='game_magic_exam.state_of_phonemic_perception'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                    </ProtocolResultBlock>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Наблюдаются трудности различения глухих и звонких согласных'
+                                name='game_magic_exam.there_are_difficulties_in_distinguishing'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Нарушено различение твердых и мягких согласных'
+                                name='game_magic_exam.distinction_between_hard_and_soft_consonants'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Нарушено различение аффрикат и входящих в их состав звуков'
+                                name='game_magic_exam.distinction_between_affricates_and_their_constituent'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message} </div>}
+                    </ProtocolResultBlock>
+                </ProtocolRow>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
                         label='Комментарий'
                         name='game_magic_exam.expert_comment'
                         placeholder='Комментарий специалиста'
+                        errors={errors}
                         register={register}
                     />
                 </ProtocolRow>
@@ -355,6 +354,7 @@ const MagicExamGame = (props) => {
                         label='Комментарий'
                         name='game_magic_exam.phonemic_hearing_expert_comment'
                         placeholder='Комментарий специалиста'
+                        errors={errors}
                         register={register}
                         disabled={disabled}
                     />

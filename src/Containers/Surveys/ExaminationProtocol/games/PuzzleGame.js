@@ -51,106 +51,103 @@ const PuzzleGame = (props) => {
                     disabled={disabled}
                 />
             </ProtocolRow>
-                {isLessonFinished && (
-                    <>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                        <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Варианты заключения:</ProtocolDescriptionSubtitle>
-                            <ProtocolResultBlock>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Носовой'
-                                        name='game_puzzle.nasal'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Пропуск'
-                                        name='game_puzzle.skip'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена В на'
-                                        name='game_puzzle.replacing_with_b'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена Вь на'
-                                        name='game_puzzle.replacing_with_b_soft'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена Ф на'
-                                        name='game_puzzle.replacing_with_f'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена Фь на'
-                                        name='game_puzzle.replacing_with_f_soft'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Двугубный'
-                                        name='game_puzzle.two_lipped'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Смешение'
-                                        name='game_puzzle.mixing'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Искажение'
-                                        name='game_puzzle.distortion'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                            </ProtocolResultBlock>
-                        </ProtocolRow>
-                    </>
-                )}
+            <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+            <ProtocolRow>
+                <ProtocolDescriptionSubtitle>Варианты заключения:</ProtocolDescriptionSubtitle>
+                <ProtocolResultBlock>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkbox'
+                            label='Носовой'
+                            name='game_puzzle.nasal'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkbox'
+                            label='Пропуск'
+                            name='game_puzzle.skip'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkboxWithField'
+                            label='Замена В на'
+                            name='game_puzzle.replacing_with_b'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkboxWithField'
+                            label='Замена Вь на'
+                            name='game_puzzle.replacing_with_b_soft'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkboxWithField'
+                            label='Замена Ф на'
+                            name='game_puzzle.replacing_with_f'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkboxWithField'
+                            label='Замена Фь на'
+                            name='game_puzzle.replacing_with_f_soft'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkbox'
+                            label='Двугубный'
+                            name='game_puzzle.two_lipped'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkbox'
+                            label='Смешение'
+                            name='game_puzzle.mixing'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkbox'
+                            label='Искажение'
+                            name='game_puzzle.distortion'
+                            control={control}
+                            errors={errors}
+                            disabled={isConclusionDisabled || disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                </ProtocolResultBlock>
+            </ProtocolRow>
         </ProtocolBlock>
             <ProtocolBlock>
                 {isLessonFinished && (
@@ -215,6 +212,7 @@ const PuzzleGame = (props) => {
                         name='game_puzzle.expert_comment'
                         placeholder='Комментарий специалиста'
                         register={register}
+                        errors={errors}
                         disabled={disabled}
                     />
                 </ProtocolRow>
