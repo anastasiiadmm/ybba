@@ -211,6 +211,6 @@ h3 {
     width: 112px;
 }
 
-.speach-card-doc__bottom-in {
-    margin-top: 20px;
+.error {
+    color: #F35454 !important;
 }
