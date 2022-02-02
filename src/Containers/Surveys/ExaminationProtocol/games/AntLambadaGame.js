@@ -13,7 +13,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const AntLambadaGame = (props) => {
 
     const  {
-        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
+        register, errors, control, isConclusionDisabled, disabled
     } = props
 
     return (
@@ -51,137 +51,136 @@ const AntLambadaGame = (props) => {
                         disabled={disabled}
                     />
                 </ProtocolRow>
-                {isLessonFinished && (
-                    <>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                        <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Переднеязычные:</ProtocolDescriptionSubtitle>
-                            <ProtocolResultBlock>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Носовой'
-                                        name='game_ant_lambada.nasal'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Пропуск'
-                                        name='game_ant_lambada.skip'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена Д на'
-                                        name='game_ant_lambada.replacing_d_with'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена Дь на'
-                                        name='game_ant_lambada.replacing_d_soft_with'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена Т на'
-                                        name='game_ant_lambada.replacing_t_with'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена Ть на'
-                                        name='game_ant_lambada.replacing_t_soft_with'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                            </ProtocolResultBlock>
-                        </ProtocolRow>
-                        <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Заднеязычные:</ProtocolDescriptionSubtitle>
-                            <ProtocolResultBlock>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена К на'
-                                        name='game_ant_lambada.replacing_k_with'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена Г на'
-                                        name='game_ant_lambada.replacing_g_with'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkboxWithField'
-                                        label='Замена Х на'
-                                        name='game_ant_lambada.replacing_kh_with'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Смешение'
-                                        name='game_ant_lambada.mixing'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                                <ProtocolResultWrapper>
-                                    <ProtocolFormField
-                                        type='checkbox'
-                                        label='Искажение'
-                                        name='game_ant_lambada.distortion'
-                                        control={control}
-                                        errors={errors}
-                                        disabled={isConclusionDisabled || disabled}
-                                    />
-                                </ProtocolResultWrapper>
-                            </ProtocolResultBlock>
-                        </ProtocolRow>
-                    </>
-                )}
+                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Переднеязычные:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Носовой'
+                                name='game_ant_lambada.nasal'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Пропуск'
+                                name='game_ant_lambada.skip'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkboxWithField'
+                                label='Замена Д на'
+                                name='game_ant_lambada.replacing_d_with'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkboxWithField'
+                                label='Замена Дь на'
+                                name='game_ant_lambada.replacing_d_soft_with'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkboxWithField'
+                                label='Замена Т на'
+                                name='game_ant_lambada.replacing_t_with'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkboxWithField'
+                                label='Замена Ть на'
+                                name='game_ant_lambada.replacing_t_soft_with'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                    </ProtocolResultBlock>
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolDescriptionSubtitle>Заднеязычные:</ProtocolDescriptionSubtitle>
+                    <ProtocolResultBlock>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkboxWithField'
+                                label='Замена К на'
+                                name='game_ant_lambada.replacing_k_with'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkboxWithField'
+                                label='Замена Г на'
+                                name='game_ant_lambada.replacing_g_with'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkboxWithField'
+                                label='Замена Х на'
+                                name='game_ant_lambada.replacing_kh_with'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Смешение'
+                                name='game_ant_lambada.mixing'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Искажение'
+                                name='game_ant_lambada.distortion'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                    </ProtocolResultBlock>
+                </ProtocolRow>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
                         label='Комментарий'
                         name='game_ant_lambada.expert_comment'
                         placeholder='Комментарий специалиста'
+                        errors={errors}
                         register={register}
                         disabled={disabled}
                     />
