@@ -176,6 +176,7 @@ const MagicExamGame = (props) => {
                         placeholder='Комментарий специалиста'
                         errors={errors}
                         register={register}
+                        disabled={isConclusionDisabled || disabled}
                     />
                 </ProtocolRow>
             </ProtocolBlock>
