@@ -33,6 +33,8 @@ const TextareaField = (props) => {
             placeholder={placeholder}
             {...register(name)}
             disabled={disabled}
+            onClick={onClick}
+            onFocus={onFocus}
             style={{ resize: 'vertical', overflow: 'auto' }}
         />
         <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
