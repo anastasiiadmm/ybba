@@ -254,16 +254,6 @@ const PicturesForFish = (props) => {
                 <ProtocolResultBlock>
                     <ProtocolResultWrapper>
                         <ProtocolFormField
-                            type='checkbox'
-                            label='Парасигматизм шипящих'
-                            name='game_pictures_for_fish.parasigmatism_of_hissing'
-                            control={control}
-                            errors={errors}
-                            disabled={disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
                             type='checkboxWithField'
                             label='Замена Щ на'
                             name='game_pictures_for_fish.replacing_shch_to'
@@ -315,8 +305,8 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label='Свистящий сигматизм шипящих'
-                            name='game_pictures_for_fish.whistling_sigmatism_of_hissing'
+                            label='Шипящий сигматизм'
+                            name='game_pictures_for_fish.hissing_sigmatism_two'
                             control={control}
                             errors={errors}
                             disabled={disabled}

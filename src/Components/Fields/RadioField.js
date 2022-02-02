@@ -7,7 +7,7 @@ import { resolve } from 'utils/resolve/resolve';
 const RadioField = (props) => {
 
     const {
-        label, name, classNameLabel, className, register, errors, value: radioValue, control, disabled
+        label, name, classNameLabel, className, errors, value: radioValue, control, disabled
     } = props
 
     return (
@@ -36,7 +36,7 @@ const RadioField = (props) => {
                             'error': resolve(name, errors, '.')
                         })}>{label}</span>
                     </label>
-                        <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
+                        <div className='form2__error'> {resolve(name, errors, '.')?.message} </div>
                     </>
 
                 )
