@@ -122,7 +122,7 @@ const ExaminationProtocol = (props) => {
                 </ProtocolRow>
                 <ProtocolRow>
                     <ProtocolFormField
-                        type='number'
+                        type='text'
                         label='Сколько тебе лет?'
                         placeholder='Ответ ребенка'
                         name='how_old_are_you'
