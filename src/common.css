@@ -210,3 +210,7 @@ h3 {
 .switch2 {
     width: 112px;
 }
+
+.error {
+    color: #F35454 !important;
+}

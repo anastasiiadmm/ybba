@@ -4,10 +4,12 @@ import SidebarContainer from 'Components/SidebarContainer/SidebarContainer.js';
 import SpeechCardView from 'Containers/Surveys/SpeechCardView/SpeechCardView.js';
 import { useReactToPrint } from 'react-to-print';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSpeechCard, surveysSelector } from 'redux/surveys/surveysSlice.js';
+import { getSpeechCard, surveysSelector, clearSurveysState } from 'redux/surveys/surveysSlice.js';
 import { Spinner } from 'react-bootstrap';
 
 import 'Containers/ChildSpeechCard/childSpeechCard.css'
+import { toast } from 'react-toastify';
+import { useHistory } from 'react-router';
 
 const ChildSpeechCard = (props) => {
 
@@ -15,6 +17,7 @@ const ChildSpeechCard = (props) => {
 
     const speechCardRef = useRef(null)
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const { speechCard } = useSelector(surveysSelector)
 
@@ -25,6 +28,14 @@ const ChildSpeechCard = (props) => {
     useEffect(() => {
         dispatch(getSpeechCard(childId))
     }, [childId, dispatch])
+
+    useEffect(() => {
+        if (speechCard && !speechCard.is_approved) {
+            dispatch(clearSurveysState())
+            history.push('/child-profile/')
+            toast.warning('Речевая карта ещё не заполнена.')
+        }
+    }, [dispatch, history, speechCard])
 
     return (
         <SidebarContainer>
@@ -37,7 +48,7 @@ const ChildSpeechCard = (props) => {
                     >Скачать</button>
                 }
             />
-            {speechCard ? (
+            {speechCard && speechCard.is_approved ? (
                 <SpeechCardView
                     ref={speechCardRef}
                     speechCard={speechCard}

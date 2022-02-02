@@ -7,7 +7,16 @@ import { TextareaAutosize } from '@mui/material';
 
 const TextareaField = (props) => {
     const {
-        label, placeholder, name, errors, register, classNameLabel, className, disabled
+        label,
+        placeholder,
+        name,
+        errors,
+        register,
+        classNameLabel,
+        className,
+        disabled,
+        onClick,
+        onFocus,
     } = props
 
     return <>
@@ -39,6 +48,7 @@ TextareaField.propTypes = {
     classNameLabel: PropTypes.string,
     className: PropTypes.string,
     disabled: PropTypes.bool,
+    onFocus: PropTypes.func,
 }
 
 export default TextareaField;
