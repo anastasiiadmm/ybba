@@ -23,7 +23,7 @@ import { useHistory } from 'react-router';
 const SpeechCard = (props) => {
 
     const {
-        speechCard, lesson, onSubmit
+        speechCard, lesson, onSubmit, isClosed
     } = props
 
     const { register, control, handleSubmit } = useForm({
@@ -38,7 +38,7 @@ const SpeechCard = (props) => {
     const history = useHistory()
     const data = useWatch({ control })
     let timer = null
-    const isCardClosed = speechCard.status === speechCardStatuses.closed
+    const isCardClosed = speechCard.status === speechCardStatuses.closed || isClosed
 
     const [isSpeechCardFinished, setIsSpeechCardFinished] = useState(false)
     const topBlock = useRef()
@@ -870,6 +870,7 @@ SpeechCard.propTypes = {
     speechCard: PropTypes.object.isRequired,
     lesson: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
+    isClosed: PropTypes.bool,
 }
 
 export default SpeechCard;

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { updateProtocol, createSpeechCard } from 'redux/surveys/surveysSlice.js';
+import { updateProtocol } from 'redux/surveys/surveysSlice.js';
 import { examinationProtocolSchema } from 'Containers/Surveys/ExaminationProtocol/yupSchema.js';
 import { examinationProtocolStatuses, lessonStatuses } from 'constants.js';
 import { momentDateToHuman, strDateToMoment } from 'utils/date/dateUtils';
@@ -20,8 +20,10 @@ import ProtocolResultTitle from 'Components/Surveys/ExaminationProtocol/Protocol
 import ProtocolDescriptionSubtitle
     from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle.js';
 import ProtocolResultBlock from 'Components/Surveys/ExaminationProtocol/ProtocolResultBlock/ProtocolResultBlock.js';
-import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper.js';
-import ProtocolPlaceholderTitle from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle.js';
+import ProtocolResultWrapper
+    from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper.js';
+import ProtocolPlaceholderTitle
+    from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle.js';
 import SurveySubmitButton from 'Components/Surveys/Common/SurveySubmitButton.js';
 import Questionnaire from 'Containers/Surveys/Questionnaire/Questionnaire.js';
 import PicturesForFish from 'Containers/Surveys/ExaminationProtocol/games/PicturesForFish.js';
@@ -43,12 +45,12 @@ import 'Containers/Surveys/ExaminationProtocol/examinationProtocol.css'
 const ExaminationProtocol = (props) => {
 
     const {
-        protocol, lesson, onSubmit
+        protocol, lesson, onSubmit, isClosed
     } = props
 
     const dispatch = useDispatch()
 
-    const { register, formState: { errors }, setValue, control, watch, getValues, handleSubmit } = useForm({
+    const { register, formState: { errors }, control, handleSubmit } = useForm({
         resolver: yupResolver(examinationProtocolSchema),
         defaultValues: {
             ...protocol,
@@ -58,7 +60,7 @@ const ExaminationProtocol = (props) => {
     const data = useWatch({ control })
     let timer = null
     const isConclusionDisabled = lesson.status !== lessonStatuses.finished
-    const isProtocolClosed = protocol.status === examinationProtocolStatuses.closed
+    const isProtocolClosed = protocol.status === examinationProtocolStatuses.closed || isClosed
 
     useEffect(() => {
         clearTimeout(timer)
@@ -749,6 +751,7 @@ ExaminationProtocol.propTypes = {
     protocol: PropTypes.object.isRequired,
     lesson: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
+    isClosed: PropTypes.bool,
 }
 
 export default ExaminationProtocol;
