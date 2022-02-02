@@ -7,7 +7,7 @@ import { resolve } from 'utils/resolve/resolve';
 const RadioField = (props) => {
 
     const {
-        label, name, classNameLabel, className, errors, value: radioValue, control, disabled
+        label, name, classNameLabel, className, register, errors, value: radioValue, control, disabled
     } = props
 
     return (
@@ -16,28 +16,27 @@ const RadioField = (props) => {
             name={name}
             render={(params) => {
                 return (
-                    <>
-                        <label
-                            className={addClasses(classNameLabel, {
-                                'disabled': disabled
-                            })}
-                        >
-                            <input
-                                name={name}
-                                type='radio'
-                                className={className}
-                                value={radioValue}
-                                onChange={e => {
-                                    params.field.onChange(e.target.value)
-                                }}
-                                checked={String(radioValue) === String(params.field.value)}
-                                disabled={disabled}
-                            />
-                            <span className={addClasses(className, {
-                                'error': resolve(name, errors, '.')
-                            })}>{label}</span>
-                        </label>
-                        <div className='form2__error'> {resolve(name, errors, '.')?.message} </div>
+                    <label
+                        className={addClasses(classNameLabel, {
+                            'disabled': disabled
+                        })}
+                        name={name}
+                    >
+                        <input
+                            type='radio'
+                            className={className}
+                            value={radioValue}
+                            onChange={e => {
+                                params.field.onChange(e.target.value)
+                            }}
+                            checked={String(radioValue) === String(params.field.value)}
+                            disabled={disabled}
+                        />
+                        <span className={addClasses(className, {
+                            'error': resolve(name, errors, '.')
+                        })}>{label}</span>
+                    </label>
+                        <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
                     </>
 
                 )

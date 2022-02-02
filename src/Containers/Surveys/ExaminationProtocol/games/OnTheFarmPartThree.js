@@ -728,73 +728,75 @@ const OnTheFarmPartThree = (props) => {
                                 label='Просодическая организация речи характеризуется неадекватным интонационным оформлением высказывания;
 									речь
 									невнятная, смазанная, малопонятная для окружающих'
-                                name='game_on_the_farm_part_three.prosodic_side_of_speech'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Разборчивость речи несколько снижена, речь нечеткая'
-                                name='game_on_the_farm_part_three.prosodic_side_of_speech'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Речь внятная, понятная для окружающих'
-                                name='game_on_the_farm_part_three.prosodic_side_of_speech'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Речь интонационно выразительна'
-                                name='game_on_the_farm_part_three.speech_intonationally'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Речь интонационно невыразительна: слабая выраженность голосовых модуляций'
-                                name='game_on_the_farm_part_three.speech_intonationally'
-                                control={control}
-                                errors={errors}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
-                <ProtocolDescriptionSubtitle>Нарушение темпо-ритмической организации речи:</ProtocolDescriptionSubtitle>
-                <ProtocolResultBlock>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Судороги'
-                            name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
-                            control={control}
-                            errors={errors}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Запинки'
-                            name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
-                            control={control}
-                            errors={errors}
-                        />
-                    </ProtocolResultWrapper>
-                </ProtocolResultBlock>
-            </ProtocolBlock>
+                                        name='game_on_the_farm_part_three.prosodic_side_of_speech'
+                                        control={control}
+                                        errors={errors}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Разборчивость речи несколько снижена, речь нечеткая'
+                                        name='game_on_the_farm_part_three.prosodic_side_of_speech'
+                                        control={control}
+                                        errors={errors}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Речь внятная, понятная для окружающих'
+                                        name='game_on_the_farm_part_three.prosodic_side_of_speech'
+                                        control={control}
+                                        errors={errors}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Речь интонационно выразительна'
+                                        name='game_on_the_farm_part_three.speech_intonationally'
+                                        control={control}
+                                        errors={errors}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Речь интонационно невыразительна: слабая выраженность голосовых модуляций'
+                                        name='game_on_the_farm_part_three.speech_intonationally'
+                                        control={control}
+                                        errors={errors}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                        <ProtocolDescriptionSubtitle>Нарушение темпо-ритмической организации речи:</ProtocolDescriptionSubtitle>
+                        <ProtocolResultBlock>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Судороги'
+                                    name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
+                                    control={control}
+                                    errors={errors}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Запинки'
+                                    name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
+                                    control={control}
+                                    errors={errors}
+                                />
+                            </ProtocolResultWrapper>
+                        </ProtocolResultBlock>
+                    </ProtocolBlock>
+                </>
+            )}
         </>
     );
 };
