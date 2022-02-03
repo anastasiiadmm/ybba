@@ -18,7 +18,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const HowTheMouseCouldNotSleep = (props) => {
 
     const  {
-        register, errors, control, isConclusionDisabled, disabled
+        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
     } = props
 
     return (
@@ -233,327 +233,331 @@ const HowTheMouseCouldNotSleep = (props) => {
                         disabled={disabled}
                     />
                 </ProtocolRow>
-                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                <ProtocolRow>
-                    <ProtocolDescriptionMain>Продуцирование:</ProtocolDescriptionMain>
-                    <ProtocolDescriptionSubtitle>Построение высказывания:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Может построить собственное высказывание на основе полученной визуально информации'
-                                name='game_how_the_mouse_could_not_sleep.constructing_a_statement'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Не может построить собственное высказывание на основе полученной визуально информации'
-                                name='game_how_the_mouse_could_not_sleep.constructing_a_statement'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Соответствие сюжету:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Рассказ соответствует предложенному сюжету'
-                                name='game_how_the_mouse_could_not_sleep.consistency_with_the_plot'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Рассказ не соответствует предложенному сюжету'
-                                name='game_how_the_mouse_could_not_sleep.consistency_with_the_plot'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Тема:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Раскрыта'
-                                name='game_how_the_mouse_could_not_sleep.topic'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Раскрыта частично'
-                                value='тема раскрыта частично'
-                                name='game_how_the_mouse_could_not_sleep.topic'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Не раскрыта'
-                                value='не раскрыто'
-                                name='game_how_the_mouse_could_not_sleep.topic'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Временную, логическую последовательность событий:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Соблюдает'
-                                name='game_how_the_mouse_could_not_sleep.chronological_event_logic'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Не соблюдает'
-                                name='game_how_the_mouse_could_not_sleep.chronological_event_logic'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Языковые средства:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Свободно владеет языковыми средствами и адекватно их использует при построении связного текста'
-                            name='game_how_the_mouse_could_not_sleep.language_means'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Неадекватно использует языковые средства при построении связного текста'
-                            name='game_how_the_mouse_could_not_sleep.language_means'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Фразовые персеверации'
-                                name='game_how_the_mouse_could_not_sleep.phrasal_perseverations'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionMain>Репродуцирование:</ProtocolDescriptionMain>
-                    <ProtocolDescriptionSubtitle>Ребенок не испытывает трудностей в репродуцировании текста:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Пересказ соответствует оригиналу'
-                                name='game_how_the_mouse_could_not_sleep.retelling_corresponds_to_original'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Пересказ содержит как основную, так и дополнительную информацию'
-                                name='game_how_the_mouse_could_not_sleep.retelling_contains_both_basic_and_additional_information'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='При пересказе используется вариативность речи'
-                                name='game_how_the_mouse_could_not_sleep.retelling_uses_variability_of_speech'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Наблюдаются некоторые трудности в репродуцировании текста:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Пересказ частично соответствует оригиналу'
-                                name='game_how_the_mouse_could_not_sleep.retelling_partially_corresponds_to_original'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Пересказ содержит только основную информацию'
-                                name='game_how_the_mouse_could_not_sleep.retelling_contains_only_basic_information'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Сохраняются лексика и синтаксические конструкции оригинала'
-                                name='game_how_the_mouse_could_not_sleep.vocabulary_and_syntactic_constructions_of_original'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Не нарушена связность и логичность изложения'
-                                name='game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_not_broken'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Наблюдаются значительные трудности в репродуцировании текста:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Пересказ не соответствует оригиналу'
-                                name='game_how_the_mouse_could_not_sleep.retelling_does_not_correspond_to_original'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Нарушена смысловая организация текста'
-                                name='game_how_the_mouse_could_not_sleep.semantic_organization_of_text_is_broken'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Нарушена связность и логичность изложения'
-                                name='game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_broken'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='checkbox'
-                                label='Значительные трудности в языковом оформлении текста'
-                                name='game_how_the_mouse_could_not_sleep.significant_difficulties_in_language_design_of_text'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionMain>Понимание:</ProtocolDescriptionMain>
-                    <ProtocolDescriptionSubtitle>Содержательно-смысловое значение текста:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Идентифицирует'
-                                name='game_how_the_mouse_could_not_sleep.content_semantic_meaning_of_text'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Не идентифицирует'
-                                name='game_how_the_mouse_could_not_sleep.content_semantic_meaning_of_text'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Понимание:</ProtocolDescriptionSubtitle>
-                    <ProtocolResultBlock>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Понимает только основную информацию текста'
-                                name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Доступно понимание как основной, так и дополнительной информации каждой смысловой части текста'
-                                name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                        <ProtocolResultWrapper>
-                            <ProtocolFormField
-                                type='radio'
-                                label='Доступно понимание скрытого смысла'
-                                name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
-                                control={control}
-                                errors={errors}
-                                disabled={isConclusionDisabled || disabled}
-                            />
-                        </ProtocolResultWrapper>
-                    </ProtocolResultBlock>
-                </ProtocolRow>
+                {isLessonFinished && (
+                    <>
+                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolRow>
+                            <ProtocolDescriptionMain>Продуцирование:</ProtocolDescriptionMain>
+                            <ProtocolDescriptionSubtitle>Построение высказывания:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Может построить собственное высказывание на основе полученной визуально информации'
+                                        name='game_how_the_mouse_could_not_sleep.constructing_a_statement'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Не может построить собственное высказывание на основе полученной визуально информации'
+                                        name='game_how_the_mouse_could_not_sleep.constructing_a_statement'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Соответствие сюжету:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Рассказ соответствует предложенному сюжету'
+                                        name='game_how_the_mouse_could_not_sleep.consistency_with_the_plot'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Рассказ не соответствует предложенному сюжету'
+                                        name='game_how_the_mouse_could_not_sleep.consistency_with_the_plot'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Тема:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Раскрыта'
+                                        name='game_how_the_mouse_could_not_sleep.topic'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Раскрыта частично'
+                                        value='тема раскрыта частично'
+                                        name='game_how_the_mouse_could_not_sleep.topic'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Не раскрыта'
+                                        value='не раскрыто'
+                                        name='game_how_the_mouse_could_not_sleep.topic'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Временную, логическую последовательность событий:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Соблюдает'
+                                        name='game_how_the_mouse_could_not_sleep.chronological_event_logic'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Не соблюдает'
+                                        name='game_how_the_mouse_could_not_sleep.chronological_event_logic'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Языковые средства:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Свободно владеет языковыми средствами и адекватно их использует при построении связного текста'
+                                    name='game_how_the_mouse_could_not_sleep.language_means'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Неадекватно использует языковые средства при построении связного текста'
+                                    name='game_how_the_mouse_could_not_sleep.language_means'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Фразовые персеверации'
+                                        name='game_how_the_mouse_could_not_sleep.phrasal_perseverations'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionMain>Репродуцирование:</ProtocolDescriptionMain>
+                            <ProtocolDescriptionSubtitle>Ребенок не испытывает трудностей в репродуцировании текста:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Пересказ соответствует оригиналу'
+                                        name='game_how_the_mouse_could_not_sleep.retelling_corresponds_to_original'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Пересказ содержит как основную, так и дополнительную информацию'
+                                        name='game_how_the_mouse_could_not_sleep.retelling_contains_both_basic_and_additional_information'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='При пересказе используется вариативность речи'
+                                        name='game_how_the_mouse_could_not_sleep.retelling_uses_variability_of_speech'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Наблюдаются некоторые трудности в репродуцировании текста:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Пересказ частично соответствует оригиналу'
+                                        name='game_how_the_mouse_could_not_sleep.retelling_partially_corresponds_to_original'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Пересказ содержит только основную информацию'
+                                        name='game_how_the_mouse_could_not_sleep.retelling_contains_only_basic_information'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Сохраняются лексика и синтаксические конструкции оригинала'
+                                        name='game_how_the_mouse_could_not_sleep.vocabulary_and_syntactic_constructions_of_original'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Не нарушена связность и логичность изложения'
+                                        name='game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_not_broken'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Наблюдаются значительные трудности в репродуцировании текста:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Пересказ не соответствует оригиналу'
+                                        name='game_how_the_mouse_could_not_sleep.retelling_does_not_correspond_to_original'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Нарушена смысловая организация текста'
+                                        name='game_how_the_mouse_could_not_sleep.semantic_organization_of_text_is_broken'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Нарушена связность и логичность изложения'
+                                        name='game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_broken'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label='Значительные трудности в языковом оформлении текста'
+                                        name='game_how_the_mouse_could_not_sleep.significant_difficulties_in_language_design_of_text'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionMain>Понимание:</ProtocolDescriptionMain>
+                            <ProtocolDescriptionSubtitle>Содержательно-смысловое значение текста:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Идентифицирует'
+                                        name='game_how_the_mouse_could_not_sleep.content_semantic_meaning_of_text'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Не идентифицирует'
+                                        name='game_how_the_mouse_could_not_sleep.content_semantic_meaning_of_text'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                            <ProtocolDescriptionSubtitle>Понимание:</ProtocolDescriptionSubtitle>
+                            <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Понимает только основную информацию текста'
+                                        name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Доступно понимание как основной, так и дополнительной информации каждой смысловой части текста'
+                                        name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label='Доступно понимание скрытого смысла'
+                                        name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                            </ProtocolResultBlock>
+                        </ProtocolRow>
+                    </>
+                )}
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
