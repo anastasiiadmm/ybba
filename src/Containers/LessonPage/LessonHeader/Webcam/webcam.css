@@ -118,6 +118,12 @@
     right: 10px;
     bottom: 10px;
 }
+.zoomBtn:before {
+    content: url('../../../../../src/assets/img/24_expand.svg');
+}
+.webcamZoom > .gamef__person-in > .zoomBtn:before {
+    content: url('../../../../../src/assets/img/24_compact.svg');
+}
 
 .soundBtn {
     position: absolute;
