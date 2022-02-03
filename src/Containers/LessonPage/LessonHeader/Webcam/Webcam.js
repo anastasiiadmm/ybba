@@ -70,7 +70,6 @@ const Webcam = (props) => {
                     type='button'
                     onClick={webcamZoomToggle}
                 >
-                    {isUserWebcamInZoom() ? '-' : '+'}
                 </button>
                 <div
                     className={addClasses('frontWebcamBlock', {

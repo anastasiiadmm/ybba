@@ -3441,35 +3441,8 @@ ol.game__lesson-list {
     display: block;
 }
 
-.gamef__person-teacher {
-    width: 300px;
-    position: fixed;
-    top: 8px;
-    right: 8px;
-    box-shadow: 0 4px 34px 0 rgba(0, 0, 0, 0.55);
-    z-index: 900;
-}
-
 .gamef__person-child_big {
     width: 534px;
-}
-
-.gamef__person-in {
-    border-radius: 12px;
-    position: relative;
-    overflow: hidden;
-}
-
-@media screen and (min-width: 1400px) {
-    .gamef__person-child .gamef__person-in {
-        transform: translateX(-90px);
-    }
-}
-
-.gamef__person-teacher .zoom {
-    transform: scale(2.7);
-    transform-origin: top right;
-    border-radius: 5px;
 }
 
 .gamef__person-child .zoom {
@@ -3499,11 +3472,6 @@ ol.game__lesson-list {
     padding: 4px 8px;
     border-radius: 4px;
     color: #fff;
-}
-
-.gamef__person-teacher .zoom .gamef__person-name {
-    transform: scale(0.37) translate(-14px, 54px);
-    transform-origin: top left;
 }
 
 .gamef__person-child .zoom .gamef__person-name {

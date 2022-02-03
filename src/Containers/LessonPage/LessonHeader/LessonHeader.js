@@ -8,6 +8,7 @@ import { checkEnv } from 'utils/common/commonUtils';
 import { checkUserRole } from 'utils/user';
 
 import Drag from 'Components/Drag/Drag';
+import TherapistWebcam from './Webcam/TherapistWebcam';
 import Webcam from './Webcam/Webcam';
 import Timer from './Timer/Timer';
 
@@ -69,11 +70,16 @@ const LessonHeader = (props) => {
     <Webcam {...webcamComponentProps} />
   );
 
-  useEffect(() => {
+  const setCurrentWebcamHeight = () => {
     const bodyWidth = +document.body.clientWidth;
     bodyWidth <= 1440
       ? setWebcamHeight(180)
       : setWebcamHeight(260);
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', setCurrentWebcamHeight);
+    setCurrentWebcamHeight();
   }, []);
 
   return (
@@ -96,18 +102,7 @@ const LessonHeader = (props) => {
         )}
       {webcamComponent}
       {checkUserRole(userRoles.therapist) && (
-        <div
-          className={addClasses('webcam gamef__person-child', {
-            'debug--border': isStyleDebug
-          })}
-          style={{
-            height: `${webcamHeight}px`,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          2-nd web camera
-        </div>
+        <TherapistWebcam webcamHeight={webcamHeight} />
       )}
     </header>
   );
