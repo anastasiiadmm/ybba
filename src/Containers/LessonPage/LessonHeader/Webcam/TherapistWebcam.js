@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 
 const TherapistWebcam = (props) => {
   const {
     webcamHeight,
   } = props;
 
+  const [isStreaming, setIsStreaming] = useState(false);
   const webcam = useRef();
 
   const getCurrentCamera = useCallback(async () => {
@@ -16,32 +17,40 @@ const TherapistWebcam = (props) => {
   }, [navigator.mediaDevices]);
 
   const getConstraints = useCallback(async () => {
-    const currentDeviceID = (await getCurrentCamera())?.id || '';
+    const camera = await getCurrentCamera();
+    const currentDeviceID = camera?.deviceId;
+    console.log(currentDeviceID, camera);
 
-    if (navigator?.mediaDevices) {
-      return {
-        video: {
-          width: {
-            min: 1280,
-            ideal: 1920,
-            max: 2560,
-          },
-          height: {
-            min: 720,
-            ideal: 1080,
-            max: 1440
-          },
+    return {
+      video: {
+        width: {
+          min: 1280,
+          ideal: 1920,
+          max: 2560,
         },
-        deviceId: {
-          exact: currentDeviceID,
-        }
-      }
+        height: {
+          min: 720,
+          ideal: 1080,
+          max: 1440
+        },
+      },
+      // deviceId: {
+      //   exact: currentDeviceID,
+      // }
     }
   }, [getCurrentCamera]);
 
   const startStream = useCallback(async (constraints) => {
-    console.log(webcam.current.srcObject);
-    webcam.current.srcObject = await navigator.mediaDevices.getUserMedia(constraints);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia(constraints)
+      console.log(constraints, stream);
+      webcam.current.srcObject = stream;
+      setIsStreaming(true);
+      console.log('Stream is start');
+    } catch (e) {
+      console.error('Stop stream', e);
+      setIsStreaming(false);
+    }
   }, []);
 
   const startWebcamStreaming = useCallback(async () => {
@@ -50,7 +59,14 @@ const TherapistWebcam = (props) => {
   }, [getConstraints, startStream]);
 
   useEffect(() => {
-    startWebcamStreaming();
+    if (navigator?.mediaDevices && webcam) {
+      startWebcamStreaming();
+
+      navigator.mediaDevices.ondevicechange = (event) => {
+        console.log(event);
+        startWebcamStreaming();
+      }
+    }
   }, [startStream, webcam]);
 
   return (
@@ -61,6 +77,11 @@ const TherapistWebcam = (props) => {
           ref={webcam}
           autoPlay
         />
+        {!isStreaming && (
+          <div className='webcam__placeholder'>
+            Not found camera
+          </div>
+        )}
       </div>
     </div>
   );

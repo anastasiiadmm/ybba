@@ -2,19 +2,36 @@
     transition: all .2s;
 }
 
-.therapist__webcam>video {
-    transform: translateX(-30px);
-}
-
 .therapist__webcam {
+    position: relative;
     overflow: hidden;
     border-radius: 12px;
     height: 180px;
 }
 
+.therapist__webcam>video {
+    transform: translateX(-30px);
+}
+
+.webcam__placeholder {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    height: 180px;
+    width: 300px;
+    background: #040404;
+    color: white;
+}
+
 @media screen and (min-width: 1440px) {
     .therapist__webcam {
         height: 260px;
+    }
+    .webcam__placeholder {
+        height: 260px;
+        width: 400px;
     }
 }
 
