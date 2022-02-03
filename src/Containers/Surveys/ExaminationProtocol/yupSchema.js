@@ -316,7 +316,7 @@ export let examinationProtocolSchema = yup.object().shape({
         wheel_salt: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
-        throat_rotacism: yup.string()
+        throat_rotacism: yup.boolean()
             .required(true)
             .nullable(true),
         replacing_p_with: yup.string()
@@ -325,19 +325,19 @@ export let examinationProtocolSchema = yup.object().shape({
         replacing_p_soft_with: yup.string()
             .required(true)
             .nullable(true),
-        buccal: yup.string()
+        buccal: yup.boolean()
             .required(true)
             .nullable(true),
-        side: yup.string()
+        side: yup.boolean()
             .required(true)
             .nullable(true),
-        one_hit_pronunciation: yup.string()
+        one_hit_pronunciation: yup.boolean()
             .required(true)
             .nullable(true),
-        skip: yup.string()
+        skip: yup.boolean()
             .required(true)
             .nullable(true),
-        interdental_lambdacism: yup.string()
+        interdental_lambdacism: yup.boolean()
             .required(true)
             .nullable(true),
         replacing_l_with: yup.string()
@@ -346,16 +346,16 @@ export let examinationProtocolSchema = yup.object().shape({
         replacing_l_soft_with: yup.string()
             .required(true)
             .nullable(true),
-        nasal: yup.string()
+        nasal: yup.boolean()
             .required(true)
             .nullable(true),
-        lambdacism_pass: yup.string()
+        lambdacism_pass: yup.boolean()
             .required(true)
             .nullable(true),
-        two_lipped: yup.string()
+        two_lipped: yup.boolean()
             .required(true)
             .nullable(true),
-        distortion: yup.string()
+        distortion: yup.boolean()
             .required(true)
             .nullable(true),
         thinking: yup.string()
@@ -414,28 +414,28 @@ export let examinationProtocolSchema = yup.object().shape({
         replacing_ch_with: yup.string()
             .required(true)
             .nullable(true),
-        prominent_sigmatism: yup.string()
+        prominent_sigmatism: yup.boolean()
             .required(true)
             .nullable(true),
-        nasal_sigmatism: yup.string()
+        nasal_sigmatism: yup.boolean()
             .required(true)
             .nullable(true),
-        hissing_sigmatism: yup.string()
+        hissing_sigmatism: yup.boolean()
             .required(true)
             .nullable(true),
-        lateral_sigmatism: yup.string()
+        lateral_sigmatism: yup.boolean()
             .required(true)
             .nullable(true),
-        labiodental_pronunciation_of_whistling: yup.string()
+        labiodental_pronunciation_of_whistling: yup.boolean()
             .required(true)
             .nullable(true),
-        skip_whistling_sound: yup.string()
+        skip_whistling_sound: yup.boolean()
             .required(true)
             .nullable(true),
-        mixing_sounds: yup.string()
+        mixing_sounds: yup.boolean()
             .required(true)
             .nullable(true),
-        interdental_sigmatism: yup.string()
+        interdental_sigmatism: yup.boolean()
             .required(true)
             .nullable(true),
         replacing_shch_to: yup.string()
@@ -447,25 +447,25 @@ export let examinationProtocolSchema = yup.object().shape({
         replacing_sh_to: yup.string()
             .required(true)
             .nullable(true),
-        pristine_sigmatism: yup.string()
+        pristine_sigmatism: yup.boolean()
             .required(true)
             .nullable(true),
-        hissing_nasal_sigmatism: yup.string()
+        hissing_nasal_sigmatism: yup.boolean()
             .required(true)
             .nullable(true),
-        hissing_sigmatism_two: yup.string()
+        hissing_sigmatism_two: yup.boolean()
             .required(true)
             .nullable(true),
-        lateral_sigmatism_two: yup.string()
+        lateral_sigmatism_two: yup.boolean()
             .required(true)
             .nullable(true),
-        labiodental_pronunciation_of_sibilants: yup.string()
+        labiodental_pronunciation_of_sibilants: yup.boolean()
             .required(true)
             .nullable(true),
-        skip_whistling_sound_two: yup.string()
+        skip_whistling_sound_two: yup.boolean()
             .required(true)
             .nullable(true),
-        mixing_sounds_two: yup.string()
+        mixing_sounds_two: yup.boolean()
             .required(true)
             .nullable(true),
         verbal_memory: yup.string()
@@ -494,16 +494,16 @@ export let examinationProtocolSchema = yup.object().shape({
         skip: yup.boolean()
             .required(true)
             .nullable(true),
-        replacing_with_b: yup.boolean()
+        replacing_with_b: yup.string()
             .required(true)
             .nullable(true),
-        replacing_with_b_soft: yup.boolean()
+        replacing_with_b_soft: yup.string()
             .required(true)
             .nullable(true),
-        replacing_with_f: yup.boolean()
+        replacing_with_f: yup.string()
             .required(true)
             .nullable(true),
-        replacing_with_f_soft: yup.boolean()
+        replacing_with_f_soft: yup.string()
             .required(true)
             .nullable(true),
         two_lipped: yup.boolean()
@@ -577,25 +577,25 @@ export let examinationProtocolSchema = yup.object().shape({
         language_means: yup.string()
             .required(true)
             .nullable(true),
-        retelling_corresponds_to_original: yup.string()
+        retelling_corresponds_to_original: yup.boolean()
             .required(true)
             .nullable(true),
-        retelling_contains_both_basic_and_additional_information: yup.string()
+        retelling_contains_both_basic_and_additional_information: yup.boolean()
             .required(true)
             .nullable(true),
-        retelling_uses_variability_of_speech: yup.string()
+        retelling_uses_variability_of_speech: yup.boolean()
             .required(true)
             .nullable(true),
-        retelling_partially_corresponds_to_original: yup.string()
+        retelling_partially_corresponds_to_original: yup.boolean()
             .required(true)
             .nullable(true),
-        retelling_contains_only_basic_information: yup.string()
+        retelling_contains_only_basic_information: yup.boolean()
             .required(true)
             .nullable(true),
-        vocabulary_and_syntactic_constructions_of_original: yup.string()
+        vocabulary_and_syntactic_constructions_of_original: yup.boolean()
             .required(true)
             .nullable(true),
-        coherence_and_consistency_of_presentation_is_not_broken: yup.string()
+        coherence_and_consistency_of_presentation_is_not_broken: yup.boolean()
             .required(true)
             .nullable(true),
         retelling_does_not_correspond_to_original: yup.string()
@@ -673,19 +673,19 @@ export let examinationProtocolSchema = yup.object().shape({
         facial_muscle_tone: yup.string()
             .required(true)
             .nullable(true),
-        hypomimia: yup.string()
+        hypomimia: yup.boolean()
             .required(true)
             .nullable(true),
-        smoothness_of_nasolabial_fold: yup.string()
+        smoothness_of_nasolabial_fold: yup.boolean()
             .required(true)
             .nullable(true),
-        asymmetry_of_face: yup.string()
+        asymmetry_of_face: yup.boolean()
             .required(true)
             .nullable(true),
-        facial_hyperkinesis: yup.string()
+        facial_hyperkinesis: yup.boolean()
             .required(true)
             .nullable(true),
-        synkinesis: yup.string()
+        synkinesis: yup.boolean()
             .required(true)
             .nullable(true),
         lip_muscle_tone: yup.string()
@@ -724,28 +724,28 @@ export let examinationProtocolSchema = yup.object().shape({
         disturbances_in_tone: yup.string()
             .required(true)
             .nullable(true),
-        decrease_in_strength: yup.string()
+        decrease_in_strength: yup.boolean()
             .required(true)
             .nullable(true),
-        impaired_coordination_of_movement_ataxia: yup.string()
+        impaired_coordination_of_movement_ataxia: yup.boolean()
             .required(true)
             .nullable(true),
-        hand_coordination_crashes: yup.string()
+        hand_coordination_crashes: yup.boolean()
             .required(true)
             .nullable(true),
-        motor_shifting_difficulties: yup.string()
+        motor_shifting_difficulties: yup.boolean()
             .required(true)
             .nullable(true),
-        body_schema_disorders: yup.string()
+        body_schema_disorders: yup.boolean()
             .required(true)
             .nullable(true),
-        disorders_of_hand_eye_coordination: yup.string()
+        disorders_of_hand_eye_coordination: yup.boolean()
             .required(true)
             .nullable(true),
-        orolingual: yup.string()
+        orolingual: yup.boolean()
             .required(true)
             .nullable(true),
-        opto_lingual: yup.string()
+        opto_lingual: yup.boolean()
             .required(true)
             .nullable(true),
         motor_functions_of_hands_and_fingers: yup.string()
@@ -769,10 +769,10 @@ export let examinationProtocolSchema = yup.object().shape({
         deviation_of_tongue: yup.string()
             .required(true)
             .nullable(true),
-        split_tongue: yup.string()
+        split_tongue: yup.boolean()
             .required(true)
             .nullable(true),
-        shortened_hyoid_fold: yup.string()
+        shortened_hyoid_fold: yup.boolean()
             .required(true)
             .nullable(true),
         anomalies_of_frenum_of_upper_lower_lip: yup.string()
@@ -781,10 +781,10 @@ export let examinationProtocolSchema = yup.object().shape({
         cleft: yup.string()
             .required(true)
             .nullable(true),
-        gothic_palate: yup.string()
+        gothic_palate: yup.boolean()
             .required(true)
             .nullable(true),
-        jaw_deformities: yup.string()
+        jaw_deformities: yup.boolean()
             .required(true)
             .nullable(true),
     }),
@@ -904,16 +904,16 @@ export let examinationProtocolSchema = yup.object().shape({
         exhalation: yup.string()
             .required(true)
             .nullable(true),
-        hindered: yup.string()
+        hindered: yup.boolean()
             .required(true)
             .nullable(true),
-        superficial: yup.string()
+        superficial: yup.boolean()
             .required(true)
             .nullable(true),
-        breathing_is_not_rhythmic: yup.string()
+        breathing_is_not_rhythmic: yup.boolean()
             .required(true)
             .nullable(true),
-        shallow_breath: yup.string()
+        shallow_breath: yup.boolean()
             .required(true)
             .nullable(true),
         rhythm: yup.string()
@@ -941,15 +941,249 @@ examinationProtocolSchema = examinationProtocolSchema.test(
     'choicesTest',
     null,
     (obj) => {
+        if (obj.game_pictures_for_fish.sibilant_parasigmatism || obj.game_pictures_for_fish.replacing_s_with || obj.game_pictures_for_fish.replacing_s_soft_with
+            || obj.game_pictures_for_fish.replacing_z_with || obj.game_pictures_for_fish.replacing_z_soft_with || obj.game_pictures_for_fish.replacing_c_with
+            || obj.game_pictures_for_fish.replacing_ch_with || obj.game_pictures_for_fish.prominent_sigmatism || obj.game_pictures_for_fish.nasal_sigmatism
+            || obj.game_pictures_for_fish.hissing_sigmatism || obj.game_pictures_for_fish.lateral_sigmatism || obj.game_pictures_for_fish.labiodental_pronunciation_of_whistling
+            || obj.game_pictures_for_fish.skip_whistling_sound || obj.game_pictures_for_fish.mixing_sounds || obj.game_pictures_for_fish.interdental_sigmatism) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_pictures_for_fish.replacing_shch_to || obj.game_pictures_for_fish.replacing_zh_to || obj.game_pictures_for_fish.replacing_sh_to
+            || obj.game_pictures_for_fish.pristine_sigmatism || obj.game_pictures_for_fish.hissing_nasal_sigmatism || obj.game_pictures_for_fish.hissing_sigmatism_two
+            || obj.game_pictures_for_fish.lateral_sigmatism_two || obj.game_pictures_for_fish.labiodental_pronunciation_of_sibilants
+            || obj.game_pictures_for_fish.skip_whistling_sound_two || obj.game_pictures_for_fish.mixing_sounds_two) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices2');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_giraffe.throat_rotacism || obj.game_giraffe.replacing_p_with || obj.game_giraffe.replacing_p_soft_with
+            || obj.game_giraffe.buccal || obj.game_giraffe.side  || obj.game_giraffe.one_hit_pronunciation
+            || obj.game_giraffe.skip) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices3');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_giraffe.interdental_lambdacism || obj.game_giraffe.replacing_l_with || obj.game_giraffe.replacing_l_soft_with
+            || obj.game_giraffe.nasal || obj.game_giraffe.lambdacism_pass || obj.game_giraffe.two_lipped
+            || obj.game_giraffe.distortion) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices4');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_puzzle.nasal || obj.game_puzzle.skip || obj.game_puzzle.replacing_with_b || obj.game_puzzle.replacing_with_b_soft || obj.game_puzzle.replacing_with_f
+            || obj.game_puzzle.replacing_with_f_soft || obj.game_puzzle.two_lipped || obj.game_puzzle.mixing || obj.game_puzzle.distortion) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов 555', null, 'choices5');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_ant_battle.deviation_of_the_tongue || obj.game_ant_battle.hyperkinesis_of_the_tongue ||
+            obj.game_ant_battle.tremor_of_the_tongue || obj.game_ant_battle.switching_difficulties) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices6');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_ant_battle.hypomimia || obj.game_ant_battle.smoothness_of_nasolabial_fold ||
+            obj.game_ant_battle.asymmetry_of_face || obj.game_ant_battle.facial_hyperkinesis
+            || obj.game_ant_battle.synkinesis) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices7');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_ant_battle.decrease_in_strength || obj.game_ant_battle.impaired_coordination_of_movement_ataxia ||
+            obj.game_ant_battle.hand_coordination_crashes || obj.game_ant_battle.motor_shifting_difficulties) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices8');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_ant_battle.body_schema_disorders || obj.game_ant_battle.disorders_of_hand_eye_coordination) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices9');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_ant_battle.orolingual || obj.game_ant_battle.opto_lingual) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices10');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_ant_battle.split_tongue || obj.game_ant_battle.shortened_hyoid_fold) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices11');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_ant_battle.gothic_palate || obj.game_ant_battle.jaw_deformities) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices12');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
         if (obj.game_magic_exam.there_are_difficulties_in_distinguishing || obj.game_magic_exam.anticipation || obj.game_magic_exam.assimilation_of_syllables || obj.game_magic_exam.assimilation_of_syllables) {
             return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices13');
         }
+    }
+)
 
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
         if (obj.game_capricious_princess.missing_syllables || obj.game_capricious_princess.missing_syllabic_vowels || obj.game_capricious_princess.permutations_of_sounds_and_or_syllables
             || obj.game_capricious_princess.insertion_of_vowels_into_consonants || obj.game_capricious_princess.adding_syllables) {
             return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices14');
         }
+    }
+)
 
-        return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices');
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_capricious_princess.consonant_reduction || obj.game_capricious_princess.inserting_consonants_into_a_syllable || obj.game_capricious_princess.gnotic_violations_addition_of_syllables) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices15');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_how_the_mouse_could_not_sleep.retelling_corresponds_to_original || obj.game_how_the_mouse_could_not_sleep.retelling_contains_both_basic_and_additional_information
+            || obj.game_how_the_mouse_could_not_sleep.retelling_uses_variability_of_speech) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices16');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_how_the_mouse_could_not_sleep.retelling_partially_corresponds_to_original || obj.game_how_the_mouse_could_not_sleep.retelling_contains_only_basic_information
+            || obj.game_how_the_mouse_could_not_sleep.vocabulary_and_syntactic_constructions_of_original || obj.game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_not_broken
+        ) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices17');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_how_the_mouse_could_not_sleep.retelling_partially_corresponds_to_original || obj.game_how_the_mouse_could_not_sleep.semantic_organization_of_text_is_broken
+            || obj.game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_broken || obj.game_how_the_mouse_could_not_sleep.significant_difficulties_in_language_design_of_text
+        ) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices18');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_on_the_farm_part_three.hindered || obj.game_on_the_farm_part_three.superficial
+            || obj.game_on_the_farm_part_three.breathing_is_not_rhythmic || obj.game_on_the_farm_part_three.shallow_breath) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices19');
+        }
     }
 )

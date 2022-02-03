@@ -155,7 +155,7 @@ const CapriciousPrincessGame = (props) => {
                             disabled={isConclusionDisabled || disabled}
                         />
                     </ProtocolResultWrapper>
-                    {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                    {errors.choices14 && <div className='form2__error'> {errors.choices14.message}</div>}
                 </ProtocolResultBlock>
                 <ProtocolDescriptionSubtitle>Гностические нарушения:</ProtocolDescriptionSubtitle>
                 <ProtocolResultWrapper>
@@ -208,7 +208,7 @@ const CapriciousPrincessGame = (props) => {
                         disabled={isConclusionDisabled || disabled}
                     />
                 </ProtocolResultWrapper>
-                {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                {errors.choices15 && <div className='form2__error'> {errors.choices15.message}</div>}
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
