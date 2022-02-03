@@ -15,7 +15,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 const PicturesForFish = (props) => {
 
     const  {
-        register, errors, control, isConclusionDisabled, disabled
+        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
     } = props
 
     return <>
@@ -357,55 +357,59 @@ const PicturesForFish = (props) => {
             </ProtocolRow>
         </ProtocolBlock>
         <ProtocolBlock>
-            <ProtocolBlockTitle>Психологическая база речи. Память</ProtocolBlockTitle>
-            <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-            <ProtocolRow>
-                <ProtocolDescriptionSubtitle>Объем вербальной памяти:</ProtocolDescriptionSubtitle>
-                <ProtocolResultBlock>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Достаточный для полноценной коммуникации'
-                            name='game_pictures_for_fish.verbal_memory'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Недостаточный для полноценной коммуникации'
-                            name='game_pictures_for_fish.verbal_memory'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                </ProtocolResultBlock>
-                <ProtocolResultBlock>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Наблюдаются незначительные трудности актуализации слов, хранения и воспроизведения вербальной информации'
-                            name='game_pictures_for_fish.verbal_memory_part_two'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Наблюдаются выраженные трудности актуализации слов, хранения и воспроизведения вербальной информации'
-                            name='game_pictures_for_fish.verbal_memory_part_two'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                </ProtocolResultBlock>
-            </ProtocolRow>
+            {isLessonFinished && (
+                <>
+                    <ProtocolBlockTitle>Психологическая база речи. Память</ProtocolBlockTitle>
+                    <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                    <ProtocolRow>
+                        <ProtocolDescriptionSubtitle>Объем вербальной памяти:</ProtocolDescriptionSubtitle>
+                        <ProtocolResultBlock>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Достаточный для полноценной коммуникации'
+                                    name='game_pictures_for_fish.verbal_memory'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Недостаточный для полноценной коммуникации'
+                                    name='game_pictures_for_fish.verbal_memory'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                        </ProtocolResultBlock>
+                        <ProtocolResultBlock>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Наблюдаются незначительные трудности актуализации слов, хранения и воспроизведения вербальной информации'
+                                    name='game_pictures_for_fish.verbal_memory_part_two'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Наблюдаются выраженные трудности актуализации слов, хранения и воспроизведения вербальной информации'
+                                    name='game_pictures_for_fish.verbal_memory_part_two'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                        </ProtocolResultBlock>
+                    </ProtocolRow>
+                </>
+            )}
             <ProtocolRow>
                 <ProtocolFormField
                     type='textarea'
