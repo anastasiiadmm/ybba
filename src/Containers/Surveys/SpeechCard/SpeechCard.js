@@ -87,7 +87,7 @@ const SpeechCard = (props) => {
                         {/*<p className='speech-card-form__date'>Дата заполнения: 12 мая 2016</p>*/}
                         <SpeechCardRow>
                             <SpeechCardFormField
-                                type='text'
+                                type='textarea'
                                 label='Фамилия, имя ребенка'
                                 register={register}
                                 name='child_full_name'
@@ -96,7 +96,7 @@ const SpeechCard = (props) => {
                         </SpeechCardRow>
                         <SpeechCardRow>
                             <SpeechCardFormField
-                                type='text'
+                                type='textarea'
                                 label='Дата рождения/Возраст'
                                 name='child_date_of_birth'
                                 register={register}
@@ -137,7 +137,7 @@ const SpeechCard = (props) => {
                             <SpeechCardSubBlockTitle>1.1. Раннее/позднее физическое развитие</SpeechCardSubBlockTitle>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Сел в:'
                                     name='sat_in'
                                     register={register}
@@ -146,7 +146,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Пополз на четвереньках в:'
                                     name='crawled_on_all_fours_into'
                                     register={register}
@@ -155,7 +155,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Пошел в:'
                                     name='went_to'
                                     register={register}
@@ -164,7 +164,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Научился прыгать на двух ногах в:'
                                     name='learned_to_jump_on_two_legs_in'
                                     register={register}
@@ -185,7 +185,7 @@ const SpeechCard = (props) => {
                             <SpeechCardSubBlockTitle>1.2. Раннее/позднее речевое развитие</SpeechCardSubBlockTitle>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Лепет в:'
                                     name='babbling_in'
                                     register={register}
@@ -194,7 +194,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Первые слова в:'
                                     name='first_words_in'
                                     register={register}
@@ -203,7 +203,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Первые короткие фразы в:'
                                     name='first_short_phrases_in'
                                     register={register}
@@ -238,7 +238,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Особенности зрительной системы'
                                     name='vision'
                                     register={register}
@@ -247,7 +247,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Особенности слуховой системы'
                                     name='hearing'
                                     register={register}
@@ -256,7 +256,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Пищевое поведение'
                                     name='eating_behavior'
                                     register={register}
@@ -300,7 +300,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Эмоциональный фон во время занятия'
                                     name='emotional_background_during_class'
                                     register={register}
@@ -309,7 +309,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Мотивация и интерес'
                                     name='motivation_and_interest'
                                     register={register}
@@ -318,7 +318,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Эмоциональный отклик на эмоцию взрослого'
                                     name='emotional_response_to_adult_emotion'
                                     register={register}
@@ -327,7 +327,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Мимические проявления'
                                     name='mimic_manifestations'
                                     register={register}
@@ -336,7 +336,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Базовые эмоции, которые проявлял во время занятия'
                                     name='basic_emotions_that_it_exhibits'
                                     register={register}
@@ -357,7 +357,7 @@ const SpeechCard = (props) => {
                         </SpeechCardRow>
                         <SpeechCardRow>
                             <SpeechCardFormField
-                                type='text'
+                                type='textarea'
                                 label='В пространственно-временной ситуации'
                                 name='in_a_time_space_situation'
                                 register={register}
@@ -369,7 +369,7 @@ const SpeechCard = (props) => {
                         <SpeechCardTitle>3. Образ «Я»</SpeechCardTitle>
                         <SpeechCardRow>
                             <SpeechCardFormField
-                                type='text'
+                                type='textarea'
                                 label='Образ «Я»'
                                 name='image_i'
                                 register={register}
@@ -378,7 +378,7 @@ const SpeechCard = (props) => {
                         </SpeechCardRow>
                         <SpeechCardRow>
                             <SpeechCardFormField
-                                type='text'
+                                type='textarea'
                                 label='Соматогнозис'
                                 name='somatognosis'
                                 register={register}
@@ -392,7 +392,7 @@ const SpeechCard = (props) => {
                             <SpeechCardSubBlockTitle>4.1. Уровень понимания речи</SpeechCardSubBlockTitle>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     name='speech_comprehension_level'
                                     register={register}
                                     disabled={isCardClosed}
@@ -403,7 +403,7 @@ const SpeechCard = (props) => {
                             <SpeechCardSubBlockTitle>4.2. Уровень сформированности лексикона</SpeechCardSubBlockTitle>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     name='level_of_vocabulary_formation'
                                     register={register}
                                     disabled={isCardClosed}
@@ -411,7 +411,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Активный семантический компонент'
                                     name='active_semantic_component_active_vocabulary'
                                     register={register}
@@ -443,7 +443,7 @@ const SpeechCard = (props) => {
                             </SpeechCardSubBlockTitle>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     name='level_of_grammatical_competence_formation'
                                     register={register}
                                     disabled={isCardClosed}
@@ -545,7 +545,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Голос'
                                     name='voice'
                                     register={register}
@@ -554,7 +554,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Плавность'
                                     name='smoothness'
                                     register={register}
@@ -563,7 +563,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Темп'
                                     name='pace'
                                     register={register}
@@ -572,7 +572,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Речь'
                                     name='speech_game_on_the_farm_part_three'
                                     register={register}
@@ -581,7 +581,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Дыхание'
                                     name='breath_game_on_the_farm_part_three'
                                     register={register}
@@ -590,7 +590,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Ритм'
                                     name='rhythm_game_on_the_farm_part_three'
                                     register={register}
@@ -599,7 +599,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Сила выдоха'
                                     name='exhalation_force'
                                     register={register}
@@ -608,7 +608,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Дифференцированность вдоха/выдоха и возможность управления'
                                     name='inspiratory_expiratory_differentiation'
                                     register={register}
@@ -675,7 +675,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Оральный праксис'
                                     name='oral_praxis'
                                     register={register}
@@ -684,7 +684,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Артикуляционный праксис'
                                     name='articulatory_praxis'
                                     register={register}
@@ -716,7 +716,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Билатеральная моторная координация'
                                     name='bilateral_motor_coordination'
                                     register={register}
@@ -725,7 +725,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Ведущее ухо'
                                     name='leading_ear'
                                     register={register}
@@ -734,7 +734,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Ведущая рука'
                                     name='leading_hand'
                                     register={register}
@@ -743,7 +743,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Ведущий глаз'
                                     name='leading_eye'
                                     register={register}
@@ -752,7 +752,7 @@ const SpeechCard = (props) => {
                             </SpeechCardRow>
                             <SpeechCardRow>
                                 <SpeechCardFormField
-                                    type='text'
+                                    type='textarea'
                                     label='Ведущая нога'
                                     name='leading_leg'
                                     register={register}
