@@ -33,7 +33,7 @@ const RadioField = (props) => {
                                 checked={String(radioValue) === String(params.field.value)}
                                 disabled={disabled}
                             />
-                            <span className={addClasses(className, {
+                            <span className={addClasses(null, {
                                 'error': resolve(name, errors, '.')
                             })}>{label}</span>
                         </label>
