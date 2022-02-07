@@ -149,13 +149,10 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(true)
             .nullable(true),
         there_are_difficulties_in_distinguishing: yup.boolean()
-            .required(true)
             .nullable(true),
         distinction_between_hard_and_soft_consonants: yup.boolean()
-            .required(true)
             .nullable(true),
         distinction_between_affricates_and_their_constituent: yup.boolean()
-            .required(true)
             .nullable(true),
         expert_comment: yup.string()
             .required(requiredFieldErrorText)
@@ -223,34 +220,24 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(true)
             .nullable(true),
         missing_syllables: yup.boolean()
-            .required(true)
             .nullable(true),
         missing_syllabic_vowels: yup.boolean()
-            .required(true)
             .nullable(true),
         permutations_of_sounds_and_or_syllables: yup.boolean()
-            .required(true)
             .nullable(true),
         insertion_of_vowels_into_consonants: yup.boolean()
-            .required(true)
             .nullable(true),
         adding_syllables: yup.boolean()
-            .required(true)
             .nullable(true),
         consonant_reduction: yup.boolean()
-            .required(true)
             .nullable(true),
         inserting_consonants_into_a_syllable: yup.boolean()
-            .required(true)
             .nullable(true),
         anticipation: yup.boolean()
-            .required(true)
             .nullable(true),
         assimilation_of_syllables: yup.boolean()
-            .required(true)
             .nullable(true),
         gnotic_violations_addition_of_syllables: yup.boolean()
-            .required(true)
             .nullable(true),
         expert_comment: yup.string()
             .required(requiredFieldErrorText)
@@ -317,46 +304,32 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(requiredFieldErrorText)
             .nullable(true),
         throat_rotacism: yup.boolean()
-            .required(true)
             .nullable(true),
         replacing_p_with: yup.string()
-            .required(true)
             .nullable(true),
         replacing_p_soft_with: yup.string()
-            .required(true)
             .nullable(true),
         buccal: yup.boolean()
-            .required(true)
             .nullable(true),
         side: yup.boolean()
-            .required(true)
             .nullable(true),
         one_hit_pronunciation: yup.boolean()
-            .required(true)
             .nullable(true),
         skip: yup.boolean()
-            .required(true)
             .nullable(true),
         interdental_lambdacism: yup.boolean()
-            .required(true)
             .nullable(true),
         replacing_l_with: yup.string()
-            .required(true)
             .nullable(true),
         replacing_l_soft_with: yup.string()
-            .required(true)
             .nullable(true),
         nasal: yup.boolean()
-            .required(true)
             .nullable(true),
         lambdacism_pass: yup.boolean()
-            .required(true)
             .nullable(true),
         two_lipped: yup.boolean()
-            .required(true)
             .nullable(true),
         distortion: yup.boolean()
-            .required(true)
             .nullable(true),
         thinking: yup.string()
             .required(true)
@@ -394,79 +367,54 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(requiredFieldErrorText)
             .nullable(true),
         sibilant_parasigmatism: yup.boolean()
-            .required(true)
             .nullable(true),
         replacing_s_with: yup.string()
-            .required(true)
             .nullable(true),
         replacing_s_soft_with: yup.string()
-            .required(true)
             .nullable(true),
         replacing_z_with: yup.string()
-            .required(true)
             .nullable(true),
         replacing_z_soft_with: yup.string()
-            .required(true)
             .nullable(true),
         replacing_c_with: yup.string()
-            .required(true)
             .nullable(true),
         replacing_ch_with: yup.string()
-            .required(true)
             .nullable(true),
         prominent_sigmatism: yup.boolean()
-            .required(true)
             .nullable(true),
         nasal_sigmatism: yup.boolean()
-            .required(true)
             .nullable(true),
         hissing_sigmatism: yup.boolean()
-            .required(true)
             .nullable(true),
         lateral_sigmatism: yup.boolean()
-            .required(true)
             .nullable(true),
         labiodental_pronunciation_of_whistling: yup.boolean()
-            .required(true)
             .nullable(true),
         skip_whistling_sound: yup.boolean()
-            .required(true)
             .nullable(true),
         mixing_sounds: yup.boolean()
-            .required(true)
             .nullable(true),
         interdental_sigmatism: yup.boolean()
-            .required(true)
             .nullable(true),
         replacing_shch_to: yup.string()
-            .required(true)
             .nullable(true),
         replacing_zh_to: yup.string()
-            .required(true)
             .nullable(true),
         replacing_sh_to: yup.string()
-            .required(true)
             .nullable(true),
         pristine_sigmatism: yup.boolean()
-            .required(true)
             .nullable(true),
         hissing_nasal_sigmatism: yup.boolean()
-            .required(true)
             .nullable(true),
         hissing_sigmatism_two: yup.boolean()
-            .required(true)
             .nullable(true),
         lateral_sigmatism_two: yup.boolean()
-            .required(true)
             .nullable(true),
         labiodental_pronunciation_of_sibilants: yup.boolean()
-            .required(true)
             .nullable(true),
         skip_whistling_sound_two: yup.boolean()
-            .required(true)
             .nullable(true),
         mixing_sounds_two: yup.boolean()
-            .required(true)
             .nullable(true),
         verbal_memory: yup.string()
             .required(true)
@@ -489,31 +437,22 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(requiredFieldErrorText)
             .nullable(true),
         nasal: yup.boolean()
-            .required(true)
             .nullable(true),
         skip: yup.boolean()
-            .required(true)
             .nullable(true),
         replacing_with_b: yup.string()
-            .required(true)
             .nullable(true),
         replacing_with_b_soft: yup.string()
-            .required(true)
             .nullable(true),
         replacing_with_f: yup.string()
-            .required(true)
             .nullable(true),
         replacing_with_f_soft: yup.string()
-            .required(true)
             .nullable(true),
         two_lipped: yup.boolean()
-            .required(true)
             .nullable(true),
         mixing: yup.boolean()
-            .required(true)
             .nullable(true),
         distortion: yup.boolean()
-            .required(true)
             .nullable(true),
         perception: yup.string()
             .required(true)
@@ -578,37 +517,26 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(true)
             .nullable(true),
         retelling_corresponds_to_original: yup.boolean()
-            .required(true)
             .nullable(true),
         retelling_contains_both_basic_and_additional_information: yup.boolean()
-            .required(true)
             .nullable(true),
         retelling_uses_variability_of_speech: yup.boolean()
-            .required(true)
             .nullable(true),
         retelling_partially_corresponds_to_original: yup.boolean()
-            .required(true)
             .nullable(true),
         retelling_contains_only_basic_information: yup.boolean()
-            .required(true)
             .nullable(true),
         vocabulary_and_syntactic_constructions_of_original: yup.boolean()
-            .required(true)
             .nullable(true),
         coherence_and_consistency_of_presentation_is_not_broken: yup.boolean()
-            .required(true)
             .nullable(true),
         retelling_does_not_correspond_to_original: yup.string()
-            .required(true)
             .nullable(true),
         semantic_organization_of_text_is_broken: yup.string()
-            .required(true)
             .nullable(true),
         coherence_and_consistency_of_presentation_is_broken: yup.string()
-            .required(true)
             .nullable(true),
         significant_difficulties_in_language_design_of_text: yup.string()
-            .required(true)
             .nullable(true),
         content_semantic_meaning_of_text: yup.string()
             .required(true)
@@ -641,16 +569,12 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(true)
             .nullable(true),
         deviation_of_the_tongue: yup.boolean()
-            .required(true)
             .nullable(true),
         hyperkinesis_of_the_tongue: yup.boolean()
-            .required(true)
             .nullable(true),
         tremor_of_the_tongue: yup.boolean()
-            .required(true)
             .nullable(true),
         switching_difficulties: yup.boolean()
-            .required(true)
             .nullable(true),
         pace_of_the_movements: yup.string()
             .required(true)
@@ -674,19 +598,14 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(true)
             .nullable(true),
         hypomimia: yup.boolean()
-            .required(true)
             .nullable(true),
         smoothness_of_nasolabial_fold: yup.boolean()
-            .required(true)
             .nullable(true),
         asymmetry_of_face: yup.boolean()
-            .required(true)
             .nullable(true),
         facial_hyperkinesis: yup.boolean()
-            .required(true)
             .nullable(true),
         synkinesis: yup.boolean()
-            .required(true)
             .nullable(true),
         lip_muscle_tone: yup.string()
             .required(true)
@@ -725,28 +644,20 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(true)
             .nullable(true),
         decrease_in_strength: yup.boolean()
-            .required(true)
             .nullable(true),
         impaired_coordination_of_movement_ataxia: yup.boolean()
-            .required(true)
             .nullable(true),
         hand_coordination_crashes: yup.boolean()
-            .required(true)
             .nullable(true),
         motor_shifting_difficulties: yup.boolean()
-            .required(true)
             .nullable(true),
         body_schema_disorders: yup.boolean()
-            .required(true)
             .nullable(true),
         disorders_of_hand_eye_coordination: yup.boolean()
-            .required(true)
             .nullable(true),
         orolingual: yup.boolean()
-            .required(true)
             .nullable(true),
         opto_lingual: yup.boolean()
-            .required(true)
             .nullable(true),
         motor_functions_of_hands_and_fingers: yup.string()
             .required(true)
@@ -770,10 +681,8 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(true)
             .nullable(true),
         split_tongue: yup.boolean()
-            .required(true)
             .nullable(true),
         shortened_hyoid_fold: yup.boolean()
-            .required(true)
             .nullable(true),
         anomalies_of_frenum_of_upper_lower_lip: yup.string()
             .required(true)
@@ -782,10 +691,8 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(true)
             .nullable(true),
         gothic_palate: yup.boolean()
-            .required(true)
             .nullable(true),
         jaw_deformities: yup.boolean()
-            .required(true)
             .nullable(true),
     }),
     game_on_the_farm: yup.object().shape({
@@ -905,16 +812,12 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(true)
             .nullable(true),
         hindered: yup.boolean()
-            .required(true)
             .nullable(true),
         superficial: yup.boolean()
-            .required(true)
             .nullable(true),
         breathing_is_not_rhythmic: yup.boolean()
-            .required(true)
             .nullable(true),
         shallow_breath: yup.boolean()
-            .required(true)
             .nullable(true),
         rhythm: yup.string()
             .required(true)
@@ -1101,7 +1004,8 @@ examinationProtocolSchema = examinationProtocolSchema.test(
     'choicesTest',
     null,
     (obj) => {
-        if (obj.game_magic_exam.there_are_difficulties_in_distinguishing || obj.game_magic_exam.anticipation || obj.game_magic_exam.assimilation_of_syllables || obj.game_magic_exam.assimilation_of_syllables) {
+        if (obj.game_magic_exam.there_are_difficulties_in_distinguishing || obj.game_magic_exam.distinction_between_hard_and_soft_consonants
+            || obj.game_magic_exam.distinction_between_affricates_and_their_constituent) {
             return true;
         } else {
             return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices13');
@@ -1126,7 +1030,9 @@ examinationProtocolSchema = examinationProtocolSchema.test(
     'choicesTest',
     null,
     (obj) => {
-        if (obj.game_capricious_princess.consonant_reduction || obj.game_capricious_princess.inserting_consonants_into_a_syllable || obj.game_capricious_princess.gnotic_violations_addition_of_syllables) {
+        if (obj.game_capricious_princess.consonant_reduction || obj.game_capricious_princess.inserting_consonants_into_a_syllable
+            || obj.game_capricious_princess.anticipation || obj.game_capricious_princess.assimilation_of_syllables
+            || obj.game_capricious_princess.gnotic_violations_addition_of_syllables) {
             return true;
         } else {
             return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices15');
@@ -1165,7 +1071,7 @@ examinationProtocolSchema = examinationProtocolSchema.test(
     'choicesTest',
     null,
     (obj) => {
-        if (obj.game_how_the_mouse_could_not_sleep.retelling_partially_corresponds_to_original || obj.game_how_the_mouse_could_not_sleep.semantic_organization_of_text_is_broken
+        if (obj.game_how_the_mouse_could_not_sleep.retelling_does_not_correspond_to_original || obj.game_how_the_mouse_could_not_sleep.semantic_organization_of_text_is_broken
             || obj.game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_broken || obj.game_how_the_mouse_could_not_sleep.significant_difficulties_in_language_design_of_text
         ) {
             return true;

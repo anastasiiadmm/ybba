@@ -352,7 +352,7 @@ const PicturesForFish = (props) => {
                             disabled={disabled}
                         />
                     </ProtocolResultWrapper>
-                    {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                    {errors.choices2 && <div className='form2__error'> {errors.choices2.message}</div>}
                 </ProtocolResultBlock>
             </ProtocolRow>
         </ProtocolBlock>
