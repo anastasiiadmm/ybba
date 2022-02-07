@@ -51,7 +51,7 @@ const ExaminationProtocol = (props) => {
     const dispatch = useDispatch()
 
     const { register, formState: { errors }, control, handleSubmit } = useForm({
-        // resolver: yupResolver(examinationProtocolSchema),
+        resolver: yupResolver(examinationProtocolSchema),
         defaultValues: {
             ...protocol,
             lesson: lesson.id
