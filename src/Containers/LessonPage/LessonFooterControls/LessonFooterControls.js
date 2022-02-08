@@ -22,6 +22,10 @@ const LessonFooterControls = (props) => {
     isStyleDebug,
     isGameMuted,
     isMuted,
+    isIntroButtonVisible,
+    isNextButtonVisible,
+    isPrevButtonVisible,
+    isRepeatButtonVisible,
   } = useContext(LessonContext);
 
   const setIsMuted = useCallback(async (isMuted) => {
@@ -132,11 +136,13 @@ const LessonFooterControls = (props) => {
               onClick={() => startGame()}
             />
           )}
-          <button
-            className='gamef__volume'
-            type='button'
-            onClick={GameActionHandler(gameActions.INTRO_SOUND)}
-          />
+          {isIntroButtonVisible &&
+            <button
+              className='gamef__volume'
+              type='button'
+              onClick={GameActionHandler(gameActions.INTRO_SOUND)}
+            />
+          }
           <button
             className={addClasses('', {
               'gamef__unmute_music': !isGameMuted,
@@ -145,21 +151,27 @@ const LessonFooterControls = (props) => {
             type='button'
             onClick={() => toggleGameMusic()}
           />
-          <button
-            className='gamef__repeat-sound'
-            type='button'
-            onClick={GameActionHandler(gameActions.REPEAT)}
-          />
-          <button
-            className='gamef__arrow-left'
-            type='button'
-            onClick={GameActionHandler(gameActions.PREV_ACTION)}
-          />
-          <button
-            className='gamef__arrow-right'
-            type='button'
-            onClick={GameActionHandler(gameActions.NEXT_ACTION)}
-          />
+          {isRepeatButtonVisible &&
+            <button
+              className='gamef__repeat-sound'
+              type='button'
+              onClick={GameActionHandler(gameActions.REPEAT)}
+            />
+          }
+          {isPrevButtonVisible &&
+            <button
+              className="gamef__arrow-left"
+              type="button"
+              onClick={GameActionHandler(gameActions.PREV_ACTION)}
+            />
+          }
+          {isNextButtonVisible &&
+            <button
+              className='gamef__arrow-right'
+              type='button'
+              onClick={GameActionHandler(gameActions.NEXT_ACTION)}
+            />
+          }
           <div
             className='divider horizontal'
             style={{

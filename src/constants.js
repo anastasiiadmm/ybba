@@ -36,6 +36,17 @@ export const lessonProperties = {
     IS_MUTED,
 };
 
+export const IS_INTRO_BUTTON_VISIBLE = 'IS_INTRO_BUTTON_VISIBLE';
+export const IS_NEXT_BUTTON_VISIBLE = 'IS_NEXT_BUTTON_VISIBLE';
+export const IS_PREV_BUTTON_VISIBLE = 'IS_PREV_BUTTON_VISIBLE';
+export const IS_REPEAT_BUTTON_VISIBLE = 'IS_REPEAT_BUTTON_VISIBLE';
+export const buttonVisibleStatuses = {
+    IS_INTRO_BUTTON_VISIBLE,
+    IS_NEXT_BUTTON_VISIBLE,
+    IS_PREV_BUTTON_VISIBLE,
+    IS_REPEAT_BUTTON_VISIBLE,
+};
+
 export const TEACHER_MOD = 'TeacherMode';
 export const START_GAME = 'GameStart';
 export const RESTART_GAME = 'Restart';

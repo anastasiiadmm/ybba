@@ -3,11 +3,12 @@ import { ProgressBar } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import config from 'config.js';
 import {
+  buttonVisibleStatuses,
   envs,
   GAME_FILE_TYPE_DATA,
   GAME_FILE_TYPE_FRAMEWORK,
   GAME_FILE_TYPE_LOADER,
-  GAME_FILE_TYPE_WASM, GAME_FOLDER_STREAMING_ASSETS, gameUserRoles, lessonProperties,
+  GAME_FILE_TYPE_WASM, GAME_FOLDER_STREAMING_ASSETS, gameUserRoles, IS_DISPLAY_RESTART, lessonProperties,
   userRoles,
 } from 'constants.js';
 import Unity, { UnityContext } from 'react-unity-webgl';
@@ -50,7 +51,6 @@ const GameContainer = (props) => {
 
   const updateGameJsonData = useCallback(() => {
     const userGameData = getUserDataForGame();
-    console.log('InitGame', userGameData);
     unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData));
   }, [getUserDataForGame, unityContext]);
 
@@ -75,13 +75,23 @@ const GameContainer = (props) => {
     }
   }, [api]);
 
+  const updateButtonState = useCallback((buttonStates) => {
+    console.log('ButtonStates', buttonStates);
+
+    changeLessonContextProperty(buttonVisibleStatuses.IS_INTRO_BUTTON_VISIBLE, buttonStates.IntroButton);
+    changeLessonContextProperty(buttonVisibleStatuses.IS_NEXT_BUTTON_VISIBLE, buttonStates.NextButton);
+    changeLessonContextProperty(buttonVisibleStatuses.IS_PREV_BUTTON_VISIBLE, buttonStates.PrevButton);
+    changeLessonContextProperty(buttonVisibleStatuses.IS_REPEAT_BUTTON_VISIBLE, buttonStates.RepeatButton);
+    changeLessonContextProperty(lessonProperties.IS_DISPLAY_RESTART, !buttonStates.StartButton);
+  }, [changeLessonContextProperty]);
+
 
   const setUnity = useCallback(async () => {
     if (lesson) {
       if (isUnityInitialized) {
         updateGameJsonData();
       } else {
-        if (lesson.game_build) {
+        if (lesson.game_build && !unityContext) {
           const context = new UnityContext({
             loaderUrl: getFileUrl(GAME_FILE_TYPE_LOADER),
             dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
@@ -106,12 +116,14 @@ const GameContainer = (props) => {
           changeLessonContextProperty(lessonProperties.IS_UNITY_INITIALIZED, true);
         });
         unityContext.on('MuteMicrophone', () => {
-          muteJitsiAudio()
-        })
+          muteJitsiAudio();
+        });
         unityContext.on('UnMuteMicrophone', () => {
-          unMuteJitsiAudio()
-        })
-
+          unMuteJitsiAudio();
+        });
+        unityContext.on('UpdateButtonState', (data) => {
+          updateButtonState(JSON.parse(data));
+        });
       }
     }
   }, [user, lessonId, unityContext, muteJitsiAudio, unMuteJitsiAudio, updateGameJsonData]);

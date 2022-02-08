@@ -7,9 +7,16 @@ import JitsiBlock from 'Components/JitsiBlock/JitsiBlock.js';
 import { LessonContext } from 'context/LessonContext/LessonContext';
 import {
     ACTIVE_GAME,
-    IS_DISPLAY_RESTART, IS_GAME_MUTED, IS_GAME_TIP_OPEN, IS_MUTED,
+    IS_DISPLAY_RESTART,
+    IS_GAME_MUTED,
+    IS_GAME_TIP_OPEN,
+    IS_INTRO_BUTTON_VISIBLE,
+    IS_MUTED,
+    IS_NEXT_BUTTON_VISIBLE,
+    IS_PREV_BUTTON_VISIBLE, IS_REPEAT_BUTTON_VISIBLE,
     IS_TEACHER_HAVE_CONTROL_ON_GAME,
-    IS_UNITY_INITIALIZED, UNITY_CONTEXT,
+    IS_UNITY_INITIALIZED,
+    UNITY_CONTEXT,
 } from 'constants.js';
 
 const Lesson = (props) => {
@@ -34,6 +41,11 @@ const Lesson = (props) => {
     const [isGameMuted, setIsGameMuted] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
 
+    const [isIntroButtonVisible, setIsIntroButtonVisible] = useState(true);
+    const [isNextButtonVisible, setIsNextButtonVisible] = useState(true);
+    const [isPrevButtonVisible, setIsPrevButtonVisible] = useState(true);
+    const [isRepeatButtonVisible, setIsRepeatButtonVisible] = useState(true);
+
     const listOfSets = useMemo(() => ({
         [UNITY_CONTEXT]: setUnityContext,
         [ACTIVE_GAME]: setActiveGame,
@@ -43,10 +55,13 @@ const Lesson = (props) => {
         [IS_GAME_TIP_OPEN]: setIsGameTipOpen,
         [IS_GAME_MUTED]: setIsGameMuted,
         [IS_MUTED]: setIsMuted,
+        [IS_INTRO_BUTTON_VISIBLE]: setIsIntroButtonVisible,
+        [IS_NEXT_BUTTON_VISIBLE]: setIsNextButtonVisible,
+        [IS_PREV_BUTTON_VISIBLE]: setIsPrevButtonVisible,
+        [IS_REPEAT_BUTTON_VISIBLE]: setIsRepeatButtonVisible,
     }), []);
 
     const changeLessonContextProperty = useCallback((lessonContextProperty, newValue) => {
-        console.log(lessonContextProperty);
         listOfSets[lessonContextProperty](newValue);
     }, [listOfSets]);
 
@@ -61,6 +76,11 @@ const Lesson = (props) => {
         isGameTipOpen,
         isGameMuted,
         isMuted,
+
+        isIntroButtonVisible,
+        isNextButtonVisible,
+        isPrevButtonVisible,
+        isRepeatButtonVisible,
 
         isStyleDebug,
         lessonId,
