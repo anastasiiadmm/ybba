@@ -39,7 +39,8 @@ export const gameActions = {
 
 export const userRoles = {
     therapist: 'therapist',
-    parent: 'parent'
+    parent: 'parent',
+    admin: 'admin'
 }
 
 export const lessonStatuses = {

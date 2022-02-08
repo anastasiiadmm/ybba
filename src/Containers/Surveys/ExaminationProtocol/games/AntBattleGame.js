@@ -911,6 +911,16 @@ const AntBattleGame = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='radio'
+                            label='Отсутствует'
+                            name='game_ant_battle.deviation_of_tongue'
+                            control={control}
+                            errors={errors}
+                            disabled={disabled}
+                        />
+                    </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='radio'
                             label='Влево'
                             name='game_ant_battle.deviation_of_tongue'
                             control={control}

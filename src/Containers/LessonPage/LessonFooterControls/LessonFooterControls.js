@@ -10,8 +10,12 @@ import { addClasses } from 'utils/addClasses/addClasses';
 const LessonFooterControls = (props) => {
   const {
     switchChildWebcamSize,
+    setIsGameMuted,
+    isGameMuted,
     setIsGameTipOpen,
     isGameTipOpen,
+    setGameIsStarted,
+    gameIsStarted,
     unityContext,
     setIsMuted,
     isMuted,
@@ -22,8 +26,6 @@ const LessonFooterControls = (props) => {
   const { api } = useContext(JitsiContext);
 
   const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false);
-  const [gameIsStarted, setGameIsStarted] = useState(false);
-  const [isGameMuted, setIsGameMuted] = useState(false);
 
   const toggleMute = useCallback(async () => {
     if (api) {

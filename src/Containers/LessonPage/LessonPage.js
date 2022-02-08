@@ -36,7 +36,9 @@ const LessonPage = (props) => {
 
   const [isUnityInitialized, setIsUnityInitialized] = useState(false);
   const [isGameTipOpen, setIsGameTipOpen] = useState(false);
+  const [gameIsStarted, setGameIsStarted] = useState(false);
   const [unityContext, setUnityContext] = useState(null);
+  const [isGameMuted, setIsGameMuted] = useState(false);
   const [activeGame, setActiveGame] = useState(null);
   const [isMuted, setIsMuted] = useState(false);
   const [isStyleDebug, setIsStyleDebug] = useState(false);
@@ -56,6 +58,11 @@ const LessonPage = (props) => {
     );
     await dispatch(clearLessonState());
   };
+
+  const handleReInitGame = () => {
+    setGameIsStarted(false);
+    setIsGameMuted(false);
+  }
 
   const switchChildWebcamSize = (value) => {
     sendWsAction(
@@ -160,6 +167,7 @@ const LessonPage = (props) => {
                   {lesson?.games?.length &&
                     <GameCarousel
                       isStyleDebug={isStyleDebug}
+                      handleReInitGame={handleReInitGame}
                       activeGame={activeGame}
                       lessonId={lessonId}
                       games={lesson.games}
@@ -169,7 +177,11 @@ const LessonPage = (props) => {
                     isStyleDebug={isStyleDebug}
                     switchChildWebcamSize={switchChildWebcamSize}
                     setIsGameTipOpen={setIsGameTipOpen}
+                    setGameIsStarted={setGameIsStarted}
+                    gameIsStarted={gameIsStarted}
                     isGameTipOpen={isGameTipOpen}
+                    setIsGameMuted={setIsGameMuted}
+                    isGameMuted={isGameMuted}
                     unityContext={unityContext}
                     setIsMuted={setIsMuted}
                     isMuted={isMuted}

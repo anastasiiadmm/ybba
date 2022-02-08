@@ -12,7 +12,7 @@ import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/
 const CapriciousPrincessGame = (props) => {
 
     const  {
-        register, errors, control, isConclusionDisabled, disabled
+        register, errors, control, isConclusionDisabled, disabled, isLessonFinished
     } = props
 
     return (
@@ -80,135 +80,139 @@ const CapriciousPrincessGame = (props) => {
                         disabled={disabled}
                     />
                 </ProtocolRow>
-                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
-                <ProtocolResultBlock>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Слоговая структура слова не нарушена'
-                            name='game_capricious_princess.syllabic_structure_of_a_word'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label='Слоговая структура слова нарушена'
-                            name='game_capricious_princess.syllabic_structure_of_a_word'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                </ProtocolResultBlock>
-                <ProtocolDescriptionSubtitle>Диспраксичные нарушения:</ProtocolDescriptionSubtitle>
-                <ProtocolResultBlock>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='checkbox'
-                            label='Пропуски слогов'
-                            name='game_capricious_princess.missing_syllables'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='checkbox'
-                            label='Пропуски слогообразующих гласных'
-                            name='game_capricious_princess.missing_syllabic_vowels'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='checkbox'
-                            label='Перестановки звуков и/или слогов'
-                            name='game_capricious_princess.permutations_of_sounds_and_or_syllables'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='checkbox'
-                            label='Вставки гласных в стечение согласных'
-                            name='game_capricious_princess.insertion_of_vowels_into_consonants'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='checkbox'
-                            label='Добавление слогов'
-                            name='game_capricious_princess.adding_syllables'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || disabled}
-                        />
-                    </ProtocolResultWrapper>
-                    {errors.choices14 && <div className='form2__error'> {errors.choices14.message}</div>}
-                </ProtocolResultBlock>
-                <ProtocolDescriptionSubtitle>Гностические нарушения:</ProtocolDescriptionSubtitle>
-                <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='checkbox'
-                        label='Сокращения стечения согласных'
-                        name='game_capricious_princess.consonant_reduction'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                </ProtocolResultWrapper>
-                <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='checkbox'
-                        label='Вставки согласных в слог'
-                        name='game_capricious_princess.inserting_consonants_into_a_syllable'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                </ProtocolResultWrapper>
-                <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='checkbox'
-                        label='Антиципации'
-                        name='game_capricious_princess.anticipation'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                </ProtocolResultWrapper>
-                <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='checkbox'
-                        label='Уподобление слогов'
-                        name='game_capricious_princess.assimilation_of_syllables'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                </ProtocolResultWrapper>
-                <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='checkbox'
-                        label='Добавление слогов'
-                        name='game_capricious_princess.gnotic_violations_addition_of_syllables'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                </ProtocolResultWrapper>
-                {errors.choices15 && <div className='form2__error'> {errors.choices15.message}</div>}
+                {isLessonFinished && (
+                    <>
+                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolResultBlock>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Слоговая структура слова не нарушена'
+                                    name='game_capricious_princess.syllabic_structure_of_a_word'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label='Слоговая структура слова нарушена'
+                                    name='game_capricious_princess.syllabic_structure_of_a_word'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                        </ProtocolResultBlock>
+                        <ProtocolDescriptionSubtitle>Диспраксичные нарушения:</ProtocolDescriptionSubtitle>
+                        <ProtocolResultBlock>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='checkbox'
+                                    label='Пропуски слогов'
+                                    name='game_capricious_princess.missing_syllables'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='checkbox'
+                                    label='Пропуски слогообразующих гласных'
+                                    name='game_capricious_princess.missing_syllabic_vowels'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='checkbox'
+                                    label='Перестановки звуков и/или слогов'
+                                    name='game_capricious_princess.permutations_of_sounds_and_or_syllables'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='checkbox'
+                                    label='Вставки гласных в стечение согласных'
+                                    name='game_capricious_princess.insertion_of_vowels_into_consonants'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='checkbox'
+                                    label='Добавление слогов'
+                                    name='game_capricious_princess.adding_syllables'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            {errors.choices14 && <div className='form2__error'> {errors.choices14.message}</div>}
+                        </ProtocolResultBlock>
+                        <ProtocolDescriptionSubtitle>Гностические нарушения:</ProtocolDescriptionSubtitle>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Сокращения стечения согласных'
+                                name='game_capricious_princess.consonant_reduction'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Вставки согласных в слог'
+                                name='game_capricious_princess.inserting_consonants_into_a_syllable'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Антиципации'
+                                name='game_capricious_princess.anticipation'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Уподобление слогов'
+                                name='game_capricious_princess.assimilation_of_syllables'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label='Добавление слогов'
+                                name='game_capricious_princess.gnotic_violations_addition_of_syllables'
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
+                        {errors.choices15 && <div className='form2__error'> {errors.choices15.message}</div>}
+                    </>
+                )}
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'

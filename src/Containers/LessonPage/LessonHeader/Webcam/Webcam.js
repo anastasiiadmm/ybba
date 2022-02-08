@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -38,6 +38,10 @@ const Webcam = (props) => {
 
     const isTherapistWebcamInZoom = () => isWebcamInZoom;
     const isParentWebcamInZoom = () => isParentWebcamIncreased;
+    const userInfo = useMemo(() => ({
+        displayName: user.email,
+        email: user.email,
+    }), [user]);
 
     const isUserWebcamInZoom = () => {
         const usersChecks = {
@@ -66,7 +70,6 @@ const Webcam = (props) => {
                     type='button'
                     onClick={webcamZoomToggle}
                 >
-                    {isUserWebcamInZoom() ? '-' : '+'}
                 </button>
                 <div
                     className={addClasses('frontWebcamBlock', {
@@ -76,6 +79,7 @@ const Webcam = (props) => {
                 <Jitsi
                     meetingId={meetingId}
                     height={webcamHeight}
+                    userInfo={userInfo}
                 />
             </div>
         </div>

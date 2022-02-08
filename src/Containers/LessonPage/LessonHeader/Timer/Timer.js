@@ -50,7 +50,7 @@ const Timer = (props) => {
             })}>
                 {checkIfLessonFinished() ?
                   'Урок окончен' :
-                  `До конца ${hours ? `0${hours}:` : ''}${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`
+                  `До конца ${hours ? `${('0' + hours).slice(-2)}:` : ''}${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`
                 }
             </p>
             {!isLessonFinished && checkUserRole(userRoles.therapist) && (

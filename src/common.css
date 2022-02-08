@@ -214,3 +214,7 @@ h3 {
 .error {
     color: #F35454 !important;
 }
+
+.speach-card-doc__bottom-in {
+    margin-top: 20px;
+}

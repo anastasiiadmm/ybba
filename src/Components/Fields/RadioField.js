@@ -21,6 +21,7 @@ const RadioField = (props) => {
                             className={addClasses(classNameLabel, {
                                 'disabled': disabled
                             })}
+                            name={name}
                         >
                             <input
                                 name={name}
@@ -37,7 +38,7 @@ const RadioField = (props) => {
                                 'error': resolve(name, errors, '.')
                             })}>{label}</span>
                         </label>
-                        <div className='form2__error'> {resolve(name, errors, '.')?.message} </div>
+                        <div className='form2__error'> {resolve(name, errors, '.')?.message} </ div>
                     </>
 
                 )

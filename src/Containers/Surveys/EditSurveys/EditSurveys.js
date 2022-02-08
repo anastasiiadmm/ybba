@@ -16,7 +16,8 @@ import ExaminationProtocol from 'Containers/Surveys/ExaminationProtocol/Examinat
 import SpeechCard from 'Containers/Surveys/SpeechCard/SpeechCard.js';
 
 import 'Containers/Surveys/EditSurveys/editSurveys.css'
-import { examinationProtocolStatuses } from 'constants.js';
+import { examinationProtocolStatuses, userRoles } from 'constants.js';
+import { checkUserRole } from 'utils/user.js';
 
 const EditSurveys = (props) => {
 
@@ -53,11 +54,12 @@ const EditSurveys = (props) => {
     return (
         <div className='gamef position-relative overflow-hidden'>
             <div className='speechCardBlock'>
-                {speechCard ?
+                {speechCard && protocol ?
                     <SpeechCard
                         speechCard={speechCard}
                         onSubmit={onSpeechCardSubmit}
                         lesson={protocol.lesson}
+                        isClosed={checkUserRole(userRoles.admin)}
                     /> :
                     <div className='h-100 w-100 d-flex align-items-center justify-content-center'>
                         <Spinner animation='grow'/>
@@ -81,6 +83,7 @@ const EditSurveys = (props) => {
                                 protocol={protocol}
                                 lesson={protocol.lesson}
                                 onSubmit={onProtocolSubmit}
+                                isClosed={checkUserRole(userRoles.admin)}
                             />
                         </> :
                         <div className='h-100 w-100 d-flex align-items-center justify-content-center'>

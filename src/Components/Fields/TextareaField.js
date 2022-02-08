@@ -2,6 +2,7 @@ import React from 'react';
 import { addClasses } from 'utils/addClasses/addClasses.js';
 import { resolve } from 'utils/resolve/resolve.js';
 import PropTypes from 'prop-types';
+import { TextareaAutosize } from '@mui/material';
 
 
 const TextareaField = (props) => {
@@ -24,7 +25,7 @@ const TextareaField = (props) => {
                 'disabled': disabled
             })}
         >{label}</label>
-        <textarea
+        <TextareaAutosize
             className={addClasses(className, {
                 'error': resolve(name, errors, '.'),
                 'disabled': disabled
@@ -34,6 +35,7 @@ const TextareaField = (props) => {
             disabled={disabled}
             onClick={onClick}
             onFocus={onFocus}
+            style={{ resize: 'vertical', overflow: 'auto' }}
         />
         <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
     </>

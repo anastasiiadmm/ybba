@@ -4,12 +4,11 @@ import { JitsiContext } from 'context/JitsiContext/JitsiContext.js';
 
 
 const JitsiBlock = (props) => {
-
     const {
         children
-    } = props
+    } = props;
 
-    const [api, setApi] = useState(null)
+    const [api, setApi] = useState(null);
 
     const startMeet = useCallback(({ meetingId, width, height, toolbarItems, userInfo, jitsiBlockSelector }) => {
         const options = {
@@ -20,15 +19,15 @@ const JitsiBlock = (props) => {
             interfaceConfigOverwrite: {
                 TOOLBAR_BUTTONS: toolbarItems || [],
                 SHOW_WATERMARK_FOR_GUESTS: false,
-                SHOW_CHROME_EXTENSION_BANNER: false
+                SHOW_CHROME_EXTENSION_BANNER: false,
             },
             parentNode: document.querySelector(jitsiBlockSelector),
-            userInfo: { ...userInfo }
-        }
+            userInfo: { ...userInfo },
+        };
         const apiObj = new window.JitsiMeetExternalAPI('meet.jit.si', options);
         apiObj.executeCommand('subject', ' ');
-        setApi(apiObj)
-    }, [])
+        setApi(apiObj);
+    }, []);
 
     const context = {
         startMeet,
