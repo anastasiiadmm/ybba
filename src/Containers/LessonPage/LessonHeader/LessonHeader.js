@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { envs, lessonStatuses, userRoles } from 'constants.js';
+import { envs, lessonProperties, lessonStatuses, userRoles } from 'constants.js';
 import { JitsiContext } from 'context/JitsiContext/JitsiContext';
+import { LessonContext } from 'context/LessonContext/LessonContext';
 
 import { startJitsiRecording, stopJitsiRecording } from 'utils/jitsi/utils';
 import { addClasses } from 'utils/addClasses/addClasses';
@@ -13,16 +14,18 @@ import Webcam from './Webcam/Webcam';
 import Timer from './Timer/Timer';
 
 const LessonHeader = (props) => {
-  const { api } = useContext(JitsiContext);
-
   const {
     switchChildWebcamSize,
     onLessonFinish,
-    setIsMuted,
-    lessonId,
     lesson,
-    isStyleDebug,
   } = props;
+
+  const {
+    changeLessonContextProperty,
+    isStyleDebug,
+    lessonId,
+  } = useContext(LessonContext);
+  const { api } = useContext(JitsiContext);
 
   const [webcamHeight, setWebcamHeight] = useState(260);
 
@@ -46,7 +49,7 @@ const LessonHeader = (props) => {
 
   const setMuted = useCallback(async () => {
     const muted = await api.isAudioMuted();
-    await setIsMuted(muted);
+    await changeLessonContextProperty(lessonProperties.IS_MUTED, muted);
   }, [api]);
 
   useEffect(() => {

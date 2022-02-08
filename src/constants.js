@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 export const GAME_FILE_TYPE_LOADER = 'file_loader'
 export const GAME_FILE_TYPE_DATA = 'file_data'
 export const GAME_FILE_TYPE_FRAMEWORK = 'file_framework'
@@ -14,6 +16,25 @@ export const jitsiTools = {
     camera: 'camera'
 }
 
+export const UNITY_CONTEXT = 'UNITY_CONTEXT';
+export const ACTIVE_GAME = 'ACTIVE_GAME';
+export const IS_UNITY_INITIALIZED = 'IS_UNITY_INITIALIZED';
+export const IS_TEACHER_HAVE_CONTROL_ON_GAME = 'IS_TEACHER_HAVE_CONTROL_ON_GAME';
+export const IS_DISPLAY_RESTART = 'IS_DISPLAY_RESTART';
+export const IS_GAME_TIP_OPEN = 'IS_GAME_TIP_OPEN';
+export const IS_GAME_MUTED = 'IS_GAME_MUTED';
+export const IS_MUTED = 'IS_MUTED';
+
+export const lessonProperties = {
+    UNITY_CONTEXT,
+    ACTIVE_GAME,
+    IS_TEACHER_HAVE_CONTROL_ON_GAME,
+    IS_UNITY_INITIALIZED,
+    IS_DISPLAY_RESTART,
+    IS_GAME_TIP_OPEN,
+    IS_GAME_MUTED,
+    IS_MUTED,
+};
 
 export const TEACHER_MOD = 'TeacherMode';
 export const START_GAME = 'GameStart';
@@ -26,15 +47,15 @@ export const UN_MUTE_GAME_SOUND = 'UnMuteBackgroundSound';
 export const MUTE_GAME_SOUND = 'MuteBackgroundSound'
 
 export const gameActions = {
-    TEACHER_MOD: TEACHER_MOD,
-    START_GAME: START_GAME,
-    RESTART_GAME: RESTART_GAME,
-    INTRO_SOUND: INTRO_SOUND,
-    REPEAT: REPEAT,
-    NEXT_ACTION: NEXT_ACTION,
-    PREV_ACTION: PREV_ACTION,
-    UN_MUTE_GAME_SOUND: UN_MUTE_GAME_SOUND,
-    MUTE_GAME_SOUND: MUTE_GAME_SOUND,
+    TEACHER_MOD,
+    START_GAME,
+    RESTART_GAME,
+    INTRO_SOUND,
+    REPEAT,
+    NEXT_ACTION,
+    PREV_ACTION,
+    UN_MUTE_GAME_SOUND,
+    MUTE_GAME_SOUND,
 }
 
 export const userRoles = {

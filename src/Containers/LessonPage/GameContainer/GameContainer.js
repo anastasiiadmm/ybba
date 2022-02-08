@@ -7,29 +7,28 @@ import {
   GAME_FILE_TYPE_DATA,
   GAME_FILE_TYPE_FRAMEWORK,
   GAME_FILE_TYPE_LOADER,
-  GAME_FILE_TYPE_WASM, GAME_FOLDER_STREAMING_ASSETS, gameUserRoles,
+  GAME_FILE_TYPE_WASM, GAME_FOLDER_STREAMING_ASSETS, gameUserRoles, lessonProperties,
   userRoles,
 } from 'constants.js';
 import Unity, { UnityContext } from 'react-unity-webgl';
 import { addClasses } from 'utils/addClasses/addClasses';
 import { checkUserRole } from 'utils/user';
 import { authSelector } from 'redux/auth/authSlice';
-import { JitsiContext } from '../../../context/JitsiContext/JitsiContext';
+import { LessonContext } from 'context/LessonContext/LessonContext';
+import { JitsiContext } from 'context/JitsiContext/JitsiContext';
 
 const GameContainer = (props) => {
-  const {
-    setIsUnityInitialized,
-    isUnityInitialized,
-    setUnityContext,
-    unityContext,
-    setIsMuted,
-    lessonId,
-    lesson,
-    isStyleDebug,
-  } = props;
+  const { lesson } = props;
 
   const { user } = useSelector(authSelector);
   const { api } = useContext(JitsiContext);
+  const {
+    changeLessonContextProperty,
+    isUnityInitialized,
+    unityContext,
+    isStyleDebug,
+    lessonId,
+  } = useContext(LessonContext);
 
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
 
@@ -51,21 +50,27 @@ const GameContainer = (props) => {
 
   const updateGameJsonData = useCallback(() => {
     const userGameData = getUserDataForGame();
+    console.log('InitGame', userGameData);
     unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData));
   }, [getUserDataForGame, unityContext]);
+
+  const setIsMuted = useCallback((isMuted) => {
+    changeLessonContextProperty(lessonProperties.IS_MUTED, isMuted);
+  }, [changeLessonContextProperty]);
 
   const muteJitsiAudio = useCallback(async () => {
     const muted = await api.isAudioMuted();
     if (!muted) {
       api.executeCommand('toggleAudio');
       setIsMuted(true);
+      changeLessonContextProperty(lessonProperties)
     }
   }, [api])
 
   const unMuteJitsiAudio = useCallback(async () => {
     const muted = await api.isAudioMuted()
     if (muted) {
-      api.executeCommand('toggleAudio')
+      api.executeCommand('toggleAudio');
       setIsMuted(false);
     }
   }, [api]);
@@ -84,7 +89,7 @@ const GameContainer = (props) => {
             codeUrl: getFileUrl(GAME_FILE_TYPE_WASM),
             streamingAssetsUrl: getFileUrl(GAME_FOLDER_STREAMING_ASSETS)
           });
-          await setUnityContext(context);
+          await changeLessonContextProperty(lessonProperties.UNITY_CONTEXT, context);
         }
       }
     }
@@ -98,7 +103,7 @@ const GameContainer = (props) => {
       if (unityContext) {
         unityContext.on('GameInitialized', () => {
           updateGameJsonData();
-          setIsUnityInitialized(true);
+          changeLessonContextProperty(lessonProperties.IS_UNITY_INITIALIZED, true);
         });
         unityContext.on('MuteMicrophone', () => {
           muteJitsiAudio()
@@ -114,7 +119,7 @@ const GameContainer = (props) => {
 
   useEffect(() => {
     setUnity();
-  }, [lesson]);
+  }, [lesson, setUnity]);
 
   const canvasParent = useRef();
 
