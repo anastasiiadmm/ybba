@@ -243,53 +243,6 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(requiredFieldErrorText)
             .nullable(true),
     }),
-    game_ant_lambada: yup.object().shape({
-        woodpecker_house: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
-        slipper_dress: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
-        kitchen_hamster_goose: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
-        nasal: yup.boolean()
-            .required(true)
-            .nullable(true),
-        skip: yup.boolean()
-            .required(true)
-            .nullable(true),
-        replacing_d_with: yup.boolean()
-            .required(true)
-            .nullable(true),
-        replacing_d_soft_with: yup.boolean()
-            .required(true)
-            .nullable(true),
-        replacing_t_with: yup.boolean()
-            .required(true)
-            .nullable(true),
-        replacing_t_soft_with: yup.boolean()
-            .required(true)
-            .nullable(true),
-        replacing_k_with: yup.boolean()
-            .required(true)
-            .nullable(true),
-        replacing_g_with: yup.boolean()
-            .required(true)
-            .nullable(true),
-        replacing_kh_with: yup.boolean()
-            .required(true)
-            .nullable(true),
-        mixing: yup.boolean()
-            .required(true)
-            .nullable(true),
-        distortion: yup.boolean()
-            .required(true)
-            .nullable(true),
-        expert_comment: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
-    }),
     game_giraffe: yup.object().shape({
         fish_cow_fence_crab: yup.string()
             .required(requiredFieldErrorText)
