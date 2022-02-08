@@ -1,40 +1,3 @@
-.webcam {
-    transition: all .2s;
-}
-
-.therapist__webcam {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    height: 180px;
-}
-
-.therapist__webcam>video {
-    transform: translateX(-30px);
-}
-
-.webcam__placeholder {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    height: 180px;
-    width: 300px;
-    background: #040404;
-    color: white;
-}
-
-@media screen and (min-width: 1440px) {
-    .therapist__webcam {
-        height: 260px;
-    }
-    .webcam__placeholder {
-        height: 260px;
-        width: 400px;
-    }
-}
-
 .gamef__person-teacher {
     width: 300px;
     position: fixed;
@@ -44,43 +7,9 @@
     z-index: 900;
 }
 
-.gamef__person-teacher .zoom {
-    transform: scale(2.7);
-    transform-origin: top right;
-    border-radius: 5px;
-}
-
-.gamef__person-teacher .zoom .gamef__person-name {
-    transform: scale(0.37) translate(-14px, 54px);
-    transform-origin: top left;
-}
-
 .gamef__person-child {
     width: 250px;
-    margin: 0 10px;
-}
-
-.gamef__person-child .gamef__person-in #jitsi-iframe {
-    transform: translateY(-35px);
-}
-
-@media screen and (min-width: 1600px) {
-    .gamef__person-child {
-        margin: 0 50px;
-    }
-}
-
-@media screen and (min-width: 1440px) {
-    .gamef__person-child .gamef__person-in #jitsi-iframe {
-        transform: none;
-    }
-    .gamef__person-child .gamef__person-in {
-        transform: none;
-    }
-    .gamef__person-child {
-        width: 400px;
-        margin: 0 30px;
-    }
+    margin: 0;
 }
 
 .gamef__person-in {
@@ -89,13 +18,39 @@
     overflow: hidden;
 }
 
+.gamef__person-child .gamef__person-in #jitsi-iframe {
+    transform: translateY(-35px) translateX(-30px);
+}
+
+@media screen and (min-width: 1400px) {
+    .gamef__person-child .gamef__person-in #jitsi-iframe {
+        transform: none;
+    }
+    .gamef__person-child .gamef__person-in {
+        transform: translateX(-90px);
+    }
+    .gamef__person-child {
+        width: 400px;
+        margin: 0;
+    }
+}
+
+.gamef__person-teacher .zoom {
+    transform: scale(2.7);
+    transform-origin: top right;
+    border-radius: 5px;
+}
+
 .gamef__person-child .zoom {
     transform: scale(2.3);
     transform-origin: top center;
     border-radius: 8px;
 }
 
-
+.gamef__person-teacher .zoom .gamef__person-name {
+    transform: scale(0.37) translate(-14px, 54px);
+    transform-origin: top left;
+}
 
 .gamef__person-child .zoom .gamef__person-name {
     transform: scale(0.43) translate(-10px, 44px);
@@ -114,15 +69,24 @@
     color: #fff;
 }
 
+.gamef__person-teacher .zoom .gamef__person-btn {
+    transform: scale(0.37) translate(14px, 54px);
+    transform-origin: top right;
+}
+
 .gamef__person-child .zoom .gamef__person-btn {
     transform: scale(0.43) translate(10px, 44px);
     transform-origin: top right;
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1400px) {
     .gamef__person-child .zoom {
         transform: scale(2.3) translateX(-40px);
     }
+}
+
+.webcam {
+    transition: all .2s;
 }
 
 .dragBlock {
@@ -134,12 +98,6 @@
     z-index: 999999999 !important;
     right: 10px;
     bottom: 10px;
-}
-.zoomBtn:before {
-    content: url('../../../../../src/assets/img/24_expand.svg');
-}
-.webcamZoom > .gamef__person-in > .zoomBtn:before {
-    content: url('../../../../../src/assets/img/24_compact.svg');
 }
 
 .soundBtn {
@@ -167,7 +125,6 @@
     transform: scale(1.8);
     transform-origin: top center;
     border-radius: 8px;
-    z-index: 10;
 }
 
 .frontWebcamBlock {

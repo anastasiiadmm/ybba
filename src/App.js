@@ -22,8 +22,10 @@ import PageFail from 'Components/PagesForPayment/PageFail';
 import ParentQuestionnaire from 'Containers/ParentQuestionnaire/ParentQuestionnaire.js';
 import EditSurveys from 'Containers/Surveys/EditSurveys/EditSurveys.js';
 import ChildSpeechCard from 'Containers/ChildSpeechCard/ChildSpeechCard.js';
+import MainAdminDashboard from 'Containers/MainAdminDashboard/MainAdminDashboard';
 
 import 'App.css';
+import ProtocolAdmin from './Containers/MainAdminDashboard/ProtocolAdmin/ProtocolAdmin';
 
 
 const App = () => {
@@ -56,6 +58,8 @@ const App = () => {
                 <PrivateRoute path='/questionnaire/:childId/' component={ParentQuestionnaire}/>
                 <PrivateRoute path='/children/:childId/surveys/edit/' component={EditSurveys} />
                 <PrivateRoute path='/children/:childId/surveys/speech-card/' component={ChildSpeechCard} />
+                <PrivateRoute path='/admin-dashboard/' component={MainAdminDashboard}/>
+                <PrivateRoute path='/protocol-dashboard/' component={ProtocolAdmin}/>
                 <Route path='/login/' component={Login}/>
                 <Route path='/registration/:registrationKey' component={Registration}/>
                 <Route path='/registration-success/' component={RegistrationSuccess}/>
