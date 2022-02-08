@@ -6,7 +6,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 12px;
-    height: 180px;
+    height: 140px;
 }
 
 .therapist__webcam>video {
@@ -19,19 +19,19 @@
     justify-content: center;
     align-items: center;
     top: 0;
-    height: 180px;
-    width: 300px;
+    height: 140px;
+    width: 250px;
     background: #040404;
     color: white;
 }
 
 @media screen and (min-width: 1440px) {
     .therapist__webcam {
-        height: 260px;
+        height: 220px;
     }
     .webcam__placeholder {
-        height: 260px;
-        width: 400px;
+        height: 220px;
+        width: 350px;
     }
 }
 
@@ -72,13 +72,13 @@
 
 @media screen and (min-width: 1440px) {
     .gamef__person-child .gamef__person-in #jitsi-iframe {
-        transform: none;
+        transform: translateY(-10px);
     }
     .gamef__person-child .gamef__person-in {
         transform: none;
     }
     .gamef__person-child {
-        width: 400px;
+        width: 350px;
         margin: 0 30px;
     }
 }

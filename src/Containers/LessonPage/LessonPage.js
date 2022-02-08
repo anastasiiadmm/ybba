@@ -6,13 +6,20 @@ import { toast } from 'react-toastify';
 import { defineUser, initSessionStack, stopSessionStackRecording } from 'utils/sessionstack/utils';
 import { checkEnv } from 'utils/common/commonUtils';
 import { checkUserRole } from 'utils/user';
-import { envs, LESSON_STATUS_FINISHED, lessonStatuses, userRoles } from 'constants.js';
+import {
+  envs,
+  LESSON_STATUS_FINISHED,
+  lessonProperties,
+  lessonStatuses,
+  userRoles,
+} from 'constants.js';
 
 import { clearLessonState, lessonSelector } from 'redux/lesson/lessonSlice';
 import { changeLessonStatus, resizeChildWebcam } from 'redux/lesson/actions';
 import { userSelector } from 'redux/user/userSlice';
 
 import { BrowserPermissionsContext } from 'context/BrowserPermissionsContext/BrowserPermissionsContext';
+import { LessonContext } from 'context/LessonContext/LessonContext';
 import { WsContext } from 'context/WsContext/WsContext';
 
 import Modal from 'Components/Modal/Modal';
@@ -26,22 +33,19 @@ import LessonHeader from './LessonHeader/LessonHeader';
 import './lessonPage.css';
 
 const LessonPage = (props) => {
-  const { lessonId } = props.match.params;
   const dispatch = useDispatch();
   const history = useHistory();
 
   const { lesson, error } = useSelector(lessonSelector);
   const { user } = useSelector(userSelector);
   const { sendWsAction } = useContext(WsContext);
-
-  const [isUnityInitialized, setIsUnityInitialized] = useState(false);
-  const [isGameTipOpen, setIsGameTipOpen] = useState(false);
-  const [gameIsStarted, setGameIsStarted] = useState(false);
-  const [unityContext, setUnityContext] = useState(null);
-  const [isGameMuted, setIsGameMuted] = useState(false);
-  const [activeGame, setActiveGame] = useState(null);
-  const [isMuted, setIsMuted] = useState(false);
-  const [isStyleDebug, setIsStyleDebug] = useState(false);
+  const {
+    changeLessonContextProperty,
+    isUnityInitialized,
+    isGameTipOpen,
+    activeGame,
+    lessonId,
+  } = useContext(LessonContext);
 
   const [protocolModalIsOpen, setProtocolModalIsOpen] = useState(false);
   const toggleProtocolModal = async () => await setProtocolModalIsOpen(!protocolModalIsOpen);
@@ -58,11 +62,6 @@ const LessonPage = (props) => {
     );
     await dispatch(clearLessonState());
   };
-
-  const handleReInitGame = () => {
-    setGameIsStarted(false);
-    setIsGameMuted(false);
-  }
 
   const switchChildWebcamSize = (value) => {
     sendWsAction(
@@ -92,12 +91,19 @@ const LessonPage = (props) => {
     }
   };
 
+  const setIsGameTipOpen = useCallback((isTipOpen) => {
+    changeLessonContextProperty(
+      lessonProperties.IS_GAME_TIP_OPEN,
+      isTipOpen,
+    )
+  }, [changeLessonContextProperty]);
+
   useEffect(() => {
     if (lesson?.games && lesson?.active_game_id) {
       const active = lesson.games?.find((game) => {
         return game.game_type === parseInt(lesson.active_game_id)
       });
-      setActiveGame(active);
+      changeLessonContextProperty(lessonProperties.ACTIVE_GAME, active);
     }
   }, [lesson]);
 
@@ -144,47 +150,19 @@ const LessonPage = (props) => {
         {lesson && lesson.status !== lessonStatuses.finished && (
           <>
             <LessonHeader
-              isStyleDebug={isStyleDebug}
               switchChildWebcamSize={switchChildWebcamSize}
               onLessonFinish={onLessonFinish}
-              setIsMuted={setIsMuted}
-              lessonId={lessonId}
               lesson={lesson}
             />
             <>
-              <GameContainer
-                isStyleDebug={isStyleDebug}
-                setIsUnityInitialized={setIsUnityInitialized}
-                isUnityInitialized={isUnityInitialized}
-                setUnityContext={setUnityContext}
-                unityContext={unityContext}
-                setIsMuted={setIsMuted}
-                lessonId={lessonId}
-                lesson={lesson}
-              />
+              <GameContainer lesson={lesson} />
               {checkUserRole(userRoles.therapist) && (
                 <>
                   {lesson?.games?.length &&
-                    <GameCarousel
-                      isStyleDebug={isStyleDebug}
-                      handleReInitGame={handleReInitGame}
-                      activeGame={activeGame}
-                      lessonId={lessonId}
-                      games={lesson.games}
-                    />
+                    <GameCarousel games={lesson.games} />
                   }
                   <LessonFooterControls
-                    isStyleDebug={isStyleDebug}
                     switchChildWebcamSize={switchChildWebcamSize}
-                    setIsGameTipOpen={setIsGameTipOpen}
-                    setGameIsStarted={setGameIsStarted}
-                    gameIsStarted={gameIsStarted}
-                    isGameTipOpen={isGameTipOpen}
-                    setIsGameMuted={setIsGameMuted}
-                    isGameMuted={isGameMuted}
-                    unityContext={unityContext}
-                    setIsMuted={setIsMuted}
-                    isMuted={isMuted}
                   />
                 </>
               )}
