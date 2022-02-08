@@ -76,8 +76,8 @@ const LessonHeader = (props) => {
   const setCurrentWebcamHeight = () => {
     const bodyWidth = +document.body.clientWidth;
     bodyWidth <= 1440
-      ? setWebcamHeight(180)
-      : setWebcamHeight(260);
+      ? setWebcamHeight(140)
+      : setWebcamHeight(220);
   }
 
   useEffect(() => {
