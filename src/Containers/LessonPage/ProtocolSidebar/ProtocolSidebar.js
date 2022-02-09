@@ -16,12 +16,14 @@ const ProtocolSidebar = (props) => {
   const {
     isUnityInitialized,
     lesson,
+    toggleProtocolModal
   } = props;
 
   const { protocol } = useSelector(surveysSelector);
 
   const dispatch = useDispatch();
   const onProtocolFinish = async data => {
+    await toggleProtocolModal()
     if (lesson.status !== lessonStatuses.finished) {
       toast.warning('Сначала завершите занятие')
     } else {
