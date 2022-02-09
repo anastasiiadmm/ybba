@@ -702,7 +702,6 @@ const AntBattleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Пальцевый праксис сформирован. Воспроизвел пальцевую позу без затруднений'
-                                value='пальцевый праксис сформирован. без затруднений'
                                 name='game_ant_battle.motor_functions_of_hands_and_fingers'
                                 control={control}
                                 errors={errors}
@@ -713,7 +712,6 @@ const AntBattleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Пальцевый праксис сформирован. Воспроизвел пальцевую позу с затруднениями'
-                                value='пальцевый праксис сформирован. с затруднениями'
                                 name='game_ant_battle.motor_functions_of_hands_and_fingers'
                                 control={control}
                                 errors={errors}
@@ -724,7 +722,6 @@ const AntBattleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Пальцевый праксис не сформирован. Пальцевую позу не воспроизвел'
-                                value='пальцевый праксис сформирован не воспроизвел'
                                 name='game_ant_battle.motor_functions_of_hands_and_fingers'
                                 control={control}
                                 errors={errors}
