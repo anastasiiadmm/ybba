@@ -130,7 +130,7 @@ const GiraffeGame = (props) => {
                                 errors={errors}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices3 && <div className='form2__error'> {errors.choices3.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -199,7 +199,7 @@ const GiraffeGame = (props) => {
                                 errors={errors}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices4 && <div className='form2__error'> {errors.choices4.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
             </ProtocolBlock>

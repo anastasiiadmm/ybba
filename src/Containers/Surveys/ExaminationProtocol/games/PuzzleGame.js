@@ -147,7 +147,7 @@ const PuzzleGame = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
-                                {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                                {errors.choices5 && <div className='form2__error'> {errors.choices5.message}</div>}
                             </ProtocolResultBlock>
                         </ProtocolRow>
                     </>
