@@ -1,31 +1,36 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { gameActions } from 'constants.js';
+import { gameActions, lessonProperties } from 'constants.js';
 
+import { LessonContext } from 'context/LessonContext/LessonContext';
 import { JitsiContext } from 'context/JitsiContext/JitsiContext';
 
 import { lessonSelector } from 'redux/lesson/lessonSlice';
 import { addClasses } from 'utils/addClasses/addClasses';
 
 const LessonFooterControls = (props) => {
-  const {
-    switchChildWebcamSize,
-    setIsGameMuted,
-    isGameMuted,
-    setIsGameTipOpen,
-    isGameTipOpen,
-    setGameIsStarted,
-    gameIsStarted,
-    unityContext,
-    setIsMuted,
-    isMuted,
-    isStyleDebug,
-  } = props;
+  const { switchChildWebcamSize } = props;
 
   const { isParentWebcamIncreased } = useSelector(lessonSelector);
   const { api } = useContext(JitsiContext);
+  const {
+    changeLessonContextProperty,
+    isTeacherHaveControlOnGame,
+    isDisplayRestart,
+    isGameTipOpen,
+    unityContext,
+    isStyleDebug,
+    isGameMuted,
+    isMuted,
+    isIntroButtonVisible,
+    isNextButtonVisible,
+    isPrevButtonVisible,
+    isRepeatButtonVisible,
+  } = useContext(LessonContext);
 
-  const [isTeacherHaveControlOnGame, setIsTeacherHaveControlOnGame] = useState(false);
+  const setIsMuted = useCallback(async (isMuted) => {
+    await changeLessonContextProperty(lessonProperties.IS_MUTED, isMuted);
+  }, [changeLessonContextProperty]);
 
   const toggleMute = useCallback(async () => {
     if (api) {
@@ -51,21 +56,23 @@ const LessonFooterControls = (props) => {
   };
 
   const getGameControlForTeacher = () => {
-    triggerGameAction(gameActions.TEACHER_MOD, +!isTeacherHaveControlOnGame)
-    setIsTeacherHaveControlOnGame(!isTeacherHaveControlOnGame)
+    triggerGameAction(gameActions.TEACHER_MOD, +!isTeacherHaveControlOnGame);
+    changeLessonContextProperty(
+      lessonProperties.IS_TEACHER_HAVE_CONTROL_ON_GAME,
+      !isTeacherHaveControlOnGame,
+    );
   }
 
   const startGame = () => {
     triggerGameAction(gameActions.START_GAME);
-    setGameIsStarted(true);
+    changeLessonContextProperty(lessonProperties.IS_DISPLAY_RESTART, true);
   }
 
   const toggleGameTip = () => {
-    // console.log('openGameTip', !isGameTipOpen);
-    setIsGameTipOpen(!isGameTipOpen);
+    changeLessonContextProperty(lessonProperties.IS_GAME_TIP_OPEN, !isGameTipOpen);
   }
   const toggleGameMusic = () => {
-    setIsGameMuted(!isGameMuted);
+    changeLessonContextProperty(lessonProperties.IS_GAME_MUTED, !isGameMuted);
     return isGameMuted
       ? triggerGameAction(gameActions.UN_MUTE_GAME_SOUND)
       : triggerGameAction(gameActions.MUTE_GAME_SOUND);
@@ -116,7 +123,7 @@ const LessonFooterControls = (props) => {
         </div>
 
         <div>
-          {gameIsStarted ? (
+          {isDisplayRestart ? (
             <button
               className='gamef__restart'
               type='button'
@@ -129,11 +136,13 @@ const LessonFooterControls = (props) => {
               onClick={() => startGame()}
             />
           )}
-          <button
-            className='gamef__volume'
-            type='button'
-            onClick={GameActionHandler(gameActions.INTRO_SOUND)}
-          />
+          {isIntroButtonVisible &&
+            <button
+              className='gamef__volume'
+              type='button'
+              onClick={GameActionHandler(gameActions.INTRO_SOUND)}
+            />
+          }
           <button
             className={addClasses('', {
               'gamef__unmute_music': !isGameMuted,
@@ -142,21 +151,27 @@ const LessonFooterControls = (props) => {
             type='button'
             onClick={() => toggleGameMusic()}
           />
-          <button
-            className='gamef__repeat-sound'
-            type='button'
-            onClick={GameActionHandler(gameActions.REPEAT)}
-          />
-          <button
-            className='gamef__arrow-left'
-            type='button'
-            onClick={GameActionHandler(gameActions.PREV_ACTION)}
-          />
-          <button
-            className='gamef__arrow-right'
-            type='button'
-            onClick={GameActionHandler(gameActions.NEXT_ACTION)}
-          />
+          {isRepeatButtonVisible &&
+            <button
+              className='gamef__repeat-sound'
+              type='button'
+              onClick={GameActionHandler(gameActions.REPEAT)}
+            />
+          }
+          {isPrevButtonVisible &&
+            <button
+              className="gamef__arrow-left"
+              type="button"
+              onClick={GameActionHandler(gameActions.PREV_ACTION)}
+            />
+          }
+          {isNextButtonVisible &&
+            <button
+              className='gamef__arrow-right'
+              type='button'
+              onClick={GameActionHandler(gameActions.NEXT_ACTION)}
+            />
+          }
           <div
             className='divider horizontal'
             style={{

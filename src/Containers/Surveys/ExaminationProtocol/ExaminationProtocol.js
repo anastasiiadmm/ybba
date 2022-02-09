@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { useForm, useWatch } from 'react-hook-form';
@@ -9,6 +9,7 @@ import { updateProtocol } from 'redux/surveys/surveysSlice.js';
 import { examinationProtocolSchema } from 'Containers/Surveys/ExaminationProtocol/yupSchema.js';
 import { examinationProtocolStatuses, lessonStatuses } from 'constants.js';
 import { momentDateToHuman, strDateToMoment } from 'utils/date/dateUtils';
+import { authSelector } from 'redux/auth/authSlice';
 
 import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock';
 import ProtocolMain from 'Components/Surveys/ExaminationProtocol/ProtocolMain/ProtocolMain.js';
@@ -50,6 +51,8 @@ const ExaminationProtocol = (props) => {
 
     const dispatch = useDispatch()
 
+    const { user } = useSelector(authSelector)
+
     const { register, formState: { errors }, control, handleSubmit } = useForm({
         resolver: yupResolver(examinationProtocolSchema),
         defaultValues: {
@@ -59,7 +62,7 @@ const ExaminationProtocol = (props) => {
     })
     const data = useWatch({ control })
     let timer = null
-    const isLessonFinished = lesson.status === lessonStatuses.finished
+    const isLessonFinished = lesson.status === lessonStatuses.finished || user.role === 'admin'
     const isConclusionDisabled = lesson.status !== lessonStatuses.finished
     const isProtocolClosed = protocol.status === examinationProtocolStatuses.closed || isClosed
 
