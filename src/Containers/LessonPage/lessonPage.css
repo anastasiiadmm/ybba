@@ -279,6 +279,10 @@
     transform: rotate(0);
 }
 
+.button-disabled {
+    opacity: .5;
+}
+
 .gamef__pause {
     background: url(../../assets/img/ic-pause.svg) 50% no-repeat;
 }
@@ -290,7 +294,7 @@
 }
 .gamef__start {
     background: url(../../assets/img/ic-start.svg) 50% no-repeat;
-    box-shadow: white 0 0 5px;
+    box-shadow: white 0 0 7px;
 }
 .gamef__get-control.active {
     background: white url(../../assets/img/ic-get-control-active.svg) 50% no-repeat;

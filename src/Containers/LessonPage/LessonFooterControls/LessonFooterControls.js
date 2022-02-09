@@ -136,13 +136,14 @@ const LessonFooterControls = (props) => {
               onClick={() => startGame()}
             />
           )}
-          {isIntroButtonVisible &&
-            <button
-              className='gamef__volume'
-              type='button'
-              onClick={GameActionHandler(gameActions.INTRO_SOUND)}
-            />
-          }
+          <button
+            className={addClasses('gamef__volume', {
+              'button-disabled': !isIntroButtonVisible,
+            })}
+            disabled={!isIntroButtonVisible}
+            type='button'
+            onClick={GameActionHandler(gameActions.INTRO_SOUND)}
+          />
           <button
             className={addClasses('', {
               'gamef__unmute_music': !isGameMuted,
@@ -151,27 +152,30 @@ const LessonFooterControls = (props) => {
             type='button'
             onClick={() => toggleGameMusic()}
           />
-          {isRepeatButtonVisible &&
-            <button
-              className='gamef__repeat-sound'
-              type='button'
-              onClick={GameActionHandler(gameActions.REPEAT)}
-            />
-          }
-          {isPrevButtonVisible &&
-            <button
-              className="gamef__arrow-left"
-              type="button"
-              onClick={GameActionHandler(gameActions.PREV_ACTION)}
-            />
-          }
-          {isNextButtonVisible &&
-            <button
-              className='gamef__arrow-right'
-              type='button'
-              onClick={GameActionHandler(gameActions.NEXT_ACTION)}
-            />
-          }
+          <button
+            className={addClasses('gamef__repeat-sound', {
+              'button-disabled': !isRepeatButtonVisible,
+            })}
+            disabled={!isRepeatButtonVisible}
+            type='button'
+            onClick={GameActionHandler(gameActions.REPEAT)}
+          />
+          <button
+            className={addClasses('gamef__arrow-left', {
+              'button-disabled': !isPrevButtonVisible,
+            })}
+            disabled={!isPrevButtonVisible}
+            type="button"
+            onClick={GameActionHandler(gameActions.PREV_ACTION)}
+          />
+          <button
+            className={addClasses('gamef__arrow-right', {
+              'button-disabled': !isNextButtonVisible,
+            })}
+            disabled={!isNextButtonVisible}
+            type='button'
+            onClick={GameActionHandler(gameActions.NEXT_ACTION)}
+          />
           <div
             className='divider horizontal'
             style={{
