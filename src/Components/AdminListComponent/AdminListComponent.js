@@ -1,33 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import ListItemButton from '@mui/material/ListItemButton';
-import { Collapse, ListItemIcon, ListItemText } from '@mui/material';
+import { Collapse, ListItemText } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 
 const AdminListComponent = (props) => {
-    const { key, onClick, open, listName, listItemText, childrenIcon, listItemIcon } = props;
+    const { listItemText, children } = props;
+
+    const [open, setOpen] = useState(false);
+
+    const handleClick = () => {
+        setOpen(!open);
+    };
     
     return (
-        <Box key={key} sx={{ bgcolor: '#101F33' }}>
-            <ListItemButton onClick={onClick}>
-                <ListItemIcon>
-                    {listItemIcon}
-                </ListItemIcon>
+        <Box sx={{ bgcolor: '#101F33' }}>
+            <ListItemButton onClick={handleClick}>
                 <ListItemText primary={`${listItemText}`} sx={{ color: '#fff' }}/>
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={open} timeout='auto' unmountOnExit>
-                <List component='div' disablePadding>
-                    <ListItemButton sx={{ pl: 4 }}>
-                        <ListItemIcon>
-                            {childrenIcon}
-                        </ListItemIcon>
-                        <ListItemText primary={`${listName}`} sx={{ color: '#fff' }}/>
-                    </ListItemButton>
-                </List>
+                {children}
             </Collapse>
             <Divider sx={{ mt: 2 }} />
         </Box>

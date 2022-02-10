@@ -13,46 +13,32 @@ import PeopleIcon from '@mui/icons-material/People';
 import DnsRoundedIcon from '@mui/icons-material/DnsRounded';
 import PermMediaOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import PublicIcon from '@mui/icons-material/Public';
+import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet';
+
 
 import logo from 'assets/img/logo.svg';
+import Logout from '../../Logout/Logout';
 
+const usersList = [
+    { id: 'Дети', icon: <PeopleIcon /> },
+    { id: 'Пользователи', icon: <DnsRoundedIcon /> },
+    { id: 'Профили', icon: <PermMediaOutlinedIcon /> },
+    { id: 'Токены регистрации', icon: <PublicIcon /> }
+];
 
-const categories = [
-    {
-        id: 'Пользователи',
-        icon: <PeopleIcon />,
-        children: [
-            {
-                id: 'Дети',
-                icon: <PeopleIcon />,
-                active: true,
-            },
-            { id: 'Пользователи', icon: <DnsRoundedIcon /> },
-            { id: 'Профили', icon: <PermMediaOutlinedIcon /> },
-            { id: 'Токены регистрации', icon: <PublicIcon /> }
-        ],
-    },
-    {
-        id: 'Диагностики',
-        children: [
-            { id: 'Протоколы обследований' },
-            { id: 'Речевые карты' },
-        ],
-    },
-    {
-        id: 'Игры',
-        children: [
-            { id: 'Игры' },
-            { id: 'Типы игр' },
-        ],
-    },
-    {
-        id: 'Уроки',
-        children: [
-            { id: 'Временные ячейки' },
-            { id: 'Уроки' },
-        ],
-    },
+const diagnosticList = [
+    { id: 'Протоколы обследований', icon: <PublicIcon /> },
+    { id: 'Речевые карты', icon: <SettingsEthernetIcon /> },
+];
+
+const gamesList = [
+    { id: 'Игры', icon: <PublicIcon />  },
+    { id: 'Типы игр', icon: <PublicIcon />  },
+];
+
+const lessonsList = [
+    { id: 'Временные ячейки', icon: <PublicIcon />  },
+    { id: 'Уроки', icon: <PublicIcon />  },
 ];
 
 const item = {
@@ -73,42 +59,77 @@ const itemCategory = {
 const NavigatorMenu = props => {
     const { ...other } = props;
 
-    const [open, setOpen] = React.useState(true);
-
-    const handleClick = () => {
-        setOpen(!open);
-    };
-
     return (
-        <Drawer variant='permanent' {...other}>
-            <List disablePadding>
-                <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
-                    <header className='header'>
-                        <Link to='/admin-dashboard/' className='header__logo'>
-                            <img src={logo} alt='Биба'/>
-                        </Link>
-                    </header>
-                </ListItem>
-                {categories.map(({ id, children }) => (
+        <>
+            <Drawer variant='permanent' {...other}>
+                <List disablePadding>
+                    <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
+                        <header className='header'>
+                            <Link to='/admin-dashboard/' className='header__logo'>
+                                <img src={logo} alt='Биба'/>
+                            </Link>
+                        </header>
+                    </ListItem>
                     <AdminListComponent
-                        key={id}
-                        listItemText={id}
-                        listItemIcon={<PeopleIcon />}
-                        onClick={handleClick}
-                        open={open}
+                        listItemText={'Пользователи'}
                     >
-                         {children.map(({ id: childId, icon, active }) => (
-                             <ListItem disablePadding key={childId}>
-                                 <ListItemButton selected={active} sx={item}>
-                                     <ListItemIcon>{icon}</ListItemIcon>
-                                     <ListItemText>{childId}</ListItemText>
-                                 </ListItemButton>
-                             </ListItem>
-                         ))}
+                        {usersList.map(({ id: childId, icon  }) => {
+                            return (
+                                <ListItem disablePadding key={childId}>
+                                    <ListItemButton sx={item}>
+                                        <ListItemIcon>{icon}</ListItemIcon>
+                                        <ListItemText>{childId}</ListItemText>
+                                    </ListItemButton>
+                                </ListItem>
+                            )
+                        })}
                     </AdminListComponent>
-                ))}
-            </List>
-        </Drawer>
+                    <AdminListComponent
+                        listItemText={'Диагностики'}
+                    >
+                        {diagnosticList.map(({ id: childId, icon  }) => {
+                            return (
+                                <ListItem disablePadding key={childId}>
+                                    <ListItemButton sx={item}>
+                                        <ListItemIcon>{icon}</ListItemIcon>
+                                        <ListItemText>{childId}</ListItemText>
+                                    </ListItemButton>
+                                </ListItem>
+                            )
+                        })}
+                    </AdminListComponent>
+                    <AdminListComponent
+                        listItemText={'Игры'}
+                    >
+                        {gamesList.map(({ id: childId, icon  }) => {
+                            return (
+                                <ListItem disablePadding key={childId}>
+                                    <ListItemButton sx={item}>
+                                        <ListItemIcon>{icon}</ListItemIcon>
+                                        <ListItemText>{childId}</ListItemText>
+                                    </ListItemButton>
+                                </ListItem>
+                            )
+                        })}
+                    </AdminListComponent>
+                    <AdminListComponent
+                        listItemText={'Уроки'}
+                    >
+                        {lessonsList.map(({ id: childId, icon  }) => {
+                            return (
+                                <ListItem disablePadding key={childId}>
+                                    <ListItemButton sx={item}>
+                                        <ListItemIcon>{icon}</ListItemIcon>
+                                        <ListItemText>{childId}</ListItemText>
+                                    </ListItemButton>
+                                </ListItem>
+                            )
+                        })}
+                    </AdminListComponent>
+                    <Logout />
+                </List>
+            </Drawer>
+        </>
     );
 };
 export default NavigatorMenu;
