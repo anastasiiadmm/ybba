@@ -167,7 +167,6 @@ const MagicExamGame = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
-                                {errors.choices13 && <div className='form2__error'> {errors.choices13.message} </div>}
                             </ProtocolResultBlock>
                         </ProtocolRow>
                     </>
