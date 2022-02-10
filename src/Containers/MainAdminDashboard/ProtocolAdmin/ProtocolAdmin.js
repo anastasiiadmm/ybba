@@ -1,10 +1,11 @@
 import React from 'react';
+import MainAdminDashboard from '../MainAdminDashboard';
 
 const ProtocolAdmin = () => {
     return (
-        <div>
-            sdfsdfdsfsdf
-        </div>
+        <MainAdminDashboard>
+            ProtocolAdmin
+        </MainAdminDashboard>
     );
 };
 

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import Divider from '@mui/material/Divider';
+import AdminListComponent from 'Components/AdminListComponent/AdminListComponent';
+
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -13,15 +13,14 @@ import PeopleIcon from '@mui/icons-material/People';
 import DnsRoundedIcon from '@mui/icons-material/DnsRounded';
 import PermMediaOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import PublicIcon from '@mui/icons-material/Public';
-import TimerIcon from '@mui/icons-material/Timer';
-import SettingsIcon from '@mui/icons-material/Settings';
 
-import logo from '../../../assets/img/logo.svg';
+import logo from 'assets/img/logo.svg';
 
 
 const categories = [
     {
         id: 'Пользователи',
+        icon: <PeopleIcon />,
         children: [
             {
                 id: 'Дети',
@@ -30,28 +29,28 @@ const categories = [
             },
             { id: 'Пользователи', icon: <DnsRoundedIcon /> },
             { id: 'Профили', icon: <PermMediaOutlinedIcon /> },
-            { id: 'Токены регистрации', icon: <PublicIcon /> },
+            { id: 'Токены регистрации', icon: <PublicIcon /> }
         ],
     },
     {
         id: 'Диагностики',
         children: [
-            { id: 'Протоколы обследований', icon: <SettingsIcon /> },
-            { id: 'Речевые карты', icon: <TimerIcon /> },
+            { id: 'Протоколы обследований' },
+            { id: 'Речевые карты' },
         ],
     },
     {
         id: 'Игры',
         children: [
-            { id: 'Игры', icon: <SettingsIcon /> },
-            { id: 'Типы игр', icon: <TimerIcon /> },
+            { id: 'Игры' },
+            { id: 'Типы игр' },
         ],
     },
     {
         id: 'Уроки',
         children: [
-            { id: 'Временные ячейки', icon: <TimerIcon /> },
-            { id: 'Уроки', icon: <SettingsIcon /> },
+            { id: 'Временные ячейки' },
+            { id: 'Уроки' },
         ],
     },
 ];
@@ -74,6 +73,12 @@ const itemCategory = {
 const NavigatorMenu = props => {
     const { ...other } = props;
 
+    const [open, setOpen] = React.useState(true);
+
+    const handleClick = () => {
+        setOpen(!open);
+    };
+
     return (
         <Drawer variant='permanent' {...other}>
             <List disablePadding>
@@ -85,21 +90,22 @@ const NavigatorMenu = props => {
                     </header>
                 </ListItem>
                 {categories.map(({ id, children }) => (
-                    <Box key={id} sx={{ bgcolor: '#101F33' }}>
-                        <ListItem sx={{ py: 2, px: 3 }}>
-                            <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
-                        </ListItem>
-                        {children.map(({ id: childId, icon, active }) => (
-                            <ListItem disablePadding key={childId}>
-                                <ListItemButton selected={active} sx={item}>
-                                    <ListItemIcon>{icon}</ListItemIcon>
-                                    <ListItemText>{childId}</ListItemText>
-                                </ListItemButton>
-                            </ListItem>
-                        ))}
-
-                        <Divider sx={{ mt: 2 }} />
-                    </Box>
+                    <AdminListComponent
+                        key={id}
+                        listItemText={id}
+                        listItemIcon={<PeopleIcon />}
+                        onClick={handleClick}
+                        open={open}
+                    >
+                         {children.map(({ id: childId, icon, active }) => (
+                             <ListItem disablePadding key={childId}>
+                                 <ListItemButton selected={active} sx={item}>
+                                     <ListItemIcon>{icon}</ListItemIcon>
+                                     <ListItemText>{childId}</ListItemText>
+                                 </ListItemButton>
+                             </ListItem>
+                         ))}
+                    </AdminListComponent>
                 ))}
             </List>
         </Drawer>
