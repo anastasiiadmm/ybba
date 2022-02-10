@@ -311,7 +311,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                     <ProtocolFormField
                                         type='radio'
                                         label='Не раскрыта'
-                                        value='не раскрыто'
+                                        value='не раскрыта'
                                         name='game_how_the_mouse_could_not_sleep.topic'
                                         control={control}
                                         errors={errors}
