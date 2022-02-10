@@ -152,7 +152,7 @@ theme = {
     },
 };
 
-const drawerWidth = 256;
+const drawerWidth = 300;
 
 const SidebarAdminContainer = (props) => {
     const { children } = props;

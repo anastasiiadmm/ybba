@@ -19,7 +19,7 @@ const AdminListComponent = (props) => {
         <Box sx={{ bgcolor: '#101F33' }}>
             <ListItemButton onClick={handleClick}>
                 <ListItemText primary={`${listItemText}`} sx={{ color: '#fff' }}/>
-                {open ? <ExpandLess /> : <ExpandMore />}
+                {open ? <ExpandLess sx={{ color: '#fff' }}/> : <ExpandMore sx={{ color: '#fff' }}/>}
             </ListItemButton>
             <Collapse in={open} timeout='auto' unmountOnExit>
                 {children}
