@@ -136,14 +136,14 @@ const LessonFooterControls = (props) => {
               onClick={() => startGame()}
             />
           )}
-          <button
-            className={addClasses('gamef__volume', {
-              'button-disabled': !isIntroButtonVisible,
-            })}
-            disabled={!isIntroButtonVisible}
-            type='button'
-            onClick={GameActionHandler(gameActions.INTRO_SOUND)}
-          />
+          {/*<button*/}
+          {/*  className={addClasses('gamef__volume', {*/}
+          {/*    'button-disabled': !isIntroButtonVisible,*/}
+          {/*  })}*/}
+          {/*  disabled={!isIntroButtonVisible}*/}
+          {/*  type='button'*/}
+          {/*  onClick={GameActionHandler(gameActions.INTRO_SOUND)}*/}
+          {/*/>*/}
           <button
             className={addClasses('', {
               'gamef__unmute_music': !isGameMuted,
