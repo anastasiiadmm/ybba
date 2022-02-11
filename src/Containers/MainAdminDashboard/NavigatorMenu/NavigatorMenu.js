@@ -28,30 +28,31 @@ const item = {
 
 const itemCategory = {
     boxShadow: '0 -1px 0 rgb(255,255,255,0.1) inset',
-    pt: 3,
-    px: 3,
+    pt: 5,
+    px: 5,
+    pl: 14
 };
 
 const usersList = [
-    { id: 'Дети', icon: <PeopleIcon/>, to: '/admin/account/child/add/' },
-    { id: 'Пользователи', icon: <DnsRoundedIcon/>, to: '/admin/account/user/add/' },
-    { id: 'Профили', icon: <PermMediaOutlinedIcon/>, to: '/admin/account/profile/add/' },
-    { id: 'Токены регистрации', icon: <PublicIcon/>, to: '/admin/account/registrationtoken/add/' }
+    { id: 'Дети', icon: <PeopleIcon/>, toItemName: '/admin/account/child/', to: '/admin/account/child/add/' },
+    { id: 'Пользователи', icon: <DnsRoundedIcon/>, toItemName: '/admin/account/user/', to: '/admin/account/user/add/' },
+    { id: 'Профили', icon: <PermMediaOutlinedIcon/>, toItemName: '/admin/account/profile/', to: '/admin/account/profile/add/' },
+    { id: 'Токены регистрации', icon: <PublicIcon/>, toItemName: '/admin/account/registrationtoken/', to: '/admin/account/registrationtoken/add/' }
 ];
 
 const diagnosticList = [
-    { id: 'Протоколы обследований', icon: <PublicIcon/>, to: '/admin/examinationprotocol/' },
-    { id: 'Речевые карты', icon: <SettingsEthernetIcon/>, to: '/admin/speechcard/' },
+    { id: 'Протоколы обследований', icon: <PublicIcon/>, toItemName: '/admin/survey/examinationprotocol/', to: '/admin/examinationprotocol/' },
+    { id: 'Речевые карты', icon: <SettingsEthernetIcon/>, toItemName: '/admin/survey/speechcard/', to: '/admin/speechcard/' },
 ];
 
 const gamesList = [
-    { id: 'Игры', icon: <PublicIcon/>, to: '/admin/game/' },
-    { id: 'Типы игр', icon: <PublicIcon/>, to: '/admin/gametype/' },
+    { id: 'Игры', icon: <PublicIcon/>, toItemName: '/admin/game/', to: '/admin/game/add/' },
+    { id: 'Типы игр', icon: <PublicIcon/>, toItemName: '/admin/gametype/', to: '/admin/gametype/add/' },
 ];
 
 const lessonsList = [
-    { id: 'Временные ячейки', icon: <PublicIcon/>, to: '/admin/lesson/timeslot/' },
-    { id: 'Уроки', icon: <PublicIcon/>, to: '/admin/lesson/' },
+    { id: 'Временные ячейки', icon: <PublicIcon/>, toItemName: '/admin/lesson/timeslot/', to: '/admin/lesson/timeslot/add/' },
+    { id: 'Уроки', icon: <PublicIcon/>, toItemName: '/admin/lesson/', to: '/admin/lesson/add/' },
 ];
 
 const NavigatorMenu = props => {
@@ -62,22 +63,21 @@ const NavigatorMenu = props => {
             <Grid item xs>
                 <Drawer variant='permanent' {...other}>
                     <List disablePadding>
-                        <ListItem sx={{ ...item, ...itemCategory }}>
+                        <ListItem sx={{ ...item, ...itemCategory }} component={Link} to='/admin-dashboard/'>
                             <header className='header'>
-                                <Link to='/admin-dashboard/' className='header__logo'>
-                                    <img src={logo} alt='Биба'/>
-                                </Link>
+                                <img src={logo} alt='Биба'/>
                             </header>
                         </ListItem>
 
                         <AdminListComponent
                             listItemText={'Пользователи'}
                         >
-                            {usersList.map(({ id: childId, icon, to }) => {
+                            {usersList.map(({ id: childId, icon, to, toItemName }) => {
                                 return (
                                     <ListItemComponent
                                         key={childId}
                                         icon={icon}
+                                        toItemName={toItemName}
                                         itemName={childId}
                                         to={to}
                                     />
@@ -87,11 +87,12 @@ const NavigatorMenu = props => {
                         <AdminListComponent
                             listItemText={'Диагностики'}
                         >
-                            {diagnosticList.map(({ id: childId, icon, to }) => {
+                            {diagnosticList.map(({ id: childId, icon, to, toItemName }) => {
                                 return (
                                     <ListItemComponent
                                         key={childId}
                                         icon={icon}
+                                        toItemName={toItemName}
                                         itemName={childId}
                                         to={to}
                                     />
@@ -101,11 +102,12 @@ const NavigatorMenu = props => {
                         <AdminListComponent
                             listItemText={'Игры'}
                         >
-                            {gamesList.map(({ id: childId, icon, to }) => {
+                            {gamesList.map(({ id: childId, icon, to, toItemName }) => {
                                 return (
                                     <ListItemComponent
                                         key={childId}
                                         icon={icon}
+                                        toItemName={toItemName}
                                         itemName={childId}
                                         to={to}
                                     />
@@ -115,11 +117,12 @@ const NavigatorMenu = props => {
                         <AdminListComponent
                             listItemText={'Уроки'}
                         >
-                            {lessonsList.map(({ id: childId, icon, to }) => {
+                            {lessonsList.map(({ id: childId, icon, to, toItemName }) => {
                                 return (
                                     <ListItemComponent
                                         key={childId}
                                         icon={icon}
+                                        toItemName={toItemName}
                                         itemName={childId}
                                         to={to}
                                     />

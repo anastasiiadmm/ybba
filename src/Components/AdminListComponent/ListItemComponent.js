@@ -12,8 +12,9 @@ const item = {
     py: '2px',
     px: 3,
     color: 'rgba(255, 255, 255, 0.7)',
-    '&:hover, &:focus': {
-        bgcolor: 'rgba(255, 255, 255, 0.08)',
+    '&:hover, &:focus, &:active': {
+        backgroundColor: 'transparent',
+        color: 'rgba(254,84,34,0.85)',
     },
 };
 
@@ -25,11 +26,11 @@ const hoverButton = {
 };
 
 const ListItemComponent = (props) => {
-    const { key, icon, itemName, to } = props;
+    const { key, icon, itemName, toItemName, to } = props;
 
     return (
         <ListItem disablePadding key={key}>
-            <ListItemButton sx={item}>
+            <ListItemButton sx={item} component={Link} to={`${toItemName}`}>
                 <ListItemIcon>{icon}</ListItemIcon>
                 <ListItemText>{itemName}</ListItemText>
             </ListItemButton>

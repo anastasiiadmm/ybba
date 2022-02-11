@@ -22,11 +22,15 @@ import PageFail from 'Components/PagesForPayment/PageFail';
 import ParentQuestionnaire from 'Containers/ParentQuestionnaire/ParentQuestionnaire.js';
 import EditSurveys from 'Containers/Surveys/EditSurveys/EditSurveys.js';
 import ChildSpeechCard from 'Containers/ChildSpeechCard/ChildSpeechCard.js';
+
 import MainAdminDashboard from 'Containers/MainAdminDashboard/MainAdminDashboard';
+import ChildList from 'Containers/MainAdminDashboard/NavigatorMenu/ChildList/ChildList';
+import UsersList from 'Containers/MainAdminDashboard/NavigatorMenu/UsersList/UsersList';
+import ProfilesList from 'Containers/MainAdminDashboard/NavigatorMenu/ProfilesList/ProfilesList';
+import TokensRegistrationList from 'Containers/MainAdminDashboard/NavigatorMenu/TokensRegistrationList/TokensRegistrationList';
 
 import 'App.css';
-import ProtocolAdmin from './Containers/MainAdminDashboard/ProtocolAdmin/ProtocolAdmin';
-import ChildList from './Containers/MainAdminDashboard/ChildList/ChildList';
+
 
 
 const App = () => {
@@ -59,9 +63,14 @@ const App = () => {
                 <PrivateRoute path='/questionnaire/:childId/' component={ParentQuestionnaire}/>
                 <PrivateRoute path='/children/:childId/surveys/edit/' component={EditSurveys} />
                 <PrivateRoute path='/children/:childId/surveys/speech-card/' component={ChildSpeechCard} />
+
                 <PrivateRoute path='/admin-dashboard/' component={MainAdminDashboard} exact/>
-                <PrivateRoute path='/admin/account/child' component={ChildList} exact/>
-                <PrivateRoute path='/protocol-dashboard/' component={ProtocolAdmin}/>
+                <PrivateRoute path='/admin/account/child/' component={ChildList} exact/>
+                <PrivateRoute path='/admin/account/user/' component={UsersList} exact/>
+                <PrivateRoute path='/admin/account/profile/' component={ProfilesList} exact/>
+                <PrivateRoute path='/admin/account/profile/' component={ProfilesList} exact/>
+                <PrivateRoute path='/admin/account/registrationtoken/' component={TokensRegistrationList}/>
+
                 <Route path='/login/' component={Login}/>
                 <Route path='/registration/:registrationKey' component={Registration}/>
                 <Route path='/registration-success/' component={RegistrationSuccess}/>

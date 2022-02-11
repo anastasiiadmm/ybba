@@ -1,5 +1,7 @@
 import React from 'react';
-import MainAdminDashboard from '../MainAdminDashboard';
+
+import MainAdminDashboard from 'Containers/MainAdminDashboard/MainAdminDashboard';
+
 
 const ProtocolAdmin = () => {
     return (
