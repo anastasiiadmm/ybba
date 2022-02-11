@@ -14,7 +14,7 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 import ProtocolTitle from 'Components/Surveys/ExaminationProtocol/ProtocolTitle/ProtocolTitle';
 import ProtocolDescriptionMain from 'Components/Surveys/ExaminationProtocol/ProtocolDescriptionMain/ProtocolDescriptionMain';
 
-const  AntBattleGame = (props) => {
+const AntBattleGame = (props) => {
 
     const {
         register, errors, control, disabled

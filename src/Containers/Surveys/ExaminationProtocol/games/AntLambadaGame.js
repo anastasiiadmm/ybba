@@ -117,6 +117,7 @@ const AntLambadaGame = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                {errors.choices20 && <div className='form2__error'> {errors.choices20.message}</div>}
                             </ProtocolResultBlock>
                         </ProtocolRow>
                         <ProtocolRow>
@@ -173,6 +174,7 @@ const AntLambadaGame = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
+                            {errors.choices21 && <div className='form2__error'> {errors.choices21.message}</div>}
                         </ProtocolRow>
                     </>
                 )}
