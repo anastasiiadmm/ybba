@@ -26,6 +26,7 @@ import MainAdminDashboard from 'Containers/MainAdminDashboard/MainAdminDashboard
 
 import 'App.css';
 import ProtocolAdmin from './Containers/MainAdminDashboard/ProtocolAdmin/ProtocolAdmin';
+import ChildList from './Containers/MainAdminDashboard/ChildList/ChildList';
 
 
 const App = () => {
@@ -58,7 +59,8 @@ const App = () => {
                 <PrivateRoute path='/questionnaire/:childId/' component={ParentQuestionnaire}/>
                 <PrivateRoute path='/children/:childId/surveys/edit/' component={EditSurveys} />
                 <PrivateRoute path='/children/:childId/surveys/speech-card/' component={ChildSpeechCard} />
-                <PrivateRoute path='/admin-dashboard/' component={MainAdminDashboard}/>
+                <PrivateRoute path='/admin-dashboard/' component={MainAdminDashboard} exact/>
+                <PrivateRoute path='/admin/account/child' component={ChildList} exact/>
                 <PrivateRoute path='/protocol-dashboard/' component={ProtocolAdmin}/>
                 <Route path='/login/' component={Login}/>
                 <Route path='/registration/:registrationKey' component={Registration}/>
