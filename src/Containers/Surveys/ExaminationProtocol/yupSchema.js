@@ -682,8 +682,86 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
     }),
     game_on_the_farm: yup.object().shape({
-        speech_comprehension_level: yup.string()
+        sandals_boots_socks_boots: yup.string()
             .required(requiredFieldErrorText)
+            .nullable(true),
+        shoes_clothes: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        carrot_apple_onion_cabbage: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        vegetables_fruits: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        table_chair_glass_sofa: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        furniture_dishes: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        fur_coat_jacket_coat_hat: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        clothes_headwear: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        doll_cubes_car_trolley: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        toys_transport: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        cat_kitten: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        dog_puppy: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        cow_calf: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        pig_piglet: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        cat_meows: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        dog_barks: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        cow_hums: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        pig_grunts: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        low_high_home: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        wide_narrow_belt: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        heavy_light_bucket_of_water_ball: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        clean_dirty_pig: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        slow_fast_snail: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        sad_cheerful_puppy: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        dry_wet_grasshopper: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        cold_hot_ice_cream_potatoes: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        speech_comprehension_level: yup.string()
+            .required(true)
             .nullable(true),
         level_of_vocabulary_formation: yup.string()
             .required(true)
