@@ -223,6 +223,7 @@ const AntBattleGame = (props) => {
                         placeholder='Комментарий специалиста'
                         errors={errors}
                         register={register}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
             </ProtocolBlock>
