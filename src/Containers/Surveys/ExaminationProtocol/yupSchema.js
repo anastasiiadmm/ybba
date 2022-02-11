@@ -30,6 +30,24 @@ export let examinationProtocolSchema = yup.object().shape({
     general_ideas_about_the_world_around_comment: yup.string()
         .required(requiredFieldErrorText)
         .nullable(true),
+    stock_of_knowledge_about_the_world_around: yup.string()
+        .required(true)
+        .nullable(true),
+    in_a_time_space_situation: yup.string()
+        .required(true)
+        .nullable(true),
+    knows_how_old_time_of_year_what_time_of_day_it_is: yup.string()
+        .required(true)
+        .nullable(true),
+    image_i: yup.string()
+        .required(true)
+        .nullable(true),
+    knows_his_name_the_name_of_his_parents_where_he_lives: yup.string()
+        .required(true)
+        .nullable(true),
+    somatognosis_understanding_your_own_body: yup.string()
+        .required(true)
+        .nullable(true),
     contact_with_the_child: yup.string()
         .required(true)
         .nullable(true),
@@ -49,6 +67,9 @@ export let examinationProtocolSchema = yup.object().shape({
         .required(true)
         .nullable(true),
     leading_leg_ball: yup.string()
+        .required(true)
+        .nullable(true),
+    conclusion_options: yup.string()
         .required(true)
         .nullable(true),
 
@@ -121,6 +142,18 @@ export let examinationProtocolSchema = yup.object().shape({
         saber_heron: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
+        level_of_formation_of_phonetic_phonological_competence: yup.string()
+            .required(true)
+            .nullable(true),
+        state_of_phonemic_perception: yup.string()
+            .required(true)
+            .nullable(true),
+        there_are_difficulties_in_distinguishing: yup.boolean()
+            .nullable(true),
+        distinction_between_hard_and_soft_consonants: yup.boolean()
+            .nullable(true),
+        distinction_between_affricates_and_their_constituent: yup.boolean()
+            .nullable(true),
         expert_comment: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
@@ -154,6 +187,12 @@ export let examinationProtocolSchema = yup.object().shape({
         in_which_of_words_there_is_no_sound_about_nose_of_cat_poppy: yup.string()
             .required(true)
             .nullable(true),
+        phonemic_hearing: yup.string()
+            .required(true)
+            .nullable(true),
+        phonological_sound_analysis_and_synthesis_skills: yup.string()
+            .required(true)
+            .nullable(true),
         phonemic_hearing_expert_comment: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
@@ -176,6 +215,29 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         camera: yup.string()
             .required(requiredFieldErrorText)
+            .nullable(true),
+        syllabic_structure_of_a_word: yup.string()
+            .required(true)
+            .nullable(true),
+        missing_syllables: yup.boolean()
+            .nullable(true),
+        missing_syllabic_vowels: yup.boolean()
+            .nullable(true),
+        permutations_of_sounds_and_or_syllables: yup.boolean()
+            .nullable(true),
+        insertion_of_vowels_into_consonants: yup.boolean()
+            .nullable(true),
+        adding_syllables: yup.boolean()
+            .nullable(true),
+        consonant_reduction: yup.boolean()
+            .nullable(true),
+        inserting_consonants_into_a_syllable: yup.boolean()
+            .nullable(true),
+        anticipation: yup.boolean()
+            .nullable(true),
+        assimilation_of_syllables: yup.boolean()
+            .nullable(true),
+        gnotic_violations_addition_of_syllables: yup.boolean()
             .nullable(true),
         expert_comment: yup.string()
             .required(requiredFieldErrorText)
@@ -222,8 +284,50 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         distortion: yup.boolean()
             .nullable(true),
+        thinking: yup.string()
+            .required(true)
+            .nullable(true),
+        thinking_part_two: yup.string()
+            .required(true)
+            .nullable(true),
+        kind_of_thinking: yup.string()
+            .required(true)
+            .nullable(true),
         expert_comment: yup.string()
             .required(true)
+            .nullable(true),
+    }),
+    game_ant_lambada: yup.object().shape({
+        woodpecker_house: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        slipper_dress: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        kitchen_hamster_goose: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        nasal: yup.string()
+            .nullable(true),
+        skip: yup.string()
+            .nullable(true),
+        replacing_d_with: yup.string()
+            .nullable(true),
+        replacing_d_soft_with: yup.string()
+            .nullable(true),
+        replacing_t_with: yup.string()
+            .nullable(true),
+        replacing_t_soft_with: yup.string()
+            .nullable(true),
+        replacing_k_with: yup.string()
+            .nullable(true),
+        replacing_g_with: yup.string()
+            .nullable(true),
+        replacing_kh_with: yup.string()
+            .nullable(true),
+        mixing: yup.string()
+            .nullable(true),
+        distortion: yup.string()
             .nullable(true),
     }),
     game_pictures_for_fish: yup.object().shape({
@@ -298,6 +402,12 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         mixing_sounds_two: yup.boolean()
             .nullable(true),
+        verbal_memory: yup.string()
+            .required(true)
+            .nullable(true),
+        verbal_memory_part_two: yup.string()
+            .required(true)
+            .nullable(true),
         expert_comment: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
@@ -312,11 +422,50 @@ export let examinationProtocolSchema = yup.object().shape({
         waffles: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
+        nasal: yup.boolean()
+            .nullable(true),
+        skip: yup.boolean()
+            .nullable(true),
+        replacing_with_b: yup.string()
+            .nullable(true),
+        replacing_with_b_soft: yup.string()
+            .nullable(true),
+        replacing_with_f: yup.string()
+            .nullable(true),
+        replacing_with_f_soft: yup.string()
+            .nullable(true),
+        two_lipped: yup.boolean()
+            .nullable(true),
+        mixing: yup.boolean()
+            .nullable(true),
+        distortion: yup.boolean()
+            .nullable(true),
+        perception: yup.string()
+            .required(true)
+            .nullable(true),
+        level_of_perception: yup.string()
+            .required(true)
+            .nullable(true),
         expert_comment: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
     }),
     game_how_the_mouse_could_not_sleep: yup.object().shape({
+        mouse_in_the_yard_at_night: yup.string()
+            .required(true)
+            .nullable(true),
+        mouse_is_eating_an_apple_and_a_berry: yup.string()
+            .required(true)
+            .nullable(true),
+        moon_in_the_reflection_of_the_water_in_a_puddle: yup.string()
+            .required(true)
+            .nullable(true),
+        mouse_covers_the_puddle_with_burdock: yup.string()
+            .required(true)
+            .nullable(true),
+        sun_in_water_reflection_in_a_puddle: yup.string()
+            .required(true)
+            .nullable(true),
         what_was_the_white_glowing_circle: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
@@ -338,24 +487,53 @@ export let examinationProtocolSchema = yup.object().shape({
         repeat_the_whole_story_as_you_remember: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
+        constructing_a_statement: yup.string()
+            .required(true)
+            .nullable(true),
+        consistency_with_the_plot: yup.string()
+            .required(true)
+            .nullable(true),
+        topic: yup.string()
+            .required(true)
+            .nullable(true),
+        chronological_event_logic: yup.string()
+            .required(true)
+            .nullable(true),
+        language_means: yup.string()
+            .required(true)
+            .nullable(true),
+        retelling_corresponds_to_original: yup.boolean()
+            .nullable(true),
+        retelling_contains_both_basic_and_additional_information: yup.boolean()
+            .nullable(true),
+        retelling_uses_variability_of_speech: yup.boolean()
+            .nullable(true),
+        retelling_partially_corresponds_to_original: yup.boolean()
+            .nullable(true),
+        retelling_contains_only_basic_information: yup.boolean()
+            .nullable(true),
+        vocabulary_and_syntactic_constructions_of_original: yup.boolean()
+            .nullable(true),
+        coherence_and_consistency_of_presentation_is_not_broken: yup.boolean()
+            .nullable(true),
+        retelling_does_not_correspond_to_original: yup.string()
+            .nullable(true),
+        semantic_organization_of_text_is_broken: yup.string()
+            .nullable(true),
+        coherence_and_consistency_of_presentation_is_broken: yup.string()
+            .nullable(true),
+        significant_difficulties_in_language_design_of_text: yup.string()
+            .nullable(true),
+        content_semantic_meaning_of_text: yup.string()
+            .required(true)
+            .nullable(true),
+        understands_only_basic_information_of_text: yup.string()
+            .required(true)
+            .nullable(true),
         expert_comment: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
 
-    }),
-    game_ant_lambada: yup.object().shape({
-        woodpecker_house: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
-        slipper_dress: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
-        kitchen_hamster_goose: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
-        expert_comment: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
     }),
     game_ant_battle: yup.object().shape({
         fence: yup.string()
@@ -504,6 +682,108 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
     }),
     game_on_the_farm: yup.object().shape({
+        sandals_boots_socks_boots: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        shoes_clothes: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        carrot_apple_onion_cabbage: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        vegetables_fruits: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        table_chair_glass_sofa: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        furniture_dishes: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        fur_coat_jacket_coat_hat: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        clothes_headwear: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        doll_cubes_car_trolley: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        toys_transport: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        cat_kitten: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        dog_puppy: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        cow_calf: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        pig_piglet: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        cat_meows: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        dog_barks: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        cow_hums: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        pig_grunts: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        low_high_home: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        wide_narrow_belt: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        heavy_light_bucket_of_water_ball: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        clean_dirty_pig: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        slow_fast_snail: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        sad_cheerful_puppy: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        dry_wet_grasshopper: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        cold_hot_ice_cream_potatoes: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        speech_comprehension_level: yup.string()
+            .required(true)
+            .nullable(true),
+        level_of_vocabulary_formation: yup.string()
+            .required(true)
+            .nullable(true),
+        active_semantic_component_active_vocabulary: yup.string()
+            .required(true)
+            .nullable(true),
+        subject_relation_of_a_word: yup.string()
+            .required(true)
+            .nullable(true),
+        verbal_paraphasias: yup.string()
+            .required(true)
+            .nullable(true),
+        vocabulary_size: yup.string()
+            .required(true)
+            .nullable(true),
+        vocabulary_size_part_two: yup.string()
+            .required(true)
+            .nullable(true),
+        systemic_vocabulary_organization: yup.string()
+            .required(true)
+            .nullable(true),
         expert_comment: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
@@ -548,10 +828,80 @@ export let examinationProtocolSchema = yup.object().shape({
         misha_has_a_hood: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
+        level_of_grammatical_competence_formation: yup.string()
+            .required(true)
+            .nullable(true),
+        inflectional_skills_and_abilities_part_one: yup.string()
+            .required(true)
+            .nullable(true),
+        word_building_skills_and_abilities: yup.string()
+            .required(true)
+            .nullable(true),
+        syntax_skills_and_abilities_part_two: yup.string()
+            .required(true)
+            .nullable(true),
         expert_comment: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
     }),
+    game_on_the_farm_part_three: yup.object().shape({
+        voice: yup.string()
+            .required(true)
+            .nullable(true),
+        voice_part_two: yup.string()
+            .required(true)
+            .nullable(true),
+        voice_part_three: yup.string()
+            .required(true)
+            .nullable(true),
+        voice_part_four: yup.string()
+            .required(true)
+            .nullable(true),
+        voice_part_five: yup.string()
+            .required(true)
+            .nullable(true),
+        smoothness: yup.string()
+            .required(true)
+            .nullable(true),
+        pace: yup.string()
+            .required(true)
+            .nullable(true),
+        speech: yup.string()
+            .required(true)
+            .nullable(true),
+        breath: yup.string()
+            .required(true)
+            .nullable(true),
+        exhalation: yup.string()
+            .required(true)
+            .nullable(true),
+        hindered: yup.boolean()
+            .nullable(true),
+        superficial: yup.boolean()
+            .nullable(true),
+        breathing_is_not_rhythmic: yup.boolean()
+            .nullable(true),
+        shallow_breath: yup.boolean()
+            .nullable(true),
+        rhythm: yup.string()
+            .required(true)
+            .nullable(true),
+        expiratory_force: yup.string()
+            .required(true)
+            .nullable(true),
+        inspiratory_expiratory_differentiation: yup.string()
+            .required(true)
+            .nullable(true),
+        prosodic_side_of_speech: yup.string()
+            .required(true)
+            .nullable(true),
+        speech_intonationally: yup.string()
+            .required(true)
+            .nullable(true),
+        violation_of_tempo_rhythmic_organization_of_speech: yup.string()
+            .required(true)
+            .nullable(true)
+    })
 })
 
 examinationProtocolSchema = examinationProtocolSchema.test(
@@ -609,6 +959,19 @@ examinationProtocolSchema = examinationProtocolSchema.test(
             return true;
         } else {
             return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices4');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_puzzle.nasal || obj.game_puzzle.skip || obj.game_puzzle.replacing_with_b || obj.game_puzzle.replacing_with_b_soft || obj.game_puzzle.replacing_with_f
+            || obj.game_puzzle.replacing_with_f_soft || obj.game_puzzle.two_lipped || obj.game_puzzle.mixing || obj.game_puzzle.distortion) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices5');
         }
     }
 )
@@ -697,6 +1060,128 @@ examinationProtocolSchema = examinationProtocolSchema.test(
             return true;
         } else {
             return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices12');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_magic_exam.there_are_difficulties_in_distinguishing || obj.game_magic_exam.distinction_between_hard_and_soft_consonants
+            || obj.game_magic_exam.distinction_between_affricates_and_their_constituent) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices13');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_capricious_princess.missing_syllables || obj.game_capricious_princess.missing_syllabic_vowels || obj.game_capricious_princess.permutations_of_sounds_and_or_syllables
+            || obj.game_capricious_princess.insertion_of_vowels_into_consonants || obj.game_capricious_princess.adding_syllables) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices14');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_capricious_princess.consonant_reduction || obj.game_capricious_princess.inserting_consonants_into_a_syllable
+            || obj.game_capricious_princess.anticipation || obj.game_capricious_princess.assimilation_of_syllables
+            || obj.game_capricious_princess.gnotic_violations_addition_of_syllables) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices15');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_how_the_mouse_could_not_sleep.retelling_corresponds_to_original || obj.game_how_the_mouse_could_not_sleep.retelling_contains_both_basic_and_additional_information
+            || obj.game_how_the_mouse_could_not_sleep.retelling_uses_variability_of_speech) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices16');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_how_the_mouse_could_not_sleep.retelling_partially_corresponds_to_original || obj.game_how_the_mouse_could_not_sleep.retelling_contains_only_basic_information
+            || obj.game_how_the_mouse_could_not_sleep.vocabulary_and_syntactic_constructions_of_original || obj.game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_not_broken
+        ) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices17');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_how_the_mouse_could_not_sleep.retelling_does_not_correspond_to_original || obj.game_how_the_mouse_could_not_sleep.semantic_organization_of_text_is_broken
+            || obj.game_how_the_mouse_could_not_sleep.coherence_and_consistency_of_presentation_is_broken || obj.game_how_the_mouse_could_not_sleep.significant_difficulties_in_language_design_of_text
+        ) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices18');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_on_the_farm_part_three.hindered || obj.game_on_the_farm_part_three.superficial
+            || obj.game_on_the_farm_part_three.breathing_is_not_rhythmic || obj.game_on_the_farm_part_three.shallow_breath) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices19');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_ant_lambada.nasal || obj.game_ant_lambada.skip
+            || obj.game_ant_lambada.replacing_d_with || obj.game_ant_lambada.replacing_d_soft_with
+            || obj.game_ant_lambada.replacing_t_with || obj.game_ant_lambada.replacing_t_soft_with) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices20');
+        }
+    }
+)
+
+examinationProtocolSchema = examinationProtocolSchema.test(
+    'choicesTest',
+    null,
+    (obj) => {
+        if (obj.game_ant_lambada.replacing_k_with || obj.game_ant_lambada.replacing_g_with
+            || obj.game_ant_lambada.replacing_kh_with || obj.game_ant_lambada.mixing
+            || obj.game_ant_lambada.distortion) {
+            return true;
+        } else {
+            return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices21');
         }
     }
 )

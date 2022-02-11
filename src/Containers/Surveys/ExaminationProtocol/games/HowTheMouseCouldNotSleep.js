@@ -163,66 +163,66 @@ const HowTheMouseCouldNotSleep = (props) => {
                     </ProtocolSwitchText>
                 </ProtocolRowText>
                 <ProtocolPlaceholderTitle>— Ответь на вопросы</ProtocolPlaceholderTitle>
-                    <ProtocolRow>
-                        <ProtocolFormField
-                            type='text'
-                            label='1. Чем оказался белый светящийся круг?'
-                            name='game_how_the_mouse_could_not_sleep.what_was_the_white_glowing_circle'
-                            register={register}
-                            errors={errors}
-                            disabled={disabled}
-                        />
-                    </ProtocolRow>
-                    <ProtocolRow>
-                        <ProtocolFormField
-                            type='text'
-                            label='2. Когда мышонок пошел гулять?'
-                            name='game_how_the_mouse_could_not_sleep.when_did_the_mouse_go_for_a_walk'
-                            register={register}
-                            errors={errors}
-                            disabled={disabled}
-                        />
-                    </ProtocolRow>
-                    <ProtocolRow>
-                        <ProtocolFormField
-                            type='text'
-                            label='3. Что увидел мышонок во дворе?'
-                            name='game_how_the_mouse_could_not_sleep.what_did_the_mouse_see_in_the_forest'
-                            register={register}
-                            errors={errors}
-                            disabled={disabled}
-                        />
-                    </ProtocolRow>
-                    <ProtocolRow>
-                        <ProtocolFormField
-                            type='text'
-                            label='4. Чем мышонок накрыл луну?'
-                            name='game_how_the_mouse_could_not_sleep.what_did_the_mouse_cover_the_moon_with'
-                            register={register}
-                            errors={errors}
-                            disabled={disabled}
-                        />
-                    </ProtocolRow>
-                    <ProtocolRow>
-                        <ProtocolFormField
-                            type='text'
-                            label='5. Что увидел в луже мышонок утром?'
-                            name='game_how_the_mouse_could_not_sleep.what_did_the_mouse_see_in_the_puddle_in_the_morning'
-                            register={register}
-                            errors={errors}
-                            disabled={disabled}
-                        />
-                    </ProtocolRow>
-                    <ProtocolRow>
-                        <ProtocolFormField
-                            type='text'
-                            label='6. Почему вместо луны мышонок обнаружил солнышко?'
-                            name='game_how_the_mouse_could_not_sleep.why_instead_of_the_moon_the_mouse_found_the_sun'
-                            register={register}
-                            errors={errors}
-                            disabled={disabled}
-                        />
-                    </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='1. Чем оказался белый светящийся круг?'
+                        name='game_how_the_mouse_could_not_sleep.what_was_the_white_glowing_circle'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='2. Когда мышонок пошел гулять?'
+                        name='game_how_the_mouse_could_not_sleep.when_did_the_mouse_go_for_a_walk'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='3. Что увидел мышонок во дворе?'
+                        name='game_how_the_mouse_could_not_sleep.what_did_the_mouse_see_in_the_forest'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='4. Чем мышонок накрыл луну?'
+                        name='game_how_the_mouse_could_not_sleep.what_did_the_mouse_cover_the_moon_with'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='5. Что увидел в луже мышонок утром?'
+                        name='game_how_the_mouse_could_not_sleep.what_did_the_mouse_see_in_the_puddle_in_the_morning'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
+                <ProtocolRow>
+                    <ProtocolFormField
+                        type='text'
+                        label='6. Почему вместо луны мышонок обнаружил солнышко?'
+                        name='game_how_the_mouse_could_not_sleep.why_instead_of_the_moon_the_mouse_found_the_sun'
+                        register={register}
+                        errors={errors}
+                        disabled={disabled}
+                    />
+                </ProtocolRow>
                 <ProtocolPlaceholderTitle>— Повтори всю историю, как запомнил:</ProtocolPlaceholderTitle>
                 <ProtocolRow>
                     <ProtocolFormField
@@ -408,6 +408,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                {errors.choices16 && <div className='form2__error'> {errors.choices16.message}</div>}
                             </ProtocolResultBlock>
                             <ProtocolDescriptionSubtitle>Наблюдаются некоторые трудности в репродуцировании текста:</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
@@ -451,6 +452,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                {errors.choices17 && <div className='form2__error'> {errors.choices17.message}</div>}
                             </ProtocolResultBlock>
                             <ProtocolDescriptionSubtitle>Наблюдаются значительные трудности в репродуцировании текста:</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
@@ -494,6 +496,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                {errors.choices18 && <div className='form2__error'> {errors.choices18.message}</div>}
                             </ProtocolResultBlock>
                             <ProtocolDescriptionMain>Понимание:</ProtocolDescriptionMain>
                             <ProtocolDescriptionSubtitle>Содержательно-смысловое значение текста:</ProtocolDescriptionSubtitle>
