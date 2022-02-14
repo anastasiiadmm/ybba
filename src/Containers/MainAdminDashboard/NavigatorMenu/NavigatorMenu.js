@@ -41,8 +41,8 @@ const usersList = [
 ];
 
 const diagnosticList = [
-    { id: 'Протоколы обследований', icon: <PublicIcon/>, toItemName: '/admin/survey/examinationprotocol/', to: '/admin/examinationprotocol/' },
-    { id: 'Речевые карты', icon: <SettingsEthernetIcon/>, toItemName: '/admin/survey/speechcard/', to: '/admin/speechcard/' },
+    { id: 'Протоколы обследований', icon: <PublicIcon/>, toItemName: '/admin/survey/examinationprotocol/', to: '/admin/survey/examinationprotocol/add/' },
+    { id: 'Речевые карты', icon: <SettingsEthernetIcon/>, toItemName: '/admin/survey/speechcard/', to: '/admin/survey/speechcard/add/' },
 ];
 
 const gamesList = [
