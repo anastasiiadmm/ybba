@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import AdminListComponent from 'Components/AdminListComponent/AdminListComponent';
 import ListItemComponent from 'Components/AdminListComponent/ListItemComponent';
-import Logout from 'Containers/Logout/Logout';
 
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -13,7 +12,6 @@ import DnsRoundedIcon from '@mui/icons-material/DnsRounded';
 import PermMediaOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import PublicIcon from '@mui/icons-material/Public';
 import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet';
-import { Grid } from '@mui/material';
 
 import logo from 'assets/img/logo.svg';
 
@@ -59,86 +57,79 @@ const NavigatorMenu = props => {
     const { ...other } = props;
 
     return (
-        <Grid container>
-            <Grid item xs>
-                <Drawer variant='permanent' {...other}>
-                    <List disablePadding>
-                        <ListItem sx={{ ...item, ...itemCategory }} component={Link} to='/admin-dashboard/'>
-                            <header className='header'>
-                                <img src={logo} alt='Биба'/>
-                            </header>
-                        </ListItem>
+        <>
+            <Drawer variant='permanent' {...other}>
+                <List disablePadding>
+                    <ListItem sx={{ ...item, ...itemCategory }} component={Link} to='/admin-dashboard/'>
+                        <header className='header'>
+                            <img src={logo} alt='Биба'/>
+                        </header>
+                    </ListItem>
 
-                        <AdminListComponent
-                            listItemText={'Пользователи'}
-                        >
-                            {usersList.map(({ id: childId, icon, to, toItemName }) => {
-                                return (
-                                    <ListItemComponent
-                                        key={childId}
-                                        icon={icon}
-                                        toItemName={toItemName}
-                                        itemName={childId}
-                                        to={to}
-                                    />
-                                )
-                            })}
-                        </AdminListComponent>
-                        <AdminListComponent
-                            listItemText={'Диагностики'}
-                        >
-                            {diagnosticList.map(({ id: childId, icon, to, toItemName }) => {
-                                return (
-                                    <ListItemComponent
-                                        key={childId}
-                                        icon={icon}
-                                        toItemName={toItemName}
-                                        itemName={childId}
-                                        to={to}
-                                    />
-                                )
-                            })}
-                        </AdminListComponent>
-                        <AdminListComponent
-                            listItemText={'Игры'}
-                        >
-                            {gamesList.map(({ id: childId, icon, to, toItemName }) => {
-                                return (
-                                    <ListItemComponent
-                                        key={childId}
-                                        icon={icon}
-                                        toItemName={toItemName}
-                                        itemName={childId}
-                                        to={to}
-                                    />
-                                )
-                            })}
-                        </AdminListComponent>
-                        <AdminListComponent
-                            listItemText={'Уроки'}
-                        >
-                            {lessonsList.map(({ id: childId, icon, to, toItemName }) => {
-                                return (
-                                    <ListItemComponent
-                                        key={childId}
-                                        icon={icon}
-                                        toItemName={toItemName}
-                                        itemName={childId}
-                                        to={to}
-                                    />
-                                )
-                            })}
-                        </AdminListComponent>
-                    </List>
-                </Drawer>
-            </Grid>
-
-            <Grid item>
-                <Grid item xs>
-                    <Logout />
-                </Grid>
-            </Grid>
-        </Grid>
+                    <AdminListComponent
+                        listItemText={'Пользователи'}
+                    >
+                        {usersList.map(({ id: childId, icon, to, toItemName }) => {
+                            return (
+                                <ListItemComponent
+                                    key={childId}
+                                    icon={icon}
+                                    toItemName={toItemName}
+                                    itemName={childId}
+                                    to={to}
+                                />
+                            )
+                        })}
+                    </AdminListComponent>
+                    <AdminListComponent
+                        listItemText={'Диагностики'}
+                    >
+                        {diagnosticList.map(({ id: childId, icon, to, toItemName }) => {
+                            return (
+                                <ListItemComponent
+                                    key={childId}
+                                    icon={icon}
+                                    toItemName={toItemName}
+                                    itemName={childId}
+                                    to={to}
+                                />
+                            )
+                        })}
+                    </AdminListComponent>
+                    <AdminListComponent
+                        listItemText={'Игры'}
+                    >
+                        {gamesList.map(({ id: childId, icon, to, toItemName }) => {
+                            return (
+                                <ListItemComponent
+                                    key={childId}
+                                    icon={icon}
+                                    toItemName={toItemName}
+                                    itemName={childId}
+                                    to={to}
+                                />
+                            )
+                        })}
+                    </AdminListComponent>
+                    <AdminListComponent
+                        listItemText={'Уроки'}
+                    >
+                        {lessonsList.map(({ id: childId, icon, to, toItemName }) => {
+                            return (
+                                <ListItemComponent
+                                    key={childId}
+                                    icon={icon}
+                                    toItemName={toItemName}
+                                    itemName={childId}
+                                    to={to}
+                                />
+                            )
+                        })}
+                    </AdminListComponent>
+                </List >
+            </Drawer>
+        </>
     );
 };
+
 export default NavigatorMenu;

@@ -7,7 +7,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 
 import NavigatorMenu from 'Containers/MainAdminDashboard/NavigatorMenu/NavigatorMenu';
+import LogoutButton from 'Containers/MainAdminDashboard/LogoutButton/LogoutButton';
 
+const drawerWidth = 300;
 
 let theme = createTheme({
     palette: {
@@ -152,7 +154,29 @@ theme = {
     },
 };
 
-const drawerWidth = 300;
+const menuStyle = {
+    display: 'flex', flexDirection: 'column', position: 'relative'
+}
+
+const buttonStyle = {
+    width: { sm: drawerWidth }, flexShrink: { sm: 0 },
+    position: 'absolute', bottom: 0, zIndex: 120, height: 90, backgroundColor: '#081627', pr: 5, pl: 5,
+    textAlign: 'center', '&:hover': '#fff'
+};
+
+const navStyle = {
+    width: { sm: drawerWidth }, flexShrink: { sm: 0 }, zIndex: 0
+};
+
+const childrenStyle = {
+    flex: 1, display: 'flex', flexDirection: 'column'
+};
+
+const childrenComponentStyle = {
+    flex: 1, py: 6, px: 4, bgcolor: '#eaeff1'
+}
+
+
 
 const SidebarAdminContainer = (props) => {
     const { children } = props;
@@ -168,25 +192,31 @@ const SidebarAdminContainer = (props) => {
         <ThemeProvider theme={theme}>
             <Box sx={{ display: 'flex', minHeight: '100vh' }}>
                 <CssBaseline />
-                <Box
-                    component='nav'
-                    sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-                >
-                    {isSmUp ? null : (
+                <Box style={ menuStyle }>
+                    <Box
+                        component='nav'
+                        sx={ navStyle }
+                    >
+                        {isSmUp ? null : (
+                            <NavigatorMenu
+                                PaperProps={{ style: { width: drawerWidth } }}
+                                variant='temporary'
+                                open={mobileOpen}
+                                onClose={handleDrawerToggle}
+                            />
+                        )}
                         <NavigatorMenu
                             PaperProps={{ style: { width: drawerWidth } }}
-                            variant='temporary'
-                            open={mobileOpen}
-                            onClose={handleDrawerToggle}
+                            sx={{ display: { sm: 'block', xs: 'none' } }}
                         />
-                    )}
-                    <NavigatorMenu
-                        PaperProps={{ style: { width: drawerWidth } }}
-                        sx={{ display: { sm: 'block', xs: 'none' } }}
-                    />
+                    </Box>
+                    <Box component='div' sx={ buttonStyle }>
+                        <LogoutButton />
+                    </Box>
                 </Box>
-                <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <Box component='main' sx={{ flex: 1, py: 6, px: 4, bgcolor: '#eaeff1' }}>
+
+                <Box sx={ childrenStyle }>
+                    <Box component='main' sx={ childrenComponentStyle }>
                         {children}
                     </Box>
                 </Box>
