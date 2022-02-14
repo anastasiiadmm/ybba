@@ -427,6 +427,7 @@ const OnTheFarmPartThree = (props) => {
                                         name='game_on_the_farm_part_three.voice_part_four'
                                         control={control}
                                         errors={errors}
+                                        disabled={disabled}
                                     />
                                 </ProtocolResultWrapper>
                                 <ProtocolResultWrapper>

@@ -54,7 +54,6 @@ const ExaminationProtocol = (props) => {
     const { user } = useSelector(authSelector)
 
     const { register, formState: { errors }, control, handleSubmit } = useForm({
-        mode: 'onBlur',
         resolver: yupResolver(examinationProtocolSchema),
         defaultValues: {
             ...protocol,
@@ -759,7 +758,7 @@ const ExaminationProtocol = (props) => {
                         <SurveySubmitButton
                             type='submit'
                             id='finish-protocol'
-                            onClick={() => onSubmit(data, errors)}
+                            onClick={() => onSubmit(errors, data)}
                         >
                             Завершить заполнение протокола
                         </SurveySubmitButton>
