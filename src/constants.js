@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export const GAME_FILE_TYPE_LOADER = 'file_loader'
 export const GAME_FILE_TYPE_DATA = 'file_data'
 export const GAME_FILE_TYPE_FRAMEWORK = 'file_framework'
@@ -267,7 +265,7 @@ export const relationOfProtocolToSpeechCard = {
     'text_production': 'game_how_the_mouse_could_not_sleep.constructing_a_statement',
     'reproduction_of_text_game_how_the_mouse_could_not_sleep': 'game_how_the_mouse_could_not_sleep.retelling_corresponds_to_original',
     'articulation_apparatus_structure_game_how_the_mouse_could': 'game_ant_battle.lips',
-    'articulation_apparatus_structure': 'game_ant_battle.lips',
+    'articulation_apparatus_structure': 'game_ant_battle.tone',
     'basic_motor_skills_and_state_of_coordinating_sphere': 'game_ant_battle.basic_motor_skills',
     'bilateral_motor_coordination': 'conclusion_options',
     'leading_ear': 'leading_ear_phone',
@@ -279,4 +277,5 @@ export const relationOfProtocolToSpeechCard = {
     'thinking_verbal_and_non_verbal_intelligence': 'game_giraffe.thinking',
     'simultaneous_visual_perception': 'game_puzzle.perception',
     'attention': 'game_on_the_farm_part_three.speech_comprehension',
+    'logopedic_conclusion': 'speech_therapy_conclusion',
 }
