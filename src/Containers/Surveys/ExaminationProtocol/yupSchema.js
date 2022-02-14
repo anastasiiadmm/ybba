@@ -845,6 +845,39 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
     }),
     game_on_the_farm_part_three: yup.object().shape({
+        speech_comprehension: yup.string()
+            .required(true)
+            .nullable(true),
+        concentration: yup.string()
+            .required(true)
+            .nullable(true),
+        sustainability: yup.string()
+            .required(true)
+            .nullable(true),
+        volume: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        switchability: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        fatigue: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        contact: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        working_capacity: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        motivation: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        interest: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        options_for_confinement_psychological_basis: yup.string()
+            .required()
+            .nullable(true),
         voice: yup.string()
             .required(true)
             .nullable(true),
