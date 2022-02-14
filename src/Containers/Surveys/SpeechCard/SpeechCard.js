@@ -77,7 +77,7 @@ const SpeechCard = (props) => {
                     type='button'
                     onClick={onFinishViewSpeechCard}
                 >
-                    Вернутся на главную страницу
+                    Вернуться на главную страницу
                 </SurveySubmitButton>
             </>)}
             {!isSpeechCardFinished && (<>
