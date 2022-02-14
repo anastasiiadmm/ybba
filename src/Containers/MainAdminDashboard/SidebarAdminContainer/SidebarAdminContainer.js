@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 
 import NavigatorMenu from 'Containers/MainAdminDashboard/NavigatorMenu/NavigatorMenu';
 import LogoutButton from 'Containers/MainAdminDashboard/LogoutButton/LogoutButton';
+import HeaderAdminMenu from 'Containers/MainAdminDashboard/HeaderAdminMenu/HeaderAdminMenu';
 
 const drawerWidth = 300;
 
@@ -216,6 +217,7 @@ const SidebarAdminContainer = (props) => {
                 </Box>
 
                 <Box sx={ childrenStyle }>
+                    <HeaderAdminMenu onDrawerToggle={handleDrawerToggle} />
                     <Box component='main' sx={ childrenComponentStyle }>
                         {children}
                     </Box>
