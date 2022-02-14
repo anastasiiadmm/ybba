@@ -22,7 +22,7 @@ const ProtocolSidebar = (props) => {
   const { protocol } = useSelector(surveysSelector);
 
   const dispatch = useDispatch();
-  const onProtocolFinish = async (data, errors) => {
+  const onProtocolFinish = async (errors, data) => {
     if (lesson.status !== lessonStatuses.finished) {
       toast.warning('Сначала завершите занятие')
     } else {
