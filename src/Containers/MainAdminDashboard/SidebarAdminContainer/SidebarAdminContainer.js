@@ -170,11 +170,15 @@ const navStyle = {
 };
 
 const childrenStyle = {
-    flex: 1, display: 'flex', flexDirection: 'column'
+    flex: 1, display: 'flex', flexDirection: 'column', backgroundColor: '#eaeff1'
 };
 
 const childrenComponentStyle = {
-    flex: 1, py: 6, px: 4, bgcolor: '#eaeff1'
+    flex: 1,
+    backgroundColor: '#fff',
+    borderRadius: '15px 15px 0 0',
+    margin: '15px 15px 0 15px',
+    padding: 5
 }
 
 

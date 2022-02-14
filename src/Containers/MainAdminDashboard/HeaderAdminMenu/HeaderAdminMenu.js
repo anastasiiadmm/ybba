@@ -1,16 +1,12 @@
 import React from 'react';
 
-import { AppBar, Grid, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Grid, IconButton, Toolbar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Link from '@mui/material/Link';
 import Tooltip from '@mui/material/Tooltip';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
-import HelpIcon from '@mui/icons-material/Help';
 
-const lightColor = 'rgba(255, 255, 255, 0.7)';
-const menuColor = { backgroundColor: 'rgba(254,84,34,0.75)' };
+const menuStyle = { backgroundColor: 'rgba(254,84,34,0.85)', height: 75, justifyContent: 'center', borderRadius: '0 0 10px 10px' };
 
 
 const HeaderAdminMenu = (props) => {
@@ -20,7 +16,7 @@ const HeaderAdminMenu = (props) => {
 
     return (
         <React.Fragment>
-            <AppBar style={{ menuColor }} position='sticky' elevation={0}>
+            <AppBar style={ menuStyle } position='sticky' elevation={2}>
                 <Toolbar>
                     <Grid container spacing={1} alignItems='center'>
                         <Grid sx={{ display: { sm: 'none', xs: 'block' } }} item>
@@ -35,23 +31,6 @@ const HeaderAdminMenu = (props) => {
                         </Grid>
                         <Grid item xs />
                         <Grid item>
-                            <Link
-                                href='/'
-                                variant='body2'
-                                sx={{
-                                    textDecoration: 'none',
-                                    color: lightColor,
-                                    '&:hover': {
-                                        color: 'common.white',
-                                    },
-                                }}
-                                rel='noopener noreferrer'
-                                target='_blank'
-                            >
-                                Go to docs
-                            </Link>
-                        </Grid>
-                        <Grid item>
                             <Tooltip title='Alerts • No alerts'>
                                 <IconButton color='inherit'>
                                     <NotificationsIcon />
@@ -65,48 +44,6 @@ const HeaderAdminMenu = (props) => {
                         </Grid>
                     </Grid>
                 </Toolbar>
-            </AppBar>
-
-            <AppBar
-                component='div'
-                position='static'
-                elevation={0}
-                sx={{ zIndex: 0 }}
-            >
-                <Toolbar>
-                    <Grid container alignItems='center' spacing={1}>
-                        <Grid item xs>
-                            <Typography color='inherit' variant='h5' component='h1'>
-                                Authentication
-                            </Typography>
-                        </Grid>
-                        <Grid item>
-                            <Button
-                                sx={{ borderColor: lightColor }}
-                                variant='outlined'
-                                color='inherit'
-                                size='small'
-                            >
-                                Web setup
-                            </Button>
-                        </Grid>
-                        <Grid item>
-                            <Tooltip title='Help'>
-                                <IconButton color='inherit'>
-                                    <HelpIcon />
-                                </IconButton>
-                            </Tooltip>
-                        </Grid>
-                    </Grid>
-                </Toolbar>
-            </AppBar>
-            <AppBar component='div' position='static' elevation={0} sx={{ zIndex: 0 }}>
-                {/*<Tabs value={0} textColor='inherit'>*/}
-                {/*    <Tab label='Users' />*/}
-                {/*    <Tab label='Sign-in method' />*/}
-                {/*    <Tab label='Templates' />*/}
-                {/*    <Tab label='Usage' />*/}
-                {/*</Tabs>*/}
             </AppBar>
         </React.Fragment>
     );
