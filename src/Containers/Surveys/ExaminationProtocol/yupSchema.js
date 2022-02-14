@@ -876,7 +876,7 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(requiredFieldErrorText)
             .nullable(true),
         options_for_confinement_psychological_basis: yup.string()
-            .required()
+            .required(true)
             .nullable(true),
         voice: yup.string()
             .required(true)
