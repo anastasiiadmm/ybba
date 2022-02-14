@@ -16,22 +16,27 @@ const ProtocolSidebar = (props) => {
   const {
     isUnityInitialized,
     lesson,
+    toggleProtocolModal
   } = props;
 
   const { protocol } = useSelector(surveysSelector);
 
   const dispatch = useDispatch();
-  const onProtocolFinish = async data => {
+  const onProtocolFinish = async (errors, data) => {
     if (lesson.status !== lessonStatuses.finished) {
       toast.warning('Сначала завершите занятие')
     } else {
-      await dispatch(moveDataFromProtocolToSpeechCard({
-        childId: protocol.child.id,
-        data: data
-      }))
-      await dispatch(closeProtocol())
-      if (lesson?.student?.id) {
-        await dispatch(getSpeechCard(lesson.student.id))
+      if (Object.keys(errors).length) {
+        await toggleProtocolModal()
+      } else {
+        await dispatch(moveDataFromProtocolToSpeechCard({
+          childId: protocol.child.id,
+          data: data
+        }))
+        await dispatch(closeProtocol())
+        if (lesson?.student?.id) {
+          await dispatch(getSpeechCard(lesson.student.id))
+        }
       }
     }
   }
@@ -49,19 +54,19 @@ const ProtocolSidebar = (props) => {
   }, [dispatch, lesson, protocol])
 
   return (
-    <div className='gamef__sidebar'>
-      <div className='gamef__sidebar-in overflow-scroll customScrollbar'>
-        {protocol && lesson ?
-          <ExaminationProtocol
-            protocol={protocol}
-            lesson={lesson}
-            onSubmit={onProtocolFinish}
-          /> :
-          <div className='h-100 w-100 d-flex align-items-center justify-content-center'>
-            <Spinner animation='grow'/>
-          </div>}
+      <div className='gamef__sidebar'>
+        <div className='gamef__sidebar-in overflow-scroll customScrollbar'>
+          {protocol && lesson ?
+              <ExaminationProtocol
+                  protocol={protocol}
+                  lesson={lesson}
+                  onSubmit={onProtocolFinish}
+              /> :
+              <div className='h-100 w-100 d-flex align-items-center justify-content-center'>
+                <Spinner animation='grow'/>
+              </div>}
+        </div>
       </div>
-    </div>
   );
 };
 

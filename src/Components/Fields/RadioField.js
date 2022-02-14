@@ -7,7 +7,7 @@ import { resolve } from 'utils/resolve/resolve';
 const RadioField = (props) => {
 
     const {
-        label, name, classNameLabel, className, errors, value: radioValue, control, disabled
+        label, name, classNameLabel, className, errors, value: radioValue, control, disabled,
     } = props
 
     return (
@@ -34,7 +34,7 @@ const RadioField = (props) => {
                                 checked={String(radioValue) === String(params.field.value)}
                                 disabled={disabled}
                             />
-                            <span className={addClasses(className, {
+                            <span className={addClasses(classNameLabel, {
                                 'error': resolve(name, errors, '.')
                             })}>{label}</span>
                         </label>

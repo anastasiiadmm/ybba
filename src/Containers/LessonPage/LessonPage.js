@@ -53,7 +53,6 @@ const LessonPage = (props) => {
   const { isMicrophoneAllowed, isCameraAllowed } = useContext(BrowserPermissionsContext);
 
   const onLessonFinish = async () => {
-    await toggleProtocolModal()
     await sendWsAction(
       changeLessonStatus({
         status: LESSON_STATUS_FINISHED,
@@ -186,6 +185,7 @@ const LessonPage = (props) => {
               />
             ) : (
               <ProtocolSidebar
+                  toggleProtocolModal={toggleProtocolModal}
                 isUnityInitialized={isUnityInitialized}
                 lesson={lesson}
               />
