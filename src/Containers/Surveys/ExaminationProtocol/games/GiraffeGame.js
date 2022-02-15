@@ -74,6 +74,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.throat_rotacism'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -83,6 +84,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.replacing_p_with'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -92,6 +94,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.replacing_p_soft_with'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -101,6 +104,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.buccal'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -110,6 +114,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.side'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -119,6 +124,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.one_hit_pronunciation'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -128,9 +134,10 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.skip'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices3 && <div className='form2__error'> {errors.choices3.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -143,6 +150,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.interdental_lambdacism'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -152,6 +160,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.replacing_l_with'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -161,6 +170,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.replacing_l_soft_with'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -170,6 +180,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.nasal'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -179,6 +190,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.lambdacism_pass'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -188,6 +200,7 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.two_lipped'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
@@ -197,9 +210,10 @@ const GiraffeGame = (props) => {
                                 name='game_giraffe.distortion'
                                 control={control}
                                 errors={errors}
+                                disabled={disabled}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices4 && <div className='form2__error'> {errors.choices4.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
             </ProtocolBlock>

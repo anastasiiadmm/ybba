@@ -187,7 +187,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices6 && <div className='form2__error'> {errors.choices6.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -223,6 +223,7 @@ const AntBattleGame = (props) => {
                         placeholder='Комментарий специалиста'
                         errors={errors}
                         register={register}
+                        disabled={disabled}
                     />
                 </ProtocolRow>
             </ProtocolBlock>
@@ -354,7 +355,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices7 && <div className='form2__error'> {errors.choices7.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -639,7 +640,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices8 && <div className='form2__error'> {errors.choices8.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -666,7 +667,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices9 && <div className='form2__error'> {errors.choices9.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -692,7 +693,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices10 && <div className='form2__error'> {errors.choices10.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -702,7 +703,6 @@ const AntBattleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Пальцевый праксис сформирован. Воспроизвел пальцевую позу без затруднений'
-                                value='пальцевый праксис сформирован. без затруднений'
                                 name='game_ant_battle.motor_functions_of_hands_and_fingers'
                                 control={control}
                                 errors={errors}
@@ -713,7 +713,6 @@ const AntBattleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Пальцевый праксис сформирован. Воспроизвел пальцевую позу с затруднениями'
-                                value='пальцевый праксис сформирован. с затруднениями'
                                 name='game_ant_battle.motor_functions_of_hands_and_fingers'
                                 control={control}
                                 errors={errors}
@@ -724,7 +723,6 @@ const AntBattleGame = (props) => {
                             <ProtocolFormField
                                 type='radio'
                                 label='Пальцевый праксис не сформирован. Пальцевую позу не воспроизвел'
-                                value='пальцевый праксис сформирован не воспроизвел'
                                 name='game_ant_battle.motor_functions_of_hands_and_fingers'
                                 control={control}
                                 errors={errors}
@@ -959,7 +957,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices11 && <div className='form2__error'> {errors.choices11.message}</div>}
                     </ProtocolResultBlock>
                     <ProtocolDescriptionSubtitle>Аномалии уздечек верхней/нижней губы</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
@@ -1050,7 +1048,7 @@ const AntBattleGame = (props) => {
                                 disabled={disabled}
                             />
                         </ProtocolResultWrapper>
-                        {errors.choices && <div className='form2__error'> {errors.choices.message}</div>}
+                        {errors.choices12 && <div className='form2__error'> {errors.choices12.message}</div>}
                     </ProtocolResultBlock>
                 </ProtocolRow>
             </ProtocolBlock>
