@@ -71,7 +71,7 @@ const SpeechCard = (props) => {
             <div ref={topBlock} />
             {isSpeechCardFinished && (<>
                 <SpeechCardView
-                    speechCard={data}
+                    speechCard={{ ...data, lesson: speechCard.lesson }}
                 />
                 <SurveySubmitButton
                     type='button'
