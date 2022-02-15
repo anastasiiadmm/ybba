@@ -162,7 +162,8 @@ const menuStyle = {
 const buttonStyle = {
     width: { sm: drawerWidth }, flexShrink: { sm: 0 },
     position: 'absolute', bottom: 0, zIndex: 120, height: 90, backgroundColor: '#081627', pr: 5, pl: 5,
-    textAlign: 'center', '&:hover': '#fff'
+    textAlign: 'center', '&:hover': '#fff',
+    display: { sm: 'block', xs: 'none' }
 };
 
 const navStyle = {
