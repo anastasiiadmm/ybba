@@ -53,7 +53,7 @@ const ExaminationProtocol = (props) => {
 
     const { user } = useSelector(authSelector)
 
-    const { register, formState: { errors }, control, handleSubmit } = useForm({
+    const { register, formState: { errors }, control, handleSubmit, trigger } = useForm({
         resolver: yupResolver(examinationProtocolSchema),
         defaultValues: {
             ...protocol,
@@ -76,6 +76,11 @@ const ExaminationProtocol = (props) => {
         }, 1000)
         return () => clearTimeout(timer)
     }, [data])
+
+    const onProtocolFormSubmit = async () => {
+        const isFormValid = await trigger()
+        onSubmit(data, isFormValid)
+    }
 
     return (
         <ProtocolMain
@@ -253,7 +258,8 @@ const ExaminationProtocol = (props) => {
                             </ProtocolResultBlock>
                         </ProtocolRow>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>В пространственно-временной ситуации:</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>В пространственно-временной
+                                ситуации:</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
@@ -278,9 +284,11 @@ const ExaminationProtocol = (props) => {
                             </ProtocolResultBlock>
                         </ProtocolRow>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Знает сколько ему лет, какое сейчас время года, какое сейчас время
+                            <ProtocolDescriptionSubtitle>Знает сколько ему лет, какое сейчас время года, какое сейчас
+                                время
                                 суток, что
-                                он делал вчера, что делал утром, что он будет делать завтра</ProtocolDescriptionSubtitle>
+                                он делал вчера, что делал утром, что он будет делать
+                                завтра</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
@@ -748,7 +756,8 @@ const ExaminationProtocol = (props) => {
                 </ProtocolRow>
                 <ProtocolRow>
                     <p className='protocol__finish-title'>Логопед</p>
-                    <ProtocolDescriptionSubtitle>Дата рождения: {protocol.child_date_of_birth}</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>Дата
+                        рождения: {protocol.child_date_of_birth}</ProtocolDescriptionSubtitle>
                     <p className='protocol__info'>Родитель: {protocol.parent.first_name} {protocol.parent.last_name}</p>
                 </ProtocolRow>
             </ProtocolBlock>
@@ -758,7 +767,7 @@ const ExaminationProtocol = (props) => {
                         <SurveySubmitButton
                             type='submit'
                             id='finish-protocol'
-                            onClick={() => onSubmit(errors, data)}
+                            onClick={onProtocolFormSubmit}
                         >
                             Завершить заполнение протокола
                         </SurveySubmitButton>
