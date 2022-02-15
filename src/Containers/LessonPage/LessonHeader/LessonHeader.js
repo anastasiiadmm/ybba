@@ -74,6 +74,7 @@ const LessonHeader = (props) => {
   );
 
   const setCurrentWebcamHeight = () => {
+    if (checkUserRole(userRoles.parent)) return setWebcamHeight(220);
     const bodyWidth = +document.body.clientWidth;
     bodyWidth <= 1440
       ? setWebcamHeight(140)
