@@ -182,10 +182,10 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(requiredFieldErrorText)
             .nullable(true),
         what_is_common_sound_in_words_of_a_cat_and_anose: yup.string()
-            .required(true)
+            .required(requiredFieldErrorText)
             .nullable(true),
         in_which_of_words_there_is_no_sound_about_nose_of_cat_poppy: yup.string()
-            .required(true)
+            .required(requiredFieldErrorText)
             .nullable(true),
         phonemic_hearing: yup.string()
             .required(true)
@@ -537,20 +537,29 @@ export let examinationProtocolSchema = yup.object().shape({
     }),
     game_ant_battle: yup.object().shape({
         fence: yup.string()
-            .required(true)
+            .required(requiredFieldErrorText)
             .nullable(true),
         spatula: yup.string()
-            .required(true)
+            .required(requiredFieldErrorText)
             .nullable(true),
         needle: yup.string()
-            .required(true)
-            .nullable(true),
+            .required(requiredFieldErrorText)
+            .nullable(requiredFieldErrorText),
+        mushroom: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(requiredFieldErrorText),
+        window: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(requiredFieldErrorText),
         watch: yup.string()
-            .required(true)
+            .required(requiredFieldErrorText)
             .nullable(true),
         swing: yup.string()
-            .required(true)
+            .required(requiredFieldErrorText)
             .nullable(true),
+        horse: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(requiredFieldErrorText),
         tone: yup.string()
             .required(true)
             .nullable(true),
@@ -845,6 +854,15 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
     }),
     game_on_the_farm_part_three: yup.object().shape({
+        one_white_chicken: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        three_ginger_hens: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
+        five_speckled_hens: yup.string()
+            .required(requiredFieldErrorText)
+            .nullable(true),
         speech_comprehension: yup.string()
             .required(true)
             .nullable(true),
