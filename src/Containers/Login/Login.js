@@ -11,6 +11,8 @@ import { loginUser, authSelector } from 'redux/auth/authSlice.js';
 import { clearUserState, clearUserFromUserState } from 'redux/user/userSlice.js';
 
 import 'Containers/Login/Login.css'
+import { checkUserRole } from '../../utils/user';
+import { userRoles } from '../../constants';
 
 
 const Login = () => {
@@ -22,6 +24,7 @@ const Login = () => {
     const [loginData, setLoginData] = useState(loginDataInit)
 
     const { loading, commonError, user, success } = useSelector(authSelector)
+    console.log(user)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -35,6 +38,9 @@ const Login = () => {
     const pushToMainPage = () => {
         if (success || user) {
             history.push('/')
+        }
+        if (success && checkUserRole(userRoles.admin)) {
+            history.push('/admin-dashboard/')
         }
     }
 
