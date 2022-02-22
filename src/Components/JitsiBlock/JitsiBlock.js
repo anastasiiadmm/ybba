@@ -15,7 +15,10 @@ const JitsiBlock = (props) => {
             roomName: meetingId,
             width: width,
             height: height,
-            configOverwrite: { prejoinPageEnabled: false },
+            configOverwrite: {
+                prejoinPageEnabled: false,
+                notifications: [],
+            },
             interfaceConfigOverwrite: {
                 TOOLBAR_BUTTONS: toolbarItems || [],
                 SHOW_WATERMARK_FOR_GUESTS: false,
