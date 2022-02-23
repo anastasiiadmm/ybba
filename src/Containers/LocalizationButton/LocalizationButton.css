@@ -1,0 +1,17 @@
+.option__field {
+    border: 1px solid rgba(73, 78, 85, 0.3) !important;
+    border-radius: 16px;
+    width: 100%;
+    padding: 2px 12px;
+    opacity: 0.4;
+}
+.option__field:hover {
+    opacity: 1;
+}
+
+.option__field::before {
+    border-bottom: none !important;
+}
+.option__field::after {
+    border-bottom: none !important;
+}

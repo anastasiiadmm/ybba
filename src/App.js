@@ -46,6 +46,7 @@ import LessonsTimeSlotsListAdd from 'Containers/MainAdminDashboard/NavigatorMenu
 import AdminLessonTimeSlotAdd from 'Containers/MainAdminDashboard/NavigatorMenu/AdminLessonTimeSlot/AdminLessonTimeSlotAdd';
 
 import 'App.css';
+import LocalizationButton from './Containers/LocalizationButton/LocalizationButton';
 
 
 const App = () => {
@@ -63,6 +64,7 @@ const App = () => {
                 draggable
                 pauseOnHover
             />
+            <LocalizationButton />
             <Switch>
                 {/*<PrivateRoute path='/payments/' component={Payments} />*/}
                 <PrivateRoute path='/child-profile/' component={ChildProfiles} exact/>
