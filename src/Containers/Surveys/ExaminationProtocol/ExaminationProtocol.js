@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import PropTypes from 'prop-types';
 import { useForm, useWatch } from 'react-hook-form';
@@ -49,6 +50,8 @@ const ExaminationProtocol = (props) => {
         protocol, lesson, onSubmit, isClosed
     } = props
 
+    const { t } = useTranslation();
+
     const dispatch = useDispatch()
 
     const { user } = useSelector(authSelector)
@@ -90,13 +93,13 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <p className='protocol__person'>{protocol.child.first_name} {protocol.child.last_name}</p>
                     <p className='protocol__person-descr'>{momentDateToHuman(strDateToMoment(protocol.child_date_of_birth))}</p>
-                    <p className='protocol__person'>Родитель: {protocol.parent.first_name} {protocol.parent.last_name}</p>
+                    <p className='protocol__person'>{t('parent')} {protocol.parent.first_name} {protocol.parent.last_name}</p>
                 </ProtocolRow>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label='Какие у вас жалобы?'
-                        placeholder='Ответ родителя'
+                        label={t('what_are_your_complaints')}
+                        placeholder={t('parent_response')}
                         name='what_are_your_complaints'
                         register={register}
                         errors={errors}
@@ -106,8 +109,8 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label='С какой целью вы обратились к логопеду?'
-                        placeholder='Ответ родителя'
+                        label={t('why_visit_a_speech_pathologist')}
+                        placeholder={t('parent_response')}
                         name='for_what_purpose_did_you_turn_to_a_speech_therapist'
                         register={register}
                         errors={errors}
@@ -116,14 +119,13 @@ const ExaminationProtocol = (props) => {
                 </ProtocolRow>
             </ProtocolBlock>
             <ProtocolBlock>
-                <ProtocolTitle>Рече-языковая компетенция</ProtocolTitle>
-                <ProtocolBlockTitle>Общие представления об окружающем мире. Понимание ребенком обращенной к нему
-                    речи</ProtocolBlockTitle>
+                <ProtocolTitle>{t('speech_and_language_competence')}</ProtocolTitle>
+                <ProtocolBlockTitle>{t('ideas_about_the_environment')}</ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Как тебя зовут?'
-                        placeholder='Ответ ребенка'
+                        label={t('what_is_your_name')}
+                        placeholder={t('child_answer')}
                         name='what_is_your_name'
                         register={register}
                         errors={errors}
@@ -133,8 +135,8 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Сколько тебе лет?'
-                        placeholder='Ответ ребенка'
+                        label={t('how_old_are_you')}
+                        placeholder={t('child_answer')}
                         name='how_old_are_you'
                         register={register}
                         errors={errors}
@@ -144,8 +146,8 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Как зовут твою маму? Твоего папу?'
-                        placeholder='Ответ ребенка'
+                        label={t('how_is_your_mother_name_your_dad')}
+                        placeholder={t('child_answer')}
                         name='what_is_your_moms_name_your_daddy'
                         register={register}
                         errors={errors}
@@ -155,8 +157,8 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Где ты живешь?'
-                        placeholder='Ответ ребенка'
+                        label={t('where_do_you_live')}
+                        placeholder={t('child_answer')}
                         name='where_do_you_live'
                         register={register}
                         errors={errors}
@@ -166,8 +168,8 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Какое сейчас время года? Время суток?'
-                        placeholder='Ответ ребенка'
+                        label={t('what_season_is_it_now')}
+                        placeholder={t('child_answer')}
                         name='what_time_of_year_is_it'
                         register={register}
                         errors={errors}
@@ -177,8 +179,8 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Что ты делал вчера? Что делал утром? Что ты будешь делать завтра?'
-                        placeholder='Ответ ребенка'
+                        label={t('what_did_you_do_yesterday')}
+                        placeholder={t('child_answer')}
                         name='what_did_you_do_yesterday'
                         register={register}
                         errors={errors}
@@ -188,8 +190,8 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Какие у тебя есть игрушки?'
-                        placeholder='Ответ ребенка'
+                        label={t('what_toys_do_you_have')}
+                        placeholder={t('child_answer')}
                         name='what_toys_do_you_have'
                         register={register}
                         errors={errors}
@@ -199,8 +201,8 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Каких животных ты знаешь?'
-                        placeholder='Ответ ребенка'
+                        label={t('what_animals_do_you_know')}
+                        placeholder={t('child_answer')}
                         name='what_kind_of_animals_do_you_know'
                         register={register}
                         errors={errors}
@@ -210,8 +212,8 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label='Комментарий'
-                        placeholder='Комментарий специалиста'
+                        label={t('comment')}
+                        placeholder={t('expert_comment')}
                         name='general_ideas_about_the_world_around_comment'
                         register={register}
                         errors={errors}
@@ -220,15 +222,14 @@ const ExaminationProtocol = (props) => {
                 </ProtocolRow>
                 {isLessonFinished && (
                     <>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Сформированность представлений об окружающем мире. Запас
-                                знаний:</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('formation_of_ideas_about_the_world_around')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Запас знаний об окружающем мире крайне низкий'
+                                        label={t('the_stock_of_knowledge_about_the_world_is_extremely_low')}
                                         name='stock_of_knowledge_about_the_world_around'
                                         control={control}
                                         errors={errors}
@@ -238,7 +239,7 @@ const ExaminationProtocol = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Запас знаний об окружающем мире ниже возрастной нормы'
+                                        label={t('the_stock_of_knowledge_about_the_world_is_norm')}
                                         name='stock_of_knowledge_about_the_world_around'
                                         control={control}
                                         errors={errors}
@@ -248,7 +249,7 @@ const ExaminationProtocol = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Запас знаний об окружающем мире соответствует возрасту'
+                                        label={t('the_stock_of_knowledge_about_the_surrounding_world_corresponds_to_the_age')}
                                         name='stock_of_knowledge_about_the_world_around'
                                         control={control}
                                         errors={errors}
@@ -258,13 +259,12 @@ const ExaminationProtocol = (props) => {
                             </ProtocolResultBlock>
                         </ProtocolRow>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>В пространственно-временной
-                                ситуации:</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('in_a_space_time_situation')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Ориентируется'
+                                        label={t('oriented')}
                                         name='in_a_time_space_situation'
                                         control={control}
                                         errors={errors}
@@ -274,7 +274,7 @@ const ExaminationProtocol = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Не ориентируется'
+                                        label={t('not_oriented')}
                                         name='in_a_time_space_situation'
                                         control={control}
                                         errors={errors}
@@ -284,16 +284,12 @@ const ExaminationProtocol = (props) => {
                             </ProtocolResultBlock>
                         </ProtocolRow>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Знает сколько ему лет, какое сейчас время года, какое сейчас
-                                время
-                                суток, что
-                                он делал вчера, что делал утром, что он будет делать
-                                завтра</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('the_child_knows')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Да, знает'
+                                        label={t('yes_he_knows')}
                                         name='knows_how_old_time_of_year_what_time_of_day_it_is'
                                         register={register}
                                         value={true}
@@ -305,7 +301,7 @@ const ExaminationProtocol = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Нет, не знает'
+                                        label={t('no_do_not_know')}
                                         name='knows_how_old_time_of_year_what_time_of_day_it_is'
                                         value={false}
                                         control={control}
@@ -316,12 +312,12 @@ const ExaminationProtocol = (props) => {
                             </ProtocolResultBlock>
                         </ProtocolRow>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Образ «Я»</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('image_i')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Сформирован'
+                                        label={t('formed')}
                                         name='image_i'
                                         control={control}
                                         errors={errors}
@@ -331,7 +327,7 @@ const ExaminationProtocol = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Не сформирован'
+                                        label={t('not_formed')}
                                         name='image_i'
                                         control={control}
                                         errors={errors}
@@ -341,14 +337,13 @@ const ExaminationProtocol = (props) => {
                             </ProtocolResultBlock>
                         </ProtocolRow>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Знает, как его зовут, как зовут его родителей, где он
-                                живет</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('the_child_knows_his_name_where_he_lives')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultWrapper>
                                 <ProtocolResultBlock>
                                     <ProtocolResultWrapper>
                                         <ProtocolFormField
                                             type='radio'
-                                            label='Да, знает'
+                                            label={t('yes_he_knows')}
                                             name='knows_his_name_the_name_of_his_parents_where_he_lives'
                                             control={control}
                                             value={true}
@@ -359,7 +354,7 @@ const ExaminationProtocol = (props) => {
                                     <ProtocolResultWrapper>
                                         <ProtocolFormField
                                             type='radio'
-                                            label='Нет, не знает'
+                                            label={t('no_do_not_know')}
                                             name='knows_his_name_the_name_of_his_parents_where_he_lives'
                                             control={control}
                                             value={false}
@@ -371,14 +366,13 @@ const ExaminationProtocol = (props) => {
                             </ProtocolResultWrapper>
                         </ProtocolRow>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Соматогнозис: представление о собственном
-                                теле</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('somatognosis_the_concept_of_own_body')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultWrapper>
                                 <ProtocolResultBlock>
                                     <ProtocolResultWrapper>
                                         <ProtocolFormField
                                             type='radio'
-                                            label='Сформирован'
+                                            label={t('formed')}
                                             name='somatognosis_understanding_your_own_body'
                                             control={control}
                                             errors={errors}
@@ -388,7 +382,7 @@ const ExaminationProtocol = (props) => {
                                     <ProtocolResultWrapper>
                                         <ProtocolFormField
                                             type='radio'
-                                            label='Не сформирован'
+                                            label={t('not_formed')}
                                             name='somatognosis_understanding_your_own_body'
                                             control={control}
                                             errors={errors}
@@ -401,13 +395,13 @@ const ExaminationProtocol = (props) => {
                     </>
                 )}
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Контакт с ребенком:</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('child_contact')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultWrapper>
                         <ProtocolResultBlock>
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label='Установлен'
+                                    label={t('set')}
                                     name='contact_with_the_child'
                                     control={control}
                                     value={true}
@@ -418,7 +412,7 @@ const ExaminationProtocol = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label='Не установлен'
+                                    label={t('not_installed')}
                                     name='contact_with_the_child'
                                     control={control}
                                     value={false}
@@ -432,8 +426,8 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label='Комментарий'
-                        placeholder='Комментарий специалиста'
+                        label={t('comment')}
+                        placeholder={t('expert_comment')}
                         name='formation_of_ideas_about_the_world_around_comment'
                         register={register}
                         errors={errors}
@@ -442,19 +436,18 @@ const ExaminationProtocol = (props) => {
                 </ProtocolRow>
             </ProtocolBlock>
             <ProtocolBlock>
-                <ProtocolTitle>Билатеральная моторная координация</ProtocolTitle>
-                <ProtocolPlaceholderTitle>— Возьми воображаемый телефон в руку и приложи к
-                    уху</ProtocolPlaceholderTitle>
+                <ProtocolTitle>{t('bilateral_motor_coordination')}</ProtocolTitle>
+                <ProtocolPlaceholderTitle>— {t('take_an_imaginary_phone_in_your_hand_and_put_it_to_your_ear')}</ProtocolPlaceholderTitle>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Ведущее ухо:</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('leading_ear')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Правое'
+                                label={t('right')}
                                 name='leading_ear_phone'
                                 control={control}
-                                value='правое ухо'
+                                value={t('right_ear')}
                                 errors={errors}
                                 disabled={isProtocolClosed}
                             />
@@ -462,10 +455,10 @@ const ExaminationProtocol = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Левое'
+                                label={t('left')}
                                 name='leading_ear_phone'
                                 control={control}
-                                value='левое ухо'
+                                value={t('left_ear')}
                                 errors={errors}
                                 disabled={isProtocolClosed}
                             />
@@ -473,15 +466,15 @@ const ExaminationProtocol = (props) => {
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Ведущая рука:</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('leading_hand')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Правая'
+                                label={t('right')}
                                 name='leading_hand_phone'
                                 control={control}
-                                value='правая рука'
+                                value={t('right_hand')}
                                 errors={errors}
                                 disabled={isProtocolClosed}
                             />
@@ -489,27 +482,27 @@ const ExaminationProtocol = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Левая'
+                                label={t('left')}
                                 name='leading_hand_phone'
                                 control={control}
-                                value='левая рука'
+                                value={t('left_hand')}
                                 errors={errors}
                                 disabled={isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                 </ProtocolRow>
-                <ProtocolPlaceholderTitle>— Посмотри в воображаемую подзорную трубу</ProtocolPlaceholderTitle>
+                <ProtocolPlaceholderTitle>— {t('look_through_an_imaginary_spyglass')}</ProtocolPlaceholderTitle>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Ведущая рука:</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('leading_hand')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Правая'
+                                label={t('right')}
                                 name='leading_hand_spyglass'
                                 control={control}
-                                value='правая рука'
+                                value={t('right_hand')}
                                 errors={errors}
                                 disabled={isProtocolClosed}
                             />
@@ -517,10 +510,10 @@ const ExaminationProtocol = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Левая'
+                                label={t('left')}
                                 name='leading_hand_spyglass'
                                 control={control}
-                                value='левая рука'
+                                value={t('left_hand')}
                                 errors={errors}
                                 disabled={isProtocolClosed}
                             />
@@ -528,15 +521,15 @@ const ExaminationProtocol = (props) => {
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Ведущий глаз:</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('leading_eye')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Правый'
+                                label={t('right')}
                                 name='leading_eye_spyglass'
                                 control={control}
-                                value='правый глаз'
+                                value={t('right_eye')}
                                 errors={errors}
                                 disabled={isProtocolClosed}
                             />
@@ -544,24 +537,24 @@ const ExaminationProtocol = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Левый'
+                                label={t('left')}
                                 name='leading_eye_spyglass'
                                 control={control}
-                                value='левый глаз'
+                                value={t('left_eye')}
                                 errors={errors}
                                 disabled={isProtocolClosed}
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                 </ProtocolRow>
-                <ProtocolPlaceholderTitle>— Ударь ногой по воображаемому мячу</ProtocolPlaceholderTitle>
+                <ProtocolPlaceholderTitle>{t('kick_an_imaginary_ball')}</ProtocolPlaceholderTitle>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Ведущая нога:</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('leading_leg')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Правая'
+                                label={t('right')}
                                 name='leading_leg_ball'
                                 control={control}
                                 value='правая нога'
@@ -572,7 +565,7 @@ const ExaminationProtocol = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Левая'
+                                label={t('left')}
                                 name='leading_leg_ball'
                                 control={control}
                                 value='левая нога'
@@ -584,13 +577,13 @@ const ExaminationProtocol = (props) => {
                 </ProtocolRow>
                 {isLessonFinished && (
                     <>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
                         <ProtocolRow>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Левшество, все 4 показателя совпадают'
+                                        label={t('left_handedall_4_indicators_are_the_same')}
                                         name='conclusion_options'
                                         control={control}
                                         errors={errors}
@@ -600,7 +593,7 @@ const ExaminationProtocol = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Правшество, все 4 показателя совпадают'
+                                        label={t('right_handedall_4_indicators_are_the_same')}
                                         name='conclusion_options'
                                         control={control}
                                         errors={errors}
@@ -610,7 +603,7 @@ const ExaminationProtocol = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Дисбаланс межполушарных связей'
+                                        label={t('imbalance_of_interhemispheric_connections')}
                                         name='conclusion_options'
                                         control={control}
                                         errors={errors}
