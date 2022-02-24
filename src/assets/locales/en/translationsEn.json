@@ -125,5 +125,13 @@
   "perception_corresponds_to_the_age": "Perception corresponds to the age",
   "the_level_of_perception_corresponds_to_the_age": "the level of perception corresponds to the age",
   "does_not_correspond_to_the_age": "Does not correspond to the age",
-  "the_level_of_perception_does_not_correspond_to_the_age": "the level of perception does not correspond to the age"
+  "the_level_of_perception_does_not_correspond_to_the_age": "the level of perception does not correspond to the age",
+  "the_game_ant_lambada": "The game \"Ant Lambada\"",
+  "anterolingual": "Anterolingual:",
+  "replacing_D_with": "Replacing D with",
+  "replacing_D_soft_with": "Replacing D soft with",
+  "replacing_T_soft_with": "Replacing T soft with",
+  "back_lingual": "Back lingual:",
+  "replacing_G_with": "Replacing G with",
+  "replacing_X_with": "Replacing X with"
 }
