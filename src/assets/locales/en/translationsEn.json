@@ -246,7 +246,31 @@
   "alveolar_process_of_the_palate": "Alveolar process of the palate",
   "hidden": "Hidden",
   "gothic_palate": "Gothic palate",
-  "jaw_deformities": "Jaw deformities"
+  "jaw_deformities": "Jaw deformities",
+  "game_magic_exam": "Game \"Magic Exam\"",
+  "phonemic_perception": "Phonemic perception",
+  "pet_bat": "Pet – Bat ( P – B )",
+  "fat_vet": "Fat – Vet ( F – V )",
+  "ball_boar": "Ball–Boar (L–R)",
+  "bag_back": "Bag – Back ( G – K )",
+  "tiare_deer": "Tiare – Deer ( T – D )",
+  "soup_zoo": "Soup-Zoo (S-Z)",
+  "the_level_of_formation_of_phonetic_phonological_competence": "The level of formation of phonetic-phonological competence:",
+  "the_level_of_formation_of_phonetic_phonological_competence_corresponds_to_the_age_norm": "The level of formation of phonetic-phonological competence corresponds to the age norm",
+  "the_level_of_formation_of_phonetic_phonological_competence_does_not_correspond_to_the_age_norm": "The level of formation of phonetic-phonological competence does not correspond to the age norm",
+  "state_of_phonemic_perception": "State of phonemic perception:",
+  "phonemic_perception_is_formed": "Phonemic perception is formed",
+  "phonemic_perception_is_not_formed": "Phonemic perception is not formed",
+  "difficulty_distinguishing_voiceless_and_voiced_consonants": "Difficulty distinguishing voiceless and voiced consonants",
+  "impaired_distinction_between_hard_and_soft_consonants": "Impaired distinction between hard and soft consonants",
+  "impaired_distinction_between_affricates_and_their_constituent_sounds": "Impaired distinction between affricates and their constituent sounds",
+  "sound_analysis_and_synthesis": "Sound analysis and synthesis",
+  "synthesis": "Synthesis",
+  "analysis": "Analysis",
+  "phonemic_awareness": "Phonemic awareness:",
+  "phonological_sound_analysis_and_synthesis_skills": "Phonological (sound) analysis and synthesis skills:",
+  "are_in_the_very_early_stages_of_development_the_child_can_analyze_the_sound_range_consisting_of": "Are in the very early stages of development. The child can analyze the sound range, consisting of",
+  "are_in_the_active_stage_of_formation_the_child_can_analyze_words_like": "Are in the active stage of formation; the child can analyze words like"
 
 
 }
