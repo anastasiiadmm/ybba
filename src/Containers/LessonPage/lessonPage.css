@@ -4,7 +4,7 @@
 
 .gamef {
     height: 100vh;
-    min-width: 1024px;
+    min-width: 850px;
     background: #000;
     font-family: 'Nunito', sans-serif;
     display: grid;
