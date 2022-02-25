@@ -30,7 +30,7 @@ const Lesson = (props) => {
     ];
 
     // If true => add `border: 2px solid red` to main elements
-    const [isStyleDebug, setIsStyleDebug] = useState(false);
+    const [isStyleDebug] = useState(false);
 
     const [unityContext, setUnityContext] = useState(null);
     const [activeGame, setActiveGame] = useState(null);
