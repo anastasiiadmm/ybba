@@ -39,6 +39,10 @@ const GameContainer = (props) => {
   const gameWidth = useMemo(() => gameHeight / 9 * 16, [gameHeight]);
 
   const handleGameContainerResize = useCallback(() => {
+    if (checkUserRole(userRoles.parent)) {
+      setGameHeight(window.innerHeight);
+      return
+    }
     let proportionalWidth = 0;
     if (canvasParent.current.clientWidth <= 1060) {
       proportionalWidth = (1060 - canvasParent.current.clientWidth);
