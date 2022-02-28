@@ -59,7 +59,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Морковь, яблоко, лук, капуста'
+                                label={t('Морковь, яблоко, лук, капуста')}
                                 name='game_on_the_farm.carrot_apple_onion_cabbage'
                                 register={register}
                                 errors={errors}
@@ -69,7 +69,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Овощи (фрукты)'
+                                label={t('Овощи (фрукты)')}
                                 name='game_on_the_farm.vegetables_fruits'
                                 register={register}
                                 errors={errors}
@@ -81,7 +81,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Стол, стул, стакан, диван'
+                                label={t('Стол, стул, стакан, диван')}
                                 name='game_on_the_farm.table_chair_glass_sofa'
                                 register={register}
                                 errors={errors}
@@ -91,7 +91,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Мебель (посуда)'
+                                label={t('Мебель (посуда)')}
                                 name='game_on_the_farm.furniture_dishes'
                                 register={register}
                                 errors={errors}
@@ -103,7 +103,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Шуба, куртка, пальто, шапка'
+                                label={t('Шуба, куртка, пальто, шапка')}
                                 name='game_on_the_farm.fur_coat_jacket_coat_hat'
                                 register={register}
                                 errors={errors}
@@ -113,7 +113,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Одежда (голов. убор)'
+                                label={t('Одежда (голов. убор)')}
                                 name='game_on_the_farm.clothes_headwear'
                                 register={register}
                                 errors={errors}
@@ -125,7 +125,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Кукла, кубики, машинка, троллейбус'
+                                label={t('Кукла, кубики, мишка, троллейбус')}
                                 name='game_on_the_farm.doll_cubes_car_trolley'
                                 register={register}
                                 errors={errors}
@@ -135,7 +135,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Игрушки (транспорт)'
+                                label={t('Игрушки (транспорт)')}
                                 name='game_on_the_farm.toys_transport'
                                 register={register}
                                 errors={errors}

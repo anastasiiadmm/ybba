@@ -24,11 +24,11 @@ const PicturesForFish = (props) => {
     return <>
         <ProtocolBlock>
             <ProtocolPlaceholderTitle>{t('the_game_pictures_for_the_fish')}</ProtocolPlaceholderTitle>
-            <ProtocolBlockTitle>{t('sound_pronunciation')} <span>Звуки С, Сь, З, Зь, Ц, Ч, Щ, Ж, Ш</span></ProtocolBlockTitle>
+            <ProtocolBlockTitle>{t('sound_reproduction')} <span>{t('Звуки С, Сь, З, Зь, Ц, Ч, Щ, Ж, Ш')}</span></ProtocolBlockTitle>
             <ProtocolRow>
                 <ProtocolFormField
                     type='text'
-                    label='Магазин-Сено-Василек /ЗЬ, СЬ'
+                    label={t('Магазин-Сено-Василек /ЗЬ, СЬ')}
                     name='game_pictures_for_fish.shop_hay_cornflower'
                     register={register}
                     errors={errors}
@@ -38,7 +38,7 @@ const PicturesForFish = (props) => {
             <ProtocolRow>
                 <ProtocolFormField
                     type='text'
-                    label='Собака-Насос-Замок-Коза /С, З'
+                    label={t('Собака-Насос-Замок-Коза /С, З')}
                     name='game_pictures_for_fish.dog_pump_lock_goat'
                     register={register}
                     errors={errors}
@@ -48,7 +48,7 @@ const PicturesForFish = (props) => {
             <ProtocolRow>
                 <ProtocolFormField
                     type='text'
-                    label='Скворец-Цапля-Палец /С – Ц, Ц'
+                    label={t('Скворец-Цапля-Палец /С – Ц, Ц')}
                     name='game_pictures_for_fish.starling_heron_finger'
                     register={register}
                     errors={errors}
@@ -58,7 +58,7 @@ const PicturesForFish = (props) => {
             <ProtocolRow>
                 <ProtocolFormField
                     type='text'
-                    label='Сыщик-Щипцы-Чеснок /С – Щ, Щ – Ц, Ч - С'
+                    label={t('Сыщик-Щипцы-Чеснок /С – Щ, Щ – Ц, Ч - С')}
                     name='game_pictures_for_fish.detective_tongs_garlic'
                     register={register}
                     errors={errors}
@@ -68,7 +68,7 @@ const PicturesForFish = (props) => {
             <ProtocolRow>
                 <ProtocolFormField
                     type='text'
-                    label='Щука-Вещи-Лещ /Щ'
+                    label={t('Щука-Вещи-Лещ /Щ')}
                     name='game_pictures_for_fish.pike_things_bream'
                     register={register}
                     errors={errors}
@@ -78,7 +78,7 @@ const PicturesForFish = (props) => {
             <ProtocolRow>
                 <ProtocolFormField
                     type='text'
-                    label='Жук-Сажа-Ножницы /Ж, С – Ж, Ж - Ц'
+                    label={t('Жук-Сажа-Ножницы /Ж, С – Ж, Ж - Ц')}
                     name='game_pictures_for_fish.beetle_soot_scissors'
                     register={register}
                     errors={errors}
@@ -88,7 +88,7 @@ const PicturesForFish = (props) => {
             <ProtocolRow>
                 <ProtocolFormField
                     type='text'
-                    label='Шуба-Кошка-Камыш-Веснушки /Ш, С - Ш'
+                    label={t('Шуба-Кошка-Камыш-Веснушки /Ш, С - Ш')}
                     name='game_pictures_for_fish.fur_coat_cat_reed_freckles'
                     register={register}
                     errors={errors}

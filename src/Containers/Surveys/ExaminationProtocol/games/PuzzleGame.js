@@ -24,11 +24,11 @@ const PuzzleGame = (props) => {
         <>
             <ProtocolBlock>
                 <ProtocolPlaceholderTitle>{t('puzzle_game')}</ProtocolPlaceholderTitle>
-                <ProtocolBlockTitle>{t('sound_pronunciation')} <span>Звуки В, Вь, Ф, Фь</span></ProtocolBlockTitle>
+                <ProtocolBlockTitle>{t('sound_reproduction')} <span>{t('Звуки В, Вь, Ф, Фь')}</span></ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Волк-Совок-Вилка-Свиток /В, Вь'
+                        label={t('Волк-Совок-Вилка-Свиток /В, Вь')}
                         name='game_puzzle.wolf_scoop_fork_scroll'
                         register={register}
                         errors={errors}
@@ -38,7 +38,7 @@ const PuzzleGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Фасоль-Финики /Ф, Фь'
+                        label={t('Фасоль-Финики /Ф, Фь')}
                         name='game_puzzle.beans_dates'
                         register={register}
                         errors={errors}
@@ -48,7 +48,7 @@ const PuzzleGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Вафли /В - Ф'
+                        label={t('Вафли /В - Ф')}
                         name='game_puzzle.waffles'
                         register={register}
                         errors={errors}

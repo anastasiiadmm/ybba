@@ -193,7 +193,7 @@ const MagicExamGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='Н – О – С - нос'
+                            label={t('Н – О – С - нос')}
                             name='game_magic_exam.nose'
                             register={register}
                             errors={errors}
@@ -203,7 +203,7 @@ const MagicExamGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='М - А – К – мак'
+                            label={t('М - А – К – мак')}
                             name='game_magic_exam.poppy'
                             register={register}
                             errors={errors}
@@ -213,7 +213,7 @@ const MagicExamGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='М – У – Х – А – муха'
+                            label={t('М – У – Х – А – муха')}
                             name='game_magic_exam.fly'
                             register={register}
                             errors={errors}
@@ -223,7 +223,7 @@ const MagicExamGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='К – О – Ш – К – И - кошки'
+                            label={t('К – О – Ш – К – И - кошки')}
                             name='game_magic_exam.cats'
                             register={register}
                             errors={errors}
@@ -236,7 +236,7 @@ const MagicExamGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='Какой первый звук в словах «мак» и «муха»?'
+                            label={t('Какой первый звук в словах «мак» и «муха»?')}
                             name='game_magic_exam.what_is_first_sound_in_words_poppy_and_fly'
                             register={register}
                             errors={errors}
@@ -246,7 +246,7 @@ const MagicExamGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='Какой первый звук в слове «нос»?'
+                            label={t('Какой первый звук в слове «нос»?')}
                             name='game_magic_exam.what_is_first_sound_in_word_nose'
                             register={register}
                             errors={errors}
@@ -256,7 +256,7 @@ const MagicExamGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='Какой последний звук в словах «кошка» и «муха»?'
+                            label={t('Какой последний звук в словах «кошка» и «муха»?')}
                             name='game_magic_exam.what_is_last_sound_in_words_cat_and_fly'
                             register={register}
                             errors={errors}
@@ -266,7 +266,7 @@ const MagicExamGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='Какой последний звук в слове «мак»?'
+                            label={t('Какой последний звук в слове «мак»?')}
                             name='game_magic_exam.what_is_last_sound_in_word_poppy'
                             register={register}
                             errors={errors}
@@ -276,7 +276,7 @@ const MagicExamGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='Какой общий звук в словах «кошки» и «нос»?'
+                            label={t('Какой общий звук в словах «кошки» и «нос»?')}
                             name='game_magic_exam.what_is_common_sound_in_words_of_a_cat_and_anose'
                             register={register}
                             errors={errors}
@@ -286,7 +286,7 @@ const MagicExamGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label='В каком из слов нет звука О: нос, кошки, мак?'
+                            label={t('В каком из слов нет звука О: нос, кошки, мак?')}
                             name='game_magic_exam.in_which_of_words_there_is_no_sound_about_nose_of_cat_poppy'
                             register={register}
                             errors={errors}

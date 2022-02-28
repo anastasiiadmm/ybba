@@ -23,11 +23,11 @@ const GiraffeGame = (props) => {
         <>
             <ProtocolBlock>
                 <ProtocolPlaceholderTitle>{t('game_giraffe')}</ProtocolPlaceholderTitle>
-                <ProtocolBlockTitle>{t('sound_pronunciation')} <span>Звуки Р, Рь, Л, Ль</span></ProtocolBlockTitle>
+                <ProtocolBlockTitle>{t('sound_reproduction')} <span>{t('Звуки Р, Рь, Л, Ль')}</span></ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Рыба-Корова-Забор-Краб /Р'
+                        label={t('Рыба-Корова-Забор-Краб /Р')}
                         name='game_giraffe.fish_cow_fence_crab'
                         register={register}
                         errors={errors}
@@ -37,7 +37,7 @@ const GiraffeGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Река-Варенье-Дверь /Рь'
+                        label={t('Река-Варенье-Дверь /Рь')}
                         name='game_giraffe.river_jam_door'
                         register={register}
                         errors={errors}
@@ -47,7 +47,7 @@ const GiraffeGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Лампа-Молоко-Пол-Клад /Л'
+                        label={t('Лампа-Молоко-Пол-Клад /Л')}
                         name='game_giraffe.lamp_milk_floor_treasure'
                         register={register}
                         errors={errors}
@@ -57,7 +57,7 @@ const GiraffeGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Колесо-Соль /Ль'
+                        label={t('Колесо-Соль /Ль')}
                         name='game_giraffe.wheel_salt'
                         register={register}
                         errors={errors}

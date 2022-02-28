@@ -24,11 +24,11 @@ const AntLambadaGame = (props) => {
         <>
             <ProtocolBlock>
                 <ProtocolPlaceholderTitle>{t('the_game_ant_lambada')}</ProtocolPlaceholderTitle>
-                <ProtocolBlockTitle>{t('sound_pronunciation')} <span>Звуки Д, Дь, Т, Ть, К, Г, Х</span></ProtocolBlockTitle>
+                <ProtocolBlockTitle>{t('sound_reproduction')} <span>{t('Звуки Д, Дь, Т, Ть, К, Г, Х')}</span></ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Дом-Дятел /Д, Дь'
+                        label={t('Дом-Дятел /Д, Дь')}
                         name='game_ant_lambada.woodpecker_house'
                         register={register}
                         errors={errors}
@@ -38,7 +38,7 @@ const AntLambadaGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Тапки-Платье /Т, Ть'
+                        label={t('Тапки-Платье /Т, Ть')}
                         name='game_ant_lambada.slipper_dress'
                         register={register}
                         errors={errors}

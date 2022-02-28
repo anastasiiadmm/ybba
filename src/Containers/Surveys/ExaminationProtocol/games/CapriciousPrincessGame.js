@@ -28,7 +28,7 @@ const CapriciousPrincessGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Стул'
+                        label={t('Стул')}
                         name='game_capricious_princess.chair'
                         register={register}
                         errors={errors}
@@ -38,7 +38,7 @@ const CapriciousPrincessGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Бантик'
+                        label={t('Бантик')}
                         name='game_capricious_princess.bow'
                         register={register}
                         errors={errors}
@@ -48,7 +48,7 @@ const CapriciousPrincessGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Вертолет'
+                        label={t('Вертолет')}
                         name='game_capricious_princess.helicopter'
                         register={register}
                         errors={errors}
@@ -58,7 +58,7 @@ const CapriciousPrincessGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Самолетик (бумажный)'
+                        label={t('Самолетик (бумажный)')}
                         name='game_capricious_princess.paper_airplane'
                         register={register}
                         errors={errors}
@@ -68,7 +68,7 @@ const CapriciousPrincessGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Экскаватор'
+                        label={t('Экскаватор')}
                         name='game_capricious_princess.excavator'
                         register={register}
                         errors={errors}
@@ -78,7 +78,7 @@ const CapriciousPrincessGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Фотоаппарат'
+                        label={t('Фотоаппарат')}
                         name='game_capricious_princess.camera'
                         register={register}
                         errors={errors}

@@ -32,10 +32,10 @@ const HowTheMouseCouldNotSleep = (props) => {
                 <ProtocolBlockTitle>{t('connected_speech_survey')}</ProtocolBlockTitle>
                 <ProtocolPlaceholderTitle>{t('listen_to_the_story_put_the_pictures_in_order')}</ProtocolPlaceholderTitle>
                 <ProtocolTextTest>
-                    {t('the_little_mouse_could_not_sleep')}
+                    {t('Маленькому мышонку не спалось. Пошел темной ночью он по лесу гулять. Увидел яблочко в траве и съел его. Увидел ягодку и тоже съел. Заметил он в луже белый светящийся круг. Подумал, что это сыр, хотел и его слопать, но ничего не вышло. Не пропадать же добру! Решил накрыть его лопухом — пусть до утра полежит. А утром вместо белого круга обнаружил он в воде большое красное солнышко')}
                 </ProtocolTextTest>
                 <ProtocolRowText>
-                    <ProtocolTitleTest>1) {t('little_mouse_in_the_yard_at_night')}</ProtocolTitleTest>
+                    <ProtocolTitleTest>1) {t('Мышонок в лесу ночью')}</ProtocolTitleTest>
                     <ProtocolSwitchText>
                         <ProtocolFormField
                             type='radio'
