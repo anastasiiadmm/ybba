@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 
 import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock';
 import ProtocolPlaceholderTitle from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle';
@@ -11,22 +13,25 @@ import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/Protoc
 import ProtocolBlockTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBlockTitle/ProtocolBlockTitle';
 import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/ProtocolResultTitle/ProtocolResultTitle';
 
+
 const OnTheFarmPartThree = (props) => {
 
     const {
         register, errors, control, isConclusionDisabled, disabled, isLessonFinished
     } = props
 
+    const { t } = useTranslation();
+
     return (
         <>
             <ProtocolBlock>
-                <ProtocolPlaceholderTitle>Игра «На ферме». Часть 3</ProtocolPlaceholderTitle>
-                <ProtocolSubtitleThree>Согласование сущ.+числ.</ProtocolSubtitleThree>
+                <ProtocolPlaceholderTitle>{t('farm_game_part_3')}</ProtocolPlaceholderTitle>
+                <ProtocolSubtitleThree>{t('agreement_noun_num')}</ProtocolSubtitleThree>
 
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Одна белая курица'
+                        label={t('one_white_chicken')}
                         name='game_on_the_farm_part_three.one_white_chicken'
                         register={register}
                         errors={errors}
@@ -36,7 +41,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Три рыжих курицы'
+                        label={t('three_red_haired_chicks')}
                         name='game_on_the_farm_part_three.three_ginger_hens'
                         register={register}
                         errors={errors}
@@ -46,7 +51,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Пять рябых куриц'
+                        label={t('chicken_with_five_spots')}
                         name='game_on_the_farm_part_three.five_speckled_hens'
                         register={register}
                         errors={errors}
@@ -55,13 +60,13 @@ const OnTheFarmPartThree = (props) => {
                 </ProtocolRow>
                 {isLessonFinished && (
                     <>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
                         <ProtocolRow>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Ребенок смешивает парадигмы разных окончаний'
+                                        label={t('the_child_mixes_paradigms_of_different_endings')}
                                         name='game_on_the_farm_part_three.options_for_confinement'
                                         control={control}
                                         errors={errors}
@@ -71,7 +76,7 @@ const OnTheFarmPartThree = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Ребенок делает ошибки внутри одного падежа'
+                                        label={t('the_child_makes_mistakes_within_one_case')}
                                         name='game_on_the_farm_part_three.options_for_confinement'
                                         control={control}
                                         errors={errors}
@@ -85,9 +90,9 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label='Комментарий'
+                        label={t('comment')}
                         name='game_on_the_farm_part_three.expert_comment'
-                        placeholder='Комментарий специалиста'
+                        placeholder={t('expert_comment')}
                         register={register}
                         disabled={disabled}
                     />
@@ -96,15 +101,15 @@ const OnTheFarmPartThree = (props) => {
             {isLessonFinished && (
                 <>
                     <ProtocolBlock>
-                        <ProtocolBlockTitle>Психологическая база речи: Внимание</ProtocolBlockTitle>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolBlockTitle>{t('psychological_base_of_speech_attention')}</ProtocolBlockTitle>
+                        <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Речевое внимание:</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('speech_attention')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Сформировано'
+                                        label={t('formed')}
                                         name='game_on_the_farm_part_three.speech_comprehension'
                                         control={control}
                                         errors={errors}
@@ -114,7 +119,7 @@ const OnTheFarmPartThree = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Сформировано недостаточно'
+                                        label={t('insufficiently_formed')}
                                         name='game_on_the_farm_part_three.speech_comprehension'
                                         control={control}
                                         errors={errors}
@@ -124,7 +129,7 @@ const OnTheFarmPartThree = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Не сформировано'
+                                        label={t('not_formed')}
                                         name='game_on_the_farm_part_three.speech_comprehension'
                                         control={control}
                                         errors={errors}
@@ -132,12 +137,12 @@ const OnTheFarmPartThree = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>Распределение:</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('distribution')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label='Наблюдаются трудности распределения внимания'
+                                        label={t('difficulty_in_dividing_attention')}
                                         name='game_on_the_farm_part_three.there_are_difficulties_in_distributing_attention'
                                         control={control}
                                         errors={errors}
@@ -145,12 +150,12 @@ const OnTheFarmPartThree = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>Концентрация:</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('concentration')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Низкая концентрация и неустойчивость внимания в целом (ребенок плохо сосредотачивается, с трудом удерживает внимание на объекте)'
+                                        label={t('low_concentration_and_instability_of_attention_in_general')}
                                         name='game_on_the_farm_part_three.concentration'
                                         control={control}
                                         errors={errors}
@@ -160,7 +165,7 @@ const OnTheFarmPartThree = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Наблюдаются трудности концентрации произвольного внимания'
+                                        label={t('difficulty_concentrating_voluntary_attention')}
                                         name='game_on_the_farm_part_three.concentration'
                                         control={control}
                                         errors={errors}
@@ -168,12 +173,12 @@ const OnTheFarmPartThree = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>Устойчивость:</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('sustainability')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Внимание неустойчивое, поверхностное, ребенок очень быстро истощается'
+                                        label={t('attention_is_unstable_superficial_the_child_is_very_quickly_depleted')}
                                         name='game_on_the_farm_part_three.sustainability'
                                         control={control}
                                         errors={errors}
@@ -183,7 +188,7 @@ const OnTheFarmPartThree = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Внимание недостаточно устойчивое'
+                                        label={t('attention_is_not_stable_enough')}
                                         name='game_on_the_farm_part_three.sustainability'
                                         control={control}
                                         errors={errors}
@@ -193,7 +198,7 @@ const OnTheFarmPartThree = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label='Внимание устойчивое'
+                                        label={t('steady_attention')}
                                         name='game_on_the_farm_part_three.sustainability'
                                         control={control}
                                         errors={errors}
@@ -201,12 +206,12 @@ const OnTheFarmPartThree = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>Истощаемость:</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('exhaustibility')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label='Внимание ребенка характеризуется быстрой истощаемостью'
+                                        label={t('the_attention_of_the_child_is_characterized_by_rapid_exhaustion')}
                                         name='game_on_the_farm_part_three.child_s_attention_is_characterized_by_rapid_exhaustion'
                                         control={control}
                                         errors={errors}
@@ -218,7 +223,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolRow>
                             <ProtocolFormField
                                 type='text'
-                                label='Объем:'
+                                label={t('volume')}
                                 name='game_on_the_farm_part_three.volume'
                                 register={register}
                                 errors={errors}
@@ -228,7 +233,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolRow>
                             <ProtocolFormField
                                 type='text'
-                                label='Переключаемость:'
+                                label={t('switchability')}
                                 name='game_on_the_farm_part_three.switchability'
                                 register={register}
                                 errors={errors}
@@ -237,12 +242,11 @@ const OnTheFarmPartThree = (props) => {
                         </ProtocolRow>
                     </ProtocolBlock>
                     <ProtocolBlock>
-                        <ProtocolBlockTitle>Психологическая база речи: Познавательная активность. Мотивация и
-                            интерес</ProtocolBlockTitle>
+                        <ProtocolBlockTitle>{t('psychological_base_of_speech_cognitive_activity_motivation_and_interest')}</ProtocolBlockTitle>
                         <ProtocolRow>
                             <ProtocolFormField
                                 type='text'
-                                label='Утомляемость:'
+                                label={t('fatigue')}
                                 name='game_on_the_farm_part_three.fatigue'
                                 register={register}
                                 errors={errors}
@@ -252,7 +256,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolRow>
                             <ProtocolFormField
                                 type='text'
-                                label='Контактность'
+                                label={t('contact')}
                                 name='game_on_the_farm_part_three.contact'
                                 register={register}
                                 errors={errors}
@@ -262,7 +266,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolRow>
                             <ProtocolFormField
                                 type='text'
-                                label='Работоспособность'
+                                label={t('performance')}
                                 name='game_on_the_farm_part_three.working_capacity'
                                 register={register}
                                 errors={errors}
@@ -272,7 +276,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolRow>
                             <ProtocolFormField
                                 type='text'
-                                label='Мотивация'
+                                label={t('motivation')}
                                 name='game_on_the_farm_part_three.motivation'
                                 register={register}
                                 errors={errors}
@@ -282,20 +286,19 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolRow>
                             <ProtocolFormField
                                 type='text'
-                                label='Интерес'
+                                label={t('interest')}
                                 name='game_on_the_farm_part_three.interest'
                                 register={register}
                                 errors={errors}
                                 disabled={isConclusionDisabled || disabled}
                             />
                         </ProtocolRow>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
                         <ProtocolRow>
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label='Крайне низкая познавательная активность и мотивация к предметной, предметно-игровой
-									деятельности'
+                                    label={t('extremely_low_cognitive_activity_and_motivation_for_subject_subject_game_activity')}
                                     name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                                     control={control}
                                     errors={errors}
@@ -305,9 +308,7 @@ const OnTheFarmPartThree = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label='Низкая познавательная активность и мотивация к различным видам деятельности, наблюдается
-									немотивированная
-									избирательность познавательной активности'
+                                    label={t('low_cognitive_activity_and_motivation_for_various_activities')}
                                     name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                                     control={control}
                                     errors={errors}
@@ -317,8 +318,7 @@ const OnTheFarmPartThree = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label='Отмечается некоторая недостаточность познавательной активности и мотивации к предметной
-									деятельности'
+                                    label={t('there_is_some_lack_of_cognitive_activity_and_motivation_for_objective_activity')}
                                     name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                                     control={control}
                                     errors={errors}
@@ -328,8 +328,7 @@ const OnTheFarmPartThree = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label='Ярко выраженная познавательная активность и мотивация к предметной, предметно-игровой
-									деятельности'
+                                    label={t('pronounced_cognitive_activity_and_motivation_for_subject_subject_game_activity')}
                                     name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                                     control={control}
                                     errors={errors}
@@ -341,15 +340,15 @@ const OnTheFarmPartThree = (props) => {
                 </>
             )}
             <ProtocolBlock>
-                <ProtocolBlockTitle>Просодическая сторона речи</ProtocolBlockTitle>
-                <ProtocolSubtitleThree>Компоненты:</ProtocolSubtitleThree>
+                <ProtocolBlockTitle>{t('prosodic_side_of_speech')}</ProtocolBlockTitle>
+                <ProtocolSubtitleThree>{t('components')}</ProtocolSubtitleThree>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>Голос</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('voice')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Афония'
+                                label={t('aphonia')}
                                 name='game_on_the_farm_part_three.voice'
                                 control={control}
                                 errors={errors}
@@ -359,7 +358,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Дисфония'
+                                label={t('dysphonia')}
                                 name='game_on_the_farm_part_three.voice'
                                 control={control}
                                 errors={errors}
@@ -369,7 +368,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Нормальный'
+                                label={t('normal')}
                                 name='game_on_the_farm_part_three.voice'
                                 control={control}
                                 errors={errors}
@@ -381,7 +380,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Хриплый'
+                                label={t('hoarse')}
                                 name='game_on_the_farm_part_three.voice_part_two'
                                 control={control}
                                 errors={errors}
@@ -391,7 +390,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Звонкий'
+                                label={t('voiced')}
                                 name='game_on_the_farm_part_three.voice_part_two'
                                 control={control}
                                 errors={errors}
@@ -403,7 +402,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Громкий'
+                                label={t('loud')}
                                 name='game_on_the_farm_part_three.voice_part_three'
                                 control={control}
                                 errors={errors}
@@ -413,7 +412,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Тихий'
+                                label={t('quiet')}
                                 name='game_on_the_farm_part_three.voice_part_three'
                                 control={control}
                                 errors={errors}
@@ -425,7 +424,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Писклявый'
+                                label={t('squeaky')}
                                 name='game_on_the_farm_part_three.voice_part_four'
                                 control={control}
                                 errors={errors}
@@ -435,7 +434,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Очень низкий'
+                                label={t('very_low')}
                                 name='game_on_the_farm_part_three.voice_part_four'
                                 control={control}
                                 errors={errors}
@@ -447,7 +446,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Немодулированный'
+                                label={t('unmodulated')}
                                 name='game_on_the_farm_part_three.voice_part_five'
                                 control={control}
                                 errors={errors}
@@ -457,7 +456,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Слабо модулированный'
+                                label={t('weakly_modulated')}
                                 name='game_on_the_farm_part_three.voice_part_five'
                                 control={control}
                                 errors={errors}
@@ -469,7 +468,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label='Назализованный голос'
+                                label={t('nasalized ')}
                                 name='game_on_the_farm_part_three.nasalized_voice'
                                 control={control}
                                 errors={errors}
@@ -477,12 +476,12 @@ const OnTheFarmPartThree = (props) => {
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Плавность</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('smoothness')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Речь плавная'
+                                label={t('speech_is_fluent')}
                                 name='game_on_the_farm_part_three.smoothness'
                                 control={control}
                                 errors={errors}
@@ -492,7 +491,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Речь неплавная'
+                                label={t('speech_is_not_fluent')}
                                 name='game_on_the_farm_part_three.smoothness'
                                 control={control}
                                 errors={errors}
@@ -500,12 +499,12 @@ const OnTheFarmPartThree = (props) => {
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Темп</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('pace')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Нормальный'
+                                label={t('normal')}
                                 name='game_on_the_farm_part_three.pace'
                                 control={control}
                                 errors={errors}
@@ -515,7 +514,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Быстрый'
+                                label={t('fast')}
                                 name='game_on_the_farm_part_three.pace'
                                 control={control}
                                 errors={errors}
@@ -525,7 +524,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Медленный'
+                                label={t('slow')}
                                 name='game_on_the_farm_part_three.pace'
                                 control={control}
                                 errors={errors}
@@ -535,7 +534,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Патологически ускоренный'
+                                label={t('pathologically_accelerated')}
                                 name='game_on_the_farm_part_three.pace'
                                 control={control}
                                 errors={errors}
@@ -545,7 +544,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Патологически замедленный'
+                                label={t('pathologically_slow')}
                                 name='game_on_the_farm_part_three.pace'
                                 control={control}
                                 errors={errors}
@@ -553,12 +552,12 @@ const OnTheFarmPartThree = (props) => {
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Речь</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('speech')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='На вдохе'
+                                label={t('on_inspiration')}
                                 name='game_on_the_farm_part_three.speech'
                                 control={control}
                                 errors={errors}
@@ -568,7 +567,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='На выдохе'
+                                label={t('on_exhalation')}
                                 name='game_on_the_farm_part_three.speech'
                                 control={control}
                                 errors={errors}
@@ -578,7 +577,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Иссякает к концу фразы'
+                                label={t('fades_towards_the_end_of_a_sentence')}
                                 name='game_on_the_farm_part_three.speech'
                                 control={control}
                                 errors={errors}
@@ -586,12 +585,12 @@ const OnTheFarmPartThree = (props) => {
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Дыхание</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('breath')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Ключичное'
+                                label={t('clavicular')}
                                 name='game_on_the_farm_part_three.breath'
                                 control={control}
                                 errors={errors}
@@ -601,7 +600,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Грудное'
+                                label={t('breastfeeding')}
                                 name='game_on_the_farm_part_three.breath'
                                 control={control}
                                 errors={errors}
@@ -611,7 +610,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Диафрагмальное'
+                                label={t('diaphragmatic')}
                                 name='game_on_the_farm_part_three.breath'
                                 control={control}
                                 errors={errors}
@@ -621,7 +620,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Смешанное'
+                                label={t('mixed')}
                                 name='game_on_the_farm_part_three.breath'
                                 control={control}
                                 errors={errors}
@@ -633,7 +632,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Выдох укорочен'
+                                label={t('expiration_is_shortened')}
                                 name='game_on_the_farm_part_three.exhalation'
                                 control={control}
                                 errors={errors}
@@ -643,7 +642,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Выдох плавный'
+                                label={t('exhale_smoothly')}
                                 name='game_on_the_farm_part_three.exhalation'
                                 control={control}
                                 errors={errors}
@@ -655,7 +654,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label='Затруднённое'
+                                label={t('difficult')}
                                 name='game_on_the_farm_part_three.hindered'
                                 control={control}
                                 errors={errors}
@@ -665,7 +664,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label='Поверхностное'
+                                label={t('superficial')}
                                 name='game_on_the_farm_part_three.superficial'
                                 control={control}
                                 errors={errors}
@@ -675,7 +674,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label='Неритмичное'
+                                label={t('non_rhythmic')}
                                 name='game_on_the_farm_part_three.breathing_is_not_rhythmic'
                                 control={control}
                                 errors={errors}
@@ -685,7 +684,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label='Вдох неглубокий'
+                                label={t('shallow_breath')}
                                 name='game_on_the_farm_part_three.shallow_breath'
                                 control={control}
                                 errors={errors}
@@ -694,12 +693,12 @@ const OnTheFarmPartThree = (props) => {
                         </ProtocolResultWrapper>
                         {errors.choices19 && <div className='form2__error'> {errors.choices19.message}</div>}
                     </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Ритм</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('rhythm')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Не нарушен'
+                                label={t('not_violated')}
                                 name='game_on_the_farm_part_three.rhythm'
                                 control={control}
                                 errors={errors}
@@ -709,7 +708,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Нарушен: речь растянутая, скандированная'
+                                label={t('disturbed_speech_is_stretched_chanted')}
                                 name='game_on_the_farm_part_three.rhythm'
                                 control={control}
                                 errors={errors}
@@ -717,12 +716,12 @@ const OnTheFarmPartThree = (props) => {
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Сила выдоха</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('exhalation_force')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Слабая'
+                                label={t('weak')}
                                 name='game_on_the_farm_part_three.expiratory_force'
                                 control={control}
                                 errors={errors}
@@ -732,7 +731,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Сильная'
+                                label={t('strong')}
                                 name='game_on_the_farm_part_three.expiratory_force'
                                 control={control}
                                 errors={errors}
@@ -740,12 +739,12 @@ const OnTheFarmPartThree = (props) => {
                             />
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
-                    <ProtocolDescriptionSubtitle>Дифференцированность вдоха/выдоха и возможность управления</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('differentiation_of_inhalation_exhalation_and_the_ability_to_control_breathing')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='В норме'
+                                label={t('fine')}
                                 name='game_on_the_farm_part_three.inspiratory_expiratory_differentiation'
                                 control={control}
                                 errors={errors}
@@ -755,7 +754,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Нарушена'
+                                label={t('violated')}
                                 name='game_on_the_farm_part_three.inspiratory_expiratory_differentiation'
                                 control={control}
                                 errors={errors}
@@ -764,15 +763,13 @@ const OnTheFarmPartThree = (props) => {
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                 </ProtocolRow>
-                <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
                 <ProtocolRow>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Просодическая организация речи характеризуется неадекватным интонационным оформлением высказывания;
-									речь
-									невнятная, смазанная, малопонятная для окружающих'
+                                label={t('the_prosodic_organization_of_speech_is_characterized_by_inadequate_intonational_design of_the_utterance')}
                                 name='game_on_the_farm_part_three.prosodic_side_of_speech'
                                 control={control}
                                 errors={errors}
@@ -782,7 +779,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Разборчивость речи несколько снижена, речь нечеткая'
+                                label={t('speech_intelligibility_is_somewhat_reduced_spee')}
                                 name='game_on_the_farm_part_three.prosodic_side_of_speech'
                                 control={control}
                                 errors={errors}
@@ -792,7 +789,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Речь внятная, понятная для окружающих'
+                                label={t('speech_is_intelligible_understandable_to_others')}
                                 name='game_on_the_farm_part_three.prosodic_side_of_speech'
                                 control={control}
                                 errors={errors}
@@ -804,7 +801,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Речь интонационно выразительна'
+                                label={t('speech_intonation_is_expressive')}
                                 name='game_on_the_farm_part_three.speech_intonationally'
                                 control={control}
                                 errors={errors}
@@ -814,7 +811,7 @@ const OnTheFarmPartThree = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='radio'
-                                label='Речь интонационно невыразительна: слабая выраженность голосовых модуляций'
+                                label={t('speech_is_intonationally_inexpressive_weak_expressiveness_of_voice_modulationse')}
                                 name='game_on_the_farm_part_three.speech_intonationally'
                                 control={control}
                                 errors={errors}
@@ -823,12 +820,12 @@ const OnTheFarmPartThree = (props) => {
                         </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                 </ProtocolRow>
-                <ProtocolDescriptionSubtitle>Нарушение темпо-ритмической организации речи:</ProtocolDescriptionSubtitle>
+                <ProtocolDescriptionSubtitle>{t('violation_of_the_tempo_rhythmic_organization_of_speech')}</ProtocolDescriptionSubtitle>
                 <ProtocolResultBlock>
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='radio'
-                            label='Судороги'
+                            label={t('convulsions')}
                             name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
                             control={control}
                             errors={errors}
@@ -838,7 +835,7 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='radio'
-                            label='Запинки'
+                            label={t('hesitation')}
                             name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
                             control={control}
                             errors={errors}

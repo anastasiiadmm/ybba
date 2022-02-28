@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ProtocolBlock from 'Components/Surveys/ExaminationProtocol/ProtocolBlock/ProtocolBlock';
 import ProtocolPlaceholderTitle from 'Components/Surveys/ExaminationProtocol/ProtocolPlaceholderTitle/ProtocolPlaceholderTitle';
@@ -10,21 +11,24 @@ import ProtocolDescriptionSubtitle from 'Components/Surveys/ExaminationProtocol/
 import ProtocolResultBlock from 'Components/Surveys/ExaminationProtocol/ProtocolResultBlock/ProtocolResultBlock';
 import ProtocolResultWrapper from 'Components/Surveys/ExaminationProtocol/ProtocolResultWrapper/ProtocolResultWrapper';
 
+
 const AntLambadaGame = (props) => {
 
     const  {
         register, errors, control, isConclusionDisabled, disabled, isLessonFinished
     } = props
 
+    const { t } = useTranslation();
+
     return (
         <>
             <ProtocolBlock>
-                <ProtocolPlaceholderTitle>Игра “Муравьиная ламбада”</ProtocolPlaceholderTitle>
-                <ProtocolBlockTitle>Звукопроизношение <span>Звуки Д, Дь, Т, Ть, К, Г, Х</span></ProtocolBlockTitle>
+                <ProtocolPlaceholderTitle>{t('the_game_ant_lambada')}</ProtocolPlaceholderTitle>
+                <ProtocolBlockTitle>{t('sound_reproduction')} <span>{t('Звуки Д, Дь, Т, Ть, К, Г, Х')}</span></ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Дом-Дятел /Д, Дь'
+                        label={t('Дом-Дятел /Д, Дь')}
                         name='game_ant_lambada.woodpecker_house'
                         register={register}
                         errors={errors}
@@ -34,7 +38,7 @@ const AntLambadaGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Тапки-Платье /Т, Ть'
+                        label={t('Тапки-Платье /Т, Ть')}
                         name='game_ant_lambada.slipper_dress'
                         register={register}
                         errors={errors}
@@ -53,14 +57,14 @@ const AntLambadaGame = (props) => {
                 </ProtocolRow>
                 {isLessonFinished && (
                     <>
-                        <ProtocolResultTitle>Варианты заключения:</ProtocolResultTitle>
+                        <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Переднеязычные:</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('anterolingual')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label='Носовой'
+                                        label={t('nasal')}
                                         name='game_ant_lambada.nasal'
                                         control={control}
                                         errors={errors}
@@ -70,7 +74,7 @@ const AntLambadaGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label='Пропуск'
+                                        label={t('pass')}
                                         name='game_ant_lambada.skip'
                                         control={control}
                                         errors={errors}
@@ -80,7 +84,7 @@ const AntLambadaGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label='Замена Д на'
+                                        label={t('replacing_D_with')}
                                         name='game_ant_lambada.replacing_d_with'
                                         control={control}
                                         errors={errors}
@@ -90,7 +94,7 @@ const AntLambadaGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label='Замена Дь на'
+                                        label={t('replacing_D_soft_with')}
                                         name='game_ant_lambada.replacing_d_soft_with'
                                         control={control}
                                         errors={errors}
@@ -100,7 +104,7 @@ const AntLambadaGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label='Замена Т на'
+                                        label={t('replacing_T_with')}
                                         name='game_ant_lambada.replacing_t_with'
                                         control={control}
                                         errors={errors}
@@ -110,7 +114,7 @@ const AntLambadaGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label='Замена Ть на'
+                                        label={t('replacing_T_soft_with')}
                                         name='game_ant_lambada.replacing_t_soft_with'
                                         control={control}
                                         errors={errors}
@@ -121,12 +125,12 @@ const AntLambadaGame = (props) => {
                             </ProtocolResultBlock>
                         </ProtocolRow>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>Заднеязычные:</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('back_lingual')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label='Замена К на'
+                                        label={t('replacing_K_with')}
                                         name='game_ant_lambada.replacing_k_with'
                                         control={control}
                                         errors={errors}
@@ -136,7 +140,7 @@ const AntLambadaGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label='Замена Г на'
+                                        label={t('replacing_G_with')}
                                         name='game_ant_lambada.replacing_g_with'
                                         control={control}
                                         errors={errors}
@@ -146,7 +150,7 @@ const AntLambadaGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label='Замена Х на'
+                                        label={t('replacing_X_with')}
                                         name='game_ant_lambada.replacing_kh_with'
                                         control={control}
                                         errors={errors}
@@ -156,7 +160,7 @@ const AntLambadaGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label='Смешение'
+                                        label={t('mixing')}
                                         name='game_ant_lambada.mixing'
                                         control={control}
                                         errors={errors}
@@ -166,7 +170,7 @@ const AntLambadaGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label='Искажение'
+                                        label={t('distortion')}
                                         name='game_ant_lambada.distortion'
                                         control={control}
                                         errors={errors}
@@ -181,9 +185,9 @@ const AntLambadaGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label='Комментарий'
+                        label={t('comment')}
                         name='game_ant_lambada.expert_comment'
-                        placeholder='Комментарий специалиста'
+                        placeholder={t('expert_comment')}
                         errors={errors}
                         register={register}
                         disabled={disabled}
