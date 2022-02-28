@@ -54,6 +54,7 @@ const SpeechCard = (props) => {
 
     useEffect(() => {
         clearTimeout(timer)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         timer = setTimeout(() => {
             dispatch(updateSpeechCard({
                 speechCardId: speechCard.id,

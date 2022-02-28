@@ -49,7 +49,7 @@ const ChildProfileStageOne = () => {
         await dispatch(clearChildState())
     }
 
-    const conGoToNextPage = (
+    const conGoToNextPage = !!(
         childrenData?.first_name &&
         childrenData?.last_name &&
         childrenData?.date_of_birth

@@ -11,6 +11,7 @@ import StagesLinks from 'Containers/ChildProfile/StagesLinks/StagesLinks';
 import Actions from 'Containers/ChildProfile/Actions/Actions';
 import { getChild, childSelector, clearChildState, updateChildAdditionalInfo } from 'redux/child/childSlice.js';
 import { validationTextareaSchema } from 'utils/checkFormVaid/checkFormValid';
+import { allRussianWordsAndSymbol } from '../../../regex/patterns/html';
 
 
 const max_chars = 100;
@@ -225,12 +226,15 @@ const ChildProfileStageTwo = () => {
                                             value={isOtherInputActive}
                                         />
                                         <div className='textarea_content'>
-                                            <textarea
+                                            <input
+                                                type='textarea'
                                                 id='textarea'
                                                 className='form__area profile-child__area'
                                                 value={childAdditionalData.help_other_text}
+                                                title='Максимум 100 символов (только кириллица в обоих регистрах, цифры и символы)'
                                                 name='help_other_text'
                                                 maxLength='100'
+                                                pattern={allRussianWordsAndSymbol}
                                                 errors={errors}
                                                 {...register('help_other_text', {
                                                     onChange: otherCheckboxChangeHandler,

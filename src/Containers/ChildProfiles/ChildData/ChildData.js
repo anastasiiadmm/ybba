@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -70,15 +70,15 @@ function ChildData(props) {
                 <>
                     <div className='profile-card__item'>
                         <p className='profile-card__item-title'>С чем вам помочь?</p>
-                        {Object.keys(mapping).map(key => {
+                        {Object.keys(mapping).map((key,  index) => {
                             if (childProfile.additional_information[key]) {
                                 if (key === 'help_other_text' && childProfile.additional_information[key]) {
-                                    return <p>
+                                    return <p key={index}>
                                         <span>Другое:</span>
                                         {childProfile.additional_information[key]}
                                     </p>
                                 } else if (childProfile.additional_information[key]) {
-                                    return <p>
+                                    return <p key={index}>
                                         {mapping[key]}
                                     </p>
                                 }
@@ -91,7 +91,7 @@ function ChildData(props) {
                         {!!childProfile.specialists.length && (
                             childProfile.specialists.map((specialist, index) => {
                                 return (
-                                    <>
+                                    <Fragment key={index}>
                                         <p><span>С каким специалистом занимались?</span>{
                                             specialists.specialist[specialist.specialist]
                                         }</p>
@@ -114,7 +114,7 @@ function ChildData(props) {
                                                 specialists.reason_change_specialist[specialist.reason_change_specialist]
                                             }
                                         </p>
-                                    </>
+                                    </Fragment>
                                 )
                             })
                         )}

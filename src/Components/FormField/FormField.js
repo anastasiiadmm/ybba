@@ -81,6 +81,7 @@ const FormField = props => {
                 maxLength={maxLength}
                 readOnly={readOnly}
                 disabled={disabled}
+                title={tooltipText}
             />
             {Errors}
             {helpText && <div className='form__passw-info'>{helpText}</div>}
@@ -343,13 +344,15 @@ const FormField = props => {
 FormField.propTypes = {
     type: PropTypes.oneOf([
         'email',
+        'password',
         'checkbox',
         'radio',
         'datepicker',
         'phone',
         'select',
         'flatpickr',
-        'textarea'
+        'textarea',
+        'text',
     ]).isRequired,
     onChange: PropTypes.func,
     className: PropTypes.string,
