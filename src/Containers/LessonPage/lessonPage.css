@@ -515,26 +515,20 @@
     margin-right: 8px !important;
 }
 
-.slide__buttons-container {
+.slide__button {
     position: absolute;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
+    width: 42px;
+    height: 42px;
+    margin: 0 10px;
+    background: #000;
+    border-radius: 50%;
+    cursor: pointer;
     transform: translateY(-60px);
     transition: .5s;
     z-index: 15;
 }
-.hide.slide__buttons-container {
+.hide.slide__button {
     transform: translateY(55px);
-}
-
-.slide__button {
-    position: relative;
-    width: 42px;
-    height: 42px;
-    background: #000;
-    border-radius: 50%;
-    cursor: pointer;
 }
 
 .slide__button:before {
