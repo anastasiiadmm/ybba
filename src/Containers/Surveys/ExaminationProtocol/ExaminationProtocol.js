@@ -703,9 +703,9 @@ const ExaminationProtocol = (props) => {
                 isLessonFinished={isLessonFinished}
             />
             <ProtocolBlock>
-                <ProtocolBlockTitle>Дополнительная информация</ProtocolBlockTitle>
-                <ProtocolBlockSubTitle>Данные о развитии:</ProtocolBlockSubTitle>
-                <ProtocolBlockSubTitle>Раннее/ позднее физическое развитие</ProtocolBlockSubTitle>
+                <ProtocolBlockTitle>{t('additional_information')}</ProtocolBlockTitle>
+                <ProtocolBlockSubTitle>{t('development_data')}</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>{t('early_late_physical_development')}</ProtocolBlockSubTitle>
                 <Questionnaire
                     register={register}
                     errors={errors}

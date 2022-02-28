@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import ProtocolBlockSubTitle from 'Components/Surveys/ExaminationProtocol/ProtocolBlockSubTitle/ProtocolBlockSubTitle.js';
 import ProtocolSubBlock from 'Components/Surveys/ExaminationProtocol/ProtocolSubBlock/ProtocolSubBlock.js';
@@ -8,29 +9,30 @@ import ProtocolFormField from 'Components/Surveys/ExaminationProtocol/ProtocolFo
 import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/ProtocolRow';
 
 
+
 const Questionnaire = (props) => {
 
     const {
-        register, errors, disabled, isConclusionDisabled
+        register, errors, disabled
     } = props
 
     const commonFieldProps = {
         register, errors, disabled
     }
 
+    const { t } = useTranslation();
+
     return (
         <>
 
             <ProtocolSubBlock>
                 <ProtocolPlaceholderTitle>
-                    — Во сколько ребенок сел самостоятельно? В каком возрасте пополз? Пошел самостоятельно? Были ли
-                    какие-либо
-                    травмы/инфекции у ребенка до, во время или после родов?
+                    {t('what_time_did_the_child_sit_up_on_their_own')}
                 </ProtocolPlaceholderTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Сел в:'
+                        label={t('sat_in')}
                         name='additional_information.sat_in'
                         {...commonFieldProps}
                         disabled={disabled}
@@ -39,7 +41,7 @@ const Questionnaire = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Пополз на четвереньках в:'
+                        label={t('crawled_on_all_fours_in')}
                         name='additional_information.crawled_on_all_fours_into'
                         {...commonFieldProps}
                         disabled={disabled}
@@ -48,7 +50,7 @@ const Questionnaire = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Пошел в:'
+                        label={t('went_to')}
                         name='additional_information.went_to'
                         {...commonFieldProps}
                         disabled={disabled}
@@ -57,7 +59,7 @@ const Questionnaire = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Научился прыгать на двух ногах в:'
+                        label={t('learned_to_jump_on_two_legs_in')}
                         name='additional_information.learned_to_jump_on_two_legs_in'
                         {...commonFieldProps}
                         disabled={disabled}
@@ -66,7 +68,7 @@ const Questionnaire = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Травмы/инфекции до, во время и/или после родов:'
+                        label={t('injuries_infections_before_during_and_or_after_childbirth')}
                         name='additional_information.injury_infection_before_during_and_or_after_childbirth'
                         {...commonFieldProps}
                         disabled={disabled}
@@ -74,14 +76,14 @@ const Questionnaire = (props) => {
                 </ProtocolRow>
             </ProtocolSubBlock>
             <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Раннее речевое/позднее речевое развитие</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>{t('early_speech_late_speech_development')}</ProtocolBlockSubTitle>
                 <ProtocolPlaceholderTitle>
-                    — В каком возрасте появился лепет? Первые слова? Первые короткие фразы?
+                    {t('at_what_age_did_babbling_appear')}
                 </ProtocolPlaceholderTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Лепет в:'
+                        label={t('babble_in')}
                         name='additional_information.babbling_in'
                         {...commonFieldProps}
                         disabled={disabled}
@@ -90,7 +92,7 @@ const Questionnaire = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Первые слова в:'
+                        label={t('first_words_in')}
                         name='additional_information.first_words_in'
                         {...commonFieldProps}
                         disabled={disabled}
@@ -99,7 +101,7 @@ const Questionnaire = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Первые короткие фразы в:'
+                        label={t('the_first_short_phrases_in')}
                         name='additional_information.first_short_phrases_in'
                         {...commonFieldProps}
                         disabled={disabled}
@@ -107,109 +109,101 @@ const Questionnaire = (props) => {
                 </ProtocolRow>
             </ProtocolSubBlock>
             <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Речевая среда</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>{t('speech_environment')}</ProtocolBlockSubTitle>
                 <ProtocolPlaceholderTitle>
-                    — На каком языке говорят с ребенком дома? Много ли общаетесь с ребенком? Опишите ваш обычный
-                    разговор с ребенком дома и вне дома
+                    {t('what_language_is_spoken_with_the_child_at_home')}
                 </ProtocolPlaceholderTitle>
                 <ProtocolFormField
                     type='textarea'
                     name='additional_information.speech_environment'
-                    placeholder='Ответ родителя'
+                    placeholder={t('parent_response')}
                     {...commonFieldProps}
                     disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Настоящие и перенесенные заболевания, травмы,
-                    операции</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>{t('current_and_previous_diseases_injuries_operations')}</ProtocolBlockSubTitle>
                 <ProtocolPlaceholderTitle>
-                    — Были ли у ребенка серьезные операции, и в каком возрасте? Травмы головы? Заболевания, о
-                    которых логопеду стоит знать?
+                    {t('did_the_child_have_major_operations_and_at_what_age')}
                 </ProtocolPlaceholderTitle>
                 <ProtocolFormField
                     type='textarea'
                     name='additional_information.present_and_past_diseases'
-                    placeholder='Ответ родителя'
+                    placeholder={t('parent_response')}
                     {...commonFieldProps}
                     disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Медикаментозное лечение</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>{t('medical_treatment')}</ProtocolBlockSubTitle>
                 <ProtocolPlaceholderTitle>
-                    — Проходил/проходит ли медикаментозное лечение? Если да, то какое?
+                    {t('have_you_are_you_on_medication_if_yes_then_what')}
                 </ProtocolPlaceholderTitle>
                 <ProtocolFormField
                     type='textarea'
                     name='additional_information.drug_treatment'
-                    placeholder='Ответ родителя'
+                    placeholder={t('parent_response')}
                     {...commonFieldProps}
                     disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Неврологический статус</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>{t('neurological_status')}</ProtocolBlockSubTitle>
                 <ProtocolPlaceholderTitle>
-                    — Ставил ли невролог когда-либо какой-либо диагноз? Имеется ли у ребенка эпилепсия или другие
-                    похожие состояния?
+                    {t('has_a_neurologist_ever_made_a_diagnosis')}
                 </ProtocolPlaceholderTitle>
                 <ProtocolFormField
                     type='textarea'
                     name='additional_information.neurological_status'
-                    placeholder='Ответ родителя'
+                    placeholder={t('parent_response')}
                     {...commonFieldProps}
                     disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Зрение</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>— Какое зрение у ребенка? Что говорит окулист?</ProtocolPlaceholderTitle>
+                <ProtocolBlockSubTitle>{t('vision')}</ProtocolBlockSubTitle>
+                <ProtocolPlaceholderTitle>{t('what_is_the_child_vision_what_does_the_optometrist_say')}</ProtocolPlaceholderTitle>
                 <ProtocolFormField
                     type='textarea'
                     name='additional_information.vision'
-                    placeholder='Ответ родителя'
+                    placeholder={t('parent_response')}
                     {...commonFieldProps}
                     disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Слух</ProtocolBlockSubTitle>
-                <ProtocolPlaceholderTitle>— Какой слух у ребенка? Что говорит
-                    отоларинголог?</ProtocolPlaceholderTitle>
+                <ProtocolBlockSubTitle>{t('hearing')}</ProtocolBlockSubTitle>
+                <ProtocolPlaceholderTitle>{t('what_is_the_child_hearing_what_does_the_otolaryngologist_say')}</ProtocolPlaceholderTitle>
                 <ProtocolFormField
                     type='textarea'
                     name='additional_information.hearing'
-                    placeholder='Ответ родителя'
+                    placeholder={t('parent_response')}
                     {...commonFieldProps}
                     disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Пищевое поведение</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>{t('eating_behavior')}</ProtocolBlockSubTitle>
                 <ProtocolPlaceholderTitle>
-                    — Какой аппетит у ребенка? Он предпочитает твердую или пюреобразную пищу? Имеется ли
-                    избирательность в еде?
+                    {t('what_is_the_child_appetite')}
                 </ProtocolPlaceholderTitle>
                 <ProtocolFormField
                     type='textarea'
                     name='additional_information.eating_behavior'
-                    placeholder='Ответ родителя'
+                    placeholder={t('parent_response')}
                     {...commonFieldProps}
                     disabled={disabled}
                 />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
-                <ProtocolBlockSubTitle>Эмоционально-психологический уровень</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>{t('emotional_psychological_level')}</ProtocolBlockSubTitle>
                 <ProtocolPlaceholderTitle>
-                    — Как обычно ведет себя дома в привычной обстановке? Как ведет себя в незнакомой ситуации? Как
-                    ведет
-                    себя с незнакомыми людьми?
+                    {t('how_does_he_usually_behave_at_home_in_a_familiar_environment')}
                 </ProtocolPlaceholderTitle>
                 <ProtocolFormField
                     type='textarea'
                     name='additional_information.emotional_and_psychological_level'
-                    placeholder='Ответ родителя'
+                    placeholder={t('parent_response')}
                     {...commonFieldProps}
                     disabled={disabled}
                 />
