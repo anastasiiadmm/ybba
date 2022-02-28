@@ -184,7 +184,8 @@ const AntLambadaGame = (props) => {
                 )}
                 <ProtocolRow>
                     <ProtocolFormField
-                        type={t('comment')}
+                        type='textarea'
+                        label={t('comment')}
                         name='game_ant_lambada.expert_comment'
                         placeholder={t('expert_comment')}
                         errors={errors}
