@@ -549,6 +549,11 @@
   "eating_behavior": "Eating behavior",
   "what_is_the_child_appetite": "What is the child's appetite? Does he prefer solid or pureed foods? Is there food selectivity?",
   "emotional_psychological_level": "Emotional-psychological level",
-  "how_does_he_usually_behave_at_home_in_a_familiar_environment": "- How does he usually behave at home in a familiar environment? How does one behave in an unfamiliar situation? How does he behave with strangers?"
-
+  "how_does_he_usually_behave_at_home_in_a_familiar_environment": "- How does he usually behave at home in a familiar environment? How does one behave in an unfamiliar situation? How does he behave with strangers?",
+  "logopedic_conclusion": "Logopedic conclusion",
+  "dynamic_conclusion_5_lessons": "Dynamic conclusion (5 lessons)",
+  "final_conclusion_10_lessons": "Final conclusion (10 lessons)",
+  "speech_therapist": "Speech therapist",
+  "date_of_birth": "Date of Birth:",
+  "complete_the_protocol": "Complete the protocol"
 }

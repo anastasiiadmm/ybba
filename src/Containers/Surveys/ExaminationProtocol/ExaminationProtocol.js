@@ -714,7 +714,7 @@ const ExaminationProtocol = (props) => {
                 />
             </ProtocolBlock>
             <ProtocolBlock>
-                <ProtocolBlockTitle>Логопедическое заключение</ProtocolBlockTitle>
+                <ProtocolBlockTitle>{t('logopedic_conclusion')}</ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
@@ -728,7 +728,7 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label='Динамическое заключение (5 занятий)'
+                        label={t('dynamic_conclusion_5_lessons')}
                         name='dynamic_conclusion'
                         register={register}
                         errors={errors}
@@ -739,7 +739,7 @@ const ExaminationProtocol = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label='Итоговое заключение (10 занятий)'
+                        label={t('final_conclusion_10_lessons')}
                         name='final_conclusion'
                         register={register}
                         errors={errors}
@@ -748,10 +748,9 @@ const ExaminationProtocol = (props) => {
                     />
                 </ProtocolRow>
                 <ProtocolRow>
-                    <p className='protocol__finish-title'>Логопед</p>
-                    <ProtocolDescriptionSubtitle>Дата
-                        рождения: {protocol.child_date_of_birth}</ProtocolDescriptionSubtitle>
-                    <p className='protocol__info'>Родитель: {protocol.parent.first_name} {protocol.parent.last_name}</p>
+                    <p className='protocol__finish-title'>{t('speech_therapist')}</p>
+                    <ProtocolDescriptionSubtitle>{t('date_of_birth')} {protocol.child_date_of_birth}</ProtocolDescriptionSubtitle>
+                    <p className='protocol__info'>{t('parent')} {protocol.parent.first_name} {protocol.parent.last_name}</p>
                 </ProtocolRow>
             </ProtocolBlock>
             {protocol.status !== examinationProtocolStatuses.closed && (
@@ -762,7 +761,7 @@ const ExaminationProtocol = (props) => {
                             id='finish-protocol'
                             onClick={onProtocolFormSubmit}
                         >
-                            Завершить заполнение протокола
+                            {t('complete_the_protocol')}
                         </SurveySubmitButton>
                     </ProtocolRow>
                 </ProtocolBlock>
