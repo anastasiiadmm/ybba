@@ -52,7 +52,9 @@ Field.propTypes = {
         id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
     })),
     classNameLabel: PropTypes.string,
-    tooltipMessage: PropTypes.string
+    tooltipMessage: PropTypes.string,
+    onChange: PropTypes.func,
+    pattern: PropTypes.string,
 }
 
 export default Field;

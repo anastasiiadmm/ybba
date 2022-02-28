@@ -11,7 +11,7 @@ import ProtocolRow from 'Components/Surveys/ExaminationProtocol/ProtocolRow/Prot
 const Questionnaire = (props) => {
 
     const {
-        register, errors, disabled, isConclusionDisabled
+        register, errors, disabled, /*isConclusionDisabled*/
     } = props
 
     const commonFieldProps = {

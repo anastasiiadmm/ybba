@@ -22,6 +22,8 @@ const CommonField = (props) => {
         tooltipMessage,
         onClick,
         onFocus,
+        pattern,
+        onChange,
     } = props
 
     if (tooltipMessage) {
@@ -55,6 +57,8 @@ const CommonField = (props) => {
                 title={tooltipMessage && tooltipMessage}
                 onClick={onClick}
                 onFocus={onFocus}
+                pattern={pattern}
+                onChange={onChange}
             />
             <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
         </>
@@ -67,7 +71,7 @@ CommonField.propTypes = {
     className: PropTypes.string,
     name: PropTypes.string,
     errors: PropTypes.object,
-    register: PropTypes.object,
+    register: PropTypes.func,
     placeholder: PropTypes.string,
     disabled: PropTypes.bool,
     label: PropTypes.string,
@@ -75,6 +79,8 @@ CommonField.propTypes = {
     tooltipMessage: PropTypes.string,
     onClick: PropTypes.func,
     onFocus: PropTypes.func,
+    onChange: PropTypes.func,
+    pattern: PropTypes.string,
 }
 
 export default CommonField;

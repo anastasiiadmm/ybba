@@ -8,6 +8,7 @@ import Actions from 'Containers/ChildProfile/Actions/Actions';
 import FormField from 'Components/FormField/FormField';
 import { updateChildAdditionalInfo, getChild, childSelector, clearChildState } from 'redux/child/childSlice.js';
 import { ChildProfileContext } from 'context/ChildProfileContext/ChildProfileContext.js';
+import { allRussianWordsAndSymbol } from '../../../regex/patterns/html';
 
 
 const ChildProfileStageFour = () => {
@@ -49,7 +50,7 @@ const ChildProfileStageFour = () => {
         'Реклама в интернете',
     ]
 
-    const canGoToNextStage = (
+    const canGoToNextStage = !!(
         data?.about_us ||
         data?.about_us_text
     )
@@ -82,7 +83,7 @@ const ChildProfileStageFour = () => {
                             <ul className='profile-child__radio-list'>
                                 {radioList.map((radio, index) => {
                                     return (
-                                        <li>
+                                        <li key={index}>
                                             <FormField
                                                 type='radio'
                                                 label={radio}
@@ -110,6 +111,9 @@ const ChildProfileStageFour = () => {
                                         name='about_us_text'
                                         value={data.about_us_text}
                                         errors={errors}
+                                        pattern={allRussianWordsAndSymbol}
+                                        tooltipTitle='Другое'
+                                        tooltipText='Максимум 100 символов (только кириллица в обоих регистрах, цифры и символы)'
                                     />
                                 </li>
                             </ul>
