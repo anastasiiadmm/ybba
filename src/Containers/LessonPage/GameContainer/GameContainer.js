@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import config from 'config.js';
@@ -30,8 +30,36 @@ const GameContainer = (props) => {
     isStyleDebug,
     lessonId,
   } = useContext(LessonContext);
+  const canvasParent = useRef();
 
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
+  const [gameHeight, setGameHeight] = useState(0);
+  const [webcamHeight, setWebcamHeight] = useState(260);
+
+  const gameWidth = useMemo(() => gameHeight / 9 * 16, [gameHeight]);
+
+  const handleGameContainerResize = useCallback(() => {
+    if (checkUserRole(userRoles.parent)) {
+      setGameHeight(window.innerHeight);
+      return
+    }
+    let proportionalWidth = 0;
+    if (canvasParent.current.clientWidth <= 1060) {
+      proportionalWidth = (1060 - canvasParent.current.clientWidth);
+    }
+    else proportionalWidth = 0;
+
+    setGameHeight(window.innerHeight - 105 - webcamHeight - proportionalWidth);
+    console.log(canvasParent.current.clientWidth, proportionalWidth);
+  }, [canvasParent]);
+
+  const setCurrentWebcamHeight = useCallback(() => {
+    if (checkUserRole(userRoles.parent)) return setWebcamHeight(220);
+    const bodyWidth = +document.body.clientWidth;
+    bodyWidth <= 1440
+      ? setWebcamHeight(140)
+      : setWebcamHeight(220);
+  }, []);
 
   const getFileUrl = useCallback((fileName) => {
     return lesson.game_build[fileName];
@@ -134,7 +162,15 @@ const GameContainer = (props) => {
     setUnity();
   }, [lesson, setUnity]);
 
-  const canvasParent = useRef();
+  useEffect(() => {
+    handleGameContainerResize();
+    setCurrentWebcamHeight();
+
+    window.addEventListener('resize', () => {
+      handleGameContainerResize();
+      setCurrentWebcamHeight();
+    });
+  }, [handleGameContainerResize]);
 
   return (
     <main
@@ -142,7 +178,7 @@ const GameContainer = (props) => {
         'gamef__main_full': checkUserRole(userRoles.parent),
         'parentGameMain': checkUserRole(userRoles.parent),
         'therapistGameMain': checkUserRole(userRoles.therapist),
-        'debug--border': isStyleDebug
+        'debug--border': isStyleDebug,
       })}
     >
       <div className='gamef__work-space'>
@@ -159,11 +195,12 @@ const GameContainer = (props) => {
             <Unity
               unityContext={unityContext}
               style={{
-                width: `${canvasParent.current.clientHeight / 9 * 16}px`,
-                height: `${canvasParent.current.clientHeight}px`,
+                width: `${gameWidth}px`,
+                height: `${gameHeight}px`,
               }}
               className={addClasses('', {
                 'd-none': unityLoadProgress < 1,
+                'debug--border': isStyleDebug
               })}
             />
           )}
