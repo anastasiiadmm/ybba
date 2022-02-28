@@ -368,7 +368,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('interdental_sigmatism_of_hissing')}
+                            label={t('Межзубный сигматизм шипящих')}
                             name='game_pictures_for_fish.interdental_sigmatism_of_hissing'
                             control={control}
                             errors={errors}
