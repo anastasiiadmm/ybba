@@ -23,8 +23,8 @@ const PicturesForFish = (props) => {
 
     return <>
         <ProtocolBlock>
-            <ProtocolPlaceholderTitle>{t('the_game_pictures_for_the_fish')}</ProtocolPlaceholderTitle>
-            <ProtocolBlockTitle>{t('sound_reproduction')} <span>{t('Звуки С, Сь, З, Зь, Ц, Ч, Щ, Ж, Ш')}</span></ProtocolBlockTitle>
+            <ProtocolPlaceholderTitle>{t('Игра «Картинки для рыбки»')}</ProtocolPlaceholderTitle>
+            <ProtocolBlockTitle>{t('Звукопроизношение')} <span>{t('Звуки С, Сь, З, Зь, Ц, Ч, Щ, Ж, Ш')}</span></ProtocolBlockTitle>
             <ProtocolRow>
                 <ProtocolFormField
                     type='text'
@@ -95,14 +95,14 @@ const PicturesForFish = (props) => {
                     disabled={disabled}
                 />
             </ProtocolRow>
-            <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
+            <ProtocolResultTitle>{t('Варианты заключения')}</ProtocolResultTitle>
             <ProtocolRow>
-                <ProtocolDescriptionSubtitle>{t('whistling')}</ProtocolDescriptionSubtitle>
+                <ProtocolDescriptionSubtitle>{t('Свистящие')}</ProtocolDescriptionSubtitle>
                 <ProtocolResultBlock>
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('whistling_parasigmatism')}
+                            label={t('Свистящие звуки произносятся нормативно')}
                             name='game_pictures_for_fish.sibilant_parasigmatism'
                             control={control}
                             errors={errors}
@@ -112,7 +112,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkboxWithField'
-                            label={t('replacing_C_with')}
+                            label={t('Замена С на')}
                             name='game_pictures_for_fish.replacing_s_with'
                             control={control}
                             errors={errors}
@@ -122,7 +122,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkboxWithField'
-                            label={t('replacing_C_soft_with')}
+                            label={t('Замена Сь на')}
                             name='game_pictures_for_fish.replacing_s_soft_with'
                             control={control}
                             errors={errors}
@@ -132,7 +132,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkboxWithField'
-                            label={t('replacing_Z_with')}
+                            label={t('Замена З на')}
                             name='game_pictures_for_fish.replacing_z_with'
                             control={control}
                             errors={errors}
@@ -142,7 +142,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkboxWithField'
-                            label={t('replacing_3_with')}
+                            label={t('Замена Зь на')}
                             name='game_pictures_for_fish.replacing_z_soft_with'
                             control={control}
                             errors={errors}
@@ -152,7 +152,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkboxWithField'
-                            label={t('replacing_C_with')}
+                            label={t('Замена Ц на')}
                             name='game_pictures_for_fish.replacing_c_with'
                             control={control}
                             errors={errors}
@@ -162,7 +162,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkboxWithField'
-                            label={t('replacing_H_with')}
+                            label={t('Замена Ч на')}
                             name='game_pictures_for_fish.replacing_ch_with'
                             control={control}
                             errors={errors}
@@ -172,7 +172,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('tooth_sigmatism')}
+                            label={t('Призубный сигматизм')}
                             name='game_pictures_for_fish.prominent_sigmatism'
                             control={control}
                             errors={errors}
@@ -182,7 +182,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('nasal_sigmatism')}
+                            label={t('Носовой сигматизм')}
                             name='game_pictures_for_fish.nasal_sigmatism'
                             control={control}
                             errors={errors}
@@ -192,7 +192,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('hissing_sigmatism')}
+                            label={t('Шипящий сигматизм')}
                             name='game_pictures_for_fish.hissing_sigmatism'
                             control={control}
                             errors={errors}
@@ -202,7 +202,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('lateral_sigmatism')}
+                            label={t('Боковой сигматизм')}
                             name='game_pictures_for_fish.lateral_sigmatism'
                             control={control}
                             errors={errors}
@@ -212,7 +212,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('labio_dental_pronunciation_of_whistling')}
+                            label={t('Губно-зубное произношение свистящих')}
                             name='game_pictures_for_fish.labiodental_pronunciation_of_whistling'
                             control={control}
                             errors={errors}
@@ -222,7 +222,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('skip_the_whistling_sound')}
+                            label={t('Пропуск свистящего звука')}
                             name='game_pictures_for_fish.skip_whistling_sound'
                             control={control}
                             errors={errors}
@@ -232,7 +232,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('mixing_sounds')}
+                            label={t('Смешение звуков')}
                             name='game_pictures_for_fish.mixing_sounds'
                             control={control}
                             errors={errors}
@@ -242,7 +242,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('interdental_sigmatism')}
+                            label={t('Межзубный сигматизм')}
                             name='game_pictures_for_fish.interdental_sigmatism'
                             control={control}
                             errors={errors}
@@ -253,12 +253,12 @@ const PicturesForFish = (props) => {
                 </ProtocolResultBlock>
             </ProtocolRow>
             <ProtocolRow>
-                <ProtocolDescriptionSubtitle>{t('hissing')}</ProtocolDescriptionSubtitle>
+                <ProtocolDescriptionSubtitle>{t('Шипящие')}</ProtocolDescriptionSubtitle>
                 <ProtocolResultBlock>
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('parasigmatism_of_hissing')}
+                            label={t('Парасигматизм шипящих')}
                             name='game_pictures_for_fish.parasigmatism_of_hissing'
                             control={control}
                             errors={errors}
@@ -268,7 +268,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkboxWithField'
-                            label={t('replacing_SC_with')}
+                            label={t('Замена Щ на')}
                             name='game_pictures_for_fish.replacing_shch_to'
                             control={control}
                             errors={errors}
@@ -278,7 +278,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkboxWithField'
-                            label={t('replacing_W_with')}
+                            label={t('Замена Ж на')}
                             name='game_pictures_for_fish.replacing_zh_to'
                             control={control}
                             errors={errors}
@@ -288,7 +288,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkboxWithField'
-                            label={t('replacing_Sh_with')}
+                            label={t('Замена Ш на')}
                             name='game_pictures_for_fish.replacing_sh_to'
                             control={control}
                             errors={errors}
@@ -298,7 +298,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('tooth_sigmatism')}
+                            label={t('Призубный сигматизм')}
                             name='game_pictures_for_fish.pristine_sigmatism'
                             control={control}
                             errors={errors}
@@ -308,7 +308,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('nasal_sigmatism')}
+                            label={t('Носовой сигматизм')}
                             name='game_pictures_for_fish.hissing_nasal_sigmatism'
                             control={control}
                             errors={errors}
@@ -318,7 +318,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('whistling_sigmatism_of_hissing')}
+                            label={t('Свистящий сигматизм шипящих')}
                             name='game_pictures_for_fish.whistling_sigmatism_of_hissing'
                             control={control}
                             errors={errors}
@@ -328,7 +328,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('lateral_sigmatism')}
+                            label={t('Боковой сигматизм')}
                             name='game_pictures_for_fish.lateral_sigmatism_two'
                             control={control}
                             errors={errors}
@@ -338,7 +338,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('labial_tooth_pronunciation_of_hissing')}
+                            label={t('Губно-зубное произношение шипящих')}
                             name='game_pictures_for_fish.labiodental_pronunciation_of_sibilants'
                             control={control}
                             errors={errors}
@@ -348,7 +348,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('skip_hissing_sound')}
+                            label={t('Пропуск шипящего звука')}
                             name='game_pictures_for_fish.skip_whistling_sound_two'
                             control={control}
                             errors={errors}
@@ -358,7 +358,7 @@ const PicturesForFish = (props) => {
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
-                            label={t('mixing_sounds')}
+                            label={t('Смешение звуков')}
                             name='game_pictures_for_fish.mixing_sounds_two'
                             control={control}
                             errors={errors}
@@ -382,15 +382,15 @@ const PicturesForFish = (props) => {
         <ProtocolBlock>
             {isLessonFinished && (
                 <>
-                    <ProtocolBlockTitle>{t('psychological_base_of_speech_memory')}</ProtocolBlockTitle>
-                    <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
+                    <ProtocolBlockTitle>{t('Психологическая база речи. Память')}</ProtocolBlockTitle>
+                    <ProtocolResultTitle>{t('Варианты заключения')}</ProtocolResultTitle>
                     <ProtocolRow>
-                        <ProtocolDescriptionSubtitle>{t('verbal_memory_capacity')}</ProtocolDescriptionSubtitle>
+                        <ProtocolDescriptionSubtitle>{t('Объем вербальной памяти')}</ProtocolDescriptionSubtitle>
                         <ProtocolResultBlock>
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label={t('sufficient_for_full_communication')}
+                                    label={t('Достаточный для осуществления полноценной коммуникации')}
                                     name='game_pictures_for_fish.verbal_memory'
                                     control={control}
                                     errors={errors}
@@ -400,7 +400,7 @@ const PicturesForFish = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label={t('not_sufficient_for_full_communication')}
+                                    label={t('Недостаточный для осуществления полноценной коммуникации')}
                                     name='game_pictures_for_fish.verbal_memory'
                                     control={control}
                                     errors={errors}
@@ -412,7 +412,7 @@ const PicturesForFish = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label={t('there_are_minor_difficulties_in_updating_words')}
+                                    label={t('Наблюдаются незначительные трудности актуализации слов, хранения и воспроизведения вербальной информации')}
                                     name='game_pictures_for_fish.verbal_memory_part_two'
                                     control={control}
                                     errors={errors}
@@ -422,7 +422,7 @@ const PicturesForFish = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label={t('there_are_pronounced_difficulties_in_updating_words')}
+                                    label={t('Наблюдаются выраженные трудности актуализации слов, хранения и воспроизведения вербальной информации')}
                                     name='game_pictures_for_fish.verbal_memory_part_two'
                                     control={control}
                                     errors={errors}
@@ -436,9 +436,9 @@ const PicturesForFish = (props) => {
             <ProtocolRow>
                 <ProtocolFormField
                     type='textarea'
-                    label={t('comment')}
+                    label={t('Комментарий')}
                     name='game_pictures_for_fish.expert_comment'
-                    placeholder={t('expert_comment')}
+                    placeholder={t('Комментарий специалиста')}
                     register={register}
                     errors={errors}
                     disabled={disabled}

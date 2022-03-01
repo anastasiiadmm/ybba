@@ -23,8 +23,8 @@ const PuzzleGame = (props) => {
     return (
         <>
             <ProtocolBlock>
-                <ProtocolPlaceholderTitle>{t('puzzle_game')}</ProtocolPlaceholderTitle>
-                <ProtocolBlockTitle>{t('sound_reproduction')} <span>{t('Звуки В, Вь, Ф, Фь')}</span></ProtocolBlockTitle>
+                <ProtocolPlaceholderTitle>{t('Игра «Пазл»')}</ProtocolPlaceholderTitle>
+                <ProtocolBlockTitle>{t('Звукопроизношение')} <span>{t('Звуки В, Вь, Ф, Фь')}</span></ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
@@ -58,12 +58,12 @@ const PuzzleGame = (props) => {
                 {isLessonFinished && (
                     <>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>{t('conclusion_options')}</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('Варианты заключения')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label={t('nasal')}
+                                        label={t('Носовой')}
                                         name='game_puzzle.nasal'
                                         control={control}
                                         errors={errors}
@@ -73,7 +73,7 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label={t('pass')}
+                                        label={t('Пропуск')}
                                         name='game_puzzle.skip'
                                         control={control}
                                         errors={errors}
@@ -83,7 +83,7 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label={t('replacing_B_with')}
+                                        label={t('Замена В на')}
                                         name='game_puzzle.replacing_with_b'
                                         control={control}
                                         errors={errors}
@@ -93,7 +93,7 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label={t('replacing_V_with')}
+                                        label={t('Замена Вь на')}
                                         name='game_puzzle.replacing_with_b_soft'
                                         control={control}
                                         errors={errors}
@@ -103,7 +103,7 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label={t('replacing_F_with')}
+                                        label={t('Замена Ф на')}
                                         name='game_puzzle.replacing_with_f'
                                         control={control}
                                         errors={errors}
@@ -113,7 +113,7 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'
-                                        label={t('replacing_Ph_with')}
+                                        label={t('Замена Фь на')}
                                         name='game_puzzle.replacing_with_f_soft'
                                         control={control}
                                         errors={errors}
@@ -123,7 +123,7 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label={t('bilabial')}
+                                        label={t('Двугубный')}
                                         name='game_puzzle.two_lipped'
                                         control={control}
                                         errors={errors}
@@ -133,7 +133,7 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label={t('mixing')}
+                                        label={t('Смешение')}
                                         name='game_puzzle.mixing'
                                         control={control}
                                         errors={errors}
@@ -143,7 +143,7 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label={t('distortion')}
+                                        label={t('Искажение')}
                                         name='game_puzzle.distortion'
                                         control={control}
                                         errors={errors}
@@ -159,15 +159,15 @@ const PuzzleGame = (props) => {
             <ProtocolBlock>
                 {isLessonFinished && (
                     <>
-                        <ProtocolBlockTitle>{t('simultaneous_visual_perception')}</ProtocolBlockTitle>
-                        <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
+                        <ProtocolBlockTitle>{t('Симультанное зрительное восприятие')}</ProtocolBlockTitle>
+                        <ProtocolResultTitle>{t('Варианты заключения')}</ProtocolResultTitle>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>{t('perception')}</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('Восприятие')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('violated')}
+                                        label={t('Нарушено')}
                                         name='game_puzzle.perception'
                                         control={control}
                                         errors={errors}
@@ -177,7 +177,7 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('not_violated')}
+                                        label={t('Не нарушено')}
                                         name='game_puzzle.perception'
                                         control={control}
                                         errors={errors}
@@ -189,8 +189,8 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('perception_corresponds_to_the_age')}
-                                        value={t('the_level_of_perception_corresponds_to_the_age')}
+                                        label={t('Восприятие соответствует возрасту')}
+                                        value={t('Уровень восприятия соответствует возрасту')}
                                         name='game_puzzle.level_of_perception'
                                         control={control}
                                         errors={errors}
@@ -200,8 +200,8 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('does_not_correspond_to_the_age')}
-                                        value={t('the_level_of_perception_does_not_correspond_to_the_age')}
+                                        label={t('Восприятие не соответствует возрасту')}
+                                        value={t('Уровень восприятия не соответствует возрасту')}
                                         name='game_puzzle.level_of_perception'
                                         control={control}
                                         errors={errors}
@@ -215,9 +215,9 @@ const PuzzleGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label={t('comment')}
+                        label={t('Комментарий')}
                         name='game_puzzle.expert_comment'
-                        placeholder={t('expert_comment')}
+                        placeholder={t('Комментарий специалиста')}
                         register={register}
                         errors={errors}
                         disabled={disabled}
