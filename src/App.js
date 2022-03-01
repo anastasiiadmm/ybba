@@ -52,7 +52,7 @@ import LocalizationButton from './Containers/LocalizationButton/LocalizationButt
 const App = () => {
 
     return (
-        <BrowserRouter basename='/platform'>
+        <BrowserRouter basename='/diagnostics'>
             <ToastContainer
                 position='top-right'
                 autoClose={5000}
