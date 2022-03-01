@@ -59,6 +59,7 @@ const PuzzleGame = (props) => {
                     <>
                         <ProtocolRow>
                             <ProtocolDescriptionSubtitle>{t('Варианты заключения')}</ProtocolDescriptionSubtitle>
+                            <ProtocolBlockTitle>{t('Губно-зубные')}</ProtocolBlockTitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
