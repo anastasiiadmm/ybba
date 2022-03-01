@@ -17,6 +17,7 @@ import { checkUserRole } from 'utils/user';
 import { authSelector } from 'redux/auth/authSlice';
 import { LessonContext } from 'context/LessonContext/LessonContext';
 import { JitsiContext } from 'context/JitsiContext/JitsiContext';
+import { isTestLesson } from '../../../utils/common/commonUtils';
 
 const GameContainer = (props) => {
   const { lesson } = props;
@@ -38,20 +39,23 @@ const GameContainer = (props) => {
   }, [lesson]);
 
   const getUserDataForGame = useCallback(() => {
+    const playersNum = isTestLesson(lessonId) ? 1 : 2;
+
     return {
       nickName: user.email,
       roomId: lessonId,
       gameType: lesson.active_game_id,
       developmentMode: config.appEnvironment === envs.local,
       userRole: gameUserRoles[user.role],
-      playersNum: 2,
       //Выбор языка билда: 0 - русский; 1 - английский
       languageType: 0,
+      playersNum,
     }
   }, [lesson, lessonId, user]);
 
   const updateGameJsonData = useCallback(() => {
     const userGameData = getUserDataForGame();
+    console.log(userGameData);
     unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData));
   }, [getUserDataForGame, unityContext]);
 

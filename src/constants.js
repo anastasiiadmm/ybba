@@ -148,6 +148,13 @@ export const envs = {
     production: 'production'
 }
 
+export const lessonTestIds = {
+    [envs.local]: 'f665ff77-8116-4d8b-85e4-ef0a2ddc1a19',
+    [envs.development]: 'f665ff77-8116-4d8b-85e4-ef0a2ddc1a19',
+    [envs.staging]: 'd76a4526-bbe1-4bba-b804-37379e120e6e',
+    [envs.production]: 'd76a4526-bbe1-4bba-b804-37379e120e6e'
+};
+
 export const apiPath = '/api/v1'
 export const wsPath = '/ws'
 
