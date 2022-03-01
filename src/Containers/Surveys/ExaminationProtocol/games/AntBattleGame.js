@@ -679,7 +679,7 @@ const AntBattleGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('orolingual')}
+                                label={t('Оролингвальные')}
                                 name='game_ant_battle.orolingual'
                                 control={control}
                                 errors={errors}
@@ -689,7 +689,7 @@ const AntBattleGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('optolingual')}
+                                label={t('Оптолингвальные')}
                                 name='game_ant_battle.opto_lingual'
                                 control={control}
                                 errors={errors}
