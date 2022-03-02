@@ -33,7 +33,7 @@ const LocalizationButton = () => {
                     className='option__field'
                 >
                     {languages.map((l) => (
-                        <option value={l.code}>{l.name}</option>
+                        <option key={l.code} value={l.code}>{l.name}</option>
                     ))}
                 </NativeSelect>
             </FormControl>
