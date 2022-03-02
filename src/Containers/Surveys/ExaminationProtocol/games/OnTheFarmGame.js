@@ -28,16 +28,16 @@ const OnTheFarmGame = (props) => {
     return (
         <>
             <ProtocolBlock>
-                <ProtocolTitleGame>{t('farm_game_part_1')}</ProtocolTitleGame>
-                <ProtocolBlockTitle>{t('examination_of_the_level_of_formation_of_the_lexicon')}</ProtocolBlockTitle>
-                <ProtocolBlockSubTitle>{t('subject_dictionary')}</ProtocolBlockSubTitle>
+                <ProtocolTitleGame>{t('Игра «На ферме». Часть 1')}</ProtocolTitleGame>
+                <ProtocolBlockTitle>{t('Обследование уровня сформированности лексикона')}</ProtocolBlockTitle>
+                <ProtocolBlockSubTitle>{t('Предметный словарь')}</ProtocolBlockSubTitle>
                 <ProtocolBox>
-                    <ProtocolBoxTitle>{t('generalizing_concepts')}</ProtocolBoxTitle>
+                    <ProtocolBoxTitle>{t('Обобщающие понятия')}</ProtocolBoxTitle>
                     <ProtocolRowText>
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Босоножки, ботинки, носки, сапоги'
+                                label={t('Босоножки, ботинки, носки, сапоги')}
                                 name='game_on_the_farm.sandals_boots_socks_boots'
                                 register={register}
                                 errors={errors}
@@ -47,7 +47,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Обувь (одежда)'
+                                label={t('Обувь (одежда)')}
                                 name='game_on_the_farm.shoes_clothes'
                                 register={register}
                                 errors={errors}
@@ -145,11 +145,11 @@ const OnTheFarmGame = (props) => {
                     </ProtocolRowText>
                 </ProtocolBox>
                 <ProtocolBox>
-                    <ProtocolBoxTitle>{t('baby_animals')}</ProtocolBoxTitle>
+                    <ProtocolBoxTitle>{t('Детеныши животных')}</ProtocolBoxTitle>
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('cat_kitten')}
+                            label={t('Кошка — котенок')}
                             name='game_on_the_farm.cat_kitten'
                             register={register}
                             errors={errors}
@@ -159,7 +159,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('dog_puppy')}
+                            label={t('Собака — щенок')}
                             name='game_on_the_farm.dog_puppy'
                             register={register}
                             errors={errors}
@@ -169,7 +169,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('cow_calf')}
+                            label={t('Корова — теленок')}
                             name='game_on_the_farm.cow_calf'
                             register={register}
                             errors={errors}
@@ -179,7 +179,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('pig_piglet')}
+                            label={t('Свинья — поросенок')}
                             name='game_on_the_farm.pig_piglet'
                             register={register}
                             errors={errors}
@@ -187,13 +187,13 @@ const OnTheFarmGame = (props) => {
                         />
                     </ProtocolRow>
                 </ProtocolBox>
-                <ProtocolBlockSubTitle>{t('verb_dictionary')}</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>{t('Глагольный словарь')}</ProtocolBlockSubTitle>
                 <ProtocolBox>
-                    <ProtocolBoxTitle>{t('name_of_actions')}</ProtocolBoxTitle>
+                    <ProtocolBoxTitle>{t('Название действий')}</ProtocolBoxTitle>
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('cat_meows')}
+                            label={t('Кошка мяукает')}
                             name='game_on_the_farm.cat_meows'
                             register={register}
                             errors={errors}
@@ -203,7 +203,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('dog_barking')}
+                            label={t('Собака лает')}
                             name='game_on_the_farm.dog_barks'
                             register={register}
                             errors={errors}
@@ -213,7 +213,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('cow_mooing')}
+                            label={t('Корова мычит')}
                             name='game_on_the_farm.cow_hums'
                             register={register}
                             errors={errors}
@@ -223,7 +223,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('the_pig_grunts')}
+                            label={t('Свинья хрюкает')}
                             name='game_on_the_farm.pig_grunts'
                             register={register}
                             errors={errors}
@@ -231,13 +231,13 @@ const OnTheFarmGame = (props) => {
                         />
                     </ProtocolRow>
                 </ProtocolBox>
-                <ProtocolBlockSubTitle>{t('feature_dictionary')}</ProtocolBlockSubTitle>
+                <ProtocolBlockSubTitle>{t('Словарь признаков')}</ProtocolBlockSubTitle>
                 <ProtocolBox>
-                    <ProtocolBoxTitle>{t('antonym_survey')}</ProtocolBoxTitle>
+                    <ProtocolBoxTitle>{t('Обследование антонимов')}</ProtocolBoxTitle>
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('low_high_home')}
+                            label={t('Низкий — Высокий (дом)')}
                             name='game_on_the_farm.low_high_home'
                             register={register}
                             errors={errors}
@@ -247,7 +247,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('wide_narrow_belt')}
+                            label={t('Широкий — Узкий (пояс)')}
                             name='game_on_the_farm.wide_narrow_belt'
                             register={register}
                             errors={errors}
@@ -257,7 +257,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('heavy_light_bucket_of_water_ball')}
+                            label={t('Тяжелый — Легкий (ведро с водой — шарик)')}
                             name='game_on_the_farm.heavy_light_bucket_of_water_ball'
                             register={register}
                             errors={errors}
@@ -267,7 +267,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('clean_dirty_piggy')}
+                            label={t('Чистый — Грязный (поросенок)')}
                             name='game_on_the_farm.clean_dirty_pig'
                             register={register}
                             errors={errors}
@@ -277,7 +277,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('slow_fast_snail')}
+                            label={t('Медленный — Быстрый (улитка)')}
                             name='game_on_the_farm.slow_fast_snail'
                             register={register}
                             errors={errors}
@@ -287,7 +287,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('sad_cheerful_puppy')}
+                            label={t('Грустный — Веселый (щенок)')}
                             name='game_on_the_farm.sad_cheerful_puppy'
                             register={register}
                             errors={errors}
@@ -297,7 +297,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('dry_wet_grasshopper')}
+                            label={t('Сухой — Мокрый (кузнечик)')}
                             name='game_on_the_farm.dry_wet_grasshopper'
                             register={register}
                             errors={errors}
@@ -307,7 +307,7 @@ const OnTheFarmGame = (props) => {
                     <ProtocolRow>
                         <ProtocolFormField
                             type='text'
-                            label={t('cold_hot_ice_cream_potatoes')}
+                            label={t('Холодный — Горячий (мороженое — картошка)')}
                             name='game_on_the_farm.cold_hot_ice_cream_potatoes'
                             register={register}
                             errors={errors}
@@ -317,14 +317,14 @@ const OnTheFarmGame = (props) => {
                 </ProtocolBox>
                 {isLessonFinished && (
                     <>
-                        <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
+                        <ProtocolResultTitle>{t('Варианты заключения')}</ProtocolResultTitle>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>{t('level_of_speech_understandin')}</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('Уровень понимания речи')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('null')}
+                                        label={t('Нулевой')}
                                         name='game_on_the_farm.speech_comprehension_level'
                                         control={control}
                                         errors={errors}
@@ -334,7 +334,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('situational')}
+                                        label={t('Ситуативный')}
                                         name='game_on_the_farm.speech_comprehension_level'
                                         control={control}
                                         errors={errors}
@@ -344,7 +344,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('nominative')}
+                                        label={t('Номинативный')}
                                         name='game_on_the_farm.speech_comprehension_level'
                                         control={control}
                                         errors={errors}
@@ -354,7 +354,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('predicative')}
+                                        label={t('Предикативный')}
                                         name='game_on_the_farm.speech_comprehension_level'
                                         control={control}
                                         errors={errors}
@@ -364,7 +364,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('dissected')}
+                                        label={t('Расчлененный')}
                                         name='game_on_the_farm.speech_comprehension_level'
                                         control={control}
                                         errors={errors}
@@ -376,7 +376,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
-                                        label={t('the_presence_of_the_phenomenon_of_alienation_of_the_meaning_of_the_word')}
+                                        label={t('Наличие феномена отчуждения смысла слова')}
                                         name='game_on_the_farm.presence_of_phenomenon_of_alienation'
                                         control={control}
                                         errors={errors}
@@ -384,12 +384,12 @@ const OnTheFarmGame = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>{t('the_level_of_formation_of_the_lexicon')}</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('Уровень сформированности лексикона')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('corresponds_to_the_age_norm')}
+                                        label={t('Соответствует возрастной норме')}
                                         name='game_on_the_farm.level_of_vocabulary_formation'
                                         control={control}
                                         errors={errors}
@@ -399,7 +399,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('not_age_appropriate')}
+                                        label={t('Не соответствует возрасту')}
                                         name='game_on_the_farm.level_of_vocabulary_formation'
                                         control={control}
                                         errors={errors}
@@ -407,12 +407,12 @@ const OnTheFarmGame = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>{t('active_semantic_component_active_dictionary')}</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('Активный семантический компонент (активный словарь)')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('violation_of_the_word_actualization_the_choice_of_a_word_from_the_semantic_field_is_violated')}
+                                        label={t('Нарушение актуализации слов — нарушен выбор слова из семантического поля')}
                                         name='game_on_the_farm.active_semantic_component_active_vocabulary'
                                         control={control}
                                         errors={errors}
@@ -422,7 +422,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('presence_of_neologisms')}
+                                        label={t('Наличие неологизмов')}
                                         name='game_on_the_farm.active_semantic_component_active_vocabulary'
                                         control={control}
                                         errors={errors}
@@ -430,12 +430,12 @@ const OnTheFarmGame = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>{t('subject_relatedness_of_the_word')}</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('Предметная отнесенность слова')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('sustainable')}
+                                        label={t('Устойчивая')}
                                         name='game_on_the_farm.subject_relation_of_a_word'
                                         control={control}
                                         errors={errors}
@@ -445,7 +445,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('unstable')}
+                                        label={t('Неустойчивая')}
                                         name='game_on_the_farm.subject_relation_of_a_word'
                                         control={control}
                                         errors={errors}
@@ -453,12 +453,12 @@ const OnTheFarmGame = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>{t('verbal_paraphasias')}</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('Вербальные парафазии')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('literal')}
+                                        label={t('Литеральные')}
                                         name='game_on_the_farm.verbal_paraphasias'
                                         control={control}
                                         errors={errors}
@@ -468,7 +468,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('verbal_a_mixture_of_species_characteristics')}
+                                        label={t('Вербальные — смешение видовых признаков')}
                                         name='game_on_the_farm.verbal_paraphasias'
                                         control={control}
                                         errors={errors}
@@ -478,7 +478,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('verbal_mixing_signs_part_body')}
+                                        label={t('Вербальные — смешение признаков часть/тело')}
                                         name='game_on_the_farm.verbal_paraphasias'
                                         control={control}
                                         errors={errors}
@@ -488,7 +488,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('verbal_replacing_the_name_of_an_object_with_a_contextual_action')}
+                                        label={t('Вербальные — замена названия предмета контекстным действием')}
                                         name='game_on_the_farm.verbal_paraphasias'
                                         control={control}
                                         errors={errors}
@@ -498,7 +498,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('verbal_mixing_by_resemblance')}
+                                        label={t('Вербальные — смешение по внешнему сходству')}
                                         name='game_on_the_farm.verbal_paraphasias'
                                         control={control}
                                         errors={errors}
@@ -506,12 +506,12 @@ const OnTheFarmGame = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>{t('dictionary_volume')}</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('Объем словаря')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('limited')}
+                                        label={t('Ограничен')}
                                         name='game_on_the_farm.vocabulary_size'
                                         control={control}
                                         errors={errors}
@@ -521,7 +521,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('sharply_limited')}
+                                        label={t('Резко ограничен')}
                                         name='game_on_the_farm.vocabulary_size'
                                         control={control}
                                         errors={errors}
@@ -531,7 +531,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('sufficient_for_full_communication')}
+                                        label={t('Достаточный для осуществления полноценной коммуникации')}
                                         name='game_on_the_farm.vocabulary_size'
                                         control={control}
                                         errors={errors}
@@ -543,7 +543,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('very_few_peripheral_words_even_from_the_most_common_pragmatically_valuable_thematic_groups_for_this_age')}
+                                        label={t('Очень мало «периферийных» слов даже из наиболее распространенных, прагматически ценных для этого возраста тематических групп')}
                                         name='game_on_the_farm.vocabulary_size_part_two'
                                         control={control}
                                         errors={errors}
@@ -553,7 +553,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('the_dictionary_mainly_consists_of_words_denoting_objects')}
+                                        label={t('Словарь преимущественно состоит из слов, обозначающих предметы, наблюдается дефицит глагольного словаря, практически отсутствуют слова, обозначающие признаки и качества предметов. Словарь представлен небольшим количеством слов обиходно-бытовой тематики')}
                                         name='game_on_the_farm.vocabulary_size_part_two'
                                         control={control}
                                         errors={errors}
@@ -561,12 +561,12 @@ const OnTheFarmGame = (props) => {
                                     />
                                 </ProtocolResultWrapper>
                             </ProtocolResultBlock>
-                            <ProtocolDescriptionSubtitle>{t('dictionary_system_organization')}</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('Системная организация словаря')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('the_system_organization_of_the_dictionary_is_at_the_very_initial_stage_of_formation')}
+                                        label={t('Системная организация словаря находится на самом начальном этапе формирования; наблюдаются слабые ассоциативные связи, преобладают случайные, немотивированные ассоциации')}
                                         name='game_on_the_farm.systemic_vocabulary_organization'
                                         control={control}
                                         errors={errors}
@@ -576,7 +576,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('the_organization_of_the_dictionary_is_unsystematic_lacking_motivated_adequate_associations')}
+                                        label={t('Организация словаря отличается бессистемностью, отсутствием мотивированных адекватных ассоциаций')}
                                         name='game_on_the_farm.systemic_vocabulary_organization'
                                         control={control}
                                         errors={errors}
@@ -586,7 +586,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('the_systemic_organization_of_the_dictionary_is_at_the_level_of_establishing')}
+                                        label={t('Системная организация словаря находится на уровне установления первичных тематически/ситуативно обусловленных связей, наблюдаются выраженные (незначительные) трудности установления родовидовых, антонимических и пр. отношений между словами, входящими в индивидуальный словарный запас; в лексиконе много слов, значение которых усвоено только на номинативном уровне')}
                                         name='game_on_the_farm.systemic_vocabulary_organization'
                                         control={control}
                                         errors={errors}
@@ -596,7 +596,7 @@ const OnTheFarmGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
-                                        label={t('the_systemic_organization_of_the_dictionary_is_distinguished_by_a_large_number_and_variety_of_semantic_and_formal_connections')}
+                                        label={t('Системная организация словаря отличается большим количеством и разнообразием смысловых и формальных связей; в лексиконе преобладают слова, значение которых усвоено на понятийном уровне')}
                                         name='game_on_the_farm.systemic_vocabulary_organization'
                                         control={control}
                                         errors={errors}
@@ -610,9 +610,9 @@ const OnTheFarmGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label={t('comment')}
+                        label={t('Комментарий')}
                         name='game_on_the_farm.expert_comment'
-                        placeholder={t('expert_comment')}
+                        placeholder={t('Комментарий специалиста')}
                         errors={errors}
                         register={register}
                         disabled={disabled}

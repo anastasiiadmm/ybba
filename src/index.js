@@ -13,7 +13,6 @@ import FirebaseBlock from 'Containers/FirebaseBlock/FirebaseBlock.js';
 import App from 'App.js';
 import BrowserPermissionsBlock from 'Containers/BrowserPermissionsBlock/BrowserPermissionsBlock';
 
-import translationsRu from 'assets/locales/ru/translationRu.json';
 import translationsEn from 'assets/locales/en/translationsEn.json';
 
 import 'assets/vendor/flatpickr/flatpickr'
@@ -32,7 +31,6 @@ i18n
     .use(initReactI18next)
     .init({
         resources: {
-            ru: { translation: translationsRu },
             en: { translation: translationsEn },
         },
         lng: 'ru',

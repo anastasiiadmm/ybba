@@ -23,8 +23,8 @@ const CapriciousPrincessGame = (props) => {
     return (
         <>
             <ProtocolBlock>
-                <ProtocolPlaceholderTitle>{t('game_cranky_princess')}</ProtocolPlaceholderTitle>
-                <ProtocolBlockTitle>{t('syllabic_structure')}</ProtocolBlockTitle>
+                <ProtocolPlaceholderTitle>{t('Игра «Капризная принцесса»')}</ProtocolPlaceholderTitle>
+                <ProtocolBlockTitle>{t('Слоговая структура')}</ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
@@ -87,12 +87,12 @@ const CapriciousPrincessGame = (props) => {
                 </ProtocolRow>
                 {isLessonFinished && (
                     <>
-                        <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
+                        <ProtocolResultTitle>{t('Варианты заключения')}</ProtocolResultTitle>
                         <ProtocolResultBlock>
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label={t('the_syllabic_structure_of_the_word_is_not_broken')}
+                                    label={t('Слоговая структура слова не нарушена')}
                                     name='game_capricious_princess.syllabic_structure_of_a_word'
                                     control={control}
                                     errors={errors}
@@ -102,7 +102,7 @@ const CapriciousPrincessGame = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label={t('syllabic_structure_is_broken')}
+                                    label={t('Слоговая структура нарушена')}
                                     name='game_capricious_princess.syllabic_structure_of_a_word'
                                     control={control}
                                     errors={errors}
@@ -110,12 +110,12 @@ const CapriciousPrincessGame = (props) => {
                                 />
                             </ProtocolResultWrapper>
                         </ProtocolResultBlock>
-                        <ProtocolDescriptionSubtitle>{t('dyspraxic_disorders')}</ProtocolDescriptionSubtitle>
+                        <ProtocolDescriptionSubtitle>{t('Диспраксичные нарушения')}</ProtocolDescriptionSubtitle>
                         <ProtocolResultBlock>
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='checkbox'
-                                    label={t('skipping_syllables')}
+                                    label={t('Пропуски слогов')}
                                     name='game_capricious_princess.missing_syllables'
                                     control={control}
                                     errors={errors}
@@ -125,7 +125,7 @@ const CapriciousPrincessGame = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='checkbox'
-                                    label={t('omissions_of_syllable_forming_vowels')}
+                                    label={t('Пропуски слогообразующих гласных')}
                                     name='game_capricious_princess.missing_syllabic_vowels'
                                     control={control}
                                     errors={errors}
@@ -135,7 +135,7 @@ const CapriciousPrincessGame = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='checkbox'
-                                    label={t('permutations_of_sounds_and_or_syllables')}
+                                    label={t('Перестановки звуков и/или слогов')}
                                     name='game_capricious_princess.permutations_of_sounds_and_or_syllables'
                                     control={control}
                                     errors={errors}
@@ -145,7 +145,7 @@ const CapriciousPrincessGame = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='checkbox'
-                                    label={t('inserting_vowels_into_consonant_clusters')}
+                                    label={t('Вставки гласных в стечение согласных')}
                                     name='game_capricious_princess.insertion_of_vowels_into_consonants'
                                     control={control}
                                     errors={errors}
@@ -155,7 +155,7 @@ const CapriciousPrincessGame = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='checkbox'
-                                    label={t('adding_syllables')}
+                                    label={t('Добавление слогов')}
                                     name='game_capricious_princess.adding_syllables'
                                     control={control}
                                     errors={errors}
@@ -164,11 +164,11 @@ const CapriciousPrincessGame = (props) => {
                             </ProtocolResultWrapper>
                             {errors.choices14 && <div className='form2__error'> {errors.choices14.message}</div>}
                         </ProtocolResultBlock>
-                        <ProtocolDescriptionSubtitle>{t('gnostic_violations')}</ProtocolDescriptionSubtitle>
+                        <ProtocolDescriptionSubtitle>{t('Гностические нарушения')}</ProtocolDescriptionSubtitle>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('consonant_contractions')}
+                                label={t('Сокращения стечения согласных')}
                                 name='game_capricious_princess.consonant_reduction'
                                 control={control}
                                 errors={errors}
@@ -178,7 +178,7 @@ const CapriciousPrincessGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('inserting_consonants_into_a_syllable')}
+                                label={t('Вставки согласных в слог')}
                                 name='game_capricious_princess.inserting_consonants_into_a_syllable'
                                 control={control}
                                 errors={errors}
@@ -188,7 +188,7 @@ const CapriciousPrincessGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('anticepation')}
+                                label={t('Антиципации')}
                                 name='game_capricious_princess.anticipation'
                                 control={control}
                                 errors={errors}
@@ -198,7 +198,7 @@ const CapriciousPrincessGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('assimilation_of_syllables')}
+                                label={t('Уподобление слогов')}
                                 name='game_capricious_princess.assimilation_of_syllables'
                                 control={control}
                                 errors={errors}
@@ -208,7 +208,7 @@ const CapriciousPrincessGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('adding_syllables')}
+                                label={t('Добавление слогов')}
                                 name='game_capricious_princess.gnotic_violations_addition_of_syllables'
                                 control={control}
                                 errors={errors}
@@ -221,9 +221,9 @@ const CapriciousPrincessGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='textarea'
-                        label={t('comment')}
+                        label={t('Комментарий')}
                         name='game_capricious_princess.expert_comment'
-                        placeholder={t('expert_comment')}
+                        placeholder={t('Комментарий специалиста')}
                         errors={errors}
                         register={register}
                         disabled={disabled}

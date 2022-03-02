@@ -22,8 +22,8 @@ const GiraffeGame = (props) => {
     return (
         <>
             <ProtocolBlock>
-                <ProtocolPlaceholderTitle>{t('game_giraffe')}</ProtocolPlaceholderTitle>
-                <ProtocolBlockTitle>{t('sound_reproduction')} <span>{t('Звуки Р, Рь, Л, Ль')}</span></ProtocolBlockTitle>
+                <ProtocolPlaceholderTitle>{t('Игра «Жираф»')}</ProtocolPlaceholderTitle>
+                <ProtocolBlockTitle>{t('Звукопроизношение')} <span>{t('Звуки Р, Рь, Л, Ль')}</span></ProtocolBlockTitle>
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
@@ -66,14 +66,14 @@ const GiraffeGame = (props) => {
                 </ProtocolRow>
 
 
-                <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
+                <ProtocolResultTitle>{t('Варианты заключения')}</ProtocolResultTitle>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>{t('rotacism')}</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('Ротацизм')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('throat_rotacism')}
+                                label={t('Горловой ротацизм')}
                                 name='game_giraffe.throat_rotacism'
                                 control={control}
                                 errors={errors}
@@ -83,7 +83,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkboxWithField'
-                                label={t('replacing_P_with')}
+                                label={t('Замена Р на')}
                                 name='game_giraffe.replacing_p_with'
                                 control={control}
                                 errors={errors}
@@ -93,7 +93,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkboxWithField'
-                                label={t('replacing_Pb_with')}
+                                label={t('Замена Рь на')}
                                 name='game_giraffe.replacing_p_soft_with'
                                 control={control}
                                 errors={errors}
@@ -103,7 +103,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('buccal')}
+                                label={t('Щечный')}
                                 name='game_giraffe.buccal'
                                 control={control}
                                 errors={errors}
@@ -113,7 +113,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('side')}
+                                label={t('Боковой')}
                                 name='game_giraffe.side'
                                 control={control}
                                 errors={errors}
@@ -123,7 +123,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('single_stroke_pronunciation')}
+                                label={t('Одноударное произношение')}
                                 name='game_giraffe.one_hit_pronunciation'
                                 control={control}
                                 errors={errors}
@@ -133,7 +133,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('pass')}
+                                label={t('Пропуск')}
                                 name='game_giraffe.skip'
                                 control={control}
                                 errors={errors}
@@ -144,12 +144,12 @@ const GiraffeGame = (props) => {
                     </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>{t('lambdacism')}</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('Ламбдацизм')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('interdental_lambdacism')}
+                                label={t('Межзубный ламбдацизм')}
                                 name='game_giraffe.interdental_lambdacism'
                                 control={control}
                                 errors={errors}
@@ -159,7 +159,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkboxWithField'
-                                label={t('replacing_L_with')}
+                                label={t('Замена Л на')}
                                 name='game_giraffe.replacing_l_with'
                                 control={control}
                                 errors={errors}
@@ -169,7 +169,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkboxWithField'
-                                label={t('replacing_L_soft_with')}
+                                label={t('Замена Ль на')}
                                 name='game_giraffe.replacing_l_soft_with'
                                 control={control}
                                 errors={errors}
@@ -179,7 +179,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('nasal')}
+                                label={t('Носовой')}
                                 name='game_giraffe.nasal'
                                 control={control}
                                 errors={errors}
@@ -189,7 +189,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('pass')}
+                                label={t('Пропуск')}
                                 name='game_giraffe.lambdacism_pass'
                                 control={control}
                                 errors={errors}
@@ -199,7 +199,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('bilabial')}
+                                label={t('Двугубный')}
                                 name='game_giraffe.two_lipped'
                                 control={control}
                                 errors={errors}
@@ -209,7 +209,7 @@ const GiraffeGame = (props) => {
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'
-                                label={t('distortion')}
+                                label={t('Искажение')}
                                 name='game_giraffe.distortion'
                                 control={control}
                                 errors={errors}
@@ -223,15 +223,15 @@ const GiraffeGame = (props) => {
             {isLessonFinished && (
               <>
                   <ProtocolBlock>
-                      <ProtocolBlockTitle>{t('psychological_base_of_speech_thinking')}</ProtocolBlockTitle>
-                      <ProtocolResultTitle>{t('conclusion_options')}</ProtocolResultTitle>
+                      <ProtocolBlockTitle>{t('Психологическая база речи. Мышление')}</ProtocolBlockTitle>
+                      <ProtocolResultTitle>{t('Варианты заключения')}</ProtocolResultTitle>
                       <ProtocolRow>
-                          <ProtocolDescriptionSubtitle>{t('thinking')}</ProtocolDescriptionSubtitle>
+                          <ProtocolDescriptionSubtitle>{t('Мышление')}</ProtocolDescriptionSubtitle>
                           <ProtocolResultBlock>
                               <ProtocolResultWrapper>
                                   <ProtocolFormField
                                       type='radio'
-                                      label={t('age_appropriate')}
+                                      label={t('Соответствует возрасту')}
                                       name='game_giraffe.thinking'
                                       control={control}
                                       errors={errors}
@@ -241,7 +241,7 @@ const GiraffeGame = (props) => {
                               <ProtocolResultWrapper>
                                   <ProtocolFormField
                                       type='radio'
-                                      label={t('not_age_appropriate')}
+                                      label={t('Не соответствует возрасту')}
                                       name='game_giraffe.thinking'
                                       control={control}
                                       errors={errors}
@@ -253,7 +253,7 @@ const GiraffeGame = (props) => {
                               <ProtocolResultWrapper>
                                   <ProtocolFormField
                                       type='radio'
-                                      label={t('violated')}
+                                      label={t('Нарушено')}
                                       name='game_giraffe.thinking_part_two'
                                       control={control}
                                       errors={errors}
@@ -263,7 +263,7 @@ const GiraffeGame = (props) => {
                               <ProtocolResultWrapper>
                                   <ProtocolFormField
                                       type='radio'
-                                      label={t('not_violated')}
+                                      label={t('Не нарушено')}
                                       name='game_giraffe.thinking_part_two'
                                       control={control}
                                       errors={errors}
@@ -275,7 +275,7 @@ const GiraffeGame = (props) => {
                               <ProtocolResultWrapper>
                                   <ProtocolFormField
                                       type='checkbox'
-                                      label={t('there_are_difficulties_in_establishing_adequate_links_between_objects_and_phenomena_of_the_surrounding_world')}
+                                      label={t('Наблюдаются трудности установления адекватных связей между предметами и явлениями окружающего мира')}
                                       name='game_giraffe.there_are_difficulties_in_protecting_adequate_connections'
                                       control={control}
                                       errors={errors}
@@ -286,23 +286,12 @@ const GiraffeGame = (props) => {
                       </ProtocolRow>
                   </ProtocolBlock>
                   <ProtocolRow>
-                      <ProtocolDescriptionSubtitle>{t('kind_of_thinking')}</ProtocolDescriptionSubtitle>
+                      <ProtocolDescriptionSubtitle>{t('Вид мышления')}</ProtocolDescriptionSubtitle>
                       <ProtocolResultBlock>
                           <ProtocolResultWrapper>
                               <ProtocolFormField
                                   type='radio'
-                                  label={t('visually_effective_thinking')}
-                                  name='game_giraffe.kind_of_thinking'
-                                  value={t('visually_effective_thinking')}
-                                  control={control}
-                                  errors={errors}
-                                  disabled={isConclusionDisabled || disabled}
-                              />
-                          </ProtocolResultWrapper>
-                          <ProtocolResultWrapper>
-                              <ProtocolFormField
-                                  type='radio'
-                                  label={t('visually_shaped_thinking_is_targeted_organized')}
+                                  label={t('Мышление наглядно-действенное. Решение мыслительных задач осуществляется только на уровне практических действий')}
                                   name='game_giraffe.kind_of_thinking'
                                   control={control}
                                   errors={errors}
@@ -312,8 +301,7 @@ const GiraffeGame = (props) => {
                           <ProtocolResultWrapper>
                               <ProtocolFormField
                                   type='radio'
-                                  label={t('visually_shaped_thinking_there_are_elements_of_verbal_logical_thinking')}
-                                  value={t('visually_shaped_thinking_there_are_elements_of_verbal_logical_thinking')}
+                                  label={t('Мышление наглядно-образное, носит целевой, организованный характер')}
                                   name='game_giraffe.kind_of_thinking'
                                   control={control}
                                   errors={errors}
@@ -323,7 +311,17 @@ const GiraffeGame = (props) => {
                           <ProtocolResultWrapper>
                               <ProtocolFormField
                                   type='radio'
-                                  label={t('verbal_logical_capable_of_giving_a_logical_explanation_to_his_actions')}
+                                  label={t('Мышление наглядно-образное, присутствуют элементы абстрактно-логического/словесно-логического мышления ')}
+                                  name='game_giraffe.kind_of_thinking'
+                                  control={control}
+                                  errors={errors}
+                                  disabled={isConclusionDisabled || disabled}
+                              />
+                          </ProtocolResultWrapper>
+                          <ProtocolResultWrapper>
+                              <ProtocolFormField
+                                  type='radio'
+                                  label={t('Словесно-логическое, способен давать своим действиям логическое объяснение')}
                                   name='game_giraffe.kind_of_thinking'
                                   control={control}
                                   errors={errors}
@@ -337,9 +335,9 @@ const GiraffeGame = (props) => {
             <ProtocolRow>
                 <ProtocolFormField
                     type='textarea'
-                    label={t('comment')}
+                    label={t('Комментарий')}
                     name='game_giraffe.expert_comment'
-                    placeholder={t('expert_comment')}
+                    placeholder={t('Комментарий специалиста')}
                     errors={errors}
                     register={register}
                     disabled={disabled}
