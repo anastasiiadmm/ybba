@@ -328,7 +328,7 @@ const OnTheFarmPartThree = (props) => {
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='radio'
-                                    label={t('pronounced_cognitive_activity_and_motivation_for_subject_subject_game_activity')}
+                                    label={t('Ярко выраженная познавательная активность и мотивация к предметной, предметно-игровой деятельности')}
                                     name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                                     control={control}
                                     errors={errors}

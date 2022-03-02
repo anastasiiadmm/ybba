@@ -37,7 +37,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Босоножки, ботинки, носки, сапоги'
+                                label={t('Босоножки, ботинки, носки, сапоги')}
                                 name='game_on_the_farm.sandals_boots_socks_boots'
                                 register={register}
                                 errors={errors}
@@ -47,7 +47,7 @@ const OnTheFarmGame = (props) => {
                         <ProtocolCol>
                             <ProtocolFormField
                                 type='text'
-                                label='Обувь (одежда)'
+                                label={t('Обувь (одежда)')}
                                 name='game_on_the_farm.shoes_clothes'
                                 register={register}
                                 errors={errors}

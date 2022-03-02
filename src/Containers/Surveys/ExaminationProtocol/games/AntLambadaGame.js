@@ -48,7 +48,7 @@ const AntLambadaGame = (props) => {
                 <ProtocolRow>
                     <ProtocolFormField
                         type='text'
-                        label='Кухня-Хомяк-Гусь /К – Х, Г'
+                        label={t('Кухня-Хомяк-Гусь /К – Х, Г')}
                         name='game_ant_lambada.kitchen_hamster_goose'
                         register={register}
                         errors={errors}

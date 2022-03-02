@@ -338,7 +338,7 @@ const ExaminationProtocol = (props) => {
                             </ProtocolResultBlock>
                         </ProtocolRow>
                         <ProtocolRow>
-                            <ProtocolDescriptionSubtitle>{t('Знает, как его зовут, как зовут его родителей, где он живет ')}</ProtocolDescriptionSubtitle>
+                            <ProtocolDescriptionSubtitle>{t('Знает, как его зовут, как зовут его родителей, где он живет')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultWrapper>
                                 <ProtocolResultBlock>
                                     <ProtocolResultWrapper>
@@ -495,7 +495,7 @@ const ExaminationProtocol = (props) => {
                 </ProtocolRow>
                 <ProtocolPlaceholderTitle>{t('— Посмотри в воображаемую подзорную трубу')}</ProtocolPlaceholderTitle>
                 <ProtocolRow>
-                    <ProtocolDescriptionSubtitle>{t('Ведущая рука:')}</ProtocolDescriptionSubtitle>
+                    <ProtocolDescriptionSubtitle>{t('Ведущая рука')}</ProtocolDescriptionSubtitle>
                     <ProtocolResultBlock>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
