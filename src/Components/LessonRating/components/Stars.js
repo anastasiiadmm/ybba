@@ -26,7 +26,6 @@ function Stars({ values, swalClose }) {
     <form
       className="rating-outer-container"
       onSubmit={handleSubmit((data) => {
-        console.log(data);
         swalClose();
       })}
     >

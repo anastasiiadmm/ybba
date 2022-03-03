@@ -36,7 +36,6 @@ const ParentQuestionnaire = (props) => {
     const data = useWatch({ control })
 
     useEffect(() => {
-        console.log(protocol)
         if (protocol) {
             clearTimeout(timer)
             timer = setTimeout(() => {
