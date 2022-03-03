@@ -111,9 +111,29 @@ const CapriciousPrincessGame = (props) => {
                                     disabled={isConclusionDisabled || disabled}
                                 />
                             </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label={t('В пределах возрастной нормы')}
+                                    name='game_capricious_princess.syllabic_structure_of_a_word'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
                         </ProtocolResultBlock>
                         <ProtocolDescriptionSubtitle>{t('Диспраксичные нарушения')}</ProtocolDescriptionSubtitle>
                         <ProtocolResultBlock>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='checkbox'
+                                    label={t('Диспраксичные нарушения не наблюдаются')}
+                                    name=''
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
                             <ProtocolResultWrapper>
                                 <ProtocolFormField
                                     type='checkbox'
@@ -167,6 +187,16 @@ const CapriciousPrincessGame = (props) => {
                             {errors.choices14 && <div className='form2__error'> {errors.choices14.message}</div>}
                         </ProtocolResultBlock>
                         <ProtocolDescriptionSubtitle>{t('Гностические нарушения')}</ProtocolDescriptionSubtitle>
+                        <ProtocolResultWrapper>
+                            <ProtocolFormField
+                                type='checkbox'
+                                label={t('Гностические нарушения не наблюдаются')}
+                                name=''
+                                control={control}
+                                errors={errors}
+                                disabled={isConclusionDisabled || disabled}
+                            />
+                        </ProtocolResultWrapper>
                         <ProtocolResultWrapper>
                             <ProtocolFormField
                                 type='checkbox'

@@ -372,6 +372,16 @@ const OnTheFarmGame = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В пределах возрастной нормы')}
+                                        name='game_on_the_farm.speech_comprehension_level'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
                             </ProtocolResultBlock>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
@@ -407,9 +417,29 @@ const OnTheFarmGame = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В пределах возрастной нормы')}
+                                        name='game_on_the_farm.level_of_vocabulary_formation'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
                             </ProtocolResultBlock>
                             <ProtocolDescriptionSubtitle>{t('Активный семантический компонент (активный словарь)')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('Развит в соответствии с возрастом')}
+                                        name='game_on_the_farm.active_semantic_component_active_vocabulary'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
@@ -453,9 +483,29 @@ const OnTheFarmGame = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В пределах возрастной нормы')}
+                                        name='game_on_the_farm.subject_relation_of_a_word'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
                             </ProtocolResultBlock>
                             <ProtocolDescriptionSubtitle>{t('Вербальные парафазии')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('Не наблюдаются')}
+                                        name='game_on_the_farm.verbal_paraphasias'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='radio'
@@ -539,6 +589,16 @@ const OnTheFarmGame = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В пределах возрастной нормы')}
+                                        name='game_on_the_farm.vocabulary_size'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
                             </ProtocolResultBlock>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
@@ -555,6 +615,36 @@ const OnTheFarmGame = (props) => {
                                     <ProtocolFormField
                                         type='radio'
                                         label={t('Словарь преимущественно состоит из слов, обозначающих предметы, наблюдается дефицит глагольного словаря, практически отсутствуют слова, обозначающие признаки и качества предметов. Словарь представлен небольшим количеством слов обиходно-бытовой тематики')}
+                                        name='game_on_the_farm.vocabulary_size_part_two'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('Различает и называет части предметов, их качества (величину, цвет, форму, материал), некоторые сходные по назначению предметы (шуба – пальто), понимает обобщающие слова: игрушки, одежда, обувь, мебель')}
+                                        name='game_on_the_farm.vocabulary_size_part_two'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В словаре присутствуют слова, обозначающие местоположение предмета, время суток, характеризующие состояние и настроение человека; использует существительные, обозначающие названия частей и деталей предметов; прилагательные, обозначающие свойства; наиболее употребительные глаголы, наречия, предлоги')}
+                                        name='game_on_the_farm.vocabulary_size_part_two'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('Активно употребляет обобщающие слова, называет широкий круг предметов и явлений окружающей действительности. В предложении используются все части речи. Использует в речи существительные, обозначающие названия профессий; прилагательные, обозначающие признаки предметов; наречия, характеризующие отношения людей к труду; глаголы, характеризующие трудовую деятельность людей; слова со сходным значением, с обобщающим значением. Прилагательные, существительные, глаголы, наречия, предлоги употребляет правильно и точно по смыслу')}
                                         name='game_on_the_farm.vocabulary_size_part_two'
                                         control={control}
                                         errors={errors}
@@ -598,6 +688,16 @@ const OnTheFarmGame = (props) => {
                                     <ProtocolFormField
                                         type='radio'
                                         label={t('Системная организация словаря отличается большим количеством и разнообразием смысловых и формальных связей; в лексиконе преобладают слова, значение которых усвоено на понятийном уровне')}
+                                        name='game_on_the_farm.systemic_vocabulary_organization'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В пределах возрастной нормы')}
                                         name='game_on_the_farm.systemic_vocabulary_organization'
                                         control={control}
                                         errors={errors}

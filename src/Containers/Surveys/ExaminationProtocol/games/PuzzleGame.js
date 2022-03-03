@@ -66,6 +66,26 @@ const PuzzleGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
+                                        label={t('Звуки В, Вь произносятся нормативно')}
+                                        name=''
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label={t('Звуки Ф, Фь произносятся нормативно')}
+                                        name=''
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
                                         label={t('Носовой')}
                                         name='game_puzzle.nasal'
                                         control={control}
@@ -156,6 +176,17 @@ const PuzzleGame = (props) => {
                                 {errors.choices5 && <div className='form2__error'> {errors.choices5.message}</div>}
                             </ProtocolResultBlock>
                         </ProtocolRow>
+                        <ProtocolRow>
+                            <ProtocolFormField
+                                type='textarea'
+                                label={t('Комментарий')}
+                                name='game_puzzle.expert_comment'
+                                placeholder={t('Комментарий специалиста')}
+                                register={register}
+                                errors={errors}
+                                disabled={disabled}
+                            />
+                        </ProtocolRow>
                     </>
                 )}
             </ProtocolBlock>
@@ -187,6 +218,16 @@ const PuzzleGame = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В пределах возрастной нормы')}
+                                        name='game_puzzle.perception'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
                             </ProtocolResultBlock>
                             <ProtocolResultBlock>
                                 <ProtocolResultWrapper>
@@ -204,6 +245,17 @@ const PuzzleGame = (props) => {
                                     <ProtocolFormField
                                         type='radio'
                                         label={t('Восприятие не соответствует возрасту')}
+                                        value={t('Уровень восприятия не соответствует возрасту')}
+                                        name='game_puzzle.level_of_perception'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В пределах возрастной нормы')}
                                         value={t('Уровень восприятия не соответствует возрасту')}
                                         name='game_puzzle.level_of_perception'
                                         control={control}

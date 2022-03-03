@@ -214,6 +214,16 @@ const OnTheFarmPartTwoGame = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В пределах возрастной нормы')}
+                                        name='game_on_the_farm_part_two.level_of_grammatical_competence_formation'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
                             </ProtocolResultBlock>
                             <ProtocolDescriptionSubtitle>{t('Словоизменительные навыки и умения')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
@@ -251,6 +261,16 @@ const OnTheFarmPartTwoGame = (props) => {
                                     <ProtocolFormField
                                         type='radio'
                                         label={t('Словоизменительные навыки и умения сформированы')}
+                                        name='game_on_the_farm_part_two.inflectional_skills_and_abilities_part_one'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В пределах возрастной нормы')}
                                         name='game_on_the_farm_part_two.inflectional_skills_and_abilities_part_one'
                                         control={control}
                                         errors={errors}
@@ -300,6 +320,16 @@ const OnTheFarmPartTwoGame = (props) => {
                                         disabled={isConclusionDisabled || disabled}
                                     />
                                 </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='radio'
+                                        label={t('В пределах возрастной нормы')}
+                                        name='game_on_the_farm_part_two.word_building_skills_and_abilities'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
                             </ProtocolResultBlock>
                             <ProtocolDescriptionSubtitle>{t('Синтаксические навыки и умения')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultWrapper>
@@ -336,6 +366,16 @@ const OnTheFarmPartTwoGame = (props) => {
                                 <ProtocolFormField
                                     type='radio'
                                     label={t('Синтаксические навыки и умения сформированы, в речи наблюдаются многообразие синтаксических конструкций, вариативность их применения, ребенок демонстрирует трансформационные возможности при оперировании синтаксическим материалом')}
+                                    name='game_on_the_farm_part_two.syntax_skills_and_abilities_part_two'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label={t('В пределах возрастной нормы')}
                                     name='game_on_the_farm_part_two.syntax_skills_and_abilities_part_two'
                                     control={control}
                                     errors={errors}
