@@ -64,6 +64,26 @@ const AntLambadaGame = (props) => {
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkbox'
+                                        label={t('Звуки Д, Дь произносятся нормативно')}
+                                        name=''
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label={t('Звуки Т, Ть произносятся нормативно')}
+                                        name=''
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
                                         label={t('Носовой')}
                                         name='game_ant_lambada.nasal'
                                         control={control}
@@ -127,6 +147,16 @@ const AntLambadaGame = (props) => {
                         <ProtocolRow>
                             <ProtocolDescriptionSubtitle>{t('Заднеязычные')}</ProtocolDescriptionSubtitle>
                             <ProtocolResultBlock>
+                                <ProtocolResultWrapper>
+                                    <ProtocolFormField
+                                        type='checkbox'
+                                        label={t('Звуки К, Г, Х произносятся нормативно')}
+                                        name='game_ant_lambada.back_lingual_is_normal'
+                                        control={control}
+                                        errors={errors}
+                                        disabled={isConclusionDisabled || disabled}
+                                    />
+                                </ProtocolResultWrapper>
                                 <ProtocolResultWrapper>
                                     <ProtocolFormField
                                         type='checkboxWithField'

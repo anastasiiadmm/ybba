@@ -159,6 +159,16 @@ const Questionnaire = (props) => {
                     {...commonFieldProps}
                     disabled={disabled}
                 />
+                <ProtocolPlaceholderTitle>
+                    {t('— Имеется ли у ребенка эпилепсия или другие похожие состояния?')}
+                </ProtocolPlaceholderTitle>
+                <ProtocolFormField
+                    type='textarea'
+                    name='additional_information.'
+                    placeholder={t('Ответ родителя')}
+                    {...commonFieldProps}
+                    disabled={disabled}
+                />
             </ProtocolSubBlock>
             <ProtocolSubBlock>
                 <ProtocolBlockSubTitle>{t('Зрение')}</ProtocolBlockSubTitle>

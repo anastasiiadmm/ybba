@@ -103,7 +103,7 @@ const PicturesForFish = (props) => {
                         <ProtocolFormField
                             type='checkbox'
                             label={t('Свистящие звуки произносятся нормативно')}
-                            name='game_pictures_for_fish.sibilant_parasigmatism'
+                            name='game_pictures_for_fish.whistling_is_normal'
                             control={control}
                             errors={errors}
                             disabled={disabled}
@@ -255,6 +255,16 @@ const PicturesForFish = (props) => {
             <ProtocolRow>
                 <ProtocolDescriptionSubtitle>{t('Шипящие')}</ProtocolDescriptionSubtitle>
                 <ProtocolResultBlock>
+                    <ProtocolResultWrapper>
+                        <ProtocolFormField
+                            type='checkbox'
+                            label={t('Шипящие звуки произносятся нормативно')}
+                            name='game_pictures_for_fish.hissing_is_normal'
+                            control={control}
+                            errors={errors}
+                            disabled={disabled}
+                        />
+                    </ProtocolResultWrapper>
                     <ProtocolResultWrapper>
                         <ProtocolFormField
                             type='checkbox'
@@ -423,6 +433,16 @@ const PicturesForFish = (props) => {
                                 <ProtocolFormField
                                     type='radio'
                                     label={t('Наблюдаются выраженные трудности актуализации слов, хранения и воспроизведения вербальной информации')}
+                                    name='game_pictures_for_fish.verbal_memory_part_two'
+                                    control={control}
+                                    errors={errors}
+                                    disabled={isConclusionDisabled || disabled}
+                                />
+                            </ProtocolResultWrapper>
+                            <ProtocolResultWrapper>
+                                <ProtocolFormField
+                                    type='radio'
+                                    label={t('Трудностей актуализации слов, хранения и воспроизведения вербальной информации не наблюдается')}
                                     name='game_pictures_for_fish.verbal_memory_part_two'
                                     control={control}
                                     errors={errors}
