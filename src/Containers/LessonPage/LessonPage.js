@@ -180,7 +180,7 @@ const LessonPage = (props) => {
             {isGameTipOpen ? (
               <GameTipSidebar
                 setIsGameTipOpen={setIsGameTipOpen}
-                gameDescription={activeGame.name}
+                gameDescription={activeGame.description}
                 gameName={activeGame.name}
               />
             ) : (
