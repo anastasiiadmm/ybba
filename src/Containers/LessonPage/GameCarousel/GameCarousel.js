@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { changeActiveGame } from 'redux/lesson/actions';
 import { LessonContext } from 'context/LessonContext/LessonContext';
 import { WsContext } from 'context/WsContext/WsContext';
@@ -18,6 +18,13 @@ const GameCarousel = (props) => {
 
   const [carouselIsVisible, setCarouselIsVisible] = useState(true);
   const toggleCarousel = async () => await setCarouselIsVisible(!carouselIsVisible);
+
+  const sortedGames = useMemo(() => {
+    console.log(games);
+    if (!games) return [];
+    console.log(games);
+    return [...games].sort((p, n) => p?.carousel_numeric_type > n?.carousel_numeric_type ? 1 : -1);
+  }, [games]);
 
   const reInitGame = useCallback(() => {
     changeLessonContextProperty(lessonProperties.IS_DISPLAY_RESTART, false);
@@ -41,7 +48,7 @@ const GameCarousel = (props) => {
         <div className={addClasses('gamef__previews-inner w-100', {
            'hide': !carouselIsVisible,
          })}>
-          {games.map((game, index) => {
+          {sortedGames.map((game, index) => {
               return (
                 <button
                   className={addClasses('gamef__preview gameItem', {
@@ -55,7 +62,7 @@ const GameCarousel = (props) => {
                     alt='Game'
                   />
                   <div className='gamef__preview-info'>
-                    <span>Игра {index + 1}</span>
+                    <span>{game.game_code}</span>
                     <p>{game.name}</p>
                   </div>
                 </button>
