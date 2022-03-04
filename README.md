@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+<h2 align="center">![hellobiba](src/assets/img/logo2.svg)</h2>
+<h2 align="center">
+[![Hellobiba React.js](https://awesome.re/mentioned-badge.svg)](https://gitlab.com/ybba/frontend)
+</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2 align="center"><a  href="https://diagnostika.pro/">Live Demo</a></h2>
 
-## Available Scripts
+Web Application for Diagnostic of speech development
+====================================================
 
-In the project directory, you can run:
+INSTALLATION
+------------
 
-### `yarn start`
+Please make sure the release file is unpacked under a Web-accessible
+directory. You shall see the following files and directories:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+        dockerfiles/  
+        public/    
+        src/       
+        README               
+        package.json         
+        jsconfig.json
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+REQUIREMENTS
+------------
+Platform: cross-platform solution, linux, windows, macOS, other.
 
-### `yarn test`
+Programming language used React JS
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The service uses the following technologies:
 
-### `yarn build`
+        node -v version 16 and yarn
+        yarn current version 0.1.0
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+BASE DEPENDENCIES
+-----------------
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+        axios for networking.
+        prop-types to type-check our components exposed properties.
+        redux for state management.
+        redux-thunk to dispatch asynchronous actions.
+        react-router fully-featured routing library for the React JavaScript library
+        react-router-dom fully-featured routing library for the React JavaScript library
+        react-toastify for global notifications
+        react-unity-webgl to help build games to the web
+        material-ui & bootstrap for component styling.
+        sentry to help developers write better software faster.
+        firebase implements the client-side libraries used by applications using Firebase services
+        date-fns for manipulating JavaScript dates in a browser & Node.js
+        js-cookie for handling cookies
+        js-sha256 for JavaScript supports UTF-8 encoding
+        moment for encoding dates
+        react-bootstrap for for component styling.
+        react-flatpickr library for dates formats
+        sweetalert2 for customization alerts
+        react-hook-form built with performance, UX and DX in mind embraces native HTML form validation
+        yup for forms validation
+        react-i18next for localization components
+        react-icomoon for using svg icons
+        react-input-date-mask for customization date inputs
+        react-perfect-scrollbar is a wrapper to allow use perfect-scrollbar in React
+        react-phone-input-2 highly customizable phone input component with auto formatting.
+        uuid to create a random UUID
 
-### `yarn eject`
+QUICK START
+-----------
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+        clone ybba project from gitlab repository https://gitlab.com/ybba/frontend.git 
+        cd frontend
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Set usage requirements endpoints into .env file:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+        REACT_APP_API_URL=''
+        REACT_APP_SENTRY_DSN=''
+        REACT_APP_WS_URL=''
+        REACT_APP_ROBOKASSA_MERCHANT_LOGIN=''
+        REACT_APP_ROBOKASSA_PASSWORD=''
+        REACT_APP_ENVIRONMENT=''
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Next:
 
-## Learn More
+        RUN yarn install
+        RUN yarn start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+UPDATE RESULTS
+-----------
+V1.0.0 version, 04-03-2022
