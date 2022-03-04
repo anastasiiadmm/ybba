@@ -127,7 +127,7 @@ const GameCarousel = (props) => {
                   alt='Game'
                 />
                 <div className='gamef__preview-info'>
-                  <span>{game.game_code}</span>
+                  <span>Игра {game.game_code}</span>
                   <p>{game.name}</p>
                 </div>
               </button>
