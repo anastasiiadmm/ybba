@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useRef, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState, useMemo } from 'react';
 import { changeActiveGame } from 'redux/lesson/actions';
 import { LessonContext } from 'context/LessonContext/LessonContext';
 import { WsContext } from 'context/WsContext/WsContext';
@@ -127,7 +127,7 @@ const GameCarousel = (props) => {
                   alt='Game'
                 />
                 <div className='gamef__preview-info'>
-                  <span>{game.game_code}</span>
+                  <span>Игра {game.game_code}</span>
                   <p>{game.name}</p>
                 </div>
               </button>
