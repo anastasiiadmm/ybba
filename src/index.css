@@ -2871,6 +2871,7 @@ form .profile-child {
 .speech-card-doc__item span {
     background: #E1EAF8;
     padding: 0 1px;
+    white-space: pre-wrap;
 }
 
 .speech-card-doc__sub::before {
