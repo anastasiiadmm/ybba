@@ -33,7 +33,6 @@ const Timer = (props) => {
     };
 
     useEffect(() => {
-        console.log(isLessonFinished);
         setInterval(() => {
             const currentTime = getCurrentTime();
             const duration = moment.duration(endTimeMoment.diff(currentTime));

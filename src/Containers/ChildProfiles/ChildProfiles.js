@@ -82,9 +82,10 @@ const ChildProfiles = () => {
                         </div>
                         <div className='content__row'>
                             <div className='content__col content__col_w50'>
-                                {children && !childWithoutAdditionalData && children.map(child => {
+                                {children && !childWithoutAdditionalData && children.map((child, index) => {
                                     return (
                                         <ChildProfileCard
+                                            key={index}
                                             child={child}
                                             openProfileCallback={onChildProfileClick}
                                         />

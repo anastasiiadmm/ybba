@@ -46,7 +46,6 @@ const ParentProfileEdit = () => {
 
     const country = watch('profile.country')
     watch('profile.city')
-    console.log(country)
 
     useEffect(() => {
         if (formData) {

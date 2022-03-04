@@ -75,14 +75,13 @@ const ChildrenForm = (props) => {
           id='childProfileFirstName'
           errors={errors}
           label='Имя'
-          type='text'
           name='first_name'
           className='form__field'
           pattern={allRussianWardsAndHyphen}
           required
           maxLength='50'
           tooltipTitle='Имя'
-          tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
+          tooltipMessage='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
           value={childrenData.first_name}
           register={register}
           classNameLabel='form__label'
@@ -93,14 +92,13 @@ const ChildrenForm = (props) => {
           label='Фамилия'
           id='childProfileLastName'
           errors={errors}
-          type='text'
           className='form__field'
           name='last_name'
           pattern={allRussianWardsAndHyphen}
           required
           maxLength='50'
           tooltipTitle='Фамилия'
-          tooltipText='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
+          tooltipMessage='Максимум 50 символов (только кириллица в обоих регистрах и пробел). Специальные символы запрещены, кроме дефиса (“-”).'
           value={childrenData.last_name}
           register={register}
           classNameLabel='form__label'
@@ -123,7 +121,7 @@ const ChildrenForm = (props) => {
           value={childrenData.date_of_birth}
         />
       </div>
-      {countriesOptions && citiesOptions && (
+      {(countriesOptions && citiesOptions) && (
         <div className='form__row form__row_flex'>
           <div className='form__col2 form__label'>
             {countriesOptions.length && (
@@ -141,7 +139,7 @@ const ChildrenForm = (props) => {
               />
             )}
           </div>
-          {getCountryName(country) === 'Россия' && citiesOptions.length && (
+          {(getCountryName(country) === 'Россия' && citiesOptions.length) && (
             <div className='form__col2 form__label'>
               <Field
                 label='Город проживания'

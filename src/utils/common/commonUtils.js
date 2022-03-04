@@ -1,4 +1,5 @@
 import config from 'config.js';
+import { lessonTestIds } from '../../constants';
 
 
 /**
@@ -17,4 +18,8 @@ export const checkEnv = env => {
  */
 export const lowercaseFirstLetter = (string) => {
     return string.charAt(0).toLocaleLowerCase() + string.slice(1);
+}
+
+export const isTestLesson = (lessonId) => {
+    return lessonTestIds[config.appEnvironment] === lessonId;
 }

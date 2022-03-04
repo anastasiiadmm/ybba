@@ -24,7 +24,6 @@ const Login = () => {
     const [loginData, setLoginData] = useState(loginDataInit)
 
     const { loading, commonError, user, success } = useSelector(authSelector)
-    console.log(user)
 
     const dispatch = useDispatch()
     const history = useHistory()

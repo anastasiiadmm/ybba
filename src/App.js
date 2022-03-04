@@ -46,12 +46,13 @@ import LessonsTimeSlotsListAdd from 'Containers/MainAdminDashboard/NavigatorMenu
 import AdminLessonTimeSlotAdd from 'Containers/MainAdminDashboard/NavigatorMenu/AdminLessonTimeSlot/AdminLessonTimeSlotAdd';
 
 import 'App.css';
+import LocalizationButton from './Containers/LocalizationButton/LocalizationButton';
 
 
 const App = () => {
 
     return (
-        <BrowserRouter basename='/platform'>
+        <BrowserRouter basename='/diagnostics'>
             <ToastContainer
                 position='top-right'
                 autoClose={5000}
@@ -63,6 +64,7 @@ const App = () => {
                 draggable
                 pauseOnHover
             />
+            <LocalizationButton />
             <Switch>
                 {/*<PrivateRoute path='/payments/' component={Payments} />*/}
                 <PrivateRoute path='/child-profile/' component={ChildProfiles} exact/>

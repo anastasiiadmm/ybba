@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useMemoб useState } from 'react';
 import { changeActiveGame } from 'redux/lesson/actions';
 import { LessonContext } from 'context/LessonContext/LessonContext';
 import { WsContext } from 'context/WsContext/WsContext';
@@ -7,6 +7,16 @@ import { lessonProperties } from 'constants.js';
 
 const GameCarousel = (props) => {
   const { games } = props;
+  const gameCarouselContainer = useRef();
+
+  const MIN_GAMES_IN_VIEWPORT = 4;
+  const GAME_PREVIEW_WIDTH = 170;
+  const SLIDE_BUTTON_WIDTH = 42;
+
+  const [translateXValue, setTranslateXValue] = useState(0);
+  const [rightSlideDisabled, setRightSlideDisabled] = useState(false);
+  const [leftSlideDisabled, setLeftSlideDisabled] = useState(false);
+  const [rightSlideLeftMargin, setRightSlideLeftMargin] = useState(2000);
 
   const {
     changeLessonContextProperty,
@@ -40,34 +50,89 @@ const GameCarousel = (props) => {
     }
   };
 
+  const changeRightSlideLeftMargin = useCallback(() => {
+    if (gameCarouselContainer?.current) {
+      setRightSlideLeftMargin(gameCarouselContainer?.current.clientWidth - SLIDE_BUTTON_WIDTH - 20)
+    }
+  }, []);
+
+  const checkCanSlideCarousel = () => {
+    if (translateXValue === 0)
+      setLeftSlideDisabled(true);
+    else if (Math.abs(translateXValue / GAME_PREVIEW_WIDTH) + MIN_GAMES_IN_VIEWPORT === games?.length)
+      setRightSlideDisabled(true);
+    else {
+      setRightSlideDisabled(false);
+      setLeftSlideDisabled(false);
+    }
+  }
+  const slideCarousel = (direction) => {
+    let step = 0;
+
+    if (direction === 'right' && !rightSlideDisabled)
+      step = -GAME_PREVIEW_WIDTH;
+    if (direction === 'left' && !leftSlideDisabled)
+      step = GAME_PREVIEW_WIDTH;
+
+    setTranslateXValue(translateXValue + step);
+  }
+
+  useEffect(checkCanSlideCarousel, [checkCanSlideCarousel, translateXValue]);
+
+  useEffect(() => {
+    changeRightSlideLeftMargin();
+    window.addEventListener('resize', changeRightSlideLeftMargin);
+  }, [changeRightSlideLeftMargin]);
+
   return (
-    <div className={addClasses('gamef__previews-wrap', {
+    <div
+      className={addClasses('gamef__previews-wrap', {
       'debug--border': isStyleDebug,
-    })}>
+      })}
+      ref={gameCarouselContainer}
+    >
       <div className='gamef__previews gamesLitsScrollbar'>
-        <div className={addClasses('gamef__previews-inner w-100', {
+        <div
+          style={{ opacity: +!leftSlideDisabled }}
+          className={addClasses('slide__button slide__button-left', {
+            'hide': !carouselIsVisible,
+          })}
+          onClick={() => slideCarousel('left')}
+        />
+        <div
+          style={{ opacity: +!rightSlideDisabled, left: rightSlideLeftMargin }}
+          className={addClasses('slide__button slide__button-right', {
+            'hide': !carouselIsVisible,
+          })}
+          onClick={() => slideCarousel('right')}
+        />
+
+        <div
+          className={addClasses('gamef__previews-inner w-100', {
            'hide': !carouselIsVisible,
          })}>
           {sortedGames.map((game, index) => {
-              return (
-                <button
-                  className={addClasses('gamef__preview gameItem', {
-                    active: game?.game_type === activeGame?.game_type,
-                  })}
-                  onClick={() => onChangeActiveGame(game)}
-                >
-                  <img
-                    src={game.preview}
-                    className='gamef__preview-img'
-                    alt='Game'
-                  />
-                  <div className='gamef__preview-info'>
-                    <span>{game.game_code}</span>
-                    <p>{game.name}</p>
-                  </div>
-                </button>
-              );
-            })}
+            return (
+              <button
+                className={addClasses('gamef__preview gameItem', {
+                  active: game?.game_type === activeGame?.game_type,
+                })}
+                style={{ transform: `translateX(${translateXValue}px)` }}
+                onClick={() => onChangeActiveGame(game)}
+              >
+                <img
+                  src={game.preview}
+                  style={{ opacity: game?.game_type === activeGame?.game_type ? '100%' : '35%' }}
+                  className='gamef__preview-img'
+                  alt='Game'
+                />
+                <div className='gamef__preview-info'>
+                  <span>{game.game_code}</span>
+                  <p>{game.name}</p>
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
       <div className='gamef__under-carousel'>
