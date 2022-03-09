@@ -184,7 +184,7 @@ const MagicExamGame = (props) => {
                     <ProtocolResultWrapper>
                       <ProtocolFormField
                           type='checkbox'
-                          label={t('Нарушено различение аффрикат и входящих в их состав звуко')}
+                          label={t('Нарушено различение аффрикат и входящих в их состав звуков')}
                           name='game_magic_exam.distinction_between_affricates_and_their_constituent'
                           control={control}
                           errors={errors}
