@@ -175,7 +175,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Трудностей распределения внимания не наблюдается')}
-                          name=''
+                          name='game_on_the_farm_part_three.difficulties_in_distribution_of_attention_are_not_observed	'
                           control={control}
                           errors={errors}
                           disabled={isConclusionDisabled || disabled}
@@ -264,7 +264,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Не наблюдается')}
-                          name=''
+                          name='game_on_the_farm_part_three.exhaustion_is_not_observed'
                           control={control}
                           errors={errors}
                           disabled={isConclusionDisabled || disabled}

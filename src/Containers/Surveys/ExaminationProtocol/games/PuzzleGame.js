@@ -67,7 +67,7 @@ const PuzzleGame = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Звуки В, Вь произносятся нормативно')}
-                          name=''
+                          name='game_puzzle.sounds_v_vb_are_pronounced_normatively'
                           control={control}
                           errors={errors}
                           disabled={isConclusionDisabled || disabled}
@@ -77,7 +77,7 @@ const PuzzleGame = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Звуки Ф, Фь произносятся нормативно')}
-                          name=''
+                          name='game_puzzle.sounds_f_fb_are_pronounced_normatively'
                           control={control}
                           errors={errors}
                           disabled={isConclusionDisabled || disabled}
@@ -182,7 +182,7 @@ const PuzzleGame = (props) => {
             <ProtocolFormField
                 type='textarea'
                 label={t('Комментарий')}
-                name='game_puzzle.expert_comment'
+                name='game_puzzle.labial_dental_comment'
                 placeholder={t('Комментарий специалиста')}
                 register={register}
                 errors={errors}
