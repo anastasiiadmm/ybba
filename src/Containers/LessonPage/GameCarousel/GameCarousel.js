@@ -37,6 +37,7 @@ const GameCarousel = (props) => {
   }, [games]);
 
   const reInitGame = useCallback(() => {
+    changeLessonContextProperty(lessonProperties.IS_TEACHER_HAVE_CONTROL_ON_GAME, false);
     changeLessonContextProperty(lessonProperties.IS_DISPLAY_RESTART, false);
     changeLessonContextProperty(lessonProperties.IS_GAME_MUTED, false);
   }, [changeLessonContextProperty]);
