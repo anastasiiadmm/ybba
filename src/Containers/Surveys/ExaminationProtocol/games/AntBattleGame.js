@@ -581,7 +581,7 @@ const AntBattleGame = (props) => {
               <ProtocolResultWrapper>
                 <ProtocolFormField
                     type='radio'
-                    label={t('Сформирован')}
+                    label={t('Сформированы')}
                     name='game_ant_battle.basic_motor_skills'
                     control={control}
                     errors={errors}
@@ -601,17 +601,7 @@ const AntBattleGame = (props) => {
               <ProtocolResultWrapper>
                 <ProtocolFormField
                     type='radio'
-                    label={t('Не сформирован')}
-                    name='game_ant_battle.basic_motor_skills'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
+                    label={t('Не сформированы')}
                     name='game_ant_battle.basic_motor_skills'
                     control={control}
                     errors={errors}
@@ -634,16 +624,6 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Не соответствует возрасту')}
-                    name='game_ant_battle.basic_motor_skills_part_two'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
                     name='game_ant_battle.basic_motor_skills_part_two'
                     control={control}
                     errors={errors}
@@ -840,16 +820,6 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Пальцевый праксис не сформирован. Пальцевую позу не воспроизвел')}
-                    name='game_ant_battle.motor_functions_of_hands_and_fingers'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
                     name='game_ant_battle.motor_functions_of_hands_and_fingers'
                     control={control}
                     errors={errors}
