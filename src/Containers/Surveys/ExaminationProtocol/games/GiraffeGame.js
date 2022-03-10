@@ -77,7 +77,7 @@ const GiraffeGame = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Звуки Р, Рь произносятся нормативно')}
-                          name=''
+                          name='game_giraffe.sounds_p_and_pb_are_pronounced_normatively_rotacism'
                           control={control}
                           errors={errors}
                           disabled={disabled}
@@ -163,7 +163,7 @@ const GiraffeGame = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Звуки Р, Рь произносятся нормативно')}
-                          name=''
+                          name='game_giraffe.sounds_p_and_pb_are_pronounced_normatively_lambdacism'
                           control={control}
                           errors={errors}
                           disabled={disabled}

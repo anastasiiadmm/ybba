@@ -128,7 +128,7 @@ const CapriciousPrincessGame = (props) => {
                     <ProtocolFormField
                         type='checkbox'
                         label={t('Диспраксичные нарушения не наблюдаются')}
-                        name=''
+                        name='game_capricious_princess.dyspraxic_disturbances_are_not_observed'
                         control={control}
                         errors={errors}
                         disabled={isConclusionDisabled || disabled}
@@ -191,7 +191,7 @@ const CapriciousPrincessGame = (props) => {
                   <ProtocolFormField
                       type='checkbox'
                       label={t('Гностические нарушения не наблюдаются')}
-                      name=''
+                      name='game_capricious_princess.gnostic_disturbances_are_not_observed'
                       control={control}
                       errors={errors}
                       disabled={isConclusionDisabled || disabled}
