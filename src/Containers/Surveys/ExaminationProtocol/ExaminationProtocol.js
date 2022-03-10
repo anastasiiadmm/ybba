@@ -257,16 +257,6 @@ const ExaminationProtocol = (props) => {
                           disabled={isConclusionDisabled || isProtocolClosed}
                       />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          name='stock_of_knowledge_about_the_world_around'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || isProtocolClosed}
-                      />
-                    </ProtocolResultWrapper>
                   </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -286,16 +276,6 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не ориентируется')}
-                          name='in_a_time_space_situation'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || isProtocolClosed}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
                           name='in_a_time_space_situation'
                           control={control}
                           errors={errors}
@@ -330,17 +310,6 @@ const ExaminationProtocol = (props) => {
                           disabled={isConclusionDisabled || isProtocolClosed}
                       />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          name='knows_how_old_time_of_year_what_time_of_day_it_is'
-                          value={false}
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || isProtocolClosed}
-                      />
-                    </ProtocolResultWrapper>
                   </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -360,16 +329,6 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не сформирован')}
-                          name='image_i'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || isProtocolClosed}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
                           name='image_i'
                           control={control}
                           errors={errors}
@@ -404,17 +363,6 @@ const ExaminationProtocol = (props) => {
                             disabled={isConclusionDisabled || isProtocolClosed}
                         />
                       </ProtocolResultWrapper>
-                      <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label={t('В пределах возрастной нормы')}
-                            name='knows_his_name_the_name_of_his_parents_where_he_lives'
-                            control={control}
-                            value={false}
-                            errors={errors}
-                            disabled={isConclusionDisabled || isProtocolClosed}
-                        />
-                      </ProtocolResultWrapper>
                     </ProtocolResultBlock>
                   </ProtocolResultWrapper>
                 </ProtocolRow>
@@ -436,16 +384,6 @@ const ExaminationProtocol = (props) => {
                         <ProtocolFormField
                             type='radio'
                             label={t('Не сформирован')}
-                            name='somatognosis_understanding_your_own_body'
-                            control={control}
-                            errors={errors}
-                            disabled={isConclusionDisabled || isProtocolClosed}
-                        />
-                      </ProtocolResultWrapper>
-                      <ProtocolResultWrapper>
-                        <ProtocolFormField
-                            type='radio'
-                            label={t('В пределах возрастной нормы')}
                             name='somatognosis_understanding_your_own_body'
                             control={control}
                             errors={errors}
@@ -476,17 +414,6 @@ const ExaminationProtocol = (props) => {
                   <ProtocolFormField
                       type='radio'
                       label={t('Не установлен')}
-                      name='contact_with_the_child'
-                      control={control}
-                      value={false}
-                      errors={errors}
-                      disabled={isProtocolClosed}
-                  />
-                </ProtocolResultWrapper>
-                <ProtocolResultWrapper>
-                  <ProtocolFormField
-                      type='radio'
-                      label={t('В пределах возрастной нормы')}
                       name='contact_with_the_child'
                       control={control}
                       value={false}
@@ -678,16 +605,6 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Дисбаланс межполушарных связей')}
-                          name='conclusion_options'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || isProtocolClosed}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
                           name='conclusion_options'
                           control={control}
                           errors={errors}
