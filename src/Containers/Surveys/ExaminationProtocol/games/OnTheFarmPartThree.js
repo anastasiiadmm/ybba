@@ -148,16 +148,6 @@ const OnTheFarmPartThree = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          name='game_on_the_farm_part_three.speech_comprehension'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
                   </ProtocolResultBlock>
                   <ProtocolDescriptionSubtitle>{t('Распределение')}</ProtocolDescriptionSubtitle>
                   <ProtocolResultBlock>
@@ -175,12 +165,13 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Трудностей распределения внимания не наблюдается')}
-                          name='game_on_the_farm_part_three.difficulties_in_distribution_of_attention_are_not_observed	'
+                          name='game_on_the_farm_part_three.difficulties_in_distribution_of_attention_are_not_observed'
                           control={control}
                           errors={errors}
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
+                    {errors.choices22 && <div className='form2__error'> {errors.choices22.message}</div>}
                   </ProtocolResultBlock>
                   <ProtocolDescriptionSubtitle>{t('Концентрация')}</ProtocolDescriptionSubtitle>
                   <ProtocolResultBlock>
@@ -247,16 +238,6 @@ const OnTheFarmPartThree = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          name='game_on_the_farm_part_three.sustainability'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
                   </ProtocolResultBlock>
                   <ProtocolDescriptionSubtitle>{t('Истощаемость')}</ProtocolDescriptionSubtitle>
                   <ProtocolResultBlock>
@@ -280,6 +261,7 @@ const OnTheFarmPartThree = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
+                    {errors.choices23 && <div className='form2__error'> {errors.choices23.message}</div>}
                   </ProtocolResultBlock>
                 </ProtocolRow>
                 <ProtocolRow>
@@ -397,16 +379,6 @@ const OnTheFarmPartThree = (props) => {
                         disabled={isConclusionDisabled || disabled}
                     />
                   </ProtocolResultWrapper>
-                  <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='radio'
-                        label={t('В пределах возрастной нормы')}
-                        name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                  </ProtocolResultWrapper>
                 </ProtocolRow>
               </ProtocolBlock>
             </>
@@ -441,16 +413,6 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Нормальный')}
-                    name='game_on_the_farm_part_three.voice'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
                     name='game_on_the_farm_part_three.voice'
                     control={control}
                     errors={errors}
@@ -620,16 +582,6 @@ const OnTheFarmPartThree = (props) => {
                     disabled={disabled}
                 />
               </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
-                    name='game_on_the_farm_part_three.smoothness'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
             </ProtocolResultBlock>
             <ProtocolDescriptionSubtitle>{t('Темп')}</ProtocolDescriptionSubtitle>
             <ProtocolResultBlock>
@@ -683,16 +635,6 @@ const OnTheFarmPartThree = (props) => {
                     disabled={disabled}
                 />
               </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
-                    name='game_on_the_farm_part_three.pace'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
             </ProtocolResultBlock>
             <ProtocolDescriptionSubtitle>{t('Речь')}</ProtocolDescriptionSubtitle>
             <ProtocolResultBlock>
@@ -720,16 +662,6 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Иссякает к концу фразы')}
-                    name='game_on_the_farm_part_three.speech'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
                     name='game_on_the_farm_part_three.speech'
                     control={control}
                     errors={errors}
@@ -779,16 +711,6 @@ const OnTheFarmPartThree = (props) => {
                     disabled={disabled}
                 />
               </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
-                    name='game_on_the_farm_part_three.breath'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
             </ProtocolResultBlock>
             <ProtocolResultBlock>
               <ProtocolResultWrapper>
@@ -805,16 +727,6 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Выдох плавный')}
-                    name='game_on_the_farm_part_three.exhalation'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
                     name='game_on_the_farm_part_three.exhalation'
                     control={control}
                     errors={errors}
@@ -863,16 +775,6 @@ const OnTheFarmPartThree = (props) => {
                     disabled={disabled}
                 />
               </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='checkbox'
-                    label={t('В пределах возрастной нормы')}
-                    name='game_on_the_farm_part_three.shallow_breath'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
               {errors.choices19 && <div className='form2__error'> {errors.choices19.message}</div>}
             </ProtocolResultBlock>
             <ProtocolDescriptionSubtitle>{t('Ритм')}</ProtocolDescriptionSubtitle>
@@ -891,16 +793,6 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Нарушен: речь растянутая, скандированная')}
-                    name='game_on_the_farm_part_three.rhythm'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
                     name='game_on_the_farm_part_three.rhythm'
                     control={control}
                     errors={errors}
@@ -930,16 +822,6 @@ const OnTheFarmPartThree = (props) => {
                     disabled={disabled}
                 />
               </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
-                    name='game_on_the_farm_part_three.expiratory_force'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
             </ProtocolResultBlock>
             <ProtocolDescriptionSubtitle>{t('Дифференцированность вдоха/выдоха и возможность управления дыханием')}</ProtocolDescriptionSubtitle>
             <ProtocolResultBlock>
@@ -957,16 +839,6 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Нарушено')}
-                    name='game_on_the_farm_part_three.inspiratory_expiratory_differentiation'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
                     name='game_on_the_farm_part_three.inspiratory_expiratory_differentiation'
                     control={control}
                     errors={errors}
@@ -1010,16 +882,6 @@ const OnTheFarmPartThree = (props) => {
                           disabled={disabled}
                       />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          name='game_on_the_farm_part_three.prosodic_side_of_speech'
-                          control={control}
-                          errors={errors}
-                          disabled={disabled}
-                      />
-                    </ProtocolResultWrapper>
                   </ProtocolResultBlock>
                   <ProtocolResultBlock>
                     <ProtocolResultWrapper>
@@ -1036,16 +898,6 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Речь интонационно невыразительна: слабая выраженность голосовых модуляций')}
-                          name='game_on_the_farm_part_three.speech_intonationally'
-                          control={control}
-                          errors={errors}
-                          disabled={disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
                           name='game_on_the_farm_part_three.speech_intonationally'
                           control={control}
                           errors={errors}

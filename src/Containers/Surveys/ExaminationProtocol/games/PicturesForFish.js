@@ -118,6 +118,16 @@ const PicturesForFish = (props) => {
                 </ProtocolResultWrapper>
                 <ProtocolResultWrapper>
                   <ProtocolFormField
+                      type='checkbox'
+                      label={t('Парасигматизм свистящих')}
+                      name='game_pictures_for_fish.sibilant_parasigmatism'
+                      control={control}
+                      errors={errors}
+                      disabled={disabled}
+                  />
+                </ProtocolResultWrapper>
+                <ProtocolResultWrapper>
+                  <ProtocolFormField
                       type='checkboxWithField'
                       label={t('Замена С на')}
                       name='game_pictures_for_fish.replacing_s_with'

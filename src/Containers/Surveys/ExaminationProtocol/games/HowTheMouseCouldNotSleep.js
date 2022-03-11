@@ -453,7 +453,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    {errors.choices17 && <div className='form2__error'> {errors.choices17.message}</div>}
+                    {errors.choices16 && <div className='form2__error'> {errors.choices16.message}</div>}
                   </ProtocolResultBlock>
                   <ProtocolDescriptionSubtitle>{t('Наблюдаются значительные трудности в репродуцировании текста')}</ProtocolDescriptionSubtitle>
                   <ProtocolResultBlock>
@@ -497,7 +497,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    {errors.choices18 && <div className='form2__error'> {errors.choices18.message}</div>}
+                    {errors.choices16 && <div className='form2__error'> {errors.choices16.message}</div>}
                   </ProtocolResultBlock>
                   <ProtocolDescriptionMain>{t('Понимание')}</ProtocolDescriptionMain>
                   <ProtocolDescriptionSubtitle>{t('Содержательно-смысловое значение текста')}</ProtocolDescriptionSubtitle>
