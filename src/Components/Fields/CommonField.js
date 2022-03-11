@@ -23,7 +23,6 @@ const CommonField = (props) => {
         onClick,
         onFocus,
         pattern,
-        onChange,
     } = props
 
     if (tooltipMessage) {
@@ -58,7 +57,7 @@ const CommonField = (props) => {
                 onClick={onClick}
                 onFocus={onFocus}
                 pattern={pattern}
-                onChange={onChange}
+                // onChange={onChange}
             />
             <div className='form2__error'> {resolve(name, errors, '.')?.message} < /div>
         </>

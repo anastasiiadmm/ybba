@@ -218,16 +218,6 @@ const PuzzleGame = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          name='game_puzzle.perception'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
                   </ProtocolResultBlock>
                   <ProtocolResultBlock>
                     <ProtocolResultWrapper>
@@ -245,17 +235,6 @@ const PuzzleGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Восприятие не соответствует возрасту')}
-                          value={t('Уровень восприятия не соответствует возрасту')}
-                          name='game_puzzle.level_of_perception'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
                           value={t('Уровень восприятия не соответствует возрасту')}
                           name='game_puzzle.level_of_perception'
                           control={control}

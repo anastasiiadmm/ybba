@@ -372,16 +372,6 @@ const OnTheFarmGame = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          name='game_on_the_farm.speech_comprehension_level'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
                   </ProtocolResultBlock>
                   <ProtocolResultBlock>
                     <ProtocolResultWrapper>
@@ -411,16 +401,6 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не соответствует возрасту')}
-                          name='game_on_the_farm.level_of_vocabulary_formation'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
                           name='game_on_the_farm.level_of_vocabulary_formation'
                           control={control}
                           errors={errors}
@@ -477,16 +457,6 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Неустойчивая')}
-                          name='game_on_the_farm.subject_relation_of_a_word'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
                           name='game_on_the_farm.subject_relation_of_a_word'
                           control={control}
                           errors={errors}
@@ -589,16 +559,6 @@ const OnTheFarmGame = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          name='game_on_the_farm.vocabulary_size'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
                   </ProtocolResultBlock>
                   <ProtocolResultBlock>
                     <ProtocolResultWrapper>
@@ -688,16 +648,6 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Системная организация словаря отличается большим количеством и разнообразием смысловых и формальных связей; в лексиконе преобладают слова, значение которых усвоено на понятийном уровне')}
-                          name='game_on_the_farm.systemic_vocabulary_organization'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
                           name='game_on_the_farm.systemic_vocabulary_organization'
                           control={control}
                           errors={errors}

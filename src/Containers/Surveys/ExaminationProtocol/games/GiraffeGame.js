@@ -245,17 +245,17 @@ const GiraffeGame = (props) => {
               </>
           )}
         </ProtocolBlock>
-        <ProtocolRow>
-          <ProtocolFormField
-              type='textarea'
-              label={t('Комментарий')}
-              name='game_giraffe.expert_comment'
-              placeholder={t('Комментарий специалиста')}
-              errors={errors}
-              register={register}
-              disabled={disabled}
-          />
-        </ProtocolRow>
+        {/*<ProtocolRow>*/}
+        {/*  <ProtocolFormField*/}
+        {/*      type='textarea'*/}
+        {/*      label={t('Комментарий')}*/}
+        {/*      name=''*/}
+        {/*      placeholder={t('Комментарий специалиста')}*/}
+        {/*      errors={errors}*/}
+        {/*      register={register}*/}
+        {/*      disabled={disabled}*/}
+        {/*  />*/}
+        {/*</ProtocolRow>*/}
         {isLessonFinished && (
             <>
               <ProtocolBlock>
@@ -284,16 +284,6 @@ const GiraffeGame = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          name='game_giraffe.thinking'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
                   </ProtocolResultBlock>
                   <ProtocolResultBlock>
                     <ProtocolResultWrapper>
@@ -310,16 +300,6 @@ const GiraffeGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не нарушено')}
-                          name='game_giraffe.thinking_part_two'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
                           name='game_giraffe.thinking_part_two'
                           control={control}
                           errors={errors}
@@ -378,16 +358,6 @@ const GiraffeGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Словесно-логическое, способен давать своим действиям логическое объяснение')}
-                        name='game_giraffe.kind_of_thinking'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                  </ProtocolResultWrapper>
-                  <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='radio'
-                        label={t('В пределах возрастной нормы')}
                         name='game_giraffe.kind_of_thinking'
                         control={control}
                         errors={errors}

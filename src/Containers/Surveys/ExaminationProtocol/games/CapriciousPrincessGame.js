@@ -111,16 +111,6 @@ const CapriciousPrincessGame = (props) => {
                         disabled={isConclusionDisabled || disabled}
                     />
                   </ProtocolResultWrapper>
-                  <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='radio'
-                        label={t('В пределах возрастной нормы')}
-                        name='game_capricious_princess.syllabic_structure_of_a_word'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                  </ProtocolResultWrapper>
                 </ProtocolResultBlock>
                 <ProtocolDescriptionSubtitle>{t('Диспраксичные нарушения')}</ProtocolDescriptionSubtitle>
                 <ProtocolResultBlock>
