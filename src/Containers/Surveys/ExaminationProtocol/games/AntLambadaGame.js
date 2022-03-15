@@ -147,7 +147,7 @@ const AntLambadaGame = (props) => {
                     {/*<ProtocolResultWrapper>*/}
                     {/*  <ProtocolFormField*/}
                     {/*      type='checkboxWithField'*/}
-                    {/*      label={t('Межзубное произношение ')}*/}
+                    {/*      label={t('Межзубное произношение')}*/}
                     {/*      name='game_ant_lambada.'*/}
                     {/*      control={control}*/}
                     {/*      errors={errors}*/}

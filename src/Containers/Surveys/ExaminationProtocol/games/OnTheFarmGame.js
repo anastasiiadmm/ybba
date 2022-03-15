@@ -326,6 +326,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Нулевой')}
+                          value='нулевой'
                           name='game_on_the_farm.speech_comprehension_level'
                           control={control}
                           errors={errors}
@@ -336,6 +337,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Ситуативный')}
+                          value='ситуативный'
                           name='game_on_the_farm.speech_comprehension_level'
                           control={control}
                           errors={errors}
@@ -346,6 +348,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Номинативный')}
+                          value='номинативный'
                           name='game_on_the_farm.speech_comprehension_level'
                           control={control}
                           errors={errors}
@@ -356,6 +359,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Предикативный')}
+                          value='предикативный'
                           name='game_on_the_farm.speech_comprehension_level'
                           control={control}
                           errors={errors}
@@ -366,6 +370,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Расчлененный')}
+                          value='расчлененный'
                           name='game_on_the_farm.speech_comprehension_level'
                           control={control}
                           errors={errors}
@@ -391,6 +396,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Соответствует возрастной норме')}
+                          value='соответствует возрастной норме'
                           name='game_on_the_farm.level_of_vocabulary_formation'
                           control={control}
                           errors={errors}
@@ -400,7 +406,8 @@ const OnTheFarmGame = (props) => {
                     <ProtocolResultWrapper>
                       <ProtocolFormField
                           type='radio'
-                          label={t('Не соответствует возрасту')}
+                          label={t('Не соответствует возрастной норме')}
+                          value='не соответствует возрастной норме'
                           name='game_on_the_farm.level_of_vocabulary_formation'
                           control={control}
                           errors={errors}
@@ -414,6 +421,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Развит в соответствии с возрастом')}
+                          value='развит в соответствии с возрастом'
                           name='game_on_the_farm.active_semantic_component_active_vocabulary'
                           control={control}
                           errors={errors}
@@ -424,6 +432,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Нарушение актуализации слов — нарушен выбор слова из семантического поля')}
+                          value='нарушение актуализации слов - нарушен выбор слова из семантического поля'
                           name='game_on_the_farm.active_semantic_component_active_vocabulary'
                           control={control}
                           errors={errors}
@@ -434,6 +443,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Наличие неологизмов')}
+                          value='наличие неологизмов'
                           name='game_on_the_farm.active_semantic_component_active_vocabulary'
                           control={control}
                           errors={errors}
@@ -447,6 +457,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Устойчивая')}
+                          value='устойчивая'
                           name='game_on_the_farm.subject_relation_of_a_word'
                           control={control}
                           errors={errors}
@@ -457,6 +468,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Неустойчивая')}
+                          value='неустойчивая'
                           name='game_on_the_farm.subject_relation_of_a_word'
                           control={control}
                           errors={errors}
@@ -470,6 +482,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не наблюдаются')}
+                          value='не наблюдаются'
                           name='game_on_the_farm.verbal_paraphasias'
                           control={control}
                           errors={errors}
@@ -480,6 +493,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Литеральные')}
+                          value='литеральные'
                           name='game_on_the_farm.verbal_paraphasias'
                           control={control}
                           errors={errors}
@@ -490,6 +504,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Вербальные — смешение видовых признаков')}
+                          value='вербальные — смешение видовых признаков'
                           name='game_on_the_farm.verbal_paraphasias'
                           control={control}
                           errors={errors}
@@ -500,6 +515,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Вербальные — смешение признаков часть/тело')}
+                          value='вербальные — смешение признаков часть/тело'
                           name='game_on_the_farm.verbal_paraphasias'
                           control={control}
                           errors={errors}
@@ -510,6 +526,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Вербальные — замена названия предмета контекстным действием')}
+                          value='вербальные — замена названия предмета контекстным действием'
                           name='game_on_the_farm.verbal_paraphasias'
                           control={control}
                           errors={errors}
@@ -520,6 +537,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Вербальные — смешение по внешнему сходству')}
+                          value='вербальные — смешение по внешнему сходству'
                           name='game_on_the_farm.verbal_paraphasias'
                           control={control}
                           errors={errors}
@@ -533,6 +551,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Ограничен')}
+                          value='ограничен'
                           name='game_on_the_farm.vocabulary_size'
                           control={control}
                           errors={errors}
@@ -543,6 +562,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Резко ограничен')}
+                          value='резко ограничен'
                           name='game_on_the_farm.vocabulary_size'
                           control={control}
                           errors={errors}
@@ -553,6 +573,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Достаточный для осуществления полноценной коммуникации')}
+                          value='достаточный для осуществления полноценной коммуникации'
                           name='game_on_the_farm.vocabulary_size'
                           control={control}
                           errors={errors}
@@ -565,6 +586,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Очень мало «периферийных» слов даже из наиболее распространенных, прагматически ценных для этого возраста тематических групп')}
+                          value='очень мало «периферийных» слов даже из наиболее распространенных, прагматически ценных для этого возраста тематических групп'
                           name='game_on_the_farm.vocabulary_size_part_two'
                           control={control}
                           errors={errors}
@@ -575,6 +597,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Словарь преимущественно состоит из слов, обозначающих предметы, наблюдается дефицит глагольного словаря, практически отсутствуют слова, обозначающие признаки и качества предметов. Словарь представлен небольшим количеством слов обиходно-бытовой тематики')}
+                          value='словарь преимущественно состоит из слов, обозначающих предметы, наблюдается дефицит глагольного словаря, практически отсутствуют слова, обозначающие признаки и качества предметов. Словарь представлен небольшим количеством слов обиходно-бытовой тематики'
                           name='game_on_the_farm.vocabulary_size_part_two'
                           control={control}
                           errors={errors}
@@ -585,6 +608,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Различает и называет части предметов, их качества (величину, цвет, форму, материал), некоторые сходные по назначению предметы (шуба – пальто), понимает обобщающие слова: игрушки, одежда, обувь, мебель')}
+                          value='различает и называет части предметов, их качества (величину, цвет, форму, материал), некоторые сходные по назначению предметы (шуба – пальто), понимает обобщающие слова: игрушки, одежда, обувь, мебель'
                           name='game_on_the_farm.vocabulary_size_part_two'
                           control={control}
                           errors={errors}
@@ -595,6 +619,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('В словаре присутствуют слова, обозначающие местоположение предмета, время суток, характеризующие состояние и настроение человека; использует существительные, обозначающие названия частей и деталей предметов; прилагательные, обозначающие свойства; наиболее употребительные глаголы, наречия, предлоги')}
+                          value='в словаре присутствуют слова, обозначающие местоположение предмета, время суток, характеризующие состояние и настроение человека; использует существительные, обозначающие названия частей и деталей предметов; прилагательные, обозначающие свойства; наиболее употребительные глаголы, наречия, предлоги'
                           name='game_on_the_farm.vocabulary_size_part_two'
                           control={control}
                           errors={errors}
@@ -605,6 +630,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Активно употребляет обобщающие слова, называет широкий круг предметов и явлений окружающей действительности. В предложении используются все части речи. Использует в речи существительные, обозначающие названия профессий; прилагательные, обозначающие признаки предметов; наречия, характеризующие отношения людей к труду; глаголы, характеризующие трудовую деятельность людей; слова со сходным значением, с обобщающим значением. Прилагательные, существительные, глаголы, наречия, предлоги употребляет правильно и точно по смыслу')}
+                          value='активно употребляет обобщающие слова, называет широкий круг предметов и явлений окружающей действительности. В предложении используются все части речи. Использует в речи существительные, обозначающие названия профессий; прилагательные, обозначающие признаки предметов; наречия, характеризующие отношения людей к труду; глаголы, характеризующие трудовую деятельность людей; слова со сходным значением, с обобщающим значением. Прилагательные, существительные, глаголы, наречия, предлоги употребляет правильно и точно по смыслу'
                           name='game_on_the_farm.vocabulary_size_part_two'
                           control={control}
                           errors={errors}
@@ -618,6 +644,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Системная организация словаря находится на самом начальном этапе формирования; наблюдаются слабые ассоциативные связи, преобладают случайные, немотивированные ассоциации')}
+                          value='системная организация словаря находится на самом начальном этапе формирования; наблюдаются слабые ассоциативные связи, преобладают случайные, немотивированные ассоциации'
                           name='game_on_the_farm.systemic_vocabulary_organization'
                           control={control}
                           errors={errors}
@@ -628,6 +655,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Организация словаря отличается бессистемностью, отсутствием мотивированных адекватных ассоциаций')}
+                          value='организация словаря отличается бессистемностью, отсутствием мотивированных адекватных ассоциаций'
                           name='game_on_the_farm.systemic_vocabulary_organization'
                           control={control}
                           errors={errors}
@@ -638,6 +666,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Системная организация словаря находится на уровне установления первичных тематически/ситуативно обусловленных связей, наблюдаются выраженные (незначительные) трудности установления родовидовых, антонимических и пр. отношений между словами, входящими в индивидуальный словарный запас; в лексиконе много слов, значение которых усвоено только на номинативном уровне')}
+                          value='системная организация словаря находится на уровне установления первичных тематически/ситуативно обусловленных связей, наблюдаются выраженные (незначительные) трудности установления родовидовых, антонимических и пр. отношений между словами, входящими в индивидуальный словарный запас; в лексиконе много слов, значение которых усвоено только на номинативном уровне'
                           name='game_on_the_farm.systemic_vocabulary_organization'
                           control={control}
                           errors={errors}
@@ -648,6 +677,7 @@ const OnTheFarmGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Системная организация словаря отличается большим количеством и разнообразием смысловых и формальных связей; в лексиконе преобладают слова, значение которых усвоено на понятийном уровне')}
+                          value='системная организация словаря отличается большим количеством и разнообразием смысловых и формальных связей; в лексиконе преобладают слова, значение которых усвоено на понятийном уровне'
                           name='game_on_the_farm.systemic_vocabulary_organization'
                           control={control}
                           errors={errors}

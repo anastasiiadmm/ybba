@@ -419,7 +419,8 @@ const PicturesForFish = (props) => {
                 <ProtocolResultWrapper>
                   <ProtocolFormField
                       type='radio'
-                      label={t('Достаточный для осуществления полноценной коммуникации')}
+                      label={t('Достаточный для полноценной коммуникации')}
+                      value={t('достаточный для полноценной коммуникации')}
                       name='game_pictures_for_fish.verbal_memory'
                       control={control}
                       errors={errors}
@@ -429,7 +430,8 @@ const PicturesForFish = (props) => {
                 <ProtocolResultWrapper>
                   <ProtocolFormField
                       type='radio'
-                      label={t('Недостаточный для осуществления полноценной коммуникации')}
+                      label={t('Недостаточный для полноценной коммуникации')}
+                      value={t('недостаточный для полноценной коммуникации')}
                       name='game_pictures_for_fish.verbal_memory'
                       control={control}
                       errors={errors}
@@ -442,6 +444,7 @@ const PicturesForFish = (props) => {
                   <ProtocolFormField
                       type='radio'
                       label={t('Наблюдаются незначительные трудности актуализации слов, хранения и воспроизведения вербальной информации')}
+                      value={t('наблюдаются незначительные трудности актуализации слов, хранения и воспроизведения вербальной информации')}
                       name='game_pictures_for_fish.verbal_memory_part_two'
                       control={control}
                       errors={errors}
@@ -452,6 +455,7 @@ const PicturesForFish = (props) => {
                   <ProtocolFormField
                       type='radio'
                       label={t('Наблюдаются выраженные трудности актуализации слов, хранения и воспроизведения вербальной информации')}
+                      value={t('наблюдаются выраженные трудности актуализации слов, хранения и воспроизведения вербальной информации')}
                       name='game_pictures_for_fish.verbal_memory_part_two'
                       control={control}
                       errors={errors}
@@ -462,6 +466,7 @@ const PicturesForFish = (props) => {
                   <ProtocolFormField
                       type='radio'
                       label={t('Трудностей актуализации слов, хранения и воспроизведения вербальной информации не наблюдается')}
+                      value={t('трудностей актуализации слов, хранения и воспроизведения вербальной информации не наблюдается')}
                       name='game_pictures_for_fish.verbal_memory_part_two'
                       control={control}
                       errors={errors}

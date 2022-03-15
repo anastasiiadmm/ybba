@@ -69,6 +69,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Ребенок смешивает парадигмы разных окончаний')}
+                          value='ребенок смешивает парадигмы разных окончаний'
                           name='game_on_the_farm_part_three.options_for_confinement'
                           control={control}
                           errors={errors}
@@ -79,6 +80,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Ребенок делает ошибки внутри одного падежа')}
+                          value='ребенок делает ошибки внутри одного падежа'
                           name='game_on_the_farm_part_three.options_for_confinement'
                           control={control}
                           errors={errors}
@@ -89,6 +91,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Ошибок согласования частей речи не наблюдается')}
+                          value='ошибок согласования частей речи не наблюдается'
                           name='game_on_the_farm_part_three.options_for_confinement'
                           control={control}
                           errors={errors}
@@ -122,6 +125,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Сформировано')}
+                          value='сформировано'
                           name='game_on_the_farm_part_three.speech_comprehension'
                           control={control}
                           errors={errors}
@@ -132,6 +136,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Сформировано недостаточно')}
+                          value='сформировано недостаточно'
                           name='game_on_the_farm_part_three.speech_comprehension'
                           control={control}
                           errors={errors}
@@ -142,6 +147,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не сформировано')}
+                          value='не сформировано'
                           name='game_on_the_farm_part_three.speech_comprehension'
                           control={control}
                           errors={errors}
@@ -178,7 +184,8 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolResultWrapper>
                       <ProtocolFormField
                           type='radio'
-                          label={t('Низкая концентрация и неустойчивость внимания в целом (ребенок плохо сосредоточивается, с трудом удерживает внимание на объекте)')}
+                          label={t('Низкая концентрация и неустойчивость внимания в целом (ребенок плохо сосредотачивается, с трудом удерживает внимание на объекте)')}
+                          value='низкая концентрация и неустойчивость внимания в целом (ребенок плохо сосредотачивается, с трудом удерживает внимание на объекте)'
                           name='game_on_the_farm_part_three.concentration'
                           control={control}
                           errors={errors}
@@ -189,6 +196,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Наблюдаются трудности концентрации произвольного внимания')}
+                          value='наблюдаются трудности концентрации произвольного внимания'
                           name='game_on_the_farm_part_three.concentration'
                           control={control}
                           errors={errors}
@@ -199,6 +207,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Трудностей не наблюдается, концентрация внимания устойчивая, ребенок сосредотачивается и удерживает внимание на объекте продолжительное время (в пределах возрастной нормы)')}
+                          value='трудностей не наблюдается, концентрация внимания устойчивая, ребенок'
                           name='game_on_the_farm_part_three.concentration'
                           control={control}
                           errors={errors}
@@ -212,6 +221,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Внимание неустойчивое, поверхностное, ребенок очень быстро истощается')}
+                          value='внимание неустойчивое, поверхностное, ребенок очень быстро истощается'
                           name='game_on_the_farm_part_three.sustainability'
                           control={control}
                           errors={errors}
@@ -222,6 +232,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Внимание недостаточно устойчивое')}
+                          value='внимание недостаточно устойчивое'
                           name='game_on_the_farm_part_three.sustainability'
                           control={control}
                           errors={errors}
@@ -232,6 +243,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Внимание устойчивое')}
+                          value='внимание устойчивое'
                           name='game_on_the_farm_part_three.sustainability'
                           control={control}
                           errors={errors}
@@ -343,6 +355,7 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Крайне низкая познавательная активность и мотивация к предметной, предметно-игровой деятельности')}
+                        value='крайне низкая познавательная активность и мотивация к предметной, предметно-игровой деятельности'
                         name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                         control={control}
                         errors={errors}
@@ -353,6 +366,7 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Низкая познавательная активность и мотивация к различным видам деятельности, наблюдается немотивированная избирательность познавательной активности')}
+                        value='низкая познавательная активность и мотивация к различным видам деятельности, наблюдается немотивированная избирательность познавательной активности'
                         name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                         control={control}
                         errors={errors}
@@ -363,6 +377,7 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Отмечается некоторая недостаточность познавательной активности и мотивации к предметной деятельности')}
+                        value='отмечается некоторая недостаточность познавательной активности и мотивации к предметной деятельности'
                         name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                         control={control}
                         errors={errors}
@@ -373,6 +388,7 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Ярко выраженная познавательная активность и мотивация к предметной, предметно-игровой деятельности')}
+                        value='ярко выраженная познавательная активность и мотивация к предметной, предметно-игровой деятельности'
                         name='game_on_the_farm_part_three.options_for_confinement_psychological_basis'
                         control={control}
                         errors={errors}
@@ -393,6 +409,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Афония')}
+                    value='афония'
                     name='game_on_the_farm_part_three.voice'
                     control={control}
                     errors={errors}
@@ -403,6 +420,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Дисфония')}
+                    value='дисфония'
                     name='game_on_the_farm_part_three.voice'
                     control={control}
                     errors={errors}
@@ -413,6 +431,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Нормальный')}
+                    value='нормальный'
                     name='game_on_the_farm_part_three.voice'
                     control={control}
                     errors={errors}
@@ -425,6 +444,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Хриплый')}
+                    value='хриплый'
                     name='game_on_the_farm_part_three.voice_part_two'
                     control={control}
                     errors={errors}
@@ -435,6 +455,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Звонкий')}
+                    value='звонкий'
                     name='game_on_the_farm_part_three.voice_part_two'
                     control={control}
                     errors={errors}
@@ -445,6 +466,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Без особенностей')}
+                    value='без особенностей'
                     name='game_on_the_farm_part_three.voice_part_two'
                     control={control}
                     errors={errors}
@@ -457,6 +479,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Громкий')}
+                    value='громкий'
                     name='game_on_the_farm_part_three.voice_part_three'
                     control={control}
                     errors={errors}
@@ -467,6 +490,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Тихий')}
+                    value='тихий'
                     name='game_on_the_farm_part_three.voice_part_three'
                     control={control}
                     errors={errors}
@@ -477,6 +501,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Средний по силе')}
+                    value='средний по силе'
                     name='game_on_the_farm_part_three.voice_part_three'
                     control={control}
                     errors={errors}
@@ -489,6 +514,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Писклявый')}
+                    value='писклявый'
                     name='game_on_the_farm_part_three.voice_part_four'
                     control={control}
                     errors={errors}
@@ -499,6 +525,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Очень низкий')}
+                    value='очень низкий'
                     name='game_on_the_farm_part_three.voice_part_four'
                     control={control}
                     errors={errors}
@@ -509,6 +536,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Средний по высоте')}
+                    value='средний по высоте'
                     name='game_on_the_farm_part_three.voice_part_four'
                     control={control}
                     errors={errors}
@@ -521,6 +549,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Немодулированный')}
+                    value='немодулированный'
                     name='game_on_the_farm_part_three.voice_part_five'
                     control={control}
                     errors={errors}
@@ -531,6 +560,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Слабо модулированный')}
+                    value='слабо модулированный'
                     name='game_on_the_farm_part_three.voice_part_five'
                     control={control}
                     errors={errors}
@@ -541,6 +571,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Модулированный')}
+                    value='модулированный'
                     name='game_on_the_farm_part_three.voice_part_five'
                     control={control}
                     errors={errors}
@@ -566,6 +597,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Речь плавная')}
+                    value='речь плавная'
                     name='game_on_the_farm_part_three.smoothness'
                     control={control}
                     errors={errors}
@@ -576,6 +608,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Речь неплавная')}
+                    value='речь неплавная'
                     name='game_on_the_farm_part_three.smoothness'
                     control={control}
                     errors={errors}
@@ -589,6 +622,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Нормальный')}
+                    value='нормальный'
                     name='game_on_the_farm_part_three.pace'
                     control={control}
                     errors={errors}
@@ -599,6 +633,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Быстрый')}
+                    value='быстрый'
                     name='game_on_the_farm_part_three.pace'
                     control={control}
                     errors={errors}
@@ -609,6 +644,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Медленный')}
+                    value='медленный'
                     name='game_on_the_farm_part_three.pace'
                     control={control}
                     errors={errors}
@@ -619,6 +655,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Патологически ускоренный')}
+                    value='патологически ускоренный'
                     name='game_on_the_farm_part_three.pace'
                     control={control}
                     errors={errors}
@@ -629,6 +666,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Патологически замедленный')}
+                    value='патологически замедленный'
                     name='game_on_the_farm_part_three.pace'
                     control={control}
                     errors={errors}
@@ -642,6 +680,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('На вдохе')}
+                    value='на вдохе'
                     name='game_on_the_farm_part_three.speech'
                     control={control}
                     errors={errors}
@@ -652,6 +691,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('На выдохе')}
+                    value='на выдохе'
                     name='game_on_the_farm_part_three.speech'
                     control={control}
                     errors={errors}
@@ -662,6 +702,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Иссякает к концу фразы')}
+                    value='иссякает к концу фразы'
                     name='game_on_the_farm_part_three.speech'
                     control={control}
                     errors={errors}
@@ -675,6 +716,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Ключичное')}
+                    value='ключичное'
                     name='game_on_the_farm_part_three.breath'
                     control={control}
                     errors={errors}
@@ -685,6 +727,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Грудное')}
+                    value='грудное'
                     name='game_on_the_farm_part_three.breath'
                     control={control}
                     errors={errors}
@@ -695,6 +738,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Диафрагмальное')}
+                    value='диафрагмальное'
                     name='game_on_the_farm_part_three.breath'
                     control={control}
                     errors={errors}
@@ -705,6 +749,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Смешанное')}
+                    value='смешанное'
                     name='game_on_the_farm_part_three.breath'
                     control={control}
                     errors={errors}
@@ -717,6 +762,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Выдох укорочен')}
+                    value='выдох укорочен'
                     name='game_on_the_farm_part_three.exhalation'
                     control={control}
                     errors={errors}
@@ -727,6 +773,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Выдох плавный')}
+                    value='выдох плавный'
                     name='game_on_the_farm_part_three.exhalation'
                     control={control}
                     errors={errors}
@@ -783,6 +830,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Не нарушен')}
+                    value='не нарушен'
                     name='game_on_the_farm_part_three.rhythm'
                     control={control}
                     errors={errors}
@@ -793,6 +841,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Нарушен: речь растянутая, скандированная')}
+                    value='нарушен: речь растянутая, скандированная'
                     name='game_on_the_farm_part_three.rhythm'
                     control={control}
                     errors={errors}
@@ -806,6 +855,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Слабая')}
+                    value='слабая'
                     name='game_on_the_farm_part_three.expiratory_force'
                     control={control}
                     errors={errors}
@@ -816,6 +866,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Сильная')}
+                    value='сильная'
                     name='game_on_the_farm_part_three.expiratory_force'
                     control={control}
                     errors={errors}
@@ -829,6 +880,7 @@ const OnTheFarmPartThree = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('В норме')}
+                    value='в норме'
                     name='game_on_the_farm_part_three.inspiratory_expiratory_differentiation'
                     control={control}
                     errors={errors}
@@ -838,7 +890,8 @@ const OnTheFarmPartThree = (props) => {
               <ProtocolResultWrapper>
                 <ProtocolFormField
                     type='radio'
-                    label={t('Нарушено')}
+                    label={t('Нарушена')}
+                    value='нарушена'
                     name='game_on_the_farm_part_three.inspiratory_expiratory_differentiation'
                     control={control}
                     errors={errors}
@@ -855,7 +908,8 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolResultWrapper>
                       <ProtocolFormField
                           type='radio'
-                          label={t('Просодическая организация речи характеризуется неадекватным интонационным оформлением высказывания; речь невнятная, "смазанная", малопонятная для окружающих')}
+                          label={t('Просодическая организация речи характеризуется неадекватным интонационным оформлением высказывания; речь невнятная, смазанная, малопонятная для окружающих')}
+                          value='просодическая организация речи характеризуется неадекватным интонационным оформлением высказывания; речь невнятная, смазанная, малопонятная для окружающих'
                           name='game_on_the_farm_part_three.prosodic_side_of_speech'
                           control={control}
                           errors={errors}
@@ -866,6 +920,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Разборчивость речи несколько снижена, речь нечеткая')}
+                          value='разборчивость речи несколько снижена, речь нечеткая'
                           name='game_on_the_farm_part_three.prosodic_side_of_speech'
                           control={control}
                           errors={errors}
@@ -876,6 +931,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Речь внятная, понятная для окружающих')}
+                          value='речь внятная, понятная для окружающих'
                           name='game_on_the_farm_part_three.prosodic_side_of_speech'
                           control={control}
                           errors={errors}
@@ -888,6 +944,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Речь интонационно выразительна')}
+                          value='речь интонационно выразительна'
                           name='game_on_the_farm_part_three.speech_intonationally'
                           control={control}
                           errors={errors}
@@ -898,6 +955,7 @@ const OnTheFarmPartThree = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Речь интонационно невыразительна: слабая выраженность голосовых модуляций')}
+                          value='речь интонационно невыразительна: слабая выраженность голосовых модуляций'
                           name='game_on_the_farm_part_three.speech_intonationally'
                           control={control}
                           errors={errors}
@@ -912,6 +970,7 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Не наблюдается')}
+                        value='не наблюдается'
                         name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
                         control={control}
                         errors={errors}
@@ -922,6 +981,7 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Судороги')}
+                        value='судороги'
                         name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
                         control={control}
                         errors={errors}
@@ -932,6 +992,7 @@ const OnTheFarmPartThree = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Запинки')}
+                        value='запинки'
                         name='game_on_the_farm_part_three.violation_of_tempo_rhythmic_organization_of_speech'
                         control={control}
                         errors={errors}
