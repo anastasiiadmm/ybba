@@ -487,7 +487,7 @@ const AntBattleGame = (props) => {
             <ProtocolFormField
                 type='textarea'
                 label={t('Комментарии')}
-                name='game_ant_battle.expert_comment'
+                name='game_ant_battle.hypersalivation_comment'
                 placeholder={t('Комментарии специалиста')}
                 errors={errors}
                 register={register}
@@ -581,7 +581,7 @@ const AntBattleGame = (props) => {
               <ProtocolResultWrapper>
                 <ProtocolFormField
                     type='radio'
-                    label={t('Сформирован')}
+                    label={t('Сформированы')}
                     name='game_ant_battle.basic_motor_skills'
                     control={control}
                     errors={errors}
@@ -601,17 +601,7 @@ const AntBattleGame = (props) => {
               <ProtocolResultWrapper>
                 <ProtocolFormField
                     type='radio'
-                    label={t('Не сформирован')}
-                    name='game_ant_battle.basic_motor_skills'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
+                    label={t('Не сформированы')}
                     name='game_ant_battle.basic_motor_skills'
                     control={control}
                     errors={errors}
@@ -634,16 +624,6 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Не соответствует возрасту')}
-                    name='game_ant_battle.basic_motor_skills_part_two'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
                     name='game_ant_battle.basic_motor_skills_part_two'
                     control={control}
                     errors={errors}
@@ -748,7 +728,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='checkbox'
                     label={t('Не наблюдаются')}
-                    name=''
+                    name='game_ant_battle.violations_of_certain_aspects_function_not_observed'
                     control={control}
                     errors={errors}
                     disabled={disabled}
@@ -784,7 +764,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='checkbox'
                     label={t('Не наблюдаются')}
-                    name=''
+                    name='game_ant_battle.friendly_movements_of_synkinesis_not_observed'
                     control={control}
                     errors={errors}
                     disabled={disabled}
@@ -846,23 +826,13 @@ const AntBattleGame = (props) => {
                     disabled={disabled}
                 />
               </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
-                    name='game_ant_battle.motor_functions_of_hands_and_fingers'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
             </ProtocolResultBlock>
           </ProtocolRow>
           <ProtocolRow>
             <ProtocolFormField
                 type='textarea'
                 label={t('Комментарии')}
-                name='game_ant_battle.expert_comment'
+                name='game_ant_battle.motor_functions_of_hands_and_fingers_comment'
                 placeholder={t('Комментарии специалиста')}
                 errors={errors}
                 register={register}
@@ -1273,7 +1243,7 @@ const AntBattleGame = (props) => {
             <ProtocolFormField
                 type='textarea'
                 label={t('Комментарии')}
-                name='game_ant_battle.expert_comment'
+                name='game_ant_battle.cleft_comment'
                 placeholder={t('Комментарии специалиста')}
                 errors={errors}
                 register={register}

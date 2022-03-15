@@ -72,9 +72,9 @@ const GameContainer = (props) => {
     return {
       nickName: user.email,
       roomId: lessonId,
-      gameType: lesson.active_game_id,
       // developmentMode: config.appEnvironment === envs.local,
       developmentMode: true,
+      gameType: +lesson.active_game_id,
       userRole: gameUserRoles[user.role],
       //Выбор языка билда: 0 - русский; 1 - английский
       languageType: 0,

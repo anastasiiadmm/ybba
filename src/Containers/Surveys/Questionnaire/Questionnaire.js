@@ -154,7 +154,7 @@ const Questionnaire = (props) => {
                 </ProtocolPlaceholderTitle>
                 <ProtocolFormField
                     type='textarea'
-                    name='additional_information.neurological_status'
+                    name='additional_information.has_neurologist_ever_made_any_diagnosis'
                     placeholder={t('Ответ родителя')}
                     {...commonFieldProps}
                     disabled={disabled}
@@ -164,7 +164,7 @@ const Questionnaire = (props) => {
                 </ProtocolPlaceholderTitle>
                 <ProtocolFormField
                     type='textarea'
-                    name='additional_information.'
+                    name='additional_information.does_child_have_epilepsy_or_other_similar_conditions'
                     placeholder={t('Ответ родителя')}
                     {...commonFieldProps}
                     disabled={disabled}

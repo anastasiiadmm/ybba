@@ -110,7 +110,17 @@ const PicturesForFish = (props) => {
                   <ProtocolFormField
                       type='checkbox'
                       label={t('Свистящие звуки произносятся нормативно')}
-                      name='game_pictures_for_fish.whistling_is_normal'
+                      name='game_pictures_for_fish.whistling_sounds_are_pronounced_normatively'
+                      control={control}
+                      errors={errors}
+                      disabled={disabled}
+                  />
+                </ProtocolResultWrapper>
+                <ProtocolResultWrapper>
+                  <ProtocolFormField
+                      type='checkbox'
+                      label={t('Парасигматизм свистящих')}
+                      name='game_pictures_for_fish.sibilant_parasigmatism'
                       control={control}
                       errors={errors}
                       disabled={disabled}

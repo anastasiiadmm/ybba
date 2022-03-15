@@ -111,16 +111,6 @@ const CapriciousPrincessGame = (props) => {
                         disabled={isConclusionDisabled || disabled}
                     />
                   </ProtocolResultWrapper>
-                  <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='radio'
-                        label={t('В пределах возрастной нормы')}
-                        name='game_capricious_princess.syllabic_structure_of_a_word'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                  </ProtocolResultWrapper>
                 </ProtocolResultBlock>
                 <ProtocolDescriptionSubtitle>{t('Диспраксичные нарушения')}</ProtocolDescriptionSubtitle>
                 <ProtocolResultBlock>
@@ -128,7 +118,7 @@ const CapriciousPrincessGame = (props) => {
                     <ProtocolFormField
                         type='checkbox'
                         label={t('Диспраксичные нарушения не наблюдаются')}
-                        name=''
+                        name='game_capricious_princess.dyspraxic_disturbances_are_not_observed'
                         control={control}
                         errors={errors}
                         disabled={isConclusionDisabled || disabled}
@@ -191,7 +181,7 @@ const CapriciousPrincessGame = (props) => {
                   <ProtocolFormField
                       type='checkbox'
                       label={t('Гностические нарушения не наблюдаются')}
-                      name=''
+                      name='game_capricious_princess.gnostic_disturbances_are_not_observed'
                       control={control}
                       errors={errors}
                       disabled={isConclusionDisabled || disabled}

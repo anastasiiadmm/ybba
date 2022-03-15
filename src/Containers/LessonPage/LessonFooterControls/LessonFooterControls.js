@@ -16,13 +16,13 @@ const LessonFooterControls = (props) => {
   const {
     changeLessonContextProperty,
     isTeacherHaveControlOnGame,
+    isUnityInitialized,
     isDisplayRestart,
     isGameTipOpen,
     unityContext,
     isStyleDebug,
     isGameMuted,
     isMuted,
-    isIntroButtonVisible,
     isNextButtonVisible,
     isPrevButtonVisible,
     isRepeatButtonVisible,
@@ -115,8 +115,10 @@ const LessonFooterControls = (props) => {
           />
           <button
             className={addClasses('gamef__get-control', {
-              'active': isTeacherHaveControlOnGame
+              'button-disabled': !isUnityInitialized,
+              'active': isTeacherHaveControlOnGame,
             })}
+            disabled={!isUnityInitialized}
             type='button'
             onClick={getGameControlForTeacher}
           />
