@@ -46,7 +46,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                   className='switch2__input'
                   value={false}
                   label='-'
-                  name='game_how_the_mouse_could_not_sleep.mouse_in_the_yard_at_night'
+                  name='game_how_the_mouse_could_not_sleep.mouse_in_the_forest'
                   control={control}
                   disabled={disabled}
               />
@@ -56,7 +56,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                   className='switch2__input'
                   value={true}
                   label='+'
-                  name='game_how_the_mouse_could_not_sleep.mouse_in_the_yard_at_night'
+                  name='game_how_the_mouse_could_not_sleep.mouse_in_the_forest'
                   control={control}
                   disabled={disabled}
               />

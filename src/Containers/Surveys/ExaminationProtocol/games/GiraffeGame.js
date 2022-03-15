@@ -245,17 +245,17 @@ const GiraffeGame = (props) => {
               </>
           )}
         </ProtocolBlock>
-        {/*<ProtocolRow>*/}
-        {/*  <ProtocolFormField*/}
-        {/*      type='textarea'*/}
-        {/*      label={t('Комментарий')}*/}
-        {/*      name=''*/}
-        {/*      placeholder={t('Комментарий специалиста')}*/}
-        {/*      errors={errors}*/}
-        {/*      register={register}*/}
-        {/*      disabled={disabled}*/}
-        {/*  />*/}
-        {/*</ProtocolRow>*/}
+        <ProtocolRow>
+          <ProtocolFormField
+              type='textarea'
+              label={t('Комментарий')}
+              name='game_giraffe.lambdacism_comment'
+              placeholder={t('Комментарий специалиста')}
+              errors={errors}
+              register={register}
+              disabled={disabled}
+          />
+        </ProtocolRow>
         {isLessonFinished && (
             <>
               <ProtocolBlock>

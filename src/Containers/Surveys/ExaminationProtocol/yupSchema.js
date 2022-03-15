@@ -328,6 +328,8 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         replacing_t_soft_with: yup.string()
             .nullable(true),
+        interdental_pronunciation: yup.string()
+            .nullable(true),
         sounds_k_g_x_are_pronounced_normatively: yup.string()
             .nullable(true),
         replacing_k_with: yup.string()
@@ -472,7 +474,7 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
     }),
     game_how_the_mouse_could_not_sleep: yup.object().shape({
-        mouse_in_the_yard_at_night: yup.string()
+        mouse_in_the_forest: yup.string()
             .required(true)
             .nullable(true),
         mouse_is_eating_an_apple_and_a_berry: yup.string()
@@ -836,13 +838,13 @@ export let examinationProtocolSchema = yup.object().shape({
         on_the_roof: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
-        to_the_right_of_the_kennel: yup.string()
+        to_the_left_of_the_kennel: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
         on_the_branch_above_misha: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
-        to_the_left_of_the_tree: yup.string()
+        to_the_right_of_the_tree: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
         under_the_boot: yup.string()
@@ -1218,7 +1220,7 @@ examinationProtocolSchema = examinationProtocolSchema.test(
     (obj) => {
         if (obj.game_ant_lambada.sounds_d_db_are_pronounced_normatively || obj.game_ant_lambada.sounds_t_tb_are_pronounced_normatively || obj.game_ant_lambada.nasal || obj.game_ant_lambada.skip
             || obj.game_ant_lambada.replacing_d_with || obj.game_ant_lambada.replacing_d_soft_with
-            || obj.game_ant_lambada.replacing_t_with || obj.game_ant_lambada.replacing_t_soft_with) {
+            || obj.game_ant_lambada.replacing_t_with || obj.game_ant_lambada.replacing_t_soft_with || obj.game_ant_lambada.interdental_pronunciation) {
             return true;
         } else {
             return new yup.ValidationError('Выберите хотя бы один из вариантов', null, 'choices20');
