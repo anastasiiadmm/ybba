@@ -72,8 +72,9 @@ const GameContainer = (props) => {
     return {
       nickName: user.email,
       roomId: lessonId,
+      // developmentMode: config.appEnvironment === envs.local,
+      developmentMode: true,
       gameType: +lesson.active_game_id,
-      developmentMode: config.appEnvironment === envs.local,
       userRole: gameUserRoles[user.role],
       //Выбор языка билда: 0 - русский; 1 - английский
       languageType: 0,
@@ -118,6 +119,9 @@ const GameContainer = (props) => {
     changeLessonContextProperty(lessonProperties.IS_DISPLAY_RESTART, !buttonStates.StartButton);
   }, [changeLessonContextProperty]);
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard?.writeText(text);
+  }
 
   const setUnity = useCallback(async () => {
     if (lesson) {
@@ -144,6 +148,9 @@ const GameContainer = (props) => {
         setUnityLoadProgress(progress);
       });
       if (unityContext) {
+        unityContext.on('CopyLogData', (logData) => {
+          copyToClipboard(logData);
+        });
         unityContext.on('GameInitialized', () => {
           updateGameJsonData();
           changeLessonContextProperty(lessonProperties.IS_UNITY_INITIALIZED, true);
