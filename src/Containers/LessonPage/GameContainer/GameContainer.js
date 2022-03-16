@@ -12,12 +12,13 @@ import {
   userRoles,
 } from 'constants.js';
 import Unity, { UnityContext } from 'react-unity-webgl';
+import { getGameLanguage } from 'utils/language/language';
 import { addClasses } from 'utils/addClasses/addClasses';
+import { isTestLesson } from 'utils/common/commonUtils';
 import { checkUserRole } from 'utils/user';
 import { authSelector } from 'redux/auth/authSlice';
 import { LessonContext } from 'context/LessonContext/LessonContext';
 import { JitsiContext } from 'context/JitsiContext/JitsiContext';
-import { isTestLesson } from '../../../utils/common/commonUtils';
 
 const GameContainer = (props) => {
   const { lesson } = props;
@@ -66,28 +67,6 @@ const GameContainer = (props) => {
     return lesson.game_build[fileName];
   }, [lesson]);
 
-  const getUserDataForGame = useCallback(() => {
-    const playersNum = isTestLesson(lessonId) ? 1 : 2;
-
-    return {
-      nickName: user.email,
-      roomId: lessonId,
-      // developmentMode: config.appEnvironment === envs.local,
-      developmentMode: true,
-      gameType: +lesson.active_game_id,
-      userRole: gameUserRoles[user.role],
-      //Выбор языка билда: 0 - русский; 1 - английский
-      languageType: 0,
-      playersNum,
-    }
-  }, [lesson, lessonId, user]);
-
-  const updateGameJsonData = useCallback(() => {
-    const userGameData = getUserDataForGame();
-    console.log(userGameData);
-    unityContext.send('JavaHook', 'InitGame', JSON.stringify(userGameData));
-  }, [getUserDataForGame, unityContext]);
-
   const setIsMuted = useCallback((isMuted) => {
     changeLessonContextProperty(lessonProperties.IS_MUTED, isMuted);
   }, [changeLessonContextProperty]);
@@ -109,6 +88,10 @@ const GameContainer = (props) => {
     }
   }, [api]);
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard?.writeText(text);
+  }
+
   const updateButtonState = useCallback((buttonStates) => {
     console.log('ButtonStates', buttonStates);
 
@@ -119,59 +102,78 @@ const GameContainer = (props) => {
     changeLessonContextProperty(lessonProperties.IS_DISPLAY_RESTART, !buttonStates.StartButton);
   }, [changeLessonContextProperty]);
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard?.writeText(text);
-  }
+  const userDataForGame = useMemo(() => {
+    const playersNum = isTestLesson(lessonId) ? 1 : 2;
 
-  const setUnity = useCallback(async () => {
-    if (lesson) {
-      if (isUnityInitialized) {
-        updateGameJsonData();
-      } else {
-        if (lesson.game_build && !unityContext) {
-          const context = new UnityContext({
-            loaderUrl: getFileUrl(GAME_FILE_TYPE_LOADER),
-            dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
-            frameworkUrl: getFileUrl(GAME_FILE_TYPE_FRAMEWORK),
-            codeUrl: getFileUrl(GAME_FILE_TYPE_WASM),
-            streamingAssetsUrl: getFileUrl(GAME_FOLDER_STREAMING_ASSETS)
-          });
-          await changeLessonContextProperty(lessonProperties.UNITY_CONTEXT, context);
-        }
-      }
+    return {
+      nickName: user.email,
+      roomId: lessonId,
+      gameType: +lesson.active_game_id,
+      // developmentMode: config.appEnvironment === envs.local,
+      developmentMode: true,
+      userRole: gameUserRoles[user.role],
+      languageType: getGameLanguage(),
+      playersNum,
     }
-  }, [getFileUrl, isUnityInitialized, lesson, updateGameJsonData]);
+  }, [lesson?.active_game_id]);
 
-  useEffect(() => {
+  const callInitHook = useCallback(() => {
+    console.log('UPDATE_GAME_JSON_DATA', userDataForGame);
+    setTimeout(() => {
+      console.log('JavaHook', 'InitGame', unityContext);
+      unityContext.send('JavaHook', 'InitGame', JSON.stringify(userDataForGame));
+    }, 100);
+  }, [unityContext, userDataForGame]);
+
+  const initUnityContext = useCallback(() => {
+    console.log('initUnityContext', isUnityInitialized);
+    if (!isUnityInitialized && lesson?.game_build) {
+      const context = new UnityContext({
+        loaderUrl: getFileUrl(GAME_FILE_TYPE_LOADER),
+        dataUrl: getFileUrl(GAME_FILE_TYPE_DATA),
+        frameworkUrl: getFileUrl(GAME_FILE_TYPE_FRAMEWORK),
+        codeUrl: getFileUrl(GAME_FILE_TYPE_WASM),
+        streamingAssetsUrl: getFileUrl(GAME_FOLDER_STREAMING_ASSETS)
+      });
+      changeLessonContextProperty(lessonProperties.UNITY_CONTEXT, context);
+    }
+  }, [getFileUrl, lesson?.game_build]);
+
+  const handleUnityEvents = useCallback(() => {
     if (unityContext) {
       unityContext.on('progress', (progress) => {
         setUnityLoadProgress(progress);
       });
-      if (unityContext) {
-        unityContext.on('CopyLogData', (logData) => {
-          copyToClipboard(logData);
-        });
-        unityContext.on('GameInitialized', () => {
-          updateGameJsonData();
-          changeLessonContextProperty(lessonProperties.IS_UNITY_INITIALIZED, true);
-        });
-        unityContext.on('MuteMicrophone', () => {
-          muteJitsiAudio();
-        });
-        unityContext.on('UnMuteMicrophone', () => {
-          unMuteJitsiAudio();
-        });
-        unityContext.on('UpdateButtonState', (data) => {
-          updateButtonState(JSON.parse(data));
-        });
-      }
+      unityContext.on('loaded', () => {
+        console.log('GAME_LOADED', unityContext);
+        changeLessonContextProperty(lessonProperties.IS_UNITY_INITIALIZED, true);
+        callInitHook();
+      });
+
+      unityContext.on('GameInitialized', () => {
+        console.log('GAME_INITIALIZED', unityContext);
+      });
+      unityContext.on('CopyLogData', (logData) => {
+        console.log('COPY_LOG_DATA', logData);
+        copyToClipboard(logData);
+      });
+      unityContext.on('MuteMicrophone', () => {
+        muteJitsiAudio();
+      });
+      unityContext.on('UnMuteMicrophone', () => {
+        unMuteJitsiAudio();
+      });
+      unityContext.on('UpdateButtonState', (data) => {
+        updateButtonState(JSON.parse(data));
+      });
     }
-  }, [user, lessonId, unityContext, muteJitsiAudio, unMuteJitsiAudio, updateGameJsonData]);
+  }, [unityContext, muteJitsiAudio, unMuteJitsiAudio, updateButtonState]);
 
-
+  useEffect(initUnityContext, [initUnityContext]);
+  useEffect(handleUnityEvents, [unityContext, handleUnityEvents]);
   useEffect(() => {
-    setUnity();
-  }, [lesson, setUnity]);
+    if (unityContext) callInitHook();
+  }, [lesson?.active_game_id]);
 
   useEffect(() => {
     handleGameContainerResize();
