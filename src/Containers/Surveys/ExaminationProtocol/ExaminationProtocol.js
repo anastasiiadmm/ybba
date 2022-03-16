@@ -231,6 +231,7 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Запас знаний об окружающем мире крайне низкий')}
+                          value='запас знаний об окружающем мире крайне низкий'
                           name='stock_of_knowledge_about_the_world_around'
                           control={control}
                           errors={errors}
@@ -241,6 +242,7 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Запас знаний об окружающем мире ниже возрастной нормы')}
+                          value='запас знаний об окружающем мире ниже возрастной нормы'
                           name='stock_of_knowledge_about_the_world_around'
                           control={control}
                           errors={errors}
@@ -251,6 +253,7 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Запас знаний об окружающем мире соответствует возрасту')}
+                          value='запас знаний об окружающем мире соответствует возрасту'
                           name='stock_of_knowledge_about_the_world_around'
                           control={control}
                           errors={errors}
@@ -266,6 +269,7 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Ориентируется')}
+                          value='ориентируется'
                           name='in_a_time_space_situation'
                           control={control}
                           errors={errors}
@@ -276,6 +280,7 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не ориентируется')}
+                          value='не ориентируется'
                           name='in_a_time_space_situation'
                           control={control}
                           errors={errors}
@@ -319,6 +324,7 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Сформирован')}
+                          value='сформирован'
                           name='image_i'
                           control={control}
                           errors={errors}
@@ -329,6 +335,7 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не сформирован')}
+                          value='не сформирован'
                           name='image_i'
                           control={control}
                           errors={errors}
@@ -374,6 +381,7 @@ const ExaminationProtocol = (props) => {
                         <ProtocolFormField
                             type='radio'
                             label={t('Сформирован')}
+                            value='сформирован'
                             name='somatognosis_understanding_your_own_body'
                             control={control}
                             errors={errors}
@@ -384,6 +392,7 @@ const ExaminationProtocol = (props) => {
                         <ProtocolFormField
                             type='radio'
                             label={t('Не сформирован')}
+                            value='не сформирован'
                             name='somatognosis_understanding_your_own_body'
                             control={control}
                             errors={errors}
@@ -448,7 +457,7 @@ const ExaminationProtocol = (props) => {
                     label={t('Правое')}
                     name='leading_ear_phone'
                     control={control}
-                    value={t('Правое ухо')}
+                    value='правое ухо'
                     errors={errors}
                     disabled={isProtocolClosed}
                 />
@@ -459,7 +468,7 @@ const ExaminationProtocol = (props) => {
                     label={t('Левое')}
                     name='leading_ear_phone'
                     control={control}
-                    value={t('Левое ухо')}
+                    value='левое ухо'
                     errors={errors}
                     disabled={isProtocolClosed}
                 />
@@ -475,7 +484,7 @@ const ExaminationProtocol = (props) => {
                     label={t('Правая')}
                     name='leading_hand_phone'
                     control={control}
-                    value={t('Правая рука')}
+                    value='правая рука'
                     errors={errors}
                     disabled={isProtocolClosed}
                 />
@@ -486,7 +495,7 @@ const ExaminationProtocol = (props) => {
                     label={t('Левая')}
                     name='leading_hand_phone'
                     control={control}
-                    value={t('Левая рука')}
+                    value='левая рука'
                     errors={errors}
                     disabled={isProtocolClosed}
                 />
@@ -503,7 +512,7 @@ const ExaminationProtocol = (props) => {
                     label={t('Правая')}
                     name='leading_hand_spyglass'
                     control={control}
-                    value={t('Правая рука')}
+                    value='правая рука'
                     errors={errors}
                     disabled={isProtocolClosed}
                 />
@@ -514,7 +523,7 @@ const ExaminationProtocol = (props) => {
                     label={t('Левая')}
                     name='leading_hand_spyglass'
                     control={control}
-                    value={t('Левая рука')}
+                    value='левая рука'
                     errors={errors}
                     disabled={isProtocolClosed}
                 />
@@ -530,7 +539,7 @@ const ExaminationProtocol = (props) => {
                     label={t('Правый')}
                     name='leading_eye_spyglass'
                     control={control}
-                    value={t('Правый глаз')}
+                    value='правый глаз'
                     errors={errors}
                     disabled={isProtocolClosed}
                 />
@@ -541,7 +550,7 @@ const ExaminationProtocol = (props) => {
                     label={t('Левый')}
                     name='leading_eye_spyglass'
                     control={control}
-                    value={t('Левый глаз')}
+                    value='левый глаз'
                     errors={errors}
                     disabled={isProtocolClosed}
                 />
@@ -558,7 +567,7 @@ const ExaminationProtocol = (props) => {
                     label={t('Правая')}
                     name='leading_leg_ball'
                     control={control}
-                    value='Правая нога'
+                    value='правая нога'
                     errors={errors}
                     disabled={isProtocolClosed}
                 />
@@ -569,7 +578,7 @@ const ExaminationProtocol = (props) => {
                     label={t('Левая')}
                     name='leading_leg_ball'
                     control={control}
-                    value='Левая нога'
+                    value='левая нога'
                     errors={errors}
                     disabled={isProtocolClosed}
                 />
@@ -585,6 +594,7 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Левшество, все 4 показателя совпадают')}
+                          value='левшество, все 4 показателя совпадают'
                           name='conclusion_options'
                           control={control}
                           errors={errors}
@@ -595,6 +605,7 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Правшество, все 4 показателя совпадают')}
+                          value='правшество, все 4 показателя совпадают'
                           name='conclusion_options'
                           control={control}
                           errors={errors}
@@ -605,6 +616,7 @@ const ExaminationProtocol = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Дисбаланс межполушарных связей')}
+                          value='дисбаланс межполушарных связей'
                           name='conclusion_options'
                           control={control}
                           errors={errors}

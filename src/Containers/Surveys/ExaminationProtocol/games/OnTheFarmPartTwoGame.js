@@ -105,7 +105,7 @@ const OnTheFarmPartTwoGame = (props) => {
               <ProtocolFormField
                   type='text'
                   label={t('Слева от конуры')}
-                  name='game_on_the_farm_part_two.to_the_right_of_the_kennel'
+                  name='game_on_the_farm_part_two.to_the_left_of_the_kennel'
                   register={register}
                   errors={errors}
                   disabled={disabled}
@@ -127,7 +127,7 @@ const OnTheFarmPartTwoGame = (props) => {
               <ProtocolFormField
                   type='text'
                   label={t('Справа от дерева')}
-                  name='game_on_the_farm_part_two.to_the_left_of_the_tree'
+                  name='game_on_the_farm_part_two.to_the_right_of_the_tree'
                   register={register}
                   errors={errors}
                   disabled={disabled}
@@ -188,6 +188,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Соответствует возрастной норме')}
+                          value='соответствует возрастной норме'
                           name='game_on_the_farm_part_two.level_of_grammatical_competence_formation'
                           control={control}
                           errors={errors}
@@ -198,6 +199,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Ниже возрастной нормы')}
+                          value='ниже возрастной нормы'
                           name='game_on_the_farm_part_two.level_of_grammatical_competence_formation'
                           control={control}
                           errors={errors}
@@ -208,6 +210,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Значительно ниже возрастной нормы')}
+                          value='значительно ниже возрастной нормы'
                           name='game_on_the_farm_part_two.level_of_grammatical_competence_formation'
                           control={control}
                           errors={errors}
@@ -221,6 +224,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('На самой начальной стадии формирования; наблюдаются выраженные трудности усвоения словоизменительной системы языка, в речи присутствует большое количество морфемных (формообразовательных) аграмматизмов; усвоены только наиболее продуктивные словоизменительные модели языка')}
+                          value='на самой начальной стадии формирования; наблюдаются выраженные трудности усвоения словоизменительной системы языка, в речи присутствует большое количество морфемных (формообразовательных) аграмматизмов; усвоены только наиболее продуктивные словоизменительные модели языка'
                           name='game_on_the_farm_part_two.inflectional_skills_and_abilities_part_one'
                           control={control}
                           errors={errors}
@@ -231,6 +235,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('В стадии формирования, характерной для речи детей более младшего возраста; наблюдаются трудности усвоения нерегулярных словоизменительных моделей')}
+                          value='в стадии формирования, характерной для речи детей более младшего возраста; наблюдаются трудности усвоения нерегулярных словоизменительных моделей'
                           name='game_on_the_farm_part_two.inflectional_skills_and_abilities_part_one'
                           control={control}
                           errors={errors}
@@ -241,6 +246,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Сформированы на уровне, соответствующем данной возрастной группе; в речи наблюдается незначительное количество словоизменительных ошибок (в основном при непродуктивном словоизменении)')}
+                          value='сформированы на уровне, соответствующем данной возрастной группе; в речи наблюдается незначительное количество словоизменительных ошибок (в основном при непродуктивном словоизменении)'
                           name='game_on_the_farm_part_two.inflectional_skills_and_abilities_part_one'
                           control={control}
                           errors={errors}
@@ -251,6 +257,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Словоизменительные навыки и умения сформированы')}
+                          value='словоизменительные навыки и умения сформированы'
                           name='game_on_the_farm_part_two.inflectional_skills_and_abilities_part_one'
                           control={control}
                           errors={errors}
@@ -264,6 +271,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Словообразовательная деятельность не сформирована; морфологическое членение слова недоступно; наблюдаются выраженные трудности категоризации семантически значимых морфем; в речи присутствует большое количество словообразовательных ошибок')}
+                          value='словообразовательная деятельность не сформирована; морфологическое членение слова недоступно; наблюдаются выраженные трудности категоризации семантически значимых морфем; в речи присутствует большое количество словообразовательных ошибок'
                           name='game_on_the_farm_part_two.word_building_skills_and_abilities'
                           control={control}
                           errors={errors}
@@ -274,6 +282,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Словообразовательная деятельность находится на самой начальной стадии формирования; усвоены продуктивные словообразовательные модели; в речи допускаются ошибки в словах, образованных по менее продуктивным и нерегулярным моделям')}
+                          value='словообразовательная деятельность находится на самой начальной стадии формирования; усвоены продуктивные словообразовательные модели; в речи допускаются ошибки в словах, образованных по менее продуктивным и нерегулярным моделям'
                           name='game_on_the_farm_part_two.word_building_skills_and_abilities'
                           control={control}
                           errors={errors}
@@ -284,6 +293,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Словообразовательная деятельность сформирована на уровне, позволяющем осуществлять коммуникацию, в речи наблюдаются незначительные трудности усвоения нерегулярных словообразовательных моделей')}
+                          value='словообразовательная деятельность сформирована на уровне, позволяющем осуществлять коммуникацию, в речи наблюдаются незначительные трудности усвоения нерегулярных словообразовательных моделей'
                           name='game_on_the_farm_part_two.word_building_skills_and_abilities'
                           control={control}
                           errors={errors}
@@ -294,6 +304,7 @@ const OnTheFarmPartTwoGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Словообразовательная деятельность сформирована')}
+                          value='словообразовательная деятельность сформирована'
                           name='game_on_the_farm_part_two.word_building_skills_and_abilities'
                           control={control}
                           errors={errors}
@@ -306,6 +317,7 @@ const OnTheFarmPartTwoGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Синтаксические навыки сформированы на самом элементарном уровне, в речи присутствуют простые нераспространенные предложения, понимание смысла синтаксических конструкций более сложной структуры затруднено; предикативная часть многих самых элементарных конструкций отсутствует')}
+                        value='синтаксические навыки сформированы на самом элементарном уровне, в речи присутствуют простые нераспространенные предложения, понимание смысла синтаксических конструкций более сложной структуры затруднено; предикативная часть многих самых элементарных конструкций отсутствует'
                         name='game_on_the_farm_part_two.syntax_skills_and_abilities_part_two'
                         control={control}
                         errors={errors}
@@ -316,6 +328,7 @@ const OnTheFarmPartTwoGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Синтаксические навыки сформированы на уровне, соответствующем более младшей возрастной группе (ниже возрастного эталона); наблюдаются выраженные трудности построения распространенных в языке синтаксических конструкций (пропуск предлогов, информативно значимых частей), ошибки согласования и управления, недоступно понимание логико-грамматических конструкций')}
+                        value='синтаксические навыки сформированы на уровне, соответствующем более младшей возрастной группе (ниже возрастного эталона); наблюдаются выраженные трудности построения распространенных в языке синтаксических конструкций (пропуск предлогов, информативно значимых частей), ошибки согласования и управления, недоступно понимание логико-грамматических конструкций'
                         name='game_on_the_farm_part_two.syntax_skills_and_abilities_part_two'
                         control={control}
                         errors={errors}
@@ -326,6 +339,7 @@ const OnTheFarmPartTwoGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Синтаксические навыки в целом сформированы, при построении регулярных синтаксических конструкций соблюдается соответствие формы и содержания, в речи допускаются отдельные недочеты при построении сложносочиненных предложений с причинно-следственной или временной связью, вариативные возможности построения конструкций различного вида на очень низком уровне')}
+                        value='синтаксические навыки в целом сформированы, при построении регулярных синтаксических конструкций соблюдается соответствие формы и содержания, в речи допускаются отдельные недочеты при построении сложносочиненных предложений с причинно-следственной или временной связью, вариативные возможности построения конструкций различного вида на очень низком уровне'
                         name='game_on_the_farm_part_two.syntax_skills_and_abilities_part_two'
                         control={control}
                         errors={errors}
@@ -336,6 +350,7 @@ const OnTheFarmPartTwoGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Синтаксические навыки и умения сформированы, в речи наблюдаются многообразие синтаксических конструкций, вариативность их применения, ребенок демонстрирует трансформационные возможности при оперировании синтаксическим материалом')}
+                        value='синтаксические навыки и умения сформированы, в речи наблюдаются многообразие синтаксических конструкций, вариативность их применения, ребенок демонстрирует трансформационные возможности при оперировании синтаксическим материалом'
                         name='game_on_the_farm_part_two.syntax_skills_and_abilities_part_two'
                         control={control}
                         errors={errors}

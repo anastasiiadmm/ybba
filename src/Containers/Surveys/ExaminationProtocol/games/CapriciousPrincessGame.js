@@ -95,6 +95,7 @@ const CapriciousPrincessGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Слоговая структура слова не нарушена')}
+                        value='слоговая структура слова не нарушена'
                         name='game_capricious_princess.syllabic_structure_of_a_word'
                         control={control}
                         errors={errors}
@@ -104,7 +105,8 @@ const CapriciousPrincessGame = (props) => {
                   <ProtocolResultWrapper>
                     <ProtocolFormField
                         type='radio'
-                        label={t('Слоговая структура нарушена')}
+                        label={t('Слоговая структура слова нарушена')}
+                        value='слоговая структура слова нарушена'
                         name='game_capricious_princess.syllabic_structure_of_a_word'
                         control={control}
                         errors={errors}

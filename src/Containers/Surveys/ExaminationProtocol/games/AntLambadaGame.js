@@ -144,16 +144,16 @@ const AntLambadaGame = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    {/*<ProtocolResultWrapper>*/}
-                    {/*  <ProtocolFormField*/}
-                    {/*      type='checkboxWithField'*/}
-                    {/*      label={t('Межзубное произношение ')}*/}
-                    {/*      name='game_ant_lambada.'*/}
-                    {/*      control={control}*/}
-                    {/*      errors={errors}*/}
-                    {/*      disabled={isConclusionDisabled || disabled}*/}
-                    {/*  />*/}
-                    {/*</ProtocolResultWrapper>*/}
+                    <ProtocolResultWrapper>
+                      <ProtocolFormField
+                          type='checkbox'
+                          label={t('Межзубное произношение')}
+                          name='game_ant_lambada.interdental_pronunciation'
+                          control={control}
+                          errors={errors}
+                          disabled={isConclusionDisabled || disabled}
+                      />
+                    </ProtocolResultWrapper>
                     {errors.choices20 && <div className='form2__error'> {errors.choices20.message}</div>}
                   </ProtocolResultBlock>
                 </ProtocolRow>
