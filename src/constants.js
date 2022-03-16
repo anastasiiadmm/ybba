@@ -149,8 +149,8 @@ export const envs = {
 }
 
 export const lessonTestIds = {
-    [envs.local]: 'f665ff77-8116-4d8b-85e4-ef0a2ddc1a19',
-    [envs.development]: 'f665ff77-8116-4d8b-85e4-ef0a2ddc1a19',
+    [envs.local]: 'd54b18e7-b24d-4743-8f64-065257613e57',
+    [envs.development]: 'd54b18e7-b24d-4743-8f64-065257613e57',
     [envs.staging]: 'd76a4526-bbe1-4bba-b804-37379e120e6e',
     [envs.production]: 'd76a4526-bbe1-4bba-b804-37379e120e6e'
 };
@@ -286,3 +286,10 @@ export const relationOfProtocolToSpeechCard = {
     'attention': 'game_on_the_farm_part_three.speech_comprehension',
     'logopedic_conclusion': 'speech_therapy_conclusion',
 }
+
+export const EN_LANG = 'en';
+export const RU_LANG = 'ru';
+export const appLanguages = {
+    [RU_LANG]: 0,
+    [EN_LANG]: 1,
+};
