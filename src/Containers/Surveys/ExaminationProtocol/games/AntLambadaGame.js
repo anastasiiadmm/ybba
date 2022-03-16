@@ -68,7 +68,7 @@ const AntLambadaGame = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Звуки Д, Дь произносятся нормативно')}
-                          name=''
+                          name='game_ant_lambada.sounds_d_db_are_pronounced_normatively'
                           control={control}
                           errors={errors}
                           disabled={isConclusionDisabled || disabled}
@@ -78,7 +78,7 @@ const AntLambadaGame = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Звуки Т, Ть произносятся нормативно')}
-                          name=''
+                          name='game_ant_lambada.sounds_t_tb_are_pronounced_normatively'
                           control={control}
                           errors={errors}
                           disabled={isConclusionDisabled || disabled}
@@ -144,6 +144,16 @@ const AntLambadaGame = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
+                    <ProtocolResultWrapper>
+                      <ProtocolFormField
+                          type='checkbox'
+                          label={t('Межзубное произношение')}
+                          name='game_ant_lambada.interdental_pronunciation'
+                          control={control}
+                          errors={errors}
+                          disabled={isConclusionDisabled || disabled}
+                      />
+                    </ProtocolResultWrapper>
                     {errors.choices20 && <div className='form2__error'> {errors.choices20.message}</div>}
                   </ProtocolResultBlock>
                 </ProtocolRow>
@@ -154,7 +164,7 @@ const AntLambadaGame = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Звуки К, Г, Х произносятся нормативно')}
-                          name='game_ant_lambada.back_lingual_is_normal'
+                          name='game_ant_lambada.sounds_k_g_x_are_pronounced_normatively'
                           control={control}
                           errors={errors}
                           disabled={isConclusionDisabled || disabled}

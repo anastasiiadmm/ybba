@@ -77,7 +77,7 @@ const GiraffeGame = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Звуки Р, Рь произносятся нормативно')}
-                          name=''
+                          name='game_giraffe.sounds_p_and_pb_are_pronounced_normatively_rotacism'
                           control={control}
                           errors={errors}
                           disabled={disabled}
@@ -163,7 +163,7 @@ const GiraffeGame = (props) => {
                       <ProtocolFormField
                           type='checkbox'
                           label={t('Звуки Р, Рь произносятся нормативно')}
-                          name=''
+                          name='game_giraffe.sounds_p_and_pb_are_pronounced_normatively_lambdacism'
                           control={control}
                           errors={errors}
                           disabled={disabled}
@@ -249,7 +249,7 @@ const GiraffeGame = (props) => {
           <ProtocolFormField
               type='textarea'
               label={t('Комментарий')}
-              name='game_giraffe.expert_comment'
+              name='game_giraffe.lambdacism_comment'
               placeholder={t('Комментарий специалиста')}
               errors={errors}
               register={register}
@@ -268,6 +268,7 @@ const GiraffeGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Соответствует возрасту')}
+                          value='соответствует возрасту'
                           name='game_giraffe.thinking'
                           control={control}
                           errors={errors}
@@ -278,16 +279,7 @@ const GiraffeGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не соответствует возрасту')}
-                          name='game_giraffe.thinking'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
+                          value='не соответствует возрасту'
                           name='game_giraffe.thinking'
                           control={control}
                           errors={errors}
@@ -300,6 +292,7 @@ const GiraffeGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Нарушено')}
+                          value='нарушено'
                           name='game_giraffe.thinking_part_two'
                           control={control}
                           errors={errors}
@@ -310,16 +303,7 @@ const GiraffeGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не нарушено')}
-                          name='game_giraffe.thinking_part_two'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
+                          value='не нарушено'
                           name='game_giraffe.thinking_part_two'
                           control={control}
                           errors={errors}
@@ -348,6 +332,7 @@ const GiraffeGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Мышление наглядно-действенное. Решение мыслительных задач осуществляется только на уровне практических действий')}
+                        value='мышление наглядно-действенное. Решение мыслительных задач осуществляется только на уровне практических действий'
                         name='game_giraffe.kind_of_thinking'
                         control={control}
                         errors={errors}
@@ -358,6 +343,7 @@ const GiraffeGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Мышление наглядно-образное, носит целевой, организованный характер')}
+                        value='мышление наглядно-образное, носит целевой, организованный характер'
                         name='game_giraffe.kind_of_thinking'
                         control={control}
                         errors={errors}
@@ -367,7 +353,8 @@ const GiraffeGame = (props) => {
                   <ProtocolResultWrapper>
                     <ProtocolFormField
                         type='radio'
-                        label={t('Мышление наглядно-образное, присутствуют элементы абстрактно-логического/словесно-логического мышления ')}
+                        label={t('Мышление наглядно-образное, присутствуют элементы абстрактно-логического/словесно-логического мышления')}
+                        value='мышление наглядно-образное, присутствуют элементы абстрактно-логического/словесно-логического мышления'
                         name='game_giraffe.kind_of_thinking'
                         control={control}
                         errors={errors}
@@ -378,16 +365,7 @@ const GiraffeGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Словесно-логическое, способен давать своим действиям логическое объяснение')}
-                        name='game_giraffe.kind_of_thinking'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                  </ProtocolResultWrapper>
-                  <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='radio'
-                        label={t('В пределах возрастной нормы')}
+                        value='словесно-логическое, способен давать своим действиям логическое объяснение'
                         name='game_giraffe.kind_of_thinking'
                         control={control}
                         errors={errors}

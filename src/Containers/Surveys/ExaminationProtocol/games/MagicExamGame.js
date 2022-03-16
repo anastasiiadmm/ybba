@@ -100,6 +100,7 @@ const MagicExamGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Уровень сформированности фонетико-фонологической компетенции соответствует возрастной норме')}
+                          value='уровень сформированности фонетико-фонологической компетенции соответствует возрастной норме'
                           name='game_magic_exam.level_of_formation_of_phonetic_phonological_competence'
                           control={control}
                           errors={errors}
@@ -110,16 +111,7 @@ const MagicExamGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Уровень сформированности фонетико-фонологической компетенции не соответствует возрастной норме')}
-                          name='game_magic_exam.level_of_formation_of_phonetic_phonological_competence'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
+                          value='уровень сформированности фонетико-фонологической компетенции не соответствует возрастной норме'
                           name='game_magic_exam.level_of_formation_of_phonetic_phonological_competence'
                           control={control}
                           errors={errors}
@@ -133,6 +125,7 @@ const MagicExamGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Фонематическое восприятие сформировано')}
+                          value='фонематическое восприятие сформировано'
                           name='game_magic_exam.state_of_phonemic_perception'
                           control={control}
                           errors={errors}
@@ -143,16 +136,7 @@ const MagicExamGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Фонематическое восприятие не сформировано')}
-                          name='game_magic_exam.state_of_phonemic_perception'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
+                          value='фонематическое восприятие не сформировано'
                           name='game_magic_exam.state_of_phonemic_perception'
                           control={control}
                           errors={errors}
@@ -184,7 +168,7 @@ const MagicExamGame = (props) => {
                     <ProtocolResultWrapper>
                       <ProtocolFormField
                           type='checkbox'
-                          label={t('Нарушено различение аффрикат и входящих в их состав звуко')}
+                          label={t('Нарушено различение аффрикат и входящих в их состав звуков')}
                           name='game_magic_exam.distinction_between_affricates_and_their_constituent'
                           control={control}
                           errors={errors}
@@ -325,6 +309,7 @@ const MagicExamGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Сформирован')}
+                        value='сформирован'
                         name='game_magic_exam.phonemic_hearing'
                         control={control}
                         errors={errors}
@@ -335,16 +320,7 @@ const MagicExamGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Не сформирован')}
-                        name='game_magic_exam.phonemic_hearing'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                  </ProtocolResultWrapper>
-                  <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='radio'
-                        label={t('В пределах возрастной нормы')}
+                        value='не сформирован'
                         name='game_magic_exam.phonemic_hearing'
                         control={control}
                         errors={errors}
@@ -356,7 +332,8 @@ const MagicExamGame = (props) => {
                     <ProtocolResultWrapper>
                       <ProtocolFormField
                           type='radio'
-                          label={t('Не сформирован')}
+                          label={t('Не сформированы')}
+                          value='не сформированы'
                           name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
                           control={control}
                           errors={errors}
@@ -367,6 +344,7 @@ const MagicExamGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Находятся на самой начальной стадии формирования. Ребенку доступен анализ звукового ряда, состоящего из')}
+                          value='находятся на самой начальной стадии формирования. Ребенку доступен анализ звукового ряда, состоящего из'
                           name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
                           control={control}
                           errors={errors}
@@ -377,6 +355,7 @@ const MagicExamGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Находятся в активной стадии формирования; ребенку доступен анализ слов типа')}
+                          value='находятся в активной стадии формирования; ребенку доступен анализ слов типа'
                           name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
                           control={control}
                           errors={errors}
@@ -387,6 +366,7 @@ const MagicExamGame = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Сформированы соответственно возрасту')}
+                          value='сформированы соответственно возрасту'
                           name='game_magic_exam.phonological_sound_analysis_and_synthesis_skills'
                           control={control}
                           errors={errors}

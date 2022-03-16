@@ -127,6 +127,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('В норме')}
+                  value='в норме'
                   name='game_ant_battle.tone'
                   control={control}
                   errors={errors}
@@ -137,6 +138,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('Спастичность мышц языка')}
+                  value='спастичность мышц языка'
                   name='game_ant_battle.tone'
                   control={control}
                   errors={errors}
@@ -147,6 +149,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('Гипотония мышц языка')}
+                  value='гипотония мышц языка'
                   name='game_ant_battle.tone'
                   control={control}
                   errors={errors}
@@ -157,6 +160,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('Дистония мышц языка')}
+                  value='дистония мышц языка'
                   name='game_ant_battle.tone'
                   control={control}
                   errors={errors}
@@ -214,6 +218,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Нормальный темп выполнение движений')}
+                    value='нормальный темп выполнение движений'
                     name='game_ant_battle.pace_of_the_movements'
                     control={control}
                     errors={errors}
@@ -224,6 +229,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Замедленный темп выполнения движений')}
+                    value='замедленный темп выполнения движений'
                     name='game_ant_battle.pace_of_the_movements'
                     control={control}
                     errors={errors}
@@ -234,6 +240,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Ускоренный темп выполнения движений')}
+                    value='ускоренный темп выполнения движений'
                     name='game_ant_battle.pace_of_the_movements'
                     control={control}
                     errors={errors}
@@ -304,6 +311,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('В норме')}
+                    value='в норме'
                     name='game_ant_battle.facial_muscle_tone'
                     control={control}
                     errors={errors}
@@ -314,6 +322,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Спастичность')}
+                    value='спастичность'
                     name='game_ant_battle.facial_muscle_tone'
                     control={control}
                     errors={errors}
@@ -324,6 +333,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Гипотония')}
+                    value='гипотония'
                     name='game_ant_battle.facial_muscle_tone'
                     control={control}
                     errors={errors}
@@ -334,6 +344,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Дистония')}
+                    value='дистония'
                     name='game_ant_battle.facial_muscle_tone'
                     control={control}
                     errors={errors}
@@ -402,6 +413,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('В норме')}
+                    value='в норме'
                     name='game_ant_battle.lip_muscle_tone'
                     control={control}
                     errors={errors}
@@ -412,6 +424,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Спастичность')}
+                    value='спастичность'
                     name='game_ant_battle.lip_muscle_tone'
                     control={control}
                     errors={errors}
@@ -422,6 +435,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Гипотония')}
+                    value='гипотония'
                     name='game_ant_battle.lip_muscle_tone'
                     control={control}
                     errors={errors}
@@ -432,6 +446,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Дистония')}
+                    value='дистония'
                     name='game_ant_battle.lip_muscle_tone'
                     control={control}
                     errors={errors}
@@ -456,6 +471,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('Постоянная')}
+                  value='постоянная'
                   name='game_ant_battle.hypersalivation'
                   control={control}
                   errors={errors}
@@ -466,6 +482,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('После функциональной нагрузки')}
+                  value='после функциональной нагрузки'
                   name='game_ant_battle.hypersalivation'
                   control={control}
                   errors={errors}
@@ -476,6 +493,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('Отсутствует')}
+                  value='отсутствует'
                   name='game_ant_battle.hypersalivation'
                   control={control}
                   errors={errors}
@@ -487,7 +505,7 @@ const AntBattleGame = (props) => {
             <ProtocolFormField
                 type='textarea'
                 label={t('Комментарии')}
-                name='game_ant_battle.expert_comment'
+                name='game_ant_battle.hypersalivation_comment'
                 placeholder={t('Комментарии специалиста')}
                 errors={errors}
                 register={register}
@@ -581,7 +599,8 @@ const AntBattleGame = (props) => {
               <ProtocolResultWrapper>
                 <ProtocolFormField
                     type='radio'
-                    label={t('Сформирован')}
+                    label={t('Сформированы')}
+                    value='сформированы'
                     name='game_ant_battle.basic_motor_skills'
                     control={control}
                     errors={errors}
@@ -592,6 +611,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Сформированы недостаточно')}
+                    value='сформированы недостаточно'
                     name='game_ant_battle.basic_motor_skills'
                     control={control}
                     errors={errors}
@@ -601,17 +621,8 @@ const AntBattleGame = (props) => {
               <ProtocolResultWrapper>
                 <ProtocolFormField
                     type='radio'
-                    label={t('Не сформирован')}
-                    name='game_ant_battle.basic_motor_skills'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
+                    label={t('Не сформированы')}
+                    value='не сформированы'
                     name='game_ant_battle.basic_motor_skills'
                     control={control}
                     errors={errors}
@@ -623,7 +634,8 @@ const AntBattleGame = (props) => {
               <ProtocolResultWrapper>
                 <ProtocolFormField
                     type='radio'
-                    label={t('Соответствует возрасту')}
+                    label={t('Соответствуют возрасту')}
+                    value='соответствуют возрасту'
                     name='game_ant_battle.basic_motor_skills_part_two'
                     control={control}
                     errors={errors}
@@ -633,17 +645,8 @@ const AntBattleGame = (props) => {
               <ProtocolResultWrapper>
                 <ProtocolFormField
                     type='radio'
-                    label={t('Не соответствует возрасту')}
-                    name='game_ant_battle.basic_motor_skills_part_two'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
+                    label={t('Не соответствуют возрасту')}
+                    value='не соответствуют возрасту'
                     name='game_ant_battle.basic_motor_skills_part_two'
                     control={control}
                     errors={errors}
@@ -660,6 +663,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Не наблюдаются')}
+                    value='не наблюдаются'
                     name='game_ant_battle.disturbances_in_tone'
                     control={control}
                     errors={errors}
@@ -670,6 +674,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Спастичность')}
+                    value='спастичность'
                     name='game_ant_battle.disturbances_in_tone'
                     control={control}
                     errors={errors}
@@ -680,6 +685,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Гипотония')}
+                    value='гипотония'
                     name='game_ant_battle.disturbances_in_tone'
                     control={control}
                     errors={errors}
@@ -690,6 +696,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Дистония')}
+                    value='дистония'
                     name='game_ant_battle.disturbances_in_tone'
                     control={control}
                     errors={errors}
@@ -748,7 +755,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='checkbox'
                     label={t('Не наблюдаются')}
-                    name=''
+                    name='game_ant_battle.violations_of_certain_aspects_function_not_observed'
                     control={control}
                     errors={errors}
                     disabled={disabled}
@@ -784,7 +791,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='checkbox'
                     label={t('Не наблюдаются')}
-                    name=''
+                    name='game_ant_battle.friendly_movements_of_synkinesis_not_observed'
                     control={control}
                     errors={errors}
                     disabled={disabled}
@@ -820,6 +827,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Пальцевый праксис сформирован. Воспроизвел пальцевую позу без затруднений')}
+                    value='пальцевый праксис сформирован. Воспроизвел пальцевую позу без затруднений'
                     name='game_ant_battle.motor_functions_of_hands_and_fingers'
                     control={control}
                     errors={errors}
@@ -830,6 +838,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Пальцевый праксис сформирован. Воспроизвел пальцевую позу с затруднениями')}
+                    value='пальцевый праксис сформирован. Воспроизвел пальцевую позу с затруднениями'
                     name='game_ant_battle.motor_functions_of_hands_and_fingers'
                     control={control}
                     errors={errors}
@@ -840,16 +849,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Пальцевый праксис не сформирован. Пальцевую позу не воспроизвел')}
-                    name='game_ant_battle.motor_functions_of_hands_and_fingers'
-                    control={control}
-                    errors={errors}
-                    disabled={disabled}
-                />
-              </ProtocolResultWrapper>
-              <ProtocolResultWrapper>
-                <ProtocolFormField
-                    type='radio'
-                    label={t('В пределах возрастной нормы')}
+                    value='пальцевый праксис не сформирован. Пальцевую позу не воспроизвел'
                     name='game_ant_battle.motor_functions_of_hands_and_fingers'
                     control={control}
                     errors={errors}
@@ -862,7 +862,7 @@ const AntBattleGame = (props) => {
             <ProtocolFormField
                 type='textarea'
                 label={t('Комментарии')}
-                name='game_ant_battle.expert_comment'
+                name='game_ant_battle.motor_functions_of_hands_and_fingers_comment'
                 placeholder={t('Комментарии специалиста')}
                 errors={errors}
                 register={register}
@@ -880,7 +880,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Нормальные')}
-                    value={t('Нормальные губы')}
+                    value='нормальные'
                     name='game_ant_battle.lips'
                     control={control}
                     errors={errors}
@@ -891,7 +891,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Тонкие')}
-                    value={t('Тонкие губы')}
+                    value='тонкие губы'
                     name='game_ant_battle.lips'
                     control={control}
                     errors={errors}
@@ -902,7 +902,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Полные')}
-                    value={t('Полные губы')}
+                    value='полные губы'
                     name='game_ant_battle.lips'
                     control={control}
                     errors={errors}
@@ -927,6 +927,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Не наблюдаются')}
+                    value='не наблюдаются'
                     name='game_ant_battle.malocclusion'
                     control={control}
                     errors={errors}
@@ -937,6 +938,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Прогнатия')}
+                    value='прогнатия'
                     name='game_ant_battle.malocclusion'
                     control={control}
                     errors={errors}
@@ -947,6 +949,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Прогения')}
+                    value='прогения'
                     name='game_ant_battle.malocclusion'
                     control={control}
                     errors={errors}
@@ -957,6 +960,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Глубокий прикус')}
+                    value='глубокий прикус'
                     name='game_ant_battle.malocclusion'
                     control={control}
                     errors={errors}
@@ -967,6 +971,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Открытый прикус')}
+                    value='открытый прикус'
                     name='game_ant_battle.malocclusion'
                     control={control}
                     errors={errors}
@@ -977,6 +982,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Перекрестный прикус')}
+                    value='перекрестный прикус'
                     name='game_ant_battle.malocclusion'
                     control={control}
                     errors={errors}
@@ -990,6 +996,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Не наблюдается')}
+                    value='не наблюдается'
                     name='game_ant_battle.incorrect_position_of_teeth'
                     control={control}
                     errors={errors}
@@ -1000,6 +1007,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Адентия')}
+                    value='адентия'
                     name='game_ant_battle.incorrect_position_of_teeth'
                     control={control}
                     errors={errors}
@@ -1010,6 +1018,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Диастема')}
+                    value='диастема'
                     name='game_ant_battle.incorrect_position_of_teeth'
                     control={control}
                     errors={errors}
@@ -1020,6 +1029,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Сверхкомплектные зубы')}
+                    value='сверхкомплектные зубы'
                     name='game_ant_battle.incorrect_position_of_teeth'
                     control={control}
                     errors={errors}
@@ -1033,6 +1043,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Не наблюдается')}
+                    value='не наблюдается'
                     name='game_ant_battle.tooth_reshaping'
                     control={control}
                     errors={errors}
@@ -1043,6 +1054,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Макродентия')}
+                    value='макродентия'
                     name='game_ant_battle.tooth_reshaping'
                     control={control}
                     errors={errors}
@@ -1053,6 +1065,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Микродентия')}
+                    value='микродентия'
                     name='game_ant_battle.tooth_reshaping'
                     control={control}
                     errors={errors}
@@ -1067,6 +1080,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Не наблюдается')}
+                    value='не наблюдается'
                     name='game_ant_battle.changing_size_of_tongue'
                     control={control}
                     errors={errors}
@@ -1077,6 +1091,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Макроглоссия')}
+                    value='макроглоссия'
                     name='game_ant_battle.changing_size_of_tongue'
                     control={control}
                     errors={errors}
@@ -1087,6 +1102,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Микроглоссия')}
+                    value='микроглоссия'
                     name='game_ant_battle.changing_size_of_tongue'
                     control={control}
                     errors={errors}
@@ -1099,6 +1115,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('Не наблюдается')}
+                  value='не наблюдается'
                   name='game_ant_battle.deviation_of_tongue'
                   control={control}
                   errors={errors}
@@ -1109,6 +1126,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('Отсутствует')}
+                  value='отсутствует'
                   name='game_ant_battle.deviation_of_tongue'
                   control={control}
                   errors={errors}
@@ -1119,6 +1137,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('Влево')}
+                  value='влево'
                   name='game_ant_battle.deviation_of_tongue'
                   control={control}
                   errors={errors}
@@ -1129,6 +1148,7 @@ const AntBattleGame = (props) => {
               <ProtocolFormField
                   type='radio'
                   label={t('Вправо')}
+                  value='вправо'
                   name='game_ant_battle.deviation_of_tongue'
                   control={control}
                   errors={errors}
@@ -1163,7 +1183,8 @@ const AntBattleGame = (props) => {
               <ProtocolResultWrapper>
                 <ProtocolFormField
                     type='radio'
-                    label={t('Не наблюдаются')}
+                    label={t('Не наблюдается')}
+                    value='не наблюдается'
                     name='game_ant_battle.anomalies_of_frenum_of_upper_lower_lip'
                     control={control}
                     errors={errors}
@@ -1174,6 +1195,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Укорочение')}
+                    value='укорочение'
                     name='game_ant_battle.anomalies_of_frenum_of_upper_lower_lip'
                     control={control}
                     errors={errors}
@@ -1184,6 +1206,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Увеличение')}
+                    value='увеличение'
                     name='game_ant_battle.anomalies_of_frenum_of_upper_lower_lip'
                     control={control}
                     errors={errors}
@@ -1198,6 +1221,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Не наблюдается')}
+                    value='не наблюдается'
                     name='game_ant_battle.cleft'
                     control={control}
                     errors={errors}
@@ -1208,6 +1232,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Губы')}
+                    value='губы'
                     name='game_ant_battle.cleft'
                     control={control}
                     errors={errors}
@@ -1218,6 +1243,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Твердого и мягкого нёба')}
+                    value='твердого и мягкого нёба'
                     name='game_ant_battle.cleft'
                     control={control}
                     errors={errors}
@@ -1228,6 +1254,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Альвеолярного отростка нёба')}
+                    value='альвеолярного отростка нёба'
                     name='game_ant_battle.cleft'
                     control={control}
                     errors={errors}
@@ -1238,6 +1265,7 @@ const AntBattleGame = (props) => {
                 <ProtocolFormField
                     type='radio'
                     label={t('Скрытая')}
+                    value='скрытая'
                     name='game_ant_battle.cleft'
                     control={control}
                     errors={errors}
@@ -1273,7 +1301,7 @@ const AntBattleGame = (props) => {
             <ProtocolFormField
                 type='textarea'
                 label={t('Комментарии')}
-                name='game_ant_battle.expert_comment'
+                name='game_ant_battle.cleft_comment'
                 placeholder={t('Комментарии специалиста')}
                 errors={errors}
                 register={register}

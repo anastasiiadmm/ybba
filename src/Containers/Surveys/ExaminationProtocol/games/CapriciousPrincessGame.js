@@ -95,6 +95,7 @@ const CapriciousPrincessGame = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Слоговая структура слова не нарушена')}
+                        value='слоговая структура слова не нарушена'
                         name='game_capricious_princess.syllabic_structure_of_a_word'
                         control={control}
                         errors={errors}
@@ -104,17 +105,8 @@ const CapriciousPrincessGame = (props) => {
                   <ProtocolResultWrapper>
                     <ProtocolFormField
                         type='radio'
-                        label={t('Слоговая структура нарушена')}
-                        name='game_capricious_princess.syllabic_structure_of_a_word'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                  </ProtocolResultWrapper>
-                  <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='radio'
-                        label={t('В пределах возрастной нормы')}
+                        label={t('Слоговая структура слова нарушена')}
+                        value='слоговая структура слова нарушена'
                         name='game_capricious_princess.syllabic_structure_of_a_word'
                         control={control}
                         errors={errors}
@@ -128,7 +120,7 @@ const CapriciousPrincessGame = (props) => {
                     <ProtocolFormField
                         type='checkbox'
                         label={t('Диспраксичные нарушения не наблюдаются')}
-                        name=''
+                        name='game_capricious_princess.dyspraxic_disturbances_are_not_observed'
                         control={control}
                         errors={errors}
                         disabled={isConclusionDisabled || disabled}
@@ -191,7 +183,7 @@ const CapriciousPrincessGame = (props) => {
                   <ProtocolFormField
                       type='checkbox'
                       label={t('Гностические нарушения не наблюдаются')}
-                      name=''
+                      name='game_capricious_princess.gnostic_disturbances_are_not_observed'
                       control={control}
                       errors={errors}
                       disabled={isConclusionDisabled || disabled}

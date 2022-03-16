@@ -46,7 +46,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                   className='switch2__input'
                   value={false}
                   label='-'
-                  name='game_how_the_mouse_could_not_sleep.mouse_in_the_yard_at_night'
+                  name='game_how_the_mouse_could_not_sleep.mouse_in_the_forest'
                   control={control}
                   disabled={disabled}
               />
@@ -56,7 +56,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                   className='switch2__input'
                   value={true}
                   label='+'
-                  name='game_how_the_mouse_could_not_sleep.mouse_in_the_yard_at_night'
+                  name='game_how_the_mouse_could_not_sleep.mouse_in_the_forest'
                   control={control}
                   disabled={disabled}
               />
@@ -261,16 +261,6 @@ const HowTheMouseCouldNotSleep = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          name='game_how_the_mouse_could_not_sleep.constructing_a_statement'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
                   </ProtocolResultBlock>
                   <ProtocolDescriptionSubtitle>{t('Соответствие сюжету')}</ProtocolDescriptionSubtitle>
                   <ProtocolResultBlock>
@@ -278,6 +268,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Рассказ соответствует предложенному сюжету')}
+                          value='рассказ соответствует предложенному сюжету'
                           name='game_how_the_mouse_could_not_sleep.consistency_with_the_plot'
                           control={control}
                           errors={errors}
@@ -288,16 +279,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Рассказ не соответствует предложенному сюжету')}
-                          name='game_how_the_mouse_could_not_sleep.consistency_with_the_plot'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
+                          value='рассказ не соответствует предложенному сюжету'
                           name='game_how_the_mouse_could_not_sleep.consistency_with_the_plot'
                           control={control}
                           errors={errors}
@@ -311,6 +293,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Раскрыта')}
+                          value='раскрыта'
                           name='game_how_the_mouse_could_not_sleep.topic'
                           control={control}
                           errors={errors}
@@ -321,7 +304,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Раскрыта частично')}
-                          value={t('Раскрыта частично')}
+                          value='тема раскрыта частично'
                           name='game_how_the_mouse_could_not_sleep.topic'
                           control={control}
                           errors={errors}
@@ -332,18 +315,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не раскрыта')}
-                          value={t('Не раскрыта')}
-                          name='game_how_the_mouse_could_not_sleep.topic'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
-                          value={t('В пределах возрастной нормы')}
+                          value='не раскрыто'
                           name='game_how_the_mouse_could_not_sleep.topic'
                           control={control}
                           errors={errors}
@@ -357,6 +329,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Соблюдает')}
+                          value='соблюдает'
                           name='game_how_the_mouse_could_not_sleep.chronological_event_logic'
                           control={control}
                           errors={errors}
@@ -367,16 +340,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не соблюдает')}
-                          name='game_how_the_mouse_could_not_sleep.chronological_event_logic'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
+                          value='не соблюдает'
                           name='game_how_the_mouse_could_not_sleep.chronological_event_logic'
                           control={control}
                           errors={errors}
@@ -389,6 +353,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Свободно владеет языковыми средствами и адекватно их использует при построении связного текста')}
+                        value='свободно владеет языковыми средствами и адекватно их использует при построении связного текста'
                         name='game_how_the_mouse_could_not_sleep.language_means'
                         control={control}
                         errors={errors}
@@ -399,16 +364,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                     <ProtocolFormField
                         type='radio'
                         label={t('Неадекватно использует языковые средства при построении связного текста')}
-                        name='game_how_the_mouse_could_not_sleep.language_means'
-                        control={control}
-                        errors={errors}
-                        disabled={isConclusionDisabled || disabled}
-                    />
-                  </ProtocolResultWrapper>
-                  <ProtocolResultWrapper>
-                    <ProtocolFormField
-                        type='radio'
-                        label={t('В пределах возрастной нормы')}
+                        value='неадекватно использует языковые средства при построении связного текста'
                         name='game_how_the_mouse_could_not_sleep.language_means'
                         control={control}
                         errors={errors}
@@ -504,7 +460,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    {errors.choices17 && <div className='form2__error'> {errors.choices17.message}</div>}
+                    {errors.choices16 && <div className='form2__error'> {errors.choices16.message}</div>}
                   </ProtocolResultBlock>
                   <ProtocolDescriptionSubtitle>{t('Наблюдаются значительные трудности в репродуцировании текста')}</ProtocolDescriptionSubtitle>
                   <ProtocolResultBlock>
@@ -548,7 +504,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                           disabled={isConclusionDisabled || disabled}
                       />
                     </ProtocolResultWrapper>
-                    {errors.choices18 && <div className='form2__error'> {errors.choices18.message}</div>}
+                    {errors.choices16 && <div className='form2__error'> {errors.choices16.message}</div>}
                   </ProtocolResultBlock>
                   <ProtocolDescriptionMain>{t('Понимание')}</ProtocolDescriptionMain>
                   <ProtocolDescriptionSubtitle>{t('Содержательно-смысловое значение текста')}</ProtocolDescriptionSubtitle>
@@ -557,6 +513,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Идентифицирует')}
+                          value='идентифицирует'
                           name='game_how_the_mouse_could_not_sleep.content_semantic_meaning_of_text'
                           control={control}
                           errors={errors}
@@ -567,16 +524,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Не идентифицирует')}
-                          name='game_how_the_mouse_could_not_sleep.content_semantic_meaning_of_text'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
+                          value='не идентифицирует'
                           name='game_how_the_mouse_could_not_sleep.content_semantic_meaning_of_text'
                           control={control}
                           errors={errors}
@@ -590,6 +538,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Понимает только основную информацию текста')}
+                          value='понимает только основную информацию текста'
                           name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
                           control={control}
                           errors={errors}
@@ -600,6 +549,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Доступно понимание как основной, так и дополнительной информации каждой смысловой части текста')}
+                          value='доступно понимание как основной, так и дополнительной информации каждой смысловой части текста'
                           name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
                           control={control}
                           errors={errors}
@@ -610,16 +560,7 @@ const HowTheMouseCouldNotSleep = (props) => {
                       <ProtocolFormField
                           type='radio'
                           label={t('Доступно понимание скрытого смысла')}
-                          name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
-                          control={control}
-                          errors={errors}
-                          disabled={isConclusionDisabled || disabled}
-                      />
-                    </ProtocolResultWrapper>
-                    <ProtocolResultWrapper>
-                      <ProtocolFormField
-                          type='radio'
-                          label={t('В пределах возрастной нормы')}
+                          value='доступно понимание скрытого смысла'
                           name='game_how_the_mouse_could_not_sleep.understands_only_basic_information_of_text'
                           control={control}
                           errors={errors}
