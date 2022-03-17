@@ -270,7 +270,7 @@ export const relationOfProtocolToSpeechCard = {
     'inspiratory_expiratory_differentiation': 'game_on_the_farm_part_three.inspiratory_expiratory_differentiation',
     'understanding_the_text_game_how_the_mouse_could_not_sleep': 'game_how_the_mouse_could_not_sleep.content_semantic_meaning_of_text',
     'text_production': 'game_how_the_mouse_could_not_sleep.constructing_a_statement',
-    'reproduction_of_text_game_how_the_mouse_could_not_sleep': 'game_how_the_mouse_could_not_sleep.retelling_corresponds_to_original',
+    'reproduction_of_text_game_how_the_mouse_could_not_sleep': 'game_how_the_mouse_could_not_sleep.language_means',
     'articulation_apparatus_structure_game_how_the_mouse_could': 'game_ant_battle.lips',
     'articulation_apparatus_structure': 'game_ant_battle.tone',
     'basic_motor_skills_and_state_of_coordinating_sphere': 'game_ant_battle.basic_motor_skills',
