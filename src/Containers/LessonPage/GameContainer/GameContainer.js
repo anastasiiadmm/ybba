@@ -8,7 +8,12 @@ import {
   GAME_FILE_TYPE_DATA,
   GAME_FILE_TYPE_FRAMEWORK,
   GAME_FILE_TYPE_LOADER,
-  GAME_FILE_TYPE_WASM, GAME_FOLDER_STREAMING_ASSETS, gameUserRoles, IS_DISPLAY_RESTART, lessonProperties,
+  GAME_FILE_TYPE_WASM,
+  GAME_FOLDER_STREAMING_ASSETS,
+  gameUserRoles,
+  IS_DISPLAY_RESTART,
+  IS_TEACHER_HAVE_CONTROL_ON_GAME,
+  lessonProperties,
   userRoles,
 } from 'constants.js';
 import Unity, { UnityContext } from 'react-unity-webgl';
@@ -45,14 +50,9 @@ const GameContainer = (props) => {
       setGameHeight(window.innerHeight);
       return
     }
-    let proportionalWidth = 0;
-    if (canvasParent.current.clientWidth <= 1060) {
-      proportionalWidth = (1060 - canvasParent.current.clientWidth);
-    }
-    else proportionalWidth = 0;
 
-    setGameHeight(window.innerHeight - 105 - webcamHeight - proportionalWidth);
-    console.log(canvasParent.current.clientWidth, proportionalWidth);
+    const GAME_CAROUSEL_HEIGHT = 105;
+    setGameHeight(window.innerHeight - GAME_CAROUSEL_HEIGHT - webcamHeight);
   }, [canvasParent]);
 
   const setCurrentWebcamHeight = useCallback(() => {
@@ -95,6 +95,7 @@ const GameContainer = (props) => {
   const updateButtonState = useCallback((buttonStates) => {
     console.log('ButtonStates', buttonStates);
 
+    changeLessonContextProperty(IS_TEACHER_HAVE_CONTROL_ON_GAME, buttonStates.TeacherMode)
     changeLessonContextProperty(buttonVisibleStatuses.IS_INTRO_BUTTON_VISIBLE, buttonStates.IntroButton);
     changeLessonContextProperty(buttonVisibleStatuses.IS_NEXT_BUTTON_VISIBLE, buttonStates.NextButton);
     changeLessonContextProperty(buttonVisibleStatuses.IS_PREV_BUTTON_VISIBLE, buttonStates.PrevButton);
