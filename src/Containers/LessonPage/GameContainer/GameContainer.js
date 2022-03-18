@@ -41,9 +41,15 @@ const GameContainer = (props) => {
 
   const [unityLoadProgress, setUnityLoadProgress] = useState(0);
   const [gameHeight, setGameHeight] = useState(0);
-  const [webcamHeight, setWebcamHeight] = useState(260);
 
   const gameWidth = useMemo(() => gameHeight / 9 * 16, [gameHeight]);
+
+  const getCurrentWebcamHeight = useCallback(() => {
+    if (checkUserRole(userRoles.parent)) return 220;
+
+    const bodyWidth = +document.body.clientWidth;
+    return bodyWidth <= 1440 ? 140 : 220;
+  }, []);
 
   const handleGameContainerResize = useCallback(() => {
     if (checkUserRole(userRoles.parent)) {
@@ -51,17 +57,10 @@ const GameContainer = (props) => {
       return
     }
 
+    const webcamHeight = getCurrentWebcamHeight();
     const GAME_CAROUSEL_HEIGHT = 105;
     setGameHeight(window.innerHeight - GAME_CAROUSEL_HEIGHT - webcamHeight);
   }, [canvasParent]);
-
-  const setCurrentWebcamHeight = useCallback(() => {
-    if (checkUserRole(userRoles.parent)) return setWebcamHeight(220);
-    const bodyWidth = +document.body.clientWidth;
-    bodyWidth <= 1440
-      ? setWebcamHeight(140)
-      : setWebcamHeight(220);
-  }, []);
 
   const getFileUrl = useCallback((fileName) => {
     return lesson.game_build[fileName];
@@ -178,12 +177,7 @@ const GameContainer = (props) => {
 
   useEffect(() => {
     handleGameContainerResize();
-    setCurrentWebcamHeight();
-
-    window.addEventListener('resize', () => {
-      handleGameContainerResize();
-      setCurrentWebcamHeight();
-    });
+    window.addEventListener('resize', handleGameContainerResize);
   }, [handleGameContainerResize]);
 
   return (
