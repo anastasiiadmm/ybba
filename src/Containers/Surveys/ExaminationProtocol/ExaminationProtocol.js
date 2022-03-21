@@ -354,7 +354,7 @@ const ExaminationProtocol = (props) => {
                             label={t('Да, знает')}
                             name='knows_his_name_the_name_of_his_parents_where_he_lives'
                             control={control}
-                            value={true}
+                            value='Да, знает'
                             errors={errors}
                             disabled={isConclusionDisabled || isProtocolClosed}
                         />
@@ -365,7 +365,7 @@ const ExaminationProtocol = (props) => {
                             label={t('Нет, не знает')}
                             name='knows_his_name_the_name_of_his_parents_where_he_lives'
                             control={control}
-                            value={false}
+                            value='Нет, не знает'
                             errors={errors}
                             disabled={isConclusionDisabled || isProtocolClosed}
                         />
