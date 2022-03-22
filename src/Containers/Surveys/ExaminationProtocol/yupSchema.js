@@ -27,9 +27,6 @@ export let examinationProtocolSchema = yup.object().shape({
     what_kind_of_animals_do_you_know: yup.string()
         .required(requiredFieldErrorText)
         .nullable(true),
-    general_ideas_about_the_world_around_comment: yup.string()
-        .required(requiredFieldErrorText)
-        .nullable(true),
     stock_of_knowledge_about_the_world_around: yup.string()
         .required(true)
         .nullable(true),
@@ -50,9 +47,6 @@ export let examinationProtocolSchema = yup.object().shape({
         .nullable(true),
     contact_with_the_child: yup.string()
         .required(true)
-        .nullable(true),
-    formation_of_ideas_about_the_world_around_comment: yup.string()
-        .required(requiredFieldErrorText)
         .nullable(true),
     leading_ear_phone: yup.string()
         .required(true)
@@ -151,9 +145,6 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         distinction_between_affricates_and_their_constituent: yup.boolean()
             .nullable(true),
-        expert_comment: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
         nose: yup.string()
             .required(requiredFieldErrorText)
             .nullable(true),
@@ -189,9 +180,6 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         phonological_sound_analysis_and_synthesis_skills: yup.string()
             .required(true)
-            .nullable(true),
-        phonemic_hearing_expert_comment: yup.string()
-            .required(requiredFieldErrorText)
             .nullable(true),
     }),
     game_capricious_princess: yup.object().shape({
@@ -239,9 +227,6 @@ export let examinationProtocolSchema = yup.object().shape({
         assimilation_of_syllables: yup.boolean()
             .nullable(true),
         gnotic_violations_addition_of_syllables: yup.boolean()
-            .nullable(true),
-        expert_comment: yup.string()
-            .required(requiredFieldErrorText)
             .nullable(true),
     }),
     game_giraffe: yup.object().shape({
@@ -296,9 +281,6 @@ export let examinationProtocolSchema = yup.object().shape({
             .required(true)
             .nullable(true),
         kind_of_thinking: yup.string()
-            .required(true)
-            .nullable(true),
-        expert_comment: yup.string()
             .required(true)
             .nullable(true),
     }),
@@ -411,6 +393,8 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         hissing_nasal_sigmatism: yup.boolean()
             .nullable(true),
+        whistling_sigmatism_of_hissing: yup.boolean()
+            .nullable(true),
         hissing_sigmatism_two: yup.boolean()
             .nullable(true),
         lateral_sigmatism_two: yup.boolean()
@@ -426,9 +410,6 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         verbal_memory_part_two: yup.string()
             .required(true)
-            .nullable(true),
-        expert_comment: yup.string()
-            .required(requiredFieldErrorText)
             .nullable(true),
     }),
     game_puzzle: yup.object().shape({
@@ -468,9 +449,6 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         level_of_perception: yup.string()
             .required(true)
-            .nullable(true),
-        expert_comment: yup.string()
-            .required(requiredFieldErrorText)
             .nullable(true),
     }),
     game_how_the_mouse_could_not_sleep: yup.object().shape({
@@ -553,10 +531,6 @@ export let examinationProtocolSchema = yup.object().shape({
         understands_only_basic_information_of_text: yup.string()
             .required(true)
             .nullable(true),
-        expert_comment: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
-
     }),
     game_ant_battle: yup.object().shape({
         fence: yup.string()
@@ -595,9 +569,6 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         pace_of_the_movements: yup.string()
             .required(true)
-            .nullable(true),
-        expert_comment: yup.string()
-            .required(requiredFieldErrorText)
             .nullable(true),
         raise_eyebrows: yup.string()
             .required(true)
@@ -815,9 +786,6 @@ export let examinationProtocolSchema = yup.object().shape({
         systemic_vocabulary_organization: yup.string()
             .required(true)
             .nullable(true),
-        expert_comment: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
     }),
     game_on_the_farm_part_two: yup.object().shape({
         house: yup.string()
@@ -870,10 +838,7 @@ export let examinationProtocolSchema = yup.object().shape({
             .nullable(true),
         syntax_skills_and_abilities_part_two: yup.string()
             .required(true)
-            .nullable(true),
-        expert_comment: yup.string()
-            .required(requiredFieldErrorText)
-            .nullable(true),
+            .nullable(true)
     }),
     game_on_the_farm_part_three: yup.object().shape({
         one_white_chicken: yup.string()
@@ -1006,7 +971,7 @@ examinationProtocolSchema = examinationProtocolSchema.test(
     null,
     (obj) => {
         if (obj.game_pictures_for_fish.hissing_is_normal || obj.game_pictures_for_fish.parasigmatism_of_hissing || obj.game_pictures_for_fish.replacing_shch_to || obj.game_pictures_for_fish.replacing_zh_to || obj.game_pictures_for_fish.replacing_sh_to
-            || obj.game_pictures_for_fish.pristine_sigmatism || obj.game_pictures_for_fish.hissing_nasal_sigmatism || obj.game_pictures_for_fish.hissing_sigmatism_two
+            || obj.game_pictures_for_fish.pristine_sigmatism || obj.game_pictures_for_fish.hissing_nasal_sigmatism || obj.game_pictures_for_fish.whistling_sigmatism_of_hissing || obj.game_pictures_for_fish.hissing_sigmatism_two
             || obj.game_pictures_for_fish.lateral_sigmatism_two || obj.game_pictures_for_fish.labiodental_pronunciation_of_sibilants
             || obj.game_pictures_for_fish.skip_whistling_sound_two || obj.game_pictures_for_fish.mixing_sounds_two) {
             return true;

@@ -185,7 +185,6 @@ const PuzzleGame = (props) => {
                 name='game_puzzle.labial_dental_comment'
                 placeholder={t('Комментарий специалиста')}
                 register={register}
-                errors={errors}
                 disabled={disabled}
             />
           </ProtocolRow>
@@ -253,7 +252,6 @@ const PuzzleGame = (props) => {
                       name='game_puzzle.expert_comment'
                       placeholder={t('Комментарий специалиста')}
                       register={register}
-                      errors={errors}
                       disabled={disabled}
                   />
                 </ProtocolRow>
