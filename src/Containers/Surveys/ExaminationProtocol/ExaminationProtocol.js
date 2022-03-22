@@ -217,7 +217,6 @@ const ExaminationProtocol = (props) => {
                 placeholder={t('Комментарий специалиста')}
                 name='general_ideas_about_the_world_around_comment'
                 register={register}
-                errors={errors}
                 disabled={isProtocolClosed}
             />
           </ProtocolRow>
@@ -440,7 +439,6 @@ const ExaminationProtocol = (props) => {
                 placeholder={t('Комментарий специалиста')}
                 name='formation_of_ideas_about_the_world_around_comment'
                 register={register}
-                errors={errors}
                 disabled={isProtocolClosed}
             />
           </ProtocolRow>
